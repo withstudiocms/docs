@@ -14,7 +14,7 @@ function setHTTPS(url: string) {
 	return `https://${url}`;
 }
 
-function splitListandSelectFirst(list: string) {
+function splitListAndSelectFirst(list: string) {
 	if (list.indexOf(',') === -1) return list;
 	return list.split(',')[0];
 }
@@ -27,11 +27,11 @@ function splitListandSelectFirst(list: string) {
  * @see https://coolify.io/docs/knowledge-base/environment-variables#predefined-variables
  */
 export const getCoolifyURL = (returnHttps?: boolean) => {
-	const urlList = process.env.COOLIFY_FQDN;
+	const urlList = process.env.COOLIFY_DOMAIN_FQDN;
 	if (!urlList) {
 		return undefined;
 	}
-	const url = splitListandSelectFirst(urlList);
+	const url = splitListAndSelectFirst(urlList);
 	const strippedUrl = stripTrailingSlash(stripHTTPandHTTPS(url));
 	if (returnHttps) {
 		return setHTTPS(strippedUrl);
