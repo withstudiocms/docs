@@ -2,8 +2,7 @@ import { defineConfig } from '@lunariajs/core/config';
 
 export default defineConfig({
 	repository: {
-		name: 'withstudiocms/studiocms',
-		rootDir: 'docs',
+		name: 'withstudiocms/docs',
 		hosting: 'github',
 		branch: 'main',
 	},
