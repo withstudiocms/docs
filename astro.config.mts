@@ -74,7 +74,7 @@ export default defineConfig({
 				'./src/styles/starlight.css',
 			],
 			editLink: {
-				baseUrl: 'https://github.com/withstudiocms/studiocms/tree/main/docs',
+				baseUrl: 'https://github.com/withstudiocms/docs/tree/main',
 			},
 			head: [
 				// {
