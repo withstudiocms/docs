@@ -7,6 +7,7 @@ import starlightSidebarTopics from 'starlight-sidebar-topics';
 import getCoolifyURL from './hostUtils.ts';
 import rehypePlugins from './src/plugins/rehypePluginKit.ts';
 import { typeDocPlugins } from './typedoc.config.ts';
+import starlightDocSearch from '@astrojs/starlight-docsearch';
 
 // Define the Site URL
 const site = getCoolifyURL(true) || 'https://docs.studiocms.dev/';
@@ -110,6 +111,11 @@ export default defineConfig({
 				// 		enabled: true,
 				// 	},
 				// }),
+				starlightDocSearch({
+					appId: 'UAGEFSNZ02',
+					apiKey: '2db78946b26c84e691bbbd2e7db7e6a8',
+					indexName: 'studiocms',
+				}),
 				starlightSidebarTopics([
 					{
 						label: 'Learn',
