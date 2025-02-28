@@ -24,5 +24,4 @@ jobs:
       - name: Generate Lunaria Overview
         uses: lunariajs/action@astro-docs
         with:
-          working-directory: docs
           token: ${{ secrets.STUDIOCMS_SERVICE_TOKEN }}
