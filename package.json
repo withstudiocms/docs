@@ -37,6 +37,7 @@
     "typescript": "^5.8.2",
     "astro-integration-kit": "^0.18.0",
     "tsm": "^2.3.0",
+    "@biomejs/biome": "1.9.4",
     "@lunariajs/core": "https://pkg.pr.new/lunariajs/lunaria/@lunariajs/core@4c8b9b0",
     "expressive-code-twoslash": "^0.4.0",
     "@shikijs/colorized-brackets": "^1.24.2",
@@ -66,6 +67,7 @@
     "@types/html-escaper": "^3.0.4",
     "html-escaper": "^3.0.3",
     "@fontsource-variable/onest": "5.1.1",
+    "execa": "9.5.2",
     "unified": "^11.0.5",
     "ultrahtml": "^1.5.3"
   }
