@@ -6,7 +6,7 @@ import starlightImageZoom from 'starlight-image-zoom';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import getCoolifyURL from './hostUtils.ts';
 import rehypePlugins from './src/plugins/rehypePluginKit.ts';
-// import { typeDocPlugins } from './typedoc.config.ts';
+import { typeDocPlugins } from './typedoc.config.ts';
 
 // Define the Site URL
 const site = getCoolifyURL(true) || 'https://docs.studiocms.dev/';
@@ -101,7 +101,7 @@ export default defineConfig({
 				},
 			],
 			plugins: [
-				// ...typeDocPlugins,
+				...typeDocPlugins,
 				starlightImageZoom(),
 				// starWarp({
 				// 	openSearch: {
@@ -165,30 +165,30 @@ export default defineConfig({
 								label: 'Configuration Reference',
 								autogenerate: { directory: 'config-reference' },
 							},
-							// {
-							// 	label: 'TypeDoc',
-							// 	badge: {
-							// 		text: 'Auto Generated',
-							// 		variant: 'tip',
-							// 	},
-							// 	items: [
-							// 		{
-							// 			label: 'studiocms',
-							// 			autogenerate: { directory: 'typedoc/studiocms' },
-							// 			collapsed: true,
-							// 		},
-							// 		{
-							// 			label: '@studiocms/blog',
-							// 			autogenerate: { directory: 'typedoc/studiocms-blog' },
-							// 			collapsed: true,
-							// 		},
-							// 		{
-							// 			label: '@studiocms/devapps',
-							// 			autogenerate: { directory: 'typedoc/studiocms-devapps' },
-							// 			collapsed: true,
-							// 		},
-							// 	],
-							// },
+							{
+								label: 'TypeDoc',
+								badge: {
+									text: 'Auto Generated',
+									variant: 'tip',
+								},
+								items: [
+									{
+										label: 'studiocms',
+										autogenerate: { directory: 'typedoc/studiocms' },
+										collapsed: true,
+									},
+									{
+										label: '@studiocms/blog',
+										autogenerate: { directory: 'typedoc/studiocms-blog' },
+										collapsed: true,
+									},
+									{
+										label: '@studiocms/devapps',
+										autogenerate: { directory: 'typedoc/studiocms-devapps' },
+										collapsed: true,
+									},
+								],
+							},
 						],
 					},
 				]),
