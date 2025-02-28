@@ -1,0 +1,3 @@
+[submodule "studiocms"]
+	path = studiocms
+	url = git@github.com:withstudiocms/studiocms.git
