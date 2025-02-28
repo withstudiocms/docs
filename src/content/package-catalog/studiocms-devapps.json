@@ -5,6 +5,6 @@
   "docsLink": "/package-catalog/studiocms-plugins/studiocms-devapps/",
   "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/studiocms_devapps/",
   "catalog": "studiocms",
-  "released": false,
+  "released": true,
   "publiclyUsable": true
 }
