@@ -1,0 +1,242 @@
+---
+i18nReady: true
+title: Los Fundamentos
+description: Aprende sobre los plugins de StudioCMS y cómo funcionan.
+sidebar:
+   order: 1
+---
+
+import ReadMore from '../../../components/ReadMore.astro'
+
+# Introducción
+
+Los plugins de StudioCMS son una herramienta poderosa que te permite extender la funcionalidad de StudioCMS. Proporcionan una manera simple y flexible de añadir nuevas características a tu proyecto StudioCMS. A continuación se muestra un desglose de los plugins de StudioCMS y cómo funcionan.
+
+## ¿Qué son los complementos?
+
+Los plugins de StudioCMS son similares a las Integraciones de Astro, pero tienen información adicional adjunta al objeto de función. Esta información es utilizada por StudioCMS para determinar cómo debe cargarse y utilizarse el complemento. Los plugins de StudioCMS se utilizan para extender la funcionalidad de StudioCMS añadiendo nuevas características o modificando las existentes.
+
+### El tipo de complemento StudioCMS
+
+```ts twoslash
+import { APIRoute, AstroIntegration } from "astro"
+import type { HeroIconName } from '@studiocms/ui/components/Icon/iconType.js';
+import type { SanitizeOptions } from 'ultrahtml/transformers/sanitize';
+import type { SettingsField } from 'studiocms/schemas';
+// ---cut---
+type StudioCMSPlugin = {
+  /**
+   * Identificador del complemento desde el package.json
+   */
+  identifier: string;
+
+  /**
+   * Etiqueta del complemento para mostrar en el Panel de Control de StudioCMS
+   */
+  name: string;
+    
+  /**
+   * Versión mínima de StudioCMS requerida para que el complemento funcione
+   */
+  studiocmsMinimumVersion: string;
+    
+  /**
+   * Integración(es) de Astro que proporciona el complemento
+   */
+  integration?: AstroIntegration | AstroIntegration[] | undefined;
+
+  /**
+   * Si es verdadero, el complemento habilitará la generación del mapa del sitio
+   */
+  triggerSitemap?: boolean;
+
+  /**
+   * Permite que el complemento añada puntos finales del mapa del sitio
+   */
+  sitemaps?: Array<{
+
+    /**
+     * Nombre del complemento
+     */
+    pluginName: string;
+
+    /**
+     * Ruta al archivo de punto final XML del mapa del sitio
+     */
+    sitemapXMLEndpointPath: string | URL;
+  }> | undefined;
+
+  /**
+   * Permite que el complemento añada elementos personalizados a la cuadrícula del panel
+   */
+  dashboardGridItems?: Array<{
+
+    /**
+     * Nombre del elemento de cuadrícula
+     */
+    name: string;
+
+    /**
+     * Extensión del elemento de cuadrícula
+     */
+    span: 1 | 2 | 3;
+
+    /**
+     * Variante de tarjeta del elemento de cuadrícula
+     */
+    variant: 'default' | 'filled';
+
+    /**
+     * Permiso requerido para ver el elemento de cuadrícula
+     */
+    requiresPermission?: "owner" | "admin" | "editor" | "visitor";
+
+    /**
+     * Información del encabezado del elemento de cuadrícula
+     */
+    header?: {
+
+      /**
+       * Título del elemento de cuadrícula
+       */
+      title: string;
+
+      /**
+       * Icono del elemento de cuadrícula
+       */
+      icon?: HeroIconName;
+    };
+
+    /**
+     * Información del cuerpo del elemento de cuadrícula
+     */
+    body?: {
+
+      /**
+       * Contenido HTML del elemento de cuadrícula
+       */
+      html: string;
+
+      /**
+       * Componente que se muestra en el elemento de cuadrícula
+       */
+      components?: Record<string, string>;
+
+      /**
+       * Opciones de sanitización para el contenido HTML
+       */
+      sanitizeOpts?: SanitizeOptions;
+    };
+  }> | undefined;
+
+  /**
+   * Si existe, el complemento tendrá su propia página de configuración
+   */
+  settingsPage: {
+
+    /**
+     * Campos según la especificación
+     */
+    fields: SettingsField[];
+
+    /**
+     * Función que se ejecuta cuando se guarda la página de configuración
+     *
+     * Debe devolver una cadena si hay un error,
+     * de lo contrario devuelve true booleano para indicar éxito
+     */
+    onSave: APIRoute;
+  } | undefined;
+
+  /**
+   * Definición del tipo de página. Si está presente, el complemento quiere poder modificar el proceso de creación de páginas
+   */
+  pageTypes: Array<{
+
+    /**
+     * Etiqueta que se muestra en el input select
+     */
+    label: string;
+
+    /**
+     * Identificador que se guarda en la base de datos
+     * @example
+     * // Un solo tipo de página por complemento
+     * 'studiocms'
+     * '@studiocms/blog'
+     * // Múltiples tipos de página por complemento (Usa identificadores únicos para cada tipo para evitar conflictos)
+     * '@mystudiocms/plugin:pageType1'
+     * '@mystudiocms/plugin:pageType2'
+     * '@mystudiocms/plugin:pageType3'
+     * '@mystudiocms/plugin:pageType4'
+     */
+    identifier: string;
+
+    /**
+     * Descripción que se muestra debajo del encabezado "Contenido de la Página" si se selecciona este tipo
+     */
+    description: string;
+
+    /**
+     * La ruta al componente real que se muestra para el contenido de la página
+     *
+     * El componente debe tener una prop `content` que sea una cadena para poder mostrar el contenido actual.
+     *
+     * **NOTA:** Actualmente, requiere que uses el id de formulario `page-content` para la salida de contenido. Tu editor también debe poder manejar el envío de formularios.
+     *
+     * @example
+     * ```ts
+     * import { createResolver } from 'astro-integration-kit';
+     * const { resolve } = createResolver(import.meta.url)
+     *
+     * {
+     *  pageContentComponent: resolve('./components/MyContentEditor.astro'),
+     * }
+     * ```
+     */
+    pageContentComponent: string;
+  }> | undefined;
+};
+```
+
+### Definiendo un complemento
+
+Para definir un complemento de StudioCMS, necesitas crear un objeto que se ajuste al tipo `StudioCMSPlugin`. Este objeto debe parecerse a lo siguiente, teniendo en cuenta que las siguientes propiedades son requeridas:
+
+- `identifier`: El identificador del complemento del archivo package.json.
+- `name`: La etiqueta del complemento que se mostrará en el Panel de Control de StudioCMS.
+- `studiocmsMinimumVersion`: La versión mínima de StudioCMS requerida para que el complemento funcione.
+
+Aquí hay un ejemplo de una definición de complemento de StudioCMS que incluye todas las propiedades requeridas y además proporciona una Integración Astro para realizar lógica personalizada:
+
+```ts twoslash title="my-plugin.ts"
+import { definePlugin } from 'studiocms/plugins';
+import { AstroIntegration } from 'astro';
+
+// Define las opciones para el complemento e integración
+interface Options {
+    foo: string;
+}
+
+// Define la integración Astro
+const myIntegration = (options: Options): AstroIntegration => ({
+    name: 'my-astro-integration',
+    hooks: {
+        "astro:config:setup": () => {
+            console.log('Hello from my Astro Integration!');
+        }
+    }
+});
+
+// Define el complemento de StudioCMS
+export const myPlugin = (options: Options) => definePlugin({
+    identifier: 'my-plugin',
+    name: 'My Plugin',
+    studiocmsMinimumVersion: '0.1.0-beta.8',
+    integration: myIntegration(options), // Opcional, pero recomendado
+});
+```
+
+En este ejemplo, definimos un complemento de StudioCMS llamado `My Plugin` que requiere la versión `0.1.0-beta.8` o superior de StudioCMS. El complemento también proporciona una Integración Astro que registra un mensaje en la consola cuando se llama al hook `astro:config:setup`.
+
+<ReadMore>Para más información sobre la creación de plugins, consulta la Guía [Haciendo Plugins Útiles](/es/plugins/extended)</ReadMore>
