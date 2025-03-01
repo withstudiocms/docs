@@ -1,0 +1,317 @@
+---
+i18nReady: true
+title: Haciendo complementos útiles
+description: Aprende sobre los complementos de StudioCMS y cómo funcionan.
+sidebar:
+   order: 2
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import { FileTree } from '@astrojs/starlight/components'
+
+# Introducción
+
+Crear un complemento para StudioCMS es una forma poderosa de extender la funcionalidad de StudioCMS. Los complementos proporcionan una manera simple y flexible de agregar nuevas características a tu proyecto StudioCMS. A continuación se muestra un ejemplo básico de cómo crear un complemento de StudioCMS y cómo funciona.
+
+## Primeros Pasos
+
+Para comenzar, necesitarás crear un nuevo complemento de StudioCMS. A continuación se muestra un ejemplo básico de la estructura de archivos para un complemento de StudioCMS:
+
+<FileTree>
+
+- package.json
+- src
+  - index.ts
+  - routes
+    - [...slug].astro
+  - dashboard-grid-items
+    - MyPluginGridItem.astro
+
+</FileTree>
+
+## Creando el complemento
+
+En el archivo principal `src/index.ts`, definirás el complemento de StudioCMS. A continuación se muestra un ejemplo de cómo definir un complemento de StudioCMS que incluye una Integración Astro para crear un ejemplo simple de blog:
+
+```ts twoslash title="index.ts"
+import { definePlugin } from 'studiocms/plugins';
+import { AstroIntegration } from 'astro';
+import { addVirtualImports, createResolver } from 'astro-integration-kit';
+
+// Define the options for the complemento and integration
+interface Options {
+    route: string;
+}
+
+export function studioCMSPageInjector(options: Options) {
+
+    // Resuelve la ruta al archivo actual
+    const { resolve } = createResolver(import.meta.url);
+
+    // Define la Integración Astro
+    function myIntegration(options: Options): AstroIntegration {
+        const route = `/${options?.route || 'my-plugin'}`;
+
+        return {
+            name: 'my-astro-integration',
+            hooks: {
+                "astro:config:setup": (params) => {
+                    const { injectRoute } = params;
+
+                    // Inyecta la ruta para el complemento
+                    injectRoute({
+                        entrypoint: resolve('./routes/[...slug].astro'),
+                        pattern: `/${route}/[...slug]`,
+                        prerender: false,
+                    })
+
+                    addVirtualImports(params, {
+                        name: 'my-astro-integration',
+                        imports: {
+                            'myplugin:config': `
+                                export const options = ${JSON.stringify({ route })};
+                                export default options;
+                            `,
+                        }
+                    })
+                }
+            }
+        }
+    }
+
+    // Define el complemento de StudioCMS
+    return definePlugin({
+        identifier: 'my-plugin',
+        name: 'My Plugin',
+        studiocmsMinimumVersion: '0.1.0-beta.8',
+        integration: myIntegration(options), // Opcional, pero recomendado
+        // Define los enlaces de navegación del frontend para el complemento (opcional)
+        // Esto es útil si estás usando los ayudantes de navegación de StudioCMS incorporados en tu diseño,
+        // como cuando usas el complemento `@studiocms/blog`.
+        frontendNavigationLinks: [{ label: 'Title here', href: options?.route || 'my-plugin' }],
+        // Cuando estes creando pageTypes, también puedes definir un `pageContentComponent` si tu complemento requiere un editor de contenido personalizado.
+        // pageTypes: [{ identifier: 'my-plugin', label: 'Blog Post (My plugin)', pageContentComponent: resolve('./components/MyContentEditor.astro') }],
+        // In this example we are okay using the default content editor (markdown).
+        pageTypes: [{ identifier: 'my-plugin', label: 'Blog Post (My plugin)' }],
+        // Definir los elementos de la cuadrícula para el panel
+        // Estos son los elementos que serán mostrados en el panel de StudioCMS
+        // Puedes definir tantos elementos como desees
+        // En este ejemplo, estamos definiendo un solo elemento, que tiene un span de 2 y requiere el permiso 'editor' e inyecta un componente Astro que reemplaza el elemento personalizado de html plano.
+        dashboardGridItems: [
+            {
+                name: 'example',
+                span: 2,
+                variant: 'default',
+                requiresPermission: 'editor',
+                header: { title: 'Example', icon: 'bolt' },
+                body: {
+                    // Siempre usa html plano sin `-` o caracteres especiales en las etiquetas, se reemplazarán con el componente Astro y este HTML nunca se renderizará
+                    html: '<examplegriditem></examplegriditem>',
+                    components: {
+                        // Inyecta el componente de Astro para reemplazar el elemento personalizado en html plano
+                        examplegriditem: resolve('./dashboard-grid-items/MycomplementoGridItem.astro')
+                    }
+                }
+            }
+        ],
+    });
+}
+```
+
+El ejemplo anterior define un complemento de StudioCMS que incluye una Integración Astro para crear un ejemplo simple de blog. El complemento incluye una ruta que se inyecta en el proyecto StudioCMS y un elemento de cuadrícula que se muestra en el Panel de Control de StudioCMS.
+
+<ReadMore>Para más información sobre cómo crear una Integración Astro, consulta el [Kit de Integración Astro](https://astro-integration-kit.netlify.app/) y la [documentación de Integraciones de Astro](https://docs.astro.build/es/reference/integrations-reference/).</ReadMore>
+
+## Ejemplo de ruta
+
+En el archivo `src/routes/[...slug].astro`, definirás la ruta para el complemento. A continuación se muestra un ejemplo de cómo definir una ruta para el complemento, lo dividiremos en dos partes, la primera parte es el frontmatter (entre las marcas `---`), y la segunda parte es la plantilla HTML que se coloca debajo del segundo `---`.
+
+```ts twoslash title="Frontmatter"
+// @noErrors
+// @filename: plugin.d.ts
+declare module 'myplugin:config' {
+    export const options: { route: string };
+    export default options;
+}
+// ---cut---
+// @filename: Frontmatter.ts
+/// <reference types="studiocms/v/core.d.ts" />
+/// <reference types="studiocms/v/renderer.d.ts" />
+/// <reference types="./plugin.d.ts" />
+import type { AstroGlobal } from 'astro';
+const Astro: AstroGlobal = {};
+// ---cut---
+import { StudioCMSRenderer } from 'studiocms:renderer';
+import sdk from 'studiocms:sdk';
+import config from 'myplugin:config';
+
+const makeRoute = (slug: string) => {
+    return `/${config.route}/${slug}`;
+}
+
+// 'my-plugin' aquí se usa como identificador para
+// el pageType de la definición del complemento
+const pages = await sdk.GET.packagePages('my-complemento'); 
+
+const { slug } = Astro.params;
+
+const page = pages.find((page) => page.slug === slug || '');
+```
+
+```astro title="Template"
+{
+    slug && page ? (
+        <div>
+            <h1>{page.title}</h1>
+            <StudioCMSRenderer content={page.defaultContent?.content || ''} />
+        </div>
+    ) : (
+        <div>
+            <h1>Mi complemento</h1>
+            <ul>
+                {pages.length > 0 && pages.map((page) => (
+                    <li>
+                        <a href={makeRoute(page.slug)}>{page.title}</a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
+}
+```
+
+El ejemplo anterior define una [ruta dinámica](https://docs.astro.build/es/guides/routing/#rutas-dinámicas) para el complemento que muestra una lista de entradas de blog cuando no se proporciona un slug y muestra el contenido de una entrada de blog cuando se proporciona un slug.
+
+## Ejemplo de elemento de cuadrícula
+
+En el archivo `src/dashboard-grid-items/MyPluginGridItem.astro`, definirás el elemento de cuadrícula para el complemento. A continuación se muestra un ejemplo de cómo definir un elemento de cuadrícula para el complemento:
+
+```astro title="MyPluginGridItem.astro"
+---
+import { StudioCMSRoutes } from 'studiocms:lib';
+import sdk from 'studiocms:sdk';
+
+// 'my-plugin' aqui es usado como el identificador para
+// el pageType de la definición del complemento
+const pages = await sdk.GET.packagePages('my-complemento'); 
+
+// Consigue las últimas 5 páginas actualizadas en los últimos 30 días
+const recentlyUpdatedPages = pages
+    .filter((page) => {
+        const now = new Date();
+        const thirtyDaysAgo = new Date(now.setDate(now.getDate() - 30));
+        return new Date(page.updatedAt) > thirtyDaysAgo;
+    })
+    .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
+    .slice(0, 5);
+---
+
+<div>
+    <h2>Páginas Actualizadas Recientemente</h2>
+    <ul>
+        {recentlyUpdatedPages.length > 0 && recentlyUpdatedPages.map((page) => (
+            <li>
+                <a href={StudioCMSRoutes.mainLinks.contentManagementEdit + `?edit=${page.id}`}>{page.title}</a>
+            </li>
+        ))}
+    </ul>
+</div>
+```
+
+El ejemplo anterior define un elemento de cuadrícula para el complemento que muestra las 5 páginas actualizadas más recientemente de los últimos 30 días. El elemento de cuadrícula incluye una lista de enlaces a la página de edición de gestión de contenido para cada página.
+
+## Integrando con los ayudantes de FrontendNavigationLinks
+
+Si deseas usar los ayudantes de navegación incorporados de StudioCMS en tu proyecto, similar a como lo hace el complemento `@studiocms/blog`, puedes crear un componente personalizado `Navigation.astro`:
+
+```astro title="Navigation.astro"
+---
+import { StudioCMSRoutes } from 'studiocms:lib';
+import studioCMS_SDK from 'studiocms:sdk/cache';
+import { frontendNavigation } from 'studiocms:complemento-helpers';
+
+// Define las props para el componente de navegación
+interface Props {
+	topLevelLinkCount?: number;
+};
+
+// Consigue el enlace de nivel superior de las props
+const { topLevelLinkCount = 3 } = Astro.props;
+
+// Consigue la configuración del sitio y la lista de páginas
+const config = (await studioCMS_SDK.GET.siteConfig()).data;
+
+// Consigue el título del sitio de la configuración
+const { title } = config || { title: 'StudioCMS' };
+
+// Consigue la URL principal del sitio
+const {
+	mainLinks: { baseSiteURL },
+} = StudioCMSRoutes;
+
+// Define las props de enlace para la navegación
+type LinkProps = {
+	text: string;
+	href: string;
+};
+
+// Define los enlaces para la navegación
+const links: LinkProps[] = await frontendNavigation();
+---
+{/* Si no hay elementos dropdown */}
+{ ( links.length < topLevelLinkCount || links.length === topLevelLinkCount ) && (
+    <div class="navigation">
+        <div class="title"><a href={baseSiteURL}>{title}</a></div>
+        <div class="mini-nav">
+            <button>Menu</button>
+            <div class="mini-nav-content">
+            { 
+                links.map(({ text, href }) => (
+                    <a {href}>{text}</a>
+                )) 
+            }
+            </div>
+        </div>
+        { 
+            links.map(({ text, href }) => (
+                <a class="links" {href}>{text}</a>
+            )) 
+        }
+    </div> 
+) }
+
+{/* Si hay elementos dropdown */}
+{ links.length > topLevelLinkCount && (
+    <div class="navigation">
+        <div class="title"><a href={baseSiteURL}>{title}</a></div>
+
+        <div class="mini-nav">
+            <button>Menu</button>
+            <div class="mini-nav-content">
+            { 
+                links.map(({ text, href }) => (
+                    <a {href}>{text}</a>
+                )) 
+            }
+            </div>
+        </div>
+        { 
+            links.slice(0, topLevelLinkCount).map(({ text, href }) => (
+                    <a class="links" {href}>{text}</a>
+            ))
+        }
+            <div class="dropdown">
+                <button>More ▼</button>
+                <div class="dropdown-content">
+                    { links.slice(topLevelLinkCount).map(({ text, href }) => (
+                        <a {href}>{text}</a>
+                    )) }
+                </div>
+            </div>
+    </div>
+) }
+```
+
+El ejemplo anterior define un componente personalizado `Navigation.astro` que utiliza los ayudantes de navegación incorporados de StudioCMS para crear un menú de navegación para el proyecto. El componente incluye enlaces a la URL principal del sitio, la página de índice y cualquier otra página que esté configurada para mostrarse en la navegación.
+
+Todo lo que necesitas hacer es agregar algunos estilos, y tendrás un menú de navegación completamente funcional que funciona con los ayudantes de navegación incorporados de StudioCMS.
