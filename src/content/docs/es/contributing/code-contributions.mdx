@@ -1,0 +1,60 @@
+---
+i18nReady: true
+title: Contribuciones de código
+description: Aprende cómo contribuir a StudioCMS
+sidebar:
+  order: 2
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+En esta guía obtendrás una descripción general del flujo de trabajo de contribución, desde abrir un issue, crear un PR, revisar y fusionar el PR.
+
+Si deseas contribuir con código a este proyecto, sigue los pasos a continuación:
+
+## Resuelve un issue
+
+Revisa nuestros [issues existentes](https://github.com/withstudiocms/studiocms/issues) para encontrar uno que te interese. Puedes reducir la búsqueda usando `labels` como filtros. Si encuentras un issue en el que trabajar, eres bienvenido a abrir un PR con una solución.
+
+## Realizar cambios
+
+<Steps>
+1. Haz un bifurcación del repositorio.
+   - Usando GitHub Desktop:
+      - [Comenzar con GitHub Desktop](https://docs.github.com/es/desktop/installing-and-configuring-github-desktop/getting-started-with-github-desktop) te guiará a través de la configuración de Desktop.
+      - Una vez que Desktop esté configurado, ¡puedes usarlo para [bifurcar del repositorio](https://docs.github.com/es/desktop/contributing-and-collaborating-using-github-desktop/cloning-and-forking-repositories-from-github-desktop)!
+
+   - Usando la línea de comandos:
+      - [Bifurca del repositorio](https://docs.github.com/es/github/getting-started-with-github/fork-a-repo#fork-an-example-repository) para que puedas hacer tus cambios sin afectar el proyecto original hasta que estés listo para fusionarlos.
+
+2. Instala o actualiza **Node.js** y **pnpm** a las versiones especificadas en [`.prototools`](https://github.com/withstudiocms/studiocms/blob/main/.prototools).
+
+3. ¡Crea una rama de trabajo y comienza con tus cambios!
+
+4. Escribe pruebas para tus cambios, si aplica.
+
+5. Actualiza la documentación, si es necesario.
+</Steps>
+
+## Confirma tus cambios
+
+Confirma los cambios una vez que estés satisfecho con ellos.
+
+## Pull Request
+
+Cuando hayas terminado con los cambios, crea un pull request, también conocido como PR.
+- Completa la plantilla "Listo para revisión" para que podamos revisar tu PR. Esta plantilla ayuda a los revisores a entender tus cambios y el propósito de tu pull request.
+- No olvides [vincular el PR al issue](https://docs.github.com/es/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) si estás resolviendo uno.
+- Activa la casilla para [permitir ediciones del mantenedor](https://docs.github.com/es/github/collaborating-with-issues-and-pull-requests/allowing-changes-to-a-pull-request-branch-created-from-a-fork) para que la rama pueda ser actualizada para la fusión.
+Una vez que envíes tu PR, un miembro del equipo de Docs revisará tu propuesta. Podemos hacer preguntas o solicitar información adicional.
+- Podemos pedir que se realicen cambios antes de que un PR pueda ser fusionado, ya sea usando [cambios sugeridos](https://docs.github.com/es/github/collaborating-with-issues-and-pull-requests/incorporating-feedback-in-your-pull-request) o comentarios en el pull request. Puedes aplicar los cambios sugeridos directamente a través de la interfaz. Puedes hacer cualquier otro cambio en tu fork y luego confirmarlos en tu rama.
+- A medida que actualices tu PR y apliques cambios, marca cada conversación como [resuelta](https://docs.github.com/es/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request#resolver-conversaciones).
+- Si te encuentras con problemas de fusión, consulta este [tutorial de git](https://github.com/skills/resolve-merge-conflicts) para ayudarte a resolver conflictos de fusión y otros problemas.
+
+## ¡Tu PR ha sido fusionado!
+
+¡Felicitaciones! El equipo de StudioCMS te agradece. Tu contribución será parte del próximo lanzamiento.
+
+Ahora que eres parte de la comunidad de StudioCMS, puedes ayudarnos a revisar otros PRs, responder preguntas y ayudar a otros contribuyentes. Si aún no lo has hecho, únete a nuestro [Discord](https://chat.studiocms.dev) para conectarte con otros contribuyentes y el equipo de StudioCMS.
+
+¡Y verás tu rostro en la [lista de contribuyentes](/es/contributing/getting-started/#nuestros-contribuyentes)! 🎉

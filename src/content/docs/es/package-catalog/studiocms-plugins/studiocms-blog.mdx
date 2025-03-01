@@ -1,0 +1,48 @@
+---
+i18nReady: true
+title: "@studiocms/blog"
+type: integration
+catalogEntry: studiocms-blog
+description: "Integración del Blog de StudioCMS"
+sidebar:
+  badge: 
+    text: 'Plugin'
+    variant: 'tip'
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# Introducción
+
+Este plugin habilita las características del Blog de StudioCMS así como un frontend en tu proyecto Astro. Te permitirá crear, editar y eliminar entradas de blog desde el panel de control de StudioCMS.
+
+## Instalación
+
+1. Instala el paquete usando el siguiente comando:
+
+   <PackageManagers pkg="@studiocms/blog" />
+
+2. Añade `@studiocms/blog` a tu archivo de configuración de Astro:
+
+   ```ts title="studiocms.config.mjs" ins={2, 6}
+   import { defineStudioCMSConfig } from 'studiocms/config';
+   import blog from '@studiocms/blog';
+
+    export default defineStudioCMSConfig({
+      plugins: [
+        blog(),
+      ],
+    });
+   ```
+
+## Uso
+
+### ¿Qué hace este plugin?
+
+Esta integración añadirá las siguientes nuevas rutas a tu frontend controlado por StudioCMS:
+
+- `/[...slug]` - La página principal del blog que lista todas las Páginas de StudioCMS.
+- `/blog` - La página principal del blog que lista todas las entradas del blog.
+- `/blog/[slug]` - La página individual de entrada del blog.
+- `/rss.xml` - El feed RSS para tus entradas de blog.
