@@ -34,7 +34,7 @@ Para comenzar, necesitarás crear un nuevo complemento de StudioCMS. A continuac
 En el archivo principal `src/index.ts`, definirás el complemento de StudioCMS. A continuación se muestra un ejemplo de cómo definir un complemento de StudioCMS que incluye una Integración Astro para crear un ejemplo simple de blog:
 
 ```ts twoslash title="index.ts"
-import { definePlugin } from 'studiocms/complementos';
+import { definePlugin } from 'studiocms/components';
 import { AstroIntegration } from 'astro';
 import { addVirtualImports, createResolver } from 'astro-integration-kit';
 
@@ -80,7 +80,7 @@ export function studioCMSPageInjector(options: Options) {
     }
 
     // Define el complemento de StudioCMS
-    return defineplugin({
+    return definePlugin({
         identifier: 'my-plugin',
         name: 'My Plugin',
         studiocmsMinimumVersion: '0.1.0-beta.8',
