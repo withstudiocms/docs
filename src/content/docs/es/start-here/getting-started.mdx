@@ -1,0 +1,355 @@
+---
+i18nReady: true
+title: Comienza aquí
+description: Comienza a construir con StudioCMS.
+sidebar:
+   order: 1
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import TursoCLI from '~/components/TursoCLI.astro';
+import { Aside, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import ReadMore from '~/components/ReadMore.astro';
+import { sponsors, SponsorLink } from '~/share-link'
+
+## Comencemos
+
+Para empezar a usar StudioCMS, necesitarás:
+
+- Un proyecto de Astro
+- Un proveedor libSQL o un servidor libSQL autoalojado
+- La integración StudioCMS
+
+## Preparar tu base de datos
+
+StudioCMS usa `@astrojs/db` para conectarse a tu base de datos libSQL. Puedes usar cualquier proveedor libSQL o un servidor libSQL autoalojado.
+
+Si estás usando la CLI de StudioCMS, puedes omitir este paso y usar la CLI para crear una nueva base de datos si tienes la CLI de Turso instalada.
+
+<ReadMore>Para más información sobre las variables de entorno requeridas, consulta [URL de la base de datos y token para `@astrojs/db`](/es/start-here/environment-variables/#url-de-la-base-de-datos-y-token-para-astrojsdb)</ReadMore>
+
+### Empezando con Turso
+
+<Aside type='tip' title='Cupón StudioCMS'>
+ Usa el código `STUDIOCMS10` para obtener un 10% de descuento durante 12 meses en Turso.
+</Aside>
+
+<Steps>
+1. Instala la <SponsorLink href={sponsors.turso.docs.installCLILink} text='CLI de Turso'/>
+2. <SponsorLink href={sponsors.turso.docs.loginsignupLink} text='Inicia sesión o regístrate'/> en Turso.
+3. Crea una nueva base de datos.
+   <TursoCLI tursoCli='db' type='create' arg='studiocms' />
+4. Obtén y configura `ASTRO_DB_REMOTE_URL`
+
+   4a. Ejecuta el comando `show` para ver información sobre la base de datos recién creada:
+      <TursoCLI tursoCli='db' type='show' arg='studiocms' />
+
+   4b. Copia el valor de la URL y configúralo como el valor de `ASTRO_DB_REMOTE_URL`.
+      ```bash title=".env"
+      ASTRO_DB_REMOTE_URL=libsql://studiocms-tunombre.turso.io
+      ```
+
+5. Obtén y configura `ASTRO_DB_APP_TOKEN`
+
+   5a. Crea un nuevo token para autenticar las solicitudes a la base de datos:
+      <TursoCLI tursoCli='db' type='tokens.create' arg='studiocms' />
+
+   5b. Copia la salida del comando y configúrala como el valor de `ASTRO_DB_APP_TOKEN`.
+      ```bash title=".env"
+      ASTRO_DB_APP_TOKEN=eyJhbGciOiJF...3ahJpTkKDw
+      ```
+
+</Steps>
+
+¡Ahora estás listo para continuar con la configuración de tu proyecto StudioCMS!
+
+### Usando otro proveedor o libSQL autoalojado
+
+libSQL admite tanto HTTP como WebSockets como protocolo de transporte para un servidor remoto. También admite el uso de un archivo local o una base de datos en memoria.
+
+<ReadMore>Para más información sobre las variables de entorno requeridas, consulta [URL de la base de datos y token para `@astrojs/db`](/es/start-here/environment-variables/#url-de-la-base-de-datos-y-token-para-astrojsdb)</ReadMore>
+{/* TODO: fix this link when astro-docs are up to date */}
+<ReadMore>Para más información sobre todas las opciones potenciales de libSQL (incluidos los archivos locales), consulta [Astro Docs: Remote URL configuration options](https://docs.astro.build/en/guides/astro-db/#remote-url-configuration-options)</ReadMore>
+
+## Creando un proyecto StudioCMS
+
+<Tabs syncKey='install-method'>
+
+<TabItem label="CLI de StudioCMS" icon="rocket">
+
+    1. Creando un proyecto StudioCMS usando el comando create
+
+        Para crear un nuevo proyecto Astro con StudioCMS usando una de nuestras plantillas predefinidas, simplemente ejecuta el siguiente comando en tu terminal:
+
+            <PackageManagers type="create" pkg="studiocms@latest" />
+
+        Después de ejecutar el comando, se te pedirá que respondas algunas preguntas sobre tu proyecto. Una vez completado, la CLI creará un nuevo proyecto Astro con StudioCMS en el directorio especificado.
+
+        Luego, se te pedirá que sigas los siguientes pasos, que incluyen asegurarte de que tus variables de entorno estén configuradas correctamente y ejecutar el proyecto para completar la configuración.
+
+    2. Después de ejecutar la CLI, asegúrate de que tu archivo `astro.config.mjs` esté configurado correctamente:
+
+       ```ts twoslash title="astro.config.mjs" {2-4,11-12}
+       import { defineConfig } from 'astro/config';
+       import db from '@astrojs/db';
+       import node from '@astrojs/node';
+       import studioCMS from 'studiocms';
+
+       export default defineConfig({
+           site: 'https://demo.studiocms.dev/',
+           output: 'server',
+           adapter: node({ mode: "standalone" }),
+           integrations: [
+               db(),
+               studioCMS(),
+           ],
+       });
+       ```
+
+</TabItem>
+
+<TabItem label="Método Astro" icon='astro'>
+
+    {/* <Steps> Note: For some reason this breaks placement of EC-Twoslash popups... must investigate */}
+
+    1. Creando un nuevo proyecto Astro
+
+        Para crear un nuevo proyecto Astro, simplemente ejecuta el siguiente comando en tu terminal:
+
+            <PackageManagers type="create" pkg="astro@latest" />
+
+        Después de ejecutar el comando, se te pedirá que respondas algunas preguntas sobre tu proyecto. Una vez completado, la CLI creará un nuevo proyecto Astro en el directorio especificado.
+
+        Deberías ver un mensaje de “Liftoff confirmed. Explore your project!” seguido de algunos pasos recomendados.
+
+        `cd` en tu nuevo directorio de proyecto para comenzar a usar Astro.
+
+        ```bash
+        cd my-project
+        ```
+
+        Si omitiste el paso de instalación de npm durante el asistente de la CLI, asegúrate de instalar tus dependencias antes de continuar.
+
+    2. Para agregar la integración StudioCMS a tu proyecto, necesitarás instalar el paquete StudioCMS y sus dependencias:
+
+       <PackageManagers type="exec" pkg="astro" args="add db node studiocms" />
+
+    3. Después de instalar el paquete, asegúrate de que tu archivo `astro.config.mjs` esté importando y llamando correctamente a la integración:
+
+       ```ts twoslash title="astro.config.mjs" {2-4,11-12}
+       import { defineConfig } from 'astro/config';
+       import db from '@astrojs/db';
+       import node from '@astrojs/node';
+       import studioCMS from 'studiocms';
+
+       export default defineConfig({
+           site: 'https://demo.studiocms.dev/',
+           output: 'server',
+           adapter: node({ mode: "standalone" }),
+           integrations: [
+               db(),
+               studioCMS(),
+           ],
+       });
+       ```
+
+    {/* </Steps> */}
+
+</TabItem>
+
+<TabItem label="Método Manual" icon='seti:powershell'>
+
+    {/* <Steps> */}
+
+    1. Creando un nuevo proyecto Astro
+
+        Para crear un nuevo proyecto Astro, simplemente ejecuta el siguiente comando en tu terminal:
+
+            <PackageManagers type="create" pkg="astro@latest" />
+
+        Después de ejecutar el comando, se te pedirá que respondas algunas preguntas sobre tu proyecto. Una vez completado, la CLI creará un nuevo proyecto Astro en el directorio especificado.
+
+        Deberías ver un mensaje de “Liftoff confirmed. Explore your project!” seguido de algunos pasos recomendados.
+
+        `cd` en tu nuevo directorio de proyecto para comenzar a usar Astro.
+
+        ```bash
+        cd my-project
+        ```
+
+        Si omitiste el paso de instalación de npm durante el asistente de la CLI, asegúrate de instalar tus dependencias antes de continuar.
+
+    2. Para agregar la integración StudioCMS a tu proyecto, necesitarás instalar el paquete Astro StudioCMS y sus dependencias:
+
+       <PackageManagers pkg="@astrojs/db @astrojs/node studiocms" />
+
+    3. Actualiza tu archivo `astro.config.mjs`:
+
+       ```ts twoslash title="astro.config.mjs" {2-4,11-12}
+       import { defineConfig } from 'astro/config';
+       import db from '@astrojs/db'; 
+       import node from '@astrojs/node'; 
+       import studioCMS from 'studiocms';
+
+       export default defineConfig({
+           site: 'https://demo.studiocms.dev/',
+           output: 'server', 
+           adapter: node({ mode: "standalone" }), 
+           integrations: [
+               db(), 
+               studioCMS(),
+           ],
+       });
+       ```
+    {/* </Steps> */}
+
+</TabItem>
+
+</Tabs>
+
+Ten en cuenta que la opción `site` en el archivo `astro.config.mjs` es necesaria para que StudioCMS funcione correctamente. Puedes configurarla con la URL de tu sitio o una URL de marcador de posición. (es decir, `https://demo.studiocms.xyz/` o `http://localhost:4321/`)
+
+<Aside type="note" title="Adaptador Requerido">
+StudioCMS requiere un [Adaptador Astro](https://docs.astro.build/en/guides/on-demand-rendering/#server-adapters) para funcionar correctamente. Asegúrate de configurar un adaptador que admita rutas SSR en tu archivo `astro.config.mjs`.
+</Aside>
+
+## Configurar autenticación
+
+StudioCMS Auth requiere al menos la [Clave de Cifrado](/start-here/environment-variables/#encryption-key-for-studiocmsauth) para ser configurada en tu archivo `.env`.
+
+Las siguientes variables de entorno son necesarias para la autenticación de StudioCMS:
+
+```bash title=".env"
+# clave de cifrado para la autenticación de nombre de usuario y contraseña
+CMS_ENCRYPTION_KEY="wqR+w...sRcg=="
+```
+
+Puedes generar una clave de cifrado segura usando el siguiente comando:
+
+```bash
+openssl rand --base64 16
+```
+
+Y configurar la salida como el valor de `CMS_ENCRYPTION_KEY`.
+
+<ReadMore>
+Para más información sobre todas las variables de entorno disponibles para la autenticación, consulta la página de [Variables de entorno](/es/start-here/environment-variables/).
+</ReadMore>
+
+### Opcional: Configurar autenticación oAuth
+
+StudioCMS admite autenticación oAuth con GitHub, Discord, Google y Auth0. Para configurar la autenticación oAuth, necesitarás configurar las [variables de entorno requeridas en tu archivo `.env`](/es/start-here/environment-variables/#oauth-authentication-environment-variables), y asegurarte de que el proveedor esté [habilitado en tu configuración](/config-reference/dashboard/#authconfig).
+
+Para configurar los proveedores oAuth, requieren una URL de callback. La URL de callback es la ruta donde el proveedor redirigirá al usuario después de la autenticación.
+
+#### Configurando la URL de callback
+
+La URL de callback debe configurarse en una de las siguientes rutas según tu entorno:
+
+| Entorno      | URL de Callback |
+|--------------|-----------------|
+| Producción   | `https://tu-dominio.tld/studiocms_api/auth/<provider>/callback` |
+| Pruebas & Dev| `http://localhost:4321/studiocms_api/auth/<provider>/callback` |
+
+#### Ejemplos de rutas de URL de callback
+
+Las siguientes rutas son ejemplos de la URL de callback para cada proveedor:
+
+| Proveedor | PATH de Callback |
+|-----------|------------------|
+| GitHub    | `/studiocms_api/auth/github/callback` |
+| Discord   | `/studiocms_api/auth/discord/callback` |
+| Google    | `/studiocms_api/auth/google/callback` |
+| Auth0     | `/studiocms_api/auth/auth0/callback` |
+
+## Configurar los scripts de tu `package.json`
+
+Configura los scripts de tu `package.json` para incluir la bandera `--remote` para build, y opcionalmente para dev. (También puedes ejecutar el comando dev como se muestra en la sección ["Ejecutando tu proyecto StudioCMS"](#ejecutando-tu-proyecto-studiocms))
+
+```json /--remote/ title="package.json"
+{
+    "name": "my-studiocms-project",
+    "scripts": {
+        "dev": "astro dev --remote",
+        "build": "astro check & astro build --remote",
+        "astro": "astro"
+    }
+}
+```
+
+## Ejecutando tu proyecto StudioCMS
+
+Gracias al poder de Astro, ejecutar StudioCMS es tan fácil como ejecutar el comando dev para la vista previa local, o construir y desplegar en tu servidor. Para lo básico de cómo usarlo localmente sin construir, esto es lo que necesitas hacer.
+
+### Configuración inicial (o durante actualizaciones si se actualiza el esquema de tablas)
+
+Para iniciar tu proyecto Astro, ejecuta los siguientes comandos en tu terminal:
+
+    <PackageManagers type="exec" args="astro db push --remote" />
+    <PackageManagers type="run" args="dev --remote" />
+
+<Aside type="note">
+La bandera `--remote` puede ser eliminada si has configurado los scripts en tu archivo `package.json` para incluir la bandera. Esto se explica en la sección ["Configurar los scripts de tu `package.json`"](#configurar-los-scripts-de-tu-packagejson).
+</Aside>
+
+Después de ejecutar los comandos, deberías ver un mensaje indicando que tu proyecto está ejecutándose en `localhost:4321`. Al configurar StudioCMS por primera vez, se te pedirá que termines de configurar StudioCMS en `http://localhost:4321/start`
+
+### Ejecutando en modo de desarrollo de Astro localmente
+
+Para iniciar tu proyecto Astro, ejecuta el siguiente comando en tu terminal:
+
+    <PackageManagers type="run" args="dev --remote" />
+
+Después de ejecutar el comando, deberías ver un mensaje indicando que tu proyecto está ejecutándose en `localhost:4321`. Abre tu navegador y navega a `http://localhost:4321` para ver tu proyecto Astro en acción.
+
+**¡Felicidades!** 🥳 Ahora tienes StudioCMS instalado en tu proyecto Astro.
+
+### Agregando un frontend a tu proyecto StudioCMS
+
+StudioCMS es un CMS sin cabeza de Astro, lo que significa que debes proporcionar tu propio frontend para mostrar el contenido. Si estás buscando un frontend ya construido, puedes consultar nuestros plugins en el [Catálogo de Paquetes](/es/package-catalog/).
+
+#### Configurar un blog
+
+Si estás buscando configurar un blog, puedes usar el plugin `@studiocms/blog` para comenzar.
+
+Para instalar y configurar el plugin de blog, ejecuta el siguiente comando en tu terminal:
+
+<PackageManagers type="install" pkg="@studiocms/blog" />
+
+Después de instalar el plugin, necesitarás agregar el plugin a tu archivo `studiocms.config.mjs`:
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+import blog from '@studiocms/blog';
+
+export default defineStudioCMSConfig({
+    dbStartPage: false,
+    plugins: [
+        blog(),
+    ],
+});
+```
+
+### Construyendo y desplegando tu proyecto StudioCMS
+
+Después de ejecutar los [pasos de configuración inicial](#configuración-inicial-o-durante-actualizaciones-si-se-actualiza-el-esquema-de-tablas), deberías construir y desplegar tu proyecto StudioCMS en tu servidor.
+
+Por defecto, el panel de control de StudioCMS está disponible en `http://tu-dominio.tld/dashboard`.
+
+Este panel de control estará disponible para que administres tu contenido y configuraciones en modo de desarrollo y en modo de producción.
+
+Se recomienda usar StudioCMS solo en modo de producción, ya que el panel de control está destinado a ser utilizado por el proyecto construido. (Puedes ver algunos problemas/errores en modo de desarrollo, como un error de dependencia de Vite.)
+
+## Próximos pasos
+
+<ReadMore>
+Consulta cómo configurar [Variables de Entorno](/es/start-here/environment-variables) en StudioCMS.
+</ReadMore>
+
+<ReadMore>
+Consulta el [Catálogo de Paquetes](/es/package-catalog/) para encontrar y usar plugins con StudioCMS.
+</ReadMore>
+
+<ReadMore>
+Aprende más sobre las opciones de configuración de StudioCMS usando las páginas de [Referencia de StudioCMS](/es/config-reference/).
+</ReadMore>
