@@ -1,0 +1,84 @@
+---
+i18nReady: true
+title: "Configuración de StudioCMS"
+description: "Opciones para definir la configuración de StudioCMS"
+sidebar:
+   order: 3
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+import ReadMore from '~/components/ReadMore.astro';
+
+# Opciones Disponibles
+
+Hay dos formas de configurar la integración de StudioCMS. A continuación se muestran ejemplos de cómo configurar según si eliges usar el archivo `astro.config.mjs` o el archivo dedicado `studiocms.config.mjs`.
+
+<ReadMore>
+Esta página te muestra cómo y dónde definir la configuración de StudioCMS. Para más información sobre las opciones de configuración de StudioCMS, consulta las [páginas de referencia](/config-reference/options-schema/).
+</ReadMore>
+
+## Usando el archivo `astro.config.mjs`:
+
+```ts twoslash title="astro.config.mjs"
+import db from '@astrojs/db';
+import node from '@astrojs/node';
+import studioCMS from 'studiocms';
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+    site: 'https://demo.studiocms.dev/',
+    output: 'server',
+    adapter: node({ mode: "standalone" }),
+    integrations: [
+        db(),
+        studioCMS({
+            dbStartPage: false,
+            // ...Otras opciones de configuración
+        }),
+    ],
+});
+```
+
+## Usando el archivo `studiocms.config.mjs`:
+
+Este archivo será detectado automáticamente y sobrescribirá cualquier opción pasada en tu astro.config. Si eliges usar esta opción, asegúrate de mover todas las opciones de configuración de StudioCMS a este archivo como se muestra a continuación:
+
+### Estructura Ejemplo de Archivos
+
+<FileTree>
+
+- .env
+- astro.config.mjs
+- **studiocms.config.mjs**
+- studiocms-auth.config.json Auto Generado
+- package.json
+- src
+  - env.d.ts
+  - ...
+
+</FileTree>
+
+### Ejemplo de Configuración
+
+```ts twoslash title="astro.config.mjs"
+import db from '@astrojs/db';
+import node from '@astrojs/node';
+import studioCMS from 'studiocms';
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+    site: 'https://demo.studiocms.dev/',
+    output: 'server',
+    adapter: node({ mode: "standalone" }),
+    integrations: [ db(), studioCMS() ],
+});
+```
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from "studiocms/config";
+
+export default defineStudioCMSConfig({
+    dbStartPage: false,
+    // ...Otras opciones de configuración
+})
+```
