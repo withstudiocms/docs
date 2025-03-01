@@ -1,0 +1,42 @@
+---
+i18nReady: true
+title: "La API REST"
+description: "Aprende sobre la API REST de StudioCMS y cómo usarla."
+sidebar:
+   order: 4
+---
+
+# Introducción
+
+La API REST de StudioCMS es una herramienta poderosa que te permite interactuar con tu contenido de StudioCMS de forma programática. Proporciona una manera simple y flexible de gestionar y servir tu contenido usando Astro DB.
+
+La API REST de StudioCMS está impulsada por Astro Endpoints y ofrece una interfaz RESTful para interactuar con tu contenido de StudioCMS. A continuación se presenta un desglose de la API REST de StudioCMS y sus componentes.
+
+## Tokens de API
+
+Para acceder a los endpoints protegidos de la API REST de StudioCMS, necesitas proporcionar un token de API en el encabezado `Authorization` de tus solicitudes. Puedes generar un token de API iniciando sesión en el Panel de Control de StudioCMS y navegando a la sección "Tokens de API" en el perfil de usuario.
+
+## Endpoints
+
+La API REST de StudioCMS proporciona varios endpoints que te permiten interactuar con tu contenido de StudioCMS. Estos endpoints son utilizados principalmente de forma interna por StudioCMS pero también pueden ser accedidos por desarrolladores para interactuar con datos de StudioCMS. Los siguientes son los endpoints proporcionados por la API REST de StudioCMS:
+
+### Endpoints públicos
+
+Estos endpoints son accesibles al público y no requieren autenticación. Proporcionan acceso de solo lectura al árbol de contenido de StudioCMS. Por lo tanto, estos endpoints solo admiten solicitudes `GET`.
+
+- **`/studiocms_api/rest/v1/public/folders/`**: Proporciona una lista de todas las carpetas públicas en el árbol de contenido de StudioCMS.
+- **`/studiocms_api/rest/v1/public/folders/[id]`**: Proporciona detalles de una carpeta pública específica en el árbol de contenido de StudioCMS.
+- **`/studiocms_api/rest/v1/public/pages/`**: Proporciona una lista de todas las páginas públicas en el árbol de contenido de StudioCMS.
+- **`/studiocms_api/rest/v1/public/pages/[id]`**: Proporciona detalles de una página pública específica en el árbol de contenido de StudioCMS.
+
+### Endpoints protegidos
+
+- **`/studiocms_api/rest/v1/folders/`**: Proporciona una lista de todas las carpetas en el árbol de contenido de StudioCMS.
+- **`/studiocms_api/rest/v1/folders/[id]`**: Proporciona detalles de una carpeta específica en el árbol de contenido de StudioCMS.
+- **`/studiocms_api/rest/v1/pages/`**: Proporciona una lista de todas las páginas en el árbol de contenido de StudioCMS.
+- **`/studiocms_api/rest/v1/pages/[id]`**: Proporciona detalles de una página específica en el árbol de contenido de StudioCMS.
+- **`/studiocms_api/rest/v1/pages/[id]/history/`**: Proporciona una lista de todas las entradas del historial de páginas en el árbol de contenido de StudioCMS.
+- **`/studiocms_api/rest/v1/pages/[id]/history/[id]`**: Proporciona detalles de una entrada específica del historial de páginas en el árbol de contenido de StudioCMS.
+- **`/studiocms_api/rest/v1/settings/`**: Proporciona la configuración de StudioCMS para el proyecto actual.
+- **`/studiocms_api/rest/v1/users/`**: Proporciona una lista de todos los usuarios en el proyecto StudioCMS.
+- **`/studiocms_api/rest/v1/users/[id]`**: Proporciona detalles de un usuario específico en el proyecto StudioCMS.
