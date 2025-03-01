@@ -1,0 +1,46 @@
+{
+    "site-title.labels.docs": "Docs",
+    "site-title.labels.main-site": "Sitio Principal",
+    "site-title.labels.live-demo": "Demo",
+    "sponsors.sponsoredby": "Patrocinado por",
+    "package-catalog.readmore.start": "Para más información, visita la",
+    "package-catalog.readmore.end": "página de documentación",
+    "integration-labels.changelog": "Registro de cambios",
+    "contributors.core-packages": "Paquetes Principales de StudioCMS",
+    "contributors.ui-library": "Librería UI de StudioCMS",
+    "contributors.devapps": "Aplicaciones de Desarrollo de StudioCMS",
+    "contributors.plugins": "Complementos de StudioCMS",
+    "contributors.documentation": "Documentación de StudioCMS",
+    "contributors.website": "Sitio Web de StudioCMS",
+    "contributors.bots": "StudioCMS Bots",
+    "docsearch.searchBox.resetButtonTitle": "Borrar la consulta",
+    "docsearch.searchBox.resetButtonAriaLabel": "Borrar la consulta",
+    "docsearch.searchBox.cancelButtonText": "Cancelar",
+    "docsearch.searchBox.cancelButtonAriaLabel": "Cancelar",
+    "docsearch.searchBox.searchInputLabel": "Buscar",
+  
+    "docsearch.startScreen.recentSearchesTitle": "Recientes",
+    "docsearch.startScreen.noRecentSearchesText": "No hay búsquedas recientes",
+    "docsearch.startScreen.saveRecentSearchButtonTitle": "Guardar esta búsqueda",
+    "docsearch.startScreen.removeRecentSearchButtonTitle": "Eliminar esta búsqueda del historial",
+    "docsearch.startScreen.favoriteSearchesTitle": "Favoritos",
+    "docsearch.startScreen.removeFavoriteSearchButtonTitle": "Eliminar esta búsqueda de favoritos",
+  
+    "docsearch.errorScreen.titleText": "No se pueden obtener resultados",
+    "docsearch.errorScreen.helpText": "Es posible que desees verificar tu conexión de red.",
+  
+    "docsearch.footer.selectText": "para seleccionar",
+    "docsearch.footer.selectKeyAriaLabel": "Tecla Enter",
+    "docsearch.footer.navigateText": "para navegar",
+    "docsearch.footer.navigateUpKeyAriaLabel": "Flecha arriba",
+    "docsearch.footer.navigateDownKeyAriaLabel": "Flecha abajo",
+    "docsearch.footer.closeText": "para cerrar",
+    "docsearch.footer.closeKeyAriaLabel": "Tecla Escape",
+    "docsearch.footer.searchByText": "Buscar por",
+  
+    "docsearch.noResultsScreen.noResultsText": "No hay resultados para",
+    "docsearch.noResultsScreen.suggestedQueryText": "Intenta buscar por",
+    "docsearch.noResultsScreen.reportMissingResultsText": "¿Crees que esta consulta debería devolver resultados?",
+    "docsearch.noResultsScreen.reportMissingResultsLinkText": "Háganoslo saber."
+  }
+  
