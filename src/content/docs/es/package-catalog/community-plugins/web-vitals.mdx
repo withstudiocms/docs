@@ -1,0 +1,78 @@
+---
+i18nReady: true
+title: "@astrojs/web-vitals"
+type: integration
+catalogEntry: astrojs-web-vitals
+description: "Integración de Web Vitals con el panel de control de StudioCMS"
+sidebar:
+  badge: 
+    text: 'Plugin'
+    variant: 'tip'
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import Gallery from '~/components/Gallery.astro';
+import { webVitalsImages } from "~/assets/index.ts";
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# Introducción
+
+Esta integración de Astro permite el seguimiento del rendimiento del sitio web en el mundo real y almacena los datos en Astro DB. Esos datos se utilizarán en el panel de control de StudioCMS para mostrar las métricas de rendimiento de tu sitio web del mundo real a lo largo del tiempo.
+
+## Instalación
+<Tabs syncKey='install-method'>
+  <TabItem label="Método Astro" icon='astro'>
+{/* <Steps> */}
+
+1. Instala el paquete y añádelo a tu configuración de astro usando el siguiente comando:
+
+   <PackageManagers type="exec" pkg="astro" args="add @astrojs/web-vitals" />
+
+2. Envía la nueva configuración a tu base de datos remota:
+
+   <PackageManagers type="exec" pkg="astro" args="db push" />
+
+{/* </Steps> */}
+  </TabItem>
+  <TabItem label="Método Manual" icon='seti:powershell'>
+{/* <Steps> */}
+
+1. Instala el paquete usando el siguiente comando:
+
+   <PackageManagers pkg="@astrojs/web-vitals" />
+
+2. Añade `@astrojs/web-vitals` a tu archivo de configuración de astro:
+
+   ```ts twoslash title="astro.config.mjs" {12} ins={4, 13}
+   import node from '@astrojs/node';
+   import studioCMS from 'studiocms';
+   import db from '@astrojs/db';
+   import webVitals from '@astrojs/web-vitals';
+   import { defineConfig } from 'astro/config';
+
+   export default defineConfig({
+      site: 'https://demo.studiocms.dev/',
+      output: 'server',
+      adapter: node({ mode: "standalone" }),
+      integrations: [
+          db(), // REQUERIDO 
+          webVitals(), 
+          studioCMS(),
+      ],
+   });
+   ```
+
+   <PackageManagers pkg="@astrojs/web-vitals" />
+
+3. Envía la nueva configuración a tu base de datos remota:
+
+   <PackageManagers type="exec" pkg="astro" args="db push" />
+
+{/* </Steps> */}
+</TabItem>
+</Tabs>
+
+
+{/* ## Galería de Demostración
+
+<Gallery galleryImages={webVitalsImages} /> */}

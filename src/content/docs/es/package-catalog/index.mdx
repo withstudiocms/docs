@@ -1,0 +1,26 @@
+---
+i18nReady: true
+title: Paquetes
+description: El Catálogo de Paquetes es una colección de paquetes de StudioCMS o su comunidad.
+---
+
+import PackageCatalog from '~/components/PackageCatalog.astro'
+import { Badge } from '@astrojs/starlight/components';
+
+El Catálogo de Paquetes es una colección de paquetes de StudioCMS o sus miembros de la comunidad, que no están incluidos en StudioCMS por defecto. Todos los paquetes listados aquí son verificados y probados por el equipo de StudioCMS o sus contribuyentes.
+
+Cualquier paquete etiquetado como <Badge text="Plugin" variant="tip"/> es un paquete que extiende la funcionalidad de StudioCMS o su panel de control.
+
+Cualquier paquete etiquetado como <Badge text="Uso Público" variant="caution"/> puede ser instalado y utilizado en proyectos que no dependen de studiocms. Pueden funcionar por sí solos.
+
+## Catálogos de Paquetes
+
+### Paquetes de StudioCMS
+---
+
+<PackageCatalog catalog="studiocms" />
+
+### Paquetes de la Comunidad
+---
+
+<PackageCatalog catalog="community" />
