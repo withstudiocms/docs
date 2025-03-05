@@ -21,9 +21,9 @@
     "ci:lunaria:report": "pnpm tsm --require=./scripts/filter-warnings.cjs ./scripts/lunaria-report-bot.ts"
   },
   "dependencies": {
-    "studiocms": "^0.1.0-beta.8",
-    "@studiocms/blog": "^0.1.0-beta.8",
-    "@studiocms/devapps": "^0.1.0-beta.8",
+    "studiocms": "^0.1.0-beta.10",
+    "@studiocms/blog": "^0.1.0-beta.10",
+    "@studiocms/devapps": "^0.1.0-beta.10",
     "@studiocms/ui": "^0.4.16",
     "@actions/core": "^1.11.1",
     "astro": "^5.4.0",
