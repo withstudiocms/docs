@@ -1,0 +1,227 @@
+---
+i18nReady: true
+title: Configuración del Panel de Control
+description: Página de referencia para dashboardConfig de StudioCMSOptions
+sidebar:
+  order: 6
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+La configuración del esquema de opciones de la integración de StudioCMS
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dashboardConfig: {
+    dashboardEnabled: true,
+    dashboardRouteOverride: 'dashboard',
+    developerConfig: {},
+    faviconURL: '/favicon.svg',
+    inject404Route: true,
+    versionCheck: true,
+    AuthConfig: {},
+  },
+});
+```
+
+## `dashboardEnabled`
+
+`dashboardEnabled` es un booleano que se utiliza para determinar si el panel de control está habilitado.
+
+- **Tipo:** `boolean`
+- **Por defecto:** `true`
+
+### Uso
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dashboardConfig: {
+    dashboardEnabled: true, // PREDETERMINADO - Esto habilita el panel de control.
+  }
+})
+```
+
+## `DashboardRouteOverride`
+
+`DashboardRouteOverride` es un string que se utiliza para determinar la ruta para el panel de control.
+
+- **Tipo:** `string`
+- **Por defecto:** `'dashboard'`
+
+### Uso
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dashboardConfig: {
+    dashboardRouteOverride: 'dashboard', // PREDETERMINADO - Esto establece la ruta del panel de control en /dashboard.
+  }
+})
+```
+
+## `developerConfig`
+
+`developerConfig` es un objeto que se utiliza para configurar la configuración del desarrollador para el dashboard.
+
+### Uso
+
+```ts twoslash {3-5} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dashboardConfig: {
+    developerConfig: {
+        testingAndDemoMode: false, // PREDETERMINADO - Esto deshabilita el modo de prueba y demostración.
+    },
+  }
+})
+```
+
+## `faviconURL`
+
+`faviconURL` es un string que se utiliza para determinar la ruta al favicon para el panel de control.
+
+- **Tipo:** `string`
+- **Por defecto:** `'/favicon.svg'`
+
+### Uso
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dashboardConfig: {
+    faviconURL: '/favicon.svg', // Predeterminado - Esto establece el favicon para el panel de control.
+  }
+})
+```
+
+## `inject404Route`
+
+`inject404Route` es un booleano que se utiliza para determinar si se debe inyectar la ruta 404.
+
+- **Tipo:** `boolean`
+- **Por defecto:** `true`
+
+### Uso
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dashboardConfig: {
+    inject404Route: true, // PREDETERMINADO - Esto inyecta la ruta 404.
+  }
+})
+```
+
+## `versionCheck`
+
+`versionCheck` es un booleano que se utiliza para determinar si se debe habilitar la comprobación de versiones.
+
+- **Tipo:** `boolean`
+- **Por defecto:** `true`
+
+### Uso
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dashboardConfig: {
+    versionCheck: true, // PREDETERMINADO - Esto habilita la comprobación de versiones.
+  }
+})
+```
+
+## `AuthConfig`
+
+`AuthConfig` es un objeto que se utiliza para configurar la configuración de autenticación para el panel de control.
+
+### Uso
+
+```ts twoslash {3-5} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dashboardConfig: {
+    AuthConfig: {
+        enabled: true, // PREDETERMINADO - Esto habilita la autenticación.
+    },
+  }
+})
+```
+
+### `providers`
+
+`providers` es un objeto que se utiliza para configurar los proveedores de autenticación para el panel de control.
+
+- **Tipo:** [`AuthProviders`](#authprovider)
+- **Default:** `{}`
+
+#### Usage
+
+```ts twoslash {4-11} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dashboardConfig: {
+    AuthConfig: {
+        providers: {
+            google: true,
+            github: true,
+            discord: true,
+            auth0: true,
+            usernameAndPassword: true,
+            usernameAndPasswordConfig: {},
+        },
+    },
+  },
+})
+```
+
+#### `usernameAndPasswordConfig`
+
+`usernameAndPasswordConfig` es un objeto que se utiliza para configurar la configuración de nombre de usuario y contraseña para el panel de control.
+
+- **Tipo:** `{ allowUserRegistration?: boolean }`
+- **Por defecto:** `{}`
+
+##### Usage
+
+```ts twoslash {5-8} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dashboardConfig: {
+    AuthConfig: {
+        providers: {
+            usernameAndPassword: true,
+            usernameAndPasswordConfig: {
+                allowUserRegistration: true, // PREDETERMINADO - Esto permite el registro de usuarios.
+            },
+        },
+    },
+  },
+})
+```
+
+###### `AuthProvider`
+
+```ts
+type AuthProviders: {
+    github?: boolean | undefined;
+    discord?: boolean | undefined;
+    google?: boolean | undefined;
+    auth0?: boolean | undefined;
+    usernameAndPassword?: boolean | undefined;
+    usernameAndPasswordConfig?: {
+        allowUserRegistration?: boolean | undefined;
+    } | undefined;
+} | undefined
+```
