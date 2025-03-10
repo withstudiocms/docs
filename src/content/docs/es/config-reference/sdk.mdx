@@ -1,0 +1,43 @@
+---
+i18nReady: true
+title: SDK
+description: Página de referencia para las opciones del SDK de StudioCMS
+sidebar:
+  order: 8
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+Referencia del esquema de opciones de configuración de la integración de StudioCMS
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  sdk: {
+    cacheConfig: {},
+  },
+});
+```
+
+## `cacheConfig`
+
+`cacheConfig` es un objeto que se utiliza para configurar la caché del SDK.
+
+- **Tipo:** `boolean` | `{ lifetime?: string | undefined; }` | `undefined`
+- **Valor predeterminado:** `{}`
+
+### Uso
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  sdk: {
+    // PREDETERMINADO - Esto utiliza la configuración de caché predeterminada.
+    cacheConfig: {
+        lifetime: '5m',
+    }, 
+  }
+})
+```

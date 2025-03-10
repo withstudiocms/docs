@@ -1,0 +1,185 @@
+---
+i18nReady: true
+title: StudioCMSOptions
+description: Página de referencia para StudioCMSOptions
+sidebar:
+  order: 1
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+Referencia del esquema de opciones de configuración de la integración de StudioCMS
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+// Se muestran los valores predeterminados
+export default defineStudioCMSConfig({
+  dbStartPage: true,
+  dateLocale: 'en-us',
+  verbose: false,
+  plugins: [],
+  componentRegistry: {},
+  overrides: {},
+  rendererConfig: {},
+  imageService: {},
+  defaultFrontEndConfig: {},
+  dashboardConfig: {},
+  includedIntegrations: {},
+  dateTimeFormat: {},
+  sdk: {},
+});
+```
+
+## `dbStartPage`
+
+Página de inicialización del proyecto - Utilizada durante la configuración inicial para crear la configuración de tu base de datos.
+
+- **Tipo:** `boolean`
+- **Valor predeterminado:** `true`
+
+### Uso
+
+```ts twoslash {2} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dbStartPage: true, // PREDETERMINADO - Esto inyecta una página de inicio para configurar los datos de tu DB.
+})
+```
+
+## `dateLocale`
+
+`dateLocale` es una cadena que se utiliza para determinar la configuración regional para el formato de fecha.
+
+- **Tipo:** `string`
+- **Valor predeterminado:** `'en-us'`
+
+### Uso
+
+```ts twoslash {2} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dateLocale: 'en-us', // PREDETERMINADO - Esto establece la configuración regional de fecha para el formato de fecha.
+})
+```
+
+## `verbose`
+
+`verbose` es un booleano que se utiliza para habilitar o deshabilitar el registro detallado.
+
+- **Tipo:** `boolean`
+- **Valor predeterminado:** `false`
+
+### Uso
+
+```ts twoslash {2} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  verbose: false, // PREDETERMINADO - Esto establece el registro detallado en falso.
+})
+```
+
+## `plugins`
+
+`plugins` es un array que se utiliza para determinar qué plugins deben cargarse.
+
+- **Tipo:** `StudioCMSPlugin[]`
+- **Valor predeterminado:** `[]`
+
+### Uso
+
+```ts twoslash {1, 3-5} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+import blog from '@studiocms/blog';
+export default defineStudioCMSConfig({
+  plugins: [
+    blog(),
+  ],
+})
+```
+
+## `componentRegistry`
+
+`componentRegistry` es un objeto que se utiliza para registrar componentes.
+
+- **Tipo:** `Record<string, string>`
+- **Valor predeterminado:** `{}`
+
+### Uso
+
+```ts twoslash {2-4} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  componentRegistry: {
+    'my-component': 'src/components/MyComponent.astro',
+  },
+})
+```
+
+## `dateTimeFormat`
+
+`dateTimeFormat` es un objeto que se utiliza para configurar el formato de fecha y hora.
+
+- **Tipo:** `Intl.DateTimeFormatOptions`
+- **Valor predeterminado:** `{}`
+
+### Uso
+
+```ts twoslash {2-6} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dateTimeFormat: {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  },
+})
+```
+
+## `overrides`
+
+`overrides` es un objeto que se utiliza para sobreescribir la configuración predeterminada.
+
+<ReadMore>[Ver `overrides` para opciones completas](/es/config-reference/overrides)</ReadMore>
+
+## `rendererConfig`
+
+`rendererConfig` es un objeto que se utiliza para configurar el renderizador.
+
+<ReadMore>[Ver `rendererConfig` para opciones completas](/es/config-reference/renderer-config)</ReadMore>
+
+## `imageService`
+
+`imageService` es un objeto que se utiliza para configurar el servicio de imágenes.
+
+<ReadMore>[Ver `imageService` para opciones completas](/es/config-reference/image-service)</ReadMore>
+
+## `defaultFrontEndConfig`
+
+`defaultFrontEndConfig` es un objeto que se utiliza para configurar el front-end predeterminado.
+
+<ReadMore>[Ver `defaultFrontEndConfig` para opciones completas](/es/config-reference/default-frontend-config)</ReadMore>
+
+## `dashboardConfig`
+
+`dashboardConfig` es un objeto que se utiliza para configurar el panel de control.
+
+<ReadMore>[Ver `dashboardConfig` para opciones completas](/es/config-reference/dashboard)</ReadMore>
+
+## `includedIntegrations`
+
+`includedIntegrations` es un objeto que se utiliza para configurar qué integraciones deben incluirse.
+
+<ReadMore>[Ver `includedIntegrations` para opciones completas](/es/config-reference/included-integrations)</ReadMore>
+
+## `sdk`
+
+`sdk` es un objeto que se utiliza para configurar el SDK.
+
+<ReadMore>[Ver `sdk` para opciones completas](/es/config-reference/sdk)</ReadMore>

@@ -1,0 +1,120 @@
+---
+i18nReady: true
+title: Configuración del Frontend Predeterminado
+description: Página de referencia para la configuración del frontend predeterminado de StudioCMSOptions
+sidebar:
+  order: 5
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+Referencia del esquema de opciones de configuración de la integración de StudioCMS
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  defaultFrontEndConfig: {
+    favicon: '/favicon.svg',
+    htmlDefaultLanguage: 'en',
+    htmlDefaultHead: [],
+    injectQuickActionsMenu: true,
+  },
+});
+```
+
+## `favicon`
+
+`favicon` es una cadena que se utiliza para determinar la ruta al favicon para el sitio.
+
+- **Tipo:** `string`
+- **Valor predeterminado:** `'/favicon.svg'`
+
+### Uso
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  defaultFrontEndConfig: {
+    favicon: '/favicon.svg', // PREDETERMINADO - Esto utiliza el favicon predeterminado.
+  }
+})
+```
+
+## `htmlDefaultLanguage`
+
+`htmlDefaultLanguage` es una cadena que se utiliza para determinar el idioma predeterminado para el sitio.
+
+- **Tipo:** `string`
+- **Valor predeterminado:** `'en'`
+
+### Uso
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  defaultFrontEndConfig: {
+    htmlDefaultLanguage: 'en', // PREDETERMINADO - Esto utiliza el idioma predeterminado.
+  }
+})
+```
+
+## `htmlDefaultHead`
+
+**tipo:** [`HeadConfig[]`](#headconfig)
+
+Añade etiquetas personalizadas al `<head>` de tu sitio Starlight.
+Puede ser útil para añadir análisis y otros scripts y recursos de terceros.
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  defaultFrontEndConfig: {
+    htmlDefaultHead: [
+      // Ejemplo: añadir etiqueta de script de análisis Fathom.
+      {
+        tag: 'script',
+        attrs: {
+          src: 'https://cdn.usefathom.com/script.js',
+          'data-site': 'MI-ID-FATHOM',
+          defer: true,
+        },
+      },
+    ],
+  },
+});
+```
+
+Las entradas en `head` se convierten directamente en elementos HTML y no pasan por el procesamiento de [script](https://docs.astro.build/es/guides/client-side-scripts/#procesamiento-de-scripts) o [style](https://docs.astro.build/es/guides/styling/#estilizado-en-astro) de Astro.
+
+#### `HeadConfig`
+
+```ts
+interface HeadConfig {
+	tag: string;
+	attrs?: Record<string, string | boolean | undefined>;
+	content?: string;
+}
+```
+
+## `injectQuickActionsMenu`
+
+**tipo:** `boolean**
+**valor predeterminado:** `true`
+
+Inyecta una interfaz de usuario para acciones rápidas en la esquina inferior derecha del sitio principal, permitiendo a los usuarios navegar rápidamente a la interfaz de administración de StudioCMS.
+
+### Uso
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  defaultFrontEndConfig: {
+    injectQuickActionsMenu: true, // PREDETERMINADO - Esto inyecta el menú de acciones rápidas.
+  }
+})
+```
