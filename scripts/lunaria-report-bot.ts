@@ -46,23 +46,9 @@ async function setDiscordMessage() {
 		})
 		.join('\n');
 
-	let message = '**Weekly Translation Report Ready!** <@&1311284611799846942>';
-
-	let embedMessage = `We have ${Object.keys(toTranslate).length} pages with major changes since last week. Please help us translate these pages to your language!\n\n${list}`;
-
-	const embeds = [
-		{
-			id: 661098315,
-			description: `We have ${Object.keys(toTranslate).length} pages with major changes since last week. Please help us translate these pages to your language!\n\n${list}`,
-			fields: [],
-			author: {
-				name: 'Translation Report',
-				icon_url:
-					'https://github.com/withstudiocms/studiocms.dev/blob/main/assets/logo-discord.png?raw=true',
-			},
-			title: 'Translation Report',
-		},
-	];
+	let message = `**The weekly translation report is here!** <@&1311284611799846942>\n\nWe have ${
+		Object.keys(toTranslate).length
+	} pages with major changes since last week. Please help us translate these pages to your language!\n\n${list}`;
 
 	const suffix =
 		'\n\nSee our [Translation Status page](<https://i18n.docs.studiocms.dev>) for more, including open PRs.';
@@ -73,13 +59,8 @@ async function setDiscordMessage() {
 		const lastNewline = message.lastIndexOf('\n', maxLengthWithoutSuffix);
 		message = message.slice(0, lastNewline);
 	}
-	while (embedMessage.length > maxLengthWithoutSuffix) {
-		const lastNewline = embedMessage.lastIndexOf('\n', maxLengthWithoutSuffix);
-		embedMessage = embedMessage.slice(0, lastNewline);
-	}
 
-	embedMessage += suffix;
+	message += suffix;
 
 	setOutput('DISCORD_MESSAGE', message);
-	setOutput('DISCORD_MESSAGE_EMBEDS', JSON.stringify(embeds));
 }
