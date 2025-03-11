@@ -23,12 +23,10 @@ jobs:
         name: Format Discord message
         run: pnpm ci:lunaria:report
 
-  discord_message:
-    name: Send Discord Message
-    uses: withstudiocms/automations/.github/workflows/discord-msg.yml@main
-    needs: translation
-    secrets:
-      DISCORD_WEBHOOK: ${{ secrets.DISCORD_I18N_REPORT }}
-    with:
-      DISCORD_MESSAGE: ${{ needs.translation.outputs.DISCORD_MESSAGE }}
-      DISCORD_MESSAGE_EMBEDS: ${{ needs.translation.outputs.DISCORD_MESSAGE_EMBEDS }}
+      - name: Send a Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_I18N_REPORT }}
+          DISCORD_EMBEDS: ${{ steps.message.outputs.DISCORD_MESSAGE_EMBEDS }}
+        uses: Ilshidur/action-discord@0.3.2
+        with:
+          args: "${{ steps.message.outputs.DISCORD_MESSAGE }}"
