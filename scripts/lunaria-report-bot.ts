@@ -11,13 +11,11 @@ async function setDiscordMessage() {
 
 	if (!status) return;
 
-	const toTranslate = status;
-
-	/* .filter(
+	const toTranslate = status.filter(
 		(s) =>
 			new Date(s.source.git.latestTrackedChange.date) >
 			new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
-	); */
+	);
 
 	const list = toTranslate
 		.filter(
