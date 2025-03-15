@@ -90,14 +90,14 @@ export default defineConfig({
 					tag: 'meta',
 					attrs: {
 						property: 'og:image',
-						content: `${site}og.jpg?v=1`,
+						content: `${site}og.png`,
 					},
 				},
 				{
 					tag: 'meta',
 					attrs: {
 						property: 'twitter:image',
-						content: `${site}og.jpg?v=1`,
+						content: `${site}og.png`,
 					},
 				},
 			],
