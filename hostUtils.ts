@@ -27,7 +27,7 @@ function splitListAndSelectFirst(list: string) {
  * @see https://coolify.io/docs/knowledge-base/environment-variables#predefined-variables
  */
 export const getCoolifyURL = (returnHttps?: boolean) => {
-	const urlList = process.env.COOLIFY_DOMAIN_FQDN;
+	const urlList = process.env.COOLIFY_FQDN;
 	if (!urlList) {
 		return undefined;
 	}
