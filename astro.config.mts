@@ -67,7 +67,7 @@ export default defineConfig({
 				youtube: 'https://www.youtube.com/@StudioCMS',
 				'x.com': 'https://x.com/withstudiocms',
 				blueSky: 'https://bsky.app/profile/studiocms.dev',
-				patreon: 'https://patreon.com/StudioCMS',
+				openCollective: 'https://opencollective.com/StudioCMS',
 			},
 			customCss: [
 				'@studiocms/ui/css/global.css',
