@@ -190,6 +190,8 @@ type StudioCMSPlugin = {
      * Component should have a `content` prop that is a string to be able to display current content.
      *
      * **NOTE:** Currently, requires you to use the form id `page-content` for the content output. Your editor should also be able to handle form submission.
+     * 
+     * **NOTE:** You can use `studiocms/markdown` or `studiocms/html` as a fallback value if your working with html or markdown content!
      *
      * @example
      * ```ts
@@ -205,6 +207,8 @@ type StudioCMSPlugin = {
 
 		/**
 		 * The path to the actual component that is displayed for the page renderer
+     * 
+     * **NOTE:** You can use `studiocms/markdown` or `studiocms/html` as a fallback value if your working with html or markdown content!
 		 */
 		rendererComponent: 'studiocms/markdown' | 'studiocms/html' | string;
 
