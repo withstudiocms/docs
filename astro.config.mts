@@ -8,7 +8,7 @@ import getCoolifyURL from './hostUtils.ts';
 import rehypePlugins from './src/plugins/rehypePluginKit.ts';
 import { typeDocPlugins } from './typedoc.config.ts';
 import starlightDocSearch from '@astrojs/starlight-docsearch';
-import { getTranslations } from 'starlight-sidebar/translate.ts';
+import { getTranslations } from './starlight-sidebar/translate.ts';
 
 // Define the Site URL
 const site = getCoolifyURL(true) || 'https://docs.studiocms.dev/';
