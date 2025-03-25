@@ -15,7 +15,7 @@ El SDK de StudioCMS es una herramienta poderosa que te permite interactuar con S
 El SDK de StudioCMS está disponible como un módulo virtual en tu proyecto Astro. Puedes importarlo usando la siguiente sintaxis:
 
 ```ts twoslash
-/// <reference types="studiocms/v/core.d.ts" />
+/// <reference types="studiocms/v/types" />
 // ---cut---
 import SDK from 'studiocms:sdk';
 // O
@@ -33,7 +33,7 @@ El objeto `studioCMSSDKCached` proporciona un conjunto de funciones y utilidades
 El objeto `SDK.AUTH` proporciona un conjunto de funciones y utilidades que te permiten gestionar la autenticación en tu proyecto Astro. Puedes usar estas funciones para autenticar usuarios, gestionar sesiones y más.
 
 ```ts twoslash
-/// <reference types="studiocms/v/core.d.ts" />
+/// <reference types="studiocms/v/types" />
 // ---cut---
 import SDK from 'studiocms:sdk';
 
@@ -50,7 +50,7 @@ const {
 El objeto `SDK.INIT` proporciona un conjunto de funciones y utilidades que te permiten inicializar el SDK de StudioCMS en tu proyecto Astro. Puedes usar estas funciones para configurar el SDK, configurarlo y más.
 
 ```ts twoslash
-/// <reference types="studiocms/v/core.d.ts" />
+/// <reference types="studiocms/v/types" />
 // ---cut---
 import SDK from 'studiocms:sdk';
 
@@ -65,7 +65,7 @@ const {
 El objeto `SDK.GET` proporciona un conjunto de funciones y utilidades que te permiten recuperar contenido de Astro DB. Puedes usar estas funciones para obtener contenido por ID, obtener contenido por tipo y más.
 
 ```ts twoslash
-/// <reference types="studiocms/v/core.d.ts" />
+/// <reference types="studiocms/v/types" />
 // ---cut---
 import SDK from 'studiocms:sdk';
 
@@ -83,7 +83,7 @@ const {
 El objeto `SDK.POST` proporciona un conjunto de funciones y utilidades que te permiten crear contenido en Astro DB. Puedes usar estas funciones para crear contenido por tipo, crear contenido por ID y más.
 
 ```ts twoslash
-/// <reference types="studiocms/v/core.d.ts" />
+/// <reference types="studiocms/v/types" />
 // ---cut---
 import SDK from 'studiocms:sdk';
 
@@ -98,7 +98,7 @@ const {
 El objeto `SDK.UPDATE` proporciona un conjunto de funciones y utilidades que te permiten actualizar contenido en Astro DB. Puedes usar estas funciones para actualizar contenido por ID, actualizar contenido por tipo y más.
 
 ```ts twoslash
-/// <reference types="studiocms/v/core.d.ts" />
+/// <reference types="studiocms/v/types" />
 // ---cut---
 import SDK from 'studiocms:sdk';
 
@@ -118,7 +118,7 @@ const {
 El objeto `SDK.DELETE` proporciona un conjunto de funciones y utilidades que te permiten eliminar contenido de Astro DB. Puedes usar estas funciones para eliminar contenido por ID, eliminar contenido por tipo y más.
 
 ```ts twoslash
-/// <reference types="studiocms/v/core.d.ts" />
+/// <reference types="studiocms/v/types" />
 // ---cut---
 import SDK from 'studiocms:sdk';
 
@@ -140,7 +140,7 @@ const {
 El objeto `SDK.db` proporciona un conjunto de funciones y utilidades que te permiten interactuar con Astro DB directamente. Puedes usar estas funciones para consultar la base de datos, ejecutar consultas personalizadas y más.
 
 ```ts twoslash
-/// <reference types="studiocms/v/core.d.ts" />
+/// <reference types="studiocms/v/types" />
 // ---cut---
 import SDK from 'studiocms:sdk';
 
@@ -154,7 +154,7 @@ const { db } = SDK;
 El objeto `SDK.REST_API` proporciona un conjunto de funciones y utilidades que la API REST utiliza para interactuar con StudioCMS y Astro DB.
 
 ```ts twoslash
-/// <reference types="studiocms/v/core.d.ts" />
+/// <reference types="studiocms/v/types" />
 // ---cut---
 import SDK from 'studiocms:sdk';
 
@@ -173,7 +173,7 @@ const {
 El objeto `SDK.diffTracking` proporciona un conjunto de funciones y utilidades que te permiten rastrear cambios en Astro DB. Puedes usar estas funciones para rastrear cambios en contenido, rastrear cambios en usuarios y más.
 
 ```ts twoslash
-/// <reference types="studiocms/v/core.d.ts" />
+/// <reference types="studiocms/v/types" />
 // ---cut---
 import SDK from 'studiocms:sdk';
 
@@ -190,7 +190,7 @@ const {
 El SDK de StudioCMS también proporciona un conjunto de funciones utilitarias que puedes usar para interactuar con el SDK. Estas funciones incluyen:
 
 ```ts twoslash
-/// <reference types="studiocms/v/core.d.ts" />
+/// <reference types="studiocms/v/types" />
 // ---cut---
 import SDK from 'studiocms:sdk';
 
@@ -223,7 +223,7 @@ const {
 El SDK de StudioCMS también proporciona una versión en caché del SDK con un subconjunto limitado de las características del SDK que incluye una capa de caché sobre el SDK estándar. Puedes importar el SDK en caché usando la siguiente sintaxis:
 
 ```ts twoslash
-/// <reference types="studiocms/v/core.d.ts" />
+/// <reference types="studiocms/v/types" />
 // ---cut---
 import SDKCached from 'studiocms:sdk/cache';
 ```
@@ -233,7 +233,7 @@ import SDKCached from 'studiocms:sdk/cache';
 El objeto `SDKCached.GET` proporciona un conjunto de funciones y utilidades que te permiten recuperar contenido de Astro DB con una capa de caché encima. Puedes usar estas funciones para obtener contenido por ID, obtener contenido por tipo y más.
 
 ```ts twoslash
-/// <reference types="studiocms/v/core.d.ts" />
+/// <reference types="studiocms/v/types" />
 // ---cut---
 import SDKCached from 'studiocms:sdk/cache';
 
@@ -254,7 +254,7 @@ const {
 El objeto `SDKCached.CLEAR` proporciona un conjunto de funciones y utilidades que te permiten limpiar la caché en el SDK en caché. Puedes usar estas funciones para limpiar la caché de un tipo de contenido específico, limpiar la caché de un ID de contenido específico y más.
 
 ```ts twoslash
-/// <reference types="studiocms/v/core.d.ts" />
+/// <reference types="studiocms/v/types" />
 // ---cut---
 import SDKCached from 'studiocms:sdk/cache';
 
@@ -272,7 +272,7 @@ const {
 El objeto `SDKCached.UPDATE` proporciona un conjunto de funciones y utilidades que te permiten actualizar contenido en Astro DB con una capa de caché encima. Puedes usar estas funciones para actualizar contenido por ID, actualizar contenido por tipo y más.
 
 ```ts twoslash
-/// <reference types="studiocms/v/core.d.ts" />
+/// <reference types="studiocms/v/types" />
 // ---cut---
 import SDKCached from 'studiocms:sdk/cache';
 
