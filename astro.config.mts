@@ -8,7 +8,7 @@ import getCoolifyURL from './hostUtils.ts';
 import rehypePlugins from './src/plugins/rehypePluginKit.ts';
 import { typeDocPlugins } from './typedoc.config.ts';
 import starlightDocSearch from '@astrojs/starlight-docsearch';
-import sidebarEN from './starlight-sidebar/en.json';
+import { getTranslations } from 'starlight-sidebar/translate.ts';
 
 // Define the Site URL
 const site = getCoolifyURL(true) || 'https://docs.studiocms.dev/';
@@ -119,83 +119,77 @@ export default defineConfig({
 				}),
 				starlightSidebarTopics([
 					{
-						label: {
-							en: sidebarEN.learn,
-						},
+						label: getTranslations('topic-learn'),
 						link: '/start-here/getting-started',
 						icon: 'open-book',
 						id: 'learn',
 						items: [
 							{
-								label: sidebarEN['start-here'],
-								translations: {},
+								label: getTranslations('start-here').en,
+								translations: getTranslations('start-here'),
 								autogenerate: { directory: 'start-here' },
 							},
 							{
-								label: sidebarEN.contributing,
-								translations: {},
+								label: getTranslations('contributing').en,
+								translations: getTranslations('contributing'),
 								autogenerate: { directory: 'contributing' },
 							},
 							{
-								label: sidebarEN['how-it-works'],
-								translations: {},
+								label: getTranslations('how-it-works').en,
+								translations: getTranslations('how-it-works'),
 								autogenerate: { directory: 'how-it-works' },
 							},
 							{
-								label: sidebarEN.utils,
-								translations: {},
+								label: getTranslations('utils').en,
+								translations: getTranslations('utils'),
 								autogenerate: { directory: 'utils' },
 							},
 							{
-								label: sidebarEN.plugins,
-								translations: {},
+								label: getTranslations('plugins').en,
+								translations: getTranslations('plugins'),
 								autogenerate: { directory: 'plugins' },
 							},
 						],
 					},
 					{
-						label: {
-							en: sidebarEN['package-catalog'],
-						},
+						label: getTranslations('topic-package-catalog'),
 						link: '/package-catalog',
 						icon: 'download',
 						id: 'package-catalog',
 						items: [
 							{
-								label: sidebarEN.catalog,
-								translations: {},
+								label: getTranslations('catalog').en,
+								translations: getTranslations('catalog'),
 								link: '/package-catalog',
 							},
 							{
-								label: sidebarEN['studiocms-plugins'],
-								translations: {},
+								label: getTranslations('studiocms-plugins').en,
+								translations: getTranslations('studiocms-plugins'),
 								autogenerate: { directory: 'package-catalog/studiocms-plugins' },
 							},
 							{
-								label: sidebarEN['community-plugins'],
-								translations: {},
+								label: getTranslations('community-plugins').en,
+								translations: getTranslations('community-plugins'),
 								autogenerate: { directory: 'package-catalog/community-plugins' },
 							},
 						],
 					},
 					{
-						label: {
-							en: sidebarEN.references,
-						},
+						label: getTranslations('topic-references'),
 						link: '/config-reference',
 						icon: 'information',
 						id: 'references',
 						items: [
 							{
-								label: sidebarEN['config-reference'],
-								translations: {},
+								label: getTranslations('config-reference').en,
+								translations: getTranslations('config-reference'),
 								autogenerate: { directory: 'config-reference' },
 							},
 							{
-								label: sidebarEN.typedoc,
-								translations: {},
+								label: getTranslations('typedoc').en,
+								translations: getTranslations('typedoc'),
 								badge: {
-									text: sidebarEN['auto-gen'],
+									text: getTranslations('auto-gen'),
 									variant: 'tip',
 								},
 								items: [
