@@ -8,6 +8,7 @@ import getCoolifyURL from './hostUtils.ts';
 import rehypePlugins from './src/plugins/rehypePluginKit.ts';
 import { typeDocPlugins } from './typedoc.config.ts';
 import starlightDocSearch from '@astrojs/starlight-docsearch';
+import sidebarEN from './starlight-sidebar/en.json';
 
 // Define the Site URL
 const site = getCoolifyURL(true) || 'https://docs.studiocms.dev/';
@@ -119,34 +120,34 @@ export default defineConfig({
 				starlightSidebarTopics([
 					{
 						label: {
-							en: 'Learn',
+							en: sidebarEN.learn,
 						},
 						link: '/start-here/getting-started',
 						icon: 'open-book',
 						id: 'learn',
 						items: [
 							{
-								label: 'Start Here',
+								label: sidebarEN['start-here'],
 								translations: {},
 								autogenerate: { directory: 'start-here' },
 							},
 							{
-								label: 'Contributing Guides',
+								label: sidebarEN.contributing,
 								translations: {},
 								autogenerate: { directory: 'contributing' },
 							},
 							{
-								label: 'Understanding StudioCMS',
+								label: sidebarEN['how-it-works'],
 								translations: {},
 								autogenerate: { directory: 'how-it-works' },
 							},
 							{
-								label: 'Utils & Helpers',
+								label: sidebarEN.utils,
 								translations: {},
 								autogenerate: { directory: 'utils' },
 							},
 							{
-								label: 'Plugins',
+								label: sidebarEN.plugins,
 								translations: {},
 								autogenerate: { directory: 'plugins' },
 							},
@@ -154,24 +155,24 @@ export default defineConfig({
 					},
 					{
 						label: {
-							en: 'Package Catalog',
+							en: sidebarEN['package-catalog'],
 						},
 						link: '/package-catalog',
 						icon: 'download',
 						id: 'package-catalog',
 						items: [
 							{
-								label: 'Catalog',
+								label: sidebarEN.catalog,
 								translations: {},
 								link: '/package-catalog',
 							},
 							{
-								label: 'StudioCMS Plugins',
+								label: sidebarEN['studiocms-plugins'],
 								translations: {},
 								autogenerate: { directory: 'package-catalog/studiocms-plugins' },
 							},
 							{
-								label: 'Community Plugins',
+								label: sidebarEN['community-plugins'],
 								translations: {},
 								autogenerate: { directory: 'package-catalog/community-plugins' },
 							},
@@ -179,22 +180,22 @@ export default defineConfig({
 					},
 					{
 						label: {
-							en: 'References',
+							en: sidebarEN.references,
 						},
 						link: '/config-reference',
 						icon: 'information',
 						id: 'references',
 						items: [
 							{
-								label: 'Configuration Reference',
+								label: sidebarEN['config-reference'],
 								translations: {},
 								autogenerate: { directory: 'config-reference' },
 							},
 							{
-								label: 'TypeDoc',
+								label: sidebarEN.typedoc,
 								translations: {},
 								badge: {
-									text: 'Auto Generated',
+									text: sidebarEN['auto-gen'],
 									variant: 'tip',
 								},
 								items: [

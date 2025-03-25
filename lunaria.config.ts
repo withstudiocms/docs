@@ -135,6 +135,11 @@ export default defineConfig({
 			pattern: 'src/content/i18n/@lang.json',
 			type: 'dictionary',
 		},
+		{
+			include: ['starlight-sidebar/*.json'],
+			pattern: 'starlight-sidebar/@lang.json',
+			type: 'dictionary',
+		},
 	],
 	tracking: {
 		localizableProperty: 'i18nReady',
