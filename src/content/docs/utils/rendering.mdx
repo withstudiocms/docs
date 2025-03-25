@@ -1,0 +1,39 @@
+---
+i18nReady: true
+title: "Rendering Content"
+description: "Options for rendering Content"
+sidebar:
+   order: 1
+---
+
+The StudioCMS rendering system is dynamic based on the current pageType.
+
+Example Catch-all route where the current page is grabbed from the SDK and the page data is passed to the renderer, in this case we using the default `studiocms/markdown` pageType, and wrapping that in a Layout like we do with the `@studiocms/blog` plugin. a pageBuilder plugin for example, may come without a standard layout, but instead intend on you designing the whole thing within the builder like you would on other CMS systems.
+
+```astro title="src/pages/[...slug].astro"
+---
+import { StudioCMSRenderer } from 'studiocms:renderer';
+import studioCMS_SDK from 'studiocms:sdk';
+import Layout from '../layouts/Layout.astro';
+
+let { slug } = Astro.params;
+
+if (!slug) {
+	slug = 'index';
+}
+
+const page = await studioCMS_SDK.GET.databaseEntry.pages.bySlug(slug);
+
+if (!page) {
+	return Astro.redirect('/404');
+}
+
+const { title, description, heroImage } = page;
+---
+
+<Layout title={title} description={description} heroImage={heroImage}>
+	<main>
+		<StudioCMSRenderer data={page} />
+	</main>
+</Layout>
+```

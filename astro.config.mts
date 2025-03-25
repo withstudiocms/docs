@@ -141,6 +141,11 @@ export default defineConfig({
 								autogenerate: { directory: 'how-it-works' },
 							},
 							{
+								label: 'Utils & Helpers',
+								translations: {},
+								autogenerate: { directory: 'utils' },
+							},
+							{
 								label: 'Plugins',
 								translations: {},
 								autogenerate: { directory: 'plugins' },
