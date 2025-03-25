@@ -139,14 +139,21 @@ type StudioCMSPlugin = {
      */
     fields: SettingsField[];
 
-    /**
-     * Function that runs on when the settings page is saved
-     *
-     * Should return a string if there is an error,
-     * otherwise return boolean true to indicate success
-     */
-    onSave: APIRoute;
+		/**
+		 * The endpoint for the settings
+		 *
+		 * Should export a APIRoute named `onSave` that runs when the settings page is saved
+		 */
+		endpoint: string,
   } | undefined;
+
+	/**
+	 * Navigation Links for use with the `@studiocms/blog` plugin and other plugins to display links in the frontend
+	 */
+  frontendNavigationLinks: Array<{
+    label: string;
+    href: string;
+  }>;
 
   /**
    * Page Type definition. If this is present, the plugin wants to be able to modify the page creation process
@@ -194,7 +201,49 @@ type StudioCMSPlugin = {
      * }
      * ```
      */
-    pageContentComponent: string;
+    pageContentComponent: 'studiocms/markdown' | 'studiocms/html' | string;
+
+		/**
+		 * The path to the actual component that is displayed for the page renderer
+		 */
+		rendererComponent: 'studiocms/markdown' | 'studiocms/html' | string;
+
+    /**
+     * Fields according to specification
+     */
+    fields: SettingsField[];
+
+		/**
+		 * API Endpoint file for the page type
+		 *
+		 * API endpoints are used to create, edit, and delete pages of this type,
+		 * endpoints will be provided the full Astro APIContext from the Astro APIRoute.
+		 *
+		 * File should export at least one of the following:
+		 * - `onCreate`
+		 * - `onEdit`
+		 * - `onDelete`
+		 *
+		 * @example
+		 * ```ts
+		 * // my-plugin.ts
+		 * import { createResolver } from 'astro-integration-kit';
+		 * const { resolve } = createResolver(import.meta.url)
+		 *
+		 * {
+		 *  apiEndpoint: resolve('./api/pageTypeApi.ts'),
+		 * }
+		 *
+		 * // api/pageTypeApi.ts
+		 * import { APIRoute } from 'astro';
+		 *
+		 * export const onCreate: APIRoute = async (ctx) => {
+		 *   // Custom logic here
+		 *   return new Response();
+		 * }
+		 * ```
+		 */
+		apiEndpoint: string;
   }> | undefined;
 };
 ```

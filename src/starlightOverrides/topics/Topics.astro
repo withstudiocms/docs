@@ -6,13 +6,7 @@ import { Badge, Icon } from '@astrojs/starlight/components';
 import { AstroError } from 'astro/errors';
 import type { ComponentProps } from 'astro/types';
 
-import type { StarlightSidebarTopicsSharedConfig } from 'node_modules/starlight-sidebar-topics/libs/config';
-
-interface Props {
-	current: StarlightSidebarTopicsSharedConfig[number];
-}
-
-const { current } = Astro.props;
+const { topics } = Astro.locals.starlightSidebarTopics;
 
 const defaultLang =
 	starlightConfig.defaultLocale?.lang || starlightConfig.defaultLocale?.locale || 'en';
@@ -38,11 +32,11 @@ function getTranslation(translations: Record<string, string>, link: string, desc
 ---
 <ul>
     {
-      config.map((topic) => {
-        const isLinkTopic = topic.type === 'link'
-        const isCurrent = isLinkTopic ? false : topic.label === current.label && topic.link === current.link
+      topics.map((topic) => {
+        const isLinkTopic = topic.link === 'link';
+        const isCurrent = topic.isCurrent;
         const link =
-          !isLinkTopic && Astro.currentLocale ? getRelativeLocaleUrl(Astro.currentLocale, topic.link) : topic.link
+          !isLinkTopic && Astro.currentLocale ? getRelativeLocaleUrl(Astro.currentLocale, topic.link) : topic.link;
         const label =
           typeof topic.label === 'string' ? topic.label : getTranslation(topic.label, topic.link, 'topic label')
   

@@ -1,13 +1,20 @@
 {
-    "cSpell.words": [
-        "automations",
-        "Coolify",
-        "devapps",
-        "inox",
-        "lunariajs",
-        "mergebot",
-        "sponsorcolors",
-        "studiocms",
-        "withstudiocms"
-    ]
+  "cSpell.words": [
+    "astrojs",
+    "automations",
+    "componentoverrides",
+    "Coolify",
+    "devapps",
+    "foldertree",
+    "inox",
+    "libsql",
+    "lunariajs",
+    "markdoc",
+    "mergebot",
+    "sponsorcolors",
+    "studiocms",
+    "turso",
+    "twoslash",
+    "withstudiocms"
+  ]
 }

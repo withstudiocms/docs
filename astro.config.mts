@@ -118,61 +118,76 @@ export default defineConfig({
 				}),
 				starlightSidebarTopics([
 					{
-						label: 'Learn',
+						label: {
+							en: 'Learn',
+						},
 						link: '/start-here/getting-started',
 						icon: 'open-book',
 						id: 'learn',
 						items: [
 							{
 								label: 'Start Here',
+								translations: {},
 								autogenerate: { directory: 'start-here' },
 							},
 							{
 								label: 'Contributing Guides',
+								translations: {},
 								autogenerate: { directory: 'contributing' },
 							},
 							{
 								label: 'Understanding StudioCMS',
+								translations: {},
 								autogenerate: { directory: 'how-it-works' },
 							},
 							{
 								label: 'Plugins',
+								translations: {},
 								autogenerate: { directory: 'plugins' },
 							},
 						],
 					},
 					{
-						label: 'Package Catalog',
+						label: {
+							en: 'Package Catalog',
+						},
 						link: '/package-catalog',
 						icon: 'download',
 						id: 'package-catalog',
 						items: [
 							{
 								label: 'Catalog',
+								translations: {},
 								link: '/package-catalog',
 							},
 							{
 								label: 'StudioCMS Plugins',
+								translations: {},
 								autogenerate: { directory: 'package-catalog/studiocms-plugins' },
 							},
 							{
 								label: 'Community Plugins',
+								translations: {},
 								autogenerate: { directory: 'package-catalog/community-plugins' },
 							},
 						],
 					},
 					{
-						label: 'References',
+						label: {
+							en: 'References',
+						},
 						link: '/config-reference',
 						icon: 'information',
 						id: 'references',
 						items: [
 							{
 								label: 'Configuration Reference',
+								translations: {},
 								autogenerate: { directory: 'config-reference' },
 							},
 							{
 								label: 'TypeDoc',
+								translations: {},
 								badge: {
 									text: 'Auto Generated',
 									variant: 'tip',
