@@ -79,14 +79,14 @@ export default defineConfig({
 				baseUrl: 'https://github.com/withstudiocms/docs/tree/main',
 			},
 			head: [
-				// {
-				// 	tag: 'script',
-				// 	attrs: {
-				// 		src: 'https://analytics.studiocms.xyz/script.js',
-				// 		'data-website-id': '00717cde-0d92-42be-8f49-8de0b1d810b2',
-				// 		defer: true,
-				// 	},
-				// },
+				{
+					tag: 'script',
+					attrs: {
+						src: 'https://analytics.studiocms.dev/script.js',
+						'data-website-id': 'e924da68-f547-4dd2-bd2f-bcdd78cbcdab',
+						defer: true,
+					},
+				},
 				{
 					tag: 'meta',
 					attrs: {
