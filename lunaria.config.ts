@@ -28,13 +28,13 @@ export default defineConfig({
 				tag: 'fr',
 			},
 		},
-		// {
-		// 	label: 'Deutsch',
-		// 	lang: 'de',
-		// 	parameters: {
-		// 		tag: 'de',
-		// 	},
-		// },
+		{
+			label: 'Deutsch',
+			lang: 'de',
+			parameters: {
+				tag: 'de',
+			},
+		},
 		// {
 		// 	label: '日本語',
 		// 	lang: 'ja',
