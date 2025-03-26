@@ -55,7 +55,7 @@ const tdMarkDoc = createStarlightTypeDocPlugin()[0];
 const tdMDX = createStarlightTypeDocPlugin()[0];
 
 // Set to true to enable testing mode for TypeDoc
-const testTypeDoc = true;
+const testTypeDoc = false;
 
 const isProd = process.env.NODE_ENV === 'production';
 
