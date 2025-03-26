@@ -1,0 +1,97 @@
+---
+i18nReady: true
+title: Documentation de StudioCMS
+description: Commencez à créer avec StudioCMS.
+template: splash
+editUrl: false
+lastUpdated: false
+hero:
+  tagline: Guides et ressources pour apprendre à utiliser StudioCMS.
+  image:
+    alt: Logo de StudioCMS
+    dark: ../../../assets/logos/studioCMS.png
+    light: ../../../assets/logos/studioCMS-dark.png
+  actions:
+    - text: Mise en route
+      link: /fr/start-here/getting-started/
+      icon: right-arrow
+      variant: primary
+    - text: Dépôt GitHub
+      link: https://github.com/withstudiocms/studiocms/
+      icon: github
+---
+
+import { CardGrid, LinkButton } from "@astrojs/starlight/components";
+import Youtube from "~/components/Youtube.astro";
+import Card from "~/components/landing/Card.astro";
+import ListCard from "~/components/landing/ListCard.astro";
+import SplitCard from "~/components/landing/SplitCard.astro";
+import { Center } from "studiocms:ui/components";
+
+<Card title="Bienvenue sur StudioCMS" icon="seti:video">
+  <Youtube id="Ukh3Zb9VjIM" />
+</Card>
+
+<CardGrid>
+
+  <SplitCard title="Démarrage rapide" icon="rocket">
+    ```sh
+    # Créer un nouveau projet Astro
+    pnpm create studiocms@latest
+
+    # Démarrer le serveur de développement
+    cd my-studiocms-project
+    pnpm dev
+    ```
+
+    <div style="padding: 0;">
+    Pour plus d’informations sur les variables d’environnement requises, consultez la page [Variables d’environnement][environment-variables].
+
+    Pour un guide plus détaillé, consultez le guide [Mise en route][getting-started].
+
+    Vous cherchez une base de données LibSQL ? Découvrez [Turso][turso].
+    </div>
+
+  </SplitCard>
+
+  <ListCard title="En savoir plus sur StudioCMS" icon="information">
+    - [Mise en route][getting-started]
+    - [Variables d’environnement][environment-variables]
+    - [Pourquoi StudioCMS ?][why-studiocms]
+    - [Comprendre StudioCMS][how-it-works]
+  </ListCard>
+
+  <ListCard title="Personnalisation de StudioCMS" icon="puzzle">
+    - [Utilisation du SDK][using-the-sdk]
+    - [Utilisation de l’API REST][using-rest-api]
+    - [Recherche et utilisation de modules d’extension][package-catalog]
+    - [En savoir plus sur l’API des modules d’extension][plugin-api]
+  </ListCard>
+
+</CardGrid>
+
+<Center>
+  <div style="display: flex; flex-direction: column; margin-top: 3rem;">
+    Vous souhaitez vous impliquer dans la communauté de StudioCMS ?
+
+    <LinkButton
+      href='https://chat.studiocms.dev'
+      icon='discord'
+      iconPlacement='end'
+      class='discord-button'
+      style='width: fit-content; margin-left: auto; margin-right: auto;'>
+        Rejoignez notre Discord !
+    </LinkButton>
+  </div>
+</Center>
+
+{/* Page MD Links */}
+[environment-variables]: /fr/start-here/getting-started/
+[getting-started]: /fr/start-here/getting-started/
+[turso]: https://tur.so/studiocms
+[why-studiocms]: /fr/start-here/why-studiocms/
+[how-it-works]: /fr/how-it-works/
+[using-the-sdk]: /fr/how-it-works/sdk/
+[using-rest-api]: /fr/how-it-works/restapi/
+[package-catalog]: /fr/package-catalog/
+[plugin-api]: /fr/plugins/
