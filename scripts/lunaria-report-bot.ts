@@ -48,6 +48,10 @@ async function setDiscordMessage() {
 		})
 		.join('\n');
 
+	if (WORKFLOW_DISPATCH) {
+		console.log('Workflow dispatch enabled', WORKFLOW_DISPATCH);
+	}
+
 	let message = `**The weekly translation report is here!** <@&1311284611799846942>${WORKFLOW_DISPATCH ? ' EARLY!!!' : ''}\n\nWe have ${
 		Object.keys(toTranslate).length
 	} pages with major changes since last week. Please help us translate these pages to your language!\n\n${list}`;
