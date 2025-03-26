@@ -1,6 +1,8 @@
 import { setOutput } from '@actions/core';
 import { createLunaria } from '@lunariajs/core';
 
+const { WORKFLOW_DISPATCH } = process.env;
+
 await setDiscordMessage();
 
 async function setDiscordMessage() {
@@ -46,7 +48,7 @@ async function setDiscordMessage() {
 		})
 		.join('\n');
 
-	let message = `**The weekly translation report is here!** <@&1311284611799846942>\n\nWe have ${
+	let message = `**The weekly translation report is here!** <@&1311284611799846942>${WORKFLOW_DISPATCH ? ' EARLY!!!' : ''}\n\nWe have ${
 		Object.keys(toTranslate).length
 	} pages with major changes since last week. Please help us translate these pages to your language!\n\n${list}`;
 
