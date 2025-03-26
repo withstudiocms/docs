@@ -17,7 +17,7 @@ export function makeTypedocOpts(o: {
 	return {
 		tsconfig: getFilePathToPackage(o.dir, 'tsconfig.json'),
 		entryPoints: o.entryPoints,
-		output: `typedoc/${o.output}`,
+		output: `en/typedoc/${o.output}`,
 		typeDoc: {
 			plugin: [
 				'typedoc-plugin-zod',
@@ -49,6 +49,10 @@ const tdStudioCMS = createStarlightTypeDocPlugin()[0];
 const tdDevApps = createStarlightTypeDocPlugin()[0];
 // @studiocms/blog
 const tdBlog = createStarlightTypeDocPlugin()[0];
+// @studiocms/markdoc
+const tdMarkDoc = createStarlightTypeDocPlugin()[0];
+// @studiocms/mdx
+const tdMDX = createStarlightTypeDocPlugin()[0];
 
 // Set to true to enable testing mode for TypeDoc
 const testTypeDoc = false;
@@ -97,9 +101,7 @@ const TypeDocPlugins = (isProd: boolean, testingMode: boolean): StarlightPlugin[
 						getFilePathToPackage('studiocms', 'src/schemas/config/developer.ts'),
 						getFilePathToPackage('studiocms', 'src/schemas/config/imageService.ts'),
 						getFilePathToPackage('studiocms', 'src/schemas/config/integrations.ts'),
-						getFilePathToPackage('studiocms', 'src/schemas/config/markdoc.ts'),
-						getFilePathToPackage('studiocms', 'src/schemas/config/mdx.ts'),
-						getFilePathToPackage('studiocms', 'src/schemas/config/rendererConfig.ts'),
+						getFilePathToPackage('studiocms', 'src/schemas/config/pageTypeOptions.ts'),
 						getFilePathToPackage('studiocms', 'src/schemas/config/sdk.ts'),
 						getFilePathToPackage('studiocms', 'src/schemas/config/studiocms-markdown-remark.ts'),
 						getFilePathToPackage('studiocms', 'src/lib/auth/encryption.ts'),
@@ -108,6 +110,7 @@ const TypeDocPlugins = (isProd: boolean, testingMode: boolean): StarlightPlugin[
 						getFilePathToPackage('studiocms', 'src/lib/auth/session.ts'),
 						getFilePathToPackage('studiocms', 'src/lib/auth/types.ts'),
 						getFilePathToPackage('studiocms', 'src/lib/auth/user.ts'),
+						getFilePathToPackage('studiocms', 'src/lib/auth/verify-email.ts'),
 						getFilePathToPackage('studiocms', 'src/lib/dynamic-sitemap/index.ts'),
 						getFilePathToPackage('studiocms', 'src/lib/dynamic-sitemap/sitemap-index.xml.ts'),
 						getFilePathToPackage('studiocms', 'src/lib/i18n/index.ts'),
@@ -131,6 +134,14 @@ const TypeDocPlugins = (isProd: boolean, testingMode: boolean): StarlightPlugin[
 						getFilePathToPackage('studiocms', 'src/lib/removeLeadingTrailingSlashes.ts'),
 						getFilePathToPackage('studiocms', 'src/lib/routeMap.ts'),
 						getFilePathToPackage('studiocms', 'src/lib/urlGen.ts'),
+						getFilePathToPackage('studiocms', 'src/lib/mailer/index.ts'),
+						getFilePathToPackage('studiocms', 'src/lib/mailer/template.ts'),
+						getFilePathToPackage('studiocms', 'src/lib/notifier/index.ts'),
+						getFilePathToPackage('studiocms', 'src/lib/notifier/client.ts'),
+						getFilePathToPackage('studiocms', 'src/lib/renderer/errors.ts'),
+						getFilePathToPackage('studiocms', 'src/lib/renderer/runtime.ts'),
+						getFilePathToPackage('studiocms', 'src/lib/renderer/shared.ts'),
+						getFilePathToPackage('studiocms', 'src/lib/renderer/types.ts'),
 						getFilePathToPackage('studiocms', 'src/runtime/AstroComponentProxy.ts'),
 						getFilePathToPackage('studiocms', 'src/runtime/decoder/index.ts'),
 						getFilePathToPackage('studiocms', 'src/runtime/decoder/decode-codepoint.ts'),
@@ -174,6 +185,33 @@ const TypeDocPlugins = (isProd: boolean, testingMode: boolean): StarlightPlugin[
 					entryPoints: [
 						getFilePathToPackage('studiocms_blog', 'src/index.ts'),
 						getFilePathToPackage('studiocms_blog', 'src/types.ts'),
+					],
+				})
+			),
+			tdMarkDoc(
+				makeTypedocOpts({
+					name: '@studiocms/markdoc',
+					output: 'studiocms-markdoc',
+					dir: 'studiocms_markdoc',
+					entryPoints: [
+						getFilePathToPackage('studiocms_markdoc', 'src/index.ts'),
+						getFilePathToPackage('studiocms_markdoc', 'src/types.ts'),
+						getFilePathToPackage('studiocms_markdoc', 'src/lib/render.ts'),
+						getFilePathToPackage('studiocms_markdoc', 'src/lib/shared.ts'),
+						getFilePathToPackage('studiocms_markdoc', 'src/react-renderer/renderReact.ts'),
+					],
+				})
+			),
+			tdMDX(
+				makeTypedocOpts({
+					name: '@studiocms/mdx',
+					output: 'studiocms-mdx',
+					dir: 'studiocms_mdx',
+					entryPoints: [
+						getFilePathToPackage('studiocms_mdx', 'src/index.ts'),
+						getFilePathToPackage('studiocms_mdx', 'src/types.ts'),
+						getFilePathToPackage('studiocms_mdx', 'src/lib/render.ts'),
+						getFilePathToPackage('studiocms_mdx', 'src/lib/shared.ts'),
 					],
 				})
 			),

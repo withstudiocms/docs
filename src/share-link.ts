@@ -10,5 +10,3 @@ export const sponsors = {
 		},
 	},
 };
-
-export default sponsors;

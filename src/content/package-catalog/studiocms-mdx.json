@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@studiocms/mdx",
+  "description": "StudioCMS MDX plugin, Provides MDX Support for StudioCMS.",
+  "docsLink": "/package-catalog/studiocms-plugins/studiocms-mdx/",
+  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/studiocms_mdx/",
+  "catalog": "studiocms",
+  "isPlugin": true,
+  "released": true
+}

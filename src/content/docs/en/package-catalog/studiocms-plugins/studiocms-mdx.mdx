@@ -1,0 +1,37 @@
+---
+i18nReady: true
+title: "@studiocms/mdx"
+type: integration
+catalogEntry: studiocms-mdx
+description: "StudioCMS MDX Integration"
+sidebar:
+  badge: 
+    text: 'Plugin'
+    variant: 'tip'
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# Introduction
+
+This plugin enables MDX Support within StudioCMS.
+
+## Installation
+
+1. Install the package using the following command:
+
+   <PackageManagers pkg="@studiocms/mdx" />
+
+2. Add `@studiocms/mdx` to your Astro config file:
+
+   ```ts twoslash title="studiocms.config.mjs" ins={2, 6}
+   import { defineStudioCMSConfig } from 'studiocms/config';
+   import mdx from '@studiocms/mdx';
+
+    export default defineStudioCMSConfig({
+      plugins: [
+        mdx(),
+      ],
+    });
+   ```

@@ -1,5 +1,4 @@
 import starlight from '@astrojs/starlight';
-// import starWarp from '@inox-tools/star-warp';
 import ui from '@studiocms/ui';
 import { defineConfig } from 'astro/config';
 import starlightImageZoom from 'starlight-image-zoom';
@@ -7,13 +6,15 @@ import starlightSidebarTopics from 'starlight-sidebar-topics';
 import getCoolifyURL from './hostUtils.ts';
 import rehypePlugins from './src/plugins/rehypePluginKit.ts';
 import { typeDocPlugins } from './typedoc.config.ts';
-import starlightDocSearch from '@astrojs/starlight-docsearch';
+import { getTranslations } from './starlight-sidebar/translate.ts';
+import { devServerFileWatcher } from './src/integrations/dev-file-watcher.ts';
+import { remarkFallbackLang } from './src/plugins/remark-fallback-pages.ts';
 
 // Define the Site URL
 const site = getCoolifyURL(true) || 'https://docs.studiocms.dev/';
 
 export const locales = {
-	root: { label: 'English', lang: 'en' },
+	en: { label: 'English', lang: 'en' },
 	es: { label: 'Español', lang: 'es' },
 	// de: { label: 'Deutsch', lang: 'de' },
 	// ja: { label: '日本語', lang: 'ja' },
@@ -38,8 +39,21 @@ export default defineConfig({
 	},
 	markdown: {
 		rehypePlugins,
+		remarkPlugins: [remarkFallbackLang()],
 	},
+	trailingSlash: 'always',
 	integrations: [
+		devServerFileWatcher([
+			'./hostUtils.ts',
+			'./typedoc.config.ts',
+			'./starlight-types.ts',
+			'./starlight-sidebar/*',
+			'./src/content.ts',
+			'./src/share-link.ts',
+			'./src/util/*.ts',
+			'./src/plugins/*.{ts,js}',
+			'./src/integrations/*.ts',
+		]),
 		ui(),
 		starlight({
 			title: 'StudioCMS',
@@ -49,17 +63,19 @@ export default defineConfig({
 			credits: true,
 			tagline: 'A dedicated CMS for Astro DB. Built from the ground up by the Astro community.',
 			disable404Route: true,
+			pagefind: false,
 			components: {
 				SiteTitle: './src/starlightOverrides/SiteTitle.astro',
 				PageTitle: './src/starlightOverrides/PageTitle.astro',
 				Sidebar: './src/starlightOverrides/Sidebar.astro',
 				Head: './src/starlightOverrides/Head.astro',
+				Search: './src/starlightOverrides/Search.astro',
 			},
 			logo: {
 				dark: './assets/logo-light.svg',
 				light: './assets/logo-dark.svg',
 			},
-			defaultLocale: 'root',
+			defaultLocale: 'en',
 			locales,
 			social: {
 				github: 'https://github.com/withstudiocms/studiocms',
@@ -78,103 +94,119 @@ export default defineConfig({
 				baseUrl: 'https://github.com/withstudiocms/docs/tree/main',
 			},
 			head: [
-				// {
-				// 	tag: 'script',
-				// 	attrs: {
-				// 		src: 'https://analytics.studiocms.xyz/script.js',
-				// 		'data-website-id': '00717cde-0d92-42be-8f49-8de0b1d810b2',
-				// 		defer: true,
-				// 	},
-				// },
+				{
+					tag: 'script',
+					attrs: {
+						src: 'https://analytics.studiocms.dev/script.js',
+						'data-website-id': 'e924da68-f547-4dd2-bd2f-bcdd78cbcdab',
+						defer: true,
+					},
+				},
 				{
 					tag: 'meta',
 					attrs: {
-						property: 'og:image',
+						name: 'og:image',
 						content: `${site}og.png`,
 					},
 				},
 				{
 					tag: 'meta',
 					attrs: {
-						property: 'twitter:image',
+						name: 'twitter:image',
 						content: `${site}og.png`,
+					},
+				},
+				{
+					tag: 'meta',
+					attrs: {
+						name: 'twitter:site',
+						content: 'withstudiocms',
+					},
+				},
+				{
+					tag: 'meta',
+					attrs: {
+						name: 'twitter:creator',
+						content: 'withstudiocms',
 					},
 				},
 			],
 			plugins: [
 				...typeDocPlugins,
 				starlightImageZoom(),
-				// starWarp({
-				// 	openSearch: {
-				// 		title: 'StudioCMS Docs',
-				// 		description: 'Search StudioCMS documentation',
-				// 		enabled: true,
-				// 	},
-				// }),
-				starlightDocSearch({
-					appId: 'UAGEFSNZ02',
-					apiKey: '2db78946b26c84e691bbbd2e7db7e6a8',
-					indexName: 'studiocms',
-				}),
 				starlightSidebarTopics([
 					{
-						label: 'Learn',
+						label: getTranslations('topic-learn'),
 						link: '/start-here/getting-started',
 						icon: 'open-book',
 						id: 'learn',
 						items: [
 							{
-								label: 'Start Here',
+								label: getTranslations('start-here').en,
+								translations: getTranslations('start-here'),
 								autogenerate: { directory: 'start-here' },
 							},
 							{
-								label: 'Contributing Guides',
+								label: getTranslations('contributing').en,
+								translations: getTranslations('contributing'),
 								autogenerate: { directory: 'contributing' },
 							},
 							{
-								label: 'Understanding StudioCMS',
+								label: getTranslations('how-it-works').en,
+								translations: getTranslations('how-it-works'),
 								autogenerate: { directory: 'how-it-works' },
 							},
 							{
-								label: 'Plugins',
+								label: getTranslations('utils').en,
+								translations: getTranslations('utils'),
+								autogenerate: { directory: 'utils' },
+							},
+							{
+								label: getTranslations('plugins').en,
+								translations: getTranslations('plugins'),
 								autogenerate: { directory: 'plugins' },
 							},
 						],
 					},
 					{
-						label: 'Package Catalog',
+						label: getTranslations('topic-package-catalog'),
 						link: '/package-catalog',
 						icon: 'download',
 						id: 'package-catalog',
 						items: [
 							{
-								label: 'Catalog',
+								label: getTranslations('catalog').en,
+								translations: getTranslations('catalog'),
 								link: '/package-catalog',
 							},
 							{
-								label: 'StudioCMS Plugins',
+								label: getTranslations('studiocms-plugins').en,
+								translations: getTranslations('studiocms-plugins'),
 								autogenerate: { directory: 'package-catalog/studiocms-plugins' },
 							},
 							{
-								label: 'Community Plugins',
+								label: getTranslations('community-plugins').en,
+								translations: getTranslations('community-plugins'),
 								autogenerate: { directory: 'package-catalog/community-plugins' },
 							},
 						],
 					},
 					{
-						label: 'References',
+						label: getTranslations('topic-references'),
 						link: '/config-reference',
 						icon: 'information',
 						id: 'references',
 						items: [
 							{
-								label: 'Configuration Reference',
+								label: getTranslations('config-reference').en,
+								translations: getTranslations('config-reference'),
 								autogenerate: { directory: 'config-reference' },
 							},
 							{
-								label: 'TypeDoc',
+								label: getTranslations('typedoc').en,
+								translations: getTranslations('typedoc'),
 								badge: {
-									text: 'Auto Generated',
+									text: getTranslations('auto-gen'),
 									variant: 'tip',
 								},
 								items: [
@@ -191,6 +223,16 @@ export default defineConfig({
 									{
 										label: '@studiocms/devapps',
 										autogenerate: { directory: 'typedoc/studiocms-devapps' },
+										collapsed: true,
+									},
+									{
+										label: '@studiocms/markdoc',
+										autogenerate: { directory: 'typedoc/studiocms-markdoc' },
+										collapsed: true,
+									},
+									{
+										label: '@studiocms/mdx',
+										autogenerate: { directory: 'typedoc/studiocms-mdx' },
 										collapsed: true,
 									},
 								],

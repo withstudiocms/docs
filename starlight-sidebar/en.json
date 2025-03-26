@@ -1,0 +1,16 @@
+{
+  "topic-learn": "Learn",
+  "topic-package-catalog": "Package Catalog",
+  "topic-references": "References",
+  "start-here": "Start Here",
+  "contributing": "Contributing Guides",
+  "how-it-works": "Understanding StudioCMS",
+  "utils": "Utils & Helpers",
+  "plugins": "Plugins",
+  "catalog": "Catalog",
+  "studiocms-plugins": "StudioCMS Plugins",
+  "community-plugins": "Community Plugins",
+  "config-reference": "Configuration Reference",
+  "typedoc": "TypeDoc",
+  "auto-gen": "Auto Generated"
+}
