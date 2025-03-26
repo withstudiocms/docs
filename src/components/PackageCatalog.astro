@@ -11,8 +11,6 @@ interface Props {
 
 const { catalog } = Astro.props;
 
-console.log('Current Locale', Astro.currentLocale);
-
 const packages = (await getCollection('package-catalog'))
 	.filter(({ data }) => data.catalog === catalog)
 	.sort(({ data: { name: a } }, { data: { name: b } }) => {
