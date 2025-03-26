@@ -49,9 +49,13 @@ const tdStudioCMS = createStarlightTypeDocPlugin()[0];
 const tdDevApps = createStarlightTypeDocPlugin()[0];
 // @studiocms/blog
 const tdBlog = createStarlightTypeDocPlugin()[0];
+// @studiocms/markdoc
+const tdMarkDoc = createStarlightTypeDocPlugin()[0];
+// @studiocms/mdx
+const tdMDX = createStarlightTypeDocPlugin()[0];
 
 // Set to true to enable testing mode for TypeDoc
-const testTypeDoc = false;
+const testTypeDoc = true;
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -181,6 +185,33 @@ const TypeDocPlugins = (isProd: boolean, testingMode: boolean): StarlightPlugin[
 					entryPoints: [
 						getFilePathToPackage('studiocms_blog', 'src/index.ts'),
 						getFilePathToPackage('studiocms_blog', 'src/types.ts'),
+					],
+				})
+			),
+			tdMarkDoc(
+				makeTypedocOpts({
+					name: '@studiocms/markdoc',
+					output: 'studiocms-markdoc',
+					dir: 'studiocms_markdoc',
+					entryPoints: [
+						getFilePathToPackage('studiocms_markdoc', 'src/index.ts'),
+						getFilePathToPackage('studiocms_markdoc', 'src/types.ts'),
+						getFilePathToPackage('studiocms_markdoc', 'src/lib/render.ts'),
+						getFilePathToPackage('studiocms_markdoc', 'src/lib/shared.ts'),
+						getFilePathToPackage('studiocms_markdoc', 'src/react-renderer/renderReact.ts'),
+					],
+				})
+			),
+			tdMDX(
+				makeTypedocOpts({
+					name: '@studiocms/mdx',
+					output: 'studiocms-mdx',
+					dir: 'studiocms_mdx',
+					entryPoints: [
+						getFilePathToPackage('studiocms_mdx', 'src/index.ts'),
+						getFilePathToPackage('studiocms_mdx', 'src/types.ts'),
+						getFilePathToPackage('studiocms_mdx', 'src/lib/render.ts'),
+						getFilePathToPackage('studiocms_mdx', 'src/lib/shared.ts'),
 					],
 				})
 			),

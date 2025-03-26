@@ -197,6 +197,16 @@ export default defineConfig({
 										autogenerate: { directory: 'typedoc/studiocms-devapps' },
 										collapsed: true,
 									},
+									{
+										label: '@studiocms/markdoc',
+										autogenerate: { directory: 'typedoc/studiocms-markdoc' },
+										collapsed: true,
+									},
+									{
+										label: '@studiocms/mdx',
+										autogenerate: { directory: 'typedoc/studiocms-mdx' },
+										collapsed: true,
+									},
 								],
 							},
 						],
