@@ -5,6 +5,5 @@
   "docsLink": "/package-catalog/studiocms-plugins/studiocms-markdoc/",
   "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/studiocms_markdoc/",
   "catalog": "studiocms",
-  "isPlugin": true,
-  "released": true
+  "isPlugin": true
 }

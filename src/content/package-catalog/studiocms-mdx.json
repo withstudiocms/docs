@@ -5,6 +5,5 @@
   "docsLink": "/package-catalog/studiocms-plugins/studiocms-mdx/",
   "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/studiocms_mdx/",
   "catalog": "studiocms",
-  "isPlugin": true,
-  "released": true
+  "isPlugin": true
 }
