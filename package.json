@@ -13,7 +13,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lunaria:build": "tsm ./scripts/lunaria.mts",
+    "lunaria:build": "tsm --require=./scripts/filter-warnings.cjs ./scripts/lunaria.mts",
     "knip": "knip",
     "ci:install": "pnpm install --frozen-lockfile",
     "ci:build": "pnpm build",

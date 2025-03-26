@@ -122,17 +122,17 @@ export default defineConfig({
 	],
 	files: [
 		{
-			include: ['src/content/i18n/en.json'],
-			pattern: 'src/content/i18n/@tag.json',
+			include: ['src/content/i18n/*.json'],
+			pattern: 'src/content/i18n/@lang.json',
 			type: 'dictionary',
 		},
 		{
-			include: ['starlight-sidebar/en.json'],
-			pattern: 'starlight-sidebar/@tag.json',
+			include: ['starlight-sidebar/*.json'],
+			pattern: 'starlight-sidebar/@lang.json',
 			type: 'dictionary',
 		},
 		{
-			include: ['src/content/docs/en/**/*.(md|mdx)'],
+			include: ['src/content/docs/**/*.(md|mdx)'],
 			exclude: ['src/content/docs/en/typedoc/**/*.(md|mdx)'],
 			pattern: 'src/content/docs/@lang/@path',
 			type: 'universal',
