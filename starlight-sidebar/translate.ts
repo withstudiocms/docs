@@ -14,7 +14,7 @@ const jsonFiles = await Promise.all(
 	})
 );
 
-export const getTranslations = (tKey: string) => {
+export const getTranslations = (key: string) => {
 	const translations = new Map<TranslationLangs, Record<string, string>>();
 
 	for (const translation of Translations) {
@@ -23,9 +23,9 @@ export const getTranslations = (tKey: string) => {
 
 	const toReturnObject: Partial<Record<TranslationLangs, string>> = {};
 
-	for (const [key, value] of translations.entries()) {
-		toReturnObject[key] =
-			(value[tKey] as string | undefined) || (fallback[tKey as keyof typeof fallback] as string);
+	for (const [trans, value] of translations.entries()) {
+		toReturnObject[trans] =
+			(value[key] as string | undefined) || (fallback[key as keyof typeof fallback] as string);
 	}
 
 	return toReturnObject as Record<TranslationLangs, string>;
