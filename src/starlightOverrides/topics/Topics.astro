@@ -1,5 +1,4 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
 import starlightConfig from 'virtual:starlight/user-config';
 import { Badge, Icon } from '@astrojs/starlight/components';
 import { AstroError } from 'astro/errors';
@@ -32,10 +31,8 @@ function getTranslation(translations: Record<string, string>, link: string, desc
 <ul>
     {
       topics.map((topic) => {
-        const isLinkTopic = topic.link === 'link';
         const isCurrent = topic.isCurrent;
-        const link =
-          !isLinkTopic && (Astro.currentLocale !== defaultLang && Astro.currentLocale !== undefined) ? getRelativeLocaleUrl(Astro.currentLocale, topic.link) : topic.link;
+        const link = topic.link;
 
         const label =
           typeof topic.label === 'string' ? topic.label : getTranslation(topic.label, topic.link, 'topic label')

@@ -7,6 +7,8 @@ import getCoolifyURL from './hostUtils.ts';
 import rehypePlugins from './src/plugins/rehypePluginKit.ts';
 import { typeDocPlugins } from './typedoc.config.ts';
 import { getTranslations } from './starlight-sidebar/translate.ts';
+import { devServerFileWatcher } from './src/integrations/dev-file-watcher.ts';
+import { remarkFallbackLang } from './src/plugins/remark-fallback-pages.ts';
 
 // Define the Site URL
 const site = getCoolifyURL(true) || 'https://docs.studiocms.dev/';
@@ -37,9 +39,21 @@ export default defineConfig({
 	},
 	markdown: {
 		rehypePlugins,
+		remarkPlugins: [remarkFallbackLang()],
 	},
 	trailingSlash: 'always',
 	integrations: [
+		devServerFileWatcher([
+			'./hostUtils.ts',
+			'./typedoc.config.ts',
+			'./starlight-types.ts',
+			'./starlight-sidebar/*',
+			'./src/content.ts',
+			'./src/share-link.ts',
+			'./src/util/*.ts',
+			'./src/plugins/*.{ts,js}',
+			'./src/integrations/*.ts',
+		]),
 		ui(),
 		starlight({
 			title: 'StudioCMS',

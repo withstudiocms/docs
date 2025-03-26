@@ -67,6 +67,9 @@
     "unified": "^11.0.5",
     "ultrahtml": "^1.5.3",
     "@docsearch/css": "^3.6.0",
-    "@docsearch/js": "^3.6.0"
+    "@docsearch/js": "^3.6.0",
+    "fast-glob": "^3.3.3",
+    "@types/mdast": "^4.0.4",
+    "unist-util-visit": "^5.0.0"
   }
 }

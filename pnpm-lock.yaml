@@ -71,6 +71,9 @@ importers:
       '@types/html-escaper':
         specifier: ^3.0.4
         version: 3.0.4
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
       astro:
         specifier: ^5.5.4
         version: 5.5.4(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.34.8)(typescript@5.8.2)(yaml@2.7.0)
@@ -83,6 +86,9 @@ importers:
       expressive-code-twoslash:
         specifier: ^0.4.0
         version: 0.4.0(@expressive-code/core@0.40.2)(expressive-code@0.40.2)(typescript@5.8.2)
+      fast-glob:
+        specifier: ^3.3.3
+        version: 3.3.3
       hast-util-to-string:
         specifier: ^3.0.1
         version: 3.0.1
@@ -149,6 +155,9 @@ importers:
       unified:
         specifier: ^11.0.5
         version: 11.0.5
+      unist-util-visit:
+        specifier: ^5.0.0
+        version: 5.0.0
 
 packages:
 
