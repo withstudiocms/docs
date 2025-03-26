@@ -105,15 +105,29 @@ export default defineConfig({
 				{
 					tag: 'meta',
 					attrs: {
-						property: 'og:image',
+						name: 'og:image',
 						content: `${site}og.png`,
 					},
 				},
 				{
 					tag: 'meta',
 					attrs: {
-						property: 'twitter:image',
+						name: 'twitter:image',
 						content: `${site}og.png`,
+					},
+				},
+				{
+					tag: 'meta',
+					attrs: {
+						name: 'twitter:site',
+						content: 'withstudiocms',
+					},
+				},
+				{
+					tag: 'meta',
+					attrs: {
+						name: 'twitter:creator',
+						content: 'withstudiocms',
 					},
 				},
 			],
