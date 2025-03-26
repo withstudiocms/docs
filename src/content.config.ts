@@ -1,4 +1,4 @@
-import { defineCollection, reference, z } from 'astro:content';
+import { defineCollection, reference, z, type CollectionEntry } from 'astro:content';
 import { docsLoader, i18nLoader } from '@astrojs/starlight/loaders';
 import { docsSchema, i18nSchema } from '@astrojs/starlight/schema';
 import { glob } from 'astro/loaders';
@@ -49,6 +49,9 @@ const i18nCustomSchema = z.object({
 	'contributors.website': z.string().optional(),
 	'contributors.bots': z.string().optional(),
 	// SEARCH BOX
+	'docsearch.button': z.string().optional(),
+	'docsearch.shortcutLabel': z.string().optional(),
+	'docsearch.placeholder': z.string().optional(),
 	/** Default: `Clear the query` */
 	'docsearch.searchBox.resetButtonTitle': z.string(),
 	/** Default: `Clear the query` */
@@ -109,10 +112,26 @@ const i18nCustomSchema = z.object({
 	'docsearch.noResultsScreen.reportMissingResultsLinkText': z.string(),
 });
 
+export const docsCollectionSchema = z.union([baseSchema, integrationSchema, redirectSchema]);
+
+export type DocsEntryData = z.infer<typeof docsCollectionSchema>;
+
+export type DocsEntryType = DocsEntryData['type'];
+
+export type DocsEntry<T extends DocsEntryType> = CollectionEntry<'docs'> & {
+	data: Extract<DocsEntryData, { type: T }>;
+};
+
+export function createIsLangEntry(lang: string) {
+	return (entry: CollectionEntry<'docs'>): boolean => entry.id.startsWith(`${lang}/`);
+}
+
+export const isEnglishEntry = createIsLangEntry('en');
+
 export const collections = {
 	docs: defineCollection({
 		loader: docsLoader(),
-		schema: docsSchema({ extend: z.union([baseSchema, integrationSchema, redirectSchema]) }),
+		schema: docsSchema({ extend: docsCollectionSchema }),
 	}),
 	i18n: defineCollection({
 		loader: i18nLoader(),

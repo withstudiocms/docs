@@ -29,15 +29,18 @@ importers:
       '@astrojs/starlight':
         specifier: ^0.32.4
         version: 0.32.4(astro@5.5.4(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.34.8)(typescript@5.8.2)(yaml@2.7.0))
-      '@astrojs/starlight-docsearch':
-        specifier: ^0.6.0
-        version: 0.6.0(@algolia/client-search@5.20.3)(@astrojs/starlight@0.32.4(astro@5.5.4(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.34.8)(typescript@5.8.2)(yaml@2.7.0)))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(search-insights@2.17.3)
       '@astrojs/web-vitals':
         specifier: ^3.0.1
         version: 3.0.1(@astrojs/db@0.14.8(@types/react@19.0.10)(react@19.0.0))
       '@biomejs/biome':
         specifier: 1.9.4
         version: 1.9.4
+      '@docsearch/css':
+        specifier: ^3.6.0
+        version: 3.9.0
+      '@docsearch/js':
+        specifier: ^3.6.0
+        version: 3.9.0(@algolia/client-search@5.20.3)(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(search-insights@2.17.3)
       '@fontsource-variable/onest':
         specifier: 5.1.1
         version: 5.1.1
@@ -345,11 +348,6 @@ packages:
 
   '@astrojs/sitemap@3.2.1':
     resolution: {integrity: sha512-uxMfO8f7pALq0ADL6Lk68UV6dNYjJ2xGUzyjjVj60JLBs5a6smtlkBYv3tQ0DzoqwS7c9n4FUx5lgv0yPo/fgA==}
-
-  '@astrojs/starlight-docsearch@0.6.0':
-    resolution: {integrity: sha512-jTW/6SVU98/birzDCrYLVEKrgzdRzLlevGIhG6EDRmieLCAUnsKUk0q856fOJ7RJcuVLTlzg80rkwAgRINpyZQ==}
-    peerDependencies:
-      '@astrojs/starlight': '>=0.32.0'
 
   '@astrojs/starlight@0.32.4':
     resolution: {integrity: sha512-l6aHQ4wzFPdw2G2XPqft/SrzhOYWYBYPkIHlLdgFT09Lt3NUpHnHwdcomtDJfHPlvrAqBKt/C+aJqQjLBApu0Q==}
@@ -4430,18 +4428,6 @@ snapshots:
       sitemap: 8.0.0
       stream-replace-string: 2.0.0
       zod: 3.24.2
-
-  '@astrojs/starlight-docsearch@0.6.0(@algolia/client-search@5.20.3)(@astrojs/starlight@0.32.4(astro@5.5.4(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.34.8)(typescript@5.8.2)(yaml@2.7.0)))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(search-insights@2.17.3)':
-    dependencies:
-      '@astrojs/starlight': 0.32.4(astro@5.5.4(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.34.8)(typescript@5.8.2)(yaml@2.7.0))
-      '@docsearch/css': 3.9.0
-      '@docsearch/js': 3.9.0(@algolia/client-search@5.20.3)(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(search-insights@2.17.3)
-    transitivePeerDependencies:
-      - '@algolia/client-search'
-      - '@types/react'
-      - react
-      - react-dom
-      - search-insights
 
   '@astrojs/starlight@0.32.4(astro@5.5.4(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.34.8)(typescript@5.8.2)(yaml@2.7.0))':
     dependencies:

@@ -17,7 +17,7 @@ export function makeTypedocOpts(o: {
 	return {
 		tsconfig: getFilePathToPackage(o.dir, 'tsconfig.json'),
 		entryPoints: o.entryPoints,
-		output: `typedoc/${o.output}`,
+		output: `en/typedoc/${o.output}`,
 		typeDoc: {
 			plugin: [
 				'typedoc-plugin-zod',

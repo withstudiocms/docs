@@ -35,7 +35,8 @@ function getTranslation(translations: Record<string, string>, link: string, desc
         const isLinkTopic = topic.link === 'link';
         const isCurrent = topic.isCurrent;
         const link =
-          !isLinkTopic && Astro.currentLocale ? getRelativeLocaleUrl(Astro.currentLocale, topic.link) : topic.link;
+          !isLinkTopic && (Astro.currentLocale !== defaultLang && Astro.currentLocale !== undefined) ? getRelativeLocaleUrl(Astro.currentLocale, topic.link) : topic.link;
+
         const label =
           typeof topic.label === 'string' ? topic.label : getTranslation(topic.label, topic.link, 'topic label')
   
