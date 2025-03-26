@@ -28,13 +28,13 @@ export default defineConfig({
 				tag: 'fr',
 			},
 		},
-		// {
-		// 	label: 'Deutsch',
-		// 	lang: 'de',
-		// 	parameters: {
-		// 		tag: 'de',
-		// 	},
-		// },
+		{
+			label: 'Deutsch',
+			lang: 'de',
+			parameters: {
+				tag: 'de',
+			},
+		},
 		// {
 		// 	label: '日本語',
 		// 	lang: 'ja',
@@ -122,18 +122,20 @@ export default defineConfig({
 	],
 	files: [
 		{
-			include: ['src/content/docs/**/*.(md|mdx)'],
-			exclude: ['src/content/docs/typedoc/**/*.(md|mdx)'],
-			pattern: {
-				source: 'src/content/docs/@path',
-				locales: 'src/content/docs/@lang/@path',
-			},
-			type: 'universal',
-		},
-		{
 			include: ['src/content/i18n/*.json'],
 			pattern: 'src/content/i18n/@lang.json',
 			type: 'dictionary',
+		},
+		{
+			include: ['starlight-sidebar/*.json'],
+			pattern: 'starlight-sidebar/@lang.json',
+			type: 'dictionary',
+		},
+		{
+			include: ['src/content/docs/**/*.(md|mdx)'],
+			exclude: ['src/content/docs/en/typedoc/**/*.(md|mdx)'],
+			pattern: 'src/content/docs/@lang/@path',
+			type: 'universal',
 		},
 	],
 	tracking: {

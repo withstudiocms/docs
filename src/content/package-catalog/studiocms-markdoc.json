@@ -1,0 +1,9 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@studiocms/markdoc",
+  "description": "StudioCMS MarkDoc plugin, Provides MarkDoc Support for StudioCMS.",
+  "docsLink": "/package-catalog/studiocms-plugins/studiocms-markdoc/",
+  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/studiocms_markdoc/",
+  "catalog": "studiocms",
+  "isPlugin": true
+}

@@ -1,5 +1,11 @@
 # See https://github.com/actions/labeler/tree/main for more information about the labeler action
 
-# translations:
-#   - changed-files:
-#       - any-glob-to-any-file: packages/studiocms/src/lib/i18n/translations/*
+# Note: The "any" logic requires ANY file of the PR to match ALL (!) of the globs in the array,
+# so to match files in multiple different paths, we also need multiple "any" arrays.
+i18n:
+  - changed-files:
+      - all-globs-to-any-file: ['src/content/docs/**/*.mdx', '!src/content/docs/en/**/*']
+  - changed-files:
+      - all-globs-to-any-file: ['src/content/i18n/*', '!src/content/i18n/en.json']
+  - changed-files:
+      - all-globs-to-any-file: ['starlight-sidebar/*', '!starlight-sidebar/en.json', '!starlight-sidebar/translate.ts']

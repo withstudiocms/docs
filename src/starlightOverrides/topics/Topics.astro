@@ -1,18 +1,10 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import config from 'virtual:starlight-sidebar-topics/config';
 import starlightConfig from 'virtual:starlight/user-config';
 import { Badge, Icon } from '@astrojs/starlight/components';
 import { AstroError } from 'astro/errors';
 import type { ComponentProps } from 'astro/types';
 
-import type { StarlightSidebarTopicsSharedConfig } from 'node_modules/starlight-sidebar-topics/libs/config';
-
-interface Props {
-	current: StarlightSidebarTopicsSharedConfig[number];
-}
-
-const { current } = Astro.props;
+const { topics } = Astro.locals.starlightSidebarTopics;
 
 const defaultLang =
 	starlightConfig.defaultLocale?.lang || starlightConfig.defaultLocale?.locale || 'en';
@@ -38,11 +30,10 @@ function getTranslation(translations: Record<string, string>, link: string, desc
 ---
 <ul>
     {
-      config.map((topic) => {
-        const isLinkTopic = topic.type === 'link'
-        const isCurrent = isLinkTopic ? false : topic.label === current.label && topic.link === current.link
-        const link =
-          !isLinkTopic && Astro.currentLocale ? getRelativeLocaleUrl(Astro.currentLocale, topic.link) : topic.link
+      topics.map((topic) => {
+        const isCurrent = topic.isCurrent;
+        const link = topic.link;
+
         const label =
           typeof topic.label === 'string' ? topic.label : getTranslation(topic.label, topic.link, 'topic label')
   

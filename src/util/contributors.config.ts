@@ -76,6 +76,8 @@ export const contributorConfig = (Astro: AstroGlobal): ContributorConfig[] => [
 					'packages/studioCMSBlog/',
 					// NEW Paths
 					'packages/studiocms_blog/',
+					'packages/studiocms_mdx/',
+					'packages/studiocms_markdoc/',
 				],
 			},
 		],
@@ -87,6 +89,10 @@ export const contributorConfig = (Astro: AstroGlobal): ContributorConfig[] => [
 				repo: 'withstudiocms/studiocms',
 				type: 'byPath',
 				paths: ['www/docs/', 'docs/'],
+			},
+			{
+				repo: 'withstudiocms/docs',
+				type: 'all',
 			},
 		],
 	},
