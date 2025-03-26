@@ -8,7 +8,7 @@ sidebar:
 
 The StudioCMS rendering system is dynamic based on the current pageType.
 
-Example Catch-all route where the current page is grabbed from the SDK and the page data is passed to the renderer, in this case we using the default `studiocms/markdown` pageType, and wrapping that in a Layout like we do with the `@studiocms/blog` plugin. a pageBuilder plugin for example, may come without a standard layout, but instead intend on you designing the whole thing within the builder like you would on other CMS systems.
+Example Catch-all route where the current page is grabbed from the SDK and the page data is passed to the renderer, in this case we are using the default `studiocms/markdown` pageType configured in the page settings, and wrapping that in a Layout like we do with the `@studiocms/blog` plugin. a pageBuilder plugin for example, may come without a standard layout, but instead intend on you designing the whole thing within the builder like you would on other CMS systems.
 
 ```astro title="src/pages/[...slug].astro"
 ---
