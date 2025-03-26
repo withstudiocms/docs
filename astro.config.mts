@@ -18,7 +18,7 @@ export const locales = {
 	es: { label: 'Español', lang: 'es' },
 	// de: { label: 'Deutsch', lang: 'de' },
 	// ja: { label: '日本語', lang: 'ja' },
-	// fr: { label: 'Français', lang: 'fr' },
+	fr: { label: 'Français', lang: 'fr' },
 	// it: { label: 'Italiano', lang: 'it' },
 	// id: { label: 'Bahasa Indonesia', lang: 'id' },
 	// 'zh-cn': { label: '简体中文', lang: 'zh-CN' },
