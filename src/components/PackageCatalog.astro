@@ -11,6 +11,8 @@ interface Props {
 
 const { catalog } = Astro.props;
 
+console.log('Current Locale', Astro.currentLocale);
+
 const packages = (await getCollection('package-catalog'))
 	.filter(({ data }) => data.catalog === catalog)
 	.sort(({ data: { name: a } }, { data: { name: b } }) => {
@@ -24,7 +26,12 @@ const packages = (await getCollection('package-catalog'))
 		// If both are scoped or non-scoped, sort alphabetically
 		return a.localeCompare(b);
 	})
-	.map(({ data }) => data);
+	.map(({ data }) => ({
+		...data,
+		docsLink: data.docsLink.startsWith('/')
+			? `/${Astro.currentLocale}${data.docsLink}`.toString()
+			: data.docsLink,
+	}));
 ---
 
 <div>

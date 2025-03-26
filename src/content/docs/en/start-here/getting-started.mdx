@@ -26,7 +26,7 @@ StudioCMS uses `@astrojs/db` to connect to your libSQL database. You can use any
 
 If you are using the StudioCMS CLI, you can skip this step and use the CLI to create a new database if you have the Turso CLI installed.
 
-<ReadMore>For more information about the required environment variables see, [Database URL and Token for `@astrojs/db`](/start-here/environment-variables/#database-url-and-token-for-astrojsdb)</ReadMore>
+<ReadMore>For more information about the required environment variables see, [Database URL and Token for `@astrojs/db`][db-url-token]</ReadMore>
 
 ### Getting started with Turso
 
@@ -67,7 +67,7 @@ You are now ready to move on to setting up your StudioCMS project!
 
 libSQL supports both HTTP and WebSockets as the transport protocol for a remote server. It also supports using a local file or an in-memory DB. 
 
-<ReadMore>For more information about the required environment variables see, [Database URL and Token for `@astrojs/db`](/start-here/environment-variables/#database-url-and-token-for-astrojsdb)</ReadMore>
+<ReadMore>For more information about the required environment variables see, [Database URL and Token for `@astrojs/db`][db-url-token]</ReadMore>
 
 <ReadMore>For more information about all the potential libSQL options (including local files) see [Astro Docs: Remote URL configuration options](https://docs.astro.build/en/guides/astro-db/#remote-url-configuration-options)</ReadMore>
 
@@ -215,7 +215,7 @@ StudioCMS requires an [Astro Adapter](https://docs.astro.build/en/guides/on-dema
 
 ## Configure authentication
 
-StudioCMS Auth requires at least the [Encryption Key](/start-here/environment-variables/#encryption-key-for-studiocmsauth) to be set in your `.env` file.
+StudioCMS Auth requires at least the [Encryption Key][encryption-key] to be set in your `.env` file.
 
 The following environment variables are required for StudioCMS authentication:
 
@@ -233,12 +233,12 @@ openssl rand --base64 16
 And set the output as the value for `CMS_ENCRYPTION_KEY`.
 
 <ReadMore>
-For more information about all the available authentication environment variables see, [Environment variables](/start-here/environment-variables/) page.
+For more information about all the available authentication environment variables see, [Environment variables][environment-variables] page.
 </ReadMore>
 
 ### Optional: Configure oAuth authentication
 
-StudioCMS supports oAuth authentication with GitHub, Discord, Google, and Auth0. To configure oAuth authentication, you'll need to set the [required environment variables in your `.env` file](/start-here/environment-variables/#oauth-authentication-environment-variables), and ensure that the provider is [enabled in your config](/config-reference/dashboard/#authconfig).
+StudioCMS supports oAuth authentication with GitHub, Discord, Google, and Auth0. To configure oAuth authentication, you'll need to set the [required environment variables in your `.env` file][oauth-environment-variables], and ensure that the provider is [enabled in your config][auth-config-ref].
 
 For setting up oAuth providers, they require a callback URL. The callback URL is the path where the provider will redirect the user after authentication. 
 
@@ -306,7 +306,7 @@ After running the command, you should see a message indicating that your project
 
 ### Adding a frontend to your StudioCMS project
 
-StudioCMS is a headless Astro CMS, which means you have to provide your own frontend to display the content. If you are looking for a frontend that is already built, you can checkout our plugins in the [Package Catalog](/package-catalog/).
+StudioCMS is a headless Astro CMS, which means you have to provide your own frontend to display the content. If you are looking for a frontend that is already built, you can checkout our plugins in the [Package Catalog][package-catalog].
 
 #### Setup a blog
 
@@ -343,13 +343,22 @@ It is recommended to use StudioCMS in production mode only, as the dashboard is 
 ## Next steps
 
 <ReadMore>
-Check out how to set [Environment Variables](/start-here/environment-variables/) in StudioCMS.
+Check out how to set [Environment Variables][environment-variables] in StudioCMS.
 </ReadMore>
 
 <ReadMore>
-Check out the [Package Catalog](/package-catalog/) to find and use plugins with StudioCMS.
+Check out the [Package Catalog][package-catalog] to find and use plugins with StudioCMS.
 </ReadMore>
 
 <ReadMore>
-Learn more about the StudioCMS Config options using the [StudioCMS Reference](/config-reference/) pages.
+Learn more about the StudioCMS Config options using the [StudioCMS Reference][config-reference] pages.
 </ReadMore>
+
+{/* Links */}
+[package-catalog]: /en/package-catalog/
+[environment-variables]: /en/start-here/environment-variables/
+[config-reference]: /en/config-reference/
+[db-url-token]: /en/start-here/environment-variables/#database-url-and-token-for-astrojsdb
+[encryption-key]: /en/start-here/environment-variables/#encryption-key-for-studiocmsauth
+[oauth-environment-variables]: /en/start-here/environment-variables/#oauth-authentication-environment-variables
+[auth-config-ref]: /en/config-reference/dashboard/#authconfig
