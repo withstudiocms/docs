@@ -12,7 +12,7 @@ Référence du schéma des options de configuration de l’intégration StudioCM
 
 ```ts twoslash title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
-// ---omis---
+// ---cut---
 // Valeurs par défaut affichées
 export default defineStudioCMSConfig({
   dbStartPage: true,
@@ -42,7 +42,7 @@ Page d’initialisation du projet - Utilisée lors de la première configuration
 
 ```ts twoslash {2} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
-// ---omis---
+// ---cut---
 export default defineStudioCMSConfig({
   dbStartPage: true, // PAR DÉFAUT - Cela injecte une page de démarrage pour configurer vos données de base de données.
 })
@@ -59,7 +59,7 @@ export default defineStudioCMSConfig({
 
 ```ts twoslash {2} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
-// ---omis---
+// ---cut---
 export default defineStudioCMSConfig({
   dateLocale: 'en-us', // PAR DÉFAUT - Ceci définit les paramètres régionaux de date pour le formatage des dates.
 })
@@ -76,7 +76,7 @@ export default defineStudioCMSConfig({
 
 ```ts twoslash {2} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
-// ---omis---
+// ---cut---
 export default defineStudioCMSConfig({
   verbose: false, // PAR DÉFAUT - Ceci désactive la journalisation détaillée.
 })
@@ -93,7 +93,7 @@ export default defineStudioCMSConfig({
 
 ```ts twoslash {1, 3-5} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
-// ---omis---
+// ---cut---
 import blog from '@studiocms/blog';
 export default defineStudioCMSConfig({
   plugins: [
@@ -113,7 +113,7 @@ export default defineStudioCMSConfig({
 
 ```ts twoslash {2-4} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
-// ---omis---
+// ---cut---
 export default defineStudioCMSConfig({
   componentRegistry: {
     'my-component': 'src/components/MyComponent.astro',
@@ -132,7 +132,7 @@ export default defineStudioCMSConfig({
 
 ```ts twoslash {2-6} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
-// ---omis---
+// ---cut---
 export default defineStudioCMSConfig({
   dateTimeFormat: {
     year: "numeric",

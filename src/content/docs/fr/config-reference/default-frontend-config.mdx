@@ -12,7 +12,7 @@ Référence du schéma des options de configuration de l’intégration StudioCM
 
 ```ts twoslash title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
-// ---omis---
+// ---cut---
 export default defineStudioCMSConfig({
   defaultFrontEndConfig: {
     favicon: '/favicon.svg',
@@ -34,7 +34,7 @@ export default defineStudioCMSConfig({
 
 ```ts twoslash {3} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
-// ---omis---
+// ---cut---
 export default defineStudioCMSConfig({
   defaultFrontEndConfig: {
     favicon: '/favicon.svg', // PAR DÉFAUT - Ceci utilise le favicon par défaut.
@@ -53,7 +53,7 @@ export default defineStudioCMSConfig({
 
 ```ts twoslash {3} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
-// ---omis---
+// ---cut---
 export default defineStudioCMSConfig({
   defaultFrontEndConfig: {
     htmlDefaultLanguage: 'en', // PAR DÉFAUT - Ceci utilise la langue par défaut.
@@ -70,7 +70,7 @@ Peut être utile pour ajouter le suivi analytique et d’autres scripts et resso
 
 ```ts twoslash {3} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
-// ---omis---
+// ---cut---
 export default defineStudioCMSConfig({
   defaultFrontEndConfig: {
     htmlDefaultHead: [
@@ -111,7 +111,7 @@ Injecte une interface utilisateur pour des actions rapides dans le coin inférie
 
 ```ts twoslash {3} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
-// ---omis---
+// ---cut---
 export default defineStudioCMSConfig({
   defaultFrontEndConfig: {
     injectQuickActionsMenu: true, // PAR DÉFAUT - Ceci injecte le menu d’actions rapides.
