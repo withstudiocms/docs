@@ -16,6 +16,7 @@ import { sponsors, SponsorLink } from '~/share-link'
 
 Para empezar a usar StudioCMS, necesitarás:
 
+- La version de [Node.js admitida por Astro](https://docs.astro.build/en/install-and-setup/#prerequisites) (Bun y Deno no son compatibles)
 - Un proyecto de Astro
 - Un proveedor libSQL o un servidor libSQL autoalojado
 - La integración StudioCMS
@@ -26,7 +27,7 @@ StudioCMS usa `@astrojs/db` para conectarse a tu base de datos libSQL. Puedes us
 
 Si estás usando la CLI de StudioCMS, puedes omitir este paso y usar la CLI para crear una nueva base de datos si tienes la CLI de Turso instalada.
 
-<ReadMore>Para más información sobre las variables de entorno requeridas, consulta [URL de la base de datos y token para `@astrojs/db`](/es/start-here/environment-variables/#url-de-la-base-de-datos-y-token-para-astrojsdb)</ReadMore>
+<ReadMore>Para más información sobre las variables de entorno requeridas, consulta [URL de la base de datos y token para `@astrojs/db`][db-url-token]</ReadMore>
 
 ### Empezando con Turso
 
@@ -67,8 +68,8 @@ Si estás usando la CLI de StudioCMS, puedes omitir este paso y usar la CLI para
 
 libSQL admite tanto HTTP como WebSockets como protocolo de transporte para un servidor remoto. También admite el uso de un archivo local o una base de datos en memoria.
 
-<ReadMore>Para más información sobre las variables de entorno requeridas, consulta [URL de la base de datos y token para `@astrojs/db`](/es/start-here/environment-variables/#url-de-la-base-de-datos-y-token-para-astrojsdb)</ReadMore>
-{/* TODO: fix this link when astro-docs are up to date */}
+<ReadMore>Para más información sobre las variables de entorno requeridas, consulta [URL de la base de datos y token para `@astrojs/db`][db-url-token]</ReadMore>
+
 <ReadMore>Para más información sobre todas las opciones potenciales de libSQL (incluidos los archivos locales), consulta [Astro Docs: Remote URL configuration options](https://docs.astro.build/en/guides/astro-db/#remote-url-configuration-options)</ReadMore>
 
 ## Creando un proyecto StudioCMS
@@ -215,7 +216,7 @@ StudioCMS requiere un [Adaptador Astro](https://docs.astro.build/en/guides/on-de
 
 ## Configurar autenticación
 
-StudioCMS Auth requiere al menos la [Clave de Cifrado](/start-here/environment-variables/#encryption-key-for-studiocmsauth) para ser configurada en tu archivo `.env`.
+StudioCMS admite autenticación oAuth con GitHub, Discord, Google y Auth0. Para configurar la autenticación oAuth, necesitarás configurar las [variables de entorno requeridas en tu archivo `.env`][oauth-environment-variables], y asegurarte de que el proveedor esté [habilitado en tu configuración][auth-config-ref].
 
 Las siguientes variables de entorno son necesarias para la autenticación de StudioCMS:
 
@@ -233,12 +234,12 @@ openssl rand --base64 16
 Y configurar la salida como el valor de `CMS_ENCRYPTION_KEY`.
 
 <ReadMore>
-Para más información sobre todas las variables de entorno disponibles para la autenticación, consulta la página de [Variables de entorno](/es/start-here/environment-variables/).
+Para más información sobre todas las variables de entorno disponibles para la autenticación, consulta la página de [Variables de entorno][environment-variables].
 </ReadMore>
 
 ### Opcional: Configurar autenticación oAuth
 
-StudioCMS admite autenticación oAuth con GitHub, Discord, Google y Auth0. Para configurar la autenticación oAuth, necesitarás configurar las [variables de entorno requeridas en tu archivo `.env`](/es/start-here/environment-variables/#oauth-authentication-environment-variables), y asegurarte de que el proveedor esté [habilitado en tu configuración](/config-reference/dashboard/#authconfig).
+StudioCMS admite autenticación oAuth con GitHub, Discord, Google y Auth0. Para configurar la autenticación oAuth, necesitarás configurar las [variables de entorno requeridas en tu archivo `.env`](/es/start-here/environment-variables/#oauth-authentication-environment-variables), y asegurarte de que el proveedor esté [habilitado en tu configuración][auth-config-ref].
 
 Para configurar los proveedores oAuth, requieren una URL de callback. La URL de callback es la ruta donde el proveedor redirigirá al usuario después de la autenticación.
 
@@ -306,7 +307,7 @@ Después de ejecutar el comando, deberías ver un mensaje indicando que tu proye
 
 ### Agregando un frontend a tu proyecto StudioCMS
 
-StudioCMS es un CMS sin cabeza de Astro, lo que significa que debes proporcionar tu propio frontend para mostrar el contenido. Si estás buscando un frontend ya construido, puedes consultar nuestros plugins en el [Catálogo de Paquetes](/es/package-catalog/).
+StudioCMS es un CMS sin cabeza de Astro, lo que significa que debes proporcionar tu propio frontend para mostrar el contenido. Si estás buscando un frontend ya construido, puedes consultar nuestros plugins en el [Catálogo de Paquetes][package-catalog].
 
 #### Configurar un blog
 
@@ -343,13 +344,22 @@ Se recomienda usar StudioCMS solo en modo de producción, ya que el panel de con
 ## Próximos pasos
 
 <ReadMore>
-Consulta cómo configurar [Variables de Entorno](/es/start-here/environment-variables) en StudioCMS.
+Consulta cómo configurar [Variables de Entorno][environment-variables] en StudioCMS.
 </ReadMore>
 
 <ReadMore>
-Consulta el [Catálogo de Paquetes](/es/package-catalog/) para encontrar y usar plugins con StudioCMS.
+Consulta el [Catálogo de Paquetes][package-catalog] para encontrar y usar plugins con StudioCMS.
 </ReadMore>
 
 <ReadMore>
-Aprende más sobre las opciones de configuración de StudioCMS usando las páginas de [Referencia de StudioCMS](/es/config-reference/).
+Aprende más sobre las opciones de configuración de StudioCMS usando las páginas de [Referencia de StudioCMS][config-reference].
 </ReadMore>
+
+{/* Enlaces */}
+[package-catalog]: /es/package-catalog/
+[environment-variables]: /es/start-here/environment-variables
+[config-reference]: /es/config-reference
+[db-url-token]: /es/start-here/environment-variables/#url-de-la-base-de-datos-y-token-para-astrojsdb
+[encryption-key]: /es/start-here/environment-variables/#clave-de-encriptación-para-studiocmsauth
+[oauth-environment-variables]: /es/start-here/environment-variables/#variables-de-entorno-para-autenticación-oauth
+[auth-config-ref]: /es/config-reference/authentication
