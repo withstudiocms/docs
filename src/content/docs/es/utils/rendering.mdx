@@ -1,0 +1,39 @@
+---
+i18nReady: true
+title: "Renderizado de Contenido"
+description: "Opciones para renderizar Contenido"
+sidebar:
+   order: 1
+---
+
+El sistema de renderizado de StudioCMS es dinámico según el tipo de página actual (pageType).
+
+Ejemplo de ruta comodín (catch-all) donde la página actual se obtiene del SDK y los datos de la página se pasan al renderizador. En este caso, estamos utilizando el tipo de página predeterminado `studiocms/markdown` configurado en la configuración de la página, y envolviéndolo en un Layout como lo hacemos con el plugin `@studiocms/blog`. Por ejemplo, un plugin de constructor de páginas (pageBuilder) puede venir sin un diseño estándar, pero en su lugar pretende que diseñes toda la página dentro del constructor, como lo harías en otros sistemas CMS.
+
+```astro title="src/pages/[...slug].astro"
+---
+import { StudioCMSRenderer } from 'studiocms:renderer';
+import studioCMS_SDK from 'studiocms:sdk';
+import Layout from '../layouts/Layout.astro';
+
+let { slug } = Astro.params;
+
+if (!slug) {
+	slug = 'index';
+}
+
+const page = await studioCMS_SDK.GET.databaseEntry.pages.bySlug(slug);
+
+if (!page) {
+	return Astro.redirect('/404');
+}
+
+const { title, description, heroImage } = page;
+---
+
+<Layout title={title} description={description} heroImage={heroImage}>
+	<main>
+		<StudioCMSRenderer data={page} />
+	</main>
+</Layout>
+```
