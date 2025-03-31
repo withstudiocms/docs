@@ -14,10 +14,10 @@ import ReadMore from '~/components/ReadMore.astro';
 Hay dos formas de configurar la integración de StudioCMS. A continuación se muestran ejemplos de cómo configurar según si eliges usar el archivo `astro.config.mjs` o el archivo dedicado `studiocms.config.mjs`.
 
 <ReadMore>
-Esta página te muestra cómo y dónde definir la configuración de StudioCMS. Para más información sobre las opciones de configuración de StudioCMS, consulta las [páginas de referencia](/config-reference/options-schema/).
+Esta página te muestra cómo y dónde definir la configuración de StudioCMS. Para más información sobre las opciones de configuración de StudioCMS, consulta las [páginas de referencia][reference-page].
 </ReadMore>
 
-## Usando el archivo `astro.config.mjs`:
+## Usando el archivo `astro.config.mjs`: (opción recomendada)
 
 ```ts twoslash title="astro.config.mjs"
 import db from '@astrojs/db';
@@ -82,3 +82,6 @@ export default defineStudioCMSConfig({
     // ...Otras opciones de configuración
 })
 ```
+
+{/* Enlaces */}
+[reference-page]: (/es/config-reference/options-schema/)
