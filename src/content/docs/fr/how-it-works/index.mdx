@@ -1,0 +1,133 @@
+---
+i18nReady: true
+title: "L’intégration"
+description: "Découvrez comment StudioCMS vous aide à gérer et à diffuser votre contenu en explorant une présentation complète de ses composants fondamentaux."
+sidebar:
+   order: 1
+---
+
+# Présentation
+
+StudioCMS est un CMS puissant conçu pour Astro qui vous permet de gérer et de diffuser votre contenu à l’aide d’[Astro DB](https://docs.astro.build/fr/guides/astro-db/). Il est conçu pour être facile à utiliser et suffisamment flexible pour gérer tout type de contenu.
+
+Étendre StudioCMS est également simple ! Vous pouvez créer vos propres modules d’extension pour ajouter de nouvelles fonctionnalités à StudioCMS.
+
+L’intégration StudioCMS constitue la base de tout l’écosystème StudioCMS. Il fournit une solution CMS sans tête (ou « headless » en anglais) pour les projets Astro, vous permettant de gérer et de diffuser votre contenu à l’aide d’Astro DB. Voici une description de l’intégration StudioCMS et de ses composants.
+
+## Modules virtuels
+
+L’intégration StudioCMS fournit plusieurs [modules virtuels](https://vite.dev/guide/api-plugin#virtual-modules-convention) permettant de contrôler entièrement votre contenu dynamique. Ces modules sont principalement utilisés en interne par StudioCMS, mais les développeurs peuvent les utiliser pour accéder aux données StudioCMS. Voici les modules virtuels fournis par l’intégration StudioCMS :
+
+### Modules virtuels d’authentification
+
+- **`studiocms:auth/lib/encryption`** : Utilitaires de chiffrement pour StudioCMS.
+- **`studiocms:auth/lib/password`** : Utilitaires de gestion de mots de passe pour StudioCMS.
+- **`studiocms:auth/lib/rate-limit`** : Utilitaires de limitation de débit pour StudioCMS.
+- **`studiocms:auth/lib/session`** : Utilitaires de gestion de session pour StudioCMS.
+- **`studiocms:auth/lib/types`** : Types pour la bibliothèque d’authentification de StudioCMS.
+- **`studiocms:auth/lib/user`** : Utilitaires de gestion des utilisateurs pour StudioCMS.
+- **`studiocms:auth/utils/authEnvCheck`** : Utilitaires permettant de vérifier l’environnement d’authentification pour StudioCMS.
+- **`studiocms:auth/utils/getLabelForPermissionLevel`** : Utilitaires permettant d’obtenir l’étiquette d’un niveau d’autorisation pour StudioCMS.
+
+### Modules virtuels principaux
+
+- **`studiocms:config`** : Fournit la configuration résolue pour l’écosystème de l’intégration StudioCMS.
+- **`studiocms:version`** : Fournit la version actuelle de l’écosystème de l’intégration StudioCMS.
+- **`studiocms:plugins`** : Fournit les interfaces du système de modules d’extension pendant l’exécution pour StudioCMS.
+- **`studiocms:plugin-helpers`** : Fournit les fonctions d’assistance pour les modules d’extension de StudioCMS.
+- **`studiocms:components`** : Fournit des composants exportés pour StudioCMS.
+- **`studiocms:components/Editors`** : Fournit les composants de l’éditeur pour l’édition de pages.
+- **`studiocms:components/dashboard-grid-components`** : Composants internes utilisés par le tableau de bord de StudioCMS.
+- **`studiocms:components/dashboard-grid-items`** : Composants internes utilisés par le tableau de bord de StudioCMS.
+- **`studiocms:component-proxy`** : Fournit le proxy de composants pour les composants définis par l’utilisateur dans StudioCMS.
+- **`studiocms:lib`** : Fournit les assistants de la bibliothèque StudioCMS pour StudioCMS.
+
+### Modules virtuels du SDK
+
+- **`studiocms:sdk`** : Fournit le SDK de StudioCMS pour StudioCMS.
+- **`studiocms:sdk/cache`** : Fournit le cache du SDK de StudioCMS pour StudioCMS.
+- **`studiocms:sdk/types`** : Fournit les types du SDK de StudioCMS pour StudioCMS.
+
+### Modules virtuels i18n
+
+- **`studiocms:i18n`** : Fournit le module d’internationalisation de StudioCMS pour StudioCMS.
+
+### Modules virtuels de rendu
+
+- **`studiocms:renderer`** : Fournit le moteur de rendu de StudioCMS pour StudioCMS.
+- **`studiocms:renderer/config`** : Fournit la configuration du moteur de rendu de StudioCMS pour StudioCMS.
+- **`studiocms:renderer/current`** : Fournit le moteur de rendu de StudioCMS actuel pour StudioCMS.
+- **`studiocms:renderer/markdown-remark/css`** : Fournit le moteur de rendu CSS du paquet markdown-remark de StudioCMS pour StudioCMS.
+
+### Modules virtuels du gestionnaire d’images
+
+- **`studiocms:imageHandler/components`** : Fournit les composants du gestionnaire d’images de StudioCMS pour StudioCMS.
+
+## Routes
+
+L’intégration StudioCMS propose plusieurs routes pour gérer votre contenu et votre configuration. Ces routes sont utilisées par le tableau de bord et l’API de StudioCMS pour interagir avec l’intégration. Voici une liste des routes proposées par l’intégration StudioCMS.
+
+### Routes du tableau de bord
+
+Les routes auxquelles les utilisateurs peuvent accéder pour gérer leur projet StudioCMS.
+
+#### Routes principales
+
+- **`/dashboard/`** : Le tableau de bord de StudioCMS, où vous pouvez gérer votre projet StudioCMS.
+- **`/dashboard/profile/`** : La page de profil du tableau de bord de StudioCMS, où vous pouvez gérer votre profil.
+- **`/dashboard/content-management/`** : La page de gestion de contenu du tableau de bord de StudioCMS, où vous pouvez gérer votre contenu.
+- **`/dashboard/configuration/`** : La page de configuration du tableau de bord de StudioCMS, où vous pouvez gérer votre configuration.
+- **`/dashboard/user-management/`** : La page de gestion des utilisateurs du tableau de bord de StudioCMS, où vous pouvez gérer vos utilisateurs.
+- **`/dashboard/plugins/`** : La page des modules d’extension du tableau de bord de StudioCMS, où vous pouvez gérer vos modules d’extension.
+
+#### Routes d’authentification
+
+- **`/dashboard/login/`** : La page de connexion au tableau de bord de StudioCMS.
+- **`/dashboard/signup/`** : La page d’inscription au tableau de bord de StudioCMS.
+- **`/dashboard/logout/`** : La page de déconnexion du tableau de bord de StudioCMS.
+
+### Routes d’API
+
+Les routes utilisées par le tableau de bord de StudioCMS pour interagir avec l’intégration StudioCMS.
+
+#### Routes principales
+
+- **`/studiocms_api/dashboard/api-tokens`** : Le point de terminaison de l’API de StudioCMS pour accéder aux jetons d’API.
+- **`/studiocms_api/dashboard/search-list`** : Le point de terminaison de l’API de StudioCMS pour accéder à la liste de recherche.
+- **`/studiocms_api/dashboard/live-render`** : Le point de terminaison de l’API de StudioCMS pour accéder au rendu en direct partiel.
+- **`/studiocms_api/dashboard/user-list-items`** : Le point de terminaison de l’API de StudioCMS pour accéder aux éléments de la liste des utilisateurs.
+- **`/studiocms_api/dashboard/editor`** : Le point de terminaison de l’API de StudioCMS pour accéder à l’éditeur.
+- **`/studiocms_api/dashboard/config`** : Le point de terminaison de l’API de StudioCMS pour accéder à la configuration.
+- **`/studiocms_api/dashboard/users`** : Le point de terminaison de l’API de StudioCMS pour accéder aux utilisateurs.
+- **`/studiocms_api/dashboard/profile`** : Le point de terminaison de l’API de StudioCMS pour accéder au profil.
+- **`/studiocms_api/dashboard/create-reset-link`** : Le point de terminaison de l’API de StudioCMS pour créer un lien de réinitialisation.
+- **`/studiocms_api/dashboard/reset-password`** : Le point de terminaison de l’API de StudioCMS pour réinitialiser le mot de passe.
+- **`/studiocms_api/dashboard/content/page`** : Le point de terminaison de l’API de StudioCMS pour accéder à la page de contenu.
+- **`/studiocms_api/dashboard/content/folder`** : Le point de terminaison de l’API de StudioCMS pour accéder au dossier de contenu.
+- **`/studiocms_api/dashboard/plugins`** : Le point de terminaison de l’API de StudioCMS pour accéder aux modules d’extension.
+- **`/studiocms_api/dashboard/create-user`** : Le point de terminaison de l’API de StudioCMS pour créer un utilisateur.
+- **`/studiocms_api/dashboard/update-user-invite`** : Le point de terminaison de l’API de StudioCMS pour mettre à jour l’invitation de l’utilisateur.
+
+#### Routes d’authentification
+
+- **`/studiocms_api/auth/login`** : Le point de terminaison de l’API de StudioCMS pour la connexion.
+- **`/studiocms_api/auth/logout`** : Le point de terminaison de l’API de StudioCMS pour la déconnexion.
+- **`/studiocms_api/auth/register`** : Le point de terminaison de l’API de StudioCMS pour l’enregistrement.
+- **`/studiocms_api/auth/github`** : Le point de terminaison de l’API de StudioCMS pour GitHub.
+- **`/studiocms_api/auth/github/callback`** : Le point de terminaison de l’API de StudioCMS pour le rappel GitHub.
+- **`/studiocms_api/auth/discord`** : Le point de terminaison de l’API de StudioCMS pour Discord.
+- **`/studiocms_api/auth/discord/callback`** : Le point de terminaison de l’API de StudioCMS pour le rappel Discord.
+- **`/studiocms_api/auth/google`** : Le point de terminaison de l’API de StudioCMS pour Google.
+- **`/studiocms_api/auth/google/callback`** : Le point de terminaison de l’API de StudioCMS pour le rappel Google.
+- **`/studiocms_api/auth/auth0`** : Le point de terminaison de l’API de StudioCMS pour Auth0.
+- **`/studiocms_api/auth/auth0/callback`** : Le point de terminaison de l’API de StudioCMS pour le rappel Auth0.
+
+#### Routes du SDK
+
+- **`/studiocms_api/sdk/list-pages`** : Le point de terminaison de l’API de StudioCMS pour accéder à la liste des pages du SDK.
+- **`/studiocms_api/sdk/fallback-list-pages.json`** : Le point de terminaison de l’API de StudioCMS pour accéder à la liste de secours des pages du SDK.
+- **`/studiocms_api/sdk/update-latest-version-cache`** : Le point de terminaison de l’API de StudioCMS pour accéder à la dernière version de la mise en cache du SDK.
+
+#### Routes du moteur de rendu
+
+- **`/studiocms_api/renderer/render`** : Le point de terminaison de l’API de StudioCMS pour le rendu.
