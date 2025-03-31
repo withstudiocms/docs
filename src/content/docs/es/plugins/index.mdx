@@ -139,14 +139,20 @@ type StudioCMSPlugin = {
      */
     fields: SettingsField[];
 
-    /**
-     * Función que se ejecuta cuando se guarda la página de configuración
-     *
-     * Debe devolver una cadena si hay un error,
-     * de lo contrario devuelve true booleano para indicar éxito
-     */
-    onSave: APIRoute;
+		/**
+     * El endpoint para la configuración
+		 *
+     * Debería exportar un APIRoute llamado `onSave` que se ejecute cuando se guarde la página de configuración
+		 */
+		endpoint: string,
   } | undefined;
+  	/**
+     * Enlaces de navegación para usar con el complemento `@studiocms/blog` y otros complementos para mostrar enlaces en el frontend
+	   */
+  frontendNavigationLinks: Array<{
+    label: string;
+    href: string;
+  }>;
 
   /**
    * Definición del tipo de página. Si está presente, el complemento quiere poder modificar el proceso de creación de páginas
@@ -183,6 +189,8 @@ type StudioCMSPlugin = {
      * El componente debe tener una prop `content` que sea una cadena para poder mostrar el contenido actual.
      *
      * **NOTA:** Actualmente, requiere que uses el id de formulario `page-content` para la salida de contenido. Tu editor también debe poder manejar el envío de formularios.
+     * 
+     * **NOTA:** ¡Puedes usar `studiocms/markdown` o `studiocms/html` como valor de reserva si estás trabajando con contenido html o markdown!
      *
      * @example
      * ```ts
@@ -194,7 +202,51 @@ type StudioCMSPlugin = {
      * }
      * ```
      */
-    pageContentComponent: string;
+    pageContentComponent: 'studiocms/markdown' | 'studiocms/html' | string;
+
+		/**
+     * La ruta al componente real que se muestra para el renderizador de la página
+     * 
+     * **NOTA:** ¡Puedes usar `studiocms/markdown` o `studiocms/html` como valor de reserva si estás trabajando con contenido html o markdown!
+		 */
+		rendererComponent: 'studiocms/markdown' | 'studiocms/html' | string;
+
+    /**
+     * Campos según la especificación
+     */
+    fields: SettingsField[];
+
+		/**
+     * Endpoint de API para el tipo de página
+		 *
+     * Los endpoints de API se utilizan para crear, editar y eliminar páginas de este tipo,
+     * los endpoints serán proporcionados el contexto completo de la API de Astro desde el APIRoute de Astro.
+		 *
+     * El archivo debe exportar al menos uno de los siguientes:
+		 * - `onCreate`
+		 * - `onEdit`
+		 * - `onDelete`
+		 *
+		 * @example
+		 * ```ts
+		 * // my-plugin.ts
+		 * import { createResolver } from 'astro-integration-kit';
+		 * const { resolve } = createResolver(import.meta.url)
+		 *
+		 * {
+		 *  apiEndpoint: resolve('./api/pageTypeApi.ts'),
+		 * }
+		 *
+		 * // api/pageTypeApi.ts
+		 * import { APIRoute } from 'astro';
+		 *
+		 * export const onCreate: APIRoute = async (ctx) => {
+     *  // Lógica personalizada aquí
+		 *   return new Response();
+		 * }
+		 * ```
+		 */
+		apiEndpoint: string;
   }> | undefined;
 };
 ```
@@ -239,4 +291,8 @@ export const myPlugin = (options: Options) => definePlugin({
 
 En este ejemplo, definimos un complemento de StudioCMS llamado `My Plugin` que requiere la versión `0.1.0-beta.8` o superior de StudioCMS. El complemento también proporciona una Integración Astro que registra un mensaje en la consola cuando se llama al hook `astro:config:setup`.
 
-<ReadMore>Para más información sobre la creación de plugins, consulta la Guía [Haciendo Plugins Útiles](/es/plugins/extended)</ReadMore>
+<ReadMore>Para más información sobre la creación de plugins, consulta la Guía [Haciendo Plugins Útiles][reference-page]</ReadMore>
+
+{/* Enlaces */}
+
+[reference-page]: /es/plugins/reference/
