@@ -1,0 +1,39 @@
+---
+i18nReady: true
+title: "Rendu du contenu"
+description: "Options de rendu du contenu."
+sidebar:
+   order: 1
+---
+
+Le système de rendu StudioCMS est dynamique en fonction du type de page actuel.
+
+Exemple d’une route fourre-tout (« catch-all » en anglais) où la page actuelle est récupérée à partir du SDK et les données de la page sont transmises au moteur de rendu. Dans ce cas, nous utilisons le type de page par défaut `studiocms/markdown` configuré dans les paramètres de la page et l’enveloppons dans une mise en page comme nous le faisons avec le plugin `@studiocms/blog`. Un plugin de création de pages, par exemple, peut être fourni sans mise en page standard, parce qu’il vise plutôt à ce que vous conceviez le tout dans le générateur, comme vous le feriez dans d’autres systèmes CMS.
+
+```astro title="src/pages/[...slug].astro"
+---
+import { StudioCMSRenderer } from 'studiocms:renderer';
+import studioCMS_SDK from 'studiocms:sdk';
+import Layout from '../layouts/Layout.astro';
+
+let { slug } = Astro.params;
+
+if (!slug) {
+	slug = 'index';
+}
+
+const page = await studioCMS_SDK.GET.databaseEntry.pages.bySlug(slug);
+
+if (!page) {
+	return Astro.redirect('/404');
+}
+
+const { title, description, heroImage } = page;
+---
+
+<Layout title={title} description={description} heroImage={heroImage}>
+	<main>
+		<StudioCMSRenderer data={page} />
+	</main>
+</Layout>
+```
