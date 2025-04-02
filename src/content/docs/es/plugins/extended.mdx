@@ -109,7 +109,7 @@ export function studioCMSPageInjector(options: Options) {
                     html: '<examplegriditem></examplegriditem>',
                     components: {
                         // Inyecta el componente de Astro para reemplazar el elemento personalizado en html plano
-                        examplegriditem: resolve('./dashboard-grid-items/MycomplementoGridItem.astro')
+                        examplegriditem: resolve('./dashboard-grid-items/MyPluginGridItem.astro')
                     }
                 }
             }
@@ -150,7 +150,7 @@ const makeRoute = (slug: string) => {
 
 // 'my-plugin' aquí se usa como identificador para
 // el pageType de la definición del complemento
-const pages = await sdk.GET.packagePages('my-complemento'); 
+const pages = await sdk.GET.packagePages('my-plugin'); 
 
 const { slug } = Astro.params;
 
@@ -192,7 +192,7 @@ import sdk from 'studiocms:sdk';
 
 // 'my-plugin' aqui es usado como el identificador para
 // el pageType de la definición del complemento
-const pages = await sdk.GET.packagePages('my-complemento'); 
+const pages = await sdk.GET.packagePages('my-plugin'); 
 
 // Consigue las últimas 5 páginas actualizadas en los últimos 30 días
 const recentlyUpdatedPages = pages
@@ -227,7 +227,7 @@ Si deseas usar los ayudantes de navegación incorporados de StudioCMS en tu proy
 ---
 import { StudioCMSRoutes } from 'studiocms:lib';
 import studioCMS_SDK from 'studiocms:sdk/cache';
-import { frontendNavigation } from 'studiocms:complemento-helpers';
+import { frontendNavigation } from 'studiocms:plugin-helpers';
 
 // Define las props para el componente de navegación
 interface Props {
