@@ -1,0 +1,63 @@
+---
+i18nReady: true
+title: Contributions au code
+description: Découvrez comment contribuer à StudioCMS
+sidebar:
+  order: 2
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Dans ce guide, vous obtiendrez un aperçu du processus pour contribuer comprenant l’ouverture d’un ticket, la création d’une PR, la révision et la fusion de la PR.
+
+Si vous souhaitez contribuer au code de ce projet, veuillez suivre les étapes ci-dessous :
+
+## Résoudre un ticket
+
+Parcourez nos [tickets existants](https://github.com/withstudiocms/studiocms/issues) pour trouver celui qui vous intéresse. Vous pouvez affiner votre recherche en utilisant les `labels` comme filtres. Si vous trouvez un ticket à résoudre, n’hésitez pas à ouvrir une demande de résolution avec une correction.
+
+## Apporter des modifications
+
+<Steps>
+1. Dupliquez le dépôt (créez un « fork »).
+   - En utilisant GitHub Desktop :
+      - [Bien démarrer avec GitHub Desktop](https://docs.github.com/fr/desktop/overview/getting-started-with-github-desktop) vous guidera dans la configuration de Desktop.
+      - Une fois Desktop configuré, vous pouvez l’utiliser pour [dupliquer le dépôt](https://docs.github.com/fr/desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop) !
+
+   - En utilisant la ligne de commande :
+      - [Dupliquez le dépôt](https://docs.github.com/fr/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#fork-an-example-repository) afin que vous puissiez apporter vos modifications sans affecter le projet d’origine jusqu’à ce que vous soyez prêt à les fusionner.
+
+2. Installez ou mettez à jour **Node.js** et **pnpm** vers les versions spécifiées dans [`.prototools`](https://github.com/withstudiocms/studiocms/blob/main/.prototools). 
+
+3. Créez une branche opérationnelle et commencez vos modifications !
+
+4. Écrivez des tests pour vos modifications, le cas échéant.
+
+5. Mettez à jour la documentation, si nécessaire.
+</Steps>
+
+## Validez votre mise à jour
+
+Validez les modifications une fois que vous en êtes satisfait en créant un commit.
+
+## Demande de fusion
+
+Une fois les modifications terminées, créez une demande de fusion, également appelée PR ou « pull request » en anglais.
+- Remplissez le modèle « Ready for review » afin que nous puissions examiner votre demande de fusion. Ce modèle permet aux réviseurs de comprendre vos modifications et l’objectif de votre demande de fusion.
+- N’oubliez pas de [lier la PR au ticket](https://docs.github.com/fr/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue) si vous en résolvez un.
+- Cochez la case [autoriser les modifications du responsable](https://docs.github.com/fr/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork) afin que la branche puisse être mise à jour pour une fusion.
+Une fois votre PR soumise, un membre de l’équipe Docs l’examinera. Nous pourrons vous poser des questions ou vous demander des informations complémentaires.
+- Nous pouvons demander que des modifications soient apportées avant qu’une PR puisse être fusionnée, soit en utilisant des [suggestions de modifications](https://docs.github.com/fr/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/incorporating-feedback-in-your-pull-request), soit via des commentaires dans la demande de fusion. Vous pouvez appliquer les modifications suggérées directement via l’interface utilisateur. Vous pouvez apporter d’autres modifications à votre fork, puis les valider dans votre branche.
+- Au fur et à mesure que vous mettez à jour votre PR et appliquez les modifications, marquez chaque conversation comme [résolue](https://docs.github.com/fr/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#resolving-conversations).
+- Si vous rencontrez des problèmes de fusion, consultez ce [tutoriel Git (en)](https://github.com/skills/resolve-merge-conflicts) pour vous aider à résoudre les conflits de fusion et d’autres problèmes.
+
+## Votre PR est fusionnée !
+
+Félicitations ! L’équipe StudioCMS vous remercie. Votre contribution sera intégrée à la prochaine version.
+
+Maintenant que vous faites partie de la communauté StudioCMS, vous pouvez nous aider à examiner d’autres PR, répondre aux questions et aider les autres contributeurs. Si ce n’est pas déjà fait, rejoignez notre [serveur Discord](https://chat.studiocms.dev) pour vous connecter avec d’autres contributeurs et l’équipe StudioCMS.
+
+Oh, et vous verrez votre visage dans la [liste des contributeurs][contributors] ! 🎉
+
+{/* Links */}
+[contributors]: /fr/contributing/getting-started/#nos-contributeurs
