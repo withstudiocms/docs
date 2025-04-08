@@ -24,7 +24,7 @@ export const locales = {
 	// 'zh-cn': { label: '简体中文', lang: 'zh-CN' },
 	// 'pt-br': { label: 'Português do Brasil', lang: 'pt-BR' },
 	// 'pt-pt': { label: 'Português', lang: 'pt-PT' },
-	// ko: { label: '한국어', lang: 'ko' },
+	ko: { label: '한국어', lang: 'ko' },
 	// tr: { label: 'Türkçe', lang: 'tr' },
 	// ru: { label: 'Русский', lang: 'ru' },
 	// hi: { label: 'हिंदी', lang: 'hi' },
