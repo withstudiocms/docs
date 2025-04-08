@@ -77,13 +77,13 @@ export default defineConfig({
 		// 		tag: 'pt-PT',
 		// 	},
 		// },
-		// {
-		// 	label: '한국어',
-		// 	lang: 'ko',
-		// 	parameters: {
-		// 		tag: 'ko',
-		// 	},
-		// },
+		{
+			label: '한국어',
+			lang: 'ko',
+			parameters: {
+				tag: 'ko',
+			},
+		},
 		// {
 		// 	label: 'Türkçe',
 		// 	lang: 'tr',
