@@ -1,0 +1,16 @@
+{
+  "topic-learn": "배우기",
+  "topic-package-catalog": "패키지 목록",
+  "topic-references": "참조",
+  "start-here": "시작 가이드",
+  "contributing": "기여 가이드",
+  "how-it-works": "StudioCMS 이해하기",
+  "utils": "유틸리티 & 헬퍼",
+  "plugins": "플러그인",
+  "catalog": "목록",
+  "studiocms-plugins": "StudioCMS 플러그인",
+  "community-plugins": "커뮤니티 플러그인",
+  "config-reference": "구성 참조",
+  "typedoc": "TypeDoc",
+  "auto-gen": "자동 생성됨"
+}
