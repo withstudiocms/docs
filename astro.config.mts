@@ -16,7 +16,7 @@ const site = getCoolifyURL(true) || 'https://docs.studiocms.dev/';
 export const locales = {
 	en: { label: 'English', lang: 'en' },
 	es: { label: 'Español', lang: 'es' },
-	// de: { label: 'Deutsch', lang: 'de' },
+	de: { label: 'Deutsch', lang: 'de' },
 	// ja: { label: '日本語', lang: 'ja' },
 	fr: { label: 'Français', lang: 'fr' },
 	// it: { label: 'Italiano', lang: 'it' },
