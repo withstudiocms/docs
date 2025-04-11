@@ -1,0 +1,99 @@
+---
+i18nReady: true
+title: StudioCMS Dokumentation
+description: Beginne mit StudioCMS zu bauen.
+template: splash
+editUrl: false
+lastUpdated: false
+hero:
+  tagline: Leitfäden und Ressourcen zum Erlernen der Nutzung von StudioCMS.
+  image:
+    alt: StudioCMS Logo
+    dark: ../../../assets/logos/studioCMS.png
+    light: ../../../assets/logos/studioCMS-dark.png
+  actions:
+    - text: Los geht's
+      link: /de/start-here/getting-started/
+      icon: right-arrow
+      variant: primary
+    - text: GitHub-Repository
+      link: https://github.com/withstudiocms/studiocms/
+      icon: github
+---
+
+import { CardGrid, LinkButton } from "@astrojs/starlight/components";
+import Youtube from "~/components/Youtube.astro";
+import Card from "~/components/landing/Card.astro";
+import ListCard from "~/components/landing/ListCard.astro";
+import SplitCard from "~/components/landing/SplitCard.astro";
+import { Center } from "studiocms:ui/components";
+
+<Card title="Willkommen bei StudioCMS" icon="seti:video">
+  <Youtube id="Ukh3Zb9VjIM" />
+</Card>
+
+<CardGrid>
+
+  <SplitCard title="Schnellstart" icon="rocket">
+    ```sh
+    # Erstelle ein neues Astro-Projekt
+    pnpm create studiocms@latest
+
+    # Starte den Entwicklungsserver
+    cd my-studiocms-project
+    pnpm dev
+    ```
+
+    <div style="padding: 0;">
+    Weitere Informationen über erforderliche Umgebungsvariablen findest du auf der Seite [Umgebungsvariablen][environment-variables].
+
+    Eine ausführlichere Anleitung findest du im [Erste Schritte][getting-started]-Leitfaden.
+
+    Du suchst eine libSQL-Datenbank? Schau dir [Turso][turso] an.
+    </div>
+
+  </SplitCard>
+{/* prettier-ignore */}
+  <ListCard title="Mehr über StudioCMS erfahren" icon="information">
+    - [Erste Schritte][getting-started]
+    - [Umgebungsvariablen][environment-variables]
+    - [Warum StudioCMS?][why-studiocms]
+    - [StudioCMS verstehen][how-it-works]
+  </ListCard>
+
+{/* prettier-ignore */}
+  <ListCard title="StudioCMS anpassen" icon="puzzle">
+    - [Verwendung des SDK][using-the-sdk]
+    - [Verwendung der REST API][using-rest-api]
+    - [Plugins finden und verwenden][package-catalog]
+    - [Erfahre mehr über die Plugin API][plugin-api]
+  </ListCard>
+
+</CardGrid>
+
+<Center>
+  <div style="display: flex; flex-direction: column; margin-top: 3rem;">
+    Möchtest du dich in der StudioCMS-Community engagieren?
+
+    <LinkButton
+      href='https://chat.studiocms.dev'
+      icon='discord'
+      iconPlacement='end'
+      class='discord-button'
+      style='width: fit-content; margin-left: auto; margin-right: auto;'>
+        Werde Mitglied in unserem Discord!
+    </LinkButton>
+
+  </div>
+</Center>
+
+{/* Page MD Links */}
+[environment-variables]: /de/start-here/getting-started/
+[getting-started]: /de/start-here/getting-started/
+[turso]: https://tur.so/studiocms
+[why-studiocms]: /de/start-here/why-studiocms/
+[how-it-works]: /de/how-it-works/
+[using-the-sdk]: /de/how-it-works/sdk/
+[using-rest-api]: /de/how-it-works/restapi/
+[package-catalog]: /de/package-catalog/
+[plugin-api]: /de/plugins/
