@@ -1,0 +1,28 @@
+---
+i18nReady: true
+title: 이미지 서비스
+description: StudioCMSOptions 이미지 서비스 참조 페이지
+sidebar:
+  order: 4
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+StudioCMS 통합 구성 옵션 스키마 참조
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  imageService: {
+    cdnPlugin: 'cloudinary-js'
+  },
+});
+```
+
+## `cdnPlugin`
+
+`cdnPlugin`은 활성화된 경우 이미지에 사용할 CDN 플러그인을 결정하는 데 사용되는 열거형(enum)입니다.
+
+- **타입:** `'cloudinary-js'` | `undefined`
+- **기본값:** `undefined`
