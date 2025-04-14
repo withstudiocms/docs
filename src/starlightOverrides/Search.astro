@@ -25,15 +25,16 @@ const docSearchStrings =
 			for (let i = 0; i < segments.length; i++) {
 				const segment = segments[i];
 				if (i < segments.length - 1) {
+          // Build up the tree structure
 					pointer[segment] ??= {};
 					pointer = pointer[segment];
 				} else {
+          // At the final node, set the leaf value.
 					pointer[segment] = val;
 				}
 			}
-
 			return dict;
-			// biome-ignore lint/suspicious/noExplicitAny:
+			// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 		}, {} as any);
 ---
 
