@@ -11,8 +11,17 @@ const docSearchStrings =
 		.map(([key, value]) => [key.replace('docsearch.', ''), value])
 		// 4. Convert the long keys to nested objects (e.g. `modal.footer.closeText` => `modal: { footer: { closeText: "..." } }`)
 		.reduce((dict, [key, val]) => {
+			const exceptions = ['button', 'shortcutLabel', 'placeholder'];
 			const segments = key.split('.');
-			let pointer = dict;
+
+			if (exceptions.includes(key)) {
+				// Directly set at root level
+				dict[key] = val;
+				return dict;
+			}
+
+			// Wrap everything else inside `modal`
+			let pointer = (dict.modal ??= {});
 			for (let i = 0; i < segments.length; i++) {
 				const segment = segments[i];
 				if (i < segments.length - 1) {
