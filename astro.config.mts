@@ -2,6 +2,7 @@ import starlight from '@astrojs/starlight';
 import ui from '@studiocms/ui';
 import { defineConfig } from 'astro/config';
 import starlightImageZoom from 'starlight-image-zoom';
+import starlightLinksValidator from 'starlight-links-validator'
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import getCoolifyURL from './hostUtils.ts';
 import rehypePlugins from './src/plugins/rehypePluginKit.ts';
@@ -133,6 +134,7 @@ export default defineConfig({
 			],
 			plugins: [
 				...typeDocPlugins,
+        starlightLinksValidator(),
 				starlightImageZoom(),
 				starlightSidebarTopics([
 					{
