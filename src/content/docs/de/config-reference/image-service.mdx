@@ -1,0 +1,28 @@
+---
+i18nReady: true
+title: Bilderdienst
+description: Referenzseite für StudioCMSOptions imageService
+sidebar:
+  order: 4
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+StudioCMS Integration Konfigurationsoptionen Schema Referenz.
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  imageService: {
+    cdnPlugin: 'cloudinary-js'
+  },
+});
+```
+
+## `cdnPlugin`
+
+`cdnPlugin` ist eine Aufzählung, mit der festgelegt wird, welches CDN-Plugin für Bilder verwendet werden soll, wenn es aktiviert ist.
+
+- **Typ:** `'cloudinary-js'` | `undefined`
+- **Standard:** `undefined`
