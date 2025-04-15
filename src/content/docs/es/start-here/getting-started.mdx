@@ -239,7 +239,7 @@ Para más información sobre todas las variables de entorno disponibles para la 
 
 ### Opcional: Configurar autenticación oAuth
 
-StudioCMS admite autenticación oAuth con GitHub, Discord, Google y Auth0. Para configurar la autenticación oAuth, necesitarás configurar las [variables de entorno requeridas en tu archivo `.env`](/es/start-here/environment-variables/#oauth-authentication-environment-variables), y asegurarte de que el proveedor esté [habilitado en tu configuración][auth-config-ref].
+StudioCMS admite autenticación oAuth con GitHub, Discord, Google y Auth0. Para configurar la autenticación oAuth, necesitarás configurar las [variables de entorno requeridas en tu archivo `.env`][oauth-environment-variables], y asegurarte de que el proveedor esté [habilitado en tu configuración][auth-config-ref].
 
 Para configurar los proveedores oAuth, requieren una URL de callback. La URL de callback es la ruta donde el proveedor redirigirá al usuario después de la autenticación.
 
@@ -357,9 +357,9 @@ Aprende más sobre las opciones de configuración de StudioCMS usando las págin
 
 {/* Enlaces */}
 [package-catalog]: /es/package-catalog/
-[environment-variables]: /es/start-here/environment-variables
-[config-reference]: /es/config-reference
+[environment-variables]: /es/start-here/environment-variables/
+[config-reference]: /es/config-reference/
 [db-url-token]: /es/start-here/environment-variables/#url-de-la-base-de-datos-y-token-para-astrojsdb
 [encryption-key]: /es/start-here/environment-variables/#clave-de-encriptación-para-studiocmsauth
 [oauth-environment-variables]: /es/start-here/environment-variables/#variables-de-entorno-para-autenticación-oauth
-[auth-config-ref]: /es/config-reference/authentication
+[auth-config-ref]: /es/config-reference/dashboard/#authconfig
