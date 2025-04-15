@@ -56,6 +56,7 @@
     "typedoc-plugin-frontmatter": "^1.3.0",
     "typedoc-plugin-zod": "^1.4.0",
     "starlight-image-zoom": "^0.11.1",
+    "starlight-links-validator": "^0.16.0",
     "hastscript": "^9.0.1",
     "hast-util-to-string": "^3.0.1",
     "rehype-slug": "^6.0.0",

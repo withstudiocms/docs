@@ -2,6 +2,7 @@ import starlight from '@astrojs/starlight';
 import ui from '@studiocms/ui';
 import { defineConfig } from 'astro/config';
 import starlightImageZoom from 'starlight-image-zoom';
+import starlightLinksValidator from 'starlight-links-validator'
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import getCoolifyURL from './hostUtils.ts';
 import rehypePlugins from './src/plugins/rehypePluginKit.ts';
@@ -133,11 +134,16 @@ export default defineConfig({
 			],
 			plugins: [
 				...typeDocPlugins,
+				starlightLinksValidator({
+					errorOnFallbackPages: false,
+					errorOnInconsistentLocale: true,
+					exclude: ['/*/typedoc/**/*']
+				}),
 				starlightImageZoom(),
 				starlightSidebarTopics([
 					{
 						label: getTranslations('topic-learn'),
-						link: '/start-here/getting-started',
+						link: '/start-here/getting-started/',
 						icon: 'open-book',
 						id: 'learn',
 						items: [
@@ -170,7 +176,7 @@ export default defineConfig({
 					},
 					{
 						label: getTranslations('topic-package-catalog'),
-						link: '/package-catalog',
+						link: '/package-catalog/',
 						icon: 'download',
 						id: 'package-catalog',
 						items: [
@@ -193,7 +199,7 @@ export default defineConfig({
 					},
 					{
 						label: getTranslations('topic-references'),
-						link: '/config-reference',
+						link: '/config-reference/',
 						icon: 'information',
 						id: 'references',
 						items: [
