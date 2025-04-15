@@ -134,11 +134,11 @@ export default defineConfig({
 			],
 			plugins: [
 				...typeDocPlugins,
-        starlightLinksValidator({
-          errorOnFallbackPages: false,
-          errorOnInconsistentLocale: true,
-          exclude: ['/*/typedoc/**/*']
-        }),
+				starlightLinksValidator({
+					errorOnFallbackPages: false,
+					errorOnInconsistentLocale: true,
+					exclude: ['/*/typedoc/**/*']
+				}),
 				starlightImageZoom(),
 				starlightSidebarTopics([
 					{
