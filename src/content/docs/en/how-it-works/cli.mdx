@@ -21,7 +21,7 @@ There is multiple different CLIs that are part of the StudioCMS ecosystem:
 
 - **[`create-studiocms`](#create-studiocms)**: The StudioCMS project scaffolding CLI.
 - **[`studiocms`](#studiocms)**: The StudioCMS utility CLI.
-- **`@studiocms/upgrade`**: Upgrade StudioCMS Projects and their Plugins
+- **[`@studiocms/upgrade`](#studiocms-upgrade)**: Upgrade StudioCMS Projects and their Plugins
 
 The following is a breakdown of the StudioCMS CLI and its components.
 
@@ -281,6 +281,56 @@ Turso CLI Installer
 Options:
   -h, --help  display help for command
 ```
+
+## `@studiocms-upgrade`
+
+A command-line tool for upgrading your StudioCMS installation and dependencies.
+
+You can run this command in your terminal to upgrade your official Astro Project, integrations at the same time as you upgrade StudiOCMS.
+
+### Example Usage
+
+<Tabs syncKey='pkgs'>
+  <TabItem label="npm" icon="seti:npm">
+  ```sh
+  npx @studiocms/upgrade
+  ```
+  </TabItem>
+  <TabItem label="pnpm" icon="pnpm">
+  ```sh
+  pnpm dlx @studiocms/upgrade
+  ```
+  </TabItem>
+  <TabItem label="yarn" icon="seti:yarn">
+  ```sh
+  yarn dlx @studiocms/upgrade
+  ```
+  </TabItem>
+</Tabs>
+
+### Options
+
+#### tag (optional)
+
+It is possible to pass a specific `tag` to resolve packages against. If not included, `@studiocms/upgrade` looks for the `latest` tag.
+
+<Tabs syncKey='pkgs'>
+  <TabItem label="npm" icon="seti:npm">
+  ```sh
+  npx @studiocms/upgrade beta
+  ```
+  </TabItem>
+  <TabItem label="pnpm" icon="pnpm">
+  ```sh
+  pnpm dlx @studiocms/upgrade beta
+  ```
+  </TabItem>
+  <TabItem label="yarn" icon="seti:yarn">
+  ```sh
+  yarn dlx @studiocms/upgrade beta
+  ```
+  </TabItem>
+</Tabs>
 
 [templates]: https://github.com/withstudiocms/templates
 [environment-variables]: /en/start-here/environment-variables/
