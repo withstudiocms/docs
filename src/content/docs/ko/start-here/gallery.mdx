@@ -1,0 +1,15 @@
+---
+i18nReady: true
+title: 갤러리
+description: StudioCMS를 보여주는 작은 이미지 갤러리
+tableOfContents: false
+sidebar:
+   order: 5
+---
+
+import Gallery from '~/components/Gallery.astro'
+import { mainDemoGalleryImages } from "~/assets/index.ts"
+
+`StudioCMS` 통합을 보여주는 작은 이미지 갤러리입니다.
+
+<Gallery galleryImages={mainDemoGalleryImages} />
