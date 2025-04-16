@@ -18,12 +18,12 @@ To start using StudioCMS, you'll need:
 
 - A version of [Node.js supported by Astro](https://docs.astro.build/en/install-and-setup/#prerequisites) (Bun and Deno are not supported)
 - An Astro project
-- A libSQL provider or self-hosted libSQL server
+- A libSQL provider or [self-hosted libSQL server][self-hosted-libsql]
 - The StudioCMS integration
 
 ## Prepare your database
 
-StudioCMS uses `@astrojs/db` to connect to your libSQL database. You can use any libSQL provider or self-hosted libSQL server.
+StudioCMS uses `@astrojs/db` to connect to your libSQL database. You can use any libSQL provider or [self-hosted libSQL server][self-hosted-libsql].
 
 If you are using the StudioCMS CLI, you can skip this step and use the CLI to create a new database if you have the Turso CLI installed.
 
@@ -363,3 +363,4 @@ Learn more about the StudioCMS Config options using the [StudioCMS Reference][co
 [encryption-key]: /en/start-here/environment-variables/#encryption-key-for-studiocmsauth
 [oauth-environment-variables]: /en/start-here/environment-variables/#oauth-authentication-environment-variables
 [auth-config-ref]: /en/config-reference/dashboard/#authconfig
+[self-hosted-libsql]: /en/guides/database/sqld-server/
