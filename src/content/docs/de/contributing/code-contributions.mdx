@@ -1,0 +1,63 @@
+---
+i18nReady: true
+title: Code-Beiträge
+description: Erfahre, wie du zu StudioCMS beitragen kannst
+sidebar:
+  order: 2
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+In diesem Leitfaden erhältst du einen Überblick über den Beitrags-Workflow vom Eröffnen eines Problems über das Erstellen eines PRs bis hin zum Überprüfen und Zusammenführen des PRs.
+
+Wenn du Code zu diesem Projekt beitragen möchtest, befolge bitte die folgenden Schritte:
+
+## Löse ein Problem
+
+Durchsuche unsere [bestehenden Issues](https://github.com/withstudiocms/studiocms/issues), um eine zu finden, die dich interessiert. Du kannst die Suche eingrenzen, indem du `labels` als Filter verwendest. Wenn du ein Problem findest, an dem du arbeiten möchtest, kannst du gerne einen PR mit einer Lösung eröffnen.
+
+## Änderungen vornehmen
+
+<Steps>
+1. Forke das Repository.
+   - GitHub Desktop verwenden:
+      - [Erste Schritte mit GitHub Desktop](https://docs.github.com/de/desktop/overview/getting-started-with-github-desktop) führt dich durch die Einrichtung von Desktop.
+      - Sobald der Desktop eingerichtet ist, kannst du ihn benutzen, um [das Repo zu forken](https://docs.github.com/de/desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop)!
+
+   - Benutze die Kommandozeile:
+      - [Forke das Repo](https://docs.github.com/de/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#fork-an-example-repository), damit du deine Änderungen vornehmen kannst, ohne das ursprüngliche Projekt zu beeinflussen, bis du sie zusammenführen kannst.
+
+2. Installiere oder aktualisiere **Node.js** und **pnpm**, auf die Versionen, die in [`.prototools`](https://github.com/withstudiocms/studiocms/blob/main/.prototools) definiert sind. 
+
+3. Erstelle einen Branch und beginne mit deinen Änderungen!
+
+4. Schreibe Tests für deine Änderungen, falls zutreffend.
+
+5. Aktualisiere die Dokumentation, falls nötig.
+</Steps>
+
+## Commite deine Änderungen
+
+Commite die Änderungen, wenn du mit ihnen zufrieden bist.
+
+## Pull Request
+
+Wenn du mit den Änderungen fertig bist, erstelle einen Pull Request, auch PR genannt.
+- FFülle die Vorlage „Bereit zur Überprüfung“ aus, damit wir deinen PR überprüfen können. Diese Vorlage hilft den Prüfern, deine Änderungen und den Zweck deines Pull Requests zu verstehen.
+- Vergiss nicht, [PR zum Issue](https://docs.github.com/de/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue) zu verknüpfen, wenn du eine Aufgabe löst.
+- Aktiviere das Kontrollkästchen [Erlaube Bearbeitungen der Maintainer](https://docs.github.com/de/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork), damit der Branch für eine Zusammenführung aktualisiert werden kann.
+Sobald du deinen PR eingereicht hast, wird ein Mitglied des Docs-Teams deinen Vorschlag prüfen. Wir können Fragen stellen oder zusätzliche Informationen anfordern.
+- Wir können um Änderungen bitten, bevor ein PR zusammengeführt werden kann, entweder mit [Änderungsvorschlägen](https://docs.github.com/de/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork) oder mit Pull Request-Kommentaren. Du kannst die vorgeschlagenen Änderungen direkt über die Benutzeroberfläche übernehmen. Du kannst alle anderen Änderungen in deinem Fork vornehmen und sie dann in deinen Branch übertragen.
+- Wenn du deinen PR aktualisierst und Änderungen vornimmst, markiere jede Unterhaltung als [gelöst](https://docs.github.com/de/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#unterhaltungen-auflösen).
+- Wenn du auf Probleme beim Zusammenführen stößt, schau dir diese [Git-Anleitung](https://github.com/skills/resolve-merge-conflicts) an, welche dir hilft, Konflikte beim Zusammenführen und andere Probleme zu lösen.
+
+## Dein PR wird zusammengeführt!
+
+Herzlichen Glückwunsch! Das StudioCMS-Team dankt dir. Dein Beitrag wird Teil der nächsten Version sein.
+
+Jetzt, wo du Teil der StudioCMS-Community bist, kannst du uns helfen, andere PRs zu überprüfen, Fragen zu beantworten und anderen Autoren zu helfen. Wenn du es noch nicht getan hast, melde dich in unserem [Discord](https://chat.studiocms.dev) an, um dich mit anderen Autoren und dem StudioCMS-Team auszutauschen.
+
+Oh, und du wirst dein Gesicht in der [Liste der Mitwirkenden][contributors] sehen! 🎉
+
+{/* Links */}
+[contributors]: /de/contributing/getting-started/#unsere-mitwirkenden

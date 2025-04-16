@@ -1,0 +1,187 @@
+---
+i18nReady: true
+title: StudioCMSOptions
+description: Referenzseite für StudioCMSOptions
+sidebar:
+  order: 1
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+StudioCMS Integration Konfigurationsoptionen Schema Referenz.
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+// Standardwerte angezeigt
+export default defineStudioCMSConfig({
+  dbStartPage: true,
+  dateLocale: 'en-us',
+  verbose: false,
+  plugins: [],
+  componentRegistry: {},
+  overrides: {},
+  imageService: {},
+  defaultFrontEndConfig: {},
+  dashboardConfig: {},
+  includedIntegrations: {},
+  dateTimeFormat: {},
+  sdk: {},
+  pageTypeOptions: {}
+});
+```
+
+## `dbStartPage`
+
+Projektinitialisierungsseite - Wird bei der Ersteinrichtung verwendet, um deine Datenbankkonfiguration zu erstellen.
+
+- **Typ:** `boolean`
+- **Standard:** `true`
+
+### Verwendung
+
+```ts twoslash {2} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dbStartPage: true, // STANDARD - Dies fügt eine Startseite ein, um deine DB-Daten einzurichten.
+})
+```
+
+## `dateLocale`
+
+`dateLocale` ist eine Zeichenkette, der verwendet wird, um das Gebietsschema für die Datumsformatierung zu bestimmen.
+
+- **Typ:** `string`
+- **Standard:** `'en-us'`
+
+### Verwendung
+
+```ts twoslash {2} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dateLocale: 'en-us', // STANDARD - Hier wird das Gebietsschema für die Datumsformatierung festgelegt.
+})
+```
+
+## `verbose`
+
+`verbose` ist ein boolescher Wert, mit dem du die ausführliche Protokollierung aktivieren oder deaktivieren kannst.
+
+- **Typ:** `boolean`
+- **Standard:** `false`
+
+### Verwendung
+
+```ts twoslash {2} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  verbose: false, // STANDARD - Dies setzt die ausführliche Protokollierung auf false.
+})
+```
+
+## `plugins`
+
+`plugins` ist ein Array, mit dem festgelegt wird, welche Plugins geladen werden sollen.
+
+- **Typ:** `StudioCMSPlugin[]`
+- **Standard:** `[]`
+
+### Verwendung
+
+```ts twoslash {1, 3-5} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+import blog from '@studiocms/blog';
+export default defineStudioCMSConfig({
+  plugins: [
+    blog(),
+  ],
+})
+```
+
+## `componentRegistry`
+
+`componentRegistry` ist ein Objekt, das zur Registrierung von Komponenten verwendet wird.
+
+- **Typ:** `Record<string, string>`
+- **Standard:** `{}`
+
+### Verwendung
+
+```ts twoslash {2-4} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  componentRegistry: {
+    'my-component': 'src/components/MyComponent.astro',
+  },
+})
+```
+
+## `dateTimeFormat`
+
+`dateTimeFormat` ist ein Objekt, mit dem du das Datums- und Zeitformat konfigurieren kannst.
+
+- **Typ:** `Intl.DateTimeFormatOptions`
+- **Standard:** `{}`
+
+### Verwendung
+
+```ts twoslash {2-6} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dateTimeFormat: {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  },
+})
+```
+
+## `overrides`
+
+`overrides` ist ein Objekt, mit dem die Standardkonfiguration überschrieben werden kann.
+
+<ReadMore>[Siehe `overrides` für alle Optionen][overrides]</ReadMore>
+
+## `imageService`
+
+`imageService` ist ein Objekt, das zur Konfiguration des Bilddienstes verwendet wird.
+
+<ReadMore>[Siehe `imageService` für alle Optionen][image-service]</ReadMore>
+
+## `defaultFrontEndConfig`
+
+`defaultFrontEndConfig` ist ein Objekt, mit dem das Standard-Frontend konfiguriert wird.
+
+<ReadMore>[Siehe `defaultFrontEndConfig` für alle Optionen][default-frontend-config]</ReadMore>
+
+## `dashboardConfig`
+
+`dashboardConfig` ist ein Objekt, mit dem das Dashboard konfiguriert werden kann.
+
+<ReadMore>[Siehe `dashboardConfig` für alle Optionen][dashboard]</ReadMore>
+
+## `includedIntegrations`
+
+`includedIntegrations` ist ein Objekt, das verwendet wird, um zu konfigurieren, welche Integrationen einbezogen werden sollen.
+
+<ReadMore>[Siehe `includedIntegrations` für alle Optionen][included-integrations]</ReadMore>
+
+## `sdk`
+
+`sdk` ist ein Objekt, das zur Konfiguration des SDKs verwendet wird.
+
+<ReadMore>[Siehe `sdk` für alle Optionen][sdk]</ReadMore>
+
+{/* Links */}
+[overrides]: /de/config-reference/overrides/
+[image-service]: /de/config-reference/image-service/
+[default-frontend-config]: /de/config-reference/default-frontend-config/
+[dashboard]: /de/config-reference/dashboard/
+[included-integrations]: /de/config-reference/included-integrations/
+[sdk]: /de/config-reference/sdk/

@@ -1,0 +1,42 @@
+---
+i18nReady: true
+title: "Die REST-API"
+description: "Erfahre mehr über die StudioCMS REST API und wie du sie nutzen kannst."
+sidebar:
+   order: 4
+---
+
+# Einführung
+
+Die StudioCMS REST API ist ein leistungsstarkes Werkzeug, mit dem du programmatisch mit deinen StudioCMS-Inhalten interagieren kannst. Sie bietet eine einfache und flexible Möglichkeit, deine Inhalte mit Astro DB zu verwalten und bereitzustellen.
+
+Die StudioCMS REST API wird von Astro Endpoints unterstützt und bietet eine RESTful-Schnittstelle für die Interaktion mit deinen StudioCMS-Inhalten. Im Folgenden findest du eine Übersicht über die StudioCMS REST API und ihre Komponenten.
+
+## API-Tokens
+
+Um auf die geschützten Endpunkte der StudioCMS REST API zugreifen zu können, musst du ein API-Token im `Authorization`-Header deiner Anfragen angeben. Du kannst ein API-Token generieren, indem du dich im StudioCMS Dashboard anmeldest und zum Abschnitt „API-Token“ im Benutzerprofil navigierst.
+
+## Endpunkte
+
+Die StudioCMS REST-API bietet mehrere Endpunkte, über die du mit deinen StudioCMS-Inhalten interagieren kannst. Diese Endpunkte werden hauptsächlich intern von StudioCMS verwendet, können aber auch von Entwicklern genutzt werden, um mit StudioCMS-Daten zu interagieren. Im Folgenden sind die Endpunkte aufgeführt, die von der StudioCMS REST API bereitgestellt werden:
+
+### Öffentliche Endpunkte
+
+Diese Endpunkte sind für die Öffentlichkeit zugänglich und erfordern keine Authentifizierung. Sie bieten einen reinen Lesezugriff auf den StudioCMS-Inhaltsbaum. Daher unterstützen diese Endpunkte nur `GET`-Anfragen.
+
+- **`/studiocms_api/rest/v1/public/folders/`**: Liefert eine Liste aller öffentlichen Ordner im StudioCMS-Inhaltsbaum.
+- **`/studiocms_api/rest/v1/public/folders/[id]`**: Liefert Details zu einem bestimmten öffentlichen Ordner im StudioCMS-Inhaltsbaum.
+- **`/studiocms_api/rest/v1/public/pages/`**: Liefert eine Liste aller öffentlichen Seiten im StudioCMS-Inhaltsbaum.
+- **`/studiocms_api/rest/v1/public/pages/[id]`**: Liefert Details zu einer bestimmten öffentlichen Seite im StudioCMS-Inhaltsbaum.
+
+### Geschützte Endpunkte
+
+- **`/studiocms_api/rest/v1/folders/`**: Liefert eine Liste aller Ordner im StudioCMS-Inhaltsbaum.
+- **`/studiocms_api/rest/v1/folders/[id]`**: Liefert Details zu einem bestimmten Ordner im StudioCMS-Inhaltsbaum.
+- **`/studiocms_api/rest/v1/pages/`**: Liefert eine Liste aller Seiten im StudioCMS-Inhaltsbaum.
+- **`/studiocms_api/rest/v1/pages/[id]`**: Liefert Details zu einer bestimmten Seite im StudioCMS-Inhaltsbaum.
+- **`/studiocms_api/rest/v1/pages/[id]/history/`**: Liefert eine Liste aller Einträge der Seitenhistorie im StudioCMS-Inhaltsbaum.
+- **`/studiocms_api/rest/v1/pages/[id]/history/[id]`**: Liefert Details für einen bestimmten Seitenverlaufseintrag im StudioCMS-Inhaltsbaum.
+- **`/studiocms_api/rest/v1/settings/`**: Stellt die StudioCMS-Einstellungen für das aktuelle Projekt bereit.
+- **`/studiocms_api/rest/v1/users/`**: Liefert eine Liste aller Benutzer im StudioCMS-Projekt.
+- **`/studiocms_api/rest/v1/users/[id]`**: Liefert Details zu einem bestimmten Benutzer im StudioCMS-Projekt.

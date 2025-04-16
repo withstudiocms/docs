@@ -1,0 +1,15 @@
+---
+i18nReady: true
+title: Galerie
+description: Eine kleine Galerie mit Bildern, um StudioCMS vorzustellen
+tableOfContents: false
+sidebar:
+   order: 5
+---
+
+import Gallery from '~/components/Gallery.astro'
+import { mainDemoGalleryImages } from "~/assets/index.ts"
+
+Dies ist eine kleine Galerie mit Bildern, die die StudioCMS-Integration zeigen.
+
+<Gallery galleryImages={mainDemoGalleryImages} />
