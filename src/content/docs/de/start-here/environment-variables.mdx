@@ -1,0 +1,112 @@
+---
+i18nReady: true
+title: Umgebungsvariablen
+description: Ein kurzer Überblick über die in StudioCMS verwendeten Umgebungsvariablen.
+sidebar:
+   order: 2
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import ReadMore from '~/components/ReadMore.astro';
+
+Damit StudioCMS richtig funktioniert, musst du die richtigen Umgebungsvariablen einrichten. Diese Variablen sind wichtig, um eine sichere Verbindung zu Astro DB herzustellen und sich bei der StudioCMS-API zu authentifizieren. Wenn du diese Umgebungsvariablen nicht richtig konfigurierst, wird die Anwendung nicht wie vorgesehen funktionieren.
+
+Du kannst eine `.env`-Datei im Hauptverzeichnis deines Projekts erstellen und die benötigten Umgebungsvariablen hinzufügen. Die Datei `.env` ist eine Textdatei, die Schlüssel-Wert-Paare von Umgebungsvariablen enthält. Die Umgebungsvariablen werden von der Anwendung zur Laufzeit gelesen.
+
+Wie du in Zukunft mit Umgebungsvariablen in Astro arbeitest, kannst du unter [Umgebungsvariablen](https://docs.astro.build/de/guides/environment-variables/) in der Astro-Dokumentation nachlesen.
+
+## Erforderliche Umgebungsvariablen
+
+Um StudioCMS nutzen zu können, musst du einige Umgebungsvariablen in deiner `.env`-Datei einrichten.
+
+### Datenbank URL und Token für `@astrojs/db`
+
+`ASTRO_DB_REMOTE_URL` - Die Verbindungs-URL zu deinem libSQL-Server
+`ASTRO_DB_APP_TOKEN` - Das App-Token für deinen libSQL-Server
+
+```bash title=".env"
+ASTRO_DB_REMOTE_URL=libsql://your.server.io
+ASTRO_DB_APP_TOKEN=eyJh...RUCg
+```
+
+<ReadMore>Weitere Informationen zu `@astrojs/db` findest du in der [Astro-Dokumentation für Astro DB](https://docs.astro.build/en/guides/astro-db/)</ReadMore>
+
+### Verschlüsselungsschlüssel für `@studiocms/auth`
+
+`CMS_ENCRYPTION_KEY` - Ein sicherer Verschlüsselungsschlüssel zum Verschlüsseln sensibler Daten
+
+```bash title=".env"
+CMS_ENCRYPTION_KEY="wqR+w...sRcg=="
+```
+
+<Aside type="note" title="Use OpenSSL">
+Du kannst einen sicheren Verschlüsselungsschlüssel mit dem folgenden Befehl erzeugen:
+```bash
+openssl rand --base64 16
+``` 
+</Aside>
+
+## Optionale Umgebungsvariablen
+
+### oAuth Authentifizierung Umgebungsvariablen
+
+<ReadMore>
+Weitere Informationen zum Einrichten der oAuth-Authentifizierung findest du in der [„oAuth-Authentifizierung konfigurieren“][config-oauth]-Dokumentation.
+</ReadMore>
+
+#### GitHub (Optional)
+
+Um dich bei GitHub zu authentifizieren, musst du die folgenden Umgebungsvariablen zu deiner `.env`-Datei hinzufügen:
+
+```bash title=".env"
+# Anmeldeinformationen für GitHub OAuth
+CMS_GITHUB_CLIENT_ID=
+CMS_GITHUB_CLIENT_SECRET=
+CMS_GITHUB_REDIRECT_URI=
+```
+
+<Aside type="note" title="Hinweis">
+`CMS_GITHUB_REDIRECT_URI` ist optional, wenn du mehrere Redirect URIs mit GitHub oAuth verwendest.
+</Aside>
+
+#### Discord (Optional)
+
+```bash title=".env"
+# Anmeldeinformationen für Discord OAuth
+CMS_DISCORD_CLIENT_ID=
+CMS_DISCORD_CLIENT_SECRET=
+CMS_DISCORD_REDIRECT_URI=
+```
+
+#### Google (Optional)
+
+```bash title=".env"
+# Anmeldeinformationen für Google OAuth
+CMS_GOOGLE_CLIENT_ID=
+CMS_GOOGLE_CLIENT_SECRET=
+CMS_GOOGLE_REDIRECT_URI=
+```
+
+#### Auth0 (Optional)
+
+```bash title=".env"
+# Anmeldeinformationen für auth0 OAuth
+CMS_AUTH0_CLIENT_ID=
+CMS_AUTH0_CLIENT_SECRET=
+CMS_AUTH0_DOMAIN=
+CMS_AUTH0_REDIRECT_URI=
+```
+
+### Umgebungsvariablen für den Image Handler
+
+#### Cloudinary (Optional)
+
+Wenn du dich entscheidest, das integrierte Cloudinary-Plugin zu verwenden, musst du Folgendes definieren:
+
+```bash title=".env"
+## Cloudinary Javascript SDK
+CMS_CLOUDINARY_CLOUDNAME="demo"
+```
+
+{/* Links */}
+[config-oauth]: /de/start-here/getting-started/#optional-konfiguriere-die-oauth-authentifizierung
