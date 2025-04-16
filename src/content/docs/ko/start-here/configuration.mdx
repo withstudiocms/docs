@@ -1,7 +1,7 @@
 ---
 i18nReady: true
-title: "StudioCMS Config"
-description: "Options for how to define the StudioCMS Config"
+title: "StudioCMS 구성"
+description: "StudioCMS 구성을 정의하는 방법에 대한 옵션"
 sidebar:
    order: 3
 ---
@@ -9,15 +9,15 @@ sidebar:
 import { FileTree } from '@astrojs/starlight/components';
 import ReadMore from '~/components/ReadMore.astro';
 
-# Available Options
+# 사용 가능한 옵션
 
-There are two ways to configure the StudioCMS integration. Below are examples of how to configure based on if you choose to use the `astro.config.mjs` or the dedicated `studiocms.config.mjs` file.
+StudioCMS 통합을 구성하는 두 가지 방법이 있습니다. 아래는 `astro.config.mjs` 파일을 사용하거나 전용 `studiocms.config.mjs` 파일을 사용하여 구성하는 방법의 예시입니다.
 
 <ReadMore>
-This page shows you how and where to define the StudioCMS configuration. For more information on the StudioCMS configuration options, see the [reference page][reference-page].
+이 페이지에서는 StudioCMS 구성을 어떻게, 어디에 정의하는지 보여줍니다. StudioCMS 구성 옵션에 대한 자세한 내용은 [참조 페이지][reference-page]를 확인하세요.
 </ReadMore>
 
-## Using the `astro.config.mjs` file
+## `astro.config.mjs` 파일 사용
 
 ```ts twoslash title="astro.config.mjs"
 import db from '@astrojs/db';
@@ -33,24 +33,24 @@ export default defineConfig({
         db(),
         studioCMS({
             dbStartPage: false,
-            // other configuration options
+            // ...기타 구성 옵션
         }),
     ],
 });
 ```
 
-## Using the `studiocms.config.mjs` file (recommended)
+## `studiocms.config.mjs` 파일 사용 (권장)
 
-This file will be automatically picked up and will overwrite any options passed in your `astro.config.mjs`, if you choose to use this option. Please ensure to move all StudioCMS configuration options into this file instead like below:
+이 파일은 자동으로 선택되며, 이 옵션을 사용하기로 선택한 경우 astro.config에 전달된 모든 옵션을 덮어씁니다. 아래와 같이 모든 StudioCMS 구성 옵션을 이 파일로 옮겨야 합니다.
 
-### Example file structure
+### 예시 파일 구조
 
 <FileTree>
 
 - .env
 - astro.config.mjs
 - **studiocms.config.mjs**
-- studiocms-auth.config.json Auto Generated
+- studiocms-auth.config.json 자동 생성됨
 - package.json
 - src
   - env.d.ts
@@ -58,7 +58,7 @@ This file will be automatically picked up and will overwrite any options passed 
 
 </FileTree>
 
-### Example configuration files
+### 예시 구성
 
 ```ts twoslash title="astro.config.mjs"
 import db from '@astrojs/db';
@@ -79,9 +79,9 @@ import { defineStudioCMSConfig } from "studiocms/config";
 
 export default defineStudioCMSConfig({
     dbStartPage: false,
-    // other configuration options
+    // ...기타 구성 옵션
 })
 ```
 
 {/* Links */}
-[reference-page]: /en/config-reference/
+[reference-page]: /ko/config-reference/

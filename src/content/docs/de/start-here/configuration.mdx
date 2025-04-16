@@ -1,7 +1,7 @@
 ---
 i18nReady: true
-title: "StudioCMS Config"
-description: "Options for how to define the StudioCMS Config"
+title: "StudioCMS-Konfiguration"
+description: "Optionen für die Definition der StudioCMS-Konfiguration"
 sidebar:
    order: 3
 ---
@@ -9,15 +9,15 @@ sidebar:
 import { FileTree } from '@astrojs/starlight/components';
 import ReadMore from '~/components/ReadMore.astro';
 
-# Available Options
+# Verfügbare Optionen
 
-There are two ways to configure the StudioCMS integration. Below are examples of how to configure based on if you choose to use the `astro.config.mjs` or the dedicated `studiocms.config.mjs` file.
+Es gibt zwei Möglichkeiten, die StudioCMS-Integration zu konfigurieren. Im Folgenden findest du Beispiele für die Konfiguration, je nachdem, ob du die Datei `astro.config.mjs` oder die spezielle Datei `studiocms.config.mjs` verwendest
 
 <ReadMore>
-This page shows you how and where to define the StudioCMS configuration. For more information on the StudioCMS configuration options, see the [reference page][reference-page].
+Diese Seite zeigt dir, wie und wo du die StudioCMS-Konfiguration definieren kannst. Weitere Informationen zu den StudioCMS-Konfigurationsoptionen findest du auf der [Referenzseite][reference-page].
 </ReadMore>
 
-## Using the `astro.config.mjs` file
+## Verwendung der Datei `astro.config.mjs`:
 
 ```ts twoslash title="astro.config.mjs"
 import db from '@astrojs/db';
@@ -33,24 +33,24 @@ export default defineConfig({
         db(),
         studioCMS({
             dbStartPage: false,
-            // other configuration options
+            // ...AndereKonfigurationsOptionen
         }),
     ],
 });
 ```
 
-## Using the `studiocms.config.mjs` file (recommended)
+## Verwendung der Datei `studiocms.config.mjs` (empfohlen):
 
-This file will be automatically picked up and will overwrite any options passed in your `astro.config.mjs`, if you choose to use this option. Please ensure to move all StudioCMS configuration options into this file instead like below:
+Wenn du dich für diese Option entscheidest, musst du sicherstellen, dass du alle StudioCMS-Konfigurationsoptionen in diese Datei verschiebst (siehe unten):
 
-### Example file structure
+### Beispiel Dateistruktur
 
 <FileTree>
 
 - .env
 - astro.config.mjs
 - **studiocms.config.mjs**
-- studiocms-auth.config.json Auto Generated
+- studiocms-auth.config.json Automatisch generieren
 - package.json
 - src
   - env.d.ts
@@ -58,7 +58,7 @@ This file will be automatically picked up and will overwrite any options passed 
 
 </FileTree>
 
-### Example configuration files
+### Beispiel-Konfiguration
 
 ```ts twoslash title="astro.config.mjs"
 import db from '@astrojs/db';
@@ -79,9 +79,9 @@ import { defineStudioCMSConfig } from "studiocms/config";
 
 export default defineStudioCMSConfig({
     dbStartPage: false,
-    // other configuration options
+    // ...AndereKonfigurationsOptionen
 })
 ```
 
 {/* Links */}
-[reference-page]: /en/config-reference/
+[reference-page]: /de/config-reference/
