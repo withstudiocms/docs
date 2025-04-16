@@ -1,0 +1,78 @@
+---
+i18nReady: true
+title: "@astrojs/web-vitals"
+type: integration
+catalogEntry: astrojs-web-vitals
+description: "웹 바이탈 통합과 StudioCMS 대시보드"
+sidebar:
+  badge: 
+    text: '플러그인'
+    variant: 'tip'
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import Gallery from '~/components/Gallery.astro';
+import { webVitalsImages } from "~/assets/index.ts";
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# 소개
+
+이 Astro 통합을 사용하면 실제 웹사이트의 성능을 추적하고 데이터를 Astro DB에 저장할 수 있습니다. 이 데이터는 StudioCMS 대시보드에서 실제 웹사이트의 시간에 따른 성능 지표를 보여주는 데 사용됩니다.
+
+## 설치
+<Tabs syncKey='install-method'>
+  <TabItem label="Astro를 통한 설치" icon='astro'>
+{/* <Steps> */}
+
+1. 다음 명령을 사용하여 패키지를 설치하고 Astro 구성에 추가합니다.
+
+   <PackageManagers type="exec" pkg="astro" args="add @astrojs/web-vitals" />
+
+2. 새 구성을 원격 데이터베이스에 푸시합니다.
+
+   <PackageManagers type="exec" pkg="astro" args="db push" />
+
+{/* </Steps> */}
+  </TabItem>
+  <TabItem label="직접 설치하기" icon='seti:powershell'>
+{/* <Steps> */}
+
+1. 다음 명령을 사용하여 패키지를 설치합니다.
+
+   <PackageManagers pkg="@astrojs/web-vitals" />
+
+2. Astro 구성 파일에 `@astrojs/web-vitals`를 추가합니다.
+
+   ```ts twoslash title="astro.config.mjs" {12} ins={4, 13}
+   import node from '@astrojs/node';
+   import studioCMS from 'studiocms';
+   import db from '@astrojs/db';
+   import webVitals from '@astrojs/web-vitals';
+   import { defineConfig } from 'astro/config';
+
+   export default defineConfig({
+      site: 'https://demo.studiocms.dev/',
+      output: 'server',
+      adapter: node({ mode: "standalone" }),
+      integrations: [
+          db(), // 필수 
+          webVitals(), 
+          studioCMS(),
+      ],
+   });
+   ```
+
+   <PackageManagers pkg="@astrojs/web-vitals" />
+
+3. 새 구성을 원격 데이터베이스에 푸시합니다.
+
+   <PackageManagers type="exec" pkg="astro" args="db push" />
+
+{/* </Steps> */}
+</TabItem>
+</Tabs>
+
+
+{/* ## Gallery Demo
+
+<Gallery galleryImages={webVitalsImages} /> */}
