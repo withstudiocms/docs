@@ -12,5 +12,7 @@
   "community-plugins": "Community Plugins",
   "config-reference": "Configuration Reference",
   "typedoc": "TypeDoc",
-  "auto-gen": "Auto Generated"
+  "auto-gen": "Auto Generated",
+  "topic-guides": "Guides & Tutorials",
+  "database": "Database Guides"
 }
