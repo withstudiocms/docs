@@ -2,7 +2,7 @@ import starlight from '@astrojs/starlight';
 import ui from '@studiocms/ui';
 import { defineConfig } from 'astro/config';
 import starlightImageZoom from 'starlight-image-zoom';
-import starlightLinksValidator from 'starlight-links-validator'
+import starlightLinksValidator from 'starlight-links-validator';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import getCoolifyURL from './hostUtils.ts';
 import rehypePlugins from './src/plugins/rehypePluginKit.ts';
@@ -78,14 +78,18 @@ export default defineConfig({
 			},
 			defaultLocale: 'en',
 			locales,
-			social: {
-				github: 'https://github.com/withstudiocms/studiocms',
-				discord: 'https://chat.studiocms.dev',
-				youtube: 'https://www.youtube.com/@StudioCMS',
-				'x.com': 'https://x.com/withstudiocms',
-				blueSky: 'https://bsky.app/profile/studiocms.dev',
-				openCollective: 'https://opencollective.com/StudioCMS',
-			},
+			social: [
+				{ label: 'GitHub', icon: 'github', href: 'https://github.com/withstudiocms/studiocms' },
+				{ label: 'Discord', icon: 'discord', href: 'https://chat.studiocms.dev' },
+				{ label: 'YouTube', icon: 'youtube', href: 'https://www.youtube.com/@StudioCMS' },
+				{ label: 'Twitter / X', icon: 'x.com', href: 'https://x.com/withstudiocms' },
+				{ label: 'BlueSky', icon: 'blueSky', href: 'https://bsky.app/profile/studiocms.dev' },
+				{
+					label: 'Open Collective',
+					icon: 'openCollective',
+					href: 'https://opencollective.com/StudioCMS',
+				},
+			],
 			customCss: [
 				'@studiocms/ui/css/global.css',
 				'./src/styles/sponsorcolors.css',
@@ -137,7 +141,7 @@ export default defineConfig({
 				starlightLinksValidator({
 					errorOnFallbackPages: false,
 					errorOnInconsistentLocale: true,
-					exclude: ['/*/typedoc/**/*']
+					exclude: ['/*/typedoc/**/*'],
 				}),
 				starlightImageZoom(),
 				starlightSidebarTopics([
