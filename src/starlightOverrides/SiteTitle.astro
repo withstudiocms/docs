@@ -3,6 +3,7 @@ import { Toaster } from 'studiocms:ui/components';
 import config from 'virtual:starlight/user-config';
 import { logos } from 'virtual:starlight/user-images';
 const { siteTitle, siteTitleHref } = Astro.locals.starlightRoute;
+const { currentLocale } = Astro;
 ---
 
 <Toaster />
@@ -37,7 +38,7 @@ const { siteTitle, siteTitleHref } = Astro.locals.starlightRoute;
     </span>
   </a>
 
-  <a href="/start-here/getting-started/">{Astro.locals.t('site-title.labels.docs')}</a>
+  <a href={`/${currentLocale}/start-here/getting-started/`}>{Astro.locals.t('site-title.labels.docs')}</a>
 </div>
     
 <div class="external-links">
