@@ -179,6 +179,13 @@ export default defineConfig({
 						],
 					},
 					{
+						label: 'Guides & Tutorials',
+						link: '/guides/',
+						icon: 'rocket',
+						id: 'guides',
+						items: [{ label: 'Database', autogenerate: { directory: 'guides/database' } }],
+					},
+					{
 						label: getTranslations('topic-package-catalog'),
 						link: '/package-catalog/',
 						icon: 'download',

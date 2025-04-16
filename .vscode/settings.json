@@ -12,13 +12,17 @@
     "markdoc",
     "mergebot",
     "pagefind",
+    "pkey",
     "prototools",
+    "pubout",
     "seti",
     "shiki",
     "shikijs",
     "sponsorcolors",
+    "sqld",
     "studiocms",
     "turso",
+    "tursodatabase",
     "twoslash",
     "withstudiocms"
   ]
