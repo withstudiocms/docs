@@ -9,12 +9,12 @@ import { FileTree, TabItem, Tabs, Steps } from '@astrojs/starlight/components';
 
 The `sqld` ("SQL daemon") project is a server mode for libSQL created by Turso.  This guide will go over setting up and configuring `sqld` to work from a docker container for your StudioCMS project.
 
-<ReadMore>Learn more about `sqld` using their [Documentation](https://github.com/tursodatabase/libsql/blob/main/docs/USER_GUIDE.md)</ReadMore>
+<ReadMore>Learn more about `sqld` using their [Documentation][sql-docs]</ReadMore>
 
 ## Prerequisites
 
-- [Docker and Docker Compose](https://docs.docker.com/get-started/get-docker/) (either running on a server or locally)
-- [OpenSSL](https://docs.openssl.org/3.2/man7/ossl-guide-introduction/#getting-and-installing-openssl) installed
+- [Docker and Docker Compose][docker-docs] (either running on a server or locally)
+- [OpenSSL][openssl-docs] installed
 - StudioCMS CLI (available from the root of your StudioCMS project)
 
 The final file structure will look something like this if testing locally:
@@ -127,7 +127,7 @@ services:
 
 3. Follow the first time setup for your new database.
 
-   - See [Getting Started](/en/start-here/getting-started/#first-time-setup-or-during-updates-if-the-tables-schema-is-updated)
+   - See [Getting Started][getting-started]
    
    :::note
    If this is not your first time setting up a StudioCMS project you may need to enable the `dbStartPage` option in your `studiocms.config.mjs`
@@ -138,3 +138,9 @@ services:
 ## Final Thoughts
 
 If you are looking for an option for Self-hosting your own libSQL database with StudioCMS `sqld` is a viable option and is not very complicated to get up and running if you do it the right way, following this guide provides you with a secure libSQL server to use alongside your StudioCMS project.
+
+{/* Links */}
+[sql-docs]: https://github.com/tursodatabase/libsql/blob/main/docs/USER_GUIDE.md
+[docker-docs]: https://docs.docker.com/get-started/get-docker/
+[openssl-docs]: https://docs.openssl.org/3.2/man7/ossl-guide-introduction/#getting-and-installing-openssl
+[getting-started]: /en/start-here/getting-started/#first-time-setup-or-during-updates-if-the-tables-schema-is-updated
