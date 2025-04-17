@@ -14,10 +14,10 @@ import ReadMore from "~/components/ReadMore.astro";
 Il existe deux manières de configurer l’intégration StudioCMS. Vous trouverez ci-dessous des exemples de configuration selon que vous choisissez d’utiliser le fichier `astro.config.mjs` ou le fichier dédié `studiocms.config.mjs`.
 
 <ReadMore>
-Cette page vous explique comment et où définir la configuration de StudioCMS. Pour plus d’informations sur les options de configuration de StudioCMS, consultez les [pages de référence][reference-page].
+Cette page vous explique comment et où définir la configuration de StudioCMS. Pour plus d’informations sur les options de configuration de StudioCMS, consultez la [page de référence][reference-page].
 </ReadMore>
 
-## En utilisant le fichier `astro.config.mjs` :
+## En utilisant le fichier `astro.config.mjs`
 
 ```ts twoslash title="astro.config.mjs"
 import db from "@astrojs/db";
@@ -33,15 +33,15 @@ export default defineConfig({
     db(),
     studioCMS({
       dbStartPage: false,
-      // ...AutresOptionsDeConfig
+      // autres options de configuration
     }),
   ],
 });
 ```
 
-## En utilisant le fichier `studiocms.config.mjs` (recommandé) :
+## En utilisant le fichier `studiocms.config.mjs` (recommandé)
 
-Ce fichier sera automatiquement récupéré et écrasera toutes les options transmises dans votre fichier astro.config. Si vous choisissez d’utiliser cette option, assurez-vous de déplacer toutes les options de configuration de StudioCMS dans ce fichier comme ci-dessous :
+Ce fichier sera automatiquement récupéré et écrasera toutes les options transmises dans votre fichier `astro.config.mjs` si vous choisissez d’utiliser cette option. Assurez-vous de déplacer toutes les options de configuration de StudioCMS dans ce fichier comme ci-dessous :
 
 ### Exemple de structure de fichiers
 
@@ -58,7 +58,7 @@ Ce fichier sera automatiquement récupéré et écrasera toutes les options tran
 
 </FileTree>
 
-### Exemple de configuration
+### Exemples de fichiers de configuration
 
 ```ts twoslash title="astro.config.mjs"
 import db from "@astrojs/db";
@@ -79,7 +79,7 @@ import { defineStudioCMSConfig } from "studiocms/config";
 
 export default defineStudioCMSConfig({
   dbStartPage: false,
-  // ...AutresOptionsDeConfig
+  // autres options de configuration
 });
 ```
 

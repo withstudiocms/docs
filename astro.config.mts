@@ -14,6 +14,17 @@ import { remarkFallbackLang } from './src/plugins/remark-fallback-pages.ts';
 // Define the Site URL
 const site = getCoolifyURL(true) || 'https://docs.studiocms.dev/';
 
+const linkValidator = process.env.CHECK_LINKS
+	? [
+			starlightLinksValidator({
+				errorOnFallbackPages: false,
+				errorOnInconsistentLocale: true,
+				// Exclude TypeDoc paths as they contain auto-generated content with many internal links
+				exclude: ['/*/typedoc/**/*'],
+			}),
+		]
+	: [];
+
 export const locales = {
 	en: { label: 'English', lang: 'en' },
 	es: { label: 'Español', lang: 'es' },
@@ -138,11 +149,7 @@ export default defineConfig({
 			],
 			plugins: [
 				...typeDocPlugins,
-				starlightLinksValidator({
-					errorOnFallbackPages: false,
-					errorOnInconsistentLocale: true,
-					exclude: ['/*/typedoc/**/*'],
-				}),
+				...linkValidator,
 				starlightImageZoom(),
 				starlightSidebarTopics([
 					{

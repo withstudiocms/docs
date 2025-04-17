@@ -1,0 +1,56 @@
+---
+i18nReady: true
+title: 포함된 통합
+description: StudioCMSOptions의 IncludedIntegrations 참조 페이지
+sidebar:
+  order: 7
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+StudioCMS 통합 구성 옵션 스키마 참조
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  includedIntegrations: {
+    robotsTXT: true
+  },
+});
+```
+
+## `robotsTXT`
+
+`robotsTXT`는 robots.txt 파일의 활성화 여부를 결정하는 데 사용되는 부울 또는 객체입니다.
+
+- **타입:** `boolean` | [`RobotsConfig`](#robotsconfig) | `undefined`
+- **기본값:** `true`
+
+### Usage
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  includedIntegrations: {
+    robotsTXT: true, // 기본값 - robots.txt 파일을 활성화합니다.
+  }
+})
+```
+
+##### `RobotsConfig`
+
+```ts
+interface RobotsConfig {
+  host?: boolean | string;
+  sitemap?: boolean | string | string[];
+  policy?: {
+    userAgent?: string;
+    disallow?: string | string[];
+    allow?: string | string[];
+    crawlDelay?: number;
+    cleanParam?: string | string[];
+  }[] | undefined;
+}
+```
