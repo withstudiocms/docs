@@ -1,0 +1,97 @@
+---
+i18nReady: true
+title: StudioCMS 문서
+description: StudioCMS로 빌드를 시작하세요.
+template: splash
+editUrl: false
+lastUpdated: false
+hero:
+  tagline: StudioCMS 사용법 학습 가이드 및 리소스
+  image:
+    alt: StudioCMS 로고
+    dark: ../../../assets/logos/studioCMS.png
+    light: ../../../assets/logos/studioCMS-dark.png
+  actions:
+    - text: 시작하기
+      link: /ko/start-here/getting-started/
+      icon: right-arrow
+      variant: primary
+    - text: GitHub 리포지토리
+      link: https://github.com/withstudiocms/studiocms/
+      icon: github
+---
+
+import { CardGrid, LinkButton } from '@astrojs/starlight/components';
+import Youtube from '~/components/Youtube.astro';
+import Card from '~/components/landing/Card.astro';
+import ListCard from '~/components/landing/ListCard.astro';
+import SplitCard from '~/components/landing/SplitCard.astro';
+import { Center } from 'studiocms:ui/components';
+
+<Card title="StudioCMS에 오신 것을 환영합니다." icon='seti:video'>
+  <Youtube id="Ukh3Zb9VjIM"/>
+</Card>
+
+<CardGrid>
+
+  <SplitCard title="빠른 시작" icon="rocket">
+    ```sh
+    # 새 Astro 프로젝트를 생성합니다.
+    pnpm create studiocms@latest
+
+    # 개발 서버를 시작합니다.
+    cd my-studiocms-project
+    pnpm dev
+    ```
+    
+    <div style="padding: 0;">    
+    필수 환경 변수에 대한 자세한 내용은 [환경 변수][environment-variables] 페이지를 참조하세요.
+    
+    더 자세한 안내는 [시작하기][getting-started] 가이드를 확인하세요.
+    
+    libSQL 데이터베이스를 찾고 계신가요? [Turso][turso]를 확인해 보세요.
+    </div>
+     
+  </SplitCard>
+
+  <ListCard title="StudioCMS 알아보기" icon="information">
+    - [시작하기][getting-started]
+    - [환경 변수][environment-variables]
+    - [왜 StudioCMS인가?][why-studiocms]
+    - [StudioCMS 이해하기][how-it-works]
+  </ListCard>
+
+  <ListCard title="StudioCMS 사용자 정의" icon="puzzle">
+    - [SDK 사용하기][using-the-sdk]
+    - [REST API 사용하기][using-rest-api]
+    - [플러그인 찾기 및 사용하기][package-catalog]
+    - [플러그인 API 알아보기][plugin-api]
+  </ListCard>
+
+</CardGrid>
+
+<Center>
+  <div style="display: flex; flex-direction: column; margin-top: 3rem;">
+    StudioCMS 커뮤니티에 참여하고 싶으신가요?
+
+    <LinkButton 
+      href='https://chat.studiocms.dev' 
+      icon='discord' 
+      iconPlacement='end'
+      class='discord-button'
+      style='width: fit-content; margin-left: auto; margin-right: auto;'>
+        Discord에 참여하세요!
+    </LinkButton>
+  </div>
+</Center>
+
+{/* Page MD Links */}
+[environment-variables]: /ko/start-here/getting-started/
+[getting-started]: /ko/start-here/getting-started/
+[turso]: https://tur.so/studiocms
+[why-studiocms]: /ko/start-here/why-studiocms/
+[how-it-works]: /ko/how-it-works/
+[using-the-sdk]: /ko/how-it-works/sdk/
+[using-rest-api]: /ko/how-it-works/restapi/
+[package-catalog]: /ko/package-catalog/
+[plugin-api]: /ko/plugins/
