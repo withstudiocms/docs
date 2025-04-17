@@ -17,6 +17,7 @@ studiocmsOutput.push(
 	'catalogEntry: studiocms',
 	'replaceTitle: false',
 	'description: Release notes for the studiocms package.',
+	'editUrl: false',
 	'sidebar:',
 	'  badge:',
 	'    text: Auto Generated',
