@@ -164,11 +164,6 @@ export default defineConfig({
 								autogenerate: { directory: 'start-here' },
 							},
 							{
-								label: getTranslations('contributing').en,
-								translations: getTranslations('contributing'),
-								autogenerate: { directory: 'contributing' },
-							},
-							{
 								label: getTranslations('how-it-works').en,
 								translations: getTranslations('how-it-works'),
 								autogenerate: { directory: 'how-it-works' },
@@ -190,7 +185,16 @@ export default defineConfig({
 						link: '/guides/',
 						icon: 'rocket',
 						id: 'guides',
+						badge: {
+							text: 'NEW',
+							variant: 'success',
+						},
 						items: [
+							{
+								label: getTranslations('contributing').en,
+								translations: getTranslations('contributing'),
+								autogenerate: { directory: 'guides/contributing' },
+							},
 							{
 								label: getTranslations('upgrade').en,
 								translations: getTranslations('upgrade'),
