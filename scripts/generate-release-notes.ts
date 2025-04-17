@@ -3,9 +3,17 @@ import { toMarkdown } from 'mdast-util-to-markdown';
 import { loadChangelog, semverCategories } from './lib/changelogs';
 import { writeFileLines } from './lib/utils';
 
-const changelog = await loadChangelog(
-	'https://raw.githubusercontent.com/withstudiocms/studiocms/main/packages/studiocms/CHANGELOG.md'
-);
+const mainBranch: string =
+	'https://raw.githubusercontent.com/withstudiocms/studiocms/main/packages/studiocms/CHANGELOG.md';
+const preBranch: string =
+	'https://raw.githubusercontent.com/withstudiocms/studiocms/changeset-release/main/packages/studiocms/CHANGELOG.md';
+
+// Allow Switching into a pre-release mode for development of pre-release docs
+const pre = true;
+
+const changelogUrl = pre ? preBranch : mainBranch;
+
+const changelog = await loadChangelog(changelogUrl);
 
 const studiocmsOutput: string[] = [];
 
