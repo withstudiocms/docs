@@ -10,6 +10,7 @@ jobs:
     name: Run Starlight Link Check
     runs-on: ubuntu-latest
     env:
+      CHECK_LINKS: true
       NODE_OPTIONS: "--max_old_space_size=4096"
     steps:
       - name: Check out code using Git
@@ -19,4 +20,4 @@ jobs:
         uses: withstudiocms/automations/.github/actions/install@main
 
       - name: Run Link Check
-        run: CHECK_LINKS=true && pnpm ci:build
+        run: pnpm ci:build
