@@ -1,0 +1,22 @@
+---
+title: "Beta.15 ➤ Beta.16"
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+
+## Breaking Changes
+
+- No Breaking changes for this version.
+
+## New Features/Functionality
+
+- CLI Updates/Changes
+   - New Command: `studiocms add <plugin>` for quickly adding new plugins to your StudiOCMS project.
+   - New Command: `studiocms crypto [command]` for new security utilities.
+   - New Command: `studiocms crypto gen-jwt <key-file>` for generating JWT tokens from the CLI.
+   - Fix: Editing users from the CLI is now possible thanks to new partial db drizzle schema for Users and Permissions.
+
+<ReadMore>For more information about the new CLI commands checkout [The CLI][cli-docs] documentation</ReadMore>
+
+{/* Links */}
+[cli-docs]: /en/how-it-works/cli/

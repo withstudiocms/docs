@@ -10,7 +10,7 @@ const packageCatalogSchema = z.object({
 	docsLink: z.string(),
 	githubURL: z.string(),
 	catalog: z
-		.union([z.literal('studiocms'), z.literal('community')])
+		.union([z.literal('studiocms'), z.literal('community'), z.literal('internal')])
 		.optional()
 		.default('studiocms'),
 	isPlugin: z.boolean().optional().default(false),
@@ -26,6 +26,7 @@ const baseSchema = topicSchema.extend({
 const integrationSchema = baseSchema.extend({
 	type: z.literal('integration'),
 	catalogEntry: reference('package-catalog'),
+	replaceTitle: z.boolean().optional().default(true),
 });
 
 const redirectSchema = baseSchema.extend({

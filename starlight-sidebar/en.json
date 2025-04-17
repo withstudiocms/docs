@@ -14,5 +14,7 @@
   "typedoc": "TypeDoc",
   "auto-gen": "Auto Generated",
   "topic-guides": "Guides & Tutorials",
-  "database": "Database Guides"
+  "database": "Database Guides",
+  "upgrade": "Upgrade",
+  "version": "Version Guides"
 }

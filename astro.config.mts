@@ -185,6 +185,20 @@ export default defineConfig({
 						id: 'guides',
 						items: [
 							{
+								label: getTranslations('upgrade').en,
+								translations: getTranslations('upgrade'),
+								items: [
+									{
+										slug: 'guides/upgrade/release-notes',
+									},
+									{
+										label: getTranslations('version').en,
+										translations: getTranslations('version'),
+										autogenerate: { directory: 'guides/upgrade/version-guides' },
+									},
+								],
+							},
+							{
 								label: getTranslations('database').en,
 								translations: getTranslations('database'),
 								autogenerate: { directory: 'guides/database' },

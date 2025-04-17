@@ -7,10 +7,10 @@
     "node": "20.14.0"
   },
   "scripts": {
-    "dev": "astro dev",
+    "dev": "pnpm gen-changelogs && astro dev",
     "start": "astro dev",
     "check": "astro check",
-    "build": "astro build",
+    "build": "pnpm gen-changelogs && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lunaria:build": "tsm --require=./scripts/filter-warnings.cjs ./scripts/lunaria.mts",
@@ -18,7 +18,8 @@
     "ci:install": "pnpm install --frozen-lockfile",
     "ci:build": "pnpm build",
     "ci:lunaria:build": "pnpm lunaria:build",
-    "ci:lunaria:report": "pnpm tsm --require=./scripts/filter-warnings.cjs ./scripts/lunaria-report-bot.ts"
+    "ci:lunaria:report": "pnpm tsm --require=./scripts/filter-warnings.cjs ./scripts/lunaria-report-bot.ts",
+    "gen-changelogs": "tsm --require=./scripts/filter-warnings.cjs ./scripts/generate-release-notes.ts"
   },
   "dependencies": {
     "studiocms": "0.1.0-beta.15",
@@ -45,6 +46,7 @@
     "expressive-code-twoslash": "^0.4.0",
     "@shikijs/colorized-brackets": "^3.2.1",
     "starlight-package-managers": "^0.10.0",
+    "starlight-auto-sidebar": "^0.1.1",
     "@11ty/eleventy-fetch": "^5.0.2",
     "starlight-sidebar-topics": "^0.6.0",
     "@types/hast": "^3.0.4",
@@ -71,6 +73,9 @@
     "@docsearch/js": "^3.6.0",
     "fast-glob": "^3.3.3",
     "@types/mdast": "^4.0.4",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5.0.0",
+    "mdast-util-to-markdown": "^2.1.2",
+    "mdast-util-from-markdown": "^2.0.2",
+    "mdast-util-to-string": "^4.0.0"
   }
 }
