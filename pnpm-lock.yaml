@@ -125,9 +125,6 @@ importers:
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
-      starlight-auto-sidebar:
-        specifier: ^0.1.1
-        version: 0.1.1(@astrojs/starlight@0.33.2(astro@5.7.1(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(typescript@5.8.2)(yaml@2.7.0)))
       starlight-image-zoom:
         specifier: ^0.11.1
         version: 0.11.1(@astrojs/starlight@0.33.2(astro@5.7.1(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(typescript@5.8.2)(yaml@2.7.0)))
@@ -3347,12 +3344,6 @@ packages:
 
   sprintf-js@1.1.3:
     resolution: {integrity: sha512-Oo+0REFV59/rz3gfJNKQiBlwfHaSESl1pcGyABQsnnIfWOFt6JNj5gCog2U6MLZ//IGYD+nA8nI+mTShREReaA==}
-
-  starlight-auto-sidebar@0.1.1:
-    resolution: {integrity: sha512-5Sz+d+FTpxiVb2jOqHUFkO+/KPfUyTsJR4K/O13ilZE0MaxwRaUuPioz0tf33Izrqj1b7+dp4/vv9Pd4flLCcQ==}
-    engines: {node: '>=18.17.1'}
-    peerDependencies:
-      '@astrojs/starlight': '>=0.32.0'
 
   starlight-image-zoom@0.11.1:
     resolution: {integrity: sha512-TmnAyS+MWWV6h1fjuezrMFA36REd+7QzcjDFFFyC4ws5FDMoHsjQn0MlHM0cUaHEKfQ9y1PpL9LijCvRFuGbuw==}
@@ -7990,10 +7981,6 @@ snapshots:
   space-separated-tokens@2.0.2: {}
 
   sprintf-js@1.1.3: {}
-
-  starlight-auto-sidebar@0.1.1(@astrojs/starlight@0.33.2(astro@5.7.1(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(typescript@5.8.2)(yaml@2.7.0))):
-    dependencies:
-      '@astrojs/starlight': 0.33.2(astro@5.7.1(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(typescript@5.8.2)(yaml@2.7.0))
 
   starlight-image-zoom@0.11.1(@astrojs/starlight@0.33.2(astro@5.7.1(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(typescript@5.8.2)(yaml@2.7.0))):
     dependencies:

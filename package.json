@@ -46,7 +46,6 @@
     "expressive-code-twoslash": "^0.4.0",
     "@shikijs/colorized-brackets": "^3.2.1",
     "starlight-package-managers": "^0.10.0",
-    "starlight-auto-sidebar": "^0.1.1",
     "@11ty/eleventy-fetch": "^5.0.2",
     "starlight-sidebar-topics": "^0.6.0",
     "@types/hast": "^3.0.4",
