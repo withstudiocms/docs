@@ -201,6 +201,7 @@ export default defineConfig({
 									{
 										label: getTranslations('version').en,
 										translations: getTranslations('version'),
+										collapsed: true,
 										autogenerate: { directory: 'guides/upgrade/version-guides' },
 									},
 								],
