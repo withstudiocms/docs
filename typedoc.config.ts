@@ -57,7 +57,11 @@ const tdMDX = createStarlightTypeDocPlugin()[0];
 // Set to true to enable testing mode for TypeDoc
 const testTypeDoc = false;
 
-const isProd = process.env.NODE_ENV === 'production';
+// When CHECK_LINKS is set, we disable TypeDoc plugins (isProd becomes false)
+// to improve performance and prevent link validation errors in generated docs
+const isLinkCheck = !!process.env.CHECK_LINKS;
+
+const isProd = !isLinkCheck && process.env.NODE_ENV === 'production';
 
 const TypeDocPlugins = (isProd: boolean, testingMode: boolean): StarlightPlugin[] => {
 	if (isProd || testingMode) {
