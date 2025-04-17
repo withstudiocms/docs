@@ -1,0 +1,365 @@
+---
+i18nReady: true
+title: 시작하기
+description: StudioCMS로 빌드를 시작하세요.
+sidebar:
+   order: 1
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import TursoCLI from '~/components/TursoCLI.astro';
+import { Aside, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import ReadMore from '~/components/ReadMore.astro';
+import { sponsors, SponsorLink } from '~/share-link'
+
+## 시작하기
+
+StudioCMS를 사용하려면 다음이 필요합니다.
+
+- [Astro에서 지원하는 Node.js 버전](https://docs.astro.build/ko/install-and-setup/#사전-준비-사항) (Bun 및 Deno는 지원되지 않습니다)
+- Astro 프로젝트
+- libSQL 제공업체 또는 자체 호스팅 libSQL 서버
+- StudioCMS 통합
+
+## 데이터베이스 준비
+
+StudioCMS는 `@astrojs/db`를 사용하여 libSQL 데이터베이스에 연결합니다. 모든 libSQL 제공업체 또는 자체 호스팅 libSQL 서버를 사용할 수 있습니다.
+
+StudioCMS CLI를 사용하는 경우, Turso CLI가 설치되어 있다면 이 단계를 건너뛰고 CLI를 사용하여 새 데이터베이스를 만들 수 있습니다.
+
+<ReadMore>[`@astrojs/db`용 데이터베이스 URL 및 토큰][db-url-token]에서 필수 환경 변수에 대한 자세한 내용을 확인하세요.</ReadMore>
+
+### Turso 시작하기
+
+<Aside type='tip' title='StudioCMS 쿠폰'>
+ 코드 `STUDIOCMS10`을 사용하여 Turso 12개월 구독 시 10% 할인을 받으세요.
+</Aside>
+
+<Steps>
+1. <SponsorLink href={sponsors.turso.docs.installCLILink} text='Turso CLI'/>를 설치합니다.
+2. Turso에 <SponsorLink href={sponsors.turso.docs.loginsignupLink} text='로그인 또는 회원가입'/> 합니다.
+3. 새 데이터베이스를 생성합니다.
+   <TursoCLI tursoCli='db' type='create' arg='studiocms' />
+4. `ASTRO_DB_REMOTE_URL`를 가져와 설정합니다.
+
+   4a. `show` 명령을 실행하여 새로 생성된 데이터베이스의 정보를 확인합니다.
+      <TursoCLI tursoCli='db' type='show' arg='studiocms' />
+   
+   4b. URL 값을 복사하여 `ASTRO_DB_REMOTE_URL`의 값으로 설정합니다.
+      ```bash title=".env"
+      ASTRO_DB_REMOTE_URL=libsql://studiocms-yourname.turso.io
+      ```
+
+5. `ASTRO_DB_APP_TOKEN`을 가져와 설정합니다.
+   
+   5a. 데이터베이스에 대한 요청을 인증하기 위한 새 토큰을 생성합니다.
+      <TursoCLI tursoCli='db' type='tokens.create' arg='studiocms' />
+   
+   5b. 명령의 출력을 복사하여 `ASTRO_DB_APP_TOKEN`의 값으로 설정합니다.
+      ```bash title=".env"
+      ASTRO_DB_APP_TOKEN=eyJhbGciOiJF...3ahJpTkKDw
+      ```
+
+</Steps>
+
+이제 StudioCMS 프로젝트 설정을 진행할 준비가 되었습니다!
+
+### 다른 제공업체 또는 자체 호스팅 libSQL 사용
+
+libSQL은 원격 서버의 전송 프로토콜로 HTTP와 WebSocket을 모두 지원합니다. 또한 로컬 파일 또는 인메모리 DB 사용도 지원합니다.
+
+<ReadMore>[`@astrojs/db`용 데이터베이스 URL 및 토큰][db-url-token]에서 필수 환경 변수에 대한 자세한 내용을 확인하세요.</ReadMore>
+
+<ReadMore>로컬 파일을 포함한 모든 가능한 libSQL 옵션에 대한 자세한 내용은 [Astro 문서: 원격 URL 구성 옵션](https://docs.astro.build/ko/guides/astro-db/#원격-url-구성-옵션)을 참조하세요.</ReadMore>
+
+## StudioCMS 프로젝트 생성
+
+<Tabs syncKey='install-method'>
+
+<TabItem label="StudioCMS CLI" icon="rocket">
+
+    1. create 명령어를 사용하여 StudioCMS 프로젝트를 생성합니다.
+    
+        미리 만들어진 템플릿 중 하나를 사용하여 StudioCMS가 포함된 새 Astro 프로젝트를 생성하려면 터미널에서 다음 명령을 실행하기만 하면 됩니다.
+
+            <PackageManagers type="create" pkg="studiocms@latest" />
+        
+        명령을 실행하면 프로젝트에 대한 몇 가지 질문에 답하라는 메시지가 표시됩니다. 완료되면 CLI는 지정된 디렉터리에 StudioCMS가 포함된 새 Astro 프로젝트를 생성합니다.
+        
+        그 후 환경 변수가 올바르게 설정되었는지 확인하고 프로젝트를 실행하여 설정을 완료하는 등의 다음 단계를 따르라는 메시지가 표시됩니다.
+    
+    2. CLI를 실행한 후 `astro.config.mjs` 파일이 올바르게 구성되었는지 확인합니다.
+
+       ```ts twoslash title="astro.config.mjs" {2-4,11-12}
+       import { defineConfig } from 'astro/config';
+       import db from '@astrojs/db';
+       import node from '@astrojs/node';
+       import studioCMS from 'studiocms';
+
+       export default defineConfig({
+           site: 'https://demo.studiocms.dev/',
+           output: 'server',
+           adapter: node({ mode: "standalone" }),
+           integrations: [
+               db(),
+               studioCMS(),
+           ],
+       });
+       ```
+
+</TabItem>
+
+<TabItem label="Astro를 통한 설치" icon='astro'>
+
+    {/* <Steps> Note: For some reason this breaks placement of EC-Twoslash popups... must investigate */}
+        
+    1. 새 Astro 프로젝트를 생성합니다.
+    
+        새 Astro 프로젝트를 생성하려면 터미널에서 다음 명령을 실행하기만 하면 됩니다.
+
+            <PackageManagers type="create" pkg="astro@latest" />
+        
+        명령을 실행하면 프로젝트에 대한 몇 가지 질문에 답하라는 메시지가 표시됩니다. 완료되면 CLI는 지정된 디렉터리에 새 Astro 프로젝트를 생성합니다.
+        
+        “Liftoff confirmed. Explore your project!”라는 메시지와 함께 몇 가지 권장되는 다음 단계를 확인할 수 있습니다.
+        
+        Astro를 사용하려면 새 프로젝트 디렉터리로 `cd`합니다.
+
+        ```bash
+        cd my-project
+        ```
+        
+        CLI 마법사에서 npm 설치 단계를 건너뛰었다면 계속하기 전에 의존성을 설치해야 합니다.
+    
+    2. 프로젝트에 StudioCMS 통합을 추가하려면 StudioCMS 패키지와 해당 의존성을 설치해야 합니다.
+
+       <PackageManagers type="exec" pkg="astro" args="add db node studiocms" />
+    
+    3. 패키지를 설치한 후 `astro.config.mjs` 파일이 통합을 올바르게 가져와 호출하는지 확인합니다.
+
+       ```ts twoslash title="astro.config.mjs" {2-4,11-12}
+       import { defineConfig } from 'astro/config';
+       import db from '@astrojs/db';
+       import node from '@astrojs/node';
+       import studioCMS from 'studiocms';
+
+       export default defineConfig({
+           site: 'https://demo.studiocms.dev/',
+           output: 'server',
+           adapter: node({ mode: "standalone" }),
+           integrations: [
+               db(),
+               studioCMS(),
+           ],
+       });
+       ```
+
+    {/* </Steps> */}
+
+</TabItem>
+
+<TabItem label="직접 설치하기" icon='seti:powershell'>
+
+    {/* <Steps> */}
+
+    1. 새 Astro 프로젝트를 생성합니다.
+    
+        새 Astro 프로젝트를 생성하려면 터미널에서 다음 명령을 실행하기만 하면 됩니다.
+
+            <PackageManagers type="create" pkg="astro@latest" />
+        
+        명령을 실행하면 프로젝트에 대한 몇 가지 질문에 답하라는 메시지가 표시됩니다. 완료되면 CLI는 지정된 디렉터리에 새 Astro 프로젝트를 생성합니다.
+        
+        “Liftoff confirmed. Explore your project!”라는 메시지와 함께 몇 가지 권장되는 다음 단계를 확인할 수 있습니다.
+        
+        Astro를 사용하려면 새 프로젝트 디렉터리로 `cd`합니다.
+
+        ```bash
+        cd my-project
+        ```
+        
+        CLI 마법사에서 npm 설치 단계를 건너뛰었다면 계속하기 전에 의존성을 설치해야 합니다.
+    
+    2. 프로젝트에 StudioCMS 통합을 추가하려면 Astro StudioCMS 패키지와 해당 의존성을 설치해야 합니다.
+
+       <PackageManagers pkg="@astrojs/db @astrojs/node studiocms" />
+
+    3. `astro.config.mjs` 파일을 업데이트합니다.
+
+       ```ts twoslash title="astro.config.mjs" {2-4,11-12}
+       import { defineConfig } from 'astro/config';
+       import db from '@astrojs/db'; 
+       import node from '@astrojs/node'; 
+       import studioCMS from 'studiocms';
+
+       export default defineConfig({
+           site: 'https://demo.studiocms.dev/',
+           output: 'server', 
+           adapter: node({ mode: "standalone" }), 
+           integrations: [
+               db(), 
+               studioCMS(),
+           ],
+       });
+       ```
+    {/* </Steps> */}
+
+</TabItem>
+
+</Tabs>
+
+`astro.config.mjs` 파일의 `site` 옵션은 StudioCMS가 올바르게 작동하는 데 필수적입니다. 이 값을 사이트 URL 또는 자리 표시자 URL로 설정할 수 있습니다. (예: `https://demo.studiocms.xyz/` 또는 `http://localhost:4321/`)
+
+<Aside type="note" title="어댑터가 필요합니다.">
+StudioCMS가 올바르게 작동하기 위해서는 [Astro 어댑터](https://docs.astro.build/ko/guides/on-demand-rendering/#서버-어댑터)가 필요합니다. `astro.config.mjs` 파일에서 SSR 라우트를 지원하는 어댑터를 설정해야 합니다.
+</Aside>
+
+## 인증 구성
+
+StudioCMS 인증을 사용하려면 `.env` 파일에 최소한 [암호화 키][encryption-key]가 설정되어 있어야 합니다.
+
+StudioCMS 인증을 사용하기 위해서는 다음 환경 변수가 필요합니다.
+
+```bash title=".env"
+# 사용자 이름 및 비밀번호 인증을 위한 암호화 키
+CMS_ENCRYPTION_KEY="wqR+w...sRcg=="
+```
+
+다음 명령을 사용하여 안전한 암호화 키를 생성할 수 있습니다.
+
+```bash
+openssl rand --base64 16
+``` 
+
+그리고 해당 출력을 `CMS_ENCRYPTION_KEY`의 값으로 설정합니다.
+
+<ReadMore>
+사용 가능한 모든 인증 환경 변수에 대한 자세한 내용은 [환경 변수][environment-variables] 페이지를 참조하세요.
+</ReadMore>
+
+### 선택 사항: oAuth 인증 구성
+
+StudioCMS는 GitHub, Discord, Google 및 Auth0를 통한 oAuth 인증을 지원합니다. oAuth 인증을 구성하려면 [`.env` 파일에 필수 환경 변수를 설정][oauth-environment-variables]하고, [구성에서 해당 제공업체가 활성화][auth-config-ref]되어 있는지 확인해야 합니다.
+
+oAuth 제공업체 설정 시 콜백 URL이 필요합니다. 콜백 URL은 인증 후 제공업체가 사용자를 리디렉션할 경로입니다.
+
+#### 콜백 URL 설정
+
+콜백 URL은 사용자 환경에 따라 다음 경로 중 하나로 설정해야 합니다.
+
+| 환경   | 콜백 URL |
+|---------------|--------------|
+| 프로덕션    | `https://your-domain.tld/studiocms_api/auth/<provider>/callback` |
+| 테스팅 & 개발 | `http://localhost:4321/studiocms_api/auth/<provider>/callback` |
+
+#### 콜백 URL 경로 예시
+
+다음 경로는 각 제공업체에 대한 콜백 URL의 예시입니다.
+
+| Provider | Callback PATH |
+|----------|---------------|
+| GitHub   | `/studiocms_api/auth/github/callback` |
+| Discord  | `/studiocms_api/auth/discord/callback` |
+| Google   | `/studiocms_api/auth/google/callback` |
+| Auth0    | `/studiocms_api/auth/auth0/callback` |
+
+## `package.json` 스크립트 구성
+
+빌드 시 `--remote` 플래그를 포함하도록 `package.json` 스크립트를 설정하고, 필요에 따라 개발 환경에도 설정합니다. (["StudioCMS 프로젝트 실행"](#studiocms-프로젝트-실행) 섹션에 나온대로 개발 명령을 실행할 수도 있습니다.)
+
+```json /--remote/ title="package.json"
+{
+    "name": "my-studiocms-project",
+    "scripts": {
+        "dev": "astro dev --remote",
+        "build": "astro check & astro build --remote",
+        "astro": "astro"
+    }
+}
+```
+
+## StudioCMS 프로젝트 실행
+
+Astro의 강력한 기능 덕분에 StudioCMS 실행은 로컬 미리보기를 위한 개발 명령 실행이나 서버에 빌드 및 배포하는 것만큼 쉽습니다. 빌드 없이 로컬에서 사용하는 기본적인 방법은 다음과 같습니다.
+
+### 최초 설정 (또는 테이블 스키마가 업데이트된 경우 업데이트 중에)
+
+Astro 프로젝트를 시작하려면 터미널에서 다음 명령을 실행합니다.
+
+    <PackageManagers type="exec" args="astro db push --remote" />
+    <PackageManagers type="run" args="dev --remote" />
+
+<Aside type="note">
+`package.json` 파일의 스크립트에 해당 플래그를 포함하도록 설정한 경우 `--remote` 플래그를 제거할 수 있습니다. 이는 ["`package.json` 스크립트 구성"](#packagejson-스크립트-구성) 섹션에서 설명합니다.
+</Aside>
+
+명령을 실행하면 프로젝트가 `localhost:4321`에서 실행 중임을 나타내는 메시지가 표시됩니다. StudioCMS를 처음 설정할 때 `http://localhost:4321/start`에서 StudioCMS 구성을 완료하라는 메시지가 나타납니다.
+
+### 로컬에서 Astro 개발 모드로 실행
+
+Astro 프로젝트를 시작하려면 터미널에서 다음 명령을 실행합니다.
+
+    <PackageManagers type="run" args="dev --remote" />
+
+명령을 실행하면 프로젝트가 `localhost:4321`에서 실행 중임을 나타내는 메시지가 표시됩니다. 브라우저를 열고 `http://localhost:4321`로 이동하여 Astro 프로젝트가 작동하는 것을 확인하세요.
+
+**축하합니다!** 🥳 이제 Astro 프로젝트에 StudioCMS가 설치되었습니다.
+
+### StudioCMS 프로젝트에 프런트엔드 추가
+
+StudioCMS는 헤드리스 Astro CMS이므로 콘텐츠를 표시할 자체 프런트엔드를 제공해야 합니다. 이미 구축된 프런트엔드를 찾고 있다면 [패키지 카탈로그][package-catalog]에서 플러그인을 확인해 보세요.
+
+#### 블로그 설정
+
+블로그를 설정하려면 `@studiocms/blog` 플러그인을 사용하여 시작할 수 있습니다.
+
+블로그 플러그인을 설치하고 설정하려면 터미널에서 다음 명령을 실행합니다.
+
+<PackageManagers type="install" pkg="@studiocms/blog" />
+
+플러그인을 설치한 후에는 `studiocms.config.mjs` 파일에 플러그인을 추가해야 합니다.
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+import blog from '@studiocms/blog';
+
+export default defineStudioCMSConfig({
+    dbStartPage: false,
+    plugins: [
+        blog(),
+    ],
+});
+```
+
+### StudioCMS 프로젝트 빌드 및 배포
+
+[최초 설정 단계](#최초-설정-또는-테이블-스키마가-업데이트된-경우-업데이트-중에)를 완료한 후에는 StudioCMS 프로젝트를 빌드하여 서버에 배포해야 합니다.
+
+기본적으로 StudioCMS 대시보드는 `http://your-domain.tld/dashboard`에서 사용할 수 있습니다.
+
+이 대시보드를 통해 개발 모드와 프로덕션 모드 모두에서 콘텐츠와 설정을 관리할 수 있습니다.
+
+대시보드는 빌드된 프로젝트에서 사용하도록 설계되었으므로 프로덕션 모드에서만 StudioCMS를 사용하는 것이 좋습니다. (개발 모드에서 Vite 종속성 오류와 같은 일부 문제/오류가 발생할 수 있습니다.)
+
+## 다음 단계
+
+<ReadMore>
+StudioCMS에서 [환경 변수][environment-variables]를 설정하는 방법을 확인해 보세요.
+</ReadMore>
+
+<ReadMore>
+[패키지 카탈로그][package-catalog]에서 StudioCMS와 함께 사용할 수 있는 플러그인을 찾아보세요.
+</ReadMore>
+
+<ReadMore>
+[StudioCMS 참조][config-reference] 페이지에서 StudioCMS 구성 옵션에 대해 자세히 알아보세요.
+</ReadMore>
+
+{/* Links */}
+[package-catalog]: /ko/package-catalog/
+[environment-variables]: /ko/start-here/environment-variables/
+[config-reference]: /ko/config-reference/
+[db-url-token]: /ko/start-here/environment-variables/#astrojsdb를-위한-데이터베이스-url-및-토큰
+[encryption-key]: /ko/start-here/environment-variables/#studiocmsauth를-위한-암호화-키
+[oauth-environment-variables]: /ko/start-here/environment-variables/#oauth-인증-환경-변수
+[auth-config-ref]: /ko/config-reference/dashboard/#authconfig
