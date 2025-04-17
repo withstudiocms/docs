@@ -1,4 +1,3 @@
-import { readFileSync } from 'node:fs';
 import type { List } from 'mdast';
 import { fromMarkdown } from 'mdast-util-from-markdown';
 import { toString as ToString } from 'mdast-util-to-string';
@@ -18,13 +17,11 @@ export type Version = {
 export const semverCategories = ['major', 'minor', 'patch'] as const;
 export type SemverCategory = (typeof semverCategories)[number];
 
-async function fetchStudioCmsChangelog(): Promise<string> {
+async function fetchChangelog(url: string): Promise<string> {
 	try {
 		console.log('Getting Changelog from GitHub API');
 		// Using GitHub's raw content URL format to get the plain text content
-		const response = await fetch(
-			'https://raw.githubusercontent.com/withstudiocms/studiocms/main/packages/studiocms/CHANGELOG.md'
-		);
+		const response = await fetch(url);
 
 		if (!response.ok) {
 			throw new Error(`Failed to fetch changelog: ${response.status} ${response.statusText}`);
@@ -39,8 +36,8 @@ async function fetchStudioCmsChangelog(): Promise<string> {
 	}
 }
 
-export async function loadChangelog(): Promise<Changelog> {
-	let markdown = await fetchStudioCmsChangelog();
+export async function loadChangelog(url: string): Promise<Changelog> {
+	let markdown = await fetchChangelog(url);
 
 	// Convert GitHub usernames in "Thanks ..." sentences to links
 	markdown = markdown.replace(
@@ -49,9 +46,7 @@ export async function loadChangelog(): Promise<Changelog> {
 	);
 
 	const ast = fromMarkdown(markdown);
-	// const lines = readFileSync(path, 'utf8')
-	// 	.split(/\r?\n/)
-	// 	.map((line) => line.trimEnd())
+
 	const changelog: Changelog = {
 		packageName: '',
 		versions: [],

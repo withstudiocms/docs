@@ -3,7 +3,9 @@ import { toMarkdown } from 'mdast-util-to-markdown';
 import { loadChangelog, semverCategories } from './lib/changelogs';
 import { writeFileLines } from './lib/utils';
 
-const changelog = await loadChangelog();
+const changelog = await loadChangelog(
+	'https://raw.githubusercontent.com/withstudiocms/studiocms/main/packages/studiocms/CHANGELOG.md'
+);
 
 const studiocmsOutput: string[] = [];
 
