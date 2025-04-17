@@ -18,8 +18,29 @@ export type Version = {
 export const semverCategories = ['major', 'minor', 'patch'] as const;
 export type SemverCategory = (typeof semverCategories)[number];
 
-export function loadChangelog(path: string): Changelog {
-	let markdown = readFileSync(path, 'utf8');
+async function fetchStudioCmsChangelog(): Promise<string> {
+	try {
+		console.log('Getting Changelog from GitHub API');
+		// Using GitHub's raw content URL format to get the plain text content
+		const response = await fetch(
+			'https://raw.githubusercontent.com/withstudiocms/studiocms/main/packages/studiocms/CHANGELOG.md'
+		);
+
+		if (!response.ok) {
+			throw new Error(`Failed to fetch changelog: ${response.status} ${response.statusText}`);
+		}
+
+		console.log('Changelog retrieved successfully');
+
+		return await response.text();
+	} catch (error) {
+		console.error('Error fetching StudioCMS changelog:', error);
+		throw error;
+	}
+}
+
+export async function loadChangelog(): Promise<Changelog> {
+	let markdown = await fetchStudioCmsChangelog();
 
 	// Convert GitHub usernames in "Thanks ..." sentences to links
 	markdown = markdown.replace(
