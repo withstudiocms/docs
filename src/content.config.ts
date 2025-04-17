@@ -41,6 +41,7 @@ const i18nCustomSchema = z.object({
 	'sponsors.sponsoredby': z.string().optional(),
 	'package-catalog.readmore.start': z.string().optional(),
 	'package-catalog.readmore.end': z.string().optional(),
+	'quick-update': z.string().optional(),
 	'integration-labels.changelog': z.string().optional(),
 	'contributors.core-packages': z.string().optional(),
 	'contributors.ui-library': z.string().optional(),
