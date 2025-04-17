@@ -19,6 +19,7 @@ const linkValidator = process.env.CHECK_LINKS
 			starlightLinksValidator({
 				errorOnFallbackPages: false,
 				errorOnInconsistentLocale: true,
+				// Exclude TypeDoc paths as they contain auto-generated content with many internal links
 				exclude: ['/*/typedoc/**/*'],
 			}),
 		]

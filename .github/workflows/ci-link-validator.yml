@@ -21,3 +21,4 @@ jobs:
 
       - name: Run Link Check
         run: pnpm ci:build
+        # Link validation errors will cause the build to fail automatically
