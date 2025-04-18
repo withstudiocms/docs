@@ -6,7 +6,7 @@ description: Host your own sqld libSQL server with Docker
 
 import ReadMore from '~/components/ReadMore.astro'
 import { PackageManagers } from 'starlight-package-managers'
-import { FileTree, TabItem, Tabs, Steps } from '@astrojs/starlight/components';
+import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/components';
 
 The `sqld` ("SQL daemon") project is a server mode for libSQL created by Turso.  This guide will go over setting up and configuring `sqld` to work from a docker container for your StudioCMS project.
 
@@ -107,6 +107,10 @@ services:
 </TabItem>
 
 </Tabs>
+
+<Aside type="note" title="Deploying to Coolify?">
+[Coolify](https://coolify.io) users: Use our [GitHub Gist](https://gist.github.com/Adammatthiesen/bfe7c78b2e73996fb3ef1b36ed606a57) for a Coolify-compatible Docker Compose configuration that exposes libSQL directly through your domain without the `:8080` port suffix.
+</Aside>
 
 ## Starting Everything up
 
