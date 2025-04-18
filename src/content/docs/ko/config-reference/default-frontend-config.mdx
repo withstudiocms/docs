@@ -1,0 +1,120 @@
+---
+i18nReady: true
+title: 기본 프런트엔드 구성
+description: StudioCMSOptions defaultFrontEndConfig 참조 페이지
+sidebar:
+  order: 5
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+StudioCMS 통합 구성 옵션 스키마 참조
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  defaultFrontEndConfig: {
+    favicon: '/favicon.svg',
+    htmlDefaultLanguage: 'en',
+    htmlDefaultHead: [],
+    injectQuickActionsMenu: true,
+  },
+});
+```
+
+## `favicon`
+
+`favicon`은 사이트의 파비콘 경로를 결정하는 데 사용되는 문자열입니다.
+
+- **타입:** `string`
+- **기본값:** `'/favicon.svg'`
+
+### 사용법
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  defaultFrontEndConfig: {
+    favicon: '/favicon.svg', // 기본값 - 기본 파비콘을 사용합니다.
+  }
+})
+```
+
+## `htmlDefaultLanguage`
+
+`htmlDefaultLanguage`는 사이트의 기본 언어를 결정하는 데 사용되는 문자열입니다.
+
+- **타입:** `string`
+- **기본값:** `'en'`
+
+### 사용법
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  defaultFrontEndConfig: {
+    htmlDefaultLanguage: 'en', // 기본값 - 기본 언어를 사용합니다.
+  }
+})
+```
+
+## `htmlDefaultHead`
+
+**타입:** [`HeadConfig[]`](#headconfig)
+
+Starlight 사이트의 `<head>`에 사용자 지정 태그를 추가합니다.
+이는 분석 도구나 기타 타사 스크립트 및 리소스를 추가하는 데 유용할 수 있습니다.
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  defaultFrontEndConfig: {
+    htmlDefaultHead: [
+      // 예시: Fathom 분석 도구 스크립트 태그를 추가합니다.
+      {
+        tag: 'script',
+        attrs: {
+          src: 'https://cdn.usefathom.com/script.js',
+          'data-site': 'MY-FATHOM-ID',
+          defer: true,
+        },
+      },
+    ],
+  },
+});
+```
+
+`head` 항목은 HTML 요소로 직접 변환되며, Astro의 [스크립트](https://docs.astro.build/ko/guides/client-side-scripts/#스크립트-처리) 또는 [스타일](https://docs.astro.build/ko/guides/styling/#astro에서-스타일링하기) 처리를 거치지 않습니다.
+
+#### `HeadConfig`
+
+```ts
+interface HeadConfig {
+	tag: string;
+	attrs?: Record<string, string | boolean | undefined>;
+	content?: string;
+}
+```
+
+## `injectQuickActionsMenu`
+
+**타입:** `boolean`
+**기본값:** `true`
+
+기본 사이트 우측 하단에 빠른 작업을 위한 사용자 인터페이스를 삽입하여 사용자가 StudioCMS 관리 인터페이스로 빠르게 이동할 수 있도록 합니다.
+
+### 사용법
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  defaultFrontEndConfig: {
+    injectQuickActionsMenu: true, // 기본값 - 빠른 작업 메뉴를 삽입합니다.
+  }
+})
+```
