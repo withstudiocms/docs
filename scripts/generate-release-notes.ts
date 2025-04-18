@@ -35,7 +35,7 @@ studiocmsOutput.push(
 	'---',
 	'',
 	'The following is automated release notes for the `studiocms` package.',
-	'For more information, see the [Changelog file](https://github.com/withstudiocms/withstudiocms/blob/main/pacakges/studiocms/CHANGELOG.md)',
+	'For more information, see the [Changelog file](https://github.com/withstudiocms/studiocms/blob/main/packages/studiocms/CHANGELOG.md)',
 	''
 );
 
