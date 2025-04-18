@@ -41,8 +41,8 @@ export async function loadChangelog(url: string): Promise<Changelog> {
 
 	// Convert GitHub usernames in "Thanks ..." sentences to links
 	markdown = markdown.replace(
-		/(?<=Thank[^.!]*? )@([a-z0-9-]+)(?=[\s,.!])/gi,
-		'[@$1](https://github.com/$1)'
+		/(Thank[^.!]*? )@([a-z0-9-]+)(?=[\s,.!])/gi,
+		'$1[@$2](https://github.com/$2)'
 	);
 
 	const ast = fromMarkdown(markdown);

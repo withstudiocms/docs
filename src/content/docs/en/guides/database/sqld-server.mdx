@@ -36,6 +36,11 @@ The final file structure will look something like this if testing locally:
 ## Generate Private and Public keys
 
 From inside the `keys` directory run the following command to create a new PKCS#8-encoded Ed25519 key-pair: 
+```bash  
+openssl genpkey -algorithm Ed25519 -out ./libsql.pem  
+```  
+  
+Then extract the public key with:  
 
 ```bash
 openssl pkey -in ./libsql.pem -pubout -out ./libsql.pub
