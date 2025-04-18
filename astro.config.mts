@@ -76,9 +76,6 @@ export default defineConfig({
 			credits: true,
 			tagline: 'A dedicated CMS for Astro DB. Built from the ground up by the Astro community.',
 			disable404Route: true,
-			markdown: {
-				headingLinks: false,
-			},
 			pagefind: false,
 			components: {
 				SiteTitle: './src/starlightOverrides/SiteTitle.astro',
