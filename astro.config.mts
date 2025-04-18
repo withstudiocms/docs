@@ -20,6 +20,7 @@ const linkValidator = process.env.CHECK_LINKS
 				errorOnFallbackPages: false,
 				errorOnInconsistentLocale: true,
 				// Exclude TypeDoc paths as they contain auto-generated content with many internal links
+				// Exclude the dynamically generated latest guide redirect page
 				exclude: ['/*/typedoc/**/*', '/*/guides/upgrade/latest/'],
 			}),
 		]
