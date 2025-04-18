@@ -1,0 +1,298 @@
+---
+i18nReady: true
+title: 기본 사항
+description: StudioCMS 플러그인과 작동 방식에 대해 알아보세요.
+sidebar:
+   order: 1
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+
+# 소개
+
+StudioCMS 플러그인은 StudioCMS의 기능을 확장할 수 있는 강력한 도구입니다. 이는 StudioCMS 프로젝트에 새로운 기능을 추가하는 간단하고 유연한 방법을 제공합니다. 다음은 StudioCMS 플러그인과 작동 방식에 대한 분석입니다.
+
+## 플러그인이란 무엇인가요?
+
+StudioCMS 플러그인은 Astro 통합과 유사하지만, 함수 객체에 추가적인 정보가 첨부되어 있습니다. 이 정보는 StudioCMS가 플러그인을 어떻게 로드하고 사용해야 하는지 결정하는 데 사용됩니다. StudioCMS 플러그인은 새로운 기능을 추가하거나 기존 기능을 수정하여 StudioCMS의 기능을 확장하는 데 사용됩니다.
+
+### StudioCMS 플러그인 타입
+
+```ts twoslash
+import { APIRoute, AstroIntegration } from "astro"
+import type { HeroIconName } from '@studiocms/ui/components/Icon/iconType.js';
+import type { SanitizeOptions } from 'ultrahtml/transformers/sanitize';
+import type { SettingsField } from 'studiocms/schemas';
+// ---cut---
+type StudioCMSPlugin = {
+  /**
+   * package.json에 정의된 플러그인의 식별자입니다.
+   */
+  identifier: string;
+
+  /**
+   * StudioCMS 대시보드에 표시되는 플러그인의 레이블입니다.
+   */
+  name: string;
+    
+  /**
+   * 플러그인이 작동하는 데 필요한 StudioCMS의 최소 버전입니다.
+   */
+  studiocmsMinimumVersion: string;
+    
+  /**
+   * 플러그인이 제공하는 Astro 통합입니다.
+   */
+  integration?: AstroIntegration | AstroIntegration[] | undefined;
+
+  /**
+   * true일 경우, 플러그인은 사이트맵 생성을 활성화합니다.
+   */
+  triggerSitemap?: boolean;
+
+  /**
+   * 플러그인이 사이트맵 엔드포인트를 추가할 수 있도록 허용합니다.
+   */
+  sitemaps?: Array<{
+
+    /**
+     * 플러그인의 이름입니다.
+     */
+    pluginName: string;
+
+    /**
+     * 사이트맵 XML 엔드포인트 파일의 경로입니다.
+     */
+    sitemapXMLEndpointPath: string | URL;
+  }> | undefined;
+
+  /**
+   * 플러그인이 사용자 정의 대시보드 그리드 항목을 추가할 수 있도록 허용합니다.
+   */
+  dashboardGridItems?: Array<{
+
+    /**
+     * 그리드 항목의 이름입니다.
+     */
+    name: string;
+
+    /**
+     * 그리드 항목의 너비입니다.
+     */
+    span: 1 | 2 | 3;
+
+    /**
+     * 그리드 항목의 카드 변형입니다.
+     */
+    variant: 'default' | 'filled';
+
+    /**
+     * 그리드 항목을 보기 위해 필요한 권한입니다.
+     */
+    requiresPermission?: "owner" | "admin" | "editor" | "visitor";
+
+    /**
+     * 그리드 항목의 헤더 정보입니다.
+     */
+    header?: {
+
+      /**
+       * 그리드 항목의 제목입니다.
+       */
+      title: string;
+
+      /**
+       * 그리드 항목의 아이콘입니다.
+       */
+      icon?: HeroIconName;
+    };
+
+    /**
+     * 그리드 항목의 본문 정보입니다.
+     */
+    body?: {
+
+      /**
+       * 그리드 항목의 HTML 콘텐츠입니다.
+       */
+      html: string;
+
+      /**
+       * 그리드 항목에 표시되는 컴포넌트입니다.
+       */
+      components?: Record<string, string>;
+
+      /**
+       * HTML 콘텐츠를 위한 정리 옵션입니다.
+       */
+      sanitizeOpts?: SanitizeOptions;
+    };
+  }> | undefined;
+
+  /**
+   * 이 속성이 존재하면, 플러그인은 자체 설정 페이지를 갖게 됩니다.
+   */
+  settingsPage: {
+
+    /**
+     * 명세에 따른 필드입니다.
+     */
+    fields: SettingsField[];
+
+		/**
+		 * 설정에 대한 엔드포인트입니다.
+		 *
+		 * 저장 페이지가 저장될 때 실행되는 `onSave`라는 이름의 APIRoute를 내보내야 합니다.
+		 */
+		endpoint: string,
+  } | undefined;
+
+	/**
+	 * `@studiocms/blog` 플러그인 및 기타 플러그인과 함께 프론트엔드에 링크를 표시하는 데 사용되는 탐색 링크입니다.
+	 */
+  frontendNavigationLinks: Array<{
+    label: string;
+    href: string;
+  }>;
+
+  /**
+   * 페이지 타입 정의입니다. 이 속성이 존재하면, 플러그인은 페이지 생성 프로세스를 수정할 수 있기를 원합니다.
+   */
+  pageTypes: Array<{
+
+    /**
+     * 선택 입력창에 표시되는 레이블입니다.
+     */
+    label: string;
+
+    /**
+     * 데이터베이스에 저장되는 식별자입니다.
+     * @example
+     * // 플러그인당 단일 페이지 타입입니다.
+     * 'studiocms'
+     * '@studiocms/blog'
+     * // 플러그인당 여러 페이지 타입입니다. (충돌을 피하기 위해 각 타입에 고유한 식별자를 사용하세요.)
+     * '@mystudiocms/plugin:pageType1'
+     * '@mystudiocms/plugin:pageType2'
+     * '@mystudiocms/plugin:pageType3'
+     * '@mystudiocms/plugin:pageType4'
+     */
+    identifier: string;
+
+    /**
+     * 이 타입이 선택되었을 때 "Page Content" 헤더 아래에 표시되는 설명입니다.
+     */
+    description: string;
+
+    /**
+     * 페이지 콘텐츠에 실제로 표시되는 컴포넌트의 경로입니다.
+     *
+     * 컴포넌트는 현재 콘텐츠를 표시하기 위한 문자열인 `content` prop을 가져야 합니다.
+     *
+     * **참고:** 현재는 콘텐츠 출력을 위해 `page-content`라는 양식 id를 사용해야 합니다. 편집기는 또한 양식 제출을 처리할 수 있어야 합니다.
+     * 
+     * **참고:** HTML 또는 Markdown 콘텐츠로 작업하는 경우 대체 값으로 `studiocms/markdown` 또는 `studiocms/html`을 사용할 수 있습니다!
+     *
+     * @example
+     * ```ts
+     * import { createResolver } from 'astro-integration-kit';
+     * const { resolve } = createResolver(import.meta.url)
+     *
+     * {
+     *  pageContentComponent: resolve('./components/MyContentEditor.astro'),
+     * }
+     * ```
+     */
+    pageContentComponent: 'studiocms/markdown' | 'studiocms/html' | string;
+
+		/**
+		 * 페이지 렌더러에 실제로 표시되는 컴포넌트의 경로입니다.
+     * 
+     * **참고:** HTML 또는 Markdown 콘텐츠로 작업하는 경우 대체 값으로 `studiocms/markdown` 또는 `studiocms/html`을 사용할 수 있습니다!
+		 */
+		rendererComponent: 'studiocms/markdown' | 'studiocms/html' | string;
+
+    /**
+     * 명세에 따른 필드입니다.
+     */
+    fields: SettingsField[];
+
+		/**
+		 * 페이지 타입에 대한 API 엔드포인트 파일입니다.
+		 *
+		 * API 엔드포인트는 이 타입의 페이지를 생성, 편집 및 삭제하는 데 사용됩니다.
+		 * 엔드포인트는 Astro APIRoute에서 전체 Astro APIContext를 제공받습니다.
+		 *
+		 * 파일은 다음 중 적어도 하나를 내보내야 합니다.
+		 * - `onCreate`
+		 * - `onEdit`
+		 * - `onDelete`
+		 *
+		 * @example
+		 * ```ts
+		 * // my-plugin.ts
+		 * import { createResolver } from 'astro-integration-kit';
+		 * const { resolve } = createResolver(import.meta.url)
+		 *
+		 * {
+		 *  apiEndpoint: resolve('./api/pageTypeApi.ts'),
+		 * }
+		 *
+		 * // api/pageTypeApi.ts
+		 * import { APIRoute } from 'astro';
+		 *
+		 * export const onCreate: APIRoute = async (ctx) => {
+		 *   // 여기에 사용자 정의 로직을 작성합니다.
+		 *   return new Response();
+		 * }
+		 * ```
+		 */
+		apiEndpoint: string;
+  }> | undefined;
+};
+```
+
+### 플러그인 정의
+
+StudioCMS 플러그인을 정의하려면 `StudioCMSPlugin` 타입에 부합하는 객체를 생성해야 합니다. 이 객체는 다음과 유사한 형태를 가져야 하며, 다음 속성들은 필수 사항입니다.
+
+- `identifier`: package.json 파일에 정의된 플러그인의 식별자입니다.
+- `name`: StudioCMS 대시보드에 표시되는 플러그인의 레이블입니다.
+- `studiocmsMinimumVersion`: 플러그인이 작동하는 데 필요한 StudioCMS의 최소 버전입니다.
+
+다음은 필요한 모든 속성을 포함하고 사용자 정의 로직을 수행하는 Astro 통합을 제공하는 StudioCMS 플러그인 정의의 예시입니다.
+
+```ts twoslash title="my-plugin.ts"
+import { definePlugin } from 'studiocms/plugins';
+import { AstroIntegration } from 'astro';
+
+// 플러그인 및 통합에 대한 옵션을 정의합니다.
+interface Options {
+    foo: string;
+}
+
+// Astro 통합을 정의합니다.
+const myIntegration = (options: Options): AstroIntegration => ({
+    name: 'my-astro-integration',
+    hooks: {
+        "astro:config:setup": () => {
+            console.log('Hello from my Astro Integration!');
+        }
+    }
+});
+
+// StudioCMS 플러그인을 정의합니다.
+export const myPlugin = (options: Options) => definePlugin({
+    identifier: 'my-plugin',
+    name: 'My Plugin',
+    studiocmsMinimumVersion: '0.1.0-beta.8',
+    integration: myIntegration(options), // 선택 사항이지만, 권장 사항입니다.
+});
+```
+
+이 예시에서는 StudioCMS 버전 `0.1.0-beta.8` 이상을 요구하는 `My Plugin`이라는 StudioCMS 플러그인을 정의합니다. 이 플러그인은 `astro:config:setup` 훅이 호출될 때 콘솔에 메시지를 기록하는 Astro 통합도 제공합니다.
+
+<ReadMore>플러그인 구축에 대한 더 자세한 정보는 [유용한 플러그인 만들기][extended-plugins] 가이드를 확인하세요.</ReadMore>
+
+{/* Links */}
+[extended-plugins]: /ko/plugins/extended/
