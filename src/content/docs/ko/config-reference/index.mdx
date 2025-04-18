@@ -1,0 +1,187 @@
+---
+i18nReady: true
+title: StudioCMSOptions
+description: StudioCMSOptions 참조 페이지
+sidebar:
+  order: 1
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+StudioCMS 통합 구성 옵션 스키마 참조
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+// 기본값을 표시합니다.
+export default defineStudioCMSConfig({
+  dbStartPage: true,
+  dateLocale: 'en-us',
+  verbose: false,
+  plugins: [],
+  componentRegistry: {},
+  overrides: {},
+  imageService: {},
+  defaultFrontEndConfig: {},
+  dashboardConfig: {},
+  includedIntegrations: {},
+  dateTimeFormat: {},
+  sdk: {},
+  pageTypeOptions: {}
+});
+```
+
+## `dbStartPage`
+
+프로젝트 초기화 페이지 - 처음 설정 시 데이터베이스 구성을 생성하는 데 사용됩니다.
+
+- **타입:** `boolean`
+- **기본값:** `true`
+
+### 사용법
+
+```ts twoslash {2} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dbStartPage: true, // 기본값 - DB 데이터를 설정하기 위한 시작 페이지를 삽입합니다.
+})
+```
+
+## `dateLocale`
+
+`dateLocale`은 날짜 형식 설정을 위한 로케일을 결정하는 데 사용되는 문자열입니다.
+
+- **타입:** `string`
+- **기본값:** `'en-us'`
+
+### 사용법
+
+```ts twoslash {2} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dateLocale: 'en-us', // 기본값 - 날짜 형식 설정을 위한 날짜 로케일을 설정합니다.
+})
+```
+
+## `verbose`
+
+`verbose`는 상세 로깅을 활성화 또는 비활성화하는 데 사용되는 부울입니다.
+
+- **타입:** `boolean`
+- **기본값:** `false`
+
+### 사용법
+
+```ts twoslash {2} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  verbose: false, // 기본값 - 상세 로깅을 사용하지 않습니다.
+})
+```
+
+## `plugins`
+
+`plugins`는 어떤 플러그인을 로드해야 할지 결정하는 데 사용되는 배열입니다.
+
+- **타입:** `StudioCMSPlugin[]`
+- **기본값:** `[]`
+
+### 사용법
+
+```ts twoslash {1, 3-5} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+import blog from '@studiocms/blog';
+export default defineStudioCMSConfig({
+  plugins: [
+    blog(),
+  ],
+})
+```
+
+## `componentRegistry`
+
+`componentRegistry`는 컴포넌트를 등록하는 데 사용되는 객체입니다.
+
+- **타입:** `Record<string, string>`
+- **기본값:** `{}`
+
+### 사용법
+
+```ts twoslash {2-4} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  componentRegistry: {
+    'my-component': 'src/components/MyComponent.astro',
+  },
+})
+```
+
+## `dateTimeFormat`
+
+`dateTimeFormat`은 날짜 및 시간 형식을 구성하는 데 사용되는 객체입니다.
+
+- **타입:** `Intl.DateTimeFormatOptions`
+- **기본값:** `{}`
+
+### 사용법
+
+```ts twoslash {2-6} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dateTimeFormat: {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  },
+})
+```
+
+## `overrides`
+
+`overrides`는 기본 구성을 재정의하는 데 사용되는 객체입니다.
+
+<ReadMore>[전체 옵션은 `overrides`를 참조하세요.][overrides]</ReadMore>
+
+## `imageService`
+
+`imageService`는 이미지 서비스를 구성하는 데 사용되는 객체입니다.
+
+<ReadMore>[전체 옵션은 `imageService`를 참조하세요.][image-service]</ReadMore>
+
+## `defaultFrontEndConfig`
+
+`defaultFrontEndConfig`는 기본 프런트엔드를 구성하는 데 사용되는 객체입니다.
+
+<ReadMore>[전체 옵션은 `defaultFrontEndConfig`를 참조하세요.][default-frontend-config]</ReadMore>
+
+## `dashboardConfig`
+
+`dashboardConfig`는 대시보드를 구성하는 데 사용되는 객체입니다.
+
+<ReadMore>[전체 옵션은 `dashboardConfig`를 참조하세요.][dashboard]</ReadMore>
+
+## `includedIntegrations`
+
+`includedIntegrations`는 어떤 통합을 포함할지 구성하는 데 사용되는 객체입니다.
+
+<ReadMore>[전체 옵션은 `includedIntegrations`를 참조하세요.][included-integrations]</ReadMore>
+
+## `sdk`
+
+`sdk`는 SDK를 구성하는 데 사용되는 객체입니다.
+
+<ReadMore>[전체 옵션은 `sdk`를 참조하세요.][sdk]</ReadMore>
+
+{/* Links */}
+[overrides]: /ko/config-reference/overrides/
+[image-service]: /ko/config-reference/image-service/
+[default-frontend-config]: /ko/config-reference/default-frontend-config/
+[dashboard]: /ko/config-reference/dashboard/
+[included-integrations]: /ko/config-reference/included-integrations/
+[sdk]: /ko/config-reference/sdk/
