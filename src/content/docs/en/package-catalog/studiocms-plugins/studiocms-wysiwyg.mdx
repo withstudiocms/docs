@@ -21,9 +21,9 @@ This plugin adds a WYSIWYG editor to your StudioCMS project with ease!
 
 1. Install the package using the following command:
 
-   <PackageManagers pkg="@studiocms/wysiwyg" />
+   <PackageManagers pkg="studiocms" type='run' args='add @studiocms/wysiwyg' />
 
-2. Add `@studiocms/wysiwyg` to your Astro config file:
+2. Your StudioCMS config should now include `@studiocms/wysiwyg`:
 
    ```ts twoslash title="studiocms.config.mjs" ins={2, 6}
    import { defineStudioCMSConfig } from 'studiocms/config';
