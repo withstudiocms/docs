@@ -25,6 +25,8 @@ for (const item of versionGuides) {
 	if (toAdd) versions.push(toAdd);
 }
 
+const semverTags = ['beta', 'alpha', 'experimental', 'rc', 'pre'];
+
 // Function to convert your version format to semver compatible format
 function toSemverFormat(version: string): string {
 	// Split by hyphens
@@ -33,10 +35,10 @@ function toSemverFormat(version: string): string {
 	// Handle the case like "0-1-0-beta-16"
 	if (
 		parts.length >= 5 &&
-		parts[0] === '0' &&
-		parts[1] === '1' &&
-		parts[2] === '0' &&
-		parts[3] === 'beta'
+		!Number.isNaN(Number(parts[0])) &&
+		!Number.isNaN(Number(parts[1])) &&
+		!Number.isNaN(Number(parts[2])) &&
+		semverTags.includes(parts[3])
 	) {
 		// For this specific example, construct as: 0.1.0-beta.16
 		return `${parts[0]}.${parts[1]}.${parts[2]}-${parts[3]}.${parts[4]}`;
