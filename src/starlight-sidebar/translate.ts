@@ -2,9 +2,8 @@
  * To add a new translation for the sidebar, create a new `<lang>.json` in this directory and add
  * it's name to the `Translations` array below and it will be added as a supported sidebar lang.
  */
+import { Translations } from './availTranslations';
 import fallback from './en.json';
-
-export const Translations = ['en', 'es', 'fr', 'ko', 'de'] as const;
 
 type TranslationLangs = (typeof Translations)[number];
 
