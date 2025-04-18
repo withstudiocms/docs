@@ -1,0 +1,37 @@
+---
+i18nReady: true
+title: "@studiocms/wysiwyg"
+type: integration
+catalogEntry: studiocms-wysiwyg
+description: "Add A WYSIWYG Editor to your StudioCMS project with ease!"
+sidebar:
+  badge: 
+    text: 'Experimental'
+    variant: 'danger'
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# Introduction
+
+This plugin adds a WYSIWYG editor to your StudioCMS project with ease!
+
+## Installation
+
+1. Install the package using the following command:
+
+   <PackageManagers pkg="@studiocms/wysiwyg" />
+
+2. Add `@studiocms/wysiwyg` to your Astro config file:
+
+   ```ts twoslash title="studiocms.config.mjs" ins={2, 6}
+   import { defineStudioCMSConfig } from 'studiocms/config';
+   import wysiwyg from '@studiocms/wysiwyg';
+
+    export default defineStudioCMSConfig({
+      plugins: [
+        wysiwyg(),
+      ],
+    });
+   ```

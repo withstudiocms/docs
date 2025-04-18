@@ -28,6 +28,7 @@
     "@studiocms/ui": "^0.4.16",
     "@studiocms/mdx": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@d86ff7a",
     "@studiocms/markdoc": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@d86ff7a",
+    "@studiocms/wysiwyg": "^0.1.0-experimental.3",
     "@actions/core": "^1.11.1",
     "astro": "^5.7.2",
     "@astrojs/check": "^0.9.4",
