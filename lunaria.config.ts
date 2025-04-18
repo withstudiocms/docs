@@ -127,8 +127,8 @@ export default defineConfig({
 			type: 'dictionary',
 		},
 		{
-			include: ['starlight-sidebar/*.json'],
-			pattern: 'starlight-sidebar/@lang.json',
+			include: ['src/starlight-sidebar/*.json'],
+			pattern: 'src/starlight-sidebar/@lang.json',
 			type: 'dictionary',
 		},
 		{

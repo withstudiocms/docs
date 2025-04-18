@@ -7,7 +7,7 @@ import starlightSidebarTopics from 'starlight-sidebar-topics';
 import getCoolifyURL from './hostUtils.ts';
 import rehypePlugins from './src/plugins/rehypePluginKit.ts';
 import { typeDocPlugins } from './typedoc.config.ts';
-import { getTranslations } from './starlight-sidebar/translate.ts';
+import { getTranslations } from './src/starlight-sidebar/translate.ts';
 import { devServerFileWatcher } from './src/integrations/dev-file-watcher.ts';
 import { remarkFallbackLang } from './src/plugins/remark-fallback-pages.ts';
 
@@ -20,7 +20,8 @@ const linkValidator = process.env.CHECK_LINKS
 				errorOnFallbackPages: false,
 				errorOnInconsistentLocale: true,
 				// Exclude TypeDoc paths as they contain auto-generated content with many internal links
-				exclude: ['/*/typedoc/**/*'],
+				// Exclude the dynamically generated latest guide redirect page
+				exclude: ['/*/typedoc/**/*', '/*/guides/upgrade/latest/'],
 			}),
 		]
 	: [];
@@ -59,7 +60,7 @@ export default defineConfig({
 			'./hostUtils.ts',
 			'./typedoc.config.ts',
 			'./starlight-types.ts',
-			'./starlight-sidebar/*',
+			'./src/starlight-sidebar/*',
 			'./src/content.ts',
 			'./src/share-link.ts',
 			'./src/util/*.ts',
@@ -89,14 +90,18 @@ export default defineConfig({
 			},
 			defaultLocale: 'en',
 			locales,
-			social: {
-				github: 'https://github.com/withstudiocms/studiocms',
-				discord: 'https://chat.studiocms.dev',
-				youtube: 'https://www.youtube.com/@StudioCMS',
-				'x.com': 'https://x.com/withstudiocms',
-				blueSky: 'https://bsky.app/profile/studiocms.dev',
-				openCollective: 'https://opencollective.com/StudioCMS',
-			},
+			social: [
+				{ label: 'GitHub', icon: 'github', href: 'https://github.com/withstudiocms/studiocms' },
+				{ label: 'Discord', icon: 'discord', href: 'https://chat.studiocms.dev' },
+				{ label: 'YouTube', icon: 'youtube', href: 'https://www.youtube.com/@StudioCMS' },
+				{ label: 'Twitter / X', icon: 'x.com', href: 'https://x.com/withstudiocms' },
+				{ label: 'BlueSky', icon: 'blueSky', href: 'https://bsky.app/profile/studiocms.dev' },
+				{
+					label: 'Open Collective',
+					icon: 'openCollective',
+					href: 'https://opencollective.com/StudioCMS',
+				},
+			],
 			customCss: [
 				'@studiocms/ui/css/global.css',
 				'./src/styles/sponsorcolors.css',
@@ -160,11 +165,6 @@ export default defineConfig({
 								autogenerate: { directory: 'start-here' },
 							},
 							{
-								label: getTranslations('contributing').en,
-								translations: getTranslations('contributing'),
-								autogenerate: { directory: 'contributing' },
-							},
-							{
 								label: getTranslations('how-it-works').en,
 								translations: getTranslations('how-it-works'),
 								autogenerate: { directory: 'how-it-works' },
@@ -178,6 +178,52 @@ export default defineConfig({
 								label: getTranslations('plugins').en,
 								translations: getTranslations('plugins'),
 								autogenerate: { directory: 'plugins' },
+							},
+						],
+					},
+					{
+						label: getTranslations('topic-guides').en,
+						link: '/guides/',
+						icon: 'rocket',
+						id: 'guides',
+						badge: {
+							text: 'NEW',
+							variant: 'success',
+						},
+						items: [
+							{
+								label: getTranslations('contributing').en,
+								translations: getTranslations('contributing'),
+								autogenerate: { directory: 'guides/contributing' },
+							},
+							{
+								label: getTranslations('upgrade').en,
+								translations: getTranslations('upgrade'),
+								items: [
+									{
+										slug: 'guides/upgrade/release-notes',
+									},
+									{
+										label: getTranslations('latest').en,
+										translations: getTranslations('latest'),
+										link: 'guides/upgrade/latest',
+										badge: {
+											text: 'Link',
+											variant: 'note',
+										},
+									},
+									{
+										label: getTranslations('version').en,
+										translations: getTranslations('version'),
+										collapsed: true,
+										autogenerate: { directory: 'guides/upgrade/version-guides' },
+									},
+								],
+							},
+							{
+								label: getTranslations('database').en,
+								translations: getTranslations('database'),
+								autogenerate: { directory: 'guides/database' },
 							},
 						],
 					},

@@ -47,11 +47,16 @@ const { scoped, scope, name } = parsePackageName(entryData.name);
 	data.type === 'integration' ? (
 		<div class="wrapper">
 			<h1 id="_top">
+
 				{
-                    scoped 
+					data.replaceTitle 
+					? scoped 
                     ? <span class="scope">{scope}/</span><span>{name}</span> 
                     : <span>{name}</span>
-                }
+					: scoped 
+                    ? <span>{data.title}</span> <span style="margin-left: 16px; margin-right: 16px;"> - </span> <span class="scope">{scope}/</span><span>{name}</span>
+                    : <span>{data.title}</span> <span style="margin-left: 16px; margin-right: 16px;"> - </span> <span>{name}</span>
+				}
 			</h1>
 			<div class="integration-metadata">
 				{ entryData.released ? <Version pkgName={entryData.name} /> : <code>N/A</code>}

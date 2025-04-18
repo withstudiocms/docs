@@ -6,6 +6,7 @@ const config: KnipConfig = {
 		'@studiocms/devapps',
 		'@studiocms/mdx',
 		'@studiocms/markdoc',
+		'@studiocms/wysiwyg',
 		'@astrojs/node',
 		'@astrojs/react',
 		'sharp',

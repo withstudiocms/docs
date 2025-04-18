@@ -42,10 +42,11 @@ const packages = (await getCollection('package-catalog'))
             isPlugin, 
             description, 
             docsLink: href,
-            publiclyUsable
+            publiclyUsable,
+            experimental
         }, index) => (
             <Card fullWidth>
-                <Integration {title} {githubURL} {released} {isPlugin} {publiclyUsable} />
+                <Integration {title} {githubURL} {released} {isPlugin} {publiclyUsable} {experimental} />
 
                 <p>{description}</p>
 

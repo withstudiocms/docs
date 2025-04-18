@@ -1,0 +1,102 @@
+---
+import { Translations } from '../../../../starlight-sidebar/availTranslations';
+import semver from 'semver';
+
+export async function getStaticPaths() {
+	return Translations.map((lang) => {
+		return {
+			params: { lang },
+		};
+	});
+}
+
+const { lang } = Astro.params;
+
+const versionGuideFiles = import.meta.glob(
+	'../../../../content/docs/en/guides/upgrade/version-guides/*.mdx'
+);
+
+const versionGuides = Object.keys(versionGuideFiles);
+
+const versions: string[] = [];
+
+for (const item of versionGuides) {
+	const toAdd = item.split('/').pop()?.replace('.mdx', '');
+	if (toAdd) versions.push(toAdd);
+}
+
+const semverTags = ['beta', 'alpha', 'experimental', 'rc', 'pre'];
+
+// Function to convert your version format to semver compatible format
+function toSemverFormat(version: string): string {
+	// Split by hyphens
+	const parts = version.split('-');
+
+	// Handle the case like "0-1-0-beta-16"
+	if (
+		parts.length >= 5 &&
+		!Number.isNaN(Number(parts[0])) &&
+		!Number.isNaN(Number(parts[1])) &&
+		!Number.isNaN(Number(parts[2])) &&
+		semverTags.includes(parts[3])
+	) {
+		// For this specific example, construct as: 0.1.0-beta.16
+		return `${parts[0]}.${parts[1]}.${parts[2]}-${parts[3]}.${parts[4]}`;
+	}
+
+	// For versions like "0-1-0", convert to "0.1.0"
+	if (
+		parts.length === 3 &&
+		!Number.isNaN(Number(parts[0])) &&
+		!Number.isNaN(Number(parts[1])) &&
+		!Number.isNaN(Number(parts[2]))
+	) {
+		return parts.join('.');
+	}
+
+	// For a more general approach, identify where the version numbers end and prerelease begins
+	let mainVersionParts = [];
+	let prereleaseParts = [];
+	let foundPrerelease = false;
+
+	for (const part of parts) {
+		// If it's a number and we haven't found a prerelease identifier yet
+		if (!Number.isNaN(Number(part)) && !foundPrerelease) {
+			mainVersionParts.push(part);
+		} else {
+			// We found a prerelease part
+			foundPrerelease = true;
+			prereleaseParts.push(part);
+		}
+	}
+
+	// Construct the semver string
+	const mainVersion = mainVersionParts.join('.');
+	const prerelease = prereleaseParts.length > 0 ? `-${prereleaseParts.join('.')}` : '';
+
+	return mainVersion + prerelease;
+}
+
+// Convert to semver format
+const semverVersions = versions.map(toSemverFormat);
+
+// Find the latest version
+let latestVersion = semverVersions[0];
+let latestIndex = 0;
+
+for (let i = 0; i < semverVersions.length; i++) {
+	const version = semverVersions[i];
+	if (
+		semver.valid(version) &&
+		(!semver.valid(latestVersion) || semver.gt(version, latestVersion))
+	) {
+		latestVersion = version;
+		latestIndex = i;
+	}
+}
+
+// Use original format from the versions array
+const latestOriginal = versions[latestIndex];
+---
+
+<meta http-equiv="refresh" content={`0;url=/${lang}/guides/upgrade/version-guides/${latestOriginal}/`} />
