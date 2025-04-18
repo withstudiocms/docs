@@ -4,7 +4,7 @@
  */
 import fallback from './en.json';
 
-export const Translations = ['en', 'fr', 'ko', 'de'] as const;
+export const Translations = ['en', 'es', 'fr', 'ko', 'de'] as const;
 
 type TranslationLangs = (typeof Translations)[number];
 

@@ -7,7 +7,7 @@ import starlightSidebarTopics from 'starlight-sidebar-topics';
 import getCoolifyURL from './hostUtils.ts';
 import rehypePlugins from './src/plugins/rehypePluginKit.ts';
 import { typeDocPlugins } from './typedoc.config.ts';
-import { getTranslations } from './starlight-sidebar/translate.ts';
+import { getTranslations } from './src/starlight-sidebar/translate.ts';
 import { devServerFileWatcher } from './src/integrations/dev-file-watcher.ts';
 import { remarkFallbackLang } from './src/plugins/remark-fallback-pages.ts';
 
@@ -59,7 +59,7 @@ export default defineConfig({
 			'./hostUtils.ts',
 			'./typedoc.config.ts',
 			'./starlight-types.ts',
-			'./starlight-sidebar/*',
+			'./src/starlight-sidebar/*',
 			'./src/content.ts',
 			'./src/share-link.ts',
 			'./src/util/*.ts',
