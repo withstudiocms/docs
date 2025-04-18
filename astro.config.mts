@@ -206,6 +206,15 @@ export default defineConfig({
 										slug: 'guides/upgrade/release-notes',
 									},
 									{
+										label: getTranslations('latest').en,
+										translations: getTranslations('latest'),
+										link: 'guides/upgrade/latest',
+										badge: {
+											text: 'Link',
+											variant: 'note',
+										},
+									},
+									{
 										label: getTranslations('version').en,
 										translations: getTranslations('version'),
 										collapsed: true,

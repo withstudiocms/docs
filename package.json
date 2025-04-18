@@ -75,6 +75,8 @@
     "unist-util-visit": "^5.0.0",
     "mdast-util-to-markdown": "^2.1.2",
     "mdast-util-from-markdown": "^2.0.2",
-    "mdast-util-to-string": "^4.0.0"
+    "mdast-util-to-string": "^4.0.0",
+    "semver": "^7.7.1",
+    "@types/semver": "^7.7.0"
   }
 }

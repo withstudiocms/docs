@@ -74,6 +74,9 @@ importers:
       '@types/mdast':
         specifier: ^4.0.4
         version: 4.0.4
+      '@types/semver':
+        specifier: ^7.7.0
+        version: 7.7.0
       astro:
         specifier: ^5.7.2
         version: 5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(typescript@5.8.2)(yaml@2.7.0)
@@ -122,6 +125,9 @@ importers:
       rehype-slug:
         specifier: ^6.0.0
         version: 6.0.0
+      semver:
+        specifier: ^7.7.1
+        version: 7.7.1
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
@@ -1414,6 +1420,9 @@ packages:
 
   '@types/sax@1.2.7':
     resolution: {integrity: sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==}
+
+  '@types/semver@7.7.0':
+    resolution: {integrity: sha512-k107IF4+Xr7UHjwDc7Cfd6PRQfbdkiRabXGRjo07b4WyPahFBZCZ1sE+BNxYIJPPg73UkfOsVOLwqVc/6ETrIA==}
 
   '@types/trusted-types@2.0.7':
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
@@ -5503,6 +5512,8 @@ snapshots:
   '@types/sax@1.2.7':
     dependencies:
       '@types/node': 22.13.5
+
+  '@types/semver@7.7.0': {}
 
   '@types/trusted-types@2.0.7':
     optional: true

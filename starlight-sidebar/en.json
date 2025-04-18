@@ -16,5 +16,6 @@
   "topic-guides": "Guides & Tutorials",
   "database": "Database Guides",
   "upgrade": "Upgrade",
-  "version": "Version Guides"
+  "version": "Version Guides",
+  "latest": "Latest Upgrade Guide"
 }
