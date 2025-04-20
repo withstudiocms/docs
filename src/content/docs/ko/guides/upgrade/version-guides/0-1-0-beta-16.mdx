@@ -1,0 +1,35 @@
+---
+i18nReady: true
+title: "업그레이드: 0.1.0-beta.16"
+description: StudioCMS를 Beta.16으로 업그레이드합니다.
+sidebar:
+  label: 0.1.0-beta.16
+  badge:
+    text: 추가됨
+    variant: success
+  order: 999999
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+
+<QuickUpdate />
+
+## 주요 변경 사항
+
+- 최소 Astro 버전이 `Astro v5.7.1`로 업데이트되었습니다.
+- 비밀번호 보안이 업데이트되었습니다.
+   - 업데이트 후 사용자는 비밀번호를 변경해야 하며, 기존 비밀번호 해싱 지원은 향후 제거될 예정입니다.
+
+## 새로운 기능
+
+- CLI 업데이트/변경 사항
+   - 새로운 명령어: `studiocms add <plugin>` - StudioCMS 프로젝트에 새로운 플러그인을 빠르게 추가합니다.
+   - 새로운 명령어: `studiocms crypto [command]` - 새로운 보안 유틸리티를 제공합니다.
+   - 새로운 명령어: `studiocms crypto gen-jwt <key-file>` - CLI에서 JWT 토큰을 생성합니다.
+   - 수정: Users 및 Permissions에 대한 새로운 부분 DB Drizzle 스키마 덕분에 CLI에서 사용자 편집이 가능해졌습니다.
+
+<ReadMore>새로운 CLI 명령어에 대한 더 자세한 정보는 [CLI][cli-docs] 문서를 확인하세요.</ReadMore>
+
+{/* Links */}
+[cli-docs]: /ko/how-it-works/cli/
