@@ -8,9 +8,11 @@ sidebar:
 
 import { PackageManagers } from 'starlight-package-managers'
 import TursoCLI from '~/components/TursoCLI.astro';
-import { Aside, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import { Aside, Steps, Tabs, TabItem, LinkCard } from '@astrojs/starlight/components';
 import ReadMore from '~/components/ReadMore.astro';
 import { sponsors, SponsorLink } from '~/share-link'
+
+<LinkCard title="StudioCMS를 최신 버전으로 업그레이드" href="/ko/guides/upgrade/latest/" description="최신 버전으로 업그레이드하고 싶으신가요? 여기를 확인하세요!" />
 
 ## 시작하기
 
@@ -18,12 +20,12 @@ StudioCMS를 사용하려면 다음이 필요합니다.
 
 - [Astro에서 지원하는 Node.js 버전](https://docs.astro.build/ko/install-and-setup/#사전-준비-사항) (Bun 및 Deno는 지원되지 않습니다)
 - Astro 프로젝트
-- libSQL 제공업체 또는 자체 호스팅 libSQL 서버
+- libSQL 제공업체 또는 [자체 호스팅 libSQL 서버][self-hosted-libsql]
 - StudioCMS 통합
 
 ## 데이터베이스 준비
 
-StudioCMS는 `@astrojs/db`를 사용하여 libSQL 데이터베이스에 연결합니다. 모든 libSQL 제공업체 또는 자체 호스팅 libSQL 서버를 사용할 수 있습니다.
+StudioCMS는 `@astrojs/db`를 사용하여 libSQL 데이터베이스에 연결합니다. 모든 libSQL 제공업체 또는 [자체 호스팅 libSQL 서버][self-hosted-libsql]를 사용할 수 있습니다.
 
 StudioCMS CLI를 사용하는 경우, Turso CLI가 설치되어 있다면 이 단계를 건너뛰고 CLI를 사용하여 새 데이터베이스를 만들 수 있습니다.
 
@@ -208,7 +210,7 @@ libSQL은 원격 서버의 전송 프로토콜로 HTTP와 WebSocket을 모두 �
 
 </Tabs>
 
-`astro.config.mjs` 파일의 `site` 옵션은 StudioCMS가 올바르게 작동하는 데 필수적입니다. 이 값을 사이트 URL 또는 자리 표시자 URL로 설정할 수 있습니다. (예: `https://demo.studiocms.xyz/` 또는 `http://localhost:4321/`)
+`astro.config.mjs` 파일의 `site` 옵션은 StudioCMS가 올바르게 작동하는 데 필수적입니다. 이 값을 사이트 URL 또는 자리 표시자 URL로 설정할 수 있습니다. (예: `https://demo.studiocms.dev/` 또는 `http://localhost:4321/`)
 
 <Aside type="note" title="어댑터가 필요합니다.">
 StudioCMS가 올바르게 작동하기 위해서는 [Astro 어댑터](https://docs.astro.build/ko/guides/on-demand-rendering/#서버-어댑터)가 필요합니다. `astro.config.mjs` 파일에서 SSR 라우트를 지원하는 어댑터를 설정해야 합니다.
@@ -363,3 +365,5 @@ StudioCMS에서 [환경 변수][environment-variables]를 설정하는 방법을
 [encryption-key]: /ko/start-here/environment-variables/#studiocmsauth를-위한-암호화-키
 [oauth-environment-variables]: /ko/start-here/environment-variables/#oauth-인증-환경-변수
 [auth-config-ref]: /ko/config-reference/dashboard/#authconfig
+[auth-config-ref]: /ko/config-reference/dashboard/#authconfig
+[self-hosted-libsql]: /ko/guides/database/sqld-server/
