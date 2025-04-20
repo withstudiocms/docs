@@ -21,11 +21,11 @@ Dieses Plugin ermöglicht die MarkDoc-Unterstützung in StudioCMS.
 
 1. Installiere das Paket mit dem folgenden Befehl:
 
-   <PackageManagers pkg="@studiocms/markdoc" />
+   <PackageManagers pkg="studiocms" type='run' args='add @studiocms/markdoc' />
 
-2. Füge `@studiocms/markdoc` zu deiner Astro-Konfigurationsdatei hinzu:
+2. Deine StudioCMS-Konfiguration sollte jetzt `@studiocms/markdoc` enthalten:
 
-   ```ts twoslash title="studiocms.config.mjs" ins={2, 6}
+   ```ts twoslash title="studiocms.config.mjs" {2, 6}
    import { defineStudioCMSConfig } from 'studiocms/config';
    import markdoc from '@studiocms/markdoc';
 
