@@ -4,25 +4,195 @@ title: "The CLI"
 description: "Learn about the StudioCMS CLIs and how to use them."
 sidebar:
    order: 2
+   badge:
+     text: 'Updated'
+     variant: 'success'
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import ReadMore from '~/components/ReadMore.astro';
 
-# Introduction
-
 The StudioCMS CLIs are utilities that allow you to quickly scaffold new StudioCMS projects and expose useful utilities for StudioCMS.
 
-There is two different CLIs that are part of the StudioCMS ecosystem:
+There is multiple different CLIs that are part of the StudioCMS ecosystem:
 
-- **`create-studiocms`**: The StudioCMS project scaffolding CLI.
-- **`studiocms`**: The StudioCMS utility CLI.
+- **[`create-studiocms`](#create-studiocms)**: The StudioCMS project scaffolding CLI.
+- **[`studiocms`](#studiocms)**: The StudioCMS utility CLI.
+- **[`@studiocms/upgrade`](#studiocms-upgrade)**: Upgrade StudioCMS Projects and their Plugins
 
 The following is a breakdown of the StudioCMS CLI and its components.
 
+## `studiocms`
+
+### Full CLI Options and commands
+
+```log
+Usage: studiocms [options] [command]
+
+Options:
+  -V, --version  Output the current version of the CLI Toolkit.
+  -h, --help     display help for command
+  --color        force color output
+  --no-color     disable color output
+
+Commands:
+  add            Add StudioCMS plugin(s) to your project
+  crypto         Crypto Utilities for Security
+  get-turso      Install the Turso CLI
+  init           Initialize the StudioCMS project after new installation.
+  users          Utilities for Tweaking Users in StudioCMS
+```
+
+### Example Usage
+
+From within your StudioCMS Project root
+
+<Tabs syncKey='pkgs'>
+  <TabItem label="npm" icon="seti:npm">
+  ```sh
+  npm run studiocms [command]
+  ```
+  </TabItem>
+  <TabItem label="pnpm" icon="pnpm">
+  ```sh
+  pnpm studiocms [command]
+  ```
+  </TabItem>
+  <TabItem label="yarn" icon="seti:yarn">
+  ```sh
+  yarn studiocms [command]
+  ```
+  </TabItem>
+</Tabs>
+
+### Command Breakdown
+
+#### `add`
+
+```log
+usage: studiocms add <plugins...>
+
+Adds StudioCMS plugin(s) to your project.
+
+Arguments:
+  plugins    Plugin(s) to install
+
+Options:
+  -h, --help  display help for command
+```
+
+#### `crypto`
+
+```log
+usage: studiocms crypto [command]
+
+Crypto Utilities for Security
+
+Options:
+  -h, --help  display help for command
+
+Commands:
+  gen-jwt     Generate JWT token from a keyfile
+```
+
+#### `crypto gen-jwt`
+
+```log 
+usage: studiocms crypto gen-jwt [options] <key-file>
+
+Generate a JWT token from a keyfile
+
+Arguments:
+  key-file                     a relative path (e.g., `../keys/libsql.pem`) from the current directory to your private key file (.pem)
+
+Options:
+  -c, --claim <claim...>       claim in the form [key=value]
+  -e, --exp <date-in-seconds>  Expiry date in seconds (>=0) from issued at (iat) time
+  -h, --help                   display help for command
+```
+
+#### `get-turso`
+
+Downloads and installs the latest version of Turso using the script from
+Turso's [documentation][turso-docs]
+
+:::note
+Windows requires the use of WSL as per Turso
+:::
+
+```log
+Usage: getTurso [options]
+
+Turso CLI Installer
+
+Options:
+  -h, --help  display help for command
+```
+
+#### `init`
+
+```log
+Usage: studiocms init [options]
+
+Initialize the StudioCMS project after new installation.
+
+Options:
+  -d, --dry-run     Dry run mode
+  --skip-banners    Skip all banners
+  --debug           Enable debug mode
+  -h, --help        Display help for command
+```
+
+The init command provides an interactive setup experience that helps you:
+
+1. Set up your environment file (.env) with options to:
+   - Use an example `.env` template
+   - Use the interactive `.env` builder which can:
+     - Set up a new Turso database (if not on Windows)
+     - Configure OAuth providers (GitHub, Discord, Google, Auth0)
+     - Set encryption keys and other required variables
+   - Skip environment file creation
+
+2. The command includes automatic Turso CLI installation and authentication if needed when setting up a database.
+
+<ReadMore>For a full list of environment variables, see the [Environment Variables documentation][environment-variables].</ReadMore>
+
+#### `users`
+
+```log
+usage: studiocms users [options]
+
+Utilities for Tweaking Users in StudioCMS
+
+Options:
+  -h, --help  display help for command
+```
+
 ## `create-studiocms`
 
-### Installation
+### Full CLI Options and commands
+
+```log
+Usage: create-studiocms [options] [command]
+
+Options:
+  -V, --version  Output the current version of the CLI Toolkit.
+  -h, --help     display help for command
+  --color        force color output
+  --no-color     disable color output
+
+Commands:
+  get-turso      Get the latest version of Turso.
+  help           Show help for command
+  interactive*   Start the interactive CLI.
+
+  * Indicates the default command that is run when calling this CLI.
+```
+
+### Example Usage
 
 <Tabs syncKey='pkgs'>
   <TabItem label="npm" icon="seti:npm">
@@ -66,44 +236,7 @@ The following is a breakdown of the StudioCMS CLI and its components.
 
 When using `--template`, the CLI searches the templates repository for all folders. For example, the `studiocms/basics` template points to the `basics` project within the `studiocms` folder at the root of the repository.
 
-### Full CLI Options and commands
-
-#### Main Entrypoint
-
-```log
-Usage: create-studiocms [options] [command]
-
-Options:
-  -V, --version  Output the current version of the CLI Toolkit.
-  -h, --help     display help for command
-  --color        force color output
-  --no-color     disable color output
-
-Commands:
-  get-turso      Get the latest version of Turso.
-  help           Show help for command
-  interactive*   Start the interactive CLI.
-
-  * Indicates the default command that is run when calling this CLI.
-```
-
-#### `get-turso`
-
-You can download and install the latest version of Turso using the script from
-Turso's [documentation](https://docs.turso.tech/cli/installation).
-
-:::note
-Windows requires the use of WSL as per Turso
-:::
-
-```log
-Usage: getTurso [options]
-
-Turso CLI Installer
-
-Options:
-  -h, --help  display help for command
-```
+### Command Breakdown
 
 #### Interactive (Default command)
 
@@ -131,31 +264,10 @@ Options:
   --do-not-init-git                  Do not initializing a git repository.
 ```
 
-## `studiocms`
-
-### Full CLI Options and commands
-
-#### Main Entrypoint
-
-```log
-Usage: studiocms [options] [command]
-
-Options:
-  -V, --version  Output the current version of the CLI Toolkit.
-  -h, --help     display help for command
-  --color        force color output
-  --no-color     disable color output
-
-Commands:
-  get-turso      Get the latest version of Turso.
-  help           Show help for command
-  init           Initialization Tools.
-```
-
 #### `get-turso`
 
-Downloads and installs the latest version of Turso using the script from
-Turso's [documentation](https://docs.turso.tech/cli/installation)
+You can download and install the latest version of Turso using the script from
+Turso's [documentation][turso-docs].
 
 :::note
 Windows requires the use of WSL as per Turso
@@ -170,49 +282,56 @@ Options:
   -h, --help  display help for command
 ```
 
-#### `init`
+## `@studiocms-upgrade`
 
-```log
-Usage: studiocms init [options]
+A command-line tool for upgrading your StudioCMS installation and dependencies.
 
-Initialize the StudioCMS project after new installation.
+You can run this command in your terminal to upgrade your official Astro Project, integrations at the same time as you upgrade StudioCMS.
 
-Options:
-  -d, --dry-run     Dry run mode
-  --skip-banners    Skip all banners
-  --debug           Enable debug mode
-  -h, --help        Display help for command
-```
+### Example Usage
 
-The init command provides an interactive setup experience that helps you:
+<Tabs syncKey='pkgs'>
+  <TabItem label="npm" icon="seti:npm">
+  ```sh
+  npx @studiocms/upgrade
+  ```
+  </TabItem>
+  <TabItem label="pnpm" icon="pnpm">
+  ```sh
+  pnpm dlx @studiocms/upgrade
+  ```
+  </TabItem>
+  <TabItem label="yarn" icon="seti:yarn">
+  ```sh
+  yarn dlx @studiocms/upgrade
+  ```
+  </TabItem>
+</Tabs>
 
-1. Set up your environment file (.env) with options to:
-   - Use an example `.env` template
-   - Use the interactive `.env` builder which can:
-     - Set up a new Turso database (if not on Windows)
-     - Configure OAuth providers (GitHub, Discord, Google, Auth0)
-     - Set encryption keys and other required variables
-   - Skip environment file creation
+### Options
 
-2. The command includes automatic Turso CLI installation and authentication if needed when setting up a database.
+#### tag (optional)
 
-## Environment Variables
+It is possible to pass a specific `tag` to resolve packages against. If not included, `@studiocms/upgrade` looks for the `latest` tag.
 
-StudioCMS requires several environment variables to be configured. Here are the key variables:
+<Tabs syncKey='pkgs'>
+  <TabItem label="npm" icon="seti:npm">
+  ```sh
+  npx @studiocms/upgrade beta
+  ```
+  </TabItem>
+  <TabItem label="pnpm" icon="pnpm">
+  ```sh
+  pnpm dlx @studiocms/upgrade beta
+  ```
+  </TabItem>
+  <TabItem label="yarn" icon="seti:yarn">
+  ```sh
+  yarn dlx @studiocms/upgrade beta
+  ```
+  </TabItem>
+</Tabs>
 
-```dotenv
-# Database Configuration
-ASTRO_DB_REMOTE_URL=libsql://your-database.turso.io
-ASTRO_DB_APP_TOKEN=your-token
-
-# Auth Configuration
-CMS_ENCRYPTION_KEY="..." # Generated with openssl rand --base64 16
-```
-
-<ReadMore>For a full list of environment variables, see the [Environment Variables documentation][environment-variables].</ReadMore>
-
-You can set up these variables using the `studiocms init` command's interactive environment builder.
-
-
+[turso-docs]: https://docs.turso.tech/cli/installation
 [templates]: https://github.com/withstudiocms/templates
 [environment-variables]: /en/start-here/environment-variables/
