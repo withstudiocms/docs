@@ -1,0 +1,35 @@
+---
+i18nReady: true
+title: "Aktualisieren: 0.1.0-beta.16"
+description: Aktualisiere StudioCMS auf Beta.16
+sidebar:
+  label: 0.1.0-beta.16
+  badge:
+    text: NEU
+    variant: success
+  order: 999999
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+
+<QuickUpdate />
+
+## Bahnbrechende Veränderungen
+
+- Aktualisierte Mindestversion von Astro auf `Astro v5.7.1`
+- Aktualisierte Passwortsicherheit
+   - Die Benutzer/innen sollten angewiesen werden, ihre Passwörter nach der Aktualisierung zu aktualisieren, da die Unterstützung für das Hashing von alten Passwörtern in Zukunft entfernt wird.
+
+## Neue Merkmale/Funktionalität
+
+- CLI Aktualisierungen/Änderungen
+   - Neuer Befehl: `studiocms add <plugin>` zum schnellen Hinzufügen neuer Plugins zu deinem StudioCMS-Projekt.
+   - Neuer Befehl: `studiocms crypto [command]` für neue Sicherheitsprogramme.
+   - Neuer Befehl: `studiocms crypto gen-jwt <key-file>` zum Erzeugen von JWT-Tokens über die CLI.
+   - Fix: Die Bearbeitung von Nutzern über die CLI ist jetzt dank des neuen partiellen db drizzle Schemas für Nutzer und Berechtigungen möglich.
+
+<ReadMore>Weitere Informationen über die neuen CLI-Befehle findest du in der Dokumentation [Das CLI][cli-docs]</ReadMore>
+
+{/* Links */}
+[cli-docs]: /de/how-it-works/cli/
