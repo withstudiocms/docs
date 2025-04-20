@@ -13,7 +13,17 @@ import ReadMore from '~/components/ReadMore.astro';
 
 StudioCMS est un projet mondial et nous souhaitons le rendre accessible à tous. Si vous parlez couramment plusieurs langues, vous pouvez nous aider à traduire StudioCMS dans votre langue.
 
-## Tableau de bord i18n
+## Rejoignez Discord
+
+Avant de vous lancer dans la traduction, passez par notre [chat Discord](https://chat.studiocms.dev).
+
+Être sur Discord signifie que vous pouvez obtenir des réponses en temps réel et vous coordonner avec d’autres traducteurs afin que personne ne travaille sur la même page sans le savoir. De plus, toutes nos discussions i18n et nos conseils de mise en forme y sont regroupés, ce qui en fait l’endroit idéal pour découvrir les meilleures pratiques et participer aux décisions.
+
+:::tip[Vous ne pouvez pas accéder à Discord ?]
+Nous souhaitons toujours que vous participiez ! Veuillez ouvrir un nouveau ticket sur GitHub pour [la documentation].(https://github.com/withstudiocms/docs/issues/new/choose) ou les [paquets](https://github.com/withstudiocms/studiocms/issues/new/choose) afin de poser vos questions.
+:::
+
+## Traductions des paquets
 
 État actuel de la traduction :
 
@@ -23,12 +33,87 @@ Consultez [notre tableau de bord i18n](https://i18n.studiocms.dev) pour traduire
 
 Si vous préférez contribuer directement aux traductions dans le dépôt, les traductions sont stockées dans le dossier [`packages/studiocms/src/lib/i18n/translations`](https://github.com/withstudiocms/studiocms/tree/main/packages/studiocms/src/lib/i18n/translations/). Vous pouvez trouver les traductions en anglais dans le fichier [`en.json`](https://github.com/withstudiocms/studiocms/blob/main/packages/studiocms/src/lib/i18n/translations/en.json).
 
+Peu importe où vous traduisez (Crowdin ou GitHub), les informations seront automatiquement synchronisées et seront disponibles dans la prochaine version.
+
 <ReadMore>
-StudioCMS utilise [Crowdin](https://crowdin.com/) pour gérer les traductions sur GitHub. Si vous êtes nouveau sur Crowdin, vous pouvez trouver le [Guide pour les traducteurs (en)](https://support.crowdin.com/for-translators/) sur leur site web.
+Tous les paquets StudioCMS utilisent [Crowdin](https://crowdin.com/) pour gérer les traductions sur GitHub. Si vous êtes nouveau sur Crowdin, vous pouvez trouver le [Guide pour les traducteurs (en)](https://support.crowdin.com/for-translators/) sur leur site web.
 </ReadMore>
 
 Une fois les traductions ajoutées, elles seront ajoutées à la [configuration i18n de StudioCMS](https://github.com/withstudiocms/studiocms/blob/main/packages/studiocms/src/lib/i18n/index.ts#L8) et seront disponibles dans la prochaine version.
 
-## Documentation
+## Traductions de la documentation
 
-**Bientôt disponible !** Nous préparons actuellement la traduction de la documentation de StudioCMS. Si vous souhaitez nous aider, n’hésitez pas à nous contacter sur [Discord](https://chat.studiocms.dev).
+StudioCMS travaille activement à la traduction de sa documentation en plusieurs langues.
+
+Actuellement, nous visons à traduire la documentation de StudioCMS dans les langues suivantes :
+
+- Espagnol
+- Français
+- Allemand
+- Coréen
+
+Un grand merci à nos formidables traducteurs de la communauté qui donnent de leur temps pour rendre notre site disponible dans les langues que vous voyez ci-dessus. Nous aimerions prendre en charge toutes les langues disponibles, mais nous devons nous concentrer sur celles où nous avons déjà des traducteurs prêts à traduire et maintenir le site à jour. Développer une nouvelle langue nécessite de mobiliser une équipe et de jongler avec plusieurs bases de code. Nous ne déployons donc que celles que nous avons pré-approuvées et pour lesquelles une équipe est prête à s’occuper de la traduction complète du site.
+
+### Bien démarrer
+
+Consultez notre [outil de suivi des traductions](https://i18n.docs.studiocms.dev) pour consulter l’état de chaque page : ce qui est à jour, ce qui nécessite des ajustements et les demandes de traduction en attente de révision. Il utilise notre historique Git local pour comparer les horodatages de toutes les traductions et met automatiquement à jour l’état de chaque page.
+
+Ou accédez directement à GitHub : filtrez les PR ouvertes dans votre langue en utilisant l’étiquette i18n, recherchez les fautes de frappe ou les erreurs de traduction et donnez-leur une évaluation. C’est un excellent moyen de vous familiariser avec la façon dont StudioCMS gère l’internationalisation (i18n) !
+
+### Structure de la documentation
+
+Le dépôt de documentation contient trois types de contenu traduisible : les pages de documentation et les chaînes de caractères utilisées dans l’interface utilisateur. L’arborescence suivante indique où les trouver dans le dépôt.
+
+<FileTree>
+
+- ...
+- src/
+  - ...
+  - content/
+    - docs/ Contenu des pages au format MDX, un répertoire par langue
+      - de/
+      - en/
+      - es/
+      - ...
+    - i18n/ Traductions des chaînes de caractères utilisées dans l’interface utilisateur, un fichier par langue
+      - de.json
+      - en.json
+      - es.json
+      - ...
+  - starlight-sidebar/ Traductions des chaînes de caractères utilisées dans la barre latérale, un fichier par langue
+    - de.json
+    - en.json
+    - es.json
+    - ...
+- astro.config.ts
+- package.json
+- ...
+
+</FileTree>
+
+### Processus de traduction
+
+Prêt à vous lancer ? Voici comment trouver ce dont vous avez besoin dans le dépôt :
+
+1. **Contenu spécifique à la page** (titre de la page, corps du texte, etc.)
+
+   ➤ Accédez à `src/content/docs/{language}/{page-slug}.mdx`
+
+2. **Texte partagé** (modale de recherche, barre latérale droite, liens « article suivant », tutoriels, etc.)
+
+   ➤ Accédez à `src/content/i18n/{language}.json`
+
+3. **Traductions de la barre latérale principale**
+
+   ➤ Accédez à `src/starlight-sidebar/{language}.json`
+
+
+Une fois que vous avez localisé votre fichier cible, jetez un œil au [suivi des traductions](https://i18n.docs.studiocms.dev/) et aux demandes de fusion (PR) existantes ; il est possible que quelqu’un ait déjà travaillé dessus. Si c’est libre, faites-le savoir dans le canal `docs-i18n` de Discord pour éviter toute duplication !
+
+:::note
+Vous ne savez pas si quelque chose doit être traduit ou non ? Comment fonctionne un certain composant ? Consultez notre [section Références](/fr/config-reference/).
+:::
+
+:::caution
+Toutes nos pages ne sont pas prêtes à être traduites, nous déployons de nouvelles pages à traduire en fonction de leur stabilité, donc ne traduisez aucune page qui n’inclut pas un bouton « Traduire cette page » dans la section « Contribuer » de la barre latérale droite.
+:::
