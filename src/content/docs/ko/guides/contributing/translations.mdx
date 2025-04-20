@@ -5,15 +5,26 @@ description: StudioCMS 번역에 참여하는 방법을 알아보세요.
 sidebar:
   order: 2
   badge:
-    text: 출시 예정
+    text: 업데이트됨
     variant: note
 ---
 
 import ReadMore from '~/components/ReadMore.astro';
+import { FileTree } from '@astrojs/starlight/components';
 
 StudioCMS는 글로벌 프로젝트이며, 우리는 모든 사람이 접근할 수 있도록 만들고 싶습니다. 여러 언어에 능통하시다면, StudioCMS를 여러분의 언어로 번역하는 데 도움을 주실 수 있습니다.
 
-## 대시보드 국제화
+## Discord에 참여
+
+번역을 시작하기 전에, [Discord 채팅](https://chat.studiocms.dev)에 방문하세요.
+
+Discord에 참여하시면 실시간으로 답변을 얻고 다른 번역가들과 협업하여 중복 작업을 방지할 수 있습니다. 또한, 모든 국제화 관련 논의와 스타일 팁이 그곳에 있으므로, 모범 사례를 익히고 의사 결정에 참여하는 데 필수적인 공간입니다.
+
+:::tip[Discord에 접속할 수 없으신가요?]
+저희는 여전히 여러분의 참여를 환영합니다! 질문이 있으시면 GitHub의 [문서](https://github.com/withstudiocms/docs/issues/new/choose) 또는 [패키지](https://github.com/withstudiocms/studiocms/issues/new/choose)에 새로운 이슈를 제출해 주세요.
+:::
+
+## 패키지 번역
 
 현재 번역 상태:
 
@@ -23,12 +34,87 @@ StudioCMS를 여러분의 언어로 번역하는 데 도움을 주시려면 [i18
 
 리포지토리에 직접 번역을 기여하고 싶으시다면, 번역 파일은 [`packages/studiocms/src/lib/i18n/translations`](https://github.com/withstudiocms/studiocms/tree/main/packages/studiocms/src/lib/i18n/translations/) 디렉터리에 저장되어 있습니다. 영어 번역은 [`en.json`](https://github.com/withstudiocms/studiocms/blob/main/packages/studiocms/src/lib/i18n/translations/en.json) 파일에서 찾을 수 있습니다.
 
+어디에서 번역하든 (Crowdin 또는 GitHub), 해당 정보는 자동으로 동기화되어 다음 릴리스에서 사용할 수 있게 됩니다.
+
 <ReadMore>
 StudioCMS는 GitHub를 기반으로 번역 관리를 위해 [Crowdin](https://crowdin.com/)을 사용합니다. Crowdin을 처음 사용하신다면, 해당 웹사이트에서 [번역가 가이드](https://support.crowdin.com/for-translators/)를 찾으실 수 있습니다.
 </ReadMore>
 
 번역이 추가되면, [StudioCMS 국제화 구성](https://github.com/withstudiocms/studiocms/blob/main/packages/studiocms/src/lib/i18n/index.ts#L8)에 반영되어 다음 릴리스에서 사용할 수 있게 됩니다.
 
-## 문서
+## 문서 번역
 
-**곧 제공될 예정입니다!** StudioCMS 문서 번역을 준비 중입니다. 이에 참여하고 싶으시다면, [Discord](https://chat.studiocms.dev)를 통해 저희에게 연락해 주세요.
+StudioCMS는 현재 문서들을 여러 언어로 번역하는 작업을 활발히 진행 중입니다.
+
+현재, StudioCMS 문서 번역을 목표로 하는 언어는 다음과 같습니다.
+
+- 스페인어
+- 프랑스어
+- 독일어
+- 한국어
+
+저희 사이트를 위에 보이는 언어들로 제공할 수 있도록 자발적으로 시간을 내어주시는 멋진 커뮤니티 번역가 분들께 진심으로 감사드립니다. 모든 언어를 지원하고 싶지만, 현재 번역이 가능하고 업데이트를 지속적으로 관리할 수 있는 언어에 집중해야 합니다. 새로운 언어를 추가하는 것은 팀을 구성하고 여러 코드베이스를 관리해야 하는 복잡한 작업이므로, 사전 승인을 받고 전체 사이트 번역을 담당할 팀이 구성된 언어만 제공하고 있습니다.
+
+### 시작하기
+
+[번역 현황 추적기](https://i18n.docs.studiocms.dev)에 방문하여 모든 페이지의 실시간 상태를 확인하세요. 최신 정보, 수정이 필요한 부분, 검토 대기 중인 PR을 확인할 수 있습니다. 로컬 Git 기록을 가져와 모든 번역의 타임스탬프를 비교하고 각 페이지의 상태를 자동으로 업데이트합니다.
+
+또는 GitHub로 바로 이동하여 i18n 라벨로 선호하는 언어의 열린 PR을 필터링하고, 오타나 오역을 훑어본 후 검토해 주세요. StudioCMS가 국제화를 어떻게 처리하는지 직접 경험해 볼 수 있는 좋은 방법입니다!
+
+### 문서의 구조
+
+문서 리포지토리에는 세 가지 다른 종류의 번역 가능한 콘텐츠가 있습니다: 문서 페이지와 UI 문자열입니다. 다음 파일 트리는 리포지토리에서 이 콘텐츠들을 찾을 수 있는 위치를 보여줍니다.
+
+<FileTree>
+
+- ...
+- src/
+  - ...
+  - content/
+    - docs/ MDX 페이지 콘텐츠, 언어당 하나의 디렉터리
+      - de/
+      - en/
+      - es/
+      - ...
+    - i18n/ UI 문자열 번역, 언어당 하나의 파일
+      - de.json
+      - en.json
+      - es.json
+      - ...
+  - starlight-sidebar/ 사이드바의 UI 문자열 번역, 언어당 하나의 파일
+    - de.json
+    - en.json
+    - es.json
+    - ...
+- astro.config.ts
+- package.json
+- ...
+
+</FileTree>
+
+### 번역 과정
+
+번역에 참여할 준비가 되셨나요? 리포지토리에서 필요한 내용을 찾는 방법은 다음과 같습니다.
+
+1. **페이지별 콘텐츠** (페이지 제목, 본문 등)
+
+   ➤ `src/content/docs/{language}/{page-slug}.mdx`로 이동합니다.
+
+2. **공유 텍스트** (검색 모달, 오른쪽 사이드바, “다음 글” 링크, 튜토리얼 등)
+
+   ➤ `src/content/i18n/{language}.json`으로 이동합니다.
+
+3. **기본 사이드바 번역**
+
+   ➤ `src/starlight-sidebar/{language}.json`으로 이동합니다.
+
+
+대상 파일을 찾았다면, [번역 현황 추적기](https://i18n.docs.studiocms.dev/)와 기존 PR들을 살펴보세요. 이미 작업 중인 사람이 있을 수도 있습니다. 만약 비어 있다면, Discord의 `docs-i18n` 채널에 알려 다른 사람과 중복 작업을 하지 않도록 하세요!
+
+:::note
+번역해야 할지 말지 확신이 서지 않거나, 특정 컴포넌트가 어떻게 작동하는지 궁금하신가요? [참조 섹션](/ko/config-reference/)을 확인해 보세요.
+:::
+
+:::caution
+모든 페이지가 번역 준비가 된 것은 아닙니다. 페이지의 안정성을 기준으로 새로운 페이지를 번역 대상으로 공개하고 있으니, 오른쪽 사이드바의 "Contribute" 섹션에 "Translate this page" 버튼이 없는 페이지는 번역하지 마세요.
+:::
