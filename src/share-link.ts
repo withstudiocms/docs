@@ -9,4 +9,9 @@ export const sponsors = {
 			loginsignupLink: 'https://docs.turso.tech/cli/authentication',
 		},
 	},
+	skip2: {
+		docs: {
+			sidebarSponsorLink: 'https://www.skip2.net/?utm_source=studiocms',
+		},
+	},
 };

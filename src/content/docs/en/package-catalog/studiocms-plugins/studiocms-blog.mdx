@@ -21,9 +21,9 @@ This plugin enables the StudioCMS Blog features as well as a frontend in your As
 
 1. Install the package using the following command:
 
-   <PackageManagers pkg="@studiocms/blog" />
+   <PackageManagers pkg="studiocms" type='run' args='add @studiocms/blog' />
 
-2. Add `@studiocms/blog` to your Astro config file:
+2. Your StudioCMS config should now include `@studiocms/blog`:
 
    ```ts twoslash title="studiocms.config.mjs" ins={2, 6}
    import { defineStudioCMSConfig } from 'studiocms/config';

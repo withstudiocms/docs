@@ -10,10 +10,11 @@ const packageCatalogSchema = z.object({
 	docsLink: z.string(),
 	githubURL: z.string(),
 	catalog: z
-		.union([z.literal('studiocms'), z.literal('community')])
+		.union([z.literal('studiocms'), z.literal('community'), z.literal('internal')])
 		.optional()
 		.default('studiocms'),
 	isPlugin: z.boolean().optional().default(false),
+	experimental: z.boolean().optional().default(false),
 	publiclyUsable: z.boolean().optional().default(false),
 	released: z.boolean().optional().default(true),
 });
@@ -26,6 +27,7 @@ const baseSchema = topicSchema.extend({
 const integrationSchema = baseSchema.extend({
 	type: z.literal('integration'),
 	catalogEntry: reference('package-catalog'),
+	replaceTitle: z.boolean().optional().default(true),
 });
 
 const redirectSchema = baseSchema.extend({
@@ -40,6 +42,7 @@ const i18nCustomSchema = z.object({
 	'sponsors.sponsoredby': z.string().optional(),
 	'package-catalog.readmore.start': z.string().optional(),
 	'package-catalog.readmore.end': z.string().optional(),
+	'quick-update': z.string().optional(),
 	'integration-labels.changelog': z.string().optional(),
 	'contributors.core-packages': z.string().optional(),
 	'contributors.ui-library': z.string().optional(),

@@ -24,5 +24,9 @@ pnpm-debug.log*
 # TypeDoc documentation
 src/content/docs/en/typedoc/
 
+# Changelogs
+
+src/content/docs/en/guides/upgrade/release-notes.md
+
 # Eleventy cache
 .cache/

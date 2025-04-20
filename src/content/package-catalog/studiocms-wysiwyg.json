@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@studiocms/wysiwyg",
+  "description": "Add A WYSIWYG Editor to your StudioCMS project with ease!",
+  "docsLink": "/package-catalog/studiocms-plugins/studiocms-wysiwyg/",
+  "githubURL": "https://github.com/withstudiocms/experiments/tree/main/packages/studiocms_wysiwyg/",
+  "catalog": "studiocms",
+  "isPlugin": true,
+  "experimental": true
+}
