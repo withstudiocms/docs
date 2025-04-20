@@ -22,12 +22,12 @@
     "gen-changelogs": "tsm --require=./scripts/filter-warnings.cjs ./scripts/generate-release-notes.ts"
   },
   "dependencies": {
-    "studiocms": "https://pkg.pr.new/withstudiocms/studiocms@d86ff7a",
-    "@studiocms/blog": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@d86ff7a",
-    "@studiocms/devapps": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@d86ff7a",
+    "studiocms": "0.1.0-beta.16",
+    "@studiocms/blog": "0.1.0-beta.16",
+    "@studiocms/devapps": "0.1.0-beta.16",
     "@studiocms/ui": "^0.4.16",
-    "@studiocms/mdx": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@d86ff7a",
-    "@studiocms/markdoc": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@d86ff7a",
+    "@studiocms/mdx": "0.1.0-beta.16",
+    "@studiocms/markdoc": "0.1.0-beta.16",
     "@studiocms/wysiwyg": "^0.1.0-experimental.3",
     "@actions/core": "^1.11.1",
     "astro": "^5.7.2",
