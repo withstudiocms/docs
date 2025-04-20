@@ -4,25 +4,194 @@ title: "CLI"
 description: "StudioCMS CLI와 사용법에 대해 알아보세요."
 sidebar:
    order: 2
+   badge:
+     text: '업데이트됨'
+     variant: 'success'
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import ReadMore from '~/components/ReadMore.astro';
 
-# 소개
-
 StudioCMS CLI는 새로운 StudioCMS 프로젝트를 빠르게 구성하고 StudioCMS에 유용한 유틸리티를 제공하는 도구입니다.
 
-StudioCMS 생태계에는 두 가지 서로 다른 CLI가 있습니다.
+StudioCMS 생태계에는 서로 다른 여러 CLI가 있습니다.
 
-- **`create-studiocms`**: StudioCMS 프로젝트 스캐폴딩 CLI
-- **`studiocms`**: StudioCMS 유틸리티 CLI
+- **[`create-studiocms`](#create-studiocms)**: StudioCMS 프로젝트 스캐폴딩 CLI
+- **[`studiocms`](#studiocms)**: StudioCMS 유틸리티 CLI
+- **[`@studiocms/upgrade`](#studiocms-upgrade)**: StudioCMS 프로젝트 및 플러그인 업그레이드
 
 다음은 StudioCMS CLI와 그 구성 요소에 대한 세부 정보입니다.
 
+## `studiocms`
+
+### CLI 옵션 및 명령어 전체 목록
+
+```log
+Usage: studiocms [options] [command]
+
+Options:
+  -V, --version  Output the current version of the CLI Toolkit.
+  -h, --help     display help for command
+  --color        force color output
+  --no-color     disable color output
+
+Commands:
+  add            Add StudioCMS plugin(s) to your project
+  crypto         Crypto Utilities for Security
+  get-turso      Install the Turso CLI
+  init           Initialize the StudioCMS project after new installation.
+  users          Utilities for Tweaking Users in StudioCMS
+```
+
+### 사용법 예시
+
+StudioCMS 프로젝트 루트에서 다음을 실행합니다.
+
+<Tabs syncKey='pkgs'>
+  <TabItem label="npm" icon="seti:npm">
+  ```sh
+  npm run studiocms [command]
+  ```
+  </TabItem>
+  <TabItem label="pnpm" icon="pnpm">
+  ```sh
+  pnpm studiocms [command]
+  ```
+  </TabItem>
+  <TabItem label="yarn" icon="seti:yarn">
+  ```sh
+  yarn studiocms [command]
+  ```
+  </TabItem>
+</Tabs>
+
+### 명령어 알아보기
+
+#### `add`
+
+```log
+usage: studiocms add <plugins...>
+
+Adds StudioCMS plugin(s) to your project.
+
+Arguments:
+  plugins    Plugin(s) to install
+
+Options:
+  -h, --help  display help for command
+```
+
+#### `crypto`
+
+```log
+usage: studiocms crypto [command]
+
+Crypto Utilities for Security
+
+Options:
+  -h, --help  display help for command
+
+Commands:
+  gen-jwt     Generate JWT token from a keyfile
+```
+
+#### `crypto gen-jwt`
+
+```log 
+usage: studiocms crypto gen-jwt [options] <key-file>
+
+Generate a JWT token from a keyfile
+
+Arguments:
+  key-file                     a relative path (e.g., `../keys/libsql.pem`) from the current directory to your private key file (.pem)
+
+Options:
+  -c, --claim <claim...>       claim in the form [key=value]
+  -e, --exp <date-in-seconds>  Expiry date in seconds (>=0) from issued at (iat) time
+  -h, --help                   display help for command
+```
+
+#### `get-turso`
+
+Turso의 [문서][turso-docs]에 있는 스크립트를 사용하여 최신 버전의 Turso를 다운로드하고 설치합니다.
+
+:::note
+Turso에 따르면 Windows에서는 WSL을 사용해야 합니다.
+:::
+
+```log
+Usage: getTurso [options]
+
+Turso CLI Installer
+
+Options:
+  -h, --help  display help for command
+```
+
+#### `init`
+
+```log
+Usage: studiocms init [options]
+
+Initialize the StudioCMS project after new installation.
+
+Options:
+  -d, --dry-run     Dry run mode
+  --skip-banners    Skip all banners
+  --debug           Enable debug mode
+  -h, --help        Display help for command
+```
+
+init 명령어는 다음을 도와주는 대화형 설정 경험을 제공합니다.
+
+1. 다음 옵션을 통해 환경 파일 (.env)을 설정합니다.
+   - `.env` 템플릿 예시 사용
+   - 대화형 `.env` 빌더 사용 (다음 기능 포함):
+     - 새로운 Turso 데이터베이스 설정 (Windows가 아닌 경우)
+     - OAuth 제공자 구성 (GitHub, Discord, Google, Auth0)
+     - 암호화 키 및 기타 필수 변수 설정
+   - 환경 파일 생성 건너뛰기
+
+2. 데이터베이스 설정 시 필요한 경우 Turso CLI 자동 설치 및 인증을 포함합니다.
+
+<ReadMore>전체 환경 변수 목록은 [환경 변수 문서][environment-variables]를 참조하세요.</ReadMore>
+
+#### `users`
+
+```log
+usage: studiocms users [options]
+
+Utilities for Tweaking Users in StudioCMS
+
+Options:
+  -h, --help  display help for command
+```
+
 ## `create-studiocms`
 
-### 설치
+### CLI 옵션 및 명령어 전체 목록
+
+```log
+Usage: create-studiocms [options] [command]
+
+Options:
+  -V, --version  Output the current version of the CLI Toolkit.
+  -h, --help     display help for command
+  --color        force color output
+  --no-color     disable color output
+
+Commands:
+  get-turso      Get the latest version of Turso.
+  help           Show help for command
+  interactive*   Start the interactive CLI.
+
+  * Indicates the default command that is run when calling this CLI.
+```
+
+### 사용법 예시
 
 <Tabs syncKey='pkgs'>
   <TabItem label="npm" icon="seti:npm">
@@ -66,43 +235,7 @@ GitHub에서 제공되는 템플릿의 [전체 목록][templates]을 확인해 �
 
 `--template`을 사용할 때 CLI는 템플릿 리포지토리의 모든 폴더를 검색합니다. 예를 들어, `studiocms/basics` 템플릿은 리포지토리 루트의 `studiocms` 폴더에 있는 `basics` 프로젝트를 가리킵니다.
 
-### 전체 CLI 옵션 및 명령
-
-#### 기본 진입점
-
-```log
-Usage: create-studiocms [options] [command]
-
-Options:
-  -V, --version  Output the current version of the CLI Toolkit.
-  -h, --help     display help for command
-  --color        force color output
-  --no-color     disable color output
-
-Commands:
-  get-turso      Get the latest version of Turso.
-  help           Show help for command
-  interactive*   Start the interactive CLI.
-
-  * Indicates the default command that is run when calling this CLI.
-```
-
-#### `get-turso`
-
-Turso의 [문서](https://docs.turso.tech/cli/installation)에 있는 스크립트를 사용하여 Turso의 최신 버전을 다운로드하고 설치할 수 있습니다.
-
-:::note
-Turso에 따르면 Windows에서는 WSL을 사용해야 합니다.
-:::
-
-```log
-Usage: getTurso [options]
-
-Turso CLI Installer
-
-Options:
-  -h, --help  display help for command
-```
+### 명령어 알아보기
 
 #### 대화형 (기본 명령)
 
@@ -130,30 +263,9 @@ Options:
   --do-not-init-git                  Do not initializing a git repository.
 ```
 
-## `studiocms`
-
-### 전체 CLI 옵션 및 명령
-
-#### 기본 진입점
-
-```log
-Usage: studiocms [options] [command]
-
-Options:
-  -V, --version  Output the current version of the CLI Toolkit.
-  -h, --help     display help for command
-  --color        force color output
-  --no-color     disable color output
-
-Commands:
-  get-turso      Get the latest version of Turso.
-  help           Show help for command
-  init           Initialization Tools.
-```
-
 #### `get-turso`
 
-Turso [문서](https://docs.turso.tech/cli/installation)의 스크립트를 사용하여 Turso의 최신 버전을 다운로드하고 설치합니다.
+Turso의 [문서][turso-docs]에 있는 스크립트를 사용하여 최신 버전의 Turso를 다운로드하고 설치합니다.
 
 :::note
 Turso에 따르면 Windows에서는 WSL을 사용해야 합니다.
@@ -168,48 +280,56 @@ Options:
   -h, --help  display help for command
 ```
 
-#### `init`
+## `@studiocms-upgrade`
 
-```log
-Usage: studiocms init [options]
+StudioCMS 설치 및 의존성을 업그레이드하기 위한 명령줄 도구입니다.
 
-Initialize the StudioCMS project after new installation.
+터미널에서 이 명령을 실행하여 StudioCMS를 업그레이드하는 동시에 공식 Astro 프로젝트와 통합을 함께 업그레이드할 수 있습니다.
 
-Options:
-  -d, --dry-run     Dry run mode
-  --skip-banners    Skip all banners
-  --debug           Enable debug mode
-  -h, --help        Display help for command
-```
+### 사용법 예시
 
-init 명령어는 다음을 도와주는 대화형 설정 경험을 제공합니다.
+<Tabs syncKey='pkgs'>
+  <TabItem label="npm" icon="seti:npm">
+  ```sh
+  npx @studiocms/upgrade
+  ```
+  </TabItem>
+  <TabItem label="pnpm" icon="pnpm">
+  ```sh
+  pnpm dlx @studiocms/upgrade
+  ```
+  </TabItem>
+  <TabItem label="yarn" icon="seti:yarn">
+  ```sh
+  yarn dlx @studiocms/upgrade
+  ```
+  </TabItem>
+</Tabs>
 
-1. 다음 옵션을 통해 환경 파일 (.env)을 설정합니다.
-   - `.env` 템플릿 예시 사용
-   - 대화형 `.env` 빌더 사용 (다음 기능 포함):
-     - 새로운 Turso 데이터베이스 설정 (Windows가 아닌 경우)
-     - OAuth 제공자 구성 (GitHub, Discord, Google, Auth0)
-     - 암호화 키 및 기타 필수 변수 설정
-   - 환경 파일 생성 건너뛰기
+### 옵션
 
-2. 데이터베이스 설정 시 필요한 경우 Turso CLI 자동 설치 및 인증을 포함합니다.
+#### 태그 (선택 사항)
 
-## 환경 변수
+특정 `tag`를 전달하여 패키지를 해석할 수도 있습니다. 포함하지 않으면 `@studiocms/upgrade`는 `latest` 태그를 찾습니다.
 
-StudioCMS는 여러 환경 변수를 구성해야 합니다. 주요 변수는 다음과 같습니다.
+<Tabs syncKey='pkgs'>
+  <TabItem label="npm" icon="seti:npm">
+  ```sh
+  npx @studiocms/upgrade beta
+  ```
+  </TabItem>
+  <TabItem label="pnpm" icon="pnpm">
+  ```sh
+  pnpm dlx @studiocms/upgrade beta
+  ```
+  </TabItem>
+  <TabItem label="yarn" icon="seti:yarn">
+  ```sh
+  yarn dlx @studiocms/upgrade beta
+  ```
+  </TabItem>
+</Tabs>
 
-```dotenv
-# 데이터베이스 구성
-ASTRO_DB_REMOTE_URL=libsql://your-database.turso.io
-ASTRO_DB_APP_TOKEN=your-token
-
-# 인증 구성
-CMS_ENCRYPTION_KEY="..." # openssl rand --base64 16 명령으로 생성
-```
-
-<ReadMore>전체 환경 변수 목록은 [환경 변수 문서][environment-variables]를 참조하세요.</ReadMore>
-
-`studiocms init` 명령의 대화형 환경 빌더를 사용하여 이러한 변수를 설정할 수 있습니다.
-
+[turso-docs]: https://docs.turso.tech/cli/installation
 [templates]: https://github.com/withstudiocms/templates
 [environment-variables]: /ko/start-here/environment-variables/
