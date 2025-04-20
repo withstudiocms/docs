@@ -21,9 +21,9 @@ import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 
 1. 다음 명령을 사용하여 패키지를 설치합니다.
 
-   <PackageManagers pkg="@studiocms/mdx" />
+   <PackageManagers pkg="studiocms" type='run' args='add @studiocms/mdx' />
 
-2. Astro 구성 파일에 `@studiocms/mdx`를 추가합니다.
+2. 이제 StudioCMS 구성은 `@studiocms/mdx`를 포함해야 합니다.
 
    ```ts twoslash title="studiocms.config.mjs" ins={2, 6}
    import { defineStudioCMSConfig } from 'studiocms/config';
