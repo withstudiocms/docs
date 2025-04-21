@@ -8,7 +8,7 @@ import ReadMore from '~/components/ReadMore.astro'
 import { PackageManagers } from 'starlight-package-managers'
 import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/components';
 
-El proyecto `sqld` ("SQL daemon") es un modo de servidor para libSQL creado por Turso. Esta guía explicará cómo configurar y configurar `sqld` para trabajar desde un contenedor de Docker para tu proyecto StudioCMS.
+El proyecto `sqld` ("SQL daemon") es un modo de servidor para libSQL creado por Turso. Esta guía explicará cómo configurar y ejecutar `sqld` para trabajar desde un contenedor de Docker para tu proyecto StudioCMS.
 
 <ReadMore>Aprende más sobre `sqld` usando su [documentación][sql-docs]</ReadMore>
 
@@ -70,7 +70,7 @@ ASTRO_DB_APP_TOKEN= # pega tu token JWT codificado en base64 aquí
 Crea un nuevo archivo `docker-compose.yml` fuera del directorio del proyecto StudioCMS, para la instancia de libSQL. En este punto tienes dos opciones para configurar la autenticación de libSQL:
 
 - Usando el archivo de clave pública
-- Usanto el token JWT como variable de entorno (el mismo valor ASTRO_DB_APP_TOKEN que usaste en tu archivo .env)
+- Usando el token JWT como variable de entorno (el mismo valor ASTRO_DB_APP_TOKEN que usaste en tu archivo .env)
 
 <Tabs>
 
