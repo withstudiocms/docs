@@ -8,9 +8,11 @@ sidebar:
 
 import { PackageManagers } from 'starlight-package-managers'
 import TursoCLI from '~/components/TursoCLI.astro';
-import { Aside, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import { Aside, Steps, Tabs, TabItem, LinkCard } from '@astrojs/starlight/components';
 import ReadMore from '~/components/ReadMore.astro';
 import { sponsors, SponsorLink } from '~/share-link'
+
+<LinkCard title="Actualizando StudioCMS a la última versión" href="/es/guides/upgrade/latest/" description="¿Buscas actualizar a la última versión? ¡Mira aquí!" />
 
 ## Comencemos
 
@@ -18,7 +20,7 @@ Para empezar a usar StudioCMS, necesitarás:
 
 - La version de [Node.js admitida por Astro](https://docs.astro.build/en/install-and-setup/#prerequisites) (Bun y Deno no son compatibles)
 - Un proyecto de Astro
-- Un proveedor libSQL o un servidor libSQL autoalojado
+- Un proveedor libSQL o un [servidor libSQL autoalojado][self-hosted-libsql]
 - La integración StudioCMS
 
 ## Preparar tu base de datos
@@ -363,3 +365,4 @@ Aprende más sobre las opciones de configuración de StudioCMS usando las págin
 [encryption-key]: /es/start-here/environment-variables/#clave-de-encriptación-para-studiocmsauth
 [oauth-environment-variables]: /es/start-here/environment-variables/#variables-de-entorno-para-autenticación-oauth
 [auth-config-ref]: /es/config-reference/dashboard/#authconfig
+[self-hosted-libsql]: /es/guides/database/sqld-server/

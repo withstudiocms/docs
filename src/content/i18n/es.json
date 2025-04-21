@@ -44,5 +44,6 @@
   "docsearch.noResultsScreen.noResultsText": "No hay resultados para",
   "docsearch.noResultsScreen.suggestedQueryText": "Intenta buscar por",
   "docsearch.noResultsScreen.reportMissingResultsText": "¿Crees que esta consulta debería devolver resultados?",
-  "docsearch.noResultsScreen.reportMissingResultsLinkText": "Háganoslo saber."
+  "docsearch.noResultsScreen.reportMissingResultsLinkText": "Háganoslo saber.",
+  "quick-update": "Rápidamente actualiza a la última versión ejecutando el siguiente comando"
 }
