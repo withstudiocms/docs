@@ -21,11 +21,11 @@ Ce module d’extension active les fonctionnalités du blog StudioCMS ainsi qu�
 
 1. Installez le paquet à l’aide de la commande suivante :
 
-   <PackageManagers pkg="@studiocms/blog" />
+   <PackageManagers pkg="studiocms" type='run' args='add @studiocms/blog' />
 
-2. Ajoutez `@studiocms/blog` à votre fichier de configuration Astro :
+2. Votre configuration StudioCMS devrait désormais inclure `@studiocms/blog` :
 
-   ```ts twoslash title="studiocms.config.mjs" ins={2, 6}
+   ```ts twoslash title="studiocms.config.mjs" {2, 6}
    import { defineStudioCMSConfig } from 'studiocms/config';
    import blog from '@studiocms/blog';
 
