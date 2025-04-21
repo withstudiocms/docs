@@ -21,11 +21,11 @@ Este plugin habilita el soporte de MDX dentro de StudioCMS.
 
 1. Instala el paquete usando el siguiente comando:
 
-   <PackageManagers pkg="@studiocms/mdx" />
+   <PackageManagers pkg="studiocms" type='run' args='add @studiocms/mdx' />
 
 2. Añade `@studiocms/mdx` a tu archivo de configuración de Astro:
 
-   ```ts twoslash title="studiocms.config.mjs" ins={2, 6}
+   ```ts twoslash title="studiocms.config.mjs" {2, 6}
    import { defineStudioCMSConfig } from 'studiocms/config';
    import mdx from '@studiocms/mdx';
 
