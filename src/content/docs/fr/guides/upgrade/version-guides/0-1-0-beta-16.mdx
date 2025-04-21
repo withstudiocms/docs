@@ -1,0 +1,35 @@
+---
+i18nReady: true
+title: "Mise à niveau : 0.1.0-beta.16"
+description: Mettre à niveau StudioCMS vers la version bêta 16
+sidebar:
+  label: 0.1.0-beta.16
+  badge:
+    text: NOUVEAU
+    variant: success
+  order: 999999
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+
+<QuickUpdate />
+
+## Modifications avec rupture de compatibilité
+
+- Version minimale d’Astro mise à jour vers `Astro v5.7.1`
+- Sécurité des mots de passe mise à jour
+   - Les utilisateurs doivent être informés de la nécessité de mettre à jour leurs mots de passe après la mise à jour. La prise en charge du hachage des mots de passe hérités sera supprimée à l’avenir.
+
+## Nouvelles caractéristiques/fonctionnalités
+
+- Mises à jour/modifications de la CLI
+   - Nouvelle commande : `studiocms add <plugin>` pour ajouter rapidement de nouveaux modules d’extension à votre projet StudioCMS.
+   - Nouvelle commande : `studiocms crypto [command]` pour de nouveaux utilitaires de sécurité.
+   - Nouvelle commande : `studiocms crypto gen-jwt <key-file>` pour générer des jetons JWT à partir de la CLI.
+   - Correctif : la modification des utilisateurs à partir de la CLI est désormais possible grâce au nouveau schéma Drizzle de base de données partielle pour les utilisateurs et les autorisations.
+
+<ReadMore>Pour plus d’informations sur les nouvelles commandes CLI, consultez la documentation de [la CLI][cli-docs]</ReadMore>
+
+{/* Liens */}
+[cli-docs]: /fr/how-it-works/cli/

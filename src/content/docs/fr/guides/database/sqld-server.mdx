@@ -1,0 +1,156 @@
+---
+i18nReady: true
+title: Serveur libSQL auto-hébergé
+description: Hébergez votre propre serveur sqld libSQL avec Docker
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import { PackageManagers } from 'starlight-package-managers'
+import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/components';
+
+Le projet `sqld` (« démon SQL ») est un mode serveur pour libSQL créé par Turso. Ce guide explique comment configurer `sqld` pour qu’il fonctionne depuis un conteneur Docker pour votre projet StudioCMS.
+
+<ReadMore>Apprenez-en plus sur `sqld` en utilisant leur [Documentation][sql-docs]</ReadMore>
+
+## Prérequis
+
+- [Docker et Docker Compose][docker-docs] (exécuté sur un serveur ou localement)
+- [OpenSSL][openssl-docs] installé
+- CLI de StudioCMS (disponible depuis la racine de votre projet StudioCMS)
+
+La structure finale du fichier ressemblera à ceci si vous effectuez un test local :
+
+<FileTree>
+
+- docker-compose.yml
+- data/
+- keys/
+- mon-projet-studiocms/
+  - astro.config.mjs
+  - studiocms.config.mjs
+  - package.json
+  - src/
+
+</FileTree>
+
+## Générer des clés privées et publiques
+
+Depuis le répertoire `keys`, exécutez la commande suivante pour créer une nouvelle paire de clés Ed25519 encodées en PKCS#8 :
+```bash  
+openssl genpkey -algorithm Ed25519 -out ./libsql.pem  
+```  
+  
+Extrayez ensuite la clé publique avec :
+
+```bash
+openssl pkey -in ./libsql.pem -pubout -out ./libsql.pub
+```
+
+Cela générera une nouvelle paire de clés PKCS#8 qui sera utilisée pour le serveur `sqld`.
+
+## Générez votre jeton JWT
+
+Accédez au répertoire de votre projet StudioCMS et exécutez la commande suivante :
+
+<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt "../keys/libsql.pem" -c "iss=admin" -e 31556926' />
+
+Le résultat est le jeton d'authentification JWT chiffré avec votre clé privée, qui sera utilisé pour l’authentification libSQL. Gardez à l’esprit que le token sera valable 1 an !
+
+### Mettez à jour votre fichier `.env` de StudioCMS avec les éléments suivants :
+
+```sh
+ASTRO_DB_REMOTE_URL=http://localhost:8080 # Cela devrait pointer vers votre serveur Docker/système local
+ASTRO_DB_APP_TOKEN= # collez ici votre jeton d’authentification JWT encodé en base64URL
+```
+
+## Mise en place du conteneur Docker
+
+Créez un nouveau fichier `docker-compose.yml` en dehors du répertoire du projet StudioCMS, pour l’instance libSQL. Vous disposez alors de deux options pour configurer l’authentification libSQL :
+
+- En utilisant le fichier de clé publique lui-même
+- En utilisant le jeton JWT comme variable d’environnement (la même valeur `ASTRO_DB_APP_TOKEN` que celle que vous avez utilisée dans votre fichier `.env`)
+
+<Tabs>
+
+<TabItem label="Fichier de clé publique">
+
+```yml
+services:
+  libsql:
+    image: ghcr.io/tursodatabase/libsql-server:latest
+    platform: linux/amd64
+    ports:
+      - "8080:8080"
+      - "5001:5001"
+    environment:
+      - SQLD_NODE=primary
+      - SQLD_AUTH_JWT_KEY_FILE=/home/.ssh/libsql.pub
+    volumes:
+      - ./data/libsql:/var/lib/sqld
+      - ./keys/libsql.pub:/home/.ssh/libsql.pub
+```
+
+</TabItem>
+
+<TabItem label="Jeton JWT">
+
+```yml
+services:
+  libsql:
+    image: ghcr.io/tursodatabase/libsql-server:latest
+    platform: linux/amd64
+    ports:
+      - "8080:8080"
+      - "5001:5001"
+    environment:
+      - SQLD_NODE=primary
+      - SQLD_AUTH_JWT_KEY=collez ici votre jeton JWT
+    volumes:
+      - ./data/libsql:/var/lib/sqld
+```
+
+</TabItem>
+
+</Tabs>
+
+<Aside type="note" title="Déploiement sur Coolify ?">
+Utilisateurs [Coolify](https://coolify.io) : Utilisez notre [Gist GitHub](https://gist.github.com/Adammatthiesen/bfe7c78b2e73996fb3ef1b36ed606a57) pour une configuration Docker Compose compatible avec Coolify qui expose libSQL directement via votre domaine sans le suffixe de port `:8080`.
+</Aside>
+
+## Tout démarrer
+
+<Steps>
+
+1. Démarrez le conteneur Docker :
+
+   À partir du répertoire de base (ou du serveur si vous avez suivi cette voie), exécutez la commande suivante pour démarrer le conteneur du serveur libSQL
+
+   ```sh
+   docker compose up -d
+   ```
+
+2. Synchronisez votre schéma de base de données StudioCMS :
+
+   Allez dans le répertoire de votre projet StudioCMS et exécutez la commande suivante :
+
+   <PackageManagers type="exec" args="astro db push --remote" />
+
+3. Suivez la configuration initiale de votre nouvelle base de données.
+
+   - Consultez [Mise en route][getting-started]
+   
+   :::note
+   Si ce n’est pas la première fois que vous configurez un projet StudioCMS, vous devrez peut-être activer l’option `dbStartPage` dans votre fichier `studiocms.config.mjs`
+   :::
+
+</Steps>
+
+## Réflexions finales
+
+Si vous recherchez une option pour auto-héberger votre propre base de données libSQL avec StudioCMS, `sqld` est une option viable et n’est pas très compliqué à mettre en place et à exécuter si vous le faites correctement. Suivre ce guide vous fournit un serveur libSQL sécurisé à utiliser avec votre projet StudioCMS.
+
+{/* Liens */}
+[sql-docs]: https://github.com/tursodatabase/libsql/blob/main/docs/USER_GUIDE.md
+[docker-docs]: https://docs.docker.com/get-started/get-docker/
+[openssl-docs]: https://docs.openssl.org/3.2/man7/ossl-guide-introduction/#getting-and-installing-openssl
+[getting-started]: /fr/start-here/getting-started/#première-configuration-ou-lors-des-mises-à-jour-si-le-schéma-des-tables-est-mis-à-jour
