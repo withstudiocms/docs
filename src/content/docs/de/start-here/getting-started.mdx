@@ -8,9 +8,11 @@ sidebar:
 
 import { PackageManagers } from 'starlight-package-managers'
 import TursoCLI from '~/components/TursoCLI.astro';
-import { Aside, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import { Aside, Steps, Tabs, TabItem, LinkCard } from '@astrojs/starlight/components';
 import ReadMore from '~/components/ReadMore.astro';
 import { sponsors, SponsorLink } from '~/share-link'
+
+<LinkCard title="StudioCMS auf die neueste Version aktualisieren" href="/de/guides/upgrade/latest/" description="Willst du auf die neueste Version aktualisieren? Schau hier!" />
 
 ## Los geht's
 
@@ -18,12 +20,12 @@ Um StudioCMS zu benutzen, brauchst du:
 
 - Eine von [Astro unterstützte Version von Node.js](https://docs.astro.build/de/install-and-setup/#prerequisites) (Bun und Deno werden nicht unterstützt)
 - Ein Astro-Projekt
-- Ein libSQL-Anbieter oder ein selbst gehosteter libSQL-Server
+- Ein libSQL-Anbieter oder ein [selbst gehosteter libSQL-Server][self-hosted-libsql]
 - Die StudioCMS-Integration
 
 ## Bereite deine Datenbank vor
 
-StudioCMS verwendet `@astrojs/db`, um sich mit deiner libSQL-Datenbank zu verbinden. Du kannst jeden libSQL-Anbieter oder einen selbst gehosteten libSQL-Server verwenden.
+StudioCMS verwendet `@astrojs/db`, um sich mit deiner libSQL-Datenbank zu verbinden. Du kannst jeden libSQL-Anbieter oder einen [selbst gehosteten libSQL-Server][self-hosted-libsql] verwenden.
 
 Wenn du die StudioCMS CLI verwendest, kannst du diesen Schritt überspringen und die CLI verwenden, um eine neue Datenbank zu erstellen, wenn du die Turso CLI installiert hast.
 
@@ -208,7 +210,7 @@ libSQL unterstützt sowohl HTTP als auch WebSockets als Transportprotokoll für 
 
 </Tabs>
 
-Bitte beachte, dass die Option `site` in der Datei `astro.config.mjs` erforderlich ist, damit StudioCMS korrekt funktioniert. Du kannst hier die URL deiner Website oder eine Platzhalter-URL angeben. (z.B. `https://demo.studiocms.xyz/` oder `http://localhost:4321/`)
+Bitte beachte, dass die Option `site` in der Datei `astro.config.mjs` erforderlich ist, damit StudioCMS korrekt funktioniert. Du kannst hier die URL deiner Website oder eine Platzhalter-URL angeben. (z.B. `https://demo.studiocms.dev/` oder `http://localhost:4321/`)
 
 <Aside type="note" title="Adapter erforderlich">
 StudioCMS benötigt einen [Astro Adapter](https://docs.astro.build/de/guides/on-demand-rendering/#server-adapters), um korrekt zu funktionieren. Stelle sicher, dass du einen Adapter, der SSR-Routen unterstützt, in deiner Datei `astro.config.mjs` einstellst.
@@ -363,3 +365,4 @@ Mehr über die StudioCMS-Konfigurationsoptionen erfährst du auf den Seiten [Stu
 [encryption-key]: /de/start-here/environment-variables/#verschlüsselungsschlüssel-für-studiocmsauth
 [oauth-environment-variables]: /de/start-here/environment-variables/#oauth-authentifizierung-umgebungsvariablen
 [auth-config-ref]: /de/config-reference/dashboard/#authconfig
+[self-hosted-libsql]: /de/guides/database/sqld-server/

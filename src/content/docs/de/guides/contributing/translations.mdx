@@ -1,34 +1,120 @@
 ---
 i18nReady: true
 title: Übersetzungen
-description: Erfahre, wie du bei der Übersetzung von StudioCMS helfen kannst
+description: Erfahre, wie du Übersetzungen zu StudioCMS beisteuern kannst
 sidebar:
   order: 2
   badge:
-    text: Demnächst
-    variant: note
+    text: Aktualisiert
+    variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro';
+import { FileTree } from '@astrojs/starlight/components';
 
 StudioCMS ist ein globales Projekt, und wir wollen es für alle zugänglich machen. Wenn du mehrere Sprachen fließend beherrschst, kannst du uns helfen, StudioCMS in deine Sprache zu übersetzen.
 
-## Dashboard-i18n
+## Mach mit auf Discord
 
-Aktueller Stand der Übersetzung
+Bevor du dich ins Übersetzen stürzt, schau in unserem [Discord-Chat](https://chat.studiocms.dev) vorbei.
+
+Auf Discord bekommst du Antworten in Echtzeit und kannst dich mit anderen Übersetzerinnen und Übersetzern abstimmen, damit niemand unwissentlich auf der gleichen Seite arbeitet. Außerdem finden dort alle unsere i18n-Diskussionen und Stiltipps statt, was es zur ersten Anlaufstelle macht, um sich über bewährte Verfahren zu informieren und an Entscheidungen beteiligt zu werden.
+
+:::tip[Du kannst nicht auf Discord zugreifen?]
+Wir wollen, dass du trotzdem mitmachst! Bitte eröffne ein neues Issue auf GitHub für [Docs](https://github.com/withstudiocms/docs/issues/new/choose) oder die [Pakete](https://github.com/withstudiocms/studiocms/issues/new/choose), um deine Fragen zu stellen.
+:::
+
+## Übersetzungen der Pakete
+
+Aktueller Stand der Übersetzung:
 
 <img src="https://badges.awesome-crowdin.com/translation-16993424-776180-update.png" alt="Status der Übersetzung" />
 
-Besuche [unser i18n-Dashboard](https://i18n.studiocms.dev), um die Übersetzung von StudioCMS in deine Sprache zu unterstützen. Wenn deine Sprache nicht aufgeführt ist, kannst du sie im Dashboard hinzufügen.
+Besuche [unser i18n-Dashboard](https://i18n.studiocms.dev), um bei der Übersetzung der StudioCMS-Pakete in deine Sprache zu helfen. Wenn deine Sprache nicht aufgeführt ist, kannst du sie im Dashboard hinzufügen.
 
-Wenn du die Übersetzungen lieber direkt in das Repository einbringen möchtest, werden sie im Verzeichnis [`packages/studiocms/src/lib/i18n/translations`](https://github.com/withstudiocms/studiocms/tree/main/packages/studiocms/src/lib/i18n/translations/) gespeichert. Die englischen Übersetzungen findest du in der Datei [`en-us.json`](https://github.com/withstudiocms/studiocms/blob/main/packages/studiocms/src/lib/i18n/translations/en-us.json).
+Wenn du die Übersetzungen lieber direkt in das Repository einbringen möchtest, werden sie im Verzeichnis [`packages/studiocms/src/lib/i18n/translations`](https://github.com/withstudiocms/studiocms/tree/main/packages/studiocms/src/lib/i18n/translations/) gespeichert. Die englischen Übersetzungen findest du in der Datei [`en.json`](https://github.com/withstudiocms/studiocms/blob/main/packages/studiocms/src/lib/i18n/translations/en.json).
+
+Egal, wo du übersetzt (Crowdin oder GitHub), die Informationen werden automatisch synchronisiert und sind in der nächsten Version verfügbar.
 
 <ReadMore>
-StudioCMS nutzt [Crowdin](https://crowdin.com/) für die Verwaltung von Übersetzungen auf GitHub. Wenn du Crowdin noch nicht kennst, findest du auf der Website von Crowdin den [Leitfaden für Übersetzer](https://support.crowdin.com/for-translators/).
+Alle StudioCMS-Pakete nutzen [Crowdin](https://crowdin.com/) für die Verwaltung von Übersetzungen auf GitHub. Wenn du Crowdin noch nicht kennst, findest du die [Anleitung für Übersetzer](https://support.crowdin.com/for-translators/) auf der Website von Crowdin.
 </ReadMore>
 
 Sobald die Übersetzungen hinzugefügt wurden, werden sie zur [StudioCMS i18n-Konfiguration](https://github.com/withstudiocms/studiocms/blob/main/packages/studiocms/src/lib/i18n/index.ts#L8) hinzugefügt und sind in der nächsten Version verfügbar.
 
-## Dokumentation
+## Übersetzung der Dokumentation
 
-**Bald!** Wir arbeiten daran, die StudioCMS-Dokumentation zu übersetzen. Wenn du daran interessiert bist, uns dabei zu helfen, melde dich bitte bei uns auf [Discord](https://chat.studiocms.dev)
+StudioCMS arbeitet aktiv daran, seine Dokumentation in mehrere Sprachen zu übersetzen.
+
+Zurzeit versuchen wir, die StudioCMS-Dokumentation in die folgenden Sprachen zu übersetzen:
+
+- Spanisch
+- Französisch
+- Deutsch
+- Koreanisch
+
+Ein großes Lob an unsere großartigen Übersetzerinnen und Übersetzer in der Community, die ihre Zeit opfern, um unsere Website in den oben genannten Sprachen verfügbar zu machen. Wir würden gerne jede Sprache unterstützen, aber wir müssen uns auf die Sprachen konzentrieren, für die wir bereits Leute haben, die bereit sind, zu übersetzen und die Dinge auf dem neuesten Stand zu halten. Wenn wir eine neue Sprache einführen, müssen wir ein Team zusammenstellen und mit mehreren Codebasen jonglieren. Deshalb führen wir nur solche Sprachen ein, die wir vorher genehmigt haben und für die wir bereits ein Team haben, das die Übersetzung der gesamten Seite in Angriff nimmt.
+
+### Erste Schritte
+
+Schau bei unserem [Übersetzungs-Tracker](https://i18n.docs.studiocms.dev) vorbei, um den Live-Status jeder Seite zu sehen - was aktuell ist, was überarbeitet werden muss und welche PRs noch auf eine Überprüfung warten. Er zieht unsere lokale Git-Historie heran, um die Zeitstempel aller Übersetzungen zu vergleichen und den Status jeder Seite automatisch zu aktualisieren.
+
+Du kannst auch direkt in GitHub einsteigen: Filtere die offenen PRs deiner Sprache nach dem i18n-Label, suche nach Tippfehlern oder Fehlübersetzungen und gib ihnen eine Bewertung. Das ist eine tolle Möglichkeit, um herauszufinden, wie StudioCMS mit i18n umgeht!
+
+### Aufbau der Dokumentation
+
+Das docs-Repository enthält drei verschiedene Arten von übersetzbaren Inhalten: docs-Seiten und UI-Strings. Der folgende Dateibaum zeigt, wo diese im Repository zu finden sind.
+
+<FileTree>
+
+- ...
+- src/
+  - ...
+  - content/
+    - docs/ MDX-Seiteninhalt, ein Verzeichnis pro Sprache
+      - de/
+      - en/
+      - es/
+      - ...
+    - i18n/ UI-String-Übersetzungen, eine Datei pro Sprache
+      - de.json
+      - en.json
+      - es.json
+      - ...
+  - starlight-sidebar/ UI-String-Übersetzungen für die Sidebar, eine Datei pro Sprache
+    - de.json
+    - en.json
+    - es.json
+    - ...
+- astro.config.ts
+- package.json
+- ...
+
+</FileTree>
+
+### Übersetzungsprozess
+
+Bereit zum Eintauchen? Hier erfährst du, wie du im Repo findest, was du brauchst:
+
+1. **Seitenspezifischer Inhalt** (Seitentitel, Haupttext, usw.)
+
+   ➤ Gehe zu `src/content/docs/{language}/{page-slug}.mdx`
+
+2. **Gemeinsamer Text** (Suchmodal, rechte Seitenleiste, Links zum „nächsten Artikel“, Tutorials usw.)
+
+   ➤ Gehe zu `src/content/i18n/{language}.json`
+
+3. **Primäre Seitenleistenübersetzungen**
+
+   ➤ Gehe zu `src/starlight-sidebar/{language}.json`
+
+
+Wenn du deine Zieldatei gefunden hast, sieh dir den [Übersetzungs-Tracker](https://i18n.docs.studiocms.dev/) und bestehende PRs an, vielleicht arbeitet ja schon jemand daran. Wenn du Zeit hast, melde dich im `docs-i18n`-Kanal in Discord, damit niemand doppelte Arbeit macht!
+
+:::note
+Bist du dir nicht sicher, ob etwas übersetzt werden sollte oder nicht? Wie funktioniert eine bestimmte Komponente? Schau in unsere [Referenz](/de/config-reference/).
+:::
+
+:::caution
+Nicht alle unsere Seiten sind übersetzungsreif. Wir geben neue Seiten je nach ihrer Stabilität zur Übersetzung frei, also übersetze keine Seiten, die keinen „Diese Seite übersetzen“-Button im Bereich „Beitragen“ in der rechten Seitenleiste haben.
+:::

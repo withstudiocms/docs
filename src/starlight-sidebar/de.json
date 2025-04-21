@@ -12,5 +12,10 @@
   "community-plugins": "Community-Plugins",
   "config-reference": "Konfigurationsreferenz",
   "typedoc": "TypeDoc",
-  "auto-gen": "Automatisch generiert"
+  "auto-gen": "Automatisch generiert",
+  "topic-guides": "Leitfäden & Tutorials",
+  "database": "Datenbank-Leitfäden",
+  "upgrade": "Aktualisieren",
+  "version": "Anleitungen zu Versionen",
+  "latest": "Neuerste Aktualisierungs-Anleitung"
 }
