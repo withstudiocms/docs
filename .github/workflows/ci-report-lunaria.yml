@@ -28,6 +28,7 @@ jobs:
       - name: Send a Discord notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_I18N_REPORT }}
+          DISCORD_EMBEDS: '[ { "title": "Translations Summary", "image": { "url": "https://i18n.docs.studiocms.dev/summary.svg" } }]'
         uses: Ilshidur/action-discord@0.3.2
         with:
           args: "${{ steps.message.outputs.DISCORD_MESSAGE }}"
