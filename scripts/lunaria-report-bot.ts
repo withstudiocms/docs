@@ -1,8 +1,6 @@
 import { setOutput } from '@actions/core';
 import { createLunaria } from '@lunariajs/core';
 
-const { WORKFLOW_DISPATCH } = process.env;
-
 await setDiscordMessage();
 
 async function setDiscordMessage() {
@@ -48,25 +46,16 @@ async function setDiscordMessage() {
 		})
 		.join('\n');
 
-	if (WORKFLOW_DISPATCH) {
-		console.log('Workflow dispatch enabled', WORKFLOW_DISPATCH);
-	}
-
-	let message = `**The weekly translation report is here!** <@&1311284611799846942>${WORKFLOW_DISPATCH ? ' EARLY!!!' : ''}\n\nWe have ${
+	let message = `**The weekly translation report is here!** <@&1311284611799846942>\n\nWe have ${
 		Object.keys(toTranslate).length
 	} pages with major changes since last week. Please help us translate these pages to your language!\n\n${list}`;
 
-	const suffix =
-		'\n\nSee our [Translation Status page](<https://i18n.docs.studiocms.dev>) for more, including open PRs.';
-
 	// Keep the entire message including the suffix within Discord's limits
-	const maxLengthWithoutSuffix = 2000 - suffix.length;
+	const maxLengthWithoutSuffix = 2000;
 	while (message.length > maxLengthWithoutSuffix) {
 		const lastNewline = message.lastIndexOf('\n', maxLengthWithoutSuffix);
 		message = message.slice(0, lastNewline);
 	}
-
-	message += suffix;
 
 	setOutput('DISCORD_MESSAGE', message);
 }
