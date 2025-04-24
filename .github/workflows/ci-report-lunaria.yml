@@ -22,8 +22,6 @@ jobs:
       - id: message
         name: Format Discord message
         run: pnpm ci:lunaria:report
-        env:
-          WORKFLOW_DISPATCH: ${{ github.event_name == 'workflow_dispatch' }}
 
       - name: Send a Discord notification
         env:
