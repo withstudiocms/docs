@@ -17,15 +17,13 @@ import QuickUpdate from '~/components/QuickUpdate.astro'
 
 No major changes in this version, but we have made some optimizations and bug fixes to improve the overall performance and stability of StudioCMS.
 
-## Patch Notes
+## Patch Overview
 
-- Bug fixes for CLI
-  - Fixes for `studiocms crypto get-jwt` command: Update keyfile path detection
-  - Update CLI hashing utilities
-- Bug fixes for StudioCMS
-  - Astro Fonts: Fix font loading issues with new experimental Astro Fonts
-- Optimizations for StudioCMS
-  - Replace `lodash` with `deepmerge-ts` for better performance
-  - Update middleware to use new functions that reduce the number of promises created
-- New Features/Functionality
-  - New Feedback form system in the dashboard.
+- **New Features**
+	- Introduced a new feedback system in the dashboard.
+- **Bug Fixes**
+	- Resolved issues with Astro Fonts.
+	- Improved keyfile path detection.
+- **Improvements**
+	- Replaced lodash with deepmerge-ts for better performance.
+	- Optimized promise handling in middleware and updated permission level processing.
