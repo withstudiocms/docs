@@ -12,6 +12,7 @@ sidebar:
 
 import ReadMore from '~/components/ReadMore.astro'
 import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
 
 <QuickUpdate />
 
@@ -27,3 +28,7 @@ No major changes in this version, but we have made some optimizations and bug fi
 - **Improvements**
 	- Replaced lodash with deepmerge-ts for better performance.
 	- Optimized promise handling in middleware and updated permission level processing.
+
+<Aside title="Note">
+Please note that in `beta.16` we introduced a breaking change with the password hashing algorithm. While previous passwords will still work, we recommend that users update their passwords after upgrading to `beta.17`. The legacy password hashing support will be removed in a future release.
+</Aside>
