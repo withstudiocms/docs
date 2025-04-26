@@ -1,0 +1,34 @@
+---
+i18nReady: true
+title: "Upgrade: 0.1.0-beta.17"
+description: Upgrade StudioCMS to Beta.17
+sidebar:
+  label: 0.1.0-beta.17
+  badge:
+    text: NEW
+    variant: success
+  order: 999998
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+No major changes in this version, but we have made some optimizations and bug fixes to improve the overall performance and stability of StudioCMS.
+
+## Patch Overview
+
+- **New Features**
+  - Introduced a new feedback system in the dashboard.
+- **Bug Fixes**
+  - Resolved issues with Astro Fonts.
+  - Improved keyfile path detection for the crypto gen-jwt CLI command.
+- **Improvements**
+  - Replaced lodash with deepmerge-ts for better performance.
+  - Optimized promise handling in middleware and updated permission level processing.
+
+<Aside title="Note">
+Please note that in `beta.16` we introduced a breaking change with the password hashing algorithm. While previous passwords will still work, we recommend that users update their passwords after upgrading to `beta.17`. The legacy password hashing support will be removed in a future release.
+</Aside>
