@@ -1,0 +1,34 @@
+---
+i18nReady: true
+title: "Mise à niveau : 0.1.0-beta.17"
+description: Mettre à niveau StudioCMS vers la version beta.17
+sidebar:
+  label: 0.1.0-beta.17
+  badge:
+    text: NOUVEAU
+    variant: success
+  order: 999998
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+Aucun changement majeur dans cette version, mais nous avons apporté quelques optimisations et corrections de bugs pour améliorer les performances globales et la stabilité de StudioCMS.
+
+## Vue d’ensemble des correctifs
+
+- **Nouvelles fonctionnalités**
+  - Introduction d’un nouveau système de retour d’information dans le tableau de bord.
+- **Corrections de bugs**
+  - Problèmes résolus avec les polices Astro.
+  - Détection améliorée du chemin du fichier clé pour la commande CLI [`crypto gen-jwt`](/fr/how-it-works/cli/#crypto-gen-jwt).
+- **Améliorations**
+  - Remplacement de [lodash](https://www.npmjs.com/package/lodash) par [deepmerge-ts](https://www.npmjs.com/package/deepmerge-ts) pour de meilleures performances.
+  - Gestion optimisée des promesses dans le middleware et traitement des niveaux d’autorisation mis à jour.
+
+<Aside title="À noter">
+Veuillez noter que dans la version `beta.16`, nous avons introduit une modification avec rupture de compatibilité concernant l’algorithme de hachage des mots de passe. Bien que les anciens mots de passe fonctionnent toujours, nous recommandons aux utilisateurs de les mettre à jour après la mise à niveau vers la version `beta.17`. La prise en charge de l’ancien hachage des mots de passe sera supprimée dans une prochaine version.
+</Aside>
