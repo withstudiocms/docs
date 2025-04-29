@@ -1,0 +1,34 @@
+---
+i18nReady: true
+title: "Actualización: 0.1.0-beta.17"
+description: Actualiza StudioCMS a Beta.17
+sidebar:
+  label: 0.1.0-beta.17
+  badge:
+    text: NUEVO
+    variant: success
+  order: 999998
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+No hay cambios importantes en esta versión, pero hemos realizado algunas optimizaciones y correcciones de errores para mejorar el rendimiento y la estabilidad general de StudioCMS.
+
+## Resumen de la Actualización
+
+- **Nuevas características**
+  - Se añadió un nuevo sistema de comentarios en el panel de control.
+- **Corrección de errores**
+  - Se resolvieron problemas con Astro Fonts.
+  - Se mejoro la detección de la ruta del archivo clave para el comando CLI [`crypto gen-jwt`](/es/how-it-works/cli/#crypto-gen-jwt).
+- **Mejoras**
+  - Se reemplazó [lodash](https://www.npmjs.com/package/lodash) con [deepmerge-ts](https://www.npmjs.com/package/deepmerge-ts) para un mejor rendimiento.
+  - Se optimizó el manejo de promesas en middleware y se actualizó el procesamiento de niveles de permisos.
+
+<Aside title="Nota">
+Por favor, ten en cuenta que en `beta.16` introdujimos un cambio importante con el algoritmo de hash de contraseñas. Si bien las contraseñas pueden seguir funcionando, te recomendamos que los usuarios actualicen sus contraseñas después de actualizar a `beta.17`. El soporte para el hash de contraseñas heredadas se eliminará en una versión futura.
+</Aside>
