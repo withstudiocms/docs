@@ -10,6 +10,9 @@ export default defineEcConfig({
 	plugins: [
 		ecTwoSlash({
 			twoslashOptions: {
+				handbookOptions: {
+					errors: [2353],
+				},
 				compilerOptions: {
 					strict: true,
 					moduleResolution: 100,

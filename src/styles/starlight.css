@@ -81,6 +81,9 @@ div.expressive-code,
 starlight-file-tree {
 	border-radius: 8px;
 	overflow: hidden;
+}
+
+starlight-file-tree {
 	border: 1px solid var(--ec-brdCol);
 }
 

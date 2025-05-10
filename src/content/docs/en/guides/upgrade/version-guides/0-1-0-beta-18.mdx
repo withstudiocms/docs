@@ -1,0 +1,33 @@
+---
+i18nReady: true
+title: "Upgrade: 0.1.0-beta.18"
+description: Upgrade StudioCMS to Beta.18
+sidebar:
+  label: 0.1.0-beta.18
+  badge:
+    text: NEW
+    variant: success
+  order: 999997
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Breaking Changes
+
+- New Hook based plugin system - See the updated [Plugins Docs][plugin-doc] for more info.
+
+## Bug fixes
+
+- Refactor `gen-jwt` command - See the updated [CLI docs][cli-doc] for more info.
+
+<Aside title="Note">
+Please note that in `beta.16` we introduced a breaking change with the password hashing algorithm. While previous passwords will still work, we recommend that users update their passwords after upgrading to `beta.17`. The legacy password hashing support will be removed in a future release.
+</Aside>
+
+{/* Links */}
+[plugin-doc]: /en/plugins/
+[cli-doc]: /en/how-it-works/cli/#crypto-gen-jwt
