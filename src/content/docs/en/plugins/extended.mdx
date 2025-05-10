@@ -36,7 +36,7 @@ To get started, you will need to create a new StudioCMS Plugin. The following is
 
 In the main `src/index.ts` file, you will define the StudioCMS Plugin. The following is an example of how to define a StudioCMS Plugin that includes an Astro Integration to create a simple blog example:
 
-```ts title="index.ts"
+```ts twoslash title="index.ts"
 import { definePlugin } from 'studiocms/plugins';
 import { AstroIntegration } from 'astro';
 import { addVirtualImports, createResolver } from 'astro-integration-kit';
