@@ -85,7 +85,7 @@ export function studioCMSPageInjector(options: Options) {
   return definePlugin({
     identifier: 'my-plugin',
     name: 'My Plugin',
-    studiocmsMinimumVersion: '0.1.0-beta.8',
+    studiocmsMinimumVersion: '0.1.0-beta.18',
     hooks: {
       'studiocms:astro:config': ({ addIntegrations }) => {
         addIntegrations(myIntegration(options));  // Optional, but recommended
