@@ -51,23 +51,23 @@ importers:
         specifier: ^3.2.1
         version: 3.2.1
       '@studiocms/blog':
-        specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@a7b94c7
-        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@a7b94c7(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+        specifier: ^0.1.0-beta.18
+        version: 0.1.0-beta.18(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       '@studiocms/devapps':
-        specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@a7b94c7
-        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+        specifier: ^0.1.0-beta.18
+        version: 0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       '@studiocms/markdoc':
-        specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@a7b94c7
-        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@a7b94c7(@astrojs/react@4.2.4(@types/node@22.13.5)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(jiti@2.4.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(yaml@2.7.0))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+        specifier: ^0.1.0-beta.18
+        version: 0.1.0-beta.18(@astrojs/react@4.2.4(@types/node@22.13.5)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(jiti@2.4.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(yaml@2.7.0))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       '@studiocms/mdx':
-        specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@a7b94c7
-        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@a7b94c7(acorn@8.14.0)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+        specifier: ^0.1.0-beta.18
+        version: 0.1.0-beta.18(acorn@8.14.0)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       '@studiocms/ui':
         specifier: ^0.4.16
         version: 0.4.16(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       '@studiocms/wysiwyg':
         specifier: ^0.1.0-experimental.4
-        version: 0.1.0-experimental.4(@types/node@22.13.5)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(typescript@5.8.2)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+        version: 0.1.0-experimental.4(@types/node@22.13.5)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(studiocms@0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(typescript@5.8.2)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       '@types/hast':
         specifier: ^3.0.4
         version: 3.0.4
@@ -150,8 +150,8 @@ importers:
         specifier: ^0.21.0
         version: 0.21.0(@astrojs/starlight@0.34.0(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0)))(typedoc-plugin-markdown@4.6.0(typedoc@0.28.1(typescript@5.8.2)))(typedoc@0.28.1(typescript@5.8.2))
       studiocms:
-        specifier: https://pkg.pr.new/withstudiocms/studiocms@a7b94c7
-        version: https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+        specifier: ^0.1.0-beta.18
+        version: 0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       tsm:
         specifier: ^2.3.0
         version: 2.3.0
@@ -1770,17 +1770,15 @@ packages:
     engines: {node: '>=8.10'}
     hasBin: true
 
-  '@studiocms/blog@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@a7b94c7':
-    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@a7b94c7}
-    version: 0.1.0-beta.18
+  '@studiocms/blog@0.1.0-beta.18':
+    resolution: {integrity: sha512-TLrmVCG4gXkRrO89kQGv9FJmZqgVukB8z+zsJN5boB532XJIRO8t1Yktv5Z+ZetwyAbSgbQGEfxmttnR74XTMw==}
     peerDependencies:
       astro: ^5.7.1
       studiocms: 0.1.0-beta.18
       vite: ^6.2.6
 
-  '@studiocms/devapps@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@a7b94c7':
-    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@a7b94c7}
-    version: 0.1.0-beta.18
+  '@studiocms/devapps@0.1.0-beta.18':
+    resolution: {integrity: sha512-uw4QW7zPEBd72Wtsmgne1OyE/6YUl5612Sw1/B2dFcBgVeE6d6IQF2vx/jR2tl9uG9cyN0orrv9C+PST7El0Ug==}
     peerDependencies:
       '@astrojs/db': ^0.14.10
       astro: ^5.7.1
@@ -1793,9 +1791,8 @@ packages:
   '@studiocms/grapesjs-plugin@0.1.0':
     resolution: {integrity: sha512-VqwIO1s/dB2qSYmsi5GkAXtPch44BODq7FEVHTNxydRN5GOzV0nnMToTbUES6Cde++ENkP6ZDj0AIUa6wq6Hog==}
 
-  '@studiocms/markdoc@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@a7b94c7':
-    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@a7b94c7}
-    version: 0.1.0-beta.18
+  '@studiocms/markdoc@0.1.0-beta.18':
+    resolution: {integrity: sha512-2bWdCqARlkw0NBb+s82JCGiQbrHA1LYkUp6/6D6dZ4ogLq7Ko8Nc93irqWAVXcSM4jdCtwZxkADNBb+3zou3Dw==}
     peerDependencies:
       '@astrojs/react': ^4.2.1
       astro: ^5.7.1
@@ -1808,9 +1805,8 @@ packages:
   '@studiocms/markdown-remark-processor@1.2.0':
     resolution: {integrity: sha512-3qOupRze2HKO2VdcrN0c5j9ZYoM8hlhFjrs4m5pg4w5Do5I1MTuDDTXmfRnZ+CwDrXyUaYr+DK1Csb7zMYjzyA==}
 
-  '@studiocms/mdx@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@a7b94c7':
-    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@a7b94c7}
-    version: 0.1.0-beta.18
+  '@studiocms/mdx@0.1.0-beta.18':
+    resolution: {integrity: sha512-TL4bTtgUJFol+kEFoGcmJSQs0IZMbVX/NxyOxwHTMXD42iOI7MBI74vPcOljayDeh1vpWt+CYCq3LGil0Ak7Ww==}
     peerDependencies:
       astro: ^5.7.1
       studiocms: 0.1.0-beta.18
@@ -1824,7 +1820,6 @@ packages:
 
   '@studiocms/wysiwyg@0.1.0-experimental.4':
     resolution: {integrity: sha512-mSRvk519MSNVUoyp6REybBGYTi0c1vHAoE5OXPl8NWCHnFyf1NMk26JPhopLX20DDWb9H/WDacND/whCB3wV8Q==}
-    version: 0.1.0-experimental.4
     peerDependencies:
       astro: ^5.7.1
       studiocms: '>=0.1.0-beta.14'
@@ -5660,9 +5655,8 @@ packages:
   strnum@1.1.2:
     resolution: {integrity: sha512-vrN+B7DBIoTTZjnPNewwhx6cBA/H+IS7rfW68n7XxC1y7uoiGQBxaKzqucGUgavX15dJgiGztLJ8vxuEzwqBdA==}
 
-  studiocms@https://pkg.pr.new/withstudiocms/studiocms@a7b94c7:
-    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms@a7b94c7}
-    version: 0.1.0-beta.18
+  studiocms@0.1.0-beta.18:
+    resolution: {integrity: sha512-QAbvxSgCMGqjb7Dc2TbOxYQHvnlIvgAaOyLcXDhIOOp44BrTdXemidJlpciM47HT8IqqzXHOuioYKSNEia2O6A==}
     hasBin: true
     peerDependencies:
       '@astrojs/db': ^0.14.10
@@ -8520,15 +8514,15 @@ snapshots:
       ignore: 5.3.2
       p-map: 4.0.0
 
-  '@studiocms/blog@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@a7b94c7(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
+  '@studiocms/blog@0.1.0-beta.18(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
     dependencies:
       '@astrojs/rss': 4.0.11
       astro: 5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0)
       astro-integration-kit: 0.18.0(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))
-      studiocms: https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      studiocms: 0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       vite: 6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
 
-  '@studiocms/devapps@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
+  '@studiocms/devapps@0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
     dependencies:
       '@astrojs/db': 0.14.11(@types/react@19.0.10)(react@19.0.0)
       astro: 5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0)
@@ -8538,7 +8532,7 @@ snapshots:
       turndown: 7.2.0
       vite: 6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
     optionalDependencies:
-      studiocms: https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      studiocms: 0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
 
   '@studiocms/grapesjs-plugin@0.1.0(@types/node@22.13.5)(typescript@5.8.2)':
     dependencies:
@@ -8561,14 +8555,14 @@ snapshots:
       - zen-observable
       - zenObservable
 
-  '@studiocms/markdoc@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@a7b94c7(@astrojs/react@4.2.4(@types/node@22.13.5)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(jiti@2.4.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(yaml@2.7.0))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
+  '@studiocms/markdoc@0.1.0-beta.18(@astrojs/react@4.2.4(@types/node@22.13.5)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(jiti@2.4.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(yaml@2.7.0))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
     dependencies:
       '@markdoc/markdoc': 0.5.1(@types/react@19.0.10)(react@19.0.0)
       astro: 5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0)
       astro-integration-kit: 0.18.0(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
-      studiocms: https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      studiocms: 0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       vite: 6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
     optionalDependencies:
       '@astrojs/react': 4.2.4(@types/node@22.13.5)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(jiti@2.4.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(yaml@2.7.0)
@@ -8607,7 +8601,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@studiocms/mdx@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@a7b94c7(acorn@8.14.0)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
+  '@studiocms/mdx@0.1.0-beta.18(acorn@8.14.0)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
     dependencies:
       '@mdx-js/mdx': 3.1.0(acorn@8.14.0)
       astro: 5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0)
@@ -8616,7 +8610,7 @@ snapshots:
       react-dom: 19.0.0(react@19.0.0)
       rehype-highlight: 7.0.2
       remark-gfm: 4.0.1
-      studiocms: https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      studiocms: 0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       unified: 11.0.5
       vite: 6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
     transitivePeerDependencies:
@@ -8632,7 +8626,7 @@ snapshots:
       pathe: 1.1.2
       vite: 6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
 
-  '@studiocms/wysiwyg@0.1.0-experimental.4(@types/node@22.13.5)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(typescript@5.8.2)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
+  '@studiocms/wysiwyg@0.1.0-experimental.4(@types/node@22.13.5)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(studiocms@0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(typescript@5.8.2)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
     dependencies:
       '@grapesjs/studio-sdk': 1.0.40(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@grapesjs/studio-sdk-plugins': 1.0.18
@@ -8641,7 +8635,7 @@ snapshots:
       astro: 5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0)
       astro-integration-kit: 0.18.0(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))
       grapesjs: 0.22.6
-      studiocms: https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      studiocms: 0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       tui-image-editor: 3.15.3
       ultrahtml: 1.6.0
       vite: 6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
@@ -13410,7 +13404,7 @@ snapshots:
 
   strnum@1.1.2: {}
 
-  studiocms@https://pkg.pr.new/withstudiocms/studiocms@a7b94c7(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)):
+  studiocms@0.1.0-beta.18(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(@astrojs/web-vitals@3.0.1(@astrojs/db@0.14.11(@types/react@19.0.10)(react@19.0.0)))(@types/react@19.0.10)(astro@5.7.2(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(react@19.0.0)(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)):
     dependencies:
       '@astrojs/db': 0.14.11(@types/react@19.0.10)(react@19.0.0)
       '@astrojs/markdown-remark': 6.3.1
