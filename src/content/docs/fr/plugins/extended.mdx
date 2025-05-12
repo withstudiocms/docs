@@ -4,6 +4,9 @@ title: Rendre les modules d’extension utiles
 description: Découvrez les modules d’extension de StudioCMS et leur fonctionnement.
 sidebar:
    order: 2
+   badge:
+     text: Mis à jour
+     variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro'
@@ -40,81 +43,94 @@ import { addVirtualImports, createResolver } from 'astro-integration-kit';
 
 // Définir les options du module d’extension et de l’intégration
 interface Options {
-    route: string;
+  route: string;
 }
 
 export function studioCMSPageInjector(options: Options) {
+  // Résoudre le chemin d’accès au fichier actuel
+  const { resolve } = createResolver(import.meta.url);
 
-    // Résoudre le chemin d’accès au fichier actuel
-    const { resolve } = createResolver(import.meta.url);
+  // Définir l’intégration Astro
+  function monIntegration(options: Options): AstroIntegration {
+    const route = `/${options?.route || 'mon-module-extension'}`;
 
-    // Définir l’intégration Astro
-    function monIntegration(options: Options): AstroIntegration {
-        const route = `/${options?.route || 'mon-module-extension'}`;
+    return {
+      name: 'mon-integration-astro',
+      hooks: {
+        "astro:config:setup": (params) => {
+          const { injectRoute } = params;
 
-        return {
+          // Injecter la route pour le module d’extension
+          injectRoute({
+            entrypoint: resolve('./routes/[...slug].astro'),
+            pattern: `/${route}/[...slug]`,
+            prerender: false,
+          })
+
+          addVirtualImports(params, {
             name: 'mon-integration-astro',
-            hooks: {
-                "astro:config:setup": (params) => {
-                    const { injectRoute } = params;
-
-                    // Injecter la route pour le module d’extension
-                    injectRoute({
-                        entrypoint: resolve('./routes/[...slug].astro'),
-                        pattern: `/${route}/[...slug]`,
-                        prerender: false,
-                    })
-
-                    addVirtualImports(params, {
-                        name: 'mon-integration-astro',
-                        imports: {
-                            'myplugin:config': `
-                                export const options = ${JSON.stringify({ route })};
-                                export default options;
-                            `,
-                        }
-                    })
-                }
+            imports: {
+              'myplugin:config': `
+                export const options = ${JSON.stringify({ route })};
+                export default options;
+              `,
             }
+          })
         }
+      }
     }
+  }
 
-    // Définir le module d’extension pour StudioCMS
-    return definePlugin({
-        identifier: 'mon-module-extension',
-        name: "Mon module d’extension",
-        studiocmsMinimumVersion: '0.1.0-beta.8',
-        integration: monIntegration(options), // Facultatif, mais recommandé
-        // Définir les liens de navigation front-end pour le module d’extension (facultatif)
-        // Ceci est utile si vous utilisez les assistants de navigation intégrés de StudioCMS dans votre mise en page,
-        // par exemple lorsque vous utilisez le module d’extension `@studiocms/blog`.
-        frontendNavigationLinks: [{ label: 'Le titre ici', href: options?.route || 'mon-module-extension' }],
-        // Lors de la création de types de page, vous pouvez également définir un composant pour le contenu de la page (`pageContentComponent`) si votre module d’extension nécessite un éditeur de contenu personnalisé.
-        // pageTypes: [{ identifier: 'mon-module-extension', label: "Article de blog (Mon module d’extension)", pageContentComponent: resolve('./components/MyContentEditor.astro') }],
-        // Dans cet exemple, nous choisissons d’utiliser l’éditeur de contenu par défaut (Markdown).
-        pageTypes: [{ identifier: 'mon-module-extension', label: "Article de blog (Mon module d’extension)" }],
-        // Définir les éléments de la grille pour le tableau de bord
-        // Ce sont les éléments qui seront affichés dans le tableau de bord de StudioCMS
-        // Vous pouvez définir autant d’éléments que vous le souhaitez
-        // Dans cet exemple, nous définissons un seul élément, qui a une étendue de 2, qui nécessite l’autorisation « editor » et qui injecte un composant Astro qui remplace l’élément personnalisé HTML simple.
-        dashboardGridItems: [
+  // Définir le module d’extension pour StudioCMS
+  return definePlugin({
+    identifier: 'mon-module-extension',
+    name: "Mon module d'extension",
+    studiocmsMinimumVersion: '0.1.0-beta.18',
+    hooks: {
+      'studiocms:astro:config': ({ addIntegrations }) => {
+        addIntegrations(monIntegration(options));  // Facultatif, mais recommandé
+      },
+      'studiocms:config:setup': ({ setDashboard, setFrontend, setRendering }) => {
+        setDashboard({
+          // Définir les éléments de la grille pour le tableau de bord
+          // Voici les éléments qui seront affichés dans le tableau de bord de StudioCMS
+          // Vous pouvez définir autant d’éléments que vous le souhaitez
+          // Dans cet exemple, nous définissons un seul élément, qui a une étendue de 2, qui nécessite l’autorisation `editor` et qui injecte un composant Astro qui remplace l’élément personnalisé HTML simple.
+          dashboardGridItems: [
             {
-                name: 'exemple',
-                span: 2,
-                variant: 'default',
-                requiresPermission: 'editor',
-                header: { title: 'Exemple', icon: 'bolt' },
-                body: {
-                    // Utilisez toujours du HTML simple sans `-` ou caractères spéciaux dans les balises, ils seront remplacés par le composant Astro et ce HTML ne sera jamais rendu
-                    html: '<examplegriditem></examplegriditem>',
-                    components: {
-                        // Injectez le composant Astro pour remplacer l’élément personnalisé HTML simple
-                        examplegriditem: resolve('./dashboard-grid-items/MyPluginGridItem.astro')
-                    }
+              name: 'exemple',
+              span: 2,
+              variant: 'default',
+              requiresPermission: 'editor',
+              header: { title: 'Exemple', icon: 'bolt' },
+              body: {
+                // Utilisez toujours du HTML brut sans `-` ni caractères spéciaux dans les balises, ils seront remplacés par le composant Astro et ce HTML ne sera jamais affiché
+                html: '<examplegriditem></examplegriditem>',
+                components: {
+                  // Injecter le composant Astro pour remplacer l’élément personnalisé HTML brut
+                  examplegriditem: resolve('./dashboard-grid-items/MyPluginGridItem.astro')
                 }
+              }
             }
-        ],
-    });
+          ],
+        });
+
+        setFrontend({
+          // Définir les liens de navigation frontend pour le module d’extension (facultatif)
+          // Ceci est utile si vous utilisez les assistants de navigation intégrés de StudioCMS dans votre mise en page,
+          // comme lors de l’utilisation du module d’extension `@studiocms/blog`.
+          frontendNavigationLinks: [{ label: 'Le titre ici', href: options?.route || 'mon-module-extension' }],
+        });
+
+        setRendering({
+          // Lors de la création de pagesTypes, vous pouvez également définir un `pageContentComponent` si votre module d’extension nécessite un éditeur de contenu personnalisé.
+          // pageTypes: [{ identifier: 'mon-module-extension', label: "Article de blog (Mon module d’extension)", pageContentComponent: resolve('./components/MyContentEditor.astro') }],
+          // Dans cet exemple, nous pouvons utiliser l’éditeur de contenu par défaut (Markdown).
+          pageTypes: [{ identifier: 'mon-module-extension', label: "Article de blog (Mon module d'extension)" }],
+        })
+      }
+    }
+  });
 }
 ```
 

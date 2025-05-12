@@ -4,6 +4,9 @@ title: Les fondamentaux
 description: Découvrez les modules d’extension de StudioCMS et leur fonctionnement.
 sidebar:
    order: 1
+   badge:
+     text: Mis à jour
+     variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro'
@@ -18,238 +21,56 @@ Les modules d’extension de StudioCMS sont similaires aux intégrations Astro, 
 
 ### Le type des modules d’extension de StudioCMS
 
-```ts twoslash
-import { APIRoute, AstroIntegration } from "astro"
-import type { HeroIconName } from '@studiocms/ui/components/Icon/iconType.js';
-import type { SanitizeOptions } from 'ultrahtml/transformers/sanitize';
-import type { SettingsField } from 'studiocms/schemas';
-// ---cut---
-type StudioCMSPlugin = {
-  /**
-   * Identifiant du module d’extension à partir du package.json
-   */
+```ts
+interface StudioCMSPlugin {
   identifier: string;
-
-  /**
-   * Libellé du module d’extension à afficher dans le tableau de bord de StudioCMS
-   */
   name: string;
-    
-  /**
-   * Version minimale de StudioCMS requise pour que le module d’extension fonctionne
-   */
   studiocmsMinimumVersion: string;
-    
-  /**
-   * Intégration(s) Astro fournie(s) par le module d’extension
-   */
-  integration?: AstroIntegration | AstroIntegration[] | undefined;
-
-  /**
-   * Si cela est vrai, le module d’extension permettra la génération du plan du site
-   */
-  triggerSitemap?: boolean;
-
-  /**
-   * Permet au module d’extension d’ajouter des points de terminaison de plan de site
-   */
-  sitemaps?: Array<{
-
-    /**
-     * Nom du module d’extension
-     */
-    pluginName: string;
-
-    /**
-     * Chemin d’accès au fichier de point de terminaison XML du plan du site
-     */
-    sitemapXMLEndpointPath: string | URL;
-  }> | undefined;
-
-  /**
-   * Permet au module d’extension d’ajouter des éléments de grille de tableau de bord personnalisés
-   */
-  dashboardGridItems?: Array<{
-
-    /**
-     * Nom de l’élément de la grille
-     */
-    name: string;
-
-    /**
-     * Étendue de l’élément de grille
-     */
-    span: 1 | 2 | 3;
-
-    /**
-     * Variante de carte de l’élément de grille
-     */
-    variant: 'default' | 'filled';
-
-    /**
-     * Autorisation requise pour visualiser l’élément de la grille
-     */
-    requiresPermission?: "owner" | "admin" | "editor" | "visitor";
-
-    /**
-     * Informations d’en-tête de l’élément de grille
-     */
-    header?: {
-
-      /**
-       * Titre de l’élément de la grille
-       */
-      title: string;
-
-      /**
-       * Icône de l’élément de la grille
-       */
-      icon?: HeroIconName;
-    };
-
-    /**
-     * Informations sur le corps de l’élément de la grille
-     */
-    body?: {
-
-      /**
-       * Contenu HTML de l’élément de la grille
-       */
-      html: string;
-
-      /**
-       * Composant affiché dans l’élément de grille
-       */
-      components?: Record<string, string>;
-
-      /**
-       * Options d’assainissement du contenu HTML
-       */
-      sanitizeOpts?: SanitizeOptions;
-    };
-  }> | undefined;
-
-  /**
-   * Si cela existe, le module d’extension aura sa propre page de paramètres
-   */
-  settingsPage: {
-
-    /**
-     * Champs selon les spécifications
-     */
-    fields: SettingsField[];
-
-		/**
-		 * Le point de terminaison des paramètres
-		 *
-		 * Doit exporter une APIRoute nommée `onSave` qui s’exécute lorsque la page des paramètres est enregistrée
-		 */
-		endpoint: string,
-  } | undefined;
-
-	/**
-	 * Liens de navigation à utiliser avec le module d’extension `@studiocms/blog` et d’autres modules d’extension pour afficher des liens dans le front-end
-	 */
-  frontendNavigationLinks: Array<{
-    label: string;
-    href: string;
-  }>;
-
-  /**
-   * Définition du type de page. Si cette option est présente, le module d’extension souhaite pouvoir modifier le processus de création de page.
-   */
-  pageTypes: Array<{
-
-    /**
-     * Libellé affiché dans l’entrée de sélection
-     */
-    label: string;
-
-    /**
-     * Identifiant enregistré dans la base de données
-     * @example
-     * // Un type de page unique par module d’extension
-     * 'studiocms'
-     * '@studiocms/blog'
-     * // Plusieurs types de pages par module d’extension (utilisez des identifiants uniques pour chaque type pour éviter les conflits)
-     * '@mystudiocms/plugin:pageType1'
-     * '@mystudiocms/plugin:pageType2'
-     * '@mystudiocms/plugin:pageType3'
-     * '@mystudiocms/plugin:pageType4'
-     */
-    identifier: string;
-
-    /**
-     * Description affichée sous l’en-tête « Contenu de la page » si ce type est sélectionné
-     */
-    description: string;
-
-    /**
-     * Le chemin vers le composant réel affiché pour le contenu de la page
-     *
-     * Le composant doit avoir une propriété `content` qui est une chaîne de caractères pour pouvoir afficher le contenu actuel.
-     *
-     * **À NOTER :** Actuellement, vous devez utiliser l’identifiant de formulaire `page-content` pour la sortie du contenu. Votre éditeur doit également pouvoir gérer la soumission des formulaires.
-     * 
-     * **À NOTER :** Vous pouvez utiliser `studiocms/markdown` ou `studiocms/html` comme valeur de secours si vous travaillez avec du contenu HTML ou Markdown !
-     *
-     * @example
-     * ```ts
-     * import { createResolver } from 'astro-integration-kit';
-     * const { resolve } = createResolver(import.meta.url)
-     *
-     * {
-     *  pageContentComponent: resolve('./components/MonEditeurDeContenu.astro'),
-     * }
-     * ```
-     */
-    pageContentComponent: 'studiocms/markdown' | 'studiocms/html' | string;
-
-		/**
-		 * Le chemin vers le composant réel affiché pour le moteur de rendu de page
-     * 
-     * **À NOTER :** Vous pouvez utiliser `studiocms/markdown` ou `studiocms/html` comme valeur de secours si vous travaillez avec du contenu HTML ou Markdown !
-		 */
-		rendererComponent: 'studiocms/markdown' | 'studiocms/html' | string;
-
-    /**
-     * Champs selon spécifications
-     */
-    fields: SettingsField[];
-
-		/**
-		 * Fichier de point de terminaison de l’API pour le type de page
-		 *
-		 * Les points de terminaison de l’API sont utilisés pour créer, modifier et supprimer des pages de ce type.
-		 * Les points de terminaison recevront l’intégralité de l’APIContext d’Astro à partir de l’APIRoute d’Astro.
-		 *
-		 * Le fichier doit exporter au moins l’un des éléments suivants :
-		 * - `onCreate`
-		 * - `onEdit`
-		 * - `onDelete`
-		 *
-		 * @example
-		 * ```ts
-		 * // mon-module-extension.ts
-		 * import { createResolver } from 'astro-integration-kit';
-		 * const { resolve } = createResolver(import.meta.url)
-		 *
-		 * {
-		 *  apiEndpoint: resolve('./api/pageTypeApi.ts'),
-		 * }
-		 *
-		 * // api/pageTypeApi.ts
-		 * import { APIRoute } from 'astro';
-		 *
-		 * export const onCreate: APIRoute = async (ctx) => {
-		 *   // Logique personnalisée ici
-		 *   return new Response();
-		 * }
-		 * ```
-		 */
-		apiEndpoint: string;
-  }> | undefined;
-};
+  hooks: {
+    'studiocms:astro:config': (params: {
+      logger: AstroIntegrationLogger;
+      addIntegrations: (args_0: AstroIntegration | AstroIntegration[]) => void;
+    }) => void | Promise<void>;
+    'studiocms:config:setup': (params: {
+      logger: AstroIntegrationLogger;
+      setSitemap: (params: {
+        triggerSitemap?: boolean | undefined;
+        sitemaps?: {
+          pluginName: string;
+          sitemapXMLEndpointPath: string | URL;
+        }[] | undefined;
+      }) => void;
+      setDashboard: (params: {
+        dashboardGridItems?: GridItemInput[] | undefined;
+        dashboardPages?: {
+          user?: (...)[] | undefined;
+          admin?: (...)[] | undefined;
+        } | undefined;
+        settingsPage?: {
+          fields: (...)[];
+          endpoint: string;
+        } | undefined;
+      }) => void;
+      setFrontend: (params: {
+        frontendNavigationLinks?: {
+          label: string;
+          href: string;
+        }[] | undefined;
+      }) => void;
+      setRendering: (params: {
+        pageTypes?: {
+          label: string;
+          identifier: string;
+          description?: string | undefined;
+          fields?: (...)[] | undefined;
+          pageContentComponent?: string | undefined;
+          rendererComponent?: string | undefined;
+          apiEndpoint?: string | undefined;
+        }[] | undefined;
+      }) => void;
+    }) => void | Promise<void>;
+  }
+}
 ```
 
 ### Définir un module d’extension
@@ -284,13 +105,17 @@ const monIntegration = (options: Options): AstroIntegration => ({
 // Définir le module d’extension pour StudioCMS
 export const monModuleExtension = (options: Options) => definePlugin({
     identifier: 'mon-module-extension',
-    name: "Mon module d'extension",
-    studiocmsMinimumVersion: '0.1.0-beta.8',
-    integration: monIntegration(options), // Facultatif, mais recommandé
+    name: "Mon module d’extension",
+    studiocmsMinimumVersion: '0.1.0-beta.18',
+    hooks: {
+      'studiocms:astro:config': ({ addIntegrations }) => {
+        addIntegrations(myIntegration(options)) // Facultatif, mais recommandé
+      }
+    }
 });
 ```
 
-Dans cet exemple, nous définissons un module d’extension pour StudioCMS appelé `Mon module d’extension` qui nécessite la version `0.1.0-beta.8` ou supérieure de StudioCMS. Le module d’extension fournit également une intégration Astro qui enregistre un message dans la console lorsque le crochet `astro:config:setup` est appelé.
+Dans cet exemple, nous définissons un module d’extension pour StudioCMS appelé `Mon module d’extension` qui nécessite la version `0.1.0-beta.18` ou supérieure de StudioCMS. Le module d’extension fournit également une intégration Astro qui enregistre un message dans la console lorsque le crochet `astro:config:setup` est appelé.
 
 <ReadMore>Pour plus d’informations sur la création de modules d’extension, consultez le guide [Rendre les modules d’extension utiles][extended-plugins]</ReadMore>
 
