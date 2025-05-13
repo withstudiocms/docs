@@ -52,15 +52,15 @@ Cela générera une nouvelle paire de clés PKCS#8 qui sera utilisée pour le se
 
 Accédez au répertoire de votre projet StudioCMS et exécutez la commande suivante :
 
-<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt "../keys/libsql.pem" -c "iss=admin" -e 31556926' />
+<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt "../keys/libsql.pem" -e 31556926' />
 
-Le résultat est le jeton d'authentification JWT chiffré avec votre clé privée, qui sera utilisé pour l’authentification libSQL. Gardez à l’esprit que le token sera valable 1 an !
+Le résultat est le jeton d'authentification JWT chiffré avec votre clé privée au format standard et encodé en tant que `base64URL`, qui sera utilisé pour l’authentification libSQL. Gardez à l’esprit que le token sera valable 1 an !
 
 ### Mettez à jour votre fichier `.env` de StudioCMS avec les éléments suivants :
 
 ```sh
 ASTRO_DB_REMOTE_URL=http://localhost:8080 # Cela devrait pointer vers votre serveur Docker/système local
-ASTRO_DB_APP_TOKEN= # collez ici votre jeton d’authentification JWT encodé en base64URL
+ASTRO_DB_APP_TOKEN= # collez ici votre jeton d’authentification JWT standard
 ```
 
 ## Mise en place du conteneur Docker
@@ -104,7 +104,7 @@ services:
       - "5001:5001"
     environment:
       - SQLD_NODE=primary
-      - SQLD_AUTH_JWT_KEY=collez ici votre jeton JWT
+      - SQLD_AUTH_JWT_KEY=collez votre jeton JWT encodé en tant que Base64URL ici
     volumes:
       - ./data/libsql:/var/lib/sqld
 ```
