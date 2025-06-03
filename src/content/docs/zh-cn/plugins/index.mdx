@@ -1,0 +1,129 @@
+---
+i18nReady: true
+title: 插件基础指南
+description: StudioCMS 插件工作原理详解
+sidebar:
+   order: 1
+   badge:
+     text: 已更新
+     variant: success
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+
+# 核心概念解析
+
+StudioCMS 插件是扩展平台功能的核心机制，提供了一种简单灵活的方式来增强项目能力。本文将深入解析 StudioCMS 插件的工作原理和基础结构。
+
+## 什么是插件？
+
+StudioCMS 插件类似于 Astro 集成（Integrations），但在函数对象上附加了额外元数据。这些元数据用于确定插件的加载和使用方式。插件通过添加新功能或修改现有行为来扩展 StudioCMS 的能力。
+
+### StudioCMS 插件接口定义
+
+```ts
+interface StudioCMSPlugin {
+  identifier: string; // 插件唯一标识符
+  name: string;       // 插件显示名称
+  studiocmsMinimumVersion: string;  // 要求的最低 StudioCMS 版本
+  hooks: {
+    // Astro 配置钩子
+    'studiocms:astro:config': (params: {
+      logger: AstroIntegrationLogger; // 日志记录器
+      addIntegrations: (args_0: AstroIntegration | AstroIntegration[]) => void; // 添加集成
+    }) => void | Promise<void>;
+    
+    // 配置初始化钩子
+    'studiocms:config:setup': (params: {
+      logger: AstroIntegrationLogger;
+      // 设置站点地图
+      setSitemap: (params: {
+        triggerSitemap?: boolean | undefined;
+        sitemaps?: {
+          pluginName: string;
+          sitemapXMLEndpointPath: string | URL;
+        }[] | undefined;
+      }) => void;
+      // 设置仪表板
+      setDashboard: (params: {
+        dashboardGridItems?: GridItemInput[] | undefined;
+        dashboardPages?: {
+          user?: (...)[] | undefined;
+          admin?: (...)[] | undefined;
+        } | undefined;
+        settingsPage?: {
+          fields: (...)[];
+          endpoint: string;
+        } | undefined;
+      }) => void;
+      // 设置前端
+      setFrontend: (params: {
+        frontendNavigationLinks?: {
+          label: string;  // 导航标签
+          href: string;   // 链接地址
+        }[] | undefined;
+      }) => void;
+      // 设置渲染
+      setRendering: (params: {
+        pageTypes?: {
+          label: string;           // 页面类型标签
+          identifier: string;      // 唯一标识符
+          description?: string | undefined; // 描述
+          fields?: (...)[] | undefined;     // 字段定义
+          pageContentComponent?: string | undefined; // 内容组件
+          rendererComponent?: string | undefined;    // 渲染组件
+          apiEndpoint?: string | undefined;           // API端点
+        }[] | undefined;
+      }) => void;
+    }) => void | Promise<void>;
+  }
+}
+```
+
+### 插件定义规范
+
+定义 StudioCMS 插件需创建符合上述接口的对象，必须包含以下属性：
+
+- `identifier`: 插件的唯一标识符（通常取自 package.json）
+- `name`: 在 StudioCMS 仪表板中显示的插件名称
+- `studiocmsMinimumVersion`: 插件所需的最低 StudioCMS 版本
+
+```ts twoslash title="my-plugin.ts"
+import { definePlugin } from 'studiocms/plugins';
+import { AstroIntegration } from 'astro';
+
+// 定义插件和集成的选项接口
+interface Options {
+    foo: string; // 示例配置项
+}
+
+// 创建 Astro 集成
+const myIntegration = (options: Options): AstroIntegration => ({
+    name: 'my-astro-integration',
+    hooks: {
+        "astro:config:setup": () => {
+            console.log('我的 Astro 集成已启动！');
+        }
+    }
+});
+
+// 定义 StudioCMS 插件
+export const myPlugin = (options: Options) => definePlugin({
+    identifier: 'my-plugin',    // 插件标识符
+    name: '我的插件',            // 插件显示名称
+    studiocmsMinimumVersion: '0.1.0-beta.18',  // 最低兼容版本
+    hooks: {
+      // Astro 配置钩子
+      'studiocms:astro:config': ({ addIntegrations }) => {
+        addIntegrations(myIntegration(options)) // 推荐添加集成
+      }
+    }
+});
+```
+
+此示例定义了一个需要 StudioCMS v0.1.0-beta.18+ 的插件。当触发 `astro:config:setup` 生命周期钩子时，会在控制台打印消息。
+
+<ReadMore>深入了解插件开发实践，请参阅[高效插件开发指南][extended-plugins]</ReadMore>
+
+{/* 文档链接 */}
+[extended-plugins]: /zh-cn/plugins/extended/

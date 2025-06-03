@@ -1,0 +1,285 @@
+---
+i18nReady: true
+title: "SDK 开发指南"
+description: "StudioCMS SDK 详细使用说明"
+sidebar:
+   order: 3
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+StudioCMS SDK 是一个强大的编程接口，允许开发者以编程方式与 StudioCMS 交互。它提供了一系列函数和工具，用于通过 Astro DB 管理和呈现内容，同时也是 StudioCMS 仪表板的核心技术支撑。
+
+## 基本使用
+
+SDK 作为虚拟模块在 Astro 项目中可用，可通过以下方式导入：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';          // 标准 SDK
+import SDKCached from 'studiocms:sdk/cache'; // 带缓存层的 SDK
+```
+
+`studioCMSSDK` 对象提供完整的 CRUD 操作能力，而 `studioCMSSDKCached` 则在其基础上添加了缓存层优化性能。
+
+## 标准 SDK
+
+### `SDK.AUTH`
+
+认证管理模块，提供用户认证、会话管理等功能：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { 
+   oAuth,       // OAuth 认证处理
+   permission,  // 权限管理
+   session,     // 会话控制
+   user,        // 用户管理
+} = SDK.AUTH;
+```
+
+### `SDK.INIT`
+
+系统初始化模块，用于 SDK 的初始配置：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { 
+   siteConfig, // 站点配置
+   ghostUser,  // 系统幽灵用户
+} = SDK.INIT;
+```
+
+### `SDK.GET`
+
+数据读取模块，提供多种数据查询功能：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { 
+   database,        // 数据库操作
+   databaseEntry,   // 单条记录查询
+   databaseTable,   // 表级查询
+   permissionsLists, // 权限列表
+   packagePages,    // 插件页面
+} = SDK.GET;
+```
+
+### `SDK.POST`
+
+数据创建模块，用于添加新记录：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { 
+   databaseEntry,   // 创建单条记录
+   databaseEntries, // 批量创建记录
+} = SDK.POST;
+```
+
+### `SDK.UPDATE`
+
+数据更新模块，支持内容修改操作：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { 
+   page,          // 页面更新
+   pageContent,   // 内容更新
+   tags,          // 标签管理
+   categories,    // 分类管理
+   permissions,   // 权限更新
+   siteConfig,    // 配置更新
+   folder,        // 文件夹管理
+} = SDK.UPDATE;
+```
+
+### `SDK.DELETE`
+
+数据删除模块，提供精准的数据移除能力：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { 
+   page,              // 页面删除
+   pageContent,       // 内容删除
+   pageContentLang,   // 多语言内容删除
+   tags,              // 标签删除
+   categories,        // 分类删除
+   permissions,       // 权限移除
+   diffTracking,      // 变更追踪删除
+   folder,            // 文件夹删除
+   user,              // 用户删除
+} = SDK.DELETE;
+```
+
+### `SDK.db`
+
+直接操作 Astro DB 的核心接口：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { db } = SDK; // 直接数据库访问
+```
+
+<ReadMore>深入了解 `db` 用法请参阅 [Astro DB 指南](https://docs.astro.build/en/guides/astro-db/)</ReadMore>
+
+### `SDK.REST_API`
+
+REST API 底层处理模块：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { 
+   tokens: {
+      get: getToken,      // 获取令牌
+      new: newToken,      // 创建新令牌
+      delete: deleteToken, // 删除令牌
+      verify: verifyToken, // 验证令牌
+   },
+} = SDK.REST_API;
+```
+
+### `SDK.diffTracking`
+
+变更追踪系统，记录数据历史版本：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { 
+   insert,       // 插入变更记录
+   clear,        // 清除变更记录
+   get,          // 获取变更记录
+   revertToDiff  // 回滚到指定版本
+} = SDK.diffTracking;
+```
+
+### 工具函数集合
+
+SDK 提供丰富的实用工具：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+// 文件夹操作
+const { addPageToFolderTree } = SDK; 
+
+// 节点查询
+const { findNodeById, findNodeByPath } = SDK;
+
+// ID 处理
+const { parseIdNumberArray, generateRandomIDNumber } = SDK;
+
+// 安全功能
+const { generateToken, verifyRank } = SDK;
+
+// 数据收集
+const { collectCategories, collectUserData } = SDK;
+
+// 其他工具
+const { getFullPath, buildFolderTree } = SDK;
+```
+
+## 缓存版 SDK
+
+带缓存层的 SDK 导入方式：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDKCached from 'studiocms:sdk/cache';
+```
+
+### `SDKCached.GET`
+
+带缓存的数据读取接口：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDKCached from 'studiocms:sdk/cache';
+
+const { 
+   page,           // 单页面缓存读取
+   pages,          // 多页面缓存读取
+   siteConfig,     // 配置缓存
+   latestVersion,  // 最新版本号
+   folderTree,     // 文件夹树结构
+   pageFolderTree, // 页面文件夹结构
+   folderList,     // 文件夹列表
+   folder,         // 单文件夹
+} = SDKCached.GET;
+```
+
+### `SDKCached.CLEAR`
+
+缓存清除功能：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDKCached from 'studiocms:sdk/cache';
+
+const { 
+   page,           // 清除页面缓存
+   pages,          // 清除多页面缓存
+   latestVersion,  // 清除版本缓存
+   folderTree,     // 清除文件夹树缓存
+   folderList,     // 清除文件夹列表缓存
+} = SDKCached.CLEAR;
+```
+
+### `SDKCached.UPDATE`
+
+带缓存更新的操作接口：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDKCached from 'studiocms:sdk/cache';
+
+const { 
+   page,         // 更新页面缓存
+   siteConfig,   // 更新配置缓存
+   latestVersion, // 更新版本缓存
+   folderTree,   // 更新文件夹树
+   folderList,   // 更新文件夹列表
+   folder,       // 更新单个文件夹
+} = SDKCached.UPDATE;
+```
+
+### `SDKCached.db`
+
+透明传递的标准 `db` 对象：
+
+<ReadMore>详见上文 [`SDK.db`](#sdkdb) 说明</ReadMore>

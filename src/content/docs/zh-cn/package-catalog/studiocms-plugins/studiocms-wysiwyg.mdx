@@ -1,0 +1,36 @@
+---
+i18nReady: true
+title: "@studiocms/wysiwyg"
+type: integration
+catalogEntry: studiocms-wysiwyg
+description: "轻松为 StudioCMS 项目添加所见即所得编辑器！"
+sidebar:
+  badge: 
+    text: '实验性'
+    variant: 'danger'
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# 简介
+
+此插件让您能够轻松地为 StudioCMS 项目添加所见即所得编辑器！
+
+## 安装步骤
+
+1. 使用以下命令安装软件包：
+
+   <PackageManagers pkg="studiocms" type='run' args='add @studiocms/wysiwyg' />
+
+2. 在 StudioCMS 配置中添加该插件：
+
+   ```ts twoslash title="studiocms.config.mjs" {2, 6}
+   import { defineStudioCMSConfig } from 'studiocms/config';
+   import wysiwyg from '@studiocms/wysiwyg';
+
+    export default defineStudioCMSConfig({
+      plugins: [
+        wysiwyg(),
+      ],
+    });

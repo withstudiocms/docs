@@ -1,0 +1,215 @@
+---
+i18nReady: true
+title: "核心集成架构"
+description: "深入解析 StudioCMS 如何通过其核心组件管理和交付内容"
+sidebar:
+   order: 1
+---
+
+# 架构解析
+
+StudioCMS 是专为 Astro 构建的强大 CMS 系统，基于 [Astro DB](https://docs.astro.build/en/guides/astro-db/) 实现内容管理与服务。其设计兼具易用性与灵活性，能处理各种类型的内容需求。
+
+扩展 StudioCMS 非常简单！您可以创建自定义插件来增强系统功能。StudioCMS 集成是整个生态系统的基石，为 Astro 项目提供无头 CMS 解决方案。以下是其核心组件的详细解析。
+
+## 虚拟模块系统
+
+StudioCMS 集成提供多个[虚拟模块](https://vite.dev/guide/api-plugin#virtual-modules-convention)，使您能完全控制动态内容。这些模块主要供内部使用，但开发者也可访问 StudioCMS 数据：
+
+### 认证虚拟模块
+
+| 模块路径 | 功能描述 |
+|---------|---------|
+| `studiocms:auth/lib/encryption` | 加密工具 |
+| `studiocms:auth/lib/password` | 密码管理工具 |
+| `studiocms:auth/lib/rate-limit` | 请求限流工具 |
+| `studiocms:auth/lib/session` | 会话管理工具 |
+| `studiocms:auth/lib/types` | 类型定义 |
+| `studiocms:auth/lib/user` | 用户管理工具 |
+| `studiocms:auth/utils/authEnvCheck` | 认证环境检查工具 |
+| `studiocms:auth/utils/getLabelForPermissionLevel` | 权限标签工具 |
+
+### 核心虚拟模块
+
+| 模块路径 | 功能描述 |
+|---------|---------|
+| `studiocms:config` | 集成配置解析 |
+| `studiocms:version` | 当前版本信息 |
+| `studiocms:plugins` | 运行时插件接口 |
+| `studiocms:plugin-helpers` | 插件辅助函数 |
+| `studiocms:components` | 导出组件库 |
+| `studiocms:components/Editors` | 页面编辑器组件 |
+| `studiocms:components/dashboard-grid-components` | 仪表板内部组件 |
+| `studiocms:components/dashboard-grid-items` | 仪表板网格项组件 |
+| `studiocms:component-proxy` | 用户自定义组件代理 |
+| `studiocms:lib` | 核心库辅助工具 |
+
+### SDK 虚拟模块
+
+| 模块路径 | 功能描述 |
+|---------|---------|
+| `studiocms:sdk` | 主 SDK 接口 |
+| `studiocms:sdk/cache` | 带缓存的 SDK |
+| `studiocms:sdk/types` | SDK 类型定义 |
+
+### 国际化与渲染
+
+| 模块路径 | 功能描述 |
+|---------|---------|
+| `studiocms:i18n` | 国际化支持 |
+| `studiocms:renderer` | 内容渲染器 |
+| `studiocms:renderer/config` | 渲染器配置 |
+| `studiocms:renderer/current` | 当前渲染上下文 |
+| `studiocms:renderer/markdown-remark/css` | Markdown 样式支持 |
+
+### 图像处理
+
+| 模块路径 | 功能描述 |
+|---------|---------|
+| `studiocms:imageHandler/components` | 图像处理组件 |
+
+## 路由系统
+
+### 仪表板路由（用户界面）
+
+#### 主路由
+
+| 路径 | 功能 |
+|------|------|
+| `/dashboard/` | 主控制面板 |
+| `/dashboard/profile/` | 用户配置管理 |
+| `/dashboard/content-management/` | 内容管理界面 |
+| `/dashboard/configuration/` | 系统配置中心 |
+| `/dashboard/user-management/` | 用户管理系统 |
+| `/dashboard/plugins/` | 插件管理中心 |
+
+#### 认证路由
+
+| 路径 | 功能 |
+|------|------|
+| `/dashboard/login/` | 登录界面 |
+| `/dashboard/signup/` | 注册界面 |
+| `/dashboard/logout/` | 退出登录 |
+
+### API 路由（后端接口）
+
+#### 主接口
+
+| 端点路径 | 功能 |
+|----------|------|
+| `/studiocms_api/dashboard/api-tokens` | API 令牌管理 |
+| `/studiocms_api/dashboard/search-list` | 全局搜索接口 |
+| `/studiocms_api/dashboard/live-render` | 实时内容预览 |
+| `/studiocms_api/dashboard/user-list-items` | 用户列表项 |
+| `/studiocms_api/dashboard/editor` | 编辑器数据接口 |
+| `/studiocms_api/dashboard/config` | 配置管理接口 |
+| `/studiocms_api/dashboard/users` | 用户数据接口 |
+| `/studiocms_api/dashboard/profile` | 用户资料接口 |
+| `/studiocms_api/dashboard/create-reset-link` | 密码重置链接生成 |
+| `/studiocms_api/dashboard/reset-password` | 密码重置处理 |
+| `/studiocms_api/dashboard/content/page` | 页面内容操作 |
+| `/studiocms_api/dashboard/content/folder` | 文件夹管理 |
+| `/studiocms_api/dashboard/plugins` | 插件管理接口 |
+| `/studiocms_api/dashboard/create-user` | 用户创建接口 |
+| `/studiocms_api/dashboard/update-user-invite` | 用户邀请更新 |
+
+#### 认证接口
+
+| 端点路径 | 功能 |
+|----------|------|
+| `/studiocms_api/auth/login` | 登录认证 |
+| `/studiocms_api/auth/logout` | 退出处理 |
+| `/studiocms_api/auth/register` | 注册处理 |
+| `/studiocms_api/auth/github` | GitHub 认证 |
+| `/studiocms_api/auth/github/callback` | GitHub 回调 |
+| `/studiocms_api/auth/discord` | Discord 认证 |
+| `/studiocms_api/auth/discord/callback` | Discord 回调 |
+| `/studiocms_api/auth/google` | Google 认证 |
+| `/studiocms_api/auth/google/callback` | Google 回调 |
+| `/studiocms_api/auth/auth0` | Auth0 认证 |
+| `/studiocms_api/auth/auth0/callback` | Auth0 回调 |
+
+#### SDK 接口
+
+| 端点路径 | 功能 |
+|----------|------|
+| `/studiocms_api/sdk/list-pages` | 页面列表获取 |
+| `/studiocms_api/sdk/fallback-list-pages.json` | 页面列表回退机制 |
+| `/studiocms_api/sdk/update-latest-version-cache` | 版本缓存更新 |
+
+#### 渲染接口
+
+| 端点路径 | 功能 |
+|----------|------|
+| `/studiocms_api/renderer/render` | 动态内容渲染 |
+
+## 开发实践指南
+
+### 虚拟模块使用示例
+```ts
+// 获取配置
+import config from 'studiocms:config';
+
+// 使用渲染器
+import { StudioCMSRenderer } from 'studiocms:renderer';
+
+// 访问SDK
+import sdk from 'studiocms:sdk';
+```
+
+### 自定义API端点
+```ts title="/src/pages/api/custom-endpoint.ts"
+import { APIRoute } from 'astro';
+import sdk from 'studiocms:sdk';
+
+export const get: APIRoute = async () => {
+  const pages = await sdk.GET.pages();
+  return new Response(JSON.stringify(pages), {
+    headers: { 'Content-Type': 'application/json' }
+  });
+};
+```
+
+### 扩展仪表板路由
+```astro title="/src/pages/dashboard/custom-page.astro"
+---
+import DashboardLayout from 'studiocms:components/DashboardLayout';
+---
+
+<DashboardLayout>
+  <h1>自定义管理页面</h1>
+  <!-- 自定义内容 -->
+</DashboardLayout>
+```
+
+## 架构优势
+
+1. **模块化设计**：
+   - 虚拟模块实现关注点分离
+   - 按功能划分的路由系统
+   - 清晰的接口边界
+
+2. **扩展性**：
+   ```ts
+   // 插件注册示例
+   export default defineStudioCMSConfig({
+     plugins: [customPlugin()]
+   })
+   ```
+
+3. **性能优化**：
+   - 虚拟模块按需加载
+   - 缓存SDK减少数据库访问
+   - 路由级代码分割
+
+4. **开发体验**：
+   - 类型安全的虚拟模块
+   - 一致的API设计规范
+   - 详细的错误日志
+
+> **调试提示**：在开发模式下，可通过 `?debug=1` 参数查看虚拟模块加载详情：
+> ```
+> http://localhost:4321/dashboard/?debug=1
+> ```
+
+此架构使 StudioCMS 既能作为开箱即用的解决方案，又能通过其扩展机制满足高度定制化需求。

@@ -1,0 +1,191 @@
+---
+i18nReady: true
+title: 自托管 libSQL 服务器
+description: 使用 Docker 托管您的 sqld libSQL 服务器
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import { PackageManagers } from 'studiocms-package-managers'
+import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/components';
+
+`sqld`（SQL 守护进程）是由 Turso 开发的 libSQL 服务器模式。本指南将介绍如何通过 Docker 容器设置和配置 `sqld` 以用于 StudioCMS 项目。
+
+<ReadMore>通过[官方文档][sql-docs]了解更多关于 `sqld` 的信息</ReadMore>
+
+## 先决条件
+
+- [Docker 和 Docker Compose][docker-docs]（可在服务器或本地运行）
+- 已安装 [OpenSSL][openssl-docs]
+- StudioCMS CLI（位于 StudioCMS 项目根目录）
+
+本地测试时的最终文件结构示例：
+
+<FileTree>
+
+- docker-compose.yml
+- data/
+- keys/
+- my-studiocms-project/
+  - astro.config.mjs
+  - studiocms.config.mjs
+  - package.json
+  - src/
+
+</FileTree>
+
+## 生成公私钥对
+
+在 `keys` 目录中执行以下命令创建 PKCS#8 编码的 Ed25519 密钥对：  
+```bash  
+openssl genpkey -algorithm Ed25519 -out ./libsql.pem  
+```  
+
+提取公钥：  
+```bash
+openssl pkey -in ./libsql.pem -pubout -out ./libsql.pub
+```
+
+这将生成用于 `sqld` 服务器的 PKCS#8 密钥对。
+
+## 生成 JWT 令牌
+
+进入 StudioCMS 项目目录并执行：
+
+<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt "../keys/libsql.pem" -e 31556926' />
+
+输出包含标准格式和 Base64URL 编码的 JWT 认证令牌，用于 libSQL 身份验证。该令牌有效期为 1 年！
+
+### 更新 StudioCMS 的 `.env` 文件
+
+```sh
+ASTRO_DB_REMOTE_URL=http://localhost:8080 # 指向 Docker 服务器/本地系统
+ASTRO_DB_APP_TOKEN= # 粘贴您的标准 JWT 认证令牌
+```
+
+## 配置 Docker 容器
+
+在 StudioCMS 项目目录外创建 `docker-compose.yml` 文件。您有两种配置 libSQL 认证的方式：
+
+<Tabs>
+
+<TabItem label="公钥文件方式">
+
+```yml
+services:
+  libsql:
+    image: ghcr.io/tursodatabase/libsql-server:latest
+    platform: linux/amd64
+    ports:
+      - "8080:8080" # HTTP API 端口
+      - "5001:5001" # gRPC 端口
+    environment:
+      - SQLD_NODE=primary # 主节点模式
+      - SQLD_AUTH_JWT_KEY_FILE=/home/.ssh/libsql.pub # 公钥路径
+    volumes:
+      - ./data/libsql:/var/lib/sqld # 数据持久化
+      - ./keys/libsql.pub:/home/.ssh/libsql.pub # 挂载公钥
+```
+
+</TabItem>
+
+<TabItem label="JWT 令牌方式">
+
+```yml
+services:
+  libsql:
+    image: ghcr.io/tursodatabase/libsql-server:latest
+    platform: linux/amd64
+    ports:
+      - "8080:8080"
+      - "5001:5001"
+    environment:
+      - SQLD_NODE=primary
+      - SQLD_AUTH_JWT_KEY=粘贴您的Base64URL编码JWT令牌
+    volumes:
+      - ./data/libsql:/var/lib/sqld # 数据持久化
+```
+
+</TabItem>
+
+</Tabs>
+
+<Aside type="note" title="部署到 Coolify？">
+[Coolify](https://coolify.io) 用户：使用我们的 [GitHub Gist](https://gist.github.com/Adammatthiesen/bfe7c78b2e73996fb3ef1b36ed606a57) 获取兼容 Coolify 的 Docker Compose 配置，可直接通过域名访问 libSQL 而无需 `:8080` 端口后缀。
+</Aside>
+
+## 启动服务
+
+<Steps>
+
+1. **启动 Docker 容器**：
+   在基础目录（或服务器目录）执行：
+   ```sh
+   docker compose up -d
+   ```
+
+2. **同步数据库架构**：
+   进入 StudioCMS 项目目录执行：
+   <PackageManagers type="exec" args="astro db push --remote" />
+
+3. **完成首次设置**：
+   遵循新数据库的首次设置流程：
+   - 参考[入门指南][getting-started]
+   
+   :::note 注意
+   若非首次设置 StudioCMS 项目，需在 `studiocms.config.mjs` 中启用 `dbStartPage` 选项
+   :::
+
+</Steps>
+
+## 安全加固建议
+
+```yml
+# 添加安全配置
+environment:
+  - SQLD_HTTP_TLS_CERT_FILE=/path/to/cert.pem
+  - SQLD_HTTP_TLS_KEY_FILE=/path/to/key.pem
+  - SQLD_GRPC_TLS_CERT_FILE=/path/to/cert.pem
+  - SQLD_GRPC_TLS_KEY_FILE=/path/to/key.pem
+```
+
+## 性能优化
+
+```yml
+# 资源限制
+deploy:
+  resources:
+    limits:
+      cpus: '2'
+      memory: 2G
+    reservations:
+      cpus: '0.5'
+      memory: 512M
+```
+
+## 故障排查
+
+**连接问题**：
+```bash
+# 测试数据库连接
+curl -v http://localhost:8080
+```
+
+**日志查看**：
+```bash
+docker compose logs -f libsql
+```
+
+**容器状态检查**：
+```bash
+docker ps -a
+```
+
+## 总结
+
+通过本指南，您已建立了一个安全的自托管 libSQL 服务器环境，为 StudioCMS 项目提供了可靠的数据库支持。此方案特别适合需要完全控制数据环境的场景。
+
+{/* 文档链接 */}
+[sql-docs]: https://github.com/tursodatabase/libsql/blob/main/docs/USER_GUIDE.md
+[docker-docs]: https://docs.docker.com/get-started/get-docker/
+[openssl-docs]: https://docs.openssl.org/3.2/man7/ossl-guide-introduction/#getting-and-installing-openssl
+[getting-started]: /zh-cn/start-here/getting-started/#first-time-setup-or-during-updates-if-the-tables-schema-is-updated

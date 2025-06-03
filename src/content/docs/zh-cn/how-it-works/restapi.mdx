@@ -1,0 +1,165 @@
+---
+i18nReady: true
+title: "REST API 开发指南"
+description: "StudioCMS REST API 详细使用说明"
+sidebar:
+   order: 4
+---
+
+# 核心功能解析
+
+StudioCMS REST API 是一个强大的编程接口，允许开发者通过代码与内容管理系统交互。它基于 Astro Endpoints 实现，提供符合 REST 架构规范的访问方式，为您的内容管理提供简单灵活的操作体验。
+
+## API 认证机制
+
+访问受保护的 API 端点需在请求头中提供认证令牌：
+
+```http
+Authorization: Bearer <您的API令牌>
+```
+
+**令牌获取方式**：
+1. 登录 StudioCMS 仪表板
+2. 导航至用户配置中的 "API Tokens" 区域
+3. 生成新令牌
+
+> **安全提示**：每个令牌应配置最小必要权限和合理有效期（默认7天）。敏感操作建议使用短有效期令牌。
+
+## 接口端点详解
+
+### 公开端点（无需认证）
+
+这些端点提供内容的只读访问，仅支持 `GET` 方法：
+
+| 端点路径 | 功能说明 |
+|---------|---------|
+| `GET /studiocms_api/rest/v1/public/folders/` | 获取所有公开文件夹列表 |
+| `GET /studiocms_api/rest/v1/public/folders/[id]` | 获取指定ID的文件夹详情 |
+| `GET /studiocms_api/rest/v1/public/pages/` | 获取所有公开页面列表 |
+| `GET /studiocms_api/rest/v1/public/pages/[id]` | 获取指定ID的页面详情 |
+
+**示例请求**：
+```bash
+curl https://your-domain.com/studiocms_api/rest/v1/public/pages/ \
+  -H "Accept: application/json"
+```
+
+### 受保护端点（需认证令牌）
+
+完整管理接口支持多种HTTP方法：
+
+| 端点路径 | 支持方法 | 功能说明 |
+|---------|---------|---------|
+| `/studiocms_api/rest/v1/folders/` | GET, POST | 文件夹列表获取/新建 |
+| `/studiocms_api/rest/v1/folders/[id]` | GET, PATCH, DELETE | 指定文件夹操作 |
+| `/studiocms_api/rest/v1/pages/` | GET, POST | 页面列表获取/新建 |
+| `/studiocms_api/rest/v1/pages/[id]` | GET, PATCH, DELETE | 指定页面操作 |
+| `/studiocms_api/rest/v1/pages/[id]/history/` | GET | 页面历史版本列表 |
+| `/studiocms_api/rest/v1/pages/[id]/history/[id]` | GET, PUT | 特定历史版本操作 |
+| `/studiocms_api/rest/v1/settings/` | GET, PATCH | 系统配置获取/更新 |
+| `/studiocms_api/rest/v1/users/` | GET | 用户列表获取 |
+| `/studiocms_api/rest/v1/users/[id]` | GET, PATCH, DELETE | 指定用户操作 |
+
+**历史版本操作示例**：
+```http
+GET /studiocms_api/rest/v1/pages/123/history/ 
+→ 获取页面ID=123的所有历史版本
+
+PUT /studiocms_api/rest/v1/pages/123/history/456 
+→ 将页面ID=123恢复到历史版本ID=456
+```
+
+## 高级功能说明
+
+### 分页与筛选
+
+所有列表端点支持分页参数：
+```http
+GET /studiocms_api/rest/v1/pages/?page=2&limit=20
+```
+
+支持字段筛选：
+```http
+GET /studiocms_api/rest/v1/pages/?type=blog&status=published
+```
+
+### 批量操作
+
+文件夹和页面端点支持批量创建：
+```http
+POST /studiocms_api/rest/v1/folders/
+Content-Type: application/json
+
+[
+  {"name": "新文件夹1", "parent": null},
+  {"name": "子文件夹", "parent": 1}
+]
+```
+
+### 版本控制
+
+历史版本接口支持：
+```http
+# 获取历史版本差异
+GET /studiocms_api/rest/v1/pages/123/history/456/diff
+
+# 创建新版本快照
+POST /studiocms_api/rest/v1/pages/123/history/
+```
+
+## 最佳实践
+
+### 请求示例（创建页面）
+```http
+POST /studiocms_api/rest/v1/pages/
+Authorization: Bearer your_api_token_here
+Content-Type: application/json
+
+{
+  "title": "API创建的文章",
+  "slug": "api-created-page",
+  "content": "## 这是通过API创建的内容",
+  "pageType": "blog",
+  "status": "draft"
+}
+```
+
+### 响应结构
+```json
+{
+  "id": 789,
+  "title": "API创建的文章",
+  "slug": "api-created-page",
+  "createdAt": "2023-11-15T08:00:00Z",
+  "updatedAt": "2023-11-15T08:00:00Z",
+  "links": {
+    "self": "/studiocms_api/rest/v1/pages/789",
+    "history": "/studiocms_api/rest/v1/pages/789/history/"
+  }
+}
+```
+
+### 错误处理
+常见HTTP状态码：
+- `401 Unauthorized` - 无效/过期的令牌
+- `403 Forbidden` - 权限不足
+- `404 Not Found` - 资源不存在
+- `422 Unprocessable Entity` - 请求数据验证失败
+
+```json
+{
+  "error": "VALIDATION_ERROR",
+  "message": "标题不能为空",
+  "details": {
+    "title": ["required"]
+  }
+}
+```
+
+## 开发工具推荐
+使用以下工具调试API：
+- [Postman](https://www.postman.com/)
+- [curl 命令行工具](https://curl.se/)
+- [VS Code REST Client 扩展](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
+
+> **性能提示**：频繁调用的读取操作建议使用公开端点或客户端缓存策略以降低服务器负载。

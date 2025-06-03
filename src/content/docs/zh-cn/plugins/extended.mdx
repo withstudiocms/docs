@@ -1,0 +1,367 @@
+---
+i18nReady: true
+title: 构建高效插件
+description: StudioCMS 插件开发指南
+sidebar:
+   order: 2
+   badge:
+     text: 已更新
+     variant: success
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import { FileTree } from '@astrojs/starlight/components'
+
+# 插件开发指南
+
+开发 StudioCMS 插件是扩展平台功能的关键方式，它提供了一种简单灵活的方法来增强项目能力。本文将通过基础示例演示如何创建和开发 StudioCMS 插件。
+
+## 准备工作
+
+开始前需要搭建插件基本结构：
+
+<FileTree>
+
+- package.json
+- src
+  - index.ts
+  - routes
+    - [...slug].astro
+  - dashboard-grid-items
+    - MyPluginGridItem.astro
+
+</FileTree>
+
+## 创建插件核心
+
+在 `src/index.ts` 文件中定义 StudioCMS 插件。以下示例展示了如何创建一个支持 Astro 集成的博客插件：
+
+```ts twoslash title="index.ts"
+import { definePlugin } from 'studiocms/plugins';
+import { AstroIntegration } from 'astro';
+import { addVirtualImports, createResolver } from 'astro-integration-kit';
+
+// 定义插件选项接口
+interface Options {
+  route: string;
+}
+
+export function studioCMSPageInjector(options: Options) {
+  // 解析当前文件路径
+  const { resolve } = createResolver(import.meta.url);
+
+  // 定义 Astro 集成
+  function myIntegration(options: Options): AstroIntegration {
+    const route = `/${options?.route || 'my-plugin'}`;
+
+    return {
+      name: 'my-astro-integration',
+      hooks: {
+        "astro:config:setup": (params) => {
+          const { injectRoute } = params;
+
+          // 注入插件路由
+          injectRoute({
+            entrypoint: resolve('./routes/[...slug].astro'),
+            pattern: `/${route}/[...slug]`,
+            prerender: false,
+          })
+
+          // 添加虚拟导入
+          addVirtualImports(params, {
+            name: 'my-astro-integration',
+            imports: {
+              'myplugin:config': `
+                export const options = ${JSON.stringify({ route })};
+                export default options;
+              `,
+            }
+          })
+        }
+      }
+    }
+  }
+
+  // 定义 StudioCMS 插件
+  return definePlugin({
+    identifier: 'my-plugin',        // 唯一标识符
+    name: 'My Plugin',              // 插件名称
+    studiocmsMinimumVersion: '0.1.0-beta.18',  // 兼容最低版本
+    hooks: {
+      // 添加 Astro 集成
+      'studiocms:astro:config': ({ addIntegrations }) => {
+        addIntegrations(myIntegration(options)); 
+      },
+      // 插件配置设置
+      'studiocms:config:setup': ({ setDashboard, setFrontend, setRendering }) => {
+        // 仪表板网格项配置
+        setDashboard({
+          dashboardGridItems: [
+            {
+              name: 'example',        // 组件名称
+              span: 2,               // 网格跨度
+              variant: 'default',    // 显示变体
+              requiresPermission: 'editor',  // 所需权限
+              header: { title: '示例', icon: 'bolt' },  // 标题和图标
+              body: {
+                html: '<examplegriditem></examplegriditem>',  // 占位HTML
+                components: {
+                  // 实际渲染组件
+                  examplegriditem: resolve('./dashboard-grid-items/MyPluginGridItem.astro')
+                }
+              }
+            }
+          ],
+        });
+
+        // 前端导航配置
+        setFrontend({
+          frontendNavigationLinks: [{ label: '我的插件', href: options?.route || 'my-plugin' }],
+        });
+
+        // 页面类型配置
+        setRendering({
+          pageTypes: [{ identifier: 'my-plugin', label: '博客文章(我的插件)' }],
+        })
+      }
+    }
+  });
+}
+```
+
+此示例创建了包含路由注入和仪表板组件的插件，实现了一个基础博客功能。
+
+<ReadMore>深入了解 Astro 集成开发，请参阅 [Astro 集成套件](https://astro-integration-kit.netlify.app/) 和 [Astro 集成文档](https://docs.astro.build/en/reference/integrations-reference/)</ReadMore>
+
+## 路由实现示例
+
+在 `src/routes/[...slug].astro` 文件中定义插件路由。此示例分两部分展示：前端处理层（`---` 之间）和模板层（第二个 `---` 下方）：
+
+```ts twoslash title="前端处理层"
+// @noErrors
+// @filename: plugin.d.ts
+declare module 'myplugin:config' {
+    export const options: { route: string };
+    export default options;
+}
+// ---cut---
+// @filename: Frontmatter.ts
+/// <reference types="studiocms/v/types" />
+/// <reference types="./plugin.d.ts" />
+import type { AstroGlobal } from 'astro';
+const Astro: AstroGlobal = {};
+// ---cut---
+import { StudioCMSRenderer } from 'studiocms:renderer';
+import sdk from 'studiocms:sdk';
+import config from 'myplugin:config';
+
+// 生成完整路由路径
+const makeRoute = (slug: string) => {
+    return `/${config.route}/${slug}`;
+}
+
+// 获取 'my-plugin' 类型的所有页面
+const pages = await sdk.GET.packagePages('my-plugin'); 
+
+// 获取当前 URL slug
+const { slug } = Astro.params;
+
+// 查找匹配页面
+const page = pages.find((page) => page.slug === slug || '');
+```
+
+```astro title="模板层"
+{
+    slug && page ? (
+        <div>
+            <h1>{page.title}</h1>
+            <StudioCMSRenderer content={page.defaultContent?.content || ''} />
+        </div>
+    ) : (
+        <div>
+            <h1>我的插件</h1>
+            <ul>
+                {pages.length > 0 && pages.map((page) => (
+                    <li>
+                        <a href={makeRoute(page.slug)}>{page.title}</a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
+}
+```
+
+此[动态路由](https://docs.astro.build/en/guides/routing/#dynamic-routes)在没有 slug 参数时显示文章列表，有 slug 时显示具体文章内容。
+
+## 仪表板组件示例
+
+在 `src/dashboard-grid-items/MyPluginGridItem.astro` 中创建仪表板组件：
+
+```astro title="MyPluginGridItem.astro"
+---
+import { StudioCMSRoutes } from 'studiocms:lib';
+import sdk from 'studiocms:sdk';
+
+// 获取 'my-plugin' 类型的所有页面
+const pages = await sdk.GET.packagePages('my-plugin'); 
+
+// 筛选最近30天更新的前5篇文章
+const recentlyUpdatedPages = pages
+    .filter((page) => {
+        const now = new Date();
+        const thirtyDaysAgo = new Date(now.setDate(now.getDate() - 30));
+        return new Date(page.updatedAt) > thirtyDaysAgo;
+    })
+    .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
+    .slice(0, 5);
+---
+
+<div>
+    <h2>最近更新</h2>
+    <ul>
+        {recentlyUpdatedPages.length > 0 && recentlyUpdatedPages.map((page) => (
+            <li>
+                <!-- 跳转到编辑页面 -->
+                <a href={StudioCMSRoutes.mainLinks.contentManagementEdit + `?edit=${page.id}`}>
+                    {page.title}
+                </a>
+            </li>
+        ))}
+    </ul>
+</div>
+```
+
+此组件在仪表板显示最近更新的文章列表，点击可直接进入编辑界面。
+
+## 导航组件集成
+
+若想像 `@studiocms/blog` 插件那样使用内置导航助手，可创建自定义导航组件：
+
+```astro title="Navigation.astro"
+---
+import { StudioCMSRoutes } from 'studiocms:lib';
+import studioCMS_SDK from 'studiocms:sdk/cache';
+import { frontendNavigation } from 'studiocms:plugin-helpers';
+
+// 组件属性定义
+interface Props {
+	topLevelLinkCount?: number;
+};
+
+// 默认显示3个顶级导航项
+const { topLevelLinkCount = 3 } = Astro.props;
+
+// 获取站点配置
+const config = (await studioCMS_SDK.GET.siteConfig()).data;
+const { title } = config || { title: 'StudioCMS' };
+
+// 基础URL
+const { mainLinks: { baseSiteURL } } = StudioCMSRoutes;
+
+// 导航项类型
+type LinkProps = {
+	text: string;
+	href: string;
+};
+
+// 获取导航链接
+const links: LinkProps[] = await frontendNavigation();
+---
+<!-- 常规导航模式 -->
+{ ( links.length < topLevelLinkCount || links.length === topLevelLinkCount ) && (
+    <div class="navigation">
+        <div class="title"><a href={baseSiteURL}>{title}</a></div>
+        <div class="mini-nav">
+            <button>菜单</button>
+            <div class="mini-nav-content">
+            { 
+                links.map(({ text, href }) => (
+                    <a {href}>{text}</a>
+                )) 
+            }
+            </div>
+        </div>
+        { 
+            links.map(({ text, href }) => (
+                <a class="links" {href}>{text}</a>
+            )) 
+        }
+    </div> 
+) }
+
+<!-- 带下拉菜单的导航模式 -->
+{ links.length > topLevelLinkCount && (
+    <div class="navigation">
+        <div class="title"><a href={baseSiteURL}>{title}</a></div>
+
+        <div class="mini-nav">
+            <button>菜单</button>
+            <div class="mini-nav-content">
+            { 
+                links.map(({ text, href }) => (
+                    <a {href}>{text}</a>
+                )) 
+            }
+            </div>
+        </div>
+        { 
+            links.slice(0, topLevelLinkCount).map(({ text, href }) => (
+                    <a class="links" {href}>{text}</a>
+            ))
+        }
+        <div class="dropdown">
+            <button>更多 ▼</button>
+            <div class="dropdown-content">
+                { links.slice(topLevelLinkCount).map(({ text, href }) => (
+                    <a {href}>{text}</a>
+                )) }
+            </div>
+        </div>
+    </div>
+) }
+```
+
+此组件利用 StudioCMS 导航助手创建响应式导航系统，根据链接数量自动切换常规/下拉模式。添加 CSS 样式后即可获得完整功能的导航菜单。
+
+### 开发建议：
+
+1. **性能优化**：
+   ```ts
+   // 在数据请求中使用缓存策略
+   const data = await sdk.GET.packagePages('my-plugin', { 
+        cachePolicy: { lifetime: '10m' } 
+   });
+   ```
+
+2. **错误处理**：
+   ```astro
+   try {
+       const pages = await sdk.GET.packagePages('my-plugin');
+   } catch (error) {
+       console.error("插件数据获取失败:", error);
+       return <p class="error">加载数据失败</p>;
+   }
+   ```
+
+3. **国际化支持**：
+   ```ts
+   // 在插件定义中添加多语言支持
+   definePlugin({
+       name: {
+           en: 'My Plugin',
+           zh: '我的插件'
+       },
+       // ...其他配置
+   })
+   ```
+
+4. **版本兼容**：
+   ```json
+   // package.json 中声明兼容的 StudioCMS 版本
+   "peerDependencies": {
+       "studiocms": "^0.1.0-beta.18"
+   }
+   ```
+
+通过遵循此模式，您可以构建出功能强大、易于维护的 StudioCMS 插件，充分扩展平台能力。
