@@ -1,28 +1,28 @@
 ---
 i18nReady: true
-title: Packages
-description: The Package Catalog is a collection of packages by StudioCMS or its community.
+title: 包目录
+description: "包目录是由 StudioCMS 或其社区提供的软件包集合。"
 ---
 
 import PackageCatalog from '~/components/PackageCatalog.astro'
 import { Badge } from '@astrojs/starlight/components';
 
-The Package Catalog is a collection of packages by StudioCMS or its community members, that are not included within StudioCMS by default. All packages listed here are verified and tested by the StudioCMS team or its contributors.
+包目录是 StudioCMS 或其社区成员提供的软件包集合，这些软件包默认不包含在 StudioCMS 中。此处列出的所有软件包都经过 StudioCMS 团队或其贡献者的验证和测试。
 
-Any package labeled as a <Badge text="Plugin" variant="tip"/> is a package that extends the functionality of StudioCMS or its dashboard.
+标记为<Badge text="插件" variant="tip"/>的软件包是用于扩展 StudioCMS 或其仪表板功能的包。
 
-Plugins can also be labeled as <Badge text="Experimental" variant="danger" /> which means the plugin is still early in development and could face major changes to its internals at any time. This plugin may or may not also be ready for usage.
+插件可能同时标记为<Badge text="实验性" variant="danger" />，这表示该插件仍处于早期开发阶段，其内部实现可能随时发生重大变更。此类插件也可能尚未准备好用于生产环境。
 
-Any package labeled as <Badge text="Publicly Usable" variant="caution"/> is able to be installed and used in projects that do not rely on studiocms. They can work on their own.
+标记为<Badge text="公开可用" variant="caution"/>的软件包可独立安装使用，无需依赖 StudioCMS 环境。
 
-## Package Catalogs
+## 包目录分类
 
-### StudioCMS Packages
+### StudioCMS 官方包目录
 ---
 
 <PackageCatalog catalog="studiocms" />
 
-### Community Packages
+### 社区包目录
 ---
 
 <PackageCatalog catalog="community" />
