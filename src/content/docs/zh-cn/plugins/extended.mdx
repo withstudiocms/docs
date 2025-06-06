@@ -18,7 +18,7 @@ import { FileTree } from '@astrojs/starlight/components'
 
 ## 准备工作
 
-开始前需要搭建插件基本结构：
+要创建 StudioCMS 插件，需遵循以下基础文件结构示例：
 
 <FileTree>
 
@@ -32,9 +32,9 @@ import { FileTree } from '@astrojs/starlight/components'
 
 </FileTree>
 
-## 创建插件核心
+## 创建插件
 
-在 `src/index.ts` 文件中定义 StudioCMS 插件。以下示例展示了如何创建一个支持 Astro 集成的博客插件：
+请在核心的 `src/index.ts` 文件中定义您的 StudioCMS 插件。以下示例演示如何创建包含 Astro 集成的插件，实现基础博客功能：
 
 ```ts twoslash title="index.ts"
 import { definePlugin } from 'studiocms/plugins';
@@ -129,15 +129,18 @@ export function studioCMSPageInjector(options: Options) {
 }
 ```
 
-此示例创建了包含路由注入和仪表板组件的插件，实现了一个基础博客功能。
+上述示例定义了一个包含 Astro 集成的 StudioCMS 插件，用于构建基础博客系统。该插件通过以下核心功能扩展 StudioCMS：
 
 <ReadMore>深入了解 Astro 集成开发，请参阅 [Astro 集成套件](https://astro-integration-kit.netlify.app/) 和 [Astro 集成文档](https://docs.astro.build/en/reference/integrations-reference/)</ReadMore>
 
 ## 路由实现示例
 
-在 `src/routes/[...slug].astro` 文件中定义插件路由。此示例分两部分展示：前端处理层（`---` 之间）和模板层（第二个 `---` 下方）：
+在 `src/routes/[...slug].astro` 文件中定义插件路由时，需要使用特殊语法 `---` 划分两个功能区：
 
-```ts twoslash title="前端处理层"
+- 第一组 `---` 标记的顶部区域称为 ​Frontmatter​
+- 第二组 `---` 之后的区域是 ​模板渲染区​
+
+```ts twoslash title="​Frontmatter​"
 // @noErrors
 // @filename: plugin.d.ts
 declare module 'myplugin:config' {
@@ -232,11 +235,11 @@ const recentlyUpdatedPages = pages
 </div>
 ```
 
-此组件在仪表板显示最近更新的文章列表，点击可直接进入编辑界面。
+该示例为插件定义了一个网格项目，用于展示最近30天内更新的5个内容页面。该网格项目包含指向每条内容管理编辑页面的链接列表。
 
-## 导航组件集成
+## FrontendNavigationLinks 导航组件集成
 
-若想像 `@studiocms/blog` 插件那样使用内置导航助手，可创建自定义导航组件：
+若需在项目中直接使用 StudioCMS 内置导航辅助工具（例如 `@studiocms/blog` 插件的实现方式），可通过创建自定义的 `Navigation.astro` 组件实现：
 
 ```astro title="Navigation.astro"
 ---
@@ -252,8 +255,10 @@ interface Props {
 // 默认显示3个顶级导航项
 const { topLevelLinkCount = 3 } = Astro.props;
 
-// 获取站点配置
+// 获取站点标题
 const config = (await studioCMS_SDK.GET.siteConfig()).data;
+
+// 获取站点 URL
 const { title } = config || { title: 'StudioCMS' };
 
 // 基础URL
@@ -268,7 +273,7 @@ type LinkProps = {
 // 获取导航链接
 const links: LinkProps[] = await frontendNavigation();
 ---
-<!-- 常规导航模式 -->
+{/* 无下拉菜单的导航模式 */}
 { ( links.length < topLevelLinkCount || links.length === topLevelLinkCount ) && (
     <div class="navigation">
         <div class="title"><a href={baseSiteURL}>{title}</a></div>
@@ -290,7 +295,7 @@ const links: LinkProps[] = await frontendNavigation();
     </div> 
 ) }
 
-<!-- 带下拉菜单的导航模式 -->
+{/* 带下拉菜单的导航模式 */}
 { links.length > topLevelLinkCount && (
     <div class="navigation">
         <div class="title"><a href={baseSiteURL}>{title}</a></div>
@@ -322,46 +327,10 @@ const links: LinkProps[] = await frontendNavigation();
 ) }
 ```
 
-此组件利用 StudioCMS 导航助手创建响应式导航系统，根据链接数量自动切换常规/下拉模式。添加 CSS 样式后即可获得完整功能的导航菜单。
+上述示例定义了一个自定义的 `Navigation.astro` 组件，该组件利用 StudioCMS 内置的导航辅助工具为项目创建导航菜单。此组件包含：
 
-### 开发建议：
+- 主站点URL链接
+- 首页导航项
+- 所有配置为在导航中显示的其他页面链接
 
-1. **性能优化**：
-   ```ts
-   // 在数据请求中使用缓存策略
-   const data = await sdk.GET.packagePages('my-plugin', { 
-        cachePolicy: { lifetime: '10m' } 
-   });
-   ```
-
-2. **错误处理**：
-   ```astro
-   try {
-       const pages = await sdk.GET.packagePages('my-plugin');
-   } catch (error) {
-       console.error("插件数据获取失败:", error);
-       return <p class="error">加载数据失败</p>;
-   }
-   ```
-
-3. **国际化支持**：
-   ```ts
-   // 在插件定义中添加多语言支持
-   definePlugin({
-       name: {
-           en: 'My Plugin',
-           zh: '我的插件'
-       },
-       // ...其他配置
-   })
-   ```
-
-4. **版本兼容**：
-   ```json
-   // package.json 中声明兼容的 StudioCMS 版本
-   "peerDependencies": {
-       "studiocms": "^0.1.0-beta.18"
-   }
-   ```
-
-通过遵循此模式，您可以构建出功能强大、易于维护的 StudioCMS 插件，充分扩展平台能力。
+您只需添加自定义样式，即可获得一个功能完备的导航菜单，完美集成 StudioCMS 的内置导航辅助系统。

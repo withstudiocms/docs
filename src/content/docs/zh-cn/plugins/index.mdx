@@ -17,7 +17,7 @@ StudioCMS 插件是扩展平台功能的核心机制，提供了一种简单灵�
 
 ## 什么是插件？
 
-StudioCMS 插件类似于 Astro 集成（Integrations），但在函数对象上附加了额外元数据。这些元数据用于确定插件的加载和使用方式。插件通过添加新功能或修改现有行为来扩展 StudioCMS 的能力。
+StudioCMS 插件类似于 Astro 集成，但在函数对象上附加了额外元数据。这些元数据用于确定插件的加载和使用方式。插件通过添加新功能或修改现有行为来扩展 StudioCMS 的能力。
 
 ### StudioCMS 插件接口定义
 
@@ -88,6 +88,8 @@ interface StudioCMSPlugin {
 - `name`: 在 StudioCMS 仪表板中显示的插件名称
 - `studiocmsMinimumVersion`: 插件所需的最低 StudioCMS 版本
 
+以下是一个完整的 StudioCMS 插件定义示例，包含所有必需属性并通过 Astro 集成实现自定义逻辑：
+
 ```ts twoslash title="my-plugin.ts"
 import { definePlugin } from 'studiocms/plugins';
 import { AstroIntegration } from 'astro';
@@ -121,7 +123,7 @@ export const myPlugin = (options: Options) => definePlugin({
 });
 ```
 
-此示例定义了一个需要 StudioCMS v0.1.0-beta.18+ 的插件。当触发 `astro:config:setup` 生命周期钩子时，会在控制台打印消息。
+在以下示例中，我们定义了一个名为 `My Plugin` 的 StudioCMS 插件，该插件要求 StudioCMS 版本为 `0.1.0-beta.18` 或更高。该插件还提供了 Astro 集成功能，在触发 `astro:config:setup` 钩子时向控制台输出日志信息：
 
 <ReadMore>深入了解插件开发实践，请参阅[高效插件开发指南][extended-plugins]</ReadMore>
 

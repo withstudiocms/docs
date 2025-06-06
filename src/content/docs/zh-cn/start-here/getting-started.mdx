@@ -194,9 +194,11 @@ libSQL 同时支持 HTTP 和 WebSockets 作为远程服务器的传输协议，�
 
 </Tabs>
 
-> **重要提示**：
-> 1. `astro.config.mjs` 文件中的 `site` 选项是必需的。可以设置为站点 URL 或占位符 URL（例如 `https://demo.studiocms.dev/` 或 `http://localhost:4321/`）
-> 2. StudioCMS 需要 [Astro 适配器](https://docs.astro.build/en/guides/on-demand-rendering/#server-adapters)，确保在 `astro.config.mjs` 文件中设置了支持 SSR 路由的适配器
+在配置 StudioCMS `时需特别注意：astro.config.mjs` 文件中的 ​`site` 配置项是必需参数，必须设置为您的站点实际 URL 或临时占位 URL 才能确保系统正常运行。（例如：`https://demo.studiocms.dev/` 或 `http://localhost:4321/`）
+
+<Aside type="note" title="适配器要求">
+StudioCMS 必须依赖 [Astro 适配器](https://docs.astro.build/en/guides/on-demand-rendering/#server-adapters)才能正常运行。请确保在您的 `astro.config.mjs` 配置文件中设置支持 SSR 路由的适配器。
+</Aside>
 
 ## 配置认证
 
@@ -335,7 +337,7 @@ export default defineStudioCMSConfig({
 通过 [StudioCMS 参考文档][config-reference] 了解配置选项。
 </ReadMore>
 
-{/* 文档链接 */}
+{/* Links */}
 [package-catalog]: /zh-cn/package-catalog/
 [environment-variables]: /zh-cn/start-here/environment-variables/
 [config-reference]: /zh-cn/config-reference/

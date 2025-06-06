@@ -78,27 +78,3 @@ const formattedDate = Astro.props.date.toLocaleDateString(
 
 <time {datetime}>{formattedDate}</time>
 ```
-
-### 配置说明：
-
-1. **覆盖机制**：
-   - 当指定 `CustomImageOverride` 时，StudioCMS 将使用您的自定义组件替代默认图像组件
-   - `FormattedDateOverride` 同理覆盖默认日期格式化组件
-
-2. **组件要求**：
-   - 自定义组件必须实现与默认组件相同的 props 接口
-   - 图像组件需支持 StudioCMS 的图像处理参数
-   - 日期组件需接收 `date: Date` 属性
-
-> **注意**：默认组件代码展示了基础实现逻辑，覆盖后仍需保持兼容性。您可以在自定义组件中扩展功能，但需确保核心输出格式保持不变以避免渲染异常。组件路径应为相对项目根目录的有效路径。
-
-### 最佳实践：
-```ts
-// 建议为覆盖组件创建独立目录
-overrides: {
-    CustomImageOverride: 'src/components/studiocms/CustomImage.astro',
-    FormattedDateOverride: 'src/components/studiocms/CustomDate.astro',
-}
-```
-
-所有覆盖配置应在 `studiocms.config.mjs` 文件中进行，修改后需重启开发服务器生效。

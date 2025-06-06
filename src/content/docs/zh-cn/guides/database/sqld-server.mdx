@@ -5,7 +5,7 @@ description: 使用 Docker 托管您的 sqld libSQL 服务器
 ---
 
 import ReadMore from '~/components/ReadMore.astro'
-import { PackageManagers } from 'studiocms-package-managers'
+import { PackageManagers } from 'starlight-package-managers'
 import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/components';
 
 `sqld`（SQL 守护进程）是由 Turso 开发的 libSQL 服务器模式。本指南将介绍如何通过 Docker 容器设置和配置 `sqld` 以用于 StudioCMS 项目。
@@ -117,17 +117,17 @@ services:
 
 <Steps>
 
-1. **启动 Docker 容器**：
+1. 启动 Docker 容器：
    在基础目录（或服务器目录）执行：
    ```sh
    docker compose up -d
    ```
 
-2. **同步数据库架构**：
+2. 同步数据库架构：
    进入 StudioCMS 项目目录执行：
    <PackageManagers type="exec" args="astro db push --remote" />
 
-3. **完成首次设置**：
+3. 完成首次设置：
    遵循新数据库的首次设置流程：
    - 参考[入门指南][getting-started]
    
@@ -137,54 +137,11 @@ services:
 
 </Steps>
 
-## 安全加固建议
-
-```yml
-# 添加安全配置
-environment:
-  - SQLD_HTTP_TLS_CERT_FILE=/path/to/cert.pem
-  - SQLD_HTTP_TLS_KEY_FILE=/path/to/key.pem
-  - SQLD_GRPC_TLS_CERT_FILE=/path/to/cert.pem
-  - SQLD_GRPC_TLS_KEY_FILE=/path/to/key.pem
-```
-
-## 性能优化
-
-```yml
-# 资源限制
-deploy:
-  resources:
-    limits:
-      cpus: '2'
-      memory: 2G
-    reservations:
-      cpus: '0.5'
-      memory: 512M
-```
-
-## 故障排查
-
-**连接问题**：
-```bash
-# 测试数据库连接
-curl -v http://localhost:8080
-```
-
-**日志查看**：
-```bash
-docker compose logs -f libsql
-```
-
-**容器状态检查**：
-```bash
-docker ps -a
-```
-
 ## 总结
 
-通过本指南，您已建立了一个安全的自托管 libSQL 服务器环境，为 StudioCMS 项目提供了可靠的数据库支持。此方案特别适合需要完全控制数据环境的场景。
+如果你想为 StudioCMS 自托管 libSQL 数据库，`sqld` 是一个可行的选择。只要采用正确方法，部署和运行过程并不复杂。遵循本指南操作，你将为 StudioCMS 项目获得一个安全的 libSQL 服务器。
 
-{/* 文档链接 */}
+{/* Links */}
 [sql-docs]: https://github.com/tursodatabase/libsql/blob/main/docs/USER_GUIDE.md
 [docker-docs]: https://docs.docker.com/get-started/get-docker/
 [openssl-docs]: https://docs.openssl.org/3.2/man7/ossl-guide-introduction/#getting-and-installing-openssl

@@ -34,67 +34,10 @@ import { defineStudioCMSConfig } from 'studiocms/config';
 // ---cut---
 export default defineStudioCMSConfig({
   sdk: {
-    // 默认配置 - 使用5分钟缓存生命周期
+    // 默认配置 - 使用默认 5 分钟缓存生命周期
     cacheConfig: {
-        lifetime: '5m',  // 缓存有效期（5分钟）
+        lifetime: '5m',
     }, 
   }
 })
 ```
-
-### 缓存配置详解
-
-#### 基本缓存配置选项：
-
-| 配置项    | 类型     | 描述                             | 示例值       |
-|-----------|----------|----------------------------------|-------------|
-| `lifetime`| `string` | 缓存有效期时间字符串             | `'5m'`（5分钟） |
-
-#### 时间单位支持：
-
-- `s` - 秒 (seconds)
-- `m` - 分 (minutes)
-- `h` - 小时 (hours)
-- `d` - 天 (days)
-
-#### 禁用缓存：
-
-```ts twoslash {4} title="完全禁用缓存"
-import { defineStudioCMSConfig } from 'studiocms/config';
-// ---cut---
-export default defineStudioCMSConfig({
-  sdk: {
-    cacheConfig: false, // 完全禁用SDK缓存
-  }
-})
-```
-
-#### 默认缓存行为：
-当不配置 `cacheConfig` 时，SDK 将启用默认缓存策略：
-- API响应数据缓存：5分钟
-- 数据库查询结果缓存：2分钟
-- 实时数据（如用户会话）不缓存
-
-> **性能提示**：对于内容变动频繁的场景，建议缩短缓存时间（如 `'1m'`）或设置为 `false`。对于静态内容主导的站点，可延长缓存时间（如 `'24h'`）以提升性能。
-
-```ts
-// 高级缓存配置示例（仅适用于Enterprise版本）
-cacheConfig: {
-    lifetime: '10m',
-    strategy: 'stale-while-revalidate', // 后台更新策略
-    types: {
-        api: '5m',
-        database: '10m',
-        assets: '24h'
-    }
-}
-```
-
-### 缓存工作原理：
-1. 当SDK获取数据时，先检查缓存是否存在有效副本
-2. 若存在且未过期，直接返回缓存数据
-3. 若不存在或已过期，从数据源获取最新数据
-4. 新数据存入缓存并设置有效期
-5. 返回最新数据给调用方
-
-所有缓存操作对应用代码透明，开发者无需手动管理缓存生命周期。

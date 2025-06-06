@@ -41,51 +41,5 @@ import QuickUpdate from '~/components/QuickUpdate.astro'
 
 <ReadMore>详细了解 CLI 新功能请参阅[命令行工具文档][cli-docs]</ReadMore>
 
-## 升级操作指南
-
-### 标准升级流程
-```bash
-# 1. 升级 StudioCMS 核心
-npm install studiocms@0.1.0-beta.16
-
-# 2. 升级 Astro 版本
-npm install astro@5.7.1
-
-# 3. 运行升级命令
-npx @studiocms/upgrade
-```
-
-### 数据库迁移
-```bash
-# 应用数据库变更
-npx astro db push
-```
-
-### 密码重置建议
-```bash
-# 批量发送密码重置通知
-studiocms users reset-passwords --notify-all
-```
-
-## 注意事项
-
-1. **兼容性检查**：
-   ```bash
-   npx astro check
-   ```
-   
-2. **回滚方案**：
-   ```bash
-   # 安装旧版核心
-   npm install studiocms@0.1.0-beta.15
-   
-   # 恢复数据库备份
-   npx astro db restore backup.sql
-   ```
-
-3. **插件兼容性**：
-   - 使用 `studiocms add` 安装的插件自动兼容新版本
-   - 手动安装的插件需验证兼容性
-
-{/* 文档链接 */}
+{/* Links */}
 [cli-docs]: /zh-cn/how-it-works/cli/
