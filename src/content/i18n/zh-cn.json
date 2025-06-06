@@ -41,8 +41,8 @@
   "docsearch.footer.closeKeyAriaLabel": "Esc 键",
   "docsearch.footer.searchByText": "搜索技术支持",
   
-  "docsearch.noResultsScreen.noResultsText": "无结果：",
-  "docsearch.noResultsScreen.suggestedQueryText": "尝试搜索：",
+  "docsearch.noResultsScreen.noResultsText": "未找到相关结果",
+  "docsearch.noResultsScreen.suggestedQueryText": "建议尝试搜索",
   "docsearch.noResultsScreen.reportMissingResultsText": "认为该查询应有结果？",
   "docsearch.noResultsScreen.reportMissingResultsLinkText": "请告知我们",
   "quick-update": "运行以下命令快速更新至最新版本："
