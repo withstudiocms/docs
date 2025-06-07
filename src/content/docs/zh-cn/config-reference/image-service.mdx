@@ -1,0 +1,28 @@
+---
+i18nReady: true
+title: "图像服务"
+description: "StudioCMSOptions imageService 参考文档"
+sidebar:
+  order: 4
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+StudioCMS 集成配置选项架构参考
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  imageService: {
+    cdnPlugin: 'cloudinary-js'
+  },
+});
+```
+
+## `cdnPlugin`
+
+`cdnPlugin` 是一个枚举值，用于指定启用的图像处理 CDN 插件。
+
+- **类型:** `'cloudinary-js'` | `undefined`
+- **默认值:** `undefined`

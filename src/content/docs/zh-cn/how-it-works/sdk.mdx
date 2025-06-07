@@ -1,0 +1,294 @@
+---
+i18nReady: true
+title: "SDK"
+description: 了解 StudioCMS SDK 及其使用方法
+sidebar:
+   order: 3
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+StudioCMS SDK 是一个强大的工具，允许您以编程方式与 StudioCMS 交互。它提供了一套函数和实用工具，使您能够使用 Astro DB 管理和提供内容。它同时也是 StudioCMS 仪表板的核心基础。
+
+## 使用方法
+
+StudioCMS SDK 在您的 Astro 项目中作为虚拟模块提供。您可以使用以下语法导入它：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+// 或者
+import SDKCached from 'studiocms:sdk/cache';
+```
+
+`studioCMSSDK` 对象提供了一套允许您与 StudioCMS 交互的函数和实用工具。您可以使用这些函数在 Astro 项目中创建、读取、更新和删除内容。
+
+`studioCMSSDKCached` 对象提供了一套函数和实用工具，允许您在 StudioCMS SDK 之上使用缓存层进行交互。您可以使用这些函数在 Astro 项目中缓存内容。
+
+## StudioCMS SDK (标准版)
+
+### `SDK.AUTH`
+
+`SDK.AUTH` 对象提供了一套管理 Astro 项目身份验证的函数和实用工具。您可以使用这些函数来验证用户、管理会话等。
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { 
+   oAuth,
+   permission,
+   session,
+   user,
+} = SDK.AUTH;
+```
+
+### `SDK.INIT`
+
+`SDK.INIT` 对象提供了一套用于在 Astro 项目中初始化 StudioCMS SDK 的函数和实用工具。您可以使用这些函数设置 SDK、进行配置等。
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { 
+   siteConfig,
+   ghostUser,
+} = SDK.INIT;
+```
+
+### `SDK.GET`
+
+`SDK.GET` 对象提供了一套从 Astro DB 检索内容的函数和实用工具。您可以使用这些函数按 ID 获取内容、按类型获取内容等。
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { 
+   database,
+   databaseEntry,
+   databaseTable,
+   permissionsLists,
+   packagePages,
+} = SDK.GET;
+```
+
+### `SDK.POST`
+
+`SDK.POST` 对象提供了一套在 Astro DB 中创建内容的函数和实用工具。您可以使用这些函数按类型创建内容、按 ID 创建内容等。
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { 
+   databaseEntry,
+   databaseEntries,
+} = SDK.POST;
+```
+
+### `SDK.UPDATE`
+
+`SDK.UPDATE` 对象提供了一套更新 Astro DB 中内容的函数和实用工具。您可以使用这些函数按 ID 更新内容、按类型更新内容等。
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { 
+   page,
+   pageContent,
+   tags,
+   categories,
+   permissions,
+   siteConfig,
+   folder,
+} = SDK.UPDATE;
+```
+
+### `SDK.DELETE`
+
+`SDK.DELETE` 对象提供了一套从 Astro DB 中删除内容的函数和实用工具。您可以使用这些函数按 ID 删除内容、按类型删除内容等。
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { 
+   page,
+   pageContent,
+   pageContentLang,
+   tags,
+   categories,
+   permissions,
+   diffTracking,
+   folder,
+   user,
+} = SDK.DELETE;
+```
+
+### `SDK.db`
+
+`SDK.db` 对象提供了一套直接与 Astro DB 交互的函数和实用工具。您可以使用这些函数查询数据库、运行自定义查询等。
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { db } = SDK;
+```
+
+<ReadMore>有关如何使用 `db` 的更多信息，请查看 [Astro DB 指南](https://docs.astro.build/zh-cn/guides/astro-db/)</ReadMore>
+
+### `SDK.REST_API`
+
+`SDK.REST_API` 对象提供了一套 REST API 用来与 StudioCMS 和 Astro DB 交互的函数和实用工具。
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { 
+   tokens: {
+      get: getToken,
+      new: newToken,
+      delete: deleteToken,
+      verify: verifyToken,
+   },
+} = SDK.REST_API;
+```
+
+### `SDK.diffTracking`
+
+`SDK.diffTracking` 对象提供了一套跟踪 Astro DB 中变更的函数和实用工具。您可以使用这些函数跟踪内容变更、用户变更等。
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const { 
+   insert,
+   clear,
+   get,
+   revertToDiff
+} = SDK.diffTracking;
+```
+
+### 实用工具函数
+
+StudioCMS SDK 还提供了一套可与 SDK 交互的实用工具函数。这些函数包括：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDK from 'studiocms:sdk';
+
+const {
+	addPageToFolderTree,
+	findNodeById,
+	findNodeByPath,
+	findNodesAlongPath,
+	getFullPath,
+	parseIdNumberArray,
+	parseIdStringArray,
+	generateRandomIDNumber,
+	generateToken,
+	testToken,
+	combineRanks,
+	verifyRank,
+	buildFolderTree,
+	getAvailableFolders,
+	clearUserReferences,
+	collectCategories,
+	collectTags,
+	collectPageData,
+	collectUserData,
+	generateRandomPassword,
+} = SDK;
+```
+
+## StudioCMS SDK (缓存版)
+
+StudioCMS SDK 还提供了一个具有部分标准 SDK 功能并在其基础上增加缓存层的缓存版本。您可以使用以下语法导入缓存版 SDK：
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDKCached from 'studiocms:sdk/cache';
+```
+
+### `SDKCached.GET`
+
+`SDKCached.GET` 对象提供了一套带缓存的从 Astro DB 检索内容的函数和实用工具。您可以使用这些函数按 ID 获取内容、按类型获取内容等。
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDKCached from 'studiocms:sdk/cache';
+
+const { 
+   page,
+   pages,
+   siteConfig,
+   latestVersion,
+   folderTree,
+   pageFolderTree,
+   folderList,
+   folder,
+} = SDKCached.GET;
+```
+
+### `SDKCached.CLEAR`
+
+`SDKCached.CLEAR` 对象提供了一套用于清除缓存版 SDK 中缓存的函数和实用工具。您可以使用这些函数清除特定内容类型的缓存、清除特定内容 ID 的缓存等。
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDKCached from 'studiocms:sdk/cache';
+
+const { 
+   page,
+   pages,
+   latestVersion,
+   folderTree,
+   folderList,
+} = SDKCached.CLEAR;
+```
+
+### `SDKCached.UPDATE`
+
+`SDKCached.UPDATE` 对象提供了一套带缓存的更新 Astro DB 中内容的函数和实用工具。您可以使用这些函数按 ID 更新内容、按类型更新内容等。
+
+```ts twoslash
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import SDKCached from 'studiocms:sdk/cache';
+
+const { 
+   page,
+   siteConfig,
+   latestVersion,
+   folderTree,
+   folderList,
+   folder,
+} = SDKCached.UPDATE;
+```
+
+### `SDKCached.db`
+
+这是指向标准 SDK `db` 对象的直接通路。
+
+<ReadMore>更多信息请参见 [`SDK.db`](#sdkdb)</ReadMore>
+```

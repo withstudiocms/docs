@@ -1,0 +1,348 @@
+---
+i18nReady: true
+title: 快速入门指南
+description: 开始使用 StudioCMS 进行开发
+sidebar:
+   order: 1
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import TursoCLI from '~/components/TursoCLI.astro';
+import { Aside, Steps, Tabs, TabItem, LinkCard } from '@astrojs/starlight/components';
+import ReadMore from '~/components/ReadMore.astro';
+import { sponsors, SponsorLink } from '~/share-link'
+
+<LinkCard title="升级到最新版 StudioCMS" href="/zh-cn/guides/upgrade/latest/" description="需要升级到最新版本？请查看这里！" />
+
+## 开始前的准备工作
+
+使用 StudioCMS 需要满足以下条件：
+
+- 支持 Astro 的 [Node.js 版本](https://docs.astro.build/zh-cn/install-and-setup/#prerequisites)（不支持 Bun 和 Deno）
+- 一个 Astro 项目
+- libSQL 数据库提供商或[自托管 libSQL 服务器][self-hosted-libsql]
+- StudioCMS 集成
+
+## 准备数据库
+
+StudioCMS 使用 `@astrojs/db` 连接您的 libSQL 数据库。您可以选择任何 libSQL 提供商或[自托管 libSQL 服务器][self-hosted-libsql]。
+
+如果您使用 StudioCMS CLI，并且已安装 Turso CLI，可以跳过此步骤，直接使用 CLI 创建新数据库。
+
+<ReadMore>有关所需环境变量的详细信息，请参阅 [`@astrojs/db` 数据库连接参数][db-url-token]</ReadMore>
+
+### 使用 Turso 快速入门
+
+<Aside type='tip' title='StudioCMS 专属优惠'>
+ 使用优惠码 `STUDIOCMS10` 可享 Turso 服务 12 个月 10% 折扣。
+</Aside>
+
+<Steps>
+1. 安装 <SponsorLink href={sponsors.turso.docs.installCLILink} text='Turso CLI'/>
+2. <SponsorLink href={sponsors.turso.docs.loginsignupLink} text='登录或注册'/> Turso 账号
+3. 创建新数据库
+   <TursoCLI tursoCli='db' type='create' arg='studiocms' />
+4. 获取并设置 `ASTRO_DB_REMOTE_URL`
+
+   4a. 运行 `show` 命令查看数据库信息：
+      <TursoCLI tursoCli='db' type='show' arg='studiocms' />
+
+   4b. 复制 URL 值并设置为 `ASTRO_DB_REMOTE_URL`：
+      ```bash title=".env"
+      ASTRO_DB_REMOTE_URL=libsql://studiocms-yourname.turso.io
+      ```
+
+5. 获取并设置 `ASTRO_DB_APP_TOKEN`
+
+   5a. 创建新令牌用于数据库认证：
+      <TursoCLI tursoCli='db' type='tokens.create' arg='studiocms' />
+
+   5b. 复制命令输出并设置为 `ASTRO_DB_APP_TOKEN`：
+      ```bash title=".env"
+      ASTRO_DB_APP_TOKEN=eyJhbGciOiJF...3ahJpTkKDw
+      ```
+
+</Steps>
+
+现在可以继续设置您的 StudioCMS 项目了！
+
+### 使用其他提供商或自托管 libSQL
+
+libSQL 同时支持 HTTP 和 WebSockets 作为远程服务器的传输协议，也支持本地文件或内存数据库。
+
+<ReadMore>有关所需环境变量的详细信息，请参阅[数据库连接参数][db-url-token]</ReadMore>
+
+<ReadMore>了解所有 libSQL 选项（包括本地文件），请参阅 [Astro 文档：远程 URL 配置选项](https://docs.astro.build/zh-cn/guides/astro-db/#remote-url-configuration-options)</ReadMore>
+
+## 创建 StudioCMS 项目
+
+<Tabs syncKey='install-method'>
+
+<TabItem label="StudioCMS CLI" icon="rocket">
+
+    1. 使用 create 命令创建 StudioCMS 项目
+
+       使用预置模板创建包含 StudioCMS 的 Astro 项目：
+            <PackageManagers type="create" pkg="studiocms@latest" />
+
+       运行命令后，将提示您回答几个项目相关问题。完成后，CLI 将在指定目录创建新的 Astro 项目。
+
+       随后系统会提示您完成后续步骤，包括确保环境变量正确设置以及运行项目完成安装。
+
+    2. 运行 CLI 后，请确保 `astro.config.mjs` 文件正确配置：
+
+       ```ts twoslash title="astro.config.mjs" {2-4,11-12}
+       import { defineConfig } from 'astro/config';
+       import db from '@astrojs/db';
+       import node from '@astrojs/node';
+       import studioCMS from 'studiocms';
+
+       export default defineConfig({
+           site: 'https://demo.studiocms.dev/',
+           output: 'server',
+           adapter: node({ mode: "standalone" }),
+           integrations: [
+               db(),
+               studioCMS(),
+           ],
+       });
+       ```
+
+</TabItem>
+
+<TabItem label="Astro 传统方法" icon='astro'>
+
+    1. 创建新的 Astro 项目
+
+       创建基本的 Astro 项目：
+            <PackageManagers type="create" pkg="astro@latest" />
+
+       运行命令后，将提示您回答几个项目相关问题。完成后，CLI 将在指定目录创建新的 Astro 项目。
+
+       您将看到 "Liftoff confirmed. Explore your project!" 消息及后续步骤建议。
+
+       `cd` 进入新项目目录：
+       ```bash
+       cd my-project
+       ```
+
+       如果在 CLI 向导中跳过了 npm 安装步骤，请确保在继续前安装依赖。
+
+    2. 安装 StudioCMS 集成及其依赖：
+       <PackageManagers type="exec" pkg="astro" args="add db node studiocms" />
+
+    3. 更新 `astro.config.mjs` 文件：
+       ```ts twoslash title="astro.config.mjs" {2-4,11-12}
+       import { defineConfig } from 'astro/config';
+       import db from '@astrojs/db';
+       import node from '@astrojs/node';
+       import studioCMS from 'studiocms';
+
+       export default defineConfig({
+           site: 'https://demo.studiocms.dev/',
+           output: 'server',
+           adapter: node({ mode: "standalone" }),
+           integrations: [
+               db(),
+               studioCMS(),
+           ],
+       });
+       ```
+
+</TabItem>
+
+<TabItem label="手动方法" icon='seti:powershell'>
+
+    1. 创建新的 Astro 项目
+
+       创建基本的 Astro 项目：
+            <PackageManagers type="create" pkg="astro@latest" />
+
+       运行命令后，将提示您回答几个项目相关问题。完成后，CLI 将在指定目录创建新的 Astro 项目。
+
+       您将看到 "Liftoff confirmed. Explore your project!" 消息及后续步骤建议。
+
+       `cd` 进入新项目目录：
+       ```bash
+       cd my-project
+       ```
+
+       如果在 CLI 向导中跳过了 npm 安装步骤，请确保在继续前安装依赖。
+
+    2. 手动安装 StudioCMS 集成和依赖：
+       <PackageManagers pkg="@astrojs/db @astrojs/node studiocms" />
+
+    3. 更新 `astro.config.mjs` 文件：
+       ```ts twoslash title="astro.config.mjs" {2-4,11-12}
+       import { defineConfig } from 'astro/config';
+       import db from '@astrojs/db'; 
+       import node from '@astrojs/node'; 
+       import studioCMS from 'studiocms';
+
+       export default defineConfig({
+           site: 'https://demo.studiocms.dev/',
+           output: 'server', 
+           adapter: node({ mode: "standalone" }), 
+           integrations: [
+               db(), 
+               studioCMS(),
+           ],
+       });
+       ```
+
+</TabItem>
+
+</Tabs>
+
+在配置 StudioCMS `时需特别注意：astro.config.mjs` 文件中的 ​`site` 配置项是必需参数，必须设置为您的站点实际 URL 或临时占位 URL 才能确保系统正常运行。（例如：`https://demo.studiocms.dev/` 或 `http://localhost:4321/`）
+
+<Aside type="note" title="适配器要求">
+StudioCMS 必须依赖 [Astro 适配器](https://docs.astro.build/zh-cn/guides/on-demand-rendering/#server-adapters)才能正常运行。请确保在您的 `astro.config.mjs` 配置文件中设置支持 SSR 路由的适配器。
+</Aside>
+
+## 配置认证
+
+StudioCMS 认证需要至少在 `.env` 文件中设置[加密密钥][encryption-key]。
+
+以下是 StudioCMS 认证所需的环境变量：
+
+```bash title=".env"
+# 用于用户名密码认证的加密密钥
+CMS_ENCRYPTION_KEY="wqR+w...sRcg=="
+```
+
+使用以下命令生成安全加密密钥：
+```bash
+openssl rand --base64 16
+``` 
+并将输出设置为 `CMS_ENCRYPTION_KEY` 的值。
+
+<ReadMore>
+了解所有可用的认证环境变量，请参阅[环境变量][environment-variables]页面。
+</ReadMore>
+
+### 可选：配置 oAuth 认证
+
+StudioCMS 支持 GitHub、Discord、Google 和 Auth0 的 oAuth 认证。要配置 oAuth，需要[在 `.env` 文件中设置必需的环境变量][oauth-environment-variables]，并确保[在配置中启用了相应的提供商][auth-config-ref]。
+
+oAuth 提供商需要设置回调 URL（用户认证后的重定向路径）。
+
+#### 设置回调 URL
+
+根据您的环境设置回调 URL：
+
+| 环境       | 回调 URL                                  |
+|------------|------------------------------------------|
+| 生产环境   | `https://your-domain.tld/studiocms_api/auth/<provider>/callback` |
+| 测试开发   | `http://localhost:4321/studiocms_api/auth/<provider>/callback` |
+
+#### 回调 URL 路径示例
+
+不同提供商对应的回调 URL 路径：
+
+| 提供商    | 回调 PATH                          |
+|----------|-----------------------------------|
+| GitHub   | `/studiocms_api/auth/github/callback` |
+| Discord  | `/studiocms_api/auth/discord/callback` |
+| Google   | `/studiocms_api/auth/google/callback` |
+| Auth0    | `/studiocms_api/auth/auth0/callback` |
+
+## 配置 `package.json` 脚本
+
+在 `package.json` 脚本中添加 `--remote` 参数：
+
+```json /--remote/ title="package.json"
+{
+    "name": "my-studiocms-project",
+    "scripts": {
+        "dev": "astro dev --remote",
+        "build": "astro check & astro build --remote",
+        "astro": "astro"
+    }
+}
+```
+
+## 运行 StudioCMS 项目
+
+得益于 Astro 的强大功能，StudioCMS 的运行非常简单。
+
+### 首次设置（或数据表结构更新时）
+
+在终端运行以下命令：
+
+    <PackageManagers type="exec" args="astro db push --remote" />
+    <PackageManagers type="run" args="dev --remote" />
+
+<Aside type="note">
+如果在 `package.json` 文件中设置了脚本，可以省略 `--remote` 参数。详见[配置脚本](#configure-your-packagejson-scripts)部分。
+</Aside>
+
+运行命令后，您将看到项目在 `localhost:4321` 运行的消息。首次设置时，请访问 `http://localhost:4321/start` 完成 StudioCMS 配置。
+
+### 本地 Astro 开发模式运行
+
+在终端运行以下命令：
+
+    <PackageManagers type="run" args="dev --remote" />
+
+运行后，访问 `http://localhost:4321` 查看您的项目。
+
+**恭喜！** 🥳 您已成功在 Astro 项目中安装 StudioCMS。
+
+### 为 StudioCMS 添加前端
+
+StudioCMS 是无头 CMS，您需要自行创建前端展示内容。如果需要预构建的前端，请查看[包目录][package-catalog]中的插件。
+
+#### 设置博客
+
+如需搭建博客，可以使用 `@studiocms/blog` 插件：
+
+<PackageManagers type="install" pkg="@studiocms/blog" />
+
+安装后，在 `studiocms.config.mjs` 文件中添加插件：
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+import blog from '@studiocms/blog';
+
+export default defineStudioCMSConfig({
+    dbStartPage: false,
+    plugins: [
+        blog(),
+    ],
+});
+```
+
+### 构建和部署 StudioCMS 项目
+
+完成[首次设置](#first-time-setup-or-during-updates-if-the-tables-schema-is-updated)后，即可构建并部署项目到服务器。
+
+默认情况下，StudioCMS 仪表板位于 `http://your-domain.tld/dashboard`。
+
+该仪表板可用于在开发和生产环境中管理内容和设置。
+
+> **建议**：在生产模式下使用 StudioCMS，开发模式下仪表板可能出现问题（如 Vite 依赖错误）。
+
+## 后续步骤
+
+<ReadMore>
+了解如何设置 StudioCMS 的[环境变量][environment-variables]。
+</ReadMore>
+
+<ReadMore>
+查看[包目录][package-catalog]，寻找和使用 StudioCMS 插件。
+</ReadMore>
+
+<ReadMore>
+通过 [StudioCMS 参考文档][config-reference] 了解配置选项。
+</ReadMore>
+
+{/* Links */}
+[package-catalog]: /zh-cn/package-catalog/
+[environment-variables]: /zh-cn/start-here/environment-variables/
+[config-reference]: /zh-cn/config-reference/
+[db-url-token]: /zh-cn/start-here/environment-variables/#database-url-and-token-for-astrojsdb
+[encryption-key]: /zh-cn/start-here/environment-variables/#encryption-key-for-studiocmsauth
+[oauth-environment-variables]: /zh-cn/start-here/environment-variables/#oauth-authentication-environment-variables
+[auth-config-ref]: /zh-cn/config-reference/dashboard/#authconfig
+[self-hosted-libsql]: /zh-cn/guides/database/sqld-server/

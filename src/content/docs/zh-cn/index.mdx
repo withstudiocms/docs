@@ -1,0 +1,97 @@
+---
+i18nReady: true
+title: StudioCMS 文档
+description: 开始使用 StudioCMS 进行构建
+template: splash
+editUrl: false
+lastUpdated: false
+hero:
+  tagline: 指南和资源助您学习使用 StudioCMS
+  image:
+    alt: StudioCMS 徽标
+    dark: ../../../assets/logos/studioCMS.png
+    light: ../../../assets/logos/studioCMS-dark.png
+  actions:
+    - text: 开始使用
+      link: /zh-cn/start-here/getting-started/
+      icon: right-arrow
+      variant: primary
+    - text: GitHub 仓库
+      link: https://github.com/withstudiocms/studiocms/
+      icon: github
+---
+
+import { CardGrid, LinkButton } from '@astrojs/starlight/components';
+import Youtube from '~/components/Youtube.astro';
+import Card from '~/components/landing/Card.astro';
+import ListCard from '~/components/landing/ListCard.astro';
+import SplitCard from '~/components/landing/SplitCard.astro';
+import { Center } from 'studiocms:ui/components';
+
+<Card title="StudioCMS 演示" icon='seti:video'>
+  <video autoplay loop muted playsinline preload="auto" src="https://cdn.studiocms.dev/studiocms-trailer.mp4" />
+</Card>
+
+<CardGrid>
+
+  <SplitCard title="快速开始" icon="rocket">
+    ```sh
+    # 创建新的 Astro 项目
+    pnpm create studiocms@latest
+
+    # 启动开发服务器
+    cd my-studiocms-project
+    pnpm dev
+    ```
+    
+    <div style="padding: 0;">
+    有关所需环境变量的更多信息，请参阅 [环境变量][environment-variables] 页面。
+
+    如需更深入的指南，请查看 [入门指南][getting-started]。
+    
+    需要 libSQL 数据库？请了解 [Turso][turso]。
+    </div>
+     
+  </SplitCard>
+
+  <ListCard title="了解 StudioCMS" icon="information">
+    - [入门指南][getting-started]
+    - [环境变量][environment-variables]
+    - [为何选择 StudioCMS？][why-studiocms]
+    - [理解 StudioCMS][how-it-works]
+  </ListCard>
+
+  <ListCard title="自定义 StudioCMS" icon="puzzle">
+    - [使用 SDK][using-the-sdk]
+    - [使用 REST API][using-rest-api]
+    - [查找和使用插件][package-catalog]
+    - [了解插件 API][plugin-api]
+  </ListCard>
+
+</CardGrid>
+
+<Center>
+  <div style="display: flex; flex-direction: column; margin-top: 3rem;">
+    想参与 StudioCMS 社区吗？
+
+    <LinkButton 
+      href='https://chat.studiocms.dev' 
+      icon='discord' 
+      iconPlacement='end'
+      class='discord-button'
+      style='width: fit-content; margin-left: auto; margin-right: auto;'>
+        加入我们的 Discord！
+    </LinkButton>
+  </div>
+</Center>
+
+{/* Links */}
+[environment-variables]: /zh-cn/start-here/getting-started/
+[getting-started]: /zh-cn/start-here/getting-started/
+[turso]: https://tur.so/studiocms
+[why-studiocms]: /zh-cn/start-here/why-studiocms/
+[how-it-works]: /zh-cn/how-it-works/
+[using-the-sdk]: /zh-cn/how-it-works/sdk/
+[using-rest-api]: /zh-cn/how-it-works/restapi/
+[package-catalog]: /zh-cn/package-catalog/
+[plugin-api]: /zh-cn/plugins/

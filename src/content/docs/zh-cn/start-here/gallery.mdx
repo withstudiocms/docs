@@ -1,0 +1,15 @@
+---
+i18nReady: true
+title: 图库展示
+description: 展示 StudioCMS 功能的图片画廊
+tableOfContents: false
+sidebar:
+   order: 5
+---
+
+import Gallery from '~/components/Gallery.astro'
+import { mainDemoGalleryImages } from "~/assets/index.ts"
+
+这里展示了 StudioCMS 集成的功能截图：
+
+<Gallery galleryImages={mainDemoGalleryImages} />

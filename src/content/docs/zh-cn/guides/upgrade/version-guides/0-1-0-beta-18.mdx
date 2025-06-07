@@ -1,0 +1,33 @@
+---
+i18nReady: true
+title: "升级指南：0.1.0-beta.18"
+description: StudioCMS Beta.18 版本升级说明
+sidebar:
+  label: 0.1.0-beta.18
+  badge:
+    text: 新版
+    variant: success
+  order: 999997
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## 重大变更
+
+- 全新的基于 Hook 的插件系统 - 详见更新版[插件文档][plugin-doc]
+
+## 错误修复
+
+- 重构 `gen-jwt` 命令 - 详见更新版[CLI文档][cli-doc]
+
+<Aside title="重要提示">
+注意：自 `beta.16` 起我们变更了密码哈希算法。尽管旧密码仍可正常使用，但强烈建议用户在升级至 `beta.17` 后更新密码。旧版密码哈希支持将在后续版本中移除。
+</Aside>
+
+{/* Links */}
+[plugin-doc]: /zh-cn/plugins/
+[cli-doc]: /zh-cn/how-it-works/cli/#crypto-gen-jwt

@@ -1,0 +1,119 @@
+---
+i18nReady: true
+title: "默认前端配置"
+description: "StudioCMSOptions defaultFrontEndConfig 参考文档"
+sidebar:
+  order: 5
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+StudioCMS 集成配置选项架构参考
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  defaultFrontEndConfig: {
+    favicon: '/favicon.svg',
+    htmlDefaultLanguage: 'en',
+    htmlDefaultHead: [],
+    injectQuickActionsMenu: true,
+  },
+});
+```
+
+## `favicon`
+
+`favicon` 是用于设置网站图标路径的字符串。
+
+- **类型:** `string`
+- **默认值:** `'/favicon.svg'`
+
+### 用法示例
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  defaultFrontEndConfig: {
+    favicon: '/favicon.svg', // 默认值 - 使用默认网站图标
+  }
+})
+```
+
+## `htmlDefaultLanguage`
+
+`htmlDefaultLanguage` 是用于设置网站默认语言的字符串。
+
+- **类型:** `string`
+- **默认值:** `'en'`
+
+### 用法示例
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  defaultFrontEndConfig: {
+    htmlDefaultLanguage: 'en', // 默认值 - 使用默认语言
+  }
+})
+```
+
+## `htmlDefaultHead`
+
+**类型:** [`HeadConfig[]`](#headconfig)
+
+向网站头部区域添加自定义标签。适用于添加分析工具脚本和第三方资源。
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  defaultFrontEndConfig: {
+    htmlDefaultHead: [
+      // 示例：添加 Fathom 分析脚本
+      {
+        tag: 'script',
+        attrs: {
+          src: 'https://cdn.usefathom.com/script.js',
+          'data-site': 'MY-FATHOM-ID',
+          defer: true,
+        },
+      },
+    ],
+  },
+});
+```
+
+`htmlDefaultHead` 中的内容会直接转换为 HTML 元素，不会经过 Astro 的 [脚本处理](https://docs.astro.build/zh-cn/guides/client-side-scripts/#script-processing) 或 [样式处理](https://docs.astro.build/zh-cn/guides/styling/#styling-in-astro)。
+
+#### `HeadConfig`
+
+```ts
+interface HeadConfig {
+	tag: string;               // HTML标签名
+	attrs?: Record<string, string | boolean | undefined>;  // 标签属性
+	content?: string;           // 标签内容
+}
+```
+
+## `injectQuickActionsMenu`
+
+**类型:** `boolean`
+**默认值:** `true`
+
+在网站右下角注入快速操作菜单界面，允许用户快速访问 StudioCMS 管理后台。
+
+### 用法示例
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  defaultFrontEndConfig: {
+    injectQuickActionsMenu: true, // 默认值 - 注入快速操作菜单
+  }
+})
+```
