@@ -12,13 +12,13 @@ import { Aside, Steps, Tabs, TabItem, LinkCard } from '@astrojs/starlight/compon
 import ReadMore from '~/components/ReadMore.astro';
 import { sponsors, SponsorLink } from '~/share-link'
 
-<LinkCard title="升级到最新版 StudioCMS" href="/en/guides/upgrade/latest/" description="需要升级到最新版本？请查看这里！" />
+<LinkCard title="升级到最新版 StudioCMS" href="/zh-cn/guides/upgrade/latest/" description="需要升级到最新版本？请查看这里！" />
 
 ## 开始前的准备工作
 
 使用 StudioCMS 需要满足以下条件：
 
-- 支持 Astro 的 [Node.js 版本](https://docs.astro.build/en/install-and-setup/#prerequisites)（不支持 Bun 和 Deno）
+- 支持 Astro 的 [Node.js 版本](https://docs.astro.build/zh-cn/install-and-setup/#prerequisites)（不支持 Bun 和 Deno）
 - 一个 Astro 项目
 - libSQL 数据库提供商或[自托管 libSQL 服务器][self-hosted-libsql]
 - StudioCMS 集成
@@ -72,7 +72,7 @@ libSQL 同时支持 HTTP 和 WebSockets 作为远程服务器的传输协议，�
 
 <ReadMore>有关所需环境变量的详细信息，请参阅[数据库连接参数][db-url-token]</ReadMore>
 
-<ReadMore>了解所有 libSQL 选项（包括本地文件），请参阅 [Astro 文档：远程 URL 配置选项](https://docs.astro.build/en/guides/astro-db/#remote-url-configuration-options)</ReadMore>
+<ReadMore>了解所有 libSQL 选项（包括本地文件），请参阅 [Astro 文档：远程 URL 配置选项](https://docs.astro.build/zh-cn/guides/astro-db/#remote-url-configuration-options)</ReadMore>
 
 ## 创建 StudioCMS 项目
 
@@ -197,7 +197,7 @@ libSQL 同时支持 HTTP 和 WebSockets 作为远程服务器的传输协议，�
 在配置 StudioCMS `时需特别注意：astro.config.mjs` 文件中的 ​`site` 配置项是必需参数，必须设置为您的站点实际 URL 或临时占位 URL 才能确保系统正常运行。（例如：`https://demo.studiocms.dev/` 或 `http://localhost:4321/`）
 
 <Aside type="note" title="适配器要求">
-StudioCMS 必须依赖 [Astro 适配器](https://docs.astro.build/en/guides/on-demand-rendering/#server-adapters)才能正常运行。请确保在您的 `astro.config.mjs` 配置文件中设置支持 SSR 路由的适配器。
+StudioCMS 必须依赖 [Astro 适配器](https://docs.astro.build/zh-cn/guides/on-demand-rendering/#server-adapters)才能正常运行。请确保在您的 `astro.config.mjs` 配置文件中设置支持 SSR 路由的适配器。
 </Aside>
 
 ## 配置认证
