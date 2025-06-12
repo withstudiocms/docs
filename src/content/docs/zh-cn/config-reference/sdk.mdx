@@ -1,0 +1,43 @@
+---
+i18nReady: true
+title: "SDK 配置"
+description: "StudioCMSOptions sdk 参考文档"
+sidebar:
+  order: 8
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+StudioCMS 集成配置选项架构参考
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  sdk: {
+    cacheConfig: {},
+  },
+});
+```
+
+## `cacheConfig`
+
+`cacheConfig` 是用于配置 SDK 缓存行为的对象。
+
+- **类型:** `boolean` | `{ lifetime?: string | undefined; }` | `undefined`
+- **默认值:** `{}`
+
+### 用法示例
+
+```ts twoslash {3-7} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  sdk: {
+    // 默认配置 - 使用默认 5 分钟缓存生命周期
+    cacheConfig: {
+        lifetime: '5m',
+    }, 
+  }
+})
+```

@@ -1,0 +1,37 @@
+---
+i18nReady: true
+title: "@studiocms/markdoc"
+type: integration
+catalogEntry: studiocms-markdoc
+description: "StudioCMS MarkDoc 集成插件"
+sidebar:
+  badge: 
+    text: '插件'
+    variant: 'tip'
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# 简介
+
+此插件为 StudioCMS 添加 MarkDoc 文件格式支持。
+
+## 安装步骤
+
+1. 使用以下命令安装软件包：
+
+   <PackageManagers pkg="studiocms" type='run' args='add @studiocms/markdoc' />
+
+2. 您的 StudioCMS 配置文件中应当已集成 `@studiocms/markdoc` 模块。：
+
+   ```ts twoslash title="studiocms.config.mjs" {2, 6}
+   import { defineStudioCMSConfig } from 'studiocms/config';
+   import markdoc from '@studiocms/markdoc';
+
+    export default defineStudioCMSConfig({
+      plugins: [
+        markdoc(),
+      ],
+    });
+  ```

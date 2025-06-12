@@ -1,1 +1,1 @@
-export const Translations = ['en', 'es', 'fr', 'ko', 'de'] as const;
+export const Translations = ['en', 'es', 'fr', 'ko', 'de', 'zh-CN'] as const;

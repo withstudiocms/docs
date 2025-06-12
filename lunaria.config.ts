@@ -56,13 +56,13 @@ export default defineConfig({
 		// 		tag: 'id',
 		// 	},
 		// },
-		// {
-		// 	label: '简体中文',
-		// 	lang: 'zh-cn',
-		// 	parameters: {
-		// 		tag: 'zh-CN',
-		// 	},
-		// },
+		{
+			label: '简体中文',
+			lang: 'zh-cn',
+			parameters: {
+				tag: 'zh-CN',
+			},
+		},
 		// {
 		// 	label: 'Português do Brasil',
 		// 	lang: 'pt-br',
