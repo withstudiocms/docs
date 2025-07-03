@@ -274,7 +274,7 @@ oAuth 提供商需要设置回调 URL（用户认证后的重定向路径）。
     <PackageManagers type="run" args="dev --remote" />
 
 <Aside type="note">
-如果在 `package.json` 文件中设置了脚本，可以省略 `--remote` 参数。详见[配置脚本](#configure-your-packagejson-scripts)部分。
+如果在 `package.json` 文件中设置了脚本，可以省略 `--remote` 参数。详见[配置脚本](#配置-packagejson-脚本)部分。
 </Aside>
 
 运行命令后，您将看到项目在 `localhost:4321` 运行的消息。首次设置时，请访问 `http://localhost:4321/start` 完成 StudioCMS 配置。
@@ -315,7 +315,7 @@ export default defineStudioCMSConfig({
 
 ### 构建和部署 StudioCMS 项目
 
-完成[首次设置](#first-time-setup-or-during-updates-if-the-tables-schema-is-updated)后，即可构建并部署项目到服务器。
+完成[首次设置](#首次设置或数据表结构更新时)后，即可构建并部署项目到服务器。
 
 默认情况下，StudioCMS 仪表板位于 `http://your-domain.tld/dashboard`。
 
@@ -341,8 +341,8 @@ export default defineStudioCMSConfig({
 [package-catalog]: /zh-cn/package-catalog/
 [environment-variables]: /zh-cn/start-here/environment-variables/
 [config-reference]: /zh-cn/config-reference/
-[db-url-token]: /zh-cn/start-here/environment-variables/#database-url-and-token-for-astrojsdb
-[encryption-key]: /zh-cn/start-here/environment-variables/#encryption-key-for-studiocmsauth
-[oauth-environment-variables]: /zh-cn/start-here/environment-variables/#oauth-authentication-environment-variables
+[db-url-token]: /zh-cn/start-here/environment-variables/#astrojsdb-数据库连接参数
+[encryption-key]: /zh-cn/start-here/environment-variables/#http://localhost:4322/zh-cn/start-here/environment-variables/#studiocmsauth-加密密钥
+[oauth-environment-variables]: /zh-cn/start-here/environment-variables/#http://localhost:4322/zh-cn/start-here/environment-variables/#oauth-认证环境变量
 [auth-config-ref]: /zh-cn/config-reference/dashboard/#authconfig
 [self-hosted-libsql]: /zh-cn/guides/database/sqld-server/
