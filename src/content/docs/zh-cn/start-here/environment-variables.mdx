@@ -1,0 +1,110 @@
+---
+i18nReady: true
+title: 环境变量配置
+description: StudioCMS 所需环境变量概览
+sidebar:
+   order: 2
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import ReadMore from '~/components/ReadMore.astro';
+
+为使 StudioCMS 正常运行，必须正确配置相关环境变量。这些变量对于建立与 Astro DB 的安全连接以及 StudioCMS API 的认证至关重要。若未正确配置这些环境变量，应用程序将无法正常运行。
+
+您可以在项目根目录下创建 `.env` 文件并添加所需的环境变量。`.env` 文件是一个包含键值对的环境变量文本文件，应用程序在运行时将读取这些变量。
+
+有关在 Astro 中使用环境变量的更多信息，请参考 Astro 文档中的[环境变量指南](https://docs.astro.build/guides/environment-variables)。
+
+## 必需环境变量
+
+### `@astrojs/db` 数据库连接参数
+
+- `ASTRO_DB_REMOTE_URL` - libSQL 服务器的连接 URL
+- `ASTRO_DB_APP_TOKEN` - libSQL 服务器的应用令牌
+
+```bash title=".env"
+ASTRO_DB_REMOTE_URL=libsql://your.server.io
+ASTRO_DB_APP_TOKEN=eyJh...RUCg
+```
+
+<ReadMore>有关 `@astrojs/db` 的详细信息，请参阅 [Astro DB 文档](https://docs.astro.build/zh-CN/guides/astro-db/)</ReadMore>
+
+### `@studiocms-auth` 加密密钥
+
+`CMS_ENCRYPTION_KEY` - 用于加密敏感数据的安全密钥
+
+```bash title=".env"
+CMS_ENCRYPTION_KEY="wqR+w...sRcg=="
+```
+
+<Aside type="note" title="使用 OpenSSL">
+可使用以下命令生成安全加密密钥：
+```bash
+openssl rand --base64 16
+``` 
+</Aside>
+
+## 可选环境变量
+
+### oAuth 认证环境变量
+
+<ReadMore>
+有关 oAuth 认证的详细配置指南，请参阅[配置 oAuth 认证][config-oauth]文档。
+</ReadMore>
+
+#### GitHub（可选）
+
+如需启用 GitHub 认证，请在 `.env` 文件中添加：
+
+```bash title=".env"
+# GitHub OAuth 凭据
+CMS_GITHUB_CLIENT_ID=
+CMS_GITHUB_CLIENT_SECRET=
+CMS_GITHUB_REDIRECT_URI=
+```
+
+<Aside type="note" title="注意">
+若已在 GitHub oAuth 中配置多个重定向 URI，则 `CMS_GITHUB_REDIRECT_URI` 可省略
+</Aside>
+
+#### Discord（可选）
+
+```bash title=".env"
+# Discord OAuth 凭据
+CMS_DISCORD_CLIENT_ID=
+CMS_DISCORD_CLIENT_SECRET=
+CMS_DISCORD_REDIRECT_URI=
+```
+
+#### Google（可选）
+
+```bash title=".env"
+# Google OAuth 凭据
+CMS_GOOGLE_CLIENT_ID=
+CMS_GOOGLE_CLIENT_SECRET=
+CMS_GOOGLE_REDIRECT_URI=
+```
+
+#### Auth0（可选）
+
+```bash title=".env"
+# Auth0 OAuth 凭据
+CMS_AUTH0_CLIENT_ID=
+CMS_AUTH0_CLIENT_SECRET=
+CMS_AUTH0_DOMAIN=
+CMS_AUTH0_REDIRECT_URI=
+```
+
+### 图像服务环境变量
+
+#### Cloudinary（可选）
+
+如需使用内置的 Cloudinary 插件，需配置以下变量：
+
+```bash title=".env"
+## Cloudinary JavaScript SDK
+CMS_CLOUDINARY_CLOUDNAME="demo"
+```
+
+{/* Links */}
+[config-oauth]: /zh-cn/start-here/getting-started/#可选配置-oauth-认证

@@ -1,0 +1,28 @@
+---
+i18nReady: true
+title: 包目录
+description: "包目录是由 StudioCMS 或其社区提供的软件包集合。"
+---
+
+import PackageCatalog from '~/components/PackageCatalog.astro'
+import { Badge } from '@astrojs/starlight/components';
+
+包目录是 StudioCMS 或其社区成员提供的软件包集合，这些软件包默认不包含在 StudioCMS 中。此处列出的所有软件包都经过 StudioCMS 团队或其贡献者的验证和测试。
+
+标记为<Badge text="插件" variant="tip"/>的软件包是用于扩展 StudioCMS 或其仪表板功能的包。
+
+插件可能同时标记为<Badge text="实验性" variant="danger" />，这表示该插件仍处于早期开发阶段，其内部实现可能随时发生重大变更。此类插件也可能尚未准备好用于生产环境。
+
+标记为<Badge text="公开可用" variant="caution"/>的软件包可独立安装使用，无需依赖 StudioCMS 环境。
+
+## 包目录分类
+
+### StudioCMS 官方包目录
+---
+
+<PackageCatalog catalog="studiocms" />
+
+### 社区包目录
+---
+
+<PackageCatalog catalog="community" />

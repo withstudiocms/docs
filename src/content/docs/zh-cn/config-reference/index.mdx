@@ -1,0 +1,187 @@
+---
+i18nReady: true
+title: "StudioCMSOptions 配置总览"
+description: "StudioCMSOptions 核心配置参考文档"
+sidebar:
+  order: 1
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+StudioCMS 集成配置选项架构参考
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+// 以下为默认值示例
+export default defineStudioCMSConfig({
+  dbStartPage: true,
+  dateLocale: 'en-us',
+  verbose: false,
+  plugins: [],
+  componentRegistry: {},
+  overrides: {},
+  imageService: {},
+  defaultFrontEndConfig: {},
+  dashboardConfig: {},
+  includedIntegrations: {},
+  dateTimeFormat: {},
+  sdk: {},
+  pageTypeOptions: {}
+});
+```
+
+## `dbStartPage`
+
+项目初始化页面 - 用于首次设置时创建数据库配置。
+
+- **类型:** `boolean`
+- **默认值:** `true`
+
+### 用法示例
+
+```ts twoslash {2} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dbStartPage: true, // 默认值 - 注入初始化页面用于数据库配置
+})
+```
+
+## `dateLocale`
+
+`dateLocale` 是用于设置日期格式化的区域字符串。
+
+- **类型:** `string`
+- **默认值:** `'en-us'`
+
+### 用法示例
+
+```ts twoslash {2} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dateLocale: 'en-us', // 默认值 - 设置日期格式化的区域
+})
+```
+
+## `verbose`
+
+`verbose` 是用于启用或禁用详细日志记录的布尔值。
+
+- **类型:** `boolean`
+- **默认值:** `false`
+
+### 用法示例
+
+```ts twoslash {2} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  verbose: false, // 默认值 - 关闭详细日志记录
+})
+```
+
+## `plugins`
+
+`plugins` 是用于加载插件的数组配置。
+
+- **类型:** `StudioCMSPlugin[]`
+- **默认值:** `[]`
+
+### 用法示例
+
+```ts twoslash {1, 3-5} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+import blog from '@studiocms/blog';
+export default defineStudioCMSConfig({
+  plugins: [
+    blog(),
+  ],
+})
+```
+
+## `componentRegistry`
+
+`componentRegistry` 是用于注册组件的对象配置。
+
+- **类型:** `Record<string, string>`
+- **默认值:** `{}`
+
+### 用法示例
+
+```ts twoslash {2-4} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  componentRegistry: {
+    'my-component': 'src/components/MyComponent.astro',
+  },
+})
+```
+
+## `dateTimeFormat`
+
+`dateTimeFormat` 是用于配置日期时间格式的对象。
+
+- **类型:** `Intl.DateTimeFormatOptions`
+- **默认值:** `{}`
+
+### 用法示例
+
+```ts twoslash {2-6} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  dateTimeFormat: {
+    year: "numeric",    // 年份（数字）
+    month: "short",     // 月份（简写）
+    day: "numeric"      // 日期（数字）
+  },
+})
+```
+
+## `overrides`
+
+`overrides` 是用于覆盖默认配置的对象。
+
+<ReadMore>[查看 `overrides` 完整选项][overrides]</ReadMore>
+
+## `imageService`
+
+`imageService` 是用于配置图像服务的对象。
+
+<ReadMore>[查看 `imageService` 完整选项][image-service]</ReadMore>
+
+## `defaultFrontEndConfig`
+
+`defaultFrontEndConfig` 是用于配置默认前端的对象。
+
+<ReadMore>[查看 `defaultFrontEndConfig` 完整选项][default-frontend-config]</ReadMore>
+
+## `dashboardConfig`
+
+`dashboardConfig` 是用于配置仪表板的对象。
+
+<ReadMore>[查看 `dashboardConfig` 完整选项][dashboard]</ReadMore>
+
+## `includedIntegrations`
+
+`includedIntegrations` 是用于配置内置集成功能的对象。
+
+<ReadMore>[查看 `includedIntegrations` 完整选项][included-integrations]</ReadMore>
+
+## `sdk`
+
+`sdk` 是用于配置 SDK 的对象。
+
+<ReadMore>[查看 `sdk` 完整选项][sdk]</ReadMore>
+
+{/* Links */}
+[overrides]: /zh-cn/config-reference/overrides/
+[image-service]: /zh-cn/config-reference/image-service/
+[default-frontend-config]: /zh-cn/config-reference/default-frontend-config/
+[dashboard]: /zh-cn/config-reference/dashboard/
+[included-integrations]: /zh-cn/config-reference/included-integrations/
+[sdk]: /zh-cn/config-reference/sdk/

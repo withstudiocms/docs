@@ -1,0 +1,130 @@
+---
+i18nReady: true
+title: "@studiocms/devapps"
+type: integration
+catalogEntry: studiocms-devapps
+description: "在 Astro 开发模式下可用的实用工具集合"
+sidebar:
+  badge: 
+    text: '公开可用'
+    variant: 'caution'
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# 简介
+
+这是一个在 Astro 开发模式下可用的实用工具集合。
+
+## 安装方法
+
+<Tabs syncKey='install-method'>
+  <TabItem label="Astro 方式" icon='astro'>
+1. 使用以下命令安装软件包并添加到 astro 配置：
+
+   <PackageManagers type="exec" pkg="astro" args="add @studiocms/devapps" />
+
+2. 按照下文 [示例配置](#示例配置) 更新配置文件
+{/* </Steps> */}
+  </TabItem>
+  <TabItem label="手动方式" icon='seti:powershell'>
+{/* <Steps> */}
+1. 使用以下命令安装软件包：
+
+   <PackageManagers pkg="@studiocms/devapps" />
+
+2. 将 `@studiocms/devapps` 添加到您的 astro 配置文件：
+
+   ```ts twoslash title="astro.config.mjs" ins={3, 9}
+   import { defineConfig } from 'astro/config';
+   import db from '@astrojs/db';
+   import devApps from '@studiocms/devapps'; 
+
+   export default defineConfig({
+      site: "https://example.com",
+      integrations: [
+          db(),
+          devApps(), 
+      ],
+   });
+   ```
+{/* </Steps> */}
+  </TabItem>
+</Tabs>
+
+## 使用说明
+
+所有工具仅在 `astro dev` 开发模式下可用，不会出现在生产部署中！
+
+### 示例配置
+
+```ts twoslash title="astro.config.mjs" {2, 8} ins={3, 9}
+import { defineConfig } from 'astro/config';
+import db from '@astrojs/db';
+import devApps from '@studiocms/devapps';
+
+export default defineConfig({
+  site: "https://example.com",
+  integrations: [
+    db(), // 必须项
+    devApps(/* 配置选项见下文 */),
+  ],
+});
+```
+
+### 配置选项
+
+以下是 `devApps` 集成的完整可用选项，其中显示了默认值。**所有选项均为可选**。
+
+```ts twoslash 
+import devApps from '@studiocms/devapps';
+devApps({
+// ---cut---
+endpoint: '_studiocms-devapps',
+verbose: false,
+appsConfig: {
+  libSQLViewer: true,
+  wpImporter: true,
+},
+// ---cut-after---
+})
+```
+
+## 可用工具
+
+### libSQL 查看器
+
+在浏览器中查看 libSQL 数据库表的开发工具。该工具依赖于 `@astrojs/db` 的远程数据库连接凭证。
+
+#### 环境要求
+
+需设置以下环境变量（同时用于 `@astrojs/db`）：
+- **`ASTRO_DB_REMOTE_URL`**
+- **`ASTRO_DB_APP_TOKEN`**
+
+#### 功能预览
+
+- 工具栏应用 (收缩状态)
+
+![Astro 开发工具栏应用](~/assets/devapps/devapps-1-toolbar-app-closed.png)
+
+- 工具栏应用 (展开状态)
+
+![Astro 开发工具栏应用 (展开)](~/assets/devapps/devapps-1-toolbar-app-expanded.png)
+
+### WordPress 导入器
+
+将 WordPress 文章和页面导入到 StudioCMS 数据库的开发工具。
+
+#### 环境要求
+
+- StudioCMS 集成
+- WordPress 安装
+- `@studiocms/blog` (可选：用于将文章导入到博客系统)
+
+#### 功能预览
+
+- 工具栏应用
+
+![Astro 导入器界面](~/assets/devapps/devapps-2-importer.png)

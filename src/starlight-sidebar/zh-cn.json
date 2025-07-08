@@ -1,0 +1,21 @@
+{
+  "topic-learn": "学习",
+  "topic-package-catalog": "包目录",
+  "topic-references": "参考文档",
+  "start-here": "入门指南",
+  "contributing": "贡献指南",
+  "how-it-works": "核心机制",
+  "utils": "工具与助手",
+  "plugins": "插件",
+  "catalog": "目录",
+  "studiocms-plugins": "StudioCMS 官方插件",
+  "community-plugins": "社区插件",
+  "config-reference": "配置参考",
+  "typedoc": "TypeDoc",
+  "auto-gen": "自动生成",
+  "topic-guides": "教程指南",
+  "database": "数据库指南",
+  "upgrade": "版本升级",
+  "version": "版本指南",
+  "latest": "最新升级指南"
+}

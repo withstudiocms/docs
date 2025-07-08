@@ -1,0 +1,76 @@
+---
+i18nReady: true
+title: "@astrojs/web-vitals"
+type: integration
+catalogEntry: astrojs-web-vitals
+description: "将网页指标集成到 StudioCMS 仪表盘"
+sidebar:
+  badge: 
+    text: '插件'
+    variant: 'tip'
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import Gallery from '~/components/Gallery.astro';
+import { webVitalsImages } from "~/assets/index.ts";
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# 简介
+
+该 Astro 集成支持跟踪真实世界的网站性能数据并将数据存储在 Astro DB 中。这些数据会在 StudioCMS 仪表盘中展示您的网站随时间变化的真实性能指标。
+
+## 安装步骤
+<Tabs syncKey='install-method'>
+  <TabItem label="Astro 安装方式" icon='astro'>
+{/* <Steps> */}
+
+1. 安装软件包并将其添加到 Astro 配置中：
+
+   <PackageManagers type="exec" pkg="astro" args="add @astrojs/web-vitals" />
+
+2. 将新配置推送到您的远程数据库：
+
+   <PackageManagers type="exec" pkg="astro" args="db push" />
+
+{/* </Steps> */}
+  </TabItem>
+  <TabItem label="手动安装方式" icon='seti:powershell'>
+{/* <Steps> */}
+
+1. 使用以下命令安装软件包：
+
+   <PackageManagers pkg="@astrojs/web-vitals" />
+
+2. 将 `@astrojs/web-vitals` 添加到您的 Astro 配置文件：
+
+   ```ts twoslash title="astro.config.mjs" {12} ins={4, 13}
+   import node from '@astrojs/node';
+   import studioCMS from 'studiocms';
+   import db from '@astrojs/db';
+   import webVitals from '@astrojs/web-vitals'; // 导入网页指标集成
+   import { defineConfig } from 'astro/config';
+
+   export default defineConfig({
+      site: 'https://demo.studiocms.dev/',
+      output: 'server',
+      adapter: node({ mode: "standalone" }),
+      integrations: [
+          db(), // 必须项 
+          webVitals(), // 启用网页指标跟踪
+          studioCMS(), // StudioCMS 核心集成
+      ],
+   });
+   ```
+
+3. 将新配置推送到您的远程数据库：
+
+   <PackageManagers type="exec" pkg="astro" args="db push" />
+
+{/* </Steps> */}
+</TabItem>
+</Tabs>
+
+
+{/* ## Gallery Demo
+
+<Gallery galleryImages={webVitalsImages} /> */}

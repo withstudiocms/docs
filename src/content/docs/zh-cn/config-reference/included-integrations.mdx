@@ -1,0 +1,56 @@
+---
+i18nReady: true
+title: "内置集成功能"
+description: "StudioCMSOptions IncludedIntegrations 参考文档"
+sidebar:
+  order: 7
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+StudioCMS 集成配置选项架构参考
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  includedIntegrations: {
+    robotsTXT: true
+  },
+});
+```
+
+## `robotsTXT`
+
+`robotsTXT` 是一个布尔值或对象配置，用于控制是否启用 robots.txt 文件功能。
+
+- **类型:** `boolean` | [`RobotsConfig`](#robotsconfig) | `undefined`
+- **默认值:** `true`
+
+### 用法示例
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  includedIntegrations: {
+    robotsTXT: true, // 默认值 - 启用 robots.txt 文件功能
+  }
+})
+```
+
+##### `RobotsConfig`
+
+```ts
+interface RobotsConfig {
+  host?: boolean | string;             // 网站主域名配置
+  sitemap?: boolean | string | string[]; // 站点地图URL配置
+  policy?: {                           // 爬虫规则策略
+    userAgent?: string;                 // 目标用户代理
+    disallow?: string | string[];        // 禁止访问路径
+    allow?: string | string[];           // 允许访问路径
+    crawlDelay?: number;                // 爬取延迟（秒）
+    cleanParam?: string | string[];     // 需要清除的参数
+  }[] | undefined;
+}
+```
