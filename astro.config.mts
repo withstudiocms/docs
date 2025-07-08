@@ -182,7 +182,7 @@ export default defineConfig({
 						],
 					},
 					{
-						label: getTranslations('topic-guides').en,
+						label: getTranslations('topic-guides'),
 						link: '/guides/',
 						icon: 'rocket',
 						id: 'guides',
