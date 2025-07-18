@@ -4,18 +4,38 @@ title: "The SDK"
 description: "Learn about the StudioCMS SDK and how to use it."
 sidebar:
    order: 3
+   badge:
+     text: Updated
+     variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro';
 
-The StudioCMS SDK is a powerful tool that allows you to interact with StudioCMS programmatically. It provides a set of functions and utilities that allow you to manage and serve your content using Astro DB. It also provides the backbone for the StudioCMS Dashboard.
+The StudioCMS SDK is a powerful tool that allows you to interact with StudioCMS programmatically. It provides a set of functions and utilities that allow you to manage and serve your content using Astro DB. It also provides the backbone for the StudioCMS Dashboard, and is built with [Effect](https://effect.website).
 
-## Usage
+## Basic Usage
 
-The StudioCMS SDK is available as a virtual module in your Astro project. You can import it using the following syntax:
+The StudioCMS SDK is available as a virtual module in your Astro project. You can import and utilize it using the following syntax:
 
-```ts twoslash
+```ts twoslash {"Working with StudioCMS SDK and Effect":4} {"Working with StudioCMS SDK without Effect":16}
 /// <reference types="studiocms/v/types" />
 // ---cut---
 import { SDKCore, SDKCoreJs, runSDK } from 'studiocms:sdk';
+import { Effect } from 'studiocms/effect';
+
+
+// Create the Usable Effect
+const pagesEffect = Effect.gen(function* () {
+  const sdk = yield* SDKCore;
+
+ // then do something with the SDK
+ return yield* sdk.GET.pages()
+}).pipe(Effect.provide(SDKCore.Default));
+
+// Convert the Effect into a JS/TS "program"
+const pagesResult1 = await runSDK(pagesEffect);
+
+
+// Just run the SDKCoreJS with the runSDK wrapper!
+const pagesResult2 = await runSDK(SDKCoreJs.GET.pages());
 ```

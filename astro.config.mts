@@ -186,10 +186,6 @@ export default defineConfig({
 						link: '/guides/',
 						icon: 'rocket',
 						id: 'guides',
-						badge: {
-							text: 'NEW',
-							variant: 'success',
-						},
 						items: [
 							{
 								label: getTranslations('contributing').en,
