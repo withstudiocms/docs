@@ -39,3 +39,26 @@ const pagesResult1 = await runSDK(pagesEffect);
 // Just run the SDKCoreJS with the runSDK wrapper!
 const pagesResult2 = await runSDK(SDKCoreJs.GET.pages());
 ```
+
+## Available utils
+
+The following is a list of the Primary utils provided by the StudioCMS SDK for interacting with the database.
+
+```ts twoslash title="utils.ts" 
+/// <reference types="studiocms/v/types" />
+// ---cut---
+import { SDKCoreJs } from 'studiocms:sdk';
+
+const {
+   db,
+   dbService,
+   CLEAR,
+   DELETE,
+   INIT,
+   AUTH,
+   REST_API,
+   GET,
+   POST,
+   UPDATE,
+} = SDKCoreJs;
+```
