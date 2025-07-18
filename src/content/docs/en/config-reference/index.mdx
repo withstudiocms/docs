@@ -4,6 +4,9 @@ title: StudioCMSOptions
 description: Reference page for StudioCMSOptions
 sidebar:
   order: 1
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 5
 ---
 
 import ReadMore from '~/components/ReadMore.astro';
@@ -16,18 +19,12 @@ import { defineStudioCMSConfig } from 'studiocms/config';
 // Default Values shown
 export default defineStudioCMSConfig({
   dbStartPage: true,
-  dateLocale: 'en-us',
   verbose: false,
+  logLevel: 'Info',
   plugins: [],
   componentRegistry: {},
-  overrides: {},
-  imageService: {},
-  defaultFrontEndConfig: {},
-  dashboardConfig: {},
-  includedIntegrations: {},
-  dateTimeFormat: {},
-  sdk: {},
-  pageTypeOptions: {}
+  locale: {},
+  features: {}
 });
 ```
 
@@ -48,23 +45,6 @@ export default defineStudioCMSConfig({
 })
 ```
 
-## `dateLocale`
-
-`dateLocale` is a string that is used to determine the locale for date formatting.
-
-- **Type:** `string`
-- **Default:** `'en-us'`
-
-### Usage
-
-```ts twoslash {2} title="studiocms.config.mjs"
-import { defineStudioCMSConfig } from 'studiocms/config';
-// ---cut---
-export default defineStudioCMSConfig({
-  dateLocale: 'en-us', // DEFAULT - This sets the date locale for date formatting.
-})
-```
-
 ## `verbose`
 
 `verbose` is a boolean that is used to enable or disable verbose logging.
@@ -79,6 +59,23 @@ import { defineStudioCMSConfig } from 'studiocms/config';
 // ---cut---
 export default defineStudioCMSConfig({
   verbose: false, // DEFAULT - This sets the verbose logging to false.
+})
+```
+
+## `logLevel`
+
+`logLevel` is a union for setting the LogLevel for Effect based code.
+
+- **Type:** `All` | `Fatal` | `Error` | `Warning` | `Info` | `Debug` | `Trace` | `None`
+- **Default:** `Info`
+
+### Usage
+
+```ts twoslash {2} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  logLevel: 'Info', // DEFAULT 
 })
 ```
 
@@ -121,67 +118,18 @@ export default defineStudioCMSConfig({
 })
 ```
 
-## `dateTimeFormat`
+## `locale`
 
-`dateTimeFormat` is an object that is used to configure the date time format.
+`locale` allows setting Locale specific settings
 
-- **Type:** `Intl.DateTimeFormatOptions`
-- **Default:** `{}`
+<ReadMore>[See `locale` for full options][locale]</ReadMore>
 
-### Usage
+## `features`
 
-```ts twoslash {2-6} title="studiocms.config.mjs"
-import { defineStudioCMSConfig } from 'studiocms/config';
-// ---cut---
-export default defineStudioCMSConfig({
-  dateTimeFormat: {
-    year: "numeric",
-    month: "short",
-    day: "numeric"
-  },
-})
-```
+`features` is an object that allows adjusting the StudioCMS Dashboard features
 
-## `overrides`
-
-`overrides` is an object that is used to override the default configuration.
-
-<ReadMore>[See `overrides` for full options][overrides]</ReadMore>
-
-## `imageService`
-
-`imageService` is an object that is used to configure the image service.
-
-<ReadMore>[See `imageService` for full options][image-service]</ReadMore>
-
-## `defaultFrontEndConfig`
-
-`defaultFrontEndConfig` is an object that is used to configure the default front-end.
-
-<ReadMore>[See `defaultFrontEndConfig` for full options][default-frontend-config]</ReadMore>
-
-## `dashboardConfig`
-
-`dashboardConfig` is an object that is used to configure the dashboard.
-
-<ReadMore>[See `dashboardConfig` for full options][dashboard]</ReadMore>
-
-## `includedIntegrations`
-
-`includedIntegrations` is an object that is used to configure which integrations should be included.
-
-<ReadMore>[See `includedIntegrations` for full options][included-integrations]</ReadMore>
-
-## `sdk`
-
-`sdk` is an object that is used to configure the SDK.
-
-<ReadMore>[See `sdk` for full options][sdk]</ReadMore>
+<ReadMore>[See `features` for full options][features]</ReadMore>
 
 {/* Links */}
-[overrides]: /en/config-reference/overrides/
-[image-service]: /en/config-reference/image-service/
-[default-frontend-config]: /en/config-reference/default-frontend-config/
-[dashboard]: /en/config-reference/dashboard/
-[included-integrations]: /en/config-reference/included-integrations/
-[sdk]: /en/config-reference/sdk/
+[locale]: /en/config-reference/locale/
+[features]: /en/config-reference/features/

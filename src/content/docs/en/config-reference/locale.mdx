@@ -1,0 +1,64 @@
+---
+i18nReady: true
+title: Locale
+description: Reference page for StudioCMSOptions locale
+sidebar:
+  order: 2
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+`locale` allows setting Locale specific settings
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  locale: {
+    dateLocale: 'en-us',
+    dateTimeFormat: {}
+  },
+});
+```
+
+## `dateLocale`
+
+`dateLocale` is a string that is used to determine the locale for date formatting.
+
+- **Type:** `string`
+- **Default:** `'en-us'`
+
+### Usage
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  locale: {
+    dateLocale: 'en-us', // DEFAULT - This sets the date locale for date formatting.
+  }
+})
+```
+
+## `dateTimeFormat`
+
+`dateTimeFormat` is an object that is used to configure the date time format.
+
+- **Type:** `Intl.DateTimeFormatOptions`
+- **Default:** `{}`
+
+### Usage
+
+```ts twoslash {3-7} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  locale: {
+    dateTimeFormat: {
+      year: "numeric",
+      month: "short",
+      day: "numeric"
+    },
+  }
+})
+```

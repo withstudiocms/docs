@@ -280,6 +280,11 @@ export default defineConfig({
 										collapsed: true,
 									},
 									{
+										label: '@studiocms/cloudinary-image-service',
+										autogenerate: { directory: 'typedoc/studiocms-cloudinary-image-service' },
+										collapsed: true,
+									},
+									{
 										label: '@studiocms/devapps',
 										autogenerate: { directory: 'typedoc/studiocms-devapps' },
 										collapsed: true,
