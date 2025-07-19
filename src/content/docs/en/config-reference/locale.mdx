@@ -11,14 +11,14 @@ sidebar:
 
 import ReadMore from '~/components/ReadMore.astro';
 
-`locale` allows setting Locale specific settings
+`locale` allows setting Locale-specific settings
 
 ```ts twoslash title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
 // ---cut---
 export default defineStudioCMSConfig({
   locale: {
-    dateLocale: 'en-us',
+    dateLocale: 'en-US',
     dateTimeFormat: {}
   },
 });
@@ -26,10 +26,10 @@ export default defineStudioCMSConfig({
 
 ## `dateLocale`
 
-`dateLocale` is a string that is used to determine the locale for date formatting.
+`dateLocale` is a BCP 47 locale identifier used for date formatting.
 
 - **Type:** `string`
-- **Default:** `'en-us'`
+- **Default:** `'en-US'`
 
 ### Usage
 
@@ -38,7 +38,7 @@ import { defineStudioCMSConfig } from 'studiocms/config';
 // ---cut---
 export default defineStudioCMSConfig({
   locale: {
-    dateLocale: 'en-us', // DEFAULT - This sets the date locale for date formatting.
+    dateLocale: 'en-US', // DEFAULT - This sets the date locale for date formatting.
   }
 })
 ```
