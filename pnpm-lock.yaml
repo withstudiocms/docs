@@ -53,6 +53,9 @@ importers:
       '@studiocms/blog':
         specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@594
         version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@594(astro@5.12.0(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@594(t2bygrbk5dcjkox6uy7fzuxgge))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      '@studiocms/cloudinary-image-service':
+        specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@594
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@594(astro@5.12.0(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@594(t2bygrbk5dcjkox6uy7fzuxgge))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       '@studiocms/devapps':
         specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@594
         version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@594(@astrojs/db@0.15.0)(astro@5.12.0(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@594(t2bygrbk5dcjkox6uy7fzuxgge))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
@@ -1001,6 +1004,12 @@ packages:
 
   '@clack/prompts@0.9.1':
     resolution: {integrity: sha512-JIpyaboYZeWYlyP0H+OoPPxd6nqueG/CmN6ixBiNFsIDHREevjIf0n0Ohh5gr5C8pEDknzgvz+pIJ8dMhzWIeg==}
+
+  '@cloudinary/transformation-builder-sdk@1.18.0':
+    resolution: {integrity: sha512-cUl+RoQLirwCuLo5sHlRkftAQ/bmE4GTgpue1ur0YgxGlQy05vRZwXDQ+gcbMneFYMy6BjTDUs4nVVxL/hk2WA==}
+
+  '@cloudinary/url-gen@1.21.0':
+    resolution: {integrity: sha512-ctYcCzX3G3vcgnESTU2ET3K1XsBiXcEnBddCGV0QbR3fJhLLrIShjSMEwZoepgh4LAFOHJu9DzvLFr+E8R7c7g==}
 
   '@commander-js/extra-typings@13.1.0':
     resolution: {integrity: sha512-q5P52BYb1hwVWE6dtID7VvuJWrlfbCv4klj7BjUUOqMz4jbSZD4C9fJ9lRjL2jnBGTg+gDDlaXN51rkWcLk4fg==}
@@ -2147,6 +2156,14 @@ packages:
 
   '@studiocms/blog@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@594':
     resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@594}
+    version: 0.1.0-beta.19
+    peerDependencies:
+      astro: ^5.9
+      studiocms: 0.1.0-beta.19
+      vite: ^6.3.4
+
+  '@studiocms/cloudinary-image-service@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@594':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@594}
     version: 0.1.0-beta.19
     peerDependencies:
       astro: ^5.9
@@ -8343,6 +8360,14 @@ snapshots:
       picocolors: 1.1.1
       sisteransi: 1.0.5
 
+  '@cloudinary/transformation-builder-sdk@1.18.0':
+    dependencies:
+      '@cloudinary/url-gen': 1.21.0
+
+  '@cloudinary/url-gen@1.21.0':
+    dependencies:
+      '@cloudinary/transformation-builder-sdk': 1.18.0
+
   '@commander-js/extra-typings@13.1.0(commander@13.1.0)':
     dependencies:
       commander: 13.1.0
@@ -9356,6 +9381,14 @@ snapshots:
   '@studiocms/blog@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@594(astro@5.12.0(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@594(t2bygrbk5dcjkox6uy7fzuxgge))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
     dependencies:
       '@astrojs/rss': 4.0.11
+      astro: 5.12.0(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0)
+      astro-integration-kit: 0.18.0(astro@5.12.0(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@594(t2bygrbk5dcjkox6uy7fzuxgge)
+      vite: 6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
+
+  '@studiocms/cloudinary-image-service@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@594(astro@5.12.0(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@594(t2bygrbk5dcjkox6uy7fzuxgge))(vite@6.3.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
+    dependencies:
+      '@cloudinary/url-gen': 1.21.0
       astro: 5.12.0(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0)
       astro-integration-kit: 0.18.0(astro@5.12.0(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.2)(yaml@2.7.0))
       studiocms: https://pkg.pr.new/withstudiocms/studiocms@594(t2bygrbk5dcjkox6uy7fzuxgge)

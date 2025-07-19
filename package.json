@@ -27,6 +27,7 @@
     "@studiocms/devapps": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@594",
     "@studiocms/mdx": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@594",
     "@studiocms/markdoc": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@594",
+    "@studiocms/cloudinary-image-service": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@594",
     "@studiocms/ui": "^0.4.16",
     "@studiocms/wysiwyg": "^0.1.0-experimental.4",
     "@actions/core": "^1.11.1",
