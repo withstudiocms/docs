@@ -13,7 +13,7 @@ Example Catch-all route where the current page is grabbed from the SDK and the p
 ```astro title="src/pages/[...slug].astro"
 ---
 import { StudioCMSRenderer } from 'studiocms:renderer';
-import studioCMS_SDK from 'studiocms:sdk';
+import { SDKCoreJs, runSDK } from 'studiocms:sdk';
 import Layout from '../layouts/Layout.astro';
 
 let { slug } = Astro.params;
@@ -22,10 +22,10 @@ if (!slug) {
 	slug = 'index';
 }
 
-const page = await studioCMS_SDK.GET.databaseEntry.pages.bySlug(slug);
+const { data: page } = await runSDK(SDKCoreJs.GET.page.bySlug(slug))
 
 if (!page) {
-	return Astro.redirect('/404');
+	return new Response(null, { status: 404 });
 }
 
 const { title, description, heroImage } = page;
