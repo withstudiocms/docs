@@ -30,6 +30,7 @@
     "@studiocms/cloudinary-image-service": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@594",
     "@studiocms/ui": "^0.4.16",
     "@studiocms/wysiwyg": "^0.1.0-experimental.4",
+    "@studiocms/web-vitals": "^4.1.0",
     "@actions/core": "^1.11.1",
     "astro": "^5.11",
     "@astrojs/check": "^0.9.4",
