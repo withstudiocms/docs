@@ -6,7 +6,7 @@ sidebar:
    order: 3
 ---
 
-import { FileTree } from '@astrojs/starlight/components';
+import { FileTree, Aside } from '@astrojs/starlight/components';
 import ReadMore from '~/components/ReadMore.astro';
 
 # Available Options
@@ -39,9 +39,13 @@ export default defineConfig({
 });
 ```
 
-## Using the `studiocms.config.mjs` file (recommended)
+## Using the StudioCMS Config file (recommended)
 
-This file will be automatically picked up and will overwrite any options passed in your `astro.config.mjs`, if you choose to use this option. Please ensure to move all StudioCMS configuration options into this file instead like below:
+This file will be automatically picked up and will overwrite any options passed in your `astro.config.*`, if you choose to use this option. Please ensure to move all StudioCMS configuration options into this file instead like below:
+
+<Aside>
+The `studiocms.config.*` file just like the Astro Config file, supports the following file types: `.cjs`, `.js`, `mjs`, `.cts`, `.ts`, `.mts`. The following example will show `.mjs` file extension being used.
+</Aside>
 
 ### Example file structure
 
