@@ -22,12 +22,12 @@
     "gen-changelogs": "tsm --require=./scripts/filter-warnings.cjs ./scripts/generate-release-notes.ts"
   },
   "dependencies": {
-    "studiocms": "https://pkg.pr.new/withstudiocms/studiocms@594",
-    "@studiocms/blog": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@594",
-    "@studiocms/devapps": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@594",
-    "@studiocms/mdx": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@594",
-    "@studiocms/markdoc": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@594",
-    "@studiocms/cloudinary-image-service": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@594",
+    "studiocms": "0.1.0-beta.19",
+    "@studiocms/blog": "0.1.0-beta.19",
+    "@studiocms/devapps": "0.1.0-beta.19",
+    "@studiocms/mdx": "0.1.0-beta.19",
+    "@studiocms/markdoc": "0.1.0-beta.19",
+    "@studiocms/cloudinary-image-service": "0.1.0-beta.19",
     "@studiocms/ui": "^0.4.16",
     "@studiocms/wysiwyg": "^0.1.0-experimental.4",
     "@studiocms/web-vitals": "^4.1.0",
