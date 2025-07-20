@@ -13,9 +13,16 @@ sidebar:
 import { PackageManagers } from 'starlight-package-managers'
 import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 
-# Introduction
-
 This plugin enables the StudioCMS Blog features as well as a frontend in your Astro project. It will allow you to create, edit, and delete blog posts from the StudioCMS dashboard.
+
+### What does this plugin do?
+
+This integration will add the following new routes to your StudioCMS-controlled front-end:
+
+- `/[...slug]` - Catch-all route rendering generic StudioCMS pages.
+- `/blog` - Blog index listing all posts.
+- `/blog/[slug]` - The individual blog post page.
+- `/rss.xml` - The RSS feed for your blog posts.
 
 ## Installation
 
@@ -31,17 +38,71 @@ This plugin enables the StudioCMS Blog features as well as a frontend in your As
 
     export default defineStudioCMSConfig({
       plugins: [
-        blog(),
+        blog(/* Options */),
       ],
     });
    ```
-## Usage
 
-### What does this plugin do?
+## Options
 
-This integration will add the following new routes to your StudioCMS-controlled front-end:
+```ts
 
-- `/[...slug]` - The main blog page that lists all StudioCMS Pages.
-- `/blog` - The main blog page that lists all blog posts.
-- `/blog/[slug]` - The individual blog post page.
-- `/rss.xml` - The RSS feed for your blog posts.
+type StudioCMSBlogOptions = {
+	/**
+	 * HTML Default Language - The default language for the HTML tag
+	 * @default 'en'
+	 */
+  htmlDefaultLanguage: string | undefined;
+	/**
+	 * HTML Default Header - The default head configuration for the Frontend
+	 */
+  htmlDefaultHead: {
+    /** 
+     * Name of the HTML tag to add to `<head>`, e.g. `'meta'`, `'link'`, or `'script'`. 
+     */
+    tag: "link" | "title" | "base" | "style" | "meta" | "script" | "noscript" | "template";
+    /** 
+     * Attributes to set on the tag, e.g. `{ rel: 'stylesheet', href: '/custom.css' }`. 
+     */
+    attrs?: Record<string, string | boolean | undefined> | undefined;
+    /** 
+     * Content to place inside the tag (optional). 
+     */
+    content?: string | undefined;
+  }[] | undefined;
+	/**
+	 * Favicon Configuration - The default favicon configuration for the Frontend
+	 */
+  favicon: string | undefined;
+	/**
+	 * Enable sitemap generation
+	 * @default true
+	 */
+  sitemap: boolean | undefined;
+	/**
+	 * Inject routes
+	 * @default true
+	 */
+  injectRoutes: boolean | undefined;
+	/**
+	 * The configuration for the blog
+	 */
+  blog: {
+		/**
+		 * The title of the blog
+		 */
+    title: string | undefined;
+		/**
+		 * Enable RSS feed
+		 */
+    enableRSS: boolean | undefined;
+		/**
+		 * The route for the blog
+		 * @default '/blog'
+		 * @example '/news'
+		 */
+    route: string | undefined;
+  } | undefined;
+}
+
+```

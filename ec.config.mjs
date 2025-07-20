@@ -11,7 +11,7 @@ export default defineEcConfig({
 		ecTwoSlash({
 			twoslashOptions: {
 				handbookOptions: {
-					errors: [2353],
+					errors: [2353, 2339],
 				},
 				compilerOptions: {
 					strict: true,

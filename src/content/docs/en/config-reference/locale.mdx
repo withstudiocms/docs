@@ -1,0 +1,67 @@
+---
+i18nReady: true
+title: Locale
+description: Reference page for StudioCMSOptions locale
+sidebar:
+  order: 2
+  badge:
+    text: Updated
+    variant: success
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+`locale` allows setting Locale-specific settings
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  locale: {
+    dateLocale: 'en-US',
+    dateTimeFormat: {}
+  },
+});
+```
+
+## `dateLocale`
+
+`dateLocale` is a BCP 47 locale identifier used for date formatting.
+
+- **Type:** `string`
+- **Default:** `'en-US'`
+
+### Usage
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  locale: {
+    dateLocale: 'en-US', // DEFAULT - This sets the date locale for date formatting.
+  }
+})
+```
+
+## `dateTimeFormat`
+
+`dateTimeFormat` is an object that is used to configure the date time format.
+
+- **Type:** `Intl.DateTimeFormatOptions`
+- **Default:** `{}`
+
+### Usage
+
+```ts twoslash {3-7} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  locale: {
+    dateTimeFormat: {
+      year: "numeric",
+      month: "short",
+      day: "numeric"
+    },
+  }
+})
+```

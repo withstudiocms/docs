@@ -1,0 +1,44 @@
+---
+i18nReady: true
+title: "Upgrade: 0.1.0-beta.19"
+description: Upgrade StudioCMS to Beta.19
+sidebar:
+  label: 0.1.0-beta.19
+  badge:
+    text: NEW
+    variant: success
+  order: 999996
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Breaking Changes
+
+- StudioCMS now **only support NodeJS 20 and higher**
+- New Config structure, please verify your `studiocms.config.*` file when updating. Config files can also end in `.js`, `.mjs`, `.ts`, `.mts` now! Allowing flexibility, and full type-safety.
+   <ReadMore>For more information related to these changes checkout the new [Config Reference][config-doc]</ReadMore>
+- Image Service has been migrated to the plugin system. If you were previously using the `cloudinary-js` image service you will need to migrate to utilizing the new [`@studiocms/cloudinary-image-service` plugin][cloudinary-plugin], and configure your [preferredImageService][image-service]
+- Integrated [Effect][effect-website], and migrated most of the codebase to an Effect based structure. (old functions have been deprecated to allow migration to new Effects)
+- Added support for `@studiocms/web-vitals` to replace `@astrojs/web-vitals` in the future. Note, Astro has deprecated `@astrojs/web-vitals` and asked us to maintain the package, please update to the new package to prevent future issues as we plan to remove support for the old package in a future update.
+   <ReadMore>For more information about web-vitals checkout our [Web-Vitals plugin guide][web-vitals-guide]</ReadMore>
+
+## Bug fixes
+
+- Removed usage of remote google fonts for the dashboard, resolving potential network blocking issues.
+
+<Aside title="Note">
+Please note that in `beta.16` we introduced a breaking change with the password hashing algorithm. While previous passwords will still work, we recommend that users update their passwords after upgrading to `beta.19`. The legacy password hashing support will be removed in a future release.
+</Aside>
+
+{/* Links */}
+[config-doc]: /en/config-reference/
+[image-service]: /en/config-reference/features/#preferredimageservice
+[cloudinary-plugin]: /en/package-catalog/studiocms-plugins/studiocms-cloudinary-js/
+[web-vitals-guide]: /en/package-catalog/community-plugins/web-vitals/
+
+{/* External Links */}
+[effect-website]: https://effect.website

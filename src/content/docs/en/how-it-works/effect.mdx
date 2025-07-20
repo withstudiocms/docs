@@ -1,0 +1,40 @@
+---
+i18nReady: true
+title: "Effect"
+description: "Learn about how StudioCMS uses Effect."
+sidebar:
+   order: 5
+   badge:
+     text: New
+     variant: success
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+# Introduction
+
+If you have not heard about it before, [Effect](https://effect.website) is a powerful TypeScript library designed to help developers easily create complex, synchronous, and asynchronous programs.
+
+StudioCMS utilizes Effect to manage most of our code, bringing simplicity and easier reuse of functions. It has also helped us optimize dashboard loading times by taking an entirely new approach to async code.
+
+## StudioCMS Effect export
+
+While working with StudioCMS and Effect, instead of needing to install it yourself, StudioCMS provides the Effect tools via the following export
+
+```ts twoslash title="example.ts"
+import { Effect, Context, Schema, Data } from 'studiocms/effect';
+```
+
+This includes all the same base exports from Effect's default export `import {} from 'effect';` as well as some other useful utilities from `effect/Function` and custom ones from StudioCMS.
+
+```ts twoslash title="custom-utils.ts"
+import { 
+   convertToVanilla, errorTap, 
+   genLogger, pipeLogger, 
+   runtimeLogger 
+} from 'studiocms/effect';
+```
+
+## Resources
+
+<ReadMore>Want to learn more about Effect? Check out the [Effect documentation](https://effect.website/docs/getting-started/introduction/)</ReadMore>

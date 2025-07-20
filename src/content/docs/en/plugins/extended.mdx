@@ -4,9 +4,6 @@ title: Making Plugins Useful
 description: Learn about the StudioCMS Plugins and how they work.
 sidebar:
    order: 2
-   badge:
-     text: Updated
-     variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro'
@@ -157,7 +154,7 @@ import type { AstroGlobal } from 'astro';
 const Astro: AstroGlobal = {};
 // ---cut---
 import { StudioCMSRenderer } from 'studiocms:renderer';
-import sdk from 'studiocms:sdk';
+import { SDKCoreJs, runSDK } from 'studiocms:sdk';
 import config from 'myplugin:config';
 
 const makeRoute = (slug: string) => {
@@ -166,7 +163,7 @@ const makeRoute = (slug: string) => {
 
 // 'my-plugin' here is used as the identifier for 
 // the pageType from the plugin definition
-const pages = await sdk.GET.packagePages('my-plugin'); 
+const pages = await runSDK(SDKCoreJs.GET.packagePages('my-plugin')); 
 
 const { slug } = Astro.params;
 
@@ -203,12 +200,11 @@ In the `src/dashboard-grid-items/MyPluginGridItem.astro` file, you will define t
 
 ```astro title="MyPluginGridItem.astro"
 ---
-import { StudioCMSRoutes } from 'studiocms:lib';
-import sdk from 'studiocms:sdk';
+import { SDKCoreJs, runSDK } from 'studiocms:sdk';
 
 // 'my-plugin' here is used as the identifier for 
 // the pageType from the plugin definition
-const pages = await sdk.GET.packagePages('my-plugin'); 
+const pages = await runSDK(SDKCoreJs.GET.packagePages('my-plugin')); 
 
 // Get the 5 most recently updated pages from the last 30 days
 const recentlyUpdatedPages = pages
@@ -226,7 +222,7 @@ const recentlyUpdatedPages = pages
     <ul>
         {recentlyUpdatedPages.length > 0 && recentlyUpdatedPages.map((page) => (
             <li>
-                <a href={StudioCMSRoutes.mainLinks.contentManagementEdit + `?edit=${page.id}`}>{page.title}</a>
+                <a href={Astro.locals.routeMap.mainLinks.contentManagementEdit + `?edit=${page.id}`}>{page.title}</a>
             </li>
         ))}
     </ul>
@@ -241,8 +237,6 @@ If you are looking to use the built-in StudioCMS navigation helpers in your proj
 
 ```astro title="Navigation.astro"
 ---
-import { StudioCMSRoutes } from 'studiocms:lib';
-import studioCMS_SDK from 'studiocms:sdk/cache';
 import { frontendNavigation } from 'studiocms:plugin-helpers';
 
 // Define the props for the Navigation component
@@ -254,7 +248,7 @@ interface Props {
 const { topLevelLinkCount = 3 } = Astro.props;
 
 // Get the site config and page list
-const config = (await studioCMS_SDK.GET.siteConfig()).data;
+const config = Astro.locals.siteConfig.data;
 
 // Get the site title from the config
 const { title } = config || { title: 'StudioCMS' };
@@ -262,7 +256,7 @@ const { title } = config || { title: 'StudioCMS' };
 // Get the main site URL
 const {
 	mainLinks: { baseSiteURL },
-} = StudioCMSRoutes;
+} = Astro.locals.routeMap;
 
 // Define the link props for the navigation
 type LinkProps = {

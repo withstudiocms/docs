@@ -186,10 +186,6 @@ export default defineConfig({
 						link: '/guides/',
 						icon: 'rocket',
 						id: 'guides',
-						badge: {
-							text: 'NEW',
-							variant: 'success',
-						},
 						items: [
 							{
 								label: getTranslations('contributing').en,
@@ -277,6 +273,11 @@ export default defineConfig({
 									{
 										label: '@studiocms/blog',
 										autogenerate: { directory: 'typedoc/studiocms-blog' },
+										collapsed: true,
+									},
+									{
+										label: '@studiocms/cloudinary-image-service',
+										autogenerate: { directory: 'typedoc/studiocms-cloudinary-image-service' },
 										collapsed: true,
 									},
 									{

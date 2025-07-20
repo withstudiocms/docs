@@ -1,8 +1,8 @@
 ---
 i18nReady: true
-title: "@astrojs/web-vitals"
+title: "@studiocms/web-vitals"
 type: integration
-catalogEntry: astrojs-web-vitals
+catalogEntry: studiocms-web-vitals
 description: "Web Vitals Integration with the StudioCMS Dashboard"
 sidebar:
   badge: 
@@ -26,7 +26,7 @@ This Astro integration enables tracking real-world website performance and stori
 
 1. Install the package and add to your astro config using the following command:
 
-   <PackageManagers type="exec" pkg="astro" args="add @astrojs/web-vitals" />
+   <PackageManagers type="exec" pkg="astro" args="add @studiocms/web-vitals" />
 
 2. Push the new configuration to your remote database:
 
@@ -39,15 +39,15 @@ This Astro integration enables tracking real-world website performance and stori
 
 1. Install the package using the following command:
 
-   <PackageManagers pkg="@astrojs/web-vitals" />
+   <PackageManagers pkg="@studiocms/web-vitals" />
 
-2. Add `@astrojs/web-vitals` to your astro config file:
+2. Add `@studiocms/web-vitals` to your astro config file:
 
    ```ts twoslash title="astro.config.mjs" {12} ins={4, 13}
    import node from '@astrojs/node';
    import studioCMS from 'studiocms';
    import db from '@astrojs/db';
-   import webVitals from '@astrojs/web-vitals';
+   import webVitals from '@studiocms/web-vitals';
    import { defineConfig } from 'astro/config';
 
    export default defineConfig({
@@ -61,8 +61,6 @@ This Astro integration enables tracking real-world website performance and stori
       ],
    });
    ```
-
-   <PackageManagers pkg="@astrojs/web-vitals" />
 
 3. Push the new configuration to your remote database:
 
