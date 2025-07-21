@@ -1,0 +1,44 @@
+---
+i18nReady: true
+title: "Mise à niveau : 0.1.0-beta.19"
+description: Mettre à niveau StudioCMS vers la version Beta.19
+sidebar:
+  label: 0.1.0-beta.19
+  badge:
+    text: NOUVEAU
+    variant: success
+  order: 999996
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Modifications avec rupture de compatibilité
+
+- StudioCMS ne prend désormais **en charge que NodeJS 20 et supérieur**
+- Nouvelle structure de configuration, veuillez vérifier votre fichier `studiocms.config.*` lors de la mise à jour. Les fichiers de configuration peuvent également se terminer par `.js`, `.mjs`, `.ts`, `.mts` désormais ! Permettant une flexibilité et une sûreté du typage complète.
+   <ReadMore>Pour plus d'informations sur ces changements, consultez la nouvelle [référence de configuration][config-doc]</ReadMore>
+- Le service d'images a été migré vers le système de modules d'extension. Si vous utilisiez auparavant le service d'images `cloudinary-js`, vous devrez migrer vers le nouveau module d'extension [`@studiocms/cloudinary-image-service`][cloudinary-plugin] et configurer votre [service d'images préféré (preferredImageService)][image-service]
+- Intégration d'[Effect][effect-website] et migration de la majeure partie de la base de code vers une structure basée sur Effect. (les anciennes fonctions ont été dépréciées pour permettre la migration vers de nouveaux Effects)
+- Ajout de la prise en charge de `@studiocms/web-vitals` pour remplacer `@astrojs/web-vitals` à l'avenir. Remarque : Astro a déprécié `@astrojs/web-vitals` et nous a demandé de maintenir le paquet, veuillez mettre à jour vers le nouveau paquet pour éviter de futurs problèmes car nous prévoyons de supprimer la prise en charge de l'ancien paquet dans une future mise à jour.
+   <ReadMore>Pour plus d'informations sur Web-Vitals, consultez notre [guide du module d'extension Web-Vitals][web-vitals-guide]</ReadMore>
+
+## Corrections de bugs
+
+- Suppression de l'utilisation des polices Google distantes pour le tableau de bord, résolvant ainsi les problèmes potentiels de blocage du réseau.
+
+<Aside title="À noter">
+Veuillez noter que dans la version `beta.16`, nous avons introduit une modification avec rupture de compatibilité concernant l’algorithme de hachage des mots de passe. Bien que les anciens mots de passe fonctionnent toujours, nous recommandons aux utilisateurs de les mettre à jour après la mise à niveau vers la version `beta.19`. La prise en charge de l’ancien hachage des mots de passe sera supprimée dans une prochaine version.
+</Aside>
+
+{/* Liens */}
+[config-doc]: /fr/config-reference/
+[image-service]: /fr/config-reference/features/#preferredimageservice
+[cloudinary-plugin]: /fr/package-catalog/studiocms-plugins/studiocms-cloudinary-js/
+[web-vitals-guide]: /fr/package-catalog/community-plugins/web-vitals/
+
+{/* Liens externes */}
+[effect-website]: https://effect.website
