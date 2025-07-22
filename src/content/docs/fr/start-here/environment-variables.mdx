@@ -4,6 +4,9 @@ title: Variables d'environnement
 description: Un bref aperçu des variables d’environnement utilisées dans StudioCMS.
 sidebar:
    order: 2
+   badge:
+     text: Mis à jour
+     variant: success
 ---
 
 import { Aside } from '@astrojs/starlight/components';
@@ -97,16 +100,5 @@ CMS_AUTH0_DOMAIN=
 CMS_AUTH0_REDIRECT_URI=
 ```
 
-### Variables d’environnement du gestionnaire d’images
-
-#### Cloudinary (facultatif)
-
-Si vous choisissez d’utiliser le plugin Cloudinary intégré, vous devrez définir les éléments suivants :
-
-```bash title=".env"
-## SDK Javascript de Cloudinary
-CMS_CLOUDINARY_CLOUDNAME="demo"
-```
-
-{/* Links */}
+{/* Liens */}
 [config-oauth]: /fr/start-here/getting-started/#facultatif-configurer-lauthentification-oauth
