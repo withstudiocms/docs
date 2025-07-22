@@ -4,6 +4,9 @@ title: "L’intégration"
 description: "Découvrez comment StudioCMS vous aide à gérer et à diffuser votre contenu en explorant une présentation complète de ses composants fondamentaux."
 sidebar:
    order: 1
+   badge:
+     text: Mis à jour
+     variant: success
 ---
 
 # Présentation
@@ -20,14 +23,11 @@ L’intégration StudioCMS fournit plusieurs [modules virtuels](https://vite.dev
 
 ### Modules virtuels d’authentification
 
-- **`studiocms:auth/lib/encryption`** : Utilitaires de chiffrement pour StudioCMS.
-- **`studiocms:auth/lib/password`** : Utilitaires de gestion de mots de passe pour StudioCMS.
-- **`studiocms:auth/lib/rate-limit`** : Utilitaires de limitation de débit pour StudioCMS.
-- **`studiocms:auth/lib/session`** : Utilitaires de gestion de session pour StudioCMS.
-- **`studiocms:auth/lib/types`** : Types pour la bibliothèque d’authentification de StudioCMS.
-- **`studiocms:auth/lib/user`** : Utilitaires de gestion des utilisateurs pour StudioCMS.
+- **`studiocms:auth/lib`** : Utilitaires d’authentification pour StudioCMS.
 - **`studiocms:auth/utils/authEnvCheck`** : Utilitaires permettant de vérifier l’environnement d’authentification pour StudioCMS.
 - **`studiocms:auth/utils/getLabelForPermissionLevel`** : Utilitaires permettant d’obtenir l’étiquette d’un niveau d’autorisation pour StudioCMS.
+- **`studiocms:auth/utils/validImages`** : Images valides utilisées sur la page de connexion de StudioCMS.
+- **`studiocms:auth/scripts/three`** : Scripts Three.js pour la page de connexion de StudioCMS.
 
 ### Modules virtuels principaux
 
@@ -45,7 +45,6 @@ L’intégration StudioCMS fournit plusieurs [modules virtuels](https://vite.dev
 ### Modules virtuels du SDK
 
 - **`studiocms:sdk`** : Fournit le SDK de StudioCMS pour StudioCMS.
-- **`studiocms:sdk/cache`** : Fournit le cache du SDK de StudioCMS pour StudioCMS.
 - **`studiocms:sdk/types`** : Fournit les types du SDK de StudioCMS pour StudioCMS.
 
 ### Modules virtuels i18n
