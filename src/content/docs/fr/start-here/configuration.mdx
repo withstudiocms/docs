@@ -3,10 +3,13 @@ i18nReady: true
 title: "Configuration de StudioCMS"
 description: "Options permettant de définir la configuration de StudioCMS"
 sidebar:
-  order: 3
+   order: 3
+   badge:
+     text: Mis à jour
+     variant: success
 ---
 
-import { FileTree } from "@astrojs/starlight/components";
+import { FileTree, Aside } from '@astrojs/starlight/components';
 import ReadMore from "~/components/ReadMore.astro";
 
 # Options disponibles
@@ -39,9 +42,13 @@ export default defineConfig({
 });
 ```
 
-## En utilisant le fichier `studiocms.config.mjs` (recommandé)
+## En utilisant le fichier de configuration de StudioCMS (recommandé)
 
-Ce fichier sera automatiquement récupéré et écrasera toutes les options transmises dans votre fichier `astro.config.mjs` si vous choisissez d’utiliser cette option. Assurez-vous de déplacer toutes les options de configuration de StudioCMS dans ce fichier comme ci-dessous :
+Ce fichier sera automatiquement récupéré et écrasera toutes les options transmises dans votre fichier `astro.config.*` si vous choisissez d’utiliser cette option. Assurez-vous de déplacer toutes les options de configuration de StudioCMS dans ce fichier comme ci-dessous :
+
+<Aside>
+Le fichier `studiocms.config.*`, tout comme le fichier de configuration d'Astro, prend en charge les extensions suivantes : `.cjs`, `.js`, `.mjs`, `.cts`, `.ts`, `.mts`. L'exemple suivant illustre l'utilisation de l'extension de fichier `.mjs`.
+</Aside>
 
 ### Exemple de structure de fichiers
 
@@ -50,7 +57,6 @@ Ce fichier sera automatiquement récupéré et écrasera toutes les options tran
 - .env
 - astro.config.mjs
 - **studiocms.config.mjs**
-- studiocms-auth.config.json Généré automatiquement
 - package.json
 - src
   - env.d.ts
@@ -83,5 +89,5 @@ export default defineStudioCMSConfig({
 });
 ```
 
-{/* Links */}
+{/* Liens */}
 [reference-page]: /fr/config-reference/
