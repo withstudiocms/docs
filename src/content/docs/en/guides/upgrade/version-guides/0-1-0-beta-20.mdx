@@ -1,0 +1,34 @@
+---
+i18nReady: true
+title: "Upgrade: 0.1.0-beta.20"
+description: Upgrade StudioCMS to Beta.20
+sidebar:
+  label: 0.1.0-beta.20
+  badge:
+    text: NEW
+    variant: success
+  order: 999995
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Bug fixes
+
+- Fixed First time setup routes that used a unavailable middleware feature during first time setup, causing the first time setup to fail.
+
+<Aside title="Note">
+Please note that in `beta.16` we introduced a breaking change with the password hashing algorithm. While previous passwords will still work, we recommend that users update their passwords after upgrading to `beta.20`. The legacy password hashing support will be removed in a future release.
+</Aside>
+
+{/* Links */}
+[config-doc]: /en/config-reference/
+[image-service]: /en/config-reference/features/#preferredimageservice
+[cloudinary-plugin]: /en/package-catalog/studiocms-plugins/studiocms-cloudinary-js/
+[web-vitals-guide]: /en/package-catalog/community-plugins/web-vitals/
+
+{/* External Links */}
+[effect-website]: https://effect.website
