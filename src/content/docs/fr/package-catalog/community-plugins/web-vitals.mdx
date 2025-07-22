@@ -1,8 +1,8 @@
 ---
 i18nReady: true
-title: "@astrojs/web-vitals"
+title: "@studiocms/web-vitals"
 type: integration
-catalogEntry: astrojs-web-vitals
+catalogEntry: studiocms-web-vitals
 description: "Intégration de Web Vitals au tableau de bord StudioCMS"
 sidebar:
   badge: 
@@ -26,7 +26,7 @@ Cette intégration Astro permet de suivre les performances réelles de votre sit
 
 1. Installez le paquet et ajoutez-le à votre configuration Astro à l’aide de la commande suivante :
 
-   <PackageManagers type="exec" pkg="astro" args="add @astrojs/web-vitals" />
+   <PackageManagers type="exec" pkg="astro" args="add @studiocms/web-vitals" />
 
 2. Envoyez la nouvelle configuration vers votre base de données distante :
 
@@ -39,15 +39,15 @@ Cette intégration Astro permet de suivre les performances réelles de votre sit
 
 1. Installez le paquet à l’aide de la commande suivante :
 
-   <PackageManagers pkg="@astrojs/web-vitals" />
+   <PackageManagers pkg="@studiocms/web-vitals" />
 
-2. Ajoutez `@astrojs/web-vitals` à votre fichier de configuration Astro :
+2. Ajoutez `@studiocms/web-vitals` à votre fichier de configuration Astro :
 
    ```ts twoslash title="astro.config.mjs" {12} ins={4, 13}
    import node from '@astrojs/node';
    import studioCMS from 'studiocms';
    import db from '@astrojs/db';
-   import webVitals from '@astrojs/web-vitals';
+   import webVitals from '@studiocms/web-vitals';
    import { defineConfig } from 'astro/config';
 
    export default defineConfig({
@@ -61,8 +61,6 @@ Cette intégration Astro permet de suivre les performances réelles de votre sit
       ],
    });
    ```
-
-   <PackageManagers pkg="@astrojs/web-vitals" />
 
 3. Envoyez la nouvelle configuration vers votre base de données distante :
 
