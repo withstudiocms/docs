@@ -68,6 +68,12 @@ interface StudioCMSPlugin {
           apiEndpoint?: string | undefined;
         }[] | undefined;
       }) => void;
+      setImageService: (params: {
+        imageService?: {
+          identifier: string;
+          servicePath: string | URL;
+        } | undefined;
+      }) => void;
     }) => void | Promise<void>;
   }
 }

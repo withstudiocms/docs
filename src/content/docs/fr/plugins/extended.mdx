@@ -4,9 +4,6 @@ title: Rendre les modules d’extension utiles
 description: Découvrez les modules d’extension de StudioCMS et leur fonctionnement.
 sidebar:
    order: 2
-   badge:
-     text: Mis à jour
-     variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro'
@@ -157,7 +154,7 @@ import type { AstroGlobal } from 'astro';
 const Astro: AstroGlobal = {};
 // ---cut---
 import { StudioCMSRenderer } from 'studiocms:renderer';
-import sdk from 'studiocms:sdk';
+import { SDKCoreJs, runSDK } from 'studiocms:sdk';
 import config from 'myplugin:config';
 
 const makeRoute = (slug: string) => {
@@ -166,7 +163,7 @@ const makeRoute = (slug: string) => {
 
 // 'mon-module-extension' est ici utilisé comme identifiant pour
 // le type de page de la définition du module d’extension
-const pages = await sdk.GET.packagePages('mon-module-extension'); 
+const pages = await runSDK(SDKCoreJs.GET.packagePages('mon-module-extension')); 
 
 const { slug } = Astro.params;
 
@@ -203,12 +200,11 @@ Dans le fichier `src/dashboard-grid-items/MyPluginGridItem.astro`, vous définir
 
 ```astro title="MyPluginGridItem.astro"
 ---
-import { StudioCMSRoutes } from 'studiocms:lib';
-import sdk from 'studiocms:sdk';
+import { SDKCoreJs, runSDK } from 'studiocms:sdk';
 
 // 'mon-module-extension' est ici utilisé comme identifiant pour
 // le type de page à partir de la définition du module d’extension
-const pages = await sdk.GET.packagePages('mon-module-extension'); 
+const pages = await runSDK(SDKCoreJs.GET.packagePages('mon-module-extension')); 
 
 // Obtenir les 5 pages les plus récemment mises à jour au cours des 30 derniers jours
 const recentlyUpdatedPages = pages
@@ -226,7 +222,7 @@ const recentlyUpdatedPages = pages
     <ul>
         {recentlyUpdatedPages.length > 0 && recentlyUpdatedPages.map((page) => (
             <li>
-                <a href={StudioCMSRoutes.mainLinks.contentManagementEdit + `?edit=${page.id}`}>{page.title}</a>
+                <a href={Astro.locals.routeMap.mainLinks.contentManagementEdit + `?edit=${page.id}`}>{page.title}</a>
             </li>
         ))}
     </ul>
@@ -241,8 +237,6 @@ Si vous souhaitez utiliser les assistants de navigation intégrés de StudioCMS 
 
 ```astro title="Navigation.astro"
 ---
-import { StudioCMSRoutes } from 'studiocms:lib';
-import studioCMS_SDK from 'studiocms:sdk/cache';
 import { frontendNavigation } from 'studiocms:plugin-helpers';
 
 // Définir les props pour le composant Navigation
@@ -254,7 +248,7 @@ interface Props {
 const { topLevelLinkCount = 3 } = Astro.props;
 
 // Obtenir la configuration du site et la liste des pages
-const config = (await studioCMS_SDK.GET.siteConfig()).data;
+const config = Astro.locals.siteConfig.data;
 
 // Récupérer le titre du site à partir de la configuration
 const { title } = config || { title: 'StudioCMS' };
@@ -262,7 +256,7 @@ const { title } = config || { title: 'StudioCMS' };
 // Obtenir l’URL du site principal
 const {
 	mainLinks: { baseSiteURL },
-} = StudioCMSRoutes;
+} = Astro.locals.routeMap;
 
 // Définir les props de lien pour la navigation
 type LinkProps = {
