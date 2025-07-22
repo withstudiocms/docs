@@ -13,9 +13,16 @@ sidebar:
 import { PackageManagers } from 'starlight-package-managers'
 import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 
-# Présentation
-
 Ce module d’extension active les fonctionnalités du blog StudioCMS ainsi qu’un front-end dans votre projet Astro. Il vous permettra de créer, modifier et supprimer des articles de blog depuis le tableau de bord de StudioCMS.
+
+### Que fait ce module d'extension ?
+
+Cette intégration ajoutera les nouvelles routes suivantes à votre front-end contrôlé par StudioCMS :
+
+- `/[...slug]` - Route fourre-tout générant les pages génériques de StudioCMS.
+- `/blog` - Index du blog répertoriant tous les articles.
+- `/blog/[slug]` - La page individuelle de l'article de blog.
+- `/rss.xml` - Le flux RSS de vos articles de blog.
 
 ## Installation
 
@@ -31,17 +38,71 @@ Ce module d’extension active les fonctionnalités du blog StudioCMS ainsi qu�
 
     export default defineStudioCMSConfig({
       plugins: [
-        blog(),
+        blog(/* Options */),
       ],
     });
    ```
-## Utilisation
 
-### Que fait ce module d’extension ?
+## Options
 
-Cette intégration ajoutera les nouvelles routes suivantes à votre front-end contrôlé par StudioCMS :
+```ts
 
-- `/[...slug]` - La page principale du blog qui répertorie toutes les pages StudioCMS.
-- `/blog` - La page principale du blog qui répertorie tous les articles du blog.
-- `/blog/[slug]` - La page de l’article de blog individuel.
-- `/rss.xml` - Le flux RSS de vos articles de blog.
+type StudioCMSBlogOptions = {
+	/**
+	 * Langue par défaut du HTML - La langue par défaut de la balise HTML
+	 * @default 'en'
+	 */
+  htmlDefaultLanguage: string | undefined;
+	/**
+	 * En-tête HTML par défaut - La configuration d'en-tête par défaut pour le frontend
+	 */
+  htmlDefaultHead: {
+    /** 
+     * Nom de la balise HTML à ajouter dans `<head>`, par exemple `'meta'`, `'link'` ou `'script'`.
+     */
+    tag: "link" | "title" | "base" | "style" | "meta" | "script" | "noscript" | "template";
+    /** 
+     * Attributs à définir sur la balise, par exemple `{ rel: 'stylesheet', href: '/custom.css' }`.
+     */
+    attrs?: Record<string, string | boolean | undefined> | undefined;
+    /** 
+     * Contenu à placer à l'intérieur de la balise (facultatif).
+     */
+    content?: string | undefined;
+  }[] | undefined;
+	/**
+	 * Configuration du favicon - La configuration du favicon par défaut pour le frontend
+	 */
+  favicon: string | undefined;
+	/**
+	 * Active la génération du plan du site
+	 * @default true
+	 */
+  sitemap: boolean | undefined;
+	/**
+	 * Injecte les routes
+	 * @default true
+	 */
+  injectRoutes: boolean | undefined;
+	/**
+	 * La configuration du blog
+	 */
+  blog: {
+		/**
+		 * Le titre du blog
+		 */
+    title: string | undefined;
+		/**
+		 * Active le flux RSS
+		 */
+    enableRSS: boolean | undefined;
+		/**
+		 * La route du blog
+		 * @default '/blog'
+		 * @example '/nouvelles'
+		 */
+    route: string | undefined;
+  } | undefined;
+}
+
+```
