@@ -1,10 +1,13 @@
 ---
 i18nReady: true
-title: "Upgrade: 0.1.0-beta.20"
-description: Upgrade StudioCMS to Beta.20
+title: "Upgrade: 0.1.0-beta.21"
+description: Upgrade StudioCMS to Beta.21
 sidebar:
-  label: 0.1.0-beta.20
-  order: 999995
+  label: 0.1.0-beta.21
+  badge:
+    text: NEW
+    variant: success
+  order: 999994
 ---
 
 import ReadMore from '~/components/ReadMore.astro'
@@ -15,10 +18,10 @@ import { Aside } from '@astrojs/starlight/components'
 
 ## Bug fixes
 
-- Fixed First time setup routes that used a unavailable middleware feature during first time setup, causing the first time setup to fail.
+- Implement fixes for First-time-setup, auth API routes and css for font, and markdown pageType config.
 
 <Aside title="Note">
-Please note that in `beta.16` we introduced a breaking change with the password hashing algorithm. While previous passwords will still work, we recommend that users update their passwords after upgrading to `beta.20`. The legacy password hashing support will be removed in a future release.
+Please note that in `beta.16` we introduced a breaking change with the password hashing algorithm. While previous passwords will still work, we recommend that users update their passwords after upgrading to `beta.21`. The legacy password hashing support will be removed in a future release.
 </Aside>
 
 {/* Links */}
