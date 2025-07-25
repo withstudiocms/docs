@@ -1,9 +1,15 @@
 ---
 i18nReady: true
-title: StudioCMSOptions
+title: Options de StudioCMS
 description: Page de référence pour les options de StudioCMS
 sidebar:
   order: 1
+  badge:
+    text: Mis à jour
+    variant: success
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 5
 ---
 
 import ReadMore from '~/components/ReadMore.astro';
@@ -16,18 +22,12 @@ import { defineStudioCMSConfig } from 'studiocms/config';
 // Valeurs par défaut affichées
 export default defineStudioCMSConfig({
   dbStartPage: true,
-  dateLocale: 'en-us',
   verbose: false,
+  logLevel: 'Info',
   plugins: [],
   componentRegistry: {},
-  overrides: {},
-  imageService: {},
-  defaultFrontEndConfig: {},
-  dashboardConfig: {},
-  includedIntegrations: {},
-  dateTimeFormat: {},
-  sdk: {},
-  pageTypeOptions: {}
+  locale: {},
+  features: {}
 });
 ```
 
@@ -48,23 +48,6 @@ export default defineStudioCMSConfig({
 })
 ```
 
-## `dateLocale`
-
-`dateLocale` est une chaîne de caractères utilisée pour déterminer les paramètres régionaux pour le formatage des dates.
-
-- **Type :** `string`
-- **Par défaut :** `'en-us'`
-
-### Utilisation
-
-```ts twoslash {2} title="studiocms.config.mjs"
-import { defineStudioCMSConfig } from 'studiocms/config';
-// ---cut---
-export default defineStudioCMSConfig({
-  dateLocale: 'en-us', // PAR DÉFAUT - Ceci définit les paramètres régionaux de date pour le formatage des dates.
-})
-```
-
 ## `verbose`
 
 `verbose` est un booléen utilisé pour activer ou désactiver la journalisation détaillée.
@@ -79,6 +62,23 @@ import { defineStudioCMSConfig } from 'studiocms/config';
 // ---cut---
 export default defineStudioCMSConfig({
   verbose: false, // PAR DÉFAUT - Ceci désactive la journalisation détaillée.
+})
+```
+
+## `logLevel`
+
+`logLevel` est une union permettant de définir le niveau de journalisation pour le code reposant sur Effect.
+
+- **Type :** `All` | `Fatal` | `Error` | `Warning` | `Info` | `Debug` | `Trace` | `None`
+- **Par défaut :** `Info`
+
+### Utilisation
+
+```ts twoslash {2} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  logLevel: 'Info', // PAR DÉFAUT 
 })
 ```
 
@@ -121,67 +121,18 @@ export default defineStudioCMSConfig({
 })
 ```
 
-## `dateTimeFormat`
+## `locale`
 
-`dateTimeFormat` est un objet utilisé pour configurer le format de date et d'heure.
+`locale` permet de définir des paramètres spécifiques aux paramètres régionaux
 
-- **Type :** `Intl.DateTimeFormatOptions`
-- **Par défaut :** `{}`
+<ReadMore>[Voir `locale` pour les options complètes][locale]</ReadMore>
 
-### Utilisation
+## `features`
 
-```ts twoslash {2-6} title="studiocms.config.mjs"
-import { defineStudioCMSConfig } from 'studiocms/config';
-// ---cut---
-export default defineStudioCMSConfig({
-  dateTimeFormat: {
-    year: "numeric",
-    month: "short",
-    day: "numeric"
-  },
-})
-```
+`features` est un objet qui permet d'ajuster les fonctionnalités du tableau de bord de StudioCMS
 
-## `overrides`
+<ReadMore>[Voir `features` pour les options complètes][features]</ReadMore>
 
-`overrides` est un objet utilisé pour remplacer la configuration par défaut.
-
-<ReadMore>[Consultez `overrides` pour les options complètes][overrides]</ReadMore>
-
-## `imageService`
-
-`imageService` est un objet utilisé pour configurer le service d’images.
-
-<ReadMore>[Consultez `imageService` pour les options complètes][image-service]</ReadMore>
-
-## `defaultFrontEndConfig`
-
-`defaultFrontEndConfig` est un objet utilisé pour configurer le front-end par défaut.
-
-<ReadMore>[Consultez `defaultFrontEndConfig` pour les options complètes][default-frontend-config]</ReadMore>
-
-## `dashboardConfig`
-
-`dashboardConfig` est un objet utilisé pour configurer le tableau de bord.
-
-<ReadMore>[Consultez `dashboardConfig` pour les options complètes][dashboard]</ReadMore>
-
-## `includedIntegrations`
-
-`includedIntegrations` est un objet utilisé pour configurer quelles intégrations doivent être incluses.
-
-<ReadMore>[Consultez `includedIntegrations` pour les options complètes][included-integrations]</ReadMore>
-
-## `sdk`
-
-`sdk` est un objet utilisé pour configurer le SDK.
-
-<ReadMore>[Consultez `sdk` pour les options complètes][sdk]</ReadMore>
-
-{/* Links */}
-[overrides]: /fr/config-reference/overrides/
-[image-service]: /fr/config-reference/image-service/
-[default-frontend-config]: /fr/config-reference/default-frontend-config/
-[dashboard]: /fr/config-reference/dashboard/
-[included-integrations]: /fr/config-reference/included-integrations/
-[sdk]: /fr/config-reference/sdk/
+{/* Liens */}
+[locale]: /fr/config-reference/locale/
+[features]: /fr/config-reference/features/
