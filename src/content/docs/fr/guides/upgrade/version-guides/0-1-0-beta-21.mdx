@@ -1,0 +1,34 @@
+---
+i18nReady: true
+title: "Mise à niveau : 0.1.0-beta.21"
+description: Mettre à niveau StudioCMS vers la version Beta.21
+sidebar:
+  label: 0.1.0-beta.21
+  badge:
+    text: NOUVEAU
+    variant: success
+  order: 999994
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Corrections de bugs
+
+- Implémente des correctifs pour la première configuration, les routes d'API pour l'authentification, le CSS pour la police et la configuration du type de page Markdown.
+
+<Aside title="À noter">
+Veuillez noter que dans la version `beta.16`, nous avons introduit une modification avec rupture de compatibilité concernant l’algorithme de hachage des mots de passe. Bien que les anciens mots de passe fonctionnent toujours, nous recommandons aux utilisateurs de les mettre à jour après la mise à niveau vers la version `beta.21`. La prise en charge de l’ancien hachage des mots de passe sera supprimée dans une prochaine version.
+</Aside>
+
+{/* Liens */}
+[config-doc]: /fr/config-reference/
+[image-service]: /fr/config-reference/features/#preferredimageservice
+[cloudinary-plugin]: /fr/package-catalog/studiocms-plugins/studiocms-cloudinary-js/
+[web-vitals-guide]: /fr/package-catalog/community-plugins/web-vitals/
+
+{/* Liens externes */}
+[effect-website]: https://effect.website
