@@ -1,0 +1,449 @@
+---
+i18nReady: true
+title: Fonctionnalités
+description: Page de référence pour les fonctionnalités de StudioCMS
+sidebar:
+  order: 3
+  badge:
+    text: Mis à jour
+    variant: success
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 5
+---
+
+Référence du schéma des options de configuration de l'intégration StudioCMS
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {},
+});
+```
+
+## `robotsTXT`
+
+`robotsTXT` permet à l'utilisateur d'activer/de désactiver et de configurer l'utilisation de l'intégration personnalisée `astro-robots-txt` de StudioCMS
+
+- **Type :** `RobotsConfig` | `boolean`
+- **Par défaut :** `{ policy: [ { userAgent: ['*'], allow: ['/'], disallow: ['/dashboard/'] } ] }`
+
+### Utilisation
+
+Remarque : `robotsTXT` peut également être défini sur `false` pour le désactiver.
+
+```ts twoslash {3-11} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    robotsTXT: {
+      policy: [ 
+        { 
+          userAgent: ['*'], 
+          allow: ['/'], 
+          disallow: ['/dashboard/'],
+        } 
+      ] 
+    }
+  }
+})
+```
+
+## `injectQuickActionsMenu`
+
+`injectQuickActionsMenu` permet d'activer et de désactiver le menu d'actions rapides qui permet un accès facile à votre tableau de bord lorsque vous êtes connecté sur des pages autres que le tableau de bord.
+
+- **Type :** `boolean`
+- **Par défaut :** `true`
+
+### Utilisation
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    injectQuickActionsMenu: true
+  }
+})
+```
+
+## `sdk`
+
+`sdk` peut être soit un booléen, soit un objet contenant la configuration du cache. S'il s'agit d'un booléen, sa valeur par défaut est `true` et le transforme en objet avec la configuration du cache par défaut.
+
+### Utilisation
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    sdk: {}
+  }
+})
+```
+
+### `cacheConfig`
+
+`cacheConfig` est un objet utilisé pour configurer le cache du SDK.
+
+- **Type :** `boolean` | `{ lifetime?: string | undefined; }` | `undefined`
+- **Par défaut :** `{ lifetime: '5m' }`
+
+#### Utilisation
+
+```ts twoslash {5-7} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    sdk: {
+      // PAR DÉFAUT - Ceci utilise la configuration de cache par défaut.
+      cacheConfig: {
+          lifetime: '5m',
+      }, 
+    }
+  }
+})
+```
+
+## `pageTypeOptions`
+
+`pageTypeOptions` permet de modifier les options de type de page par défaut utilisées par StudioCMS
+
+### Utilisation
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    pageTypeOptions: {}
+  }
+})
+```
+
+### `markdown`
+
+Options de configuration du moteur de rendu Markdown intégré
+
+#### Utilisation
+
+Lorsque vous travaillez avec la version standard `studiocms` de Markdown
+
+```ts twoslash {4-19} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    pageTypeOptions: {
+      markdown: {
+        flavor: 'studiocms',
+        callouts: 'obsidian',
+        autoLinkHeadings: true,
+        discordSubtext: true,
+        sanitize: {
+          allowElements: [],
+          blockElements: [],
+          dropElements: [],
+          allowAttributes: {},
+          dropAttributes: {},
+          allowComponents: false,
+          allowCustomElements: false,
+          allowComments: false,
+        }
+      }
+    }
+  }
+})
+```
+
+Lorsque vous travaillez avec la version `astro` de Markdown
+
+```ts twoslash {4-16} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    pageTypeOptions: {
+      markdown: {
+        flavor: 'astro',
+        sanitize: {
+          allowElements: [],
+          blockElements: [],
+          dropElements: [],
+          allowAttributes: {},
+          dropAttributes: {},
+          allowComponents: false,
+          allowCustomElements: false,
+          allowComments: false,
+        }
+      }
+    }
+  }
+})
+```
+
+### `html`
+
+Options de configuration du moteur de rendu HTML intégré
+
+#### Utilisation
+
+```ts twoslash {4-15} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    pageTypeOptions: {
+      html: {
+        sanitize: {
+          allowElements: [],
+          blockElements: [],
+          dropElements: [],
+          allowAttributes: {},
+          dropAttributes: {},
+          allowComponents: false,
+          allowCustomElements: false,
+          allowComments: false,
+        }
+      }
+    }
+  }
+})
+```
+
+## `dashboardConfig`
+
+`dashboardConfig` permet la personnalisation de la configuration du tableau de bord
+
+### Utilisation
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    dashboardConfig: {}
+  }
+})
+```
+
+### `dashboardEnabled`
+
+`dashboardEnabled` permet à l'utilisateur d'activer ou de désactiver le tableau de bord de StudioCMS tout en fournissant toutes les aides et utilitaires à ceux qui personnalisent leur configuration. Cela désactivera le tableau de bord et vous devrez gérer votre contenu via votre base de données
+
+#### Utilisation
+
+```ts twoslash {4} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    dashboardConfig: {
+      dashboardEnabled: true,
+    }
+  }
+})
+```
+
+### `inject404Route`
+
+`inject404Route` permet à l'utilisateur d'activer ou de désactiver la route 404 par défaut pour le tableau de bord
+
+#### Utilisation
+
+```ts twoslash {4} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    dashboardConfig: {
+      inject404Route: true,
+    }
+  }
+})
+```
+
+### `faviconURL`
+
+`faviconURL` permet à l'utilisateur de remplacer l'URL du favicon par défaut par une URL personnalisée
+
+#### Utilisation
+
+```ts twoslash {4} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    dashboardConfig: {
+      faviconURL: '/favicon.svg',
+    }
+  }
+})
+```
+
+### `dashboardRouteOverride`
+
+`dashboardRouteOverride` permet à l'utilisateur de modifier la route de base sur laquelle le tableau de bord est diffusé (par exemple, `/admin` au lieu de `/dashboard`)
+
+#### Utilisation
+
+```ts twoslash {4} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    dashboardConfig: {
+      dashboardRouteOverride: 'dashboard',
+    }
+  }
+})
+```
+
+### `versionCheck`
+
+`versionCheck` permet à l'utilisateur d'activer ou de désactiver la vérification de version du tableau de bord.
+
+Cela vérifiera la dernière version de StudioCMS et avertira l'utilisateur si une nouvelle version est disponible.
+
+#### Utilisation
+
+```ts twoslash {4} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    dashboardConfig: {
+      versionCheck: true,
+    }
+  }
+})
+```
+
+## `authConfig`
+
+`authConfig` permet la personnalisation de la configuration d'authentification
+
+### Utilisation
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    authConfig: {}
+  }
+})
+```
+
+### `enabled`
+
+Permet d'activer ou de désactiver la configuration d'authentification
+
+- **Type :** `boolean`
+- **Par défaut :** `true`
+
+#### Utilisation
+
+```ts twoslash {4} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    authConfig: {
+      enabled: true
+    }
+  }
+})
+```
+
+### `providers`
+
+Permet d'activer ou de désactiver les fournisseurs d'authentification
+
+Les fournisseurs suivants peuvent être configurés à partir d'ici : `github`, `discord`, `google`, `auth0` et `usernameAndPassword`.
+
+#### Utilisation
+
+```ts twoslash {4-13} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    authConfig: {
+      providers: {
+        github: false,
+        discord: false,
+        google: false,
+        auth0: false,
+        usernameAndPassword: true,
+        usernameAndPasswordConfig: {
+          allowUserRegistration: true
+        }
+      }
+    }
+  }
+})
+```
+
+## `developerConfig`
+
+`developerConfig` permet la personnalisation des options du développeur
+
+### Utilisation
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    developerConfig: {}
+  }
+})
+```
+
+### `demoMode`
+
+Active le mode démo pour le site. Si ce paramètre est défini sur un objet, le site sera en mode démo et l'utilisateur pourra se connecter avec le nom d'utilisateur et le mot de passe fournis.
+
+#### Utilisation
+
+```ts twoslash {4-7} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    developerConfig: {
+      demoMode: {
+        username: 'foo',
+        password: 'bar'
+      }
+    }
+  }
+})
+```
+
+## `preferredImageService`
+
+`preferredImageService` permet de définir l'identifiant du service d'images préféré
+
+Nécessite l'installation d'un service d'image tel que `cloudinary-js`
+
+- **Type :** `string` | `undefined`
+- **Par défaut :** `undefined`
+
+### Utilisation
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    preferredImageService: undefined
+  }
+})
+```
