@@ -39,7 +39,8 @@ The StudioCMS integration provides several [virtual modules](https://vite.dev/gu
 - **`studiocms:components/Editors`**: Provides the Editor components for Page Editing.
 - **`studiocms:components/dashboard-grid-components`**: Internal components used by the StudioCMS Dashboard.
 - **`studiocms:components/dashboard-grid-items`**: Internal components used by the StudioCMS Dashboard.
-- **`studiocms:component-proxy`**: Provides the component proxy for User-defined components in StudioCMS.
+- **`studiocms:component-registry`**: Provides the component registry for User-defined components in StudioCMS.
+- **`studiocms:component-registry/runtime`**: Provides the runtime utils for the component registry for User-defined components in StudioCMS.
 - **`studiocms:lib`**: Provides the StudioCMS library helpers for StudioCMS.
 
 ### SDK Virtual Modules
@@ -54,9 +55,6 @@ The StudioCMS integration provides several [virtual modules](https://vite.dev/gu
 ### Renderer Virtual Modules
 
 - **`studiocms:renderer`**: Provides the StudioCMS renderer for StudioCMS.
-- **`studiocms:renderer/config`**: Provides the StudioCMS renderer configuration for StudioCMS.
-- **`studiocms:renderer/current`**: Provides the StudioCMS renderer current for StudioCMS.
-- **`studiocms:renderer/markdown-remark/css`**: Provides the StudioCMS renderer markdown-remark css for StudioCMS.
 
 ### ImageHandler Virtual Modules
 
@@ -112,14 +110,8 @@ The Routes that the StudioCMS Dashboard uses to interact with the StudioCMS inte
 - **`/studiocms_api/auth/login`**: The StudioCMS API login endpoint.
 - **`/studiocms_api/auth/logout`**: The StudioCMS API logout endpoint.
 - **`/studiocms_api/auth/register`**: The StudioCMS API register endpoint.
-- **`/studiocms_api/auth/github`**: The StudioCMS API GitHub endpoint.
-- **`/studiocms_api/auth/github/callback`**: The StudioCMS API GitHub callback endpoint.
-- **`/studiocms_api/auth/discord`**: The StudioCMS API Discord endpoint.
-- **`/studiocms_api/auth/discord/callback`**: The StudioCMS API Discord callback endpoint.
-- **`/studiocms_api/auth/google`**: The StudioCMS API Google endpoint.
-- **`/studiocms_api/auth/google/callback`**: The StudioCMS API Google callback endpoint.
-- **`/studiocms_api/auth/auth0`**: The StudioCMS API Auth0 endpoint.
-- **`/studiocms_api/auth/auth0/callback`**: The StudioCMS API Auth0 callback endpoint.
+- **`/studiocms_api/auth/[provider]`**: The StudioCMS API auth provider endpoint, where `[provider]` is the name of the provider (e.g. `github`, `discord`, `google`, `auth0`).
+- **`/studiocms_api/auth/[provider]/callback`**: The StudioCMS API auth provider callback endpoint, where `[provider]` is the name of the provider (e.g. `github`, `discord`, `google`, `auth0`).
 
 #### SDK Routes
 

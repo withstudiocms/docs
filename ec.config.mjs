@@ -1,6 +1,7 @@
 import { defineEcConfig } from '@astrojs/starlight/expressive-code';
 import { transformerColorizedBrackets } from '@shikijs/colorized-brackets';
 import ecTwoSlash from 'expressive-code-twoslash';
+import ts from 'typescript';
 
 export default defineEcConfig({
 	shiki: {
@@ -11,17 +12,13 @@ export default defineEcConfig({
 		ecTwoSlash({
 			twoslashOptions: {
 				handbookOptions: {
-					errors: [2353, 2339],
+					errors: [2353, 2339, 2307, 2379],
 				},
 				compilerOptions: {
-					strict: true,
-					moduleResolution: 100,
-					target: 99,
-					exactOptionalPropertyTypes: true,
-					downlevelIteration: true,
-					skipLibCheck: true,
-					lib: ['ES2022', 'DOM', 'DOM.Iterable', 'dom'],
-					noEmit: true,
+					moduleResolution: ts.ModuleResolutionKind.Bundler,
+					target: ts.ScriptTarget.ESNext,
+					module: ts.ModuleKind.ESNext,
+					lib: ['esnext', 'dom'],
 				},
 			},
 		}),

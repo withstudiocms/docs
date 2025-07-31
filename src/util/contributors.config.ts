@@ -24,10 +24,6 @@ export const contributorConfig = (Astro: AstroGlobal): ContributorConfig[] => [
 					// OLD Paths
 					'packages/studioCMS/',
 					'playgrounds/node/',
-					// NEW Paths
-					'README.md',
-					'playground/',
-					'packages/studiocms/',
 					'packages/studiocms_assets/',
 					'packages/studiocms_auth/',
 					'packages/studiocms_betaresources/',
@@ -37,6 +33,10 @@ export const contributorConfig = (Astro: AstroGlobal): ContributorConfig[] => [
 					'packages/studiocms_imagehandler/',
 					'packages/studiocms_renderers/',
 					'packages/studiocms_robotstxt/',
+					// NEW Paths
+					'README.md',
+					'playground/',
+					'packages/studiocms/',
 				],
 			},
 		],
@@ -61,7 +61,12 @@ export const contributorConfig = (Astro: AstroGlobal): ContributorConfig[] => [
 			{
 				repo: 'withstudiocms/studiocms',
 				type: 'byPath',
-				paths: ['packages/studiocms_devapps/'],
+				paths: [
+					// OLD Paths
+					'packages/studiocms_devapps/', 
+					// NEW Paths
+					'packages/@studiocms/devapps/'
+				],
 			},
 		],
 	},
@@ -74,10 +79,16 @@ export const contributorConfig = (Astro: AstroGlobal): ContributorConfig[] => [
 				paths: [
 					// OLD Paths
 					'packages/studioCMSBlog/',
-					// NEW Paths
 					'packages/studiocms_blog/',
 					'packages/studiocms_mdx/',
 					'packages/studiocms_markdoc/',
+					// NEW Paths
+					'packages/@studiocms/blog/',
+					'packages/@studiocms/mdx/',
+					'packages/@studiocms/markdoc/',
+					'packages/@studiocms/md/',
+					'packages/@studiocms/html/',
+					'packages/@studiocms/cloudinary-image-service/'
 				],
 			},
 		],

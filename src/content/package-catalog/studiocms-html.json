@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@studiocms/html",
+  "description": "StudioCMS HTML plugin, Provides HTML Support for StudioCMS.",
+  "docsLink": "/package-catalog/studiocms-plugins/studiocms-html/",
+  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/@studiocms/html/",
+  "catalog": "studiocms",
+  "isPlugin": true,
+  "released": true
+}

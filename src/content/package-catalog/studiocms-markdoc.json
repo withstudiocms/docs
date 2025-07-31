@@ -3,7 +3,7 @@
   "name": "@studiocms/markdoc",
   "description": "StudioCMS MarkDoc plugin, Provides MarkDoc Support for StudioCMS.",
   "docsLink": "/package-catalog/studiocms-plugins/studiocms-markdoc/",
-  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/studiocms_markdoc/",
+  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/@studiocms/markdoc/",
   "catalog": "studiocms",
   "isPlugin": true
 }

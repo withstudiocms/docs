@@ -4,6 +4,8 @@ const config: KnipConfig = {
 	ignoreDependencies: [
 		'@studiocms/blog',
 		'@studiocms/devapps',
+		'@studiocms/html',
+		'@studiocms/md',
 		'@studiocms/mdx',
 		'@studiocms/markdoc',
 		'@studiocms/wysiwyg',

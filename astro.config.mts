@@ -291,10 +291,25 @@ export default defineConfig({
 										collapsed: true,
 									},
 									{
+										label: '@studiocms/md',
+										autogenerate: { directory: 'typedoc/studiocms-md' },
+										collapsed: true,
+									},
+									{
+										label: '@studiocms/html',
+										autogenerate: { directory: 'typedoc/studiocms-html' },
+										collapsed: true,
+									},
+									{
 										label: '@studiocms/mdx',
 										autogenerate: { directory: 'typedoc/studiocms-mdx' },
 										collapsed: true,
 									},
+									{
+										label: '@withstudiocms/config-utils',
+										autogenerate: { directory: 'typedoc/withstudiocms-config-utils' },
+										collapsed: true,
+									}
 								],
 							},
 						],

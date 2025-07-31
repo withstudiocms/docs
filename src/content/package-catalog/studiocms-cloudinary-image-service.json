@@ -3,7 +3,7 @@
   "name": "@studiocms/cloudinary-image-service",
   "description": "Cloudinary Image Service For StudioCMS",
   "docsLink": "/package-catalog/studiocms-plugins/studiocms-cloudinary-js/",
-  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/studiocms_cloudinary-image-service/",
+  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/@studiocms/cloudinary-image-service/",
   "catalog": "studiocms",
   "isPlugin": true,
   "released": true

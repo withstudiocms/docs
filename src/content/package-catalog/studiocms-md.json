@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@studiocms/md",
+  "description": "StudioCMS MD plugin, Provides MD Support for StudioCMS.",
+  "docsLink": "/package-catalog/studiocms-plugins/studiocms-md/",
+  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/@studiocms/md/",
+  "catalog": "studiocms",
+  "isPlugin": true,
+  "released": true
+}

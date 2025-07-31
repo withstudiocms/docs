@@ -45,6 +45,7 @@ export function makeTypedocOpts(o: {
 
 // studiocms
 const tdStudioCMS = createStarlightTypeDocPlugin()[0];
+
 // @studiocms/devapps
 const tdDevApps = createStarlightTypeDocPlugin()[0];
 // @studiocms/blog
@@ -55,6 +56,13 @@ const tdMarkDoc = createStarlightTypeDocPlugin()[0];
 const tdMDX = createStarlightTypeDocPlugin()[0];
 // @studiocms/cloudinary-image-service
 const tdCloudinaryPlugin = createStarlightTypeDocPlugin()[0];
+// @studiocms/md
+const tdMD = createStarlightTypeDocPlugin()[0];
+// @studiocms/html
+const tdHTML = createStarlightTypeDocPlugin()[0];
+
+// @withstudiocms/config-utils
+const tdConfigUtils = createStarlightTypeDocPlugin()[0];
 
 // Set to true to enable testing mode for TypeDoc
 const testTypeDoc = false;
@@ -145,9 +153,6 @@ const TypeDocPlugins = (isProd: boolean, testingMode: boolean): StarlightPlugin[
 						getFilePathToPackage('studiocms', 'src/lib/notifier/client.ts'),
 						getFilePathToPackage('studiocms', 'src/lib/notifier/index.ts'),
 						getFilePathToPackage('studiocms', 'src/lib/renderer/errors.ts'),
-						getFilePathToPackage('studiocms', 'src/lib/renderer/runtime.ts'),
-						getFilePathToPackage('studiocms', 'src/lib/renderer/shared.ts'),
-						getFilePathToPackage('studiocms', 'src/lib/renderer/types.ts'),
 						getFilePathToPackage('studiocms', 'src/lib/robots/index.ts'),
 						getFilePathToPackage('studiocms', 'src/lib/robots/core.ts'),
 						getFilePathToPackage('studiocms', 'src/lib/robots/types.ts'),
@@ -217,10 +222,6 @@ const TypeDocPlugins = (isProd: boolean, testingMode: boolean): StarlightPlugin[
 						getFilePathToPackage('studiocms', 'src/utils/changelog.ts'),
 						getFilePathToPackage('studiocms', 'src/utils/changelogLoader.ts'),
 						getFilePathToPackage('studiocms', 'src/utils/checkENV.ts'),
-						getFilePathToPackage('studiocms', 'src/utils/configManager.ts'),
-						getFilePathToPackage('studiocms', 'src/utils/configResolver.ts'),
-						getFilePathToPackage('studiocms', 'src/utils/convert-hyphens.ts'),
-						getFilePathToPackage('studiocms', 'src/utils/defineStudioCMSConfig.ts'),
 						getFilePathToPackage('studiocms', 'src/utils/dynamicResult.ts'),
 						getFilePathToPackage('studiocms', 'src/utils/getLabelForPermissionLevel.ts'),
 						getFilePathToPackage('studiocms', 'src/utils/getLatestVersion.ts'),
@@ -236,6 +237,14 @@ const TypeDocPlugins = (isProd: boolean, testingMode: boolean): StarlightPlugin[
 						getFilePathToPackage('studiocms', 'src/utils/safeString.ts'),
 						getFilePathToPackage('studiocms', 'src/utils/tryCatch.ts'),
 						getFilePathToPackage('studiocms', 'src/utils/validImages.ts'),
+						getFilePathToPackage('studiocms', 'src/componentRegistry/convert-hyphens.ts'),
+						getFilePathToPackage('studiocms', 'src/componentRegistry/errors.ts'),
+						getFilePathToPackage('studiocms', 'src/componentRegistry/handler.ts'),
+						getFilePathToPackage('studiocms', 'src/componentRegistry/index.ts'),
+						getFilePathToPackage('studiocms', 'src/componentRegistry/PropsParser.ts'),
+						getFilePathToPackage('studiocms', 'src/componentRegistry/Registry.ts'),
+						getFilePathToPackage('studiocms', 'src/componentRegistry/runtime.ts'),
+						getFilePathToPackage('studiocms', 'src/componentRegistry/types.ts')
 					],
 				})
 			),
@@ -243,21 +252,21 @@ const TypeDocPlugins = (isProd: boolean, testingMode: boolean): StarlightPlugin[
 				makeTypedocOpts({
 					name: '@studiocms/devapps',
 					output: 'studiocms-devapps',
-					dir: 'studiocms_devapps',
+					dir: '@studiocms/devapps',
 					entryPoints: [
-						getFilePathToPackage('studiocms_devapps', 'src/index.ts'),
-						getFilePathToPackage('studiocms_devapps', 'src/apps/libsql-viewer.ts'),
-						getFilePathToPackage('studiocms_devapps', 'src/apps/wp-importer.ts'),
-						getFilePathToPackage('studiocms_devapps', 'src/routes/wp-importer.ts'),
-						getFilePathToPackage('studiocms_devapps', 'src/schema/index.ts'),
-						getFilePathToPackage('studiocms_devapps', 'src/utils/app-utils.ts'),
-						getFilePathToPackage('studiocms_devapps', 'src/utils/pathGenerator.ts'),
-						getFilePathToPackage('studiocms_devapps', 'src/effects/wpImporter.ts'),
-						getFilePathToPackage('studiocms_devapps', 'src/effects/WordPressAPI/configs.ts'),
-						getFilePathToPackage('studiocms_devapps', 'src/effects/WordPressAPI/converters.ts'),
-						getFilePathToPackage('studiocms_devapps', 'src/effects/WordPressAPI/importers.ts'),
-						getFilePathToPackage('studiocms_devapps', 'src/effects/WordPressAPI/schema.ts'),
-						getFilePathToPackage('studiocms_devapps', 'src/effects/WordPressAPI/utils.ts'),
+						getFilePathToPackage('@studiocms/devapps', 'src/index.ts'),
+						getFilePathToPackage('@studiocms/devapps', 'src/apps/libsql-viewer.ts'),
+						getFilePathToPackage('@studiocms/devapps', 'src/apps/wp-importer.ts'),
+						getFilePathToPackage('@studiocms/devapps', 'src/routes/wp-importer.ts'),
+						getFilePathToPackage('@studiocms/devapps', 'src/schema/index.ts'),
+						getFilePathToPackage('@studiocms/devapps', 'src/utils/app-utils.ts'),
+						getFilePathToPackage('@studiocms/devapps', 'src/utils/pathGenerator.ts'),
+						getFilePathToPackage('@studiocms/devapps', 'src/effects/wpImporter.ts'),
+						getFilePathToPackage('@studiocms/devapps', 'src/effects/WordPressAPI/configs.ts'),
+						getFilePathToPackage('@studiocms/devapps', 'src/effects/WordPressAPI/converters.ts'),
+						getFilePathToPackage('@studiocms/devapps', 'src/effects/WordPressAPI/importers.ts'),
+						getFilePathToPackage('@studiocms/devapps', 'src/effects/WordPressAPI/schema.ts'),
+						getFilePathToPackage('@studiocms/devapps', 'src/effects/WordPressAPI/utils.ts'),
 					],
 				})
 			),
@@ -265,10 +274,10 @@ const TypeDocPlugins = (isProd: boolean, testingMode: boolean): StarlightPlugin[
 				makeTypedocOpts({
 					name: '@studiocms/blog',
 					output: 'studiocms-blog',
-					dir: 'studiocms_blog',
+					dir: '@studiocms/blog',
 					entryPoints: [
-						getFilePathToPackage('studiocms_blog', 'src/index.ts'),
-						getFilePathToPackage('studiocms_blog', 'src/types.ts'),
+						getFilePathToPackage('@studiocms/blog', 'src/index.ts'),
+						getFilePathToPackage('@studiocms/blog', 'src/types.ts'),
 					],
 				})
 			),
@@ -276,13 +285,13 @@ const TypeDocPlugins = (isProd: boolean, testingMode: boolean): StarlightPlugin[
 				makeTypedocOpts({
 					name: '@studiocms/markdoc',
 					output: 'studiocms-markdoc',
-					dir: 'studiocms_markdoc',
+					dir: '@studiocms/markdoc',
 					entryPoints: [
-						getFilePathToPackage('studiocms_markdoc', 'src/index.ts'),
-						getFilePathToPackage('studiocms_markdoc', 'src/types.ts'),
-						getFilePathToPackage('studiocms_markdoc', 'src/lib/render.ts'),
-						getFilePathToPackage('studiocms_markdoc', 'src/lib/shared.ts'),
-						getFilePathToPackage('studiocms_markdoc', 'src/react-renderer/renderReact.ts'),
+						getFilePathToPackage('@studiocms/markdoc', 'src/index.ts'),
+						getFilePathToPackage('@studiocms/markdoc', 'src/types.ts'),
+						getFilePathToPackage('@studiocms/markdoc', 'src/lib/render.ts'),
+						getFilePathToPackage('@studiocms/markdoc', 'src/lib/shared.ts'),
+						getFilePathToPackage('@studiocms/markdoc', 'src/react-renderer/renderReact.ts'),
 					],
 				})
 			),
@@ -290,12 +299,37 @@ const TypeDocPlugins = (isProd: boolean, testingMode: boolean): StarlightPlugin[
 				makeTypedocOpts({
 					name: '@studiocms/mdx',
 					output: 'studiocms-mdx',
-					dir: 'studiocms_mdx',
+					dir: '@studiocms/mdx',
 					entryPoints: [
-						getFilePathToPackage('studiocms_mdx', 'src/index.ts'),
-						getFilePathToPackage('studiocms_mdx', 'src/types.ts'),
-						getFilePathToPackage('studiocms_mdx', 'src/lib/render.ts'),
-						getFilePathToPackage('studiocms_mdx', 'src/lib/shared.ts'),
+						getFilePathToPackage('@studiocms/mdx', 'src/index.ts'),
+						getFilePathToPackage('@studiocms/mdx', 'src/types.ts'),
+						getFilePathToPackage('@studiocms/mdx', 'src/lib/render.ts'),
+						getFilePathToPackage('@studiocms/mdx', 'src/lib/shared.ts'),
+					],
+				})
+			),
+			tdMD(
+				makeTypedocOpts({
+					name: '@studiocms/md',
+					output: 'studiocms-md',
+					dir: '@studiocms/md',
+					entryPoints: [
+						getFilePathToPackage('@studiocms/md', 'src/index.ts'),
+						getFilePathToPackage('@studiocms/md', 'src/types.ts'),
+						getFilePathToPackage('@studiocms/md', 'src/lib/markdown-prerender.ts'),
+						getFilePathToPackage('@studiocms/md', 'src/lib/shared.ts'),
+					],
+				})
+			),
+			tdHTML(
+				makeTypedocOpts({
+					name: '@studiocms/html',
+					output: 'studiocms-html',
+					dir: '@studiocms/html',
+					entryPoints: [
+						getFilePathToPackage('@studiocms/html', 'src/index.ts'),
+						getFilePathToPackage('@studiocms/html', 'src/types.ts'),
+						getFilePathToPackage('@studiocms/html', 'src/lib/shared.ts'),
 					],
 				})
 			),
@@ -303,14 +337,32 @@ const TypeDocPlugins = (isProd: boolean, testingMode: boolean): StarlightPlugin[
 				makeTypedocOpts({
 					name: '@studiocms/cloudinary-image-service',
 					output: 'studiocms-cloudinary-image-service',
-					dir: 'studiocms_cloudinary-image-service',
+					dir: '@studiocms/cloudinary-image-service',
 					entryPoints: [
-						getFilePathToPackage('studiocms_cloudinary-image-service', 'src/index.ts'),
-						getFilePathToPackage('studiocms_cloudinary-image-service', 'src/cloudinary-js-service.ts'),
-						getFilePathToPackage('studiocms_cloudinary-image-service', 'src/utils/readJson.ts')
+						getFilePathToPackage('@studiocms/cloudinary-image-service', 'src/index.ts'),
+						getFilePathToPackage('@studiocms/cloudinary-image-service', 'src/cloudinary-js-service.ts'),
+						getFilePathToPackage('@studiocms/cloudinary-image-service', 'src/utils/readJson.ts')
 					]
 				})
-			)
+			),
+			tdConfigUtils(
+				makeTypedocOpts({
+					name: '@withstudiocms/config-utils',
+					output: 'withstudiocms-config-utils',
+					dir: '@withstudiocms/config-utils',
+					entryPoints: [
+						getFilePathToPackage('@withstudiocms/config-utils', 'src/astro-integration-utils.ts'),
+						getFilePathToPackage('@withstudiocms/config-utils', 'src/index.ts'),
+						getFilePathToPackage('@withstudiocms/config-utils', 'src/loader.ts'),
+						getFilePathToPackage('@withstudiocms/config-utils', 'src/types.ts'),
+						getFilePathToPackage('@withstudiocms/config-utils', 'src/watcher.ts'),
+						getFilePathToPackage('@withstudiocms/config-utils', 'src/zod-utils.ts'),
+						getFilePathToPackage('@withstudiocms/config-utils', 'src/utils/dynamicResult.ts'),
+						getFilePathToPackage('@withstudiocms/config-utils', 'src/utils/index.ts'),
+						getFilePathToPackage('@withstudiocms/config-utils', 'src/utils/tryCatch.ts'),
+					],
+				})
+			),
 		];
 	}
 	return [] as StarlightPlugin[];
