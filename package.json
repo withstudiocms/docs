@@ -22,25 +22,26 @@
     "gen-changelogs": "tsm --require=./scripts/filter-warnings.cjs ./scripts/generate-release-notes.ts"
   },
   "dependencies": {
-    "studiocms": "0.1.0-beta.19",
-    "@studiocms/blog": "0.1.0-beta.19",
-    "@studiocms/devapps": "0.1.0-beta.19",
-    "@studiocms/mdx": "0.1.0-beta.19",
-    "@studiocms/markdoc": "0.1.0-beta.19",
-    "@studiocms/cloudinary-image-service": "0.1.0-beta.19",
-    "@studiocms/ui": "^0.4.16",
-    "@studiocms/wysiwyg": "^0.1.0-experimental.4",
-    "@studiocms/web-vitals": "^4.1.0",
+    "studiocms": "https://pkg.pr.new/withstudiocms/studiocms@35664a7",
+    "@studiocms/blog": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@35664a7",
+    "@studiocms/cloudinary-image-service": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@35664a7",
+    "@studiocms/devapps": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@35664a7",
+    "@studiocms/html": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/html@35664a7",
+    "@studiocms/markdoc": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@35664a7",
+    "@studiocms/md": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@35664a7",
+    "@studiocms/mdx": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@35664a7",
+    "@studiocms/ui": "^0.4.17",
+    "@studiocms/wysiwyg": "^0.1.0-experimental.5",
+    "@studiocms/web-vitals": "^4.2.1",
     "@actions/core": "^1.11.1",
-    "astro": "^5.11",
+    "astro": "^5.12.6",
     "@astrojs/check": "^0.9.4",
-    "@astrojs/starlight": "^0.34.0",
-    "@astrojs/db": "^0.15",
-    "@astrojs/node": "^9.2.0",
-    "@astrojs/web-vitals": "^4.0.0",
-    "@astrojs/react": "^4.2.4",
+    "@astrojs/starlight": "^0.35.2",
+    "@astrojs/db": "^0.15.1",
+    "@astrojs/node": "^9.3.1",
+    "@astrojs/react": "^4.3.0",
     "sharp": "^0.33.5",
-    "typescript": "^5.8.2",
+    "typescript": "^5.8.3",
     "astro-integration-kit": "^0.18.0",
     "knip": "^5.46.0",
     "tsm": "^2.3.0",
@@ -81,5 +82,11 @@
     "mdast-util-to-string": "^4.0.0",
     "semver": "^7.7.1",
     "@types/semver": "^7.7.0"
+  },
+  "__pnpmOverridesNote": "This is a version fix to lock all installations of vite to the same version, as it is a peer dependency of many of the packages we use.",
+  "pnpm": {
+    "overrides": {
+      "vite": "^6.3.4"
+    }
   }
 }

@@ -30,7 +30,7 @@ const pagesEffect = Effect.gen(function* () {
 
  // then do something with the SDK
  return yield* sdk.GET.pages()
-}).pipe(Effect.provide(SDKCore.Default));
+});
 
 // Convert the Effect into a JS/TS "program"
 const pagesResult1 = await runSDK(pagesEffect);

@@ -1,0 +1,78 @@
+---
+i18nReady: true
+title: "@studiocms/md"
+type: integration
+catalogEntry: studiocms-md
+description: "StudioCMS MD Integration"
+sidebar:
+  badge: 
+    text: 'Plugin'
+    variant: 'tip'
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# Introduction
+
+This plugin enables MD Support within StudioCMS.
+
+## Installation
+
+1. Install the package using the following command:
+
+   <PackageManagers pkg="studiocms" type='run' args='add @studiocms/md' />
+
+2. Your StudioCMS config should now include `@studiocms/md`:
+
+   ```ts twoslash title="studiocms.config.mjs" {2, 6}
+   import { defineStudioCMSConfig } from 'studiocms/config';
+   import md from '@studiocms/md';
+
+    export default defineStudioCMSConfig({
+      plugins: [
+        md(),
+      ],
+    });
+   ```
+
+## Options
+
+### `studiocms` Flavored Markdown
+
+```ts twoslash
+const mdOptions = {
+  flavor: 'studiocms',
+  callouts: 'obsidian',
+  autoLinkHeadings: true,
+  discordSubtext: true,
+  sanitize: {
+    allowElements: [],
+    blockElements: [],
+    dropElements: [],
+    allowAttributes: {},
+    dropAttributes: {},
+    allowComponents: false,
+    allowCustomElements: false,
+    allowComments: false,
+  }
+}
+```
+
+### `astro` Flavored Markdown
+
+```ts twoslash
+const mdOptions = {
+  flavor: 'astro',
+  sanitize: {
+    allowElements: [],
+    blockElements: [],
+    dropElements: [],
+    allowAttributes: {},
+    dropAttributes: {},
+    allowComponents: false,
+    allowCustomElements: false,
+    allowComments: false,
+  }
+}
+```

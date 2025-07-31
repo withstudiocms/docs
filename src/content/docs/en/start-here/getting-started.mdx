@@ -4,11 +4,14 @@ title: Getting Started
 description: Get started building with StudioCMS.
 sidebar:
    order: 1
+   badge:
+     text: Updated
+     variant: success
 ---
 
 import { PackageManagers } from 'starlight-package-managers'
 import TursoCLI from '~/components/TursoCLI.astro';
-import { Aside, Steps, Tabs, TabItem, LinkCard } from '@astrojs/starlight/components';
+import { Aside, Steps, Tabs, TabItem, LinkCard, Badge } from '@astrojs/starlight/components';
 import ReadMore from '~/components/ReadMore.astro';
 import { sponsors, SponsorLink } from '~/share-link'
 
@@ -215,6 +218,33 @@ Please note that the `site` option in the `astro.config.mjs` file is required fo
 <Aside type="note" title="Adapter Required">
 StudioCMS requires an [Astro Adapter](https://docs.astro.build/en/guides/on-demand-rendering/#server-adapters) to work correctly. Make sure to set an adapter that supports SSR Routes in your `astro.config.mjs` file.
 </Aside>
+
+## Configure StudioCMS rendering <Badge text='Added in beta.22' variant='success' />
+
+StudioCMS requires at least one of the following rendering plugins to be installed and configured within your StudioCMS project:
+
+- `@studiocms/html` - for HTML rendering
+- `@studiocms/md` - for Markdown rendering
+- `@studiocms/mdx` - for MDX rendering
+- `@studiocms/markdoc` - for MarkDoc rendering
+- Or any other community plugin that supports rendering content in StudioCMS.
+
+Any of these plugins can be used to render content in StudioCMS. You can use one or more of these plugins in your project, depending on your needs. They can be installed and configured using the StudioCMS config file or the Astro config file.
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+import html from '@studiocms/html';
+import md from '@studiocms/md';
+
+export default defineStudioCMSConfig({
+    plugins: [
+        html(),
+        md(),
+    ],
+});
+```
+
+<ReadMore>For more information about the available rendering plugins see, [Package Catalog][package-catalog]</ReadMore>
 
 ## Configure authentication
 
