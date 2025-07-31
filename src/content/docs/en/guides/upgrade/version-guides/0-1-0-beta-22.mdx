@@ -24,6 +24,7 @@ import { Aside } from '@astrojs/starlight/components'
 - `importComponentKeys` has been carried over but deprecated in favor for the new `getRendererComponents` function.
 - All internal base included pageTypes have been removed, allowing even more flexibility when it comes to how studiocms works for the user. This change also means that you will be required to install at least one rendering plugin for studiocms.
 - The `@studiocms/html` and `@studiocms/md` plugins have been introduced to handle HTML and MD support respectively. See the [HTML Plugin][studiocms-html] and [MD Plugin][studiocms-md] documentation for more details.
+  - If you were using the `studiocms/markdown` or `studiocms/html` pageTypes, you will need to install the respective plugin and update your configuration accordingly.
 - Remove Deprecated SDK functions and refactor SDK to make it easier to modify/read.
 - Remove previously deprecated functions and old password hashing system.
 
