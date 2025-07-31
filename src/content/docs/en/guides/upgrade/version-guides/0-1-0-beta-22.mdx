@@ -18,10 +18,30 @@ import { Aside } from '@astrojs/starlight/components'
 
 ## Breaking Changes
 
+- Remove deprecated @astrojs/web-vitals support in favor of new @studiocms/web-vitals package. See the [Web Vitals Guide][web-vitals-guide] for more information.
+- `studiocms:component-proxy` has been replaced by `studiocms:component-registry`.
+- Added `studiocms:component-registry/runtime` virtual module which exports types, and the following helpers, `getRegistryComponents` and `getRendererComponents` used for getting Components with props, and the renderer components respectively.
+- `importComponentKeys` has been carried over but deprecated in favor for the new `getRendererComponents` function.
+- All internal base included pageTypes have been removed, allowing even more flexibility when it comes to how studiocms works for the user. This change also means that you will be required to install at least one rendering plugin for studiocms.
+- The `@studiocms/html` and `@studiocms/md` plugins have been introduced to handle HTML and MD support respectively. See the [HTML Plugin][studiocms-html] and [MD Plugin][studiocms-md] documentation for more details.
+- Remove Deprecated SDK functions and refactor SDK to make it easier to modify/read.
+- Remove previously deprecated functions and old password hashing system.
+
 ## New Features
 
+- Markdown and HTML page types have been modularized into separate plugins.
+- Added a new configuration utilities package for improved configuration management.
+- Refactored component registry and SDK for improved maintainability and easier modification.
+- OAuth endpoints streamlined for better authentication handling.
+- New `componentRegistry` system for handling user-defined components, allowing for more flexibility in how components are registered and used within StudioCMS.
+
 ## Bug fixes
+
+- Add support for the SDK folder getter to get by name or ID instead of just ID, and add jsdoc comments to missing functions for the SDK.
+- Fix: Correct exports for components, layouts, and add export for styles
 
 {/* Links */}
 [config-doc]: /en/config-reference/
 [web-vitals-guide]: /en/package-catalog/community-plugins/web-vitals/
+[studiocms-html]: /en/package-catalog/studiocms-plugins/studiocms-html/
+[studiocms-md]: /en/package-catalog/studiocms-plugins/studiocms-md/
