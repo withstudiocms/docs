@@ -81,7 +81,8 @@
     "mdast-util-from-markdown": "^2.0.2",
     "mdast-util-to-string": "^4.0.0",
     "semver": "^7.7.1",
-    "@types/semver": "^7.7.0"
+    "@types/semver": "^7.7.0",
+    "@types/node": "^24.1.0"
   },
   "__pnpmOverridesNote": "This is a version fix to lock all installations of vite to the same version, as it is a peer dependency of many of the packages we use.",
   "pnpm": {

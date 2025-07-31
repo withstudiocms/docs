@@ -25,13 +25,13 @@ importers:
         version: 0.15.1
       '@astrojs/node':
         specifier: ^9.3.1
-        version: 9.3.1(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+        version: 9.3.1(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       '@astrojs/react':
         specifier: ^4.3.0
-        version: 4.3.0(@types/node@22.13.5)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(jiti@2.4.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(terser@5.39.0)(yaml@2.7.0)
+        version: 4.3.0(@types/node@24.1.0)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(jiti@2.4.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(terser@5.39.0)(yaml@2.7.0)
       '@astrojs/starlight':
         specifier: ^0.35.2
-        version: 0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+        version: 0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       '@biomejs/biome':
         specifier: 1.9.4
         version: 1.9.4
@@ -52,34 +52,34 @@ importers:
         version: 3.2.1
       '@studiocms/blog':
         specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@35664a7
-        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@35664a7(v6tbqnf6efjfnfglbev75v7d3q)
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@35664a7(gvxza436rc4e4kouck5x7bryhi)
       '@studiocms/cloudinary-image-service':
         specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@35664a7
-        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@35664a7(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@35664a7(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       '@studiocms/devapps':
         specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@35664a7
-        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@35664a7(@astrojs/db@0.15.1)(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@35664a7(@astrojs/db@0.15.1)(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       '@studiocms/html':
         specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/html@35664a7
-        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/html@35664a7(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/html@35664a7(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       '@studiocms/markdoc':
         specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@35664a7
-        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@35664a7(a7236y3b3lhwxoekrgb3hyxtui)
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@35664a7(qsi5ukrkfe7sbdrun3t3e4y7dm)
       '@studiocms/md':
         specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@35664a7
-        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@35664a7(@astrojs/markdown-remark@6.3.3)(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@35664a7(@astrojs/markdown-remark@6.3.3)(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       '@studiocms/mdx':
         specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@35664a7
-        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@35664a7(xcnenz2ldkpzn2lgzg5lwzekfa)
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@35664a7(zshtr2ekcfzxmpgs4j7qw2balq)
       '@studiocms/ui':
         specifier: ^0.4.17
-        version: 0.4.17(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+        version: 0.4.17(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       '@studiocms/web-vitals':
         specifier: ^4.2.1
         version: 4.2.1(@astrojs/db@0.15.1)
       '@studiocms/wysiwyg':
         specifier: ^0.1.0-experimental.5
-        version: 0.1.0-experimental.5(@types/node@22.13.5)(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(typescript@5.8.3)(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+        version: 0.1.0-experimental.5(@types/node@24.1.0)(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(typescript@5.8.3)(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       '@types/hast':
         specifier: ^3.0.4
         version: 3.0.4
@@ -89,18 +89,21 @@ importers:
       '@types/mdast':
         specifier: ^4.0.4
         version: 4.0.4
+      '@types/node':
+        specifier: ^24.1.0
+        version: 24.1.0
       '@types/semver':
         specifier: ^7.7.0
         version: 7.7.0
       astro:
         specifier: ^5.12.6
-        version: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+        version: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
       astro-embed:
         specifier: ^0.9.0
-        version: 0.9.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+        version: 0.9.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       astro-integration-kit:
         specifier: ^0.18.0
-        version: 0.18.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+        version: 0.18.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       expressive-code-twoslash:
         specifier: ^0.5.3
         version: 0.5.3(@expressive-code/core@0.41.1)(expressive-code@0.41.1)(typescript@5.8.3)
@@ -118,7 +121,7 @@ importers:
         version: 3.0.3
       knip:
         specifier: ^5.46.0
-        version: 5.46.0(@types/node@22.13.5)(typescript@5.8.3)
+        version: 5.46.0(@types/node@24.1.0)(typescript@5.8.3)
       mdast-util-from-markdown:
         specifier: ^2.0.2
         version: 2.0.2
@@ -148,22 +151,22 @@ importers:
         version: 0.33.5
       starlight-image-zoom:
         specifier: ^0.12.0
-        version: 0.12.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)))
+        version: 0.12.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)))
       starlight-links-validator:
         specifier: ^0.16.0
-        version: 0.16.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)))
+        version: 0.16.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)))
       starlight-package-managers:
         specifier: ^0.11.0
-        version: 0.11.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)))
+        version: 0.11.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)))
       starlight-sidebar-topics:
         specifier: ^0.6.0
-        version: 0.6.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)))
+        version: 0.6.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)))
       starlight-typedoc:
         specifier: ^0.21.0
-        version: 0.21.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)))(typedoc-plugin-markdown@4.6.0(typedoc@0.28.1(typescript@5.8.3)))(typedoc@0.28.1(typescript@5.8.3))
+        version: 0.21.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)))(typedoc-plugin-markdown@4.6.0(typedoc@0.28.1(typescript@5.8.3)))(typedoc@0.28.1(typescript@5.8.3))
       studiocms:
         specifier: https://pkg.pr.new/withstudiocms/studiocms@35664a7
-        version: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+        version: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       tsm:
         specifier: ^2.3.0
         version: 2.3.0
@@ -2276,8 +2279,8 @@ packages:
   '@types/node@20.17.19':
     resolution: {integrity: sha512-LEwC7o1ifqg/6r2gn9Dns0f1rhK+fPFDoMiceTJ6kWmVk6bgXBI/9IOWfVan4WiAavK9pIVWdX0/e3J+eEUh5A==}
 
-  '@types/node@22.13.5':
-    resolution: {integrity: sha512-+lTU0PxZXn0Dr1NBtC7Y8cR21AJr87dLLU953CWA6pMxxv/UDc7jYAY90upcrie1nRcD6XNG5HOYEDtgW5TxAg==}
+  '@types/node@24.1.0':
+    resolution: {integrity: sha512-ut5FthK5moxFKH2T1CUOC6ctR67rQRvvHdFLCD2Ql6KXmMuCrjsSsRI9UsLCm9M18BMwClv4pn327UvB7eeO1w==}
 
   '@types/picomatch@3.0.2':
     resolution: {integrity: sha512-n0i8TD3UDB7paoMMxA3Y65vUncFJXjcUf7lQY7YyKGl6031FNjfsLs6pdLFCy2GNFxItPJG8GvvpbZc2skH7WA==}
@@ -6408,8 +6411,8 @@ packages:
   undici-types@6.19.8:
     resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
 
-  undici-types@6.20.0:
-    resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
+  undici-types@7.8.0:
+    resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
 
   undici@5.28.5:
     resolution: {integrity: sha512-zICwjrDrcrUE0pyyJc1I2QzBkLM8FINsgOrt6WjA+BgajVq9Nxu2PbFFXUrAggLfDXlZGZBVZYw7WNV5KiBiBA==}
@@ -7165,50 +7168,50 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@astro-community/astro-embed-baseline-status@0.1.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
+  '@astro-community/astro-embed-baseline-status@0.1.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
     dependencies:
       '@astro-community/astro-embed-utils': 0.1.3
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
 
-  '@astro-community/astro-embed-bluesky@0.1.3(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
+  '@astro-community/astro-embed-bluesky@0.1.3(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
     dependencies:
       '@atproto/api': 0.13.35
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
       ts-pattern: 5.6.2
 
-  '@astro-community/astro-embed-integration@0.8.1(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
+  '@astro-community/astro-embed-integration@0.8.1(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
     dependencies:
-      '@astro-community/astro-embed-bluesky': 0.1.3(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@astro-community/astro-embed-bluesky': 0.1.3(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       '@astro-community/astro-embed-link-preview': 0.2.2
-      '@astro-community/astro-embed-twitter': 0.5.8(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
-      '@astro-community/astro-embed-vimeo': 0.3.10(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
-      '@astro-community/astro-embed-youtube': 0.5.6(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@astro-community/astro-embed-twitter': 0.5.8(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@astro-community/astro-embed-vimeo': 0.3.10(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@astro-community/astro-embed-youtube': 0.5.6(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       '@types/unist': 2.0.11
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
-      astro-auto-import: 0.4.4(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro-auto-import: 0.4.4(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       unist-util-select: 4.0.3
 
   '@astro-community/astro-embed-link-preview@0.2.2':
     dependencies:
       '@astro-community/astro-embed-utils': 0.1.3
 
-  '@astro-community/astro-embed-twitter@0.5.8(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
+  '@astro-community/astro-embed-twitter@0.5.8(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
     dependencies:
       '@astro-community/astro-embed-utils': 0.1.3
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
 
   '@astro-community/astro-embed-utils@0.1.3':
     dependencies:
       linkedom: 0.14.26
 
-  '@astro-community/astro-embed-vimeo@0.3.10(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
+  '@astro-community/astro-embed-vimeo@0.3.10(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
     dependencies:
       '@astro-community/astro-embed-utils': 0.1.3
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
 
-  '@astro-community/astro-embed-youtube@0.5.6(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
+  '@astro-community/astro-embed-youtube@0.5.6(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
     dependencies:
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
       lite-youtube-embed: 0.3.3
 
   '@astrojs/check@0.9.4(typescript@5.8.3)':
@@ -7349,12 +7352,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.2.4(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
+  '@astrojs/mdx@4.2.4(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.1
       '@mdx-js/mdx': 3.1.0(acorn@8.14.1)
       acorn: 8.14.1
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
       es-module-lexer: 1.6.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -7368,10 +7371,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/node@9.3.1(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
+  '@astrojs/node@9.3.1(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
     dependencies:
       '@astrojs/internal-helpers': 0.6.1
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
       send: 1.2.0
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -7385,15 +7388,15 @@ snapshots:
     dependencies:
       prismjs: 1.30.0
 
-  '@astrojs/react@4.3.0(@types/node@22.13.5)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(jiti@2.4.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(terser@5.39.0)(yaml@2.7.0)':
+  '@astrojs/react@4.3.0(@types/node@24.1.0)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(jiti@2.4.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(terser@5.39.0)(yaml@2.7.0)':
     dependencies:
       '@types/react': 19.0.10
       '@types/react-dom': 19.0.4(@types/react@19.0.10)
-      '@vitejs/plugin-react': 4.7.0(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      '@vitejs/plugin-react': 4.7.0(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
       ultrahtml: 1.6.0
-      vite: 6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
+      vite: 6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -7419,17 +7422,17 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.24.2
 
-  '@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
+  '@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.3
-      '@astrojs/mdx': 4.2.4(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@astrojs/mdx': 4.2.4(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       '@astrojs/sitemap': 3.3.0
       '@pagefind/default-ui': 1.3.0
       '@types/hast': 3.0.4
       '@types/js-yaml': 4.0.9
       '@types/mdast': 4.0.4
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
-      astro-expressive-code: 0.41.1(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro-expressive-code: 0.41.1(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       bcp-47: 2.1.0
       hast-util-from-html: 2.0.3
       hast-util-select: 6.0.4
@@ -8652,31 +8655,31 @@ snapshots:
   '@img/sharp-win32-x64@0.33.5':
     optional: true
 
-  '@inox-tools/inline-mod@2.2.0(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
+  '@inox-tools/inline-mod@2.2.0(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
     dependencies:
       '@inox-tools/utils': 0.6.0
       debug: 4.4.1
       typescript: 5.8.3
     optionalDependencies:
-      vite: 6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
+      vite: 6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@inox-tools/modular-station@0.6.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
+  '@inox-tools/modular-station@0.6.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
     dependencies:
       '@inox-tools/utils': 0.6.0
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
-      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       debug: 4.4.1
     transitivePeerDependencies:
       - supports-color
 
-  '@inox-tools/runtime-logger@0.6.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
+  '@inox-tools/runtime-logger@0.6.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
     dependencies:
-      '@inox-tools/modular-station': 0.6.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@inox-tools/modular-station': 0.6.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       '@inox-tools/utils': 0.6.0
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
-      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
     transitivePeerDependencies:
       - supports-color
 
@@ -9207,42 +9210,42 @@ snapshots:
 
   '@standard-schema/spec@1.0.0': {}
 
-  '@studiocms/blog@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@35664a7(v6tbqnf6efjfnfglbev75v7d3q)':
+  '@studiocms/blog@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@35664a7(gvxza436rc4e4kouck5x7bryhi)':
     dependencies:
       '@astrojs/rss': 4.0.12
-      '@studiocms/md': https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@35664a7(@astrojs/markdown-remark@6.3.3)(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
-      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@studiocms/md': https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@35664a7(@astrojs/markdown-remark@6.3.3)(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       effect: 3.17.3
-      studiocms: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
-      vite: 6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      vite: 6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
 
-  '@studiocms/cloudinary-image-service@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@35664a7(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
+  '@studiocms/cloudinary-image-service@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@35664a7(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
     dependencies:
       '@cloudinary/url-gen': 1.21.0
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
-      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       effect: 3.17.3
-      studiocms: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
-      vite: 6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      vite: 6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
 
-  '@studiocms/devapps@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@35664a7(@astrojs/db@0.15.1)(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
+  '@studiocms/devapps@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@35664a7(@astrojs/db@0.15.1)(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
     dependencies:
       '@astrojs/db': 0.15.1
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
-      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       cheerio: 1.1.2
       effect: 3.17.3
       sanitize-html: 2.17.0
       turndown: 7.2.0
-      vite: 6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
+      vite: 6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
     optionalDependencies:
-      studiocms: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
 
-  '@studiocms/grapesjs-plugin@0.1.0(@types/node@22.13.5)(typescript@5.8.3)':
+  '@studiocms/grapesjs-plugin@0.1.0(@types/node@24.1.0)(typescript@5.8.3)':
     dependencies:
       grapesjs: 0.22.6
-      grapesjs-cli: 4.1.3(@types/node@22.13.5)(typescript@5.8.3)
+      grapesjs-cli: 4.1.3(@types/node@24.1.0)(typescript@5.8.3)
     transitivePeerDependencies:
       - '@rspack/core'
       - '@swc/core'
@@ -9260,30 +9263,30 @@ snapshots:
       - zen-observable
       - zenObservable
 
-  '@studiocms/html@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/html@35664a7(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
+  '@studiocms/html@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/html@35664a7(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
     dependencies:
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
-      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       codemirror: 5.65.19
       effect: 3.17.3
       katex: 0.16.22
-      studiocms: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       suneditor: 2.47.6
-      vite: 6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
+      vite: 6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
 
-  '@studiocms/markdoc@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@35664a7(a7236y3b3lhwxoekrgb3hyxtui)':
+  '@studiocms/markdoc@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@35664a7(qsi5ukrkfe7sbdrun3t3e4y7dm)':
     dependencies:
       '@markdoc/markdoc': 0.5.2(@types/react@19.0.10)(react@19.1.1)
-      '@studiocms/md': https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@35664a7(@astrojs/markdown-remark@6.3.3)(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
-      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@studiocms/md': https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@35664a7(@astrojs/markdown-remark@6.3.3)(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       effect: 3.17.3
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
-      studiocms: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
-      vite: 6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      vite: 6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
     optionalDependencies:
-      '@astrojs/react': 4.3.0(@types/node@22.13.5)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(jiti@2.4.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(terser@5.39.0)(yaml@2.7.0)
+      '@astrojs/react': 4.3.0(@types/node@24.1.0)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(jiti@2.4.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(terser@5.39.0)(yaml@2.7.0)
     transitivePeerDependencies:
       - '@types/react'
 
@@ -9319,63 +9322,63 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@studiocms/md@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@35664a7(@astrojs/markdown-remark@6.3.3)(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
+  '@studiocms/md@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@35664a7(@astrojs/markdown-remark@6.3.3)(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.3
       '@studiocms/markdown-remark-processor': 1.2.0
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
-      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       effect: 3.17.3
-      studiocms: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
-      vite: 6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      vite: 6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@studiocms/mdx@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@35664a7(xcnenz2ldkpzn2lgzg5lwzekfa)':
+  '@studiocms/mdx@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@35664a7(zshtr2ekcfzxmpgs4j7qw2balq)':
     dependencies:
       '@mdx-js/mdx': 3.1.0(acorn@8.14.0)
-      '@studiocms/md': https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@35664a7(@astrojs/markdown-remark@6.3.3)(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
-      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@studiocms/md': https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@35664a7(@astrojs/markdown-remark@6.3.3)(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(effect@3.17.3)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       effect: 3.17.3
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
       rehype-highlight: 7.0.2
       remark-gfm: 4.0.1
-      studiocms: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       unified: 11.0.5
-      vite: 6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
+      vite: 6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
     transitivePeerDependencies:
       - acorn
       - supports-color
 
-  '@studiocms/ui@0.4.17(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
+  '@studiocms/ui@0.4.17(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
     dependencies:
       '@iconify-json/heroicons': 1.2.2
       '@iconify/types': 2.0.0
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
-      astro-transition-event-polyfill: 1.1.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro-transition-event-polyfill: 1.1.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       pathe: 1.1.2
-      vite: 6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
+      vite: 6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
 
   '@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1)':
     dependencies:
       '@astrojs/db': 0.15.1
       web-vitals: 5.0.3
 
-  '@studiocms/wysiwyg@0.1.0-experimental.5(@types/node@22.13.5)(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(typescript@5.8.3)(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
+  '@studiocms/wysiwyg@0.1.0-experimental.5(@types/node@24.1.0)(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)))(typescript@5.8.3)(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
     dependencies:
       '@grapesjs/studio-sdk': 1.0.40(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@grapesjs/studio-sdk-plugins': 1.0.18
-      '@studiocms/grapesjs-plugin': 0.1.0(@types/node@22.13.5)(typescript@5.8.3)
-      '@studiocms/ui': 0.4.17(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
-      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@studiocms/grapesjs-plugin': 0.1.0(@types/node@24.1.0)(typescript@5.8.3)
+      '@studiocms/ui': 0.4.17(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       grapesjs: 0.22.6
-      studiocms: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       tui-image-editor: 3.15.3
       ultrahtml: 1.6.0
-      vite: 6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
+      vite: 6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
     transitivePeerDependencies:
       - '@rspack/core'
       - '@swc/core'
@@ -9447,20 +9450,20 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
 
   '@types/bonjour@3.5.13':
     dependencies:
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
 
   '@types/connect-history-api-fallback@1.5.4':
     dependencies:
       '@types/express-serve-static-core': 5.0.6
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
 
   '@types/debug@4.1.12':
     dependencies:
@@ -9486,14 +9489,14 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.6':
     dependencies:
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
       '@types/qs': 6.9.18
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
 
   '@types/express-serve-static-core@5.0.6':
     dependencies:
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
       '@types/qs': 6.9.18
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -9507,7 +9510,7 @@ snapshots:
 
   '@types/fontkit@2.0.8':
     dependencies:
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
 
   '@types/hast@3.0.4':
     dependencies:
@@ -9521,7 +9524,7 @@ snapshots:
 
   '@types/http-proxy@1.17.16':
     dependencies:
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
 
   '@types/jquery@3.5.32':
     dependencies:
@@ -9562,7 +9565,7 @@ snapshots:
 
   '@types/node-forge@1.3.11':
     dependencies:
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
 
   '@types/node@17.0.45': {}
 
@@ -9574,9 +9577,9 @@ snapshots:
     dependencies:
       undici-types: 6.19.8
 
-  '@types/node@22.13.5':
+  '@types/node@24.1.0':
     dependencies:
-      undici-types: 6.20.0
+      undici-types: 7.8.0
 
   '@types/picomatch@3.0.2': {}
 
@@ -9598,14 +9601,14 @@ snapshots:
 
   '@types/sax@1.2.7':
     dependencies:
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
 
   '@types/semver@7.7.0': {}
 
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
 
   '@types/serve-index@1.9.4':
     dependencies:
@@ -9614,14 +9617,14 @@ snapshots:
   '@types/serve-static@1.15.7':
     dependencies:
       '@types/http-errors': 2.0.4
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
       '@types/send': 0.17.4
 
   '@types/sizzle@2.3.9': {}
 
   '@types/sockjs@0.3.36':
     dependencies:
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
 
   '@types/trusted-types@2.0.7':
     optional: true
@@ -9634,7 +9637,7 @@ snapshots:
 
   '@types/ws@8.5.14':
     dependencies:
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
 
   '@typescript/vfs@1.6.1(typescript@5.8.3)':
     dependencies:
@@ -9645,7 +9648,7 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@vitejs/plugin-react@4.7.0(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
+  '@vitejs/plugin-react@4.7.0(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))':
     dependencies:
       '@babel/core': 7.28.0
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.28.0)
@@ -9653,7 +9656,7 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-beta.27
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
-      vite: 6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
+      vite: 6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -9818,10 +9821,10 @@ snapshots:
       tinyexec: 1.0.1
       wrap-ansi: 9.0.0
 
-  '@withstudiocms/config-utils@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/config-utils@35664a74729782389e4d3a6f9c0bb5517f226c90(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
+  '@withstudiocms/config-utils@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/config-utils@35664a74729782389e4d3a6f9c0bb5517f226c90(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))':
     dependencies:
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
-      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       deepmerge-ts: 7.1.5
       esbuild: 0.25.8
 
@@ -10011,41 +10014,41 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-auto-import@0.4.4(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)):
+  astro-auto-import@0.4.4(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)):
     dependencies:
       '@types/node': 18.19.76
       acorn: 8.14.0
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
 
-  astro-embed@0.9.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)):
+  astro-embed@0.9.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)):
     dependencies:
-      '@astro-community/astro-embed-baseline-status': 0.1.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
-      '@astro-community/astro-embed-bluesky': 0.1.3(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
-      '@astro-community/astro-embed-integration': 0.8.1(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@astro-community/astro-embed-baseline-status': 0.1.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@astro-community/astro-embed-bluesky': 0.1.3(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@astro-community/astro-embed-integration': 0.8.1(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       '@astro-community/astro-embed-link-preview': 0.2.2
-      '@astro-community/astro-embed-twitter': 0.5.8(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
-      '@astro-community/astro-embed-vimeo': 0.3.10(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
-      '@astro-community/astro-embed-youtube': 0.5.6(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      '@astro-community/astro-embed-twitter': 0.5.8(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@astro-community/astro-embed-vimeo': 0.3.10(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@astro-community/astro-embed-youtube': 0.5.6(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
 
-  astro-expressive-code@0.41.1(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)):
+  astro-expressive-code@0.41.1(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)):
     dependencies:
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
       rehype-expressive-code: 0.41.1
 
-  astro-integration-kit@0.18.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)):
+  astro-integration-kit@0.18.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)):
     dependencies:
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
       pathe: 1.1.2
       recast: 0.23.10
 
-  astro-transition-event-polyfill@1.1.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)):
+  astro-transition-event-polyfill@1.1.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)):
     dependencies:
       '@types/node': 20.17.19
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
       pathe: 2.0.3
 
-  astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0):
+  astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0):
     dependencies:
       '@astrojs/compiler': 2.12.2
       '@astrojs/internal-helpers': 0.6.1
@@ -10101,8 +10104,8 @@ snapshots:
       unist-util-visit: 5.0.0
       unstorage: 1.15.0
       vfile: 6.0.3
-      vite: 6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
-      vitefu: 1.0.6(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      vite: 6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
+      vitefu: 1.0.6(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.1
@@ -11450,7 +11453,7 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
-  grapesjs-cli@4.1.3(@types/node@22.13.5)(typescript@5.8.3):
+  grapesjs-cli@4.1.3(@types/node@24.1.0)(typescript@5.8.3):
     dependencies:
       '@babel/core': 7.28.0
       '@babel/plugin-transform-runtime': 7.26.10(@babel/core@7.28.0)
@@ -11467,7 +11470,7 @@ snapshots:
       rimraf: 4.4.1
       spdx-license-list: 6.10.0
       ts-loader: 9.5.2(typescript@5.8.3)(webpack@5.99.5(webpack-cli@5.1.4))
-      ts-node: 10.9.2(@types/node@22.13.5)(typescript@5.8.3)
+      ts-node: 10.9.2(@types/node@24.1.0)(typescript@5.8.3)
       webpack: 5.99.5(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack-dev-server@4.15.2)(webpack@5.99.5)
       webpack-dev-server: 4.15.2(webpack-cli@5.1.4)(webpack@5.99.5)
@@ -12047,7 +12050,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -12152,11 +12155,11 @@ snapshots:
 
   klona@2.0.6: {}
 
-  knip@5.46.0(@types/node@22.13.5)(typescript@5.8.3):
+  knip@5.46.0(@types/node@24.1.0)(typescript@5.8.3):
     dependencies:
       '@nodelib/fs.walk': 3.0.1
       '@snyk/github-codeowners': 1.1.0
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
       easy-table: 1.2.0
       enhanced-resolve: 5.18.1
       fast-glob: 3.3.3
@@ -14161,9 +14164,9 @@ snapshots:
       tweetnacl: 0.14.5
     optional: true
 
-  starlight-image-zoom@0.12.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))):
+  starlight-image-zoom@0.12.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))):
     dependencies:
-      '@astrojs/starlight': 0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@astrojs/starlight': 0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       mdast-util-mdx-jsx: 3.2.0
       rehype-raw: 7.0.0
       unist-util-visit: 5.0.0
@@ -14171,9 +14174,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  starlight-links-validator@0.16.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))):
+  starlight-links-validator@0.16.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))):
     dependencies:
-      '@astrojs/starlight': 0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@astrojs/starlight': 0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       '@types/picomatch': 3.0.2
       github-slugger: 2.0.0
       hast-util-from-html: 2.0.3
@@ -14187,18 +14190,18 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  starlight-package-managers@0.11.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))):
+  starlight-package-managers@0.11.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))):
     dependencies:
-      '@astrojs/starlight': 0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@astrojs/starlight': 0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
 
-  starlight-sidebar-topics@0.6.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))):
+  starlight-sidebar-topics@0.6.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))):
     dependencies:
-      '@astrojs/starlight': 0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@astrojs/starlight': 0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       picomatch: 4.0.2
 
-  starlight-typedoc@0.21.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)))(typedoc-plugin-markdown@4.6.0(typedoc@0.28.1(typescript@5.8.3)))(typedoc@0.28.1(typescript@5.8.3)):
+  starlight-typedoc@0.21.0(@astrojs/starlight@0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)))(typedoc-plugin-markdown@4.6.0(typedoc@0.28.1(typescript@5.8.3)))(typedoc@0.28.1(typescript@5.8.3)):
     dependencies:
-      '@astrojs/starlight': 0.35.2(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@astrojs/starlight': 0.35.2(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       github-slugger: 2.0.0
       typedoc: 0.28.1(typescript@5.8.3)
       typedoc-plugin-markdown: 4.6.0(typedoc@0.28.1(typescript@5.8.3))
@@ -14270,7 +14273,7 @@ snapshots:
 
   strnum@2.1.1: {}
 
-  studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)):
+  studiocms@https://pkg.pr.new/withstudiocms/studiocms@35664a7(@astrojs/db@0.15.1)(@studiocms/web-vitals@4.2.1(@astrojs/db@0.15.1))(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)):
     dependencies:
       '@astrojs/db': 0.15.1
       '@clack/core': 0.4.1
@@ -14288,20 +14291,20 @@ snapshots:
       '@effect/workflow': 0.8.1(@effect/platform@0.90.0(effect@3.17.3))(@effect/rpc@0.68.0(@effect/platform@0.90.0(effect@3.17.3))(effect@3.17.3))(effect@3.17.3)
       '@iconify-json/flat-color-icons': 1.2.1
       '@iconify-json/simple-icons': 1.2.45
-      '@inox-tools/inline-mod': 2.2.0(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
-      '@inox-tools/runtime-logger': 0.6.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@inox-tools/inline-mod': 2.2.0(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      '@inox-tools/runtime-logger': 0.6.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       '@libsql/client': 0.15.10
       '@nanostores/i18n': 1.2.2(nanostores@1.0.1)
       '@nanostores/persistent': 1.1.0(nanostores@1.0.1)
       '@oslojs/binary': 1.0.0
       '@oslojs/crypto': 1.0.1
       '@oslojs/encoding': 1.1.0
-      '@studiocms/ui': 0.4.17(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
+      '@studiocms/ui': 0.4.17(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       '@withstudiocms/cli-kit': 0.1.0
-      '@withstudiocms/config-utils': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/config-utils@35664a74729782389e4d3a6f9c0bb5517f226c90(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      '@withstudiocms/config-utils': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/config-utils@35664a74729782389e4d3a6f9c0bb5517f226c90(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       arctic: 3.7.0
-      astro: 5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
-      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
+      astro: 5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0)
+      astro-integration-kit: 0.18.0(astro@5.12.6(@types/node@24.1.0)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.0))
       boxen: 8.0.1
       chalk: 5.4.1
       diff: 8.0.2
@@ -14328,7 +14331,7 @@ snapshots:
       ts-morph: 26.0.0
       ultrahtml: 1.6.0
       unist-util-visit: 5.0.0
-      vite: 6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
+      vite: 6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
     optionalDependencies:
       '@studiocms/web-vitals': 4.2.1(@astrojs/db@0.15.1)
     transitivePeerDependencies:
@@ -14499,14 +14502,14 @@ snapshots:
       '@ts-morph/common': 0.27.0
       code-block-writer: 13.0.3
 
-  ts-node@10.9.2(@types/node@22.13.5)(typescript@5.8.3):
+  ts-node@10.9.2(@types/node@24.1.0)(typescript@5.8.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
       acorn: 8.14.1
       acorn-walk: 8.3.4
       arg: 4.1.3
@@ -14638,7 +14641,7 @@ snapshots:
 
   undici-types@6.19.8: {}
 
-  undici-types@6.20.0: {}
+  undici-types@7.8.0: {}
 
   undici@5.28.5:
     dependencies:
@@ -14799,7 +14802,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0):
+  vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0):
     dependencies:
       esbuild: 0.25.8
       fdir: 6.4.6(picomatch@4.0.2)
@@ -14808,15 +14811,15 @@ snapshots:
       rollup: 4.40.0
       tinyglobby: 0.2.14
     optionalDependencies:
-      '@types/node': 22.13.5
+      '@types/node': 24.1.0
       fsevents: 2.3.3
       jiti: 2.4.2
       terser: 5.39.0
       yaml: 2.7.0
 
-  vitefu@1.0.6(vite@6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)):
+  vitefu@1.0.6(vite@6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)):
     optionalDependencies:
-      vite: 6.3.5(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
+      vite: 6.3.5(@types/node@24.1.0)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0)
 
   volar-service-css@0.0.62(@volar/language-service@2.4.11):
     dependencies:
