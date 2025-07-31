@@ -41,38 +41,38 @@ This plugin enables MD Support within StudioCMS.
 ### `studiocms` Flavored Markdown
 
 ```ts twoslash
-const mdOptions = {
-  flavor: 'studiocms',
-  callouts: 'obsidian',
-  autoLinkHeadings: true,
-  discordSubtext: true,
+type StudioCMSMarkdown = {
+  flavor: "studiocms";
+  autoLinkHeadings: boolean;
+  callouts: false | "github" | "obsidian" | "vitepress";
+  discordSubtext: boolean;
   sanitize: {
-    allowElements: [],
-    blockElements: [],
-    dropElements: [],
-    allowAttributes: {},
-    dropAttributes: {},
-    allowComponents: false,
-    allowCustomElements: false,
-    allowComments: false,
-  }
-}
+    allowAttributes: Record<string, string[]>;
+    allowComments: boolean;
+    allowComponents: boolean;
+    allowCustomElements: boolean;
+    allowElements: string[];
+    blockElements: string[];
+    dropAttributes: Record<string, string[]>;
+    dropElements: string[];
+  };
+};
 ```
 
 ### `astro` Flavored Markdown
 
 ```ts twoslash
-const mdOptions = {
-  flavor: 'astro',
+type AstroMarkdown = {
+  flavor: "astro";
   sanitize: {
-    allowElements: [],
-    blockElements: [],
-    dropElements: [],
-    allowAttributes: {},
-    dropAttributes: {},
-    allowComponents: false,
-    allowCustomElements: false,
-    allowComments: false,
-  }
-}
+    allowAttributes: Record<string, string[]>;
+    allowComments: boolean;
+    allowComponents: boolean;
+    allowCustomElements: boolean;
+    allowElements: string[];
+    blockElements: string[];
+    dropAttributes: Record<string, string[]>;
+    dropElements: string[];
+  };
+};
 ```

@@ -39,16 +39,16 @@ This plugin enables HTML Support within StudioCMS.
 ## Options
 
 ```ts twoslash
-const htmlOptions = {
+type htmlOptions = {
   sanitize: {
-    allowElements: [],
-    blockElements: [],
-    dropElements: [],
-    allowAttributes: {},
-    dropAttributes: {},
-    allowComponents: false,
-    allowCustomElements: false,
-    allowComments: false,
-  }
-}
+    allowAttributes: Record<string, string[]>;
+    allowComments: boolean;
+    allowComponents: boolean;
+    allowCustomElements: boolean;
+    allowElements: string[];
+    blockElements: string[];
+    dropAttributes: Record<string, string[]>;
+    dropElements: string[];
+  };
+};
 ```
