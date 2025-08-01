@@ -60,6 +60,14 @@ const tdCloudinaryPlugin = createStarlightTypeDocPlugin()[0];
 const tdMD = createStarlightTypeDocPlugin()[0];
 // @studiocms/html
 const tdHTML = createStarlightTypeDocPlugin()[0];
+// @studiocms/auth0
+const tdAuth0 = createStarlightTypeDocPlugin()[0];
+// @studiocms/discord
+const tdDiscord = createStarlightTypeDocPlugin()[0];
+// @studiocms/github
+const tdGitHub = createStarlightTypeDocPlugin()[0];
+// @studiocms/google
+const tdGoogle = createStarlightTypeDocPlugin()[0];
 
 // @withstudiocms/config-utils
 const tdConfigUtils = createStarlightTypeDocPlugin()[0];
@@ -360,6 +368,54 @@ const TypeDocPlugins = (isProd: boolean, testingMode: boolean): StarlightPlugin[
 						getFilePathToPackage('@withstudiocms/config-utils', 'src/utils/dynamicResult.ts'),
 						getFilePathToPackage('@withstudiocms/config-utils', 'src/utils/index.ts'),
 						getFilePathToPackage('@withstudiocms/config-utils', 'src/utils/tryCatch.ts'),
+					],
+				})
+			),
+			tdAuth0(
+				makeTypedocOpts({
+					name: '@studiocms/auth0',
+					output: 'studiocms-auth0',
+					dir: '@studiocms/auth0',
+					entryPoints: [
+						getFilePathToPackage('@studiocms/auth0', 'src/index.ts'),
+						getFilePathToPackage('@studiocms/auth0', 'src/endpoint.ts'),
+						getFilePathToPackage('@studiocms/auth0', 'src/effect/auth0.ts'),
+					],
+				})
+			),
+			tdDiscord(
+				makeTypedocOpts({
+					name: '@studiocms/discord',
+					output: 'studiocms-discord',
+					dir: '@studiocms/discord',
+					entryPoints: [
+						getFilePathToPackage('@studiocms/discord', 'src/index.ts'),
+						getFilePathToPackage('@studiocms/discord', 'src/endpoint.ts'),
+						getFilePathToPackage('@studiocms/discord', 'src/effect/discord.ts'),
+					],
+				})
+			),
+			tdGitHub(
+				makeTypedocOpts({
+					name: '@studiocms/github',
+					output: 'studiocms-github',
+					dir: '@studiocms/github',
+					entryPoints: [
+						getFilePathToPackage('@studiocms/github', 'src/index.ts'),
+						getFilePathToPackage('@studiocms/github', 'src/endpoint.ts'),
+						getFilePathToPackage('@studiocms/github', 'src/effect/github.ts'),
+					],
+				})
+			),
+			tdGoogle(
+				makeTypedocOpts({
+					name: '@studiocms/google',
+					output: 'studiocms-google',
+					dir: '@studiocms/google',
+					entryPoints: [
+						getFilePathToPackage('@studiocms/google', 'src/index.ts'),
+						getFilePathToPackage('@studiocms/google', 'src/endpoint.ts'),
+						getFilePathToPackage('@studiocms/google', 'src/effect/google.ts'),
 					],
 				})
 			),

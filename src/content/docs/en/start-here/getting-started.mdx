@@ -269,9 +269,11 @@ And set the output as the value for `CMS_ENCRYPTION_KEY`.
 For more information about all the available authentication environment variables see, [Environment variables][environment-variables] page.
 </ReadMore>
 
-### Optional: Configure oAuth authentication
+### Optional: Configure oAuth authentication <Badge text='Revised beta.23' variant='caution' />
 
-StudioCMS supports oAuth authentication with GitHub, Discord, Google, and Auth0. To configure oAuth authentication, you'll need to set the [required environment variables in your `.env` file][oauth-environment-variables], and ensure that the provider is [enabled in your config][auth-config-ref].
+StudioCMS supports various oAuth authentication providers, utilizing our plugin system to enable the providers you want to use. To get started, you will need to find a plugin for the provider you want to use, or create your own plugin.
+
+<ReadMore>For more information about the available oAuth authentication plugins see, [Package Catalog][package-catalog]</ReadMore>
 
 For setting up oAuth providers, they require a callback URL. The callback URL is the path where the provider will redirect the user after authentication. 
 

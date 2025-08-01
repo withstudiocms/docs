@@ -306,6 +306,26 @@ export default defineConfig({
 										collapsed: true,
 									},
 									{
+										label: '@studiocms/auth0',
+										autogenerate: { directory: 'typedoc/studiocms-auth0' },
+										collapsed: true,
+									},
+									{
+										label: '@studiocms/discord',
+										autogenerate: { directory: 'typedoc/studiocms-discord' },
+										collapsed: true,
+									},
+									{
+										label: '@studiocms/github',
+										autogenerate: { directory: 'typedoc/studiocms-github' },
+										collapsed: true,
+									},
+									{
+										label: '@studiocms/google',
+										autogenerate: { directory: 'typedoc/studiocms-google' },
+										collapsed: true,
+									},
+									{
 										label: '@withstudiocms/config-utils',
 										autogenerate: { directory: 'typedoc/withstudiocms-config-utils' },
 										collapsed: true,
