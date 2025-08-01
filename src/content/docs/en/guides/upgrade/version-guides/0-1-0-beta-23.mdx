@@ -1,0 +1,36 @@
+---
+i18nReady: true
+title: "Upgrade: 0.1.0-beta.23"
+description: Upgrade StudioCMS to Beta.23
+sidebar:
+  label: 0.1.0-beta.23
+  badge:
+    text: NEW
+    variant: success
+  order: 999992
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Breaking Changes
+
+- Refactor oAuth: oAuth providers have been modularized into separate plugins. This means that you will need to install the respective plugin for each oAuth provider you want to use. The existing oAuth providers have been moved to their respective plugins:
+  - [`@studiocms/auth0` for Auth0][auth0-plugin]
+  - [`@studiocms/discord` for Discord][discord-plugin]
+  - [`@studiocms/github` for GitHub][github-plugin]
+  - [`@studiocms/google` for Google][google-plugin]
+
+## Bug fixes
+
+- Fix sdk: Correct issue where the `CMSSiteConfigId` is undefined during initialization.
+- Fix UserQuickTools Widget: Tweak user quick tools widget and endpoint to prevent an actual 400 error on the user browser
+
+{/* Links */}
+[auth0-plugin]: /en/package-catalog/studiocms-plugins/studiocms-auth0/
+[discord-plugin]: /en/package-catalog/studiocms-plugins/studiocms-discord/
+[github-plugin]: /en/package-catalog/studiocms-plugins/studiocms-github/
+[google-plugin]: /en/package-catalog/studiocms-plugins/studiocms-google/
