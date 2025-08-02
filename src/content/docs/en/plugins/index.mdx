@@ -4,6 +4,9 @@ title: The Basics
 description: Learn about the StudioCMS plugins and how they work.
 sidebar:
    order: 1
+   badge:
+     text: Updated
+     variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro'
@@ -69,6 +72,15 @@ interface StudioCMSPlugin {
         imageService?: {
           identifier: string;
           servicePath: string | URL;
+        } | undefined;
+      }) => void;
+      setAuthService: (params: {
+        oAuthProvider?: {
+          name: string;
+          formattedName: string;
+          svg: string;
+          endpointPath: string;
+          requiredEnvVariables?: string[] | undefined;
         } | undefined;
       }) => void;
     }) => void | Promise<void>;

@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@studiocms/auth0",
+  "description": "StudioCMS Auth0 plugin, Provides Auth0 Support for StudioCMS.",
+  "docsLink": "/package-catalog/studiocms-plugins/studiocms-auth0/",
+  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/@studiocms/auth0/",
+  "catalog": "studiocms",
+  "isPlugin": true,
+  "released": true
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@studiocms/github",
+  "description": "StudioCMS GitHub plugin, Provides GitHub Support for StudioCMS.",
+  "docsLink": "/package-catalog/studiocms-plugins/studiocms-github/",
+  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/@studiocms/github/",
+  "catalog": "studiocms",
+  "isPlugin": true,
+  "released": true
+}

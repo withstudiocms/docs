@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@studiocms/discord",
+  "description": "StudioCMS Discord plugin, Provides Discord Support for StudioCMS.",
+  "docsLink": "/package-catalog/studiocms-plugins/studiocms-discord/",
+  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/@studiocms/discord/",
+  "catalog": "studiocms",
+  "isPlugin": true,
+  "released": true
+}

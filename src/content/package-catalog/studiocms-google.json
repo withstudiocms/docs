@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@studiocms/google",
+  "description": "StudioCMS Google plugin, Provides Google Support for StudioCMS.",
+  "docsLink": "/package-catalog/studiocms-plugins/studiocms-google/",
+  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/@studiocms/google/",
+  "catalog": "studiocms",
+  "isPlugin": true,
+  "released": true
+}

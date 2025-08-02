@@ -259,21 +259,17 @@ export default defineStudioCMSConfig({
 
 Allows enabling or disabling of the Authentication Providers
 
-The following providers can be configured from here: `github`, `discord`, `google`, `auth0`, and `usernameAndPassword`.
+The following provider can be configured from here: `usernameAndPassword`.
 
 #### Usage
 
-```ts twoslash {4-13} title="studiocms.config.mjs"
+```ts twoslash {4-9} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
 // ---cut---
 export default defineStudioCMSConfig({
   features: {
     authConfig: {
       providers: {
-        github: false,
-        discord: false,
-        google: false,
-        auth0: false,
         usernameAndPassword: true,
         usernameAndPasswordConfig: {
           allowUserRegistration: true
