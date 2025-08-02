@@ -6,5 +6,5 @@
   "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/@studiocms/discord/",
   "catalog": "studiocms",
   "isPlugin": true,
-  "released": false
+  "released": true
 }
