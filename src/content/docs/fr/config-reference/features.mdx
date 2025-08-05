@@ -110,112 +110,6 @@ export default defineStudioCMSConfig({
 })
 ```
 
-## `pageTypeOptions`
-
-`pageTypeOptions` permet de modifier les options de type de page par défaut utilisées par StudioCMS
-
-### Utilisation
-
-```ts twoslash {3} title="studiocms.config.mjs"
-import { defineStudioCMSConfig } from 'studiocms/config';
-// ---cut---
-export default defineStudioCMSConfig({
-  features: {
-    pageTypeOptions: {}
-  }
-})
-```
-
-### `markdown`
-
-Options de configuration du moteur de rendu Markdown intégré
-
-#### Utilisation
-
-Lorsque vous travaillez avec la version standard `studiocms` de Markdown
-
-```ts twoslash {4-19} title="studiocms.config.mjs"
-import { defineStudioCMSConfig } from 'studiocms/config';
-// ---cut---
-export default defineStudioCMSConfig({
-  features: {
-    pageTypeOptions: {
-      markdown: {
-        flavor: 'studiocms',
-        callouts: 'obsidian',
-        autoLinkHeadings: true,
-        discordSubtext: true,
-        sanitize: {
-          allowElements: [],
-          blockElements: [],
-          dropElements: [],
-          allowAttributes: {},
-          dropAttributes: {},
-          allowComponents: false,
-          allowCustomElements: false,
-          allowComments: false,
-        }
-      }
-    }
-  }
-})
-```
-
-Lorsque vous travaillez avec la version `astro` de Markdown
-
-```ts twoslash {4-16} title="studiocms.config.mjs"
-import { defineStudioCMSConfig } from 'studiocms/config';
-// ---cut---
-export default defineStudioCMSConfig({
-  features: {
-    pageTypeOptions: {
-      markdown: {
-        flavor: 'astro',
-        sanitize: {
-          allowElements: [],
-          blockElements: [],
-          dropElements: [],
-          allowAttributes: {},
-          dropAttributes: {},
-          allowComponents: false,
-          allowCustomElements: false,
-          allowComments: false,
-        }
-      }
-    }
-  }
-})
-```
-
-### `html`
-
-Options de configuration du moteur de rendu HTML intégré
-
-#### Utilisation
-
-```ts twoslash {4-15} title="studiocms.config.mjs"
-import { defineStudioCMSConfig } from 'studiocms/config';
-// ---cut---
-export default defineStudioCMSConfig({
-  features: {
-    pageTypeOptions: {
-      html: {
-        sanitize: {
-          allowElements: [],
-          blockElements: [],
-          dropElements: [],
-          allowAttributes: {},
-          dropAttributes: {},
-          allowComponents: false,
-          allowCustomElements: false,
-          allowComments: false,
-        }
-      }
-    }
-  }
-})
-```
-
 ## `dashboardConfig`
 
 `dashboardConfig` permet la personnalisation de la configuration du tableau de bord
@@ -365,21 +259,17 @@ export default defineStudioCMSConfig({
 
 Permet d'activer ou de désactiver les fournisseurs d'authentification
 
-Les fournisseurs suivants peuvent être configurés à partir d'ici : `github`, `discord`, `google`, `auth0` et `usernameAndPassword`.
+Le fournisseur suivant peut être configuré à partir d'ici : `usernameAndPassword`.
 
 #### Utilisation
 
-```ts twoslash {4-13} title="studiocms.config.mjs"
+```ts twoslash {4-9} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
 // ---cut---
 export default defineStudioCMSConfig({
   features: {
     authConfig: {
       providers: {
-        github: false,
-        discord: false,
-        google: false,
-        auth0: false,
         usernameAndPassword: true,
         usernameAndPasswordConfig: {
           allowUserRegistration: true
