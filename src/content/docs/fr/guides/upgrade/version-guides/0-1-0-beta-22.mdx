@@ -1,0 +1,45 @@
+---
+i18nReady: true
+title: "Mise à niveau : 0.1.0-beta.22"
+description: Mettre à niveau StudioCMS vers la version Beta.22
+sidebar:
+  label: 0.1.0-beta.22
+  order: 999993
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Modifications avec rupture de compatibilité
+
+- Supprime la prise en charge dépréciée de `@astrojs/web-vitals` au profit du nouveau paquet `@studiocms/web-vitals`. Consultez le [guide Web Vitals][web-vitals-guide] pour plus d'informations.
+- `studiocms:component-proxy` a été remplacé par `studiocms:component-registry`.
+- Ajout du module virtuel `studiocms:component-registry/runtime` qui exporte les types et les aides suivantes, `getRegistryComponents` et `getRendererComponents` utilisés pour obtenir des composants avec des props et le moteur de rendu des composants respectivement.
+- `importComponentKeys` a été transposée mais dépréciée au profit de la nouvelle fonction `getRendererComponents`.
+- Tous les types de pages (`pageTypes`) internes inclus dans la base ont été supprimés, offrant davantage de flexibilité quant au fonctionnement de StudioCMS pour l'utilisateur. Ce changement signifie également que vous devrez installer au moins un module d'extension de rendu pour StudioCMS.
+- Les modules d'extension `@studiocms/html` et `@studiocms/md` ont été introduits pour gérer respectivement la prise en charge de HTML et de MD. Consultez les documentations de [Module d'extension HTML][studiocms-html] et [Module d'extension MD][studiocms-md] pour plus de détails.
+  - Si vous utilisiez les types de page (`pageTypes`) de `studiocms/markdown` ou de `studiocms/html`, vous devrez installer le plugin correspondant et mettre à jour votre configuration en conséquence.
+- Supprime les fonctions SDK dépréciées et refactorise le SDK pour le rendre plus facile à modifier/lire.
+- Supprime les fonctions précédemment dépréciées et l'ancien système de hachage de mot de passe.
+
+## Nouvelles fonctionnalités
+
+- Les types de pages Markdown et HTML ont été modularisés dans des modules d'extension distincts.
+- Ajout d'un nouveau paquet d'utilitaires de configuration pour une meilleure gestion de la configuration.
+- Registre de composants et SDK refactorisés pour une meilleure maintenabilité et une modification plus facile.
+- Points de terminaison OAuth rationalisés pour une meilleure gestion de l'authentification.
+- Nouveau système de registre de composants (`componentRegistry`) pour la gestion des composants définis par l'utilisateur, permettant plus de flexibilité dans la manière dont les composants sont enregistrés et utilisés dans StudioCMS.
+
+## Corrections de bugs
+
+- Ajout de la prise en charge de l'obtention de dossier SDK pour obtenir par nom ou par ID au lieu de simplement par ID, et ajout des commentaires JSDoc aux fonctions manquantes pour le SDK.
+- Correction : Corriger les exportations pour les composants, les mises en page et ajout d'exportation pour les styles
+
+{/* Liens */}
+[config-doc]: /fr/config-reference/
+[web-vitals-guide]: /fr/package-catalog/community-plugins/web-vitals/
+[studiocms-html]: /fr/package-catalog/studiocms-plugins/studiocms-html/
+[studiocms-md]: /fr/package-catalog/studiocms-plugins/studiocms-md/

@@ -1,0 +1,36 @@
+---
+i18nReady: true
+title: "Mise à niveau : 0.1.0-beta.23"
+description: Mettre à niveau StudioCMS vers la version Beta.23
+sidebar:
+  label: 0.1.0-beta.23
+  badge:
+    text: NOUVEAU
+    variant: success
+  order: 999992
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Modifications avec rupture de compatibilité
+
+- Refonte d'OAuth : les fournisseurs OAuth ont été modularisés en modules d'extension distincts. Cela signifie que vous devrez installer le module d'extension correspondant pour chaque fournisseur OAuth que vous souhaitez utiliser. Les fournisseurs OAuth existants ont été déplacés vers leurs modules d'extension respectifs :
+  - [`@studiocms/auth0` pour Auth0][auth0-plugin]
+  - [`@studiocms/discord` pour Discord][discord-plugin]
+  - [`@studiocms/github` pour GitHub][github-plugin]
+  - [`@studiocms/google` pour Google][google-plugin]
+
+## Corrections de bugs
+
+- Correction du SDK : correction d'un problème où `CMSSiteConfigId` n'est pas défini lors de l'initialisation.
+- Correction du widget UserQuickTools : ajuste le widget et le point de terminaison des outils rapides de l'utilisateur pour éviter une erreur 400 réelle dans le navigateur de l'utilisateur
+
+{/* Liens */}
+[auth0-plugin]: /fr/package-catalog/studiocms-plugins/studiocms-auth0/
+[discord-plugin]: /fr/package-catalog/studiocms-plugins/studiocms-discord/
+[github-plugin]: /fr/package-catalog/studiocms-plugins/studiocms-github/
+[google-plugin]: /fr/package-catalog/studiocms-plugins/studiocms-google/
