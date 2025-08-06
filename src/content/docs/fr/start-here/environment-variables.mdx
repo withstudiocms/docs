@@ -4,9 +4,6 @@ title: Variables d'environnement
 description: Un bref aperçu des variables d’environnement utilisées dans StudioCMS.
 sidebar:
    order: 2
-   badge:
-     text: Mis à jour
-     variant: success
 ---
 
 import { Aside } from '@astrojs/starlight/components';
@@ -48,57 +45,3 @@ Vous pouvez générer une clé de chiffrement sécurisée à l’aide de la comm
 openssl rand --base64 16
 ``` 
 </Aside>
-
-## Variables d’environnement facultatives
-
-### Variables d’environnement d’authentification oAuth
-
-<ReadMore>
-Pour plus d’informations sur la configuration de l’authentification oAuth, consultez la documentation [Configurer l’authentification oAuth][config-oauth].
-</ReadMore>
-
-#### GitHub (facultatif)
-
-Pour vous authentifier avec GitHub, vous devez ajouter les variables d’environnement suivantes à votre fichier `.env` :
-
-```bash title=".env"
-# identifiants pour GitHub OAuth
-CMS_GITHUB_CLIENT_ID=
-CMS_GITHUB_CLIENT_SECRET=
-CMS_GITHUB_REDIRECT_URI=
-```
-
-<Aside type="note" title="Note">
-`CMS_GITHUB_REDIRECT_URI` est optionnelle si vous utilisez plusieurs URI de redirection avec GitHub oAuth.
-</Aside>
-
-#### Discord (facultatif)
-
-```bash title=".env"
-# identifiants pour Discord OAuth
-CMS_DISCORD_CLIENT_ID=
-CMS_DISCORD_CLIENT_SECRET=
-CMS_DISCORD_REDIRECT_URI=
-```
-
-#### Google (facultatif)
-
-```bash title=".env"
-# identifiants pour Google OAuth
-CMS_GOOGLE_CLIENT_ID=
-CMS_GOOGLE_CLIENT_SECRET=
-CMS_GOOGLE_REDIRECT_URI=
-```
-
-#### Auth0 (facultatif)
-
-```bash title=".env"
-# identifiants pour auth0 OAuth
-CMS_AUTH0_CLIENT_ID=
-CMS_AUTH0_CLIENT_SECRET=
-CMS_AUTH0_DOMAIN=
-CMS_AUTH0_REDIRECT_URI=
-```
-
-{/* Liens */}
-[config-oauth]: /fr/start-here/getting-started/#facultatif-configurer-lauthentification-oauth

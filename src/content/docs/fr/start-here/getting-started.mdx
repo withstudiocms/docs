@@ -4,11 +4,14 @@ title: Mise en route
 description: Soyez prêt à construire avec StudioCMS.
 sidebar:
    order: 1
+   badge:
+     text: Mis à jour
+     variant: success
 ---
 
 import { PackageManagers } from 'starlight-package-managers'
 import TursoCLI from '~/components/TursoCLI.astro';
-import { Aside, Steps, Tabs, TabItem, LinkCard } from '@astrojs/starlight/components';
+import { Aside, Steps, Tabs, TabItem, LinkCard, Badge } from '@astrojs/starlight/components';
 import ReadMore from '~/components/ReadMore.astro';
 import { sponsors, SponsorLink } from '~/share-link'
 
@@ -216,6 +219,33 @@ Veuillez noter que l’option `site` dans le fichier `astro.config.mjs` est requ
 StudioCMS nécessite un [adaptateur Astro](https://docs.astro.build/fr/guides/on-demand-rendering/#adaptateurs-de-serveur) pour fonctionner correctement. Assurez-vous de définir un adaptateur prenant en charge les routes SSR dans votre fichier `astro.config.mjs`.
 </Aside>
 
+## Configurer le rendu de StudioCMS <Badge text='Ajouté dans la beta.22' variant='success' />
+
+StudioCMS nécessite qu’au moins l’un des modules d’extension de rendu suivants soit installé et configuré dans votre projet StudioCMS :
+
+- `@studiocms/html` - pour le rendu HTML
+- `@studiocms/md` - pour le rendu Markdown
+- `@studiocms/mdx` - pour le rendu MDX
+- `@studiocms/markdoc` - pour le rendu MarkDoc
+- Ou tout autre module d’extension communautaire prenant en charge le rendu de contenu dans StudioCMS.
+
+N’importe lequel de ces modules d’extension peut être utilisé pour afficher du contenu dans StudioCMS. Vous pouvez utiliser un ou plusieurs de ces modules d’extension dans votre projet, selon vos besoins. Ils peuvent être installés et configurés via le fichier de configuration de StudioCMS ou celui d’Astro.
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+import html from '@studiocms/html';
+import md from '@studiocms/md';
+
+export default defineStudioCMSConfig({
+    plugins: [
+        html(),
+        md(),
+    ],
+});
+```
+
+<ReadMore>Pour plus d’informations sur les modules d’extension de rendu disponibles, consultez le [catalogue des paquets][package-catalog]</ReadMore>
+
 ## Configurer l’authentification
 
 StudioCMS Auth nécessite au moins que la [clé de chiffrement][encryption-key] soit définie dans votre fichier `.env`.
@@ -239,9 +269,11 @@ Et utiliser la sortie comme valeur pour `CMS_ENCRYPTION_KEY`.
 Pour plus d’informations sur toutes les variables d’environnement d’authentification disponibles, consultez la page [Variables d’environnement][environment-variables].
 </ReadMore>
 
-### Facultatif : configurer l’authentification oAuth
+### Facultatif : configurer l’authentification oAuth <Badge text='Révisé dans la bêta.23' variant='caution' />
 
-StudioCMS prend en charge l’authentification oAuth avec GitHub, Discord, Google et Auth0. Pour configurer l’authentification oAuth, vous devez définir les [variables d’environnement requises dans votre fichier `.env`][oauth-environment-variables] et vous assurer que le fournisseur est [activé dans votre configuration][auth-config-ref].
+StudioCMS prend en charge divers fournisseurs d’authentification oAuth, en utilisant notre système de modules d’extension pour activer les fournisseurs que vous souhaitez utiliser. Pour commencer, vous devrez trouver un module d’extension pour le fournisseur que vous souhaitez utiliser ou créer votre propre module d’extension.
+
+<ReadMore>Pour plus d’informations sur les modules d’extension d’authentification oAuth disponibles, consultez le [catalogue des paquets][package-catalog]</ReadMore>
 
 Pour configurer les fournisseurs oAuth, une URL de rappel est nécessaire. Cette URL correspond au chemin vers lequel le fournisseur redirigera l’utilisateur après l’authentification.
 
@@ -363,6 +395,5 @@ Apprenez-en plus sur les options de configuration de StudioCMS à l’aide des p
 [config-reference]: /fr/config-reference/
 [db-url-token]: /fr/start-here/environment-variables/#url-de-la-base-de-données-et-jeton-pour-astrojsdb
 [encryption-key]: /fr/start-here/environment-variables/#clé-de-chiffrement-pour-studiocmsauth
-[oauth-environment-variables]: /fr/start-here/environment-variables/#variables-denvironnement-dauthentification-oauth
 [auth-config-ref]: /fr/config-reference/features/#authconfig
 [self-hosted-libsql]: /fr/guides/database/sqld-server/
