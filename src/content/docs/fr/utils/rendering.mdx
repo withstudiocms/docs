@@ -9,9 +9,15 @@ sidebar:
      variant: success
 ---
 
+import { Aside } from '@astrojs/starlight/components'
+
 Le système de rendu StudioCMS est dynamique en fonction du type de page actuel.
 
 Exemple d’une route fourre-tout (« catch-all » en anglais) où la page actuelle est récupérée à partir du SDK et les données de la page sont transmises au moteur de rendu. Dans ce cas, nous utilisons le type de page par défaut `studiocms/markdown` configuré dans les paramètres de la page et l’enveloppons dans une mise en page comme nous le faisons avec le plugin `@studiocms/blog`. Un plugin de création de pages, par exemple, peut être fourni sans mise en page standard, parce qu’il vise plutôt à ce que vous conceviez le tout dans le générateur, comme vous le feriez dans d’autres systèmes CMS.
+
+<Aside>
+Veuillez noter que l’utilisation de notre système de rendu nécessite que vous disposiez d’un module d’extension pour StudioCMS fournissant un moteur de rendu, tel que `@studiocms/md`, `@studiocms/html` ou un module d’extension personnalisé qui fournit un moteur de rendu pour votre type de contenu. Le moteur de rendu gérera le rendu du contenu en fonction du type de page défini dans votre configuration de StudioCMS.
+</Aside>
 
 ```astro title="src/pages/[...slug].astro"
 ---
