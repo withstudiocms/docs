@@ -1,0 +1,78 @@
+---
+i18nReady: true
+title: "@studiocms/md"
+type: integration
+catalogEntry: studiocms-md
+description: "Intégration MD de StudioCMS"
+sidebar:
+  badge: 
+    text: 'Module d’extension'
+    variant: 'tip'
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# Présentation
+
+Ce module d’extension active la prise en charge de MD dans StudioCMS.
+
+## Installation
+
+1. Installez le paquet à l’aide de la commande suivante :
+
+   <PackageManagers pkg="studiocms" type='run' args='add @studiocms/md' />
+
+2. Votre configuration StudioCMS devrait maintenant inclure `@studiocms/md` :
+
+   ```ts twoslash title="studiocms.config.mjs" {2, 6}
+   import { defineStudioCMSConfig } from 'studiocms/config';
+   import md from '@studiocms/md';
+
+    export default defineStudioCMSConfig({
+      plugins: [
+        md(),
+      ],
+    });
+   ```
+
+## Options
+
+### Markdown version `studiocms`
+
+```ts twoslash
+type StudioCMSMarkdown = {
+  flavor: "studiocms";
+  autoLinkHeadings: boolean;
+  callouts: false | "github" | "obsidian" | "vitepress";
+  discordSubtext: boolean;
+  sanitize: {
+    allowAttributes: Record<string, string[]>;
+    allowComments: boolean;
+    allowComponents: boolean;
+    allowCustomElements: boolean;
+    allowElements: string[];
+    blockElements: string[];
+    dropAttributes: Record<string, string[]>;
+    dropElements: string[];
+  };
+};
+```
+
+### Markdown version `astro`
+
+```ts twoslash
+type AstroMarkdown = {
+  flavor: "astro";
+  sanitize: {
+    allowAttributes: Record<string, string[]>;
+    allowComments: boolean;
+    allowComponents: boolean;
+    allowCustomElements: boolean;
+    allowElements: string[];
+    blockElements: string[];
+    dropAttributes: Record<string, string[]>;
+    dropElements: string[];
+  };
+};
+```
