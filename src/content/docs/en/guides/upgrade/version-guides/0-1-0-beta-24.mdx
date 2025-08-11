@@ -1,0 +1,33 @@
+---
+i18nReady: true
+title: "Upgrade: 0.1.0-beta.24"
+description: Upgrade StudioCMS to Beta.24
+sidebar:
+  label: 0.1.0-beta.24
+  badge:
+    text: NEW
+    variant: success
+  order: 999991
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Breaking Changes
+
+- Adds new StudioCMSPluginData table for usage by StudioCMS plugins. As well as new SDK plugins utilities for dynamic table typing as well.
+
+<Aside>
+When updating you will be required to run `astro db push --remote` with your package manager to update your table schema so that the table schema is updated before running the new version!
+</Aside>
+
+## Bug fixes
+
+- Add export for `component-registry/types`.
+- Optimize `user-quick-tools` widget.
+- Introduce new middlewares sdk module to ensure cache objects are initialized and not empty.
+- Converts internal `robotstxt` to proper zod schema and cleans up related code.
+- Updates editor page, to also inject a id variable for the current page.
