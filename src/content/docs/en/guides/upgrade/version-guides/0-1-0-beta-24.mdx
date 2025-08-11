@@ -18,16 +18,16 @@ import { Aside } from '@astrojs/starlight/components'
 
 ## Breaking Changes
 
-- Adds new `StudioCMSPluginData` table to AstroDB for usage by StudioCMS plugins. As well as new SDK plugins utilities for dynamic table typing as well.
+- Added new `StudioCMSPluginData` table to AstroDB for usage by StudioCMS plugins, as well as new SDK plugin utilities for dynamic table typing.
 
 <Aside>
-When updating you will be required to run `astro db push --remote` with your package manager to update your table schema so that the table schema is updated before running the new version!
+When updating, make sure to run `astro db push --remote` with your package manager to update your table schema **before running the new version**!
 </Aside>
 
 ## Bug fixes
 
-- Add export for `component-registry/types`.
-- Optimize `user-quick-tools` widget.
-- Introduce new middlewares sdk module to ensure cache objects are initialized and not empty.
-- Converts internal `robotstxt` to proper zod schema and cleans up related code.
-- Updates editor page, to also inject a id variable for the current page.
+- Added export for `component-registry/types`.
+- Optimized `user-quick-tools` widget.
+- Introduced new middleware SDK module to ensure cache objects are initialized and not empty.
+- Converted internal `robotstxt` to proper Zod schema and cleaned up related code.
+- Updated editor page to also inject an id variable for the current page.
