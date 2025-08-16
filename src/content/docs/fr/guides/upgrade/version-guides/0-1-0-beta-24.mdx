@@ -1,0 +1,33 @@
+---
+i18nReady: true
+title: "Mise à niveau : 0.1.0-beta.24"
+description: Mettre à niveau StudioCMS vers la version Beta.24
+sidebar:
+  label: 0.1.0-beta.24
+  badge:
+    text: NOUVEAU
+    variant: success
+  order: 999991
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Modifications avec rupture de compatibilité
+
+- Ajout d’une nouvelle table `StudioCMSPluginData` dans AstroDB pour une utilisation par les modules d’extension de StudioCMS, ainsi que de nouveaux utilitaires de SDK pour les modules d’extension permettant de définir les types des tables dynamiquement.
+
+<Aside>
+Lors de la mise à jour, assurez-vous d’exécuter `astro db push --remote` avec votre gestionnaire de paquets pour mettre à jour votre schéma de table **avant d’exécuter la nouvelle version** !
+</Aside>
+
+## Corrections de bugs
+
+- Exportation ajoutée pour `component-registry/types`.
+- Widget `user-quick-tools` optimisé.
+- Introduction d’un nouveau module middleware dans le SDK pour garantir que les objets de cache sont initialisés et non vides.
+- Conversion du `robotstxt` interne en schéma Zod approprié et nettoyage du code associé.
+- Page d’éditeur mise à jour pour injecter également une variable d’identification pour la page actuelle.
