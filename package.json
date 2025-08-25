@@ -22,15 +22,15 @@
     "gen-changelogs": "tsm --require=./scripts/filter-warnings.cjs ./scripts/generate-release-notes.ts"
   },
   "dependencies": {
-    "studiocms": "https://pkg.pr.new/withstudiocms/studiocms@551a46e",
-    "@studiocms/blog": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@551a46e",
-    "@studiocms/cloudinary-image-service": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@551a46e",
-    "@studiocms/devapps": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@551a46e",
-    "@studiocms/html": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/html@551a46e",
-    "@studiocms/markdoc": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@551a46e",
-    "@studiocms/md": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@551a46e",
-    "@studiocms/mdx": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@551a46e",
-    "@studiocms/wysiwyg": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/wysiwyg@551a46e",
+    "studiocms": "0.1.0-beta.25",
+    "@studiocms/blog": "0.1.0-beta.25",
+    "@studiocms/cloudinary-image-service": "0.1.0-beta.25",
+    "@studiocms/devapps": "0.1.0-beta.25",
+    "@studiocms/html": "0.1.0-beta.25",
+    "@studiocms/markdoc": "0.1.0-beta.25",
+    "@studiocms/md": "0.1.0-beta.25",
+    "@studiocms/mdx": "0.1.0-beta.25",
+    "@studiocms/wysiwyg": "0.1.0-beta.25",
     "@studiocms/ui": "^0.4.17",
     "@studiocms/web-vitals": "^4.5.0",
     "@actions/core": "^1.11.1",
@@ -87,8 +87,7 @@
   "__pnpmOverridesNote": "This is a version fix to lock all installations of vite to the same version, as it is a peer dependency of many of the packages we use.",
   "pnpm": {
     "overrides": {
-      "vite": "^6.3.4",
-      "@withstudiocms/component-registry": "https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@551a46e"
+      "vite": "^6.3.4"
     }
   }
 }
