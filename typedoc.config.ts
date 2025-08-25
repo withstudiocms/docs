@@ -98,7 +98,6 @@ const TypeDocPlugins = (isProd: boolean, testingMode: boolean): StarlightPlugin[
 						getFilePathToPackage('studiocms', 'src/oAuthUtils.ts'),
 						getFilePathToPackage('studiocms', 'src/plugins.ts'),
 						getFilePathToPackage('studiocms', 'src/types.ts'),
-						getFilePathToPackage('studiocms', 'src/plugins.ts'),
 						getFilePathToPackage('studiocms', 'src/cli/add/index.ts'),
 						getFilePathToPackage('studiocms', 'src/cli/add/npm-utils.ts'),
 						getFilePathToPackage('studiocms', 'src/cli/add/tryToInstallPlugins.ts'),
