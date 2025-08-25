@@ -1,0 +1,32 @@
+---
+i18nReady: true
+title: "Upgrade: 0.1.0-beta.25"
+description: Upgrade StudioCMS to Beta.25
+sidebar:
+  label: 0.1.0-beta.25
+  badge:
+    text: NEW
+    variant: success
+  order: 999990
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Features
+
+- Refactor dashboard content management components to eliminate inline scripts and improve code reusability.
+- Refactor usage of effect to utilize new enhanced utilities from new `@withstudiocms/effect` package.
+- Updates to utilize new `@withstudiocms/component-registry` package.
+- Migrate API routes to new createEffectAPIRoutes utility from `@withstudiocms/effect`.
+- Optimize login page preview on Config page and first-time setup.
+- Optimize `threejs` login page, ensuring fast page load.
+
+## Bug fixes
+
+- Unifies date-time config on last updated check for version check modal.
+- Cleanup code, fix first time setup oauth, and cleanup old utils.
+- Consolidate table definitions into config and remove legacy tables file.

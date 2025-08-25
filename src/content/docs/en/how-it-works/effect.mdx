@@ -4,6 +4,9 @@ title: "Effect"
 description: "Learn about how StudioCMS uses Effect."
 sidebar:
    order: 5
+   badge:
+     text: Updated
+     variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro';
@@ -26,7 +29,7 @@ This includes all the same base exports from Effect's default export `import {} 
 
 ```ts twoslash title="custom-utils.ts"
 import { 
-   convertToVanilla, errorTap, 
+   runEffect, errorTap, 
    genLogger, pipeLogger, 
    runtimeLogger 
 } from 'studiocms/effect';
