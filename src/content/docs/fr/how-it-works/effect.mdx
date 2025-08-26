@@ -4,6 +4,9 @@ title: "Effect"
 description: "Découvrez comment StudioCMS utilise Effect."
 sidebar:
    order: 5
+   badge:
+     text: Mis à jour
+     variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro';
@@ -26,7 +29,7 @@ Cela inclut exactement les mêmes exportations de base que l’exportation par d
 
 ```ts twoslash title="custom-utils.ts"
 import { 
-   convertToVanilla, errorTap, 
+   runEffect, errorTap, 
    genLogger, pipeLogger, 
    runtimeLogger 
 } from 'studiocms/effect';
