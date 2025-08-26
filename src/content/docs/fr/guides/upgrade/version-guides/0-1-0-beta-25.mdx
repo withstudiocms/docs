@@ -1,0 +1,32 @@
+---
+i18nReady: true
+title: "Mise à niveau : 0.1.0-beta.25"
+description: Mettre à niveau StudioCMS vers la version Beta.25
+sidebar:
+  label: 0.1.0-beta.25
+  badge:
+    text: NOUVEAU
+    variant: success
+  order: 999990
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Fonctionnalités
+
+- Refonte des composants de gestion de contenu du tableau de bord pour éliminer les scripts incorporés et améliorer la réutilisabilité du code.
+- Refonte de l’emploi d’Effect pour utiliser les nouveaux utilitaires améliorés du nouveau paquet `@withstudiocms/effect`.
+- Mise à jour pour utiliser le nouveau paquet `@withstudiocms/component-registry`.
+- Migre les routes d’API vers le nouvel utilitaire createEffectAPIRoutes depuis `@withstudiocms/effect`.
+- Optimise l’aperçu de la page de connexion sur la page de configuration et la première mise en route.
+- Optimise la page de connexion utilisant `threejs`, pour garantir un chargement rapide de la page.
+
+## Corrections de bugs
+
+- Unifie la configuration date-heure lors de la dernière vérification de mise à jour pour la modale de vérification de version.
+- Nettoie le code, corrige la première configuration d’OAuth et nettoie les anciens utilitaires.
+- Consolide les définitions de table dans la configuration et supprime le fichier de tables hérité.
