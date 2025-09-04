@@ -1,0 +1,59 @@
+---
+i18nReady: true
+title: "Upgrade: 0.1.0-beta.26"
+description: Upgrade StudioCMS to Beta.26
+sidebar:
+  label: 0.1.0-beta.26
+  badge:
+    text: NEW
+    variant: success
+  order: 999989
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Breaking Changes
+
+- Updated Astro DB Table schema (Users will be required to run `astro db push --remote` to update their table schema)
+   - Implements new DB table for dynamic config storage in unified table.
+   - Updated AstroDB table config to utilize enums for permissions.
+- Remove deprecated locals from middleware in favor of a joined StudioCMS locals object.
+   - Removed top-level Astro.Locals keys:
+      - `SCMSGenerator`, `SCMSUiGenerator`, `latestVersion`, `siteConfig`, `defaultLang`, `routeMap`
+      - `userSessionData`, `emailVerificationEnabled`, `userPermissionLevel`
+      - `wysiwygCsrfToken` (renamed)
+   - New location:
+      - Access these under `Astro.locals.StudioCMS`.
+   - Renames:
+      - `wysiwygCsrfToken` → `editorCSRFToken` (under StudioCMS)
+   - Migration examples:
+      - Before:
+         ```ts
+         const { siteConfig, defaultLang } = Astro.locals;
+         ```
+      - After:
+         ```ts
+         const { siteConfig, defaultLang } = Astro.locals.StudioCMS;
+         ```
+
+      - Before:
+         ```ts
+         const token = Astro.locals.wysiwygCsrfToken;
+         ```
+      - After:
+         ```ts
+         const token = Astro.locals.StudioCMS.editorCSRFToken;
+         ```
+
+## Features
+
+- Update to `@studiocms/ui` 1.0 beta.
+
+## Bug fixes
+
+- Adjust SDK page lookup to return undefined when a page is not found, eliminating noisy Astro errors in development.
+- Fix form data conversion on first time setup.
