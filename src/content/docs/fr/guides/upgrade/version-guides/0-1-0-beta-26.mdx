@@ -1,0 +1,59 @@
+---
+i18nReady: true
+title: "Mise à niveau : 0.1.0-beta.26"
+description: Mettre à niveau StudioCMS vers la version Beta.26
+sidebar:
+  label: 0.1.0-beta.26
+  badge:
+    text: NOUVEAU
+    variant: success
+  order: 999989
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Modifications avec rupture de compatibilité
+
+- Schéma de table Astro DB mis à jour (les utilisateurs devront exécuter `astro db push --remote` pour mettre à jour leur schéma de table)
+   - Implémente une nouvelle table de base de données pour l’enregistrement de configuration dynamique dans une table unifiée.
+   - Configuration de la table AstroDB mise à jour pour utiliser les énumérations pour les autorisations.
+- Supprime dans `locals` les propriétés dépréciées du middleware au profit d’un objet StudioCMS dans `locals`.
+   - Noms de propriétés Astro.Locals de niveau supérieur supprimées :
+      - `SCMSGenerator`, `SCMSUiGenerator`, `latestVersion`, `siteConfig`, `defaultLang`, `routeMap`
+      - `userSessionData`, `emailVerificationEnabled`, `userPermissionLevel`
+      - `wysiwygCsrfToken` (renommée)
+   - Nouvel emplacement :
+      - Accédez-y sous `Astro.locals.StudioCMS`.
+   - Renommage :
+      - `wysiwygCsrfToken` → `editorCSRFToken` (sous StudioCMS)
+   - Exemples de migration :
+      - Avant :
+         ```ts
+         const { siteConfig, defaultLang } = Astro.locals;
+         ```
+      - Après :
+         ```ts
+         const { siteConfig, defaultLang } = Astro.locals.StudioCMS;
+         ```
+
+      - Avant :
+         ```ts
+         const token = Astro.locals.wysiwygCsrfToken;
+         ```
+      - Après :
+         ```ts
+         const token = Astro.locals.StudioCMS.editorCSRFToken;
+         ```
+
+## Fonctionnalités
+
+- Mise à jour vers `@studiocms/ui` 1.0 beta.
+
+## Corrections de bugs
+
+- Ajuste la recherche de page SDK pour renvoyer `undefined` lorsqu’une page n’est pas trouvée, éliminant ainsi les erreurs Astro bruyantes en mode développement.
+- Corrige la conversion des données du formulaire lors de la première configuration.
