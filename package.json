@@ -88,6 +88,15 @@
   "pnpm": {
     "overrides": {
       "vite": "^6.3.4"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "@parcel/watcher",
+      "canvas",
+      "esbuild",
+      "msgpackr-extract",
+      "oxc-resolver",
+      "sharp"
+    ]
   }
 }
