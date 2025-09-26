@@ -17,6 +17,9 @@ const config: KnipConfig = {
 		'typedoc-plugin-frontmatter',
 		'typedoc-plugin-zod',
 		'ultrahtml',
+		'effect',
+		'@withstudiocms/component-registry',
+		'@docsearch/js'
 	],
 	entry: [
 		'src/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}',
@@ -28,7 +31,6 @@ const config: KnipConfig = {
 		'src/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}',
 		'scripts/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}',
 		'lunaria/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}',
-		'biome.json',
 	],
 	astro: {
 		entry: [
