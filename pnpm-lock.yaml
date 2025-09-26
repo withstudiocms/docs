@@ -21,8 +21,8 @@ importers:
         specifier: ^0.9.4
         version: 0.9.4(typescript@5.9.2)
       '@astrojs/db':
-        specifier: ^0.17.1
-        version: 0.17.2
+        specifier: ^0.18.0
+        version: 0.18.0
       '@astrojs/node':
         specifier: ^9.3.1
         version: 9.4.3(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
@@ -51,35 +51,35 @@ importers:
         specifier: ^3.2.1
         version: 3.12.2
       '@studiocms/blog':
-        specifier: 0.1.0-beta.26
-        version: 0.1.0-beta.26(@studiocms/md@0.1.0-beta.26(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)))(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
+        specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@77afcf4
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@77afcf4(@studiocms/md@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@77afcf4(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)))(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
       '@studiocms/cloudinary-image-service':
-        specifier: 0.1.0-beta.26
-        version: 0.1.0-beta.26(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
+        specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@77afcf4
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@77afcf4(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
       '@studiocms/devapps':
-        specifier: 0.1.0-beta.26
-        version: 0.1.0-beta.26(@astrojs/db@0.17.2)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
+        specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@77afcf4
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@77afcf4(@astrojs/db@0.18.0)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
       '@studiocms/html':
-        specifier: 0.1.0-beta.26
-        version: 0.1.0-beta.26(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
+        specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/html@77afcf4
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/html@77afcf4(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
       '@studiocms/markdoc':
-        specifier: 0.1.0-beta.26
-        version: 0.1.0-beta.26(@astrojs/react@4.3.1(@types/node@24.4.0)(@types/react-dom@19.1.9(@types/react@19.1.13))(@types/react@19.1.13)(jiti@2.5.1)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(yaml@2.8.1))(@studiocms/md@0.1.0-beta.26(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)))(@types/react@19.1.13)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
+        specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@77afcf4
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@77afcf4(@astrojs/react@4.3.1(@types/node@24.4.0)(@types/react-dom@19.1.9(@types/react@19.1.13))(@types/react@19.1.13)(jiti@2.5.1)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(yaml@2.8.1))(@studiocms/md@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@77afcf4(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)))(@types/react@19.1.13)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
       '@studiocms/md':
-        specifier: 0.1.0-beta.26
-        version: 0.1.0-beta.26(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
+        specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@77afcf4
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@77afcf4(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
       '@studiocms/mdx':
-        specifier: 0.1.0-beta.26
-        version: 0.1.0-beta.26(@studiocms/md@0.1.0-beta.26(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)))(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
+        specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@77afcf4
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@77afcf4(@studiocms/md@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@77afcf4(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)))(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
       '@studiocms/ui':
-        specifier: ^0.4.17
-        version: 0.4.17(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
+        specifier: 1.0.0-beta.1
+        version: 1.0.0-beta.1(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
       '@studiocms/web-vitals':
-        specifier: ^4.5.0
-        version: 4.5.2(@astrojs/db@0.17.2)
+        specifier: ^4.5.3
+        version: 4.5.3(@astrojs/db@0.18.0)
       '@studiocms/wysiwyg':
-        specifier: 0.1.0-beta.26
-        version: 0.1.0-beta.26(@studiocms/ui@0.4.17(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)))(@withstudiocms/component-registry@0.1.0-beta.2(785e43e743d912fb3e3e94e27fb67f79))(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
+        specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/wysiwyg@77afcf4
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/wysiwyg@77afcf4(@studiocms/ui@1.0.0-beta.1(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)))(@withstudiocms/component-registry@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@77afcf4(3a24852dc736d04a26fdfdef9fea8c59))(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
       '@types/hast':
         specifier: ^3.0.4
         version: 3.0.4
@@ -95,6 +95,9 @@ importers:
       '@types/semver':
         specifier: ^7.7.0
         version: 7.7.1
+      '@withstudiocms/component-registry':
+        specifier: https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@77afcf4
+        version: https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@77afcf4(3a24852dc736d04a26fdfdef9fea8c59)
       astro:
         specifier: ^5.12.9
         version: 5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
@@ -165,8 +168,8 @@ importers:
         specifier: ^0.21.0
         version: 0.21.3(@astrojs/starlight@0.35.3(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)))(typedoc-plugin-markdown@4.8.1(typedoc@0.28.13(typescript@5.9.2)))(typedoc@0.28.13(typescript@5.9.2))
       studiocms:
-        specifier: 0.1.0-beta.26
-        version: 0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d)
+        specifier: https://pkg.pr.new/withstudiocms/studiocms@77afcf4
+        version: https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea)
       tsm:
         specifier: ^2.3.0
         version: 2.3.0
@@ -338,8 +341,8 @@ packages:
   '@astrojs/compiler@2.13.0':
     resolution: {integrity: sha512-mqVORhUJViA28fwHYaWmsXSzLO9osbdZ5ImUfxBarqsYdMlPbqAqGJCxsNzvppp1BEzc1mJNjOVvQqeDN8Vspw==}
 
-  '@astrojs/db@0.17.2':
-    resolution: {integrity: sha512-rFkw8Cj/kLwr63n1bS/sUw3hNywyvTkPZbKCdwAqd9FfbH3LdN+dH29XwmBC0NhXOxK3wA1jZBRsOOxpcVkV5w==}
+  '@astrojs/db@0.18.0':
+    resolution: {integrity: sha512-a91Bl2+SEUhxLF/KxGO9yD9YI6BMMvnBRzRvN7v3Vtpd15UnR9bLz5aQa4pkgzlZPTUILysCKyLl0E10Z2tzGg==}
 
   '@astrojs/internal-helpers@0.6.1':
     resolution: {integrity: sha512-l5Pqf6uZu31aG+3Lv8nl/3s4DbUzdlxTWDof4pEpto6GUJNhhCbelVi9dEyurOVyqaelwmS9oSyOWOENSfgo9A==}
@@ -571,6 +574,12 @@ packages:
 
   '@clack/core@0.4.1':
     resolution: {integrity: sha512-Pxhij4UXg8KSr7rPek6Zowm+5M22rbd2g1nfojHJkxp5YkFqiZ2+YLEM/XGVIzvGOcM0nqjIFxrpDwWRZYWYjA==}
+
+  '@clack/core@0.5.0':
+    resolution: {integrity: sha512-p3y0FIOwaYRUPRcMO7+dlmLh8PSRcrjuTndsiA0WAFbWES0mLZlrjVoBRZ9DzkPFJZG6KGkJmoEAY0ZcVWTkow==}
+
+  '@clack/prompts@0.11.0':
+    resolution: {integrity: sha512-pMN5FcrEw9hUkZA4f+zLlzivQSeQf5dRGJjSUbvVYDLvpKCdQx5OaknvKzgbtXOizhP+SJJJjqEbOe55uKKfAw==}
 
   '@clack/prompts@0.9.1':
     resolution: {integrity: sha512-JIpyaboYZeWYlyP0H+OoPPxd6nqueG/CmN6ixBiNFsIDHREevjIf0n0Ohh5gr5C8pEDknzgvz+pIJ8dMhzWIeg==}
@@ -1774,51 +1783,56 @@ packages:
   '@standard-schema/spec@1.0.0':
     resolution: {integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==}
 
-  '@studiocms/blog@0.1.0-beta.26':
-    resolution: {integrity: sha512-72CGRAMSuhy886bFT2JOBUEuPHDcw/6SdB+2wALgD+3NpzRcBmE0PeaWil2JesZ8UAQ48iKFCiRV4RIF4jh+8w==}
+  '@studiocms/blog@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@77afcf4':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@77afcf4}
+    version: 0.1.0-beta.27
     peerDependencies:
-      '@studiocms/md': 0.1.0-beta.26
+      '@studiocms/md': 0.1.0-beta.27
       astro: ^5.12.9
-      effect: ^3.17.13
-      studiocms: 0.1.0-beta.26
+      effect: ^3.17.14
+      studiocms: 0.1.0-beta.27
       vite: ^6.3.4
 
-  '@studiocms/cloudinary-image-service@0.1.0-beta.26':
-    resolution: {integrity: sha512-X+TIesCCWXedkDkFil18lA397KS8+3P9RrAHkqQy9Bzs/bTZ7jGSuZf7Djep8XTxeaWCw5+pWwenCjo56uB37g==}
+  '@studiocms/cloudinary-image-service@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@77afcf4':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@77afcf4}
+    version: 0.1.0-beta.27
     peerDependencies:
       astro: ^5.12.9
-      effect: ^3.17.13
-      studiocms: 0.1.0-beta.26
+      effect: ^3.17.14
+      studiocms: 0.1.0-beta.27
       vite: ^6.3.4
 
-  '@studiocms/devapps@0.1.0-beta.26':
-    resolution: {integrity: sha512-zu2y3Di94cQri5hmicoWL/89HDeqHquApiwOl8AvLvjtWZEMtgHVpM3xt4VOfLHNNtSFc9DXLhxd8Zbl4lkjQg==}
+  '@studiocms/devapps@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@77afcf4':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@77afcf4}
+    version: 0.1.0-beta.27
     peerDependencies:
-      '@astrojs/db': ^0.17.1
+      '@astrojs/db': '>=0.17.2'
       astro: ^5.12.9
-      effect: ^3.17.13
-      studiocms: 0.1.0-beta.26
+      effect: ^3.17.14
+      studiocms: 0.1.0-beta.27
       vite: ^6.3.4
     peerDependenciesMeta:
       studiocms:
         optional: true
 
-  '@studiocms/html@0.1.0-beta.26':
-    resolution: {integrity: sha512-RuxIVjUhQL38AM1+75z+LxpW5+1wIMMXojsa9CsRyozQu3OdWnXzn4JMfY9eFkseEpMBY2ZJ64cNKlqECXX+Vw==}
+  '@studiocms/html@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/html@77afcf4':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/html@77afcf4}
+    version: 0.1.0-beta.27
     peerDependencies:
       astro: ^5.12.9
-      effect: ^3.17.13
-      studiocms: 0.1.0-beta.26
+      effect: ^3.17.14
+      studiocms: 0.1.0-beta.27
       vite: ^6.3.4
 
-  '@studiocms/markdoc@0.1.0-beta.26':
-    resolution: {integrity: sha512-xCy+HHFYB3TYawspVA4Q8+k5RCZRahkxhqh9SCHooWqX0Ts4PjEzMcTX5UKKRUmkXqecKMH1Lsd05OdpHH/bKA==}
+  '@studiocms/markdoc@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@77afcf4':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@77afcf4}
+    version: 0.1.0-beta.27
     peerDependencies:
-      '@astrojs/react': ^4.3.0
-      '@studiocms/md': 0.1.0-beta.26
+      '@astrojs/react': ^4.3.1
+      '@studiocms/md': 0.1.0-beta.27
       astro: ^5.12.9
-      effect: ^3.17.13
-      studiocms: 0.1.0-beta.26
+      effect: ^3.17.14
+      studiocms: 0.1.0-beta.27
       vite: ^6.3.4
     peerDependenciesMeta:
       '@astrojs/react':
@@ -1827,28 +1841,24 @@ packages:
   '@studiocms/markdown-remark-processor@1.2.0':
     resolution: {integrity: sha512-3qOupRze2HKO2VdcrN0c5j9ZYoM8hlhFjrs4m5pg4w5Do5I1MTuDDTXmfRnZ+CwDrXyUaYr+DK1Csb7zMYjzyA==}
 
-  '@studiocms/md@0.1.0-beta.26':
-    resolution: {integrity: sha512-VGoGHglm/VNPyBVbKQm2ZfsUCsb39lh2YKzWTBQcC5RVvaAmB+Kc/rZ6WpchwQVSZY2/vqtC57Schy6SIwQk1g==}
+  '@studiocms/md@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@77afcf4':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@77afcf4}
+    version: 0.1.0-beta.27
     peerDependencies:
       '@astrojs/markdown-remark': ^6.3.3
       astro: ^5.12.9
-      effect: ^3.17.13
-      studiocms: 0.1.0-beta.26
+      effect: ^3.17.14
+      studiocms: 0.1.0-beta.27
       vite: ^6.3.4
 
-  '@studiocms/mdx@0.1.0-beta.26':
-    resolution: {integrity: sha512-+D42qh5zotWB6PSUdXEb3wgHR9gV5x28tUTZaJSGyDKMap37zRdFdKPBLHlT302kCsQI0dqmuTM0gW/AG3eVxg==}
+  '@studiocms/mdx@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@77afcf4':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@77afcf4}
+    version: 0.1.0-beta.27
     peerDependencies:
-      '@studiocms/md': 0.1.0-beta.26
+      '@studiocms/md': 0.1.0-beta.27
       astro: ^5.12.9
-      effect: ^3.17.13
-      studiocms: 0.1.0-beta.26
-      vite: ^6.3.4
-
-  '@studiocms/ui@0.4.17':
-    resolution: {integrity: sha512-SEIfBFuBLjCERpwLfq9dywXjDEvSNi0cRlM1u2qu2FNn9X24kDEkOEdNDDeyyYCn5FcOlz21lcIxtoqpPSg/wA==}
-    peerDependencies:
-      astro: ^4.5 || ^5.0.0-beta.0
+      effect: ^3.17.14
+      studiocms: 0.1.0-beta.27
       vite: ^6.3.4
 
   '@studiocms/ui@1.0.0-beta.1':
@@ -1857,25 +1867,26 @@ packages:
       astro: ^4.5 || ^5.0.0-beta.0
       vite: ^6.3.4
 
-  '@studiocms/web-vitals@4.5.2':
-    resolution: {integrity: sha512-DossG3WptmGNJDyHuc0p3xffgDup69CTVmJVU6aEfTkG1UEsPYyiSQjJTkgoseCe6cM5V6mWrwHLkqMXba7ofw==}
+  '@studiocms/web-vitals@4.5.3':
+    resolution: {integrity: sha512-LH0KWZB4iojqoz3wtpDh53v97syruBYKg2NQ5IT8nFuGtjqZCYoD6HLQqb2oQ6OnqxZ6NjEj+UwTenfDta7IMg==}
     peerDependencies:
-      '@astrojs/db': ^0.17.1
+      '@astrojs/db': '>=0.17.1'
 
-  '@studiocms/wysiwyg@0.1.0-beta.26':
-    resolution: {integrity: sha512-IBtrFCyQz/VgpgqcG2KJu0Kba7C3Chk0NlBTipFhQeR22Rjjt+0cfzINLFPSLKYReEA4kU7b9U5CnXAo1RHrDg==}
+  '@studiocms/wysiwyg@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/wysiwyg@77afcf4':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/wysiwyg@77afcf4}
+    version: 0.1.0-beta.27
     peerDependencies:
-      '@studiocms/ui': ^1.0.0-beta.0
-      '@withstudiocms/component-registry': 0.1.0-beta.2
+      '@studiocms/ui': ^1.0.0-beta.1
+      '@withstudiocms/component-registry': 0.1.0-beta.3
       astro: ^5.12.9
-      studiocms: 0.1.0-beta.26
+      studiocms: 0.1.0-beta.27
       vite: ^6.3.4
 
   '@swc/helpers@0.5.17':
     resolution: {integrity: sha512-5IKx/Y13RsYd+sauPb2x+U/xZikHjolzfuDgTAl/Tdf3Q8rslRvC19NKDLgAJQ6wsqADk10ntlv08nPFw/gO/A==}
 
-  '@ts-morph/common@0.27.0':
-    resolution: {integrity: sha512-Wf29UqxWDpc+i61k3oIOzcUfQt79PIT9y/MWfAGlrkjg6lBC1hwDECLXPVJAhWjiGbfBCxZd65F/LIZF3+jeJQ==}
+  '@ts-morph/common@0.28.0':
+    resolution: {integrity: sha512-4w6X/oFmvXcwux6y6ExfM/xSqMHw20cYwFJH+BlYrtGa6nwY9qGq8GXnUs1sVYeF2o/KT3S8hAH6sKBI3VOkBg==}
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -2030,8 +2041,9 @@ packages:
   '@vscode/l10n@0.0.18':
     resolution: {integrity: sha512-KYSIHVmslkaCDyw013pphY+d7x1qV8IZupYfeIfzNA+nsaWHbn5uPuQRvdRFsa9zFzGeudPuoGoZ1Op4jrJXIQ==}
 
-  '@withstudiocms/auth-kit@0.1.0-beta.1':
-    resolution: {integrity: sha512-A7ckyZlFfxlqyr1IeO/Evk4msBsVt8NjL6iO5rimVo0n1mllxQpNdXiaQ6+AH6Yi4ZC7cO5TwHADqwQTBtlaZg==}
+  '@withstudiocms/auth-kit@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/auth-kit@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/auth-kit@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9}
+    version: 0.1.0-beta.2
     peerDependencies:
       astro: ^5.12.9
 
@@ -2039,27 +2051,47 @@ packages:
     resolution: {integrity: sha512-Nh2sTjL8YTcJ0eIR06yCLrv9qgeM7072L7eHRmMWKJF3weKL3cKSmYvNX3Kcyv4e7UO8pAdcjGfOxOQrCkM0Aw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
 
-  '@withstudiocms/component-registry@0.1.0-beta.2':
-    resolution: {integrity: sha512-+nhNel468BIDlDXcLEm/XqBvj4iGgiZqWa1xzl5Jwx0bE21cFakfMmdQbPCCUblH31pltLtH4pjY2y/hf7f/rg==}
+  '@withstudiocms/component-registry@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@77afcf4':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@77afcf4}
+    version: 0.1.0-beta.3
     peerDependencies:
       astro: ^5.12.9
 
-  '@withstudiocms/config-utils@0.1.0-beta.3':
-    resolution: {integrity: sha512-TylCjQxzW9RRlSjyghLG8Xu2cKOs0rUrahWWEMbe10AmEQQsIlrGgWUJ2UmjvHwXmFq8CknmBhJnE9Tbu3I3og==}
+  '@withstudiocms/component-registry@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9}
+    version: 0.1.0-beta.3
     peerDependencies:
       astro: ^5.12.9
 
-  '@withstudiocms/effect@0.1.0-beta.2':
-    resolution: {integrity: sha512-p/NyfIQbe1gpkCPbQAFgU8ky8XIPH0ZNPV4ypN1DkQ4T9g5NX/l3WeveFXvEp0P4XGYpNSj+SiMJ7ATzpbEhmw==}
+  '@withstudiocms/config-utils@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/config-utils@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/config-utils@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9}
+    version: 0.1.0-beta.4
     peerDependencies:
+      astro: ^5.12.9
+
+  '@withstudiocms/effect@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/effect@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/effect@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9}
+    version: 0.1.0-beta.3
+    peerDependencies:
+      '@astrojs/db': '>=0.17.2'
       '@effect/cli': ^0.69.2
-      '@effect/platform': ^0.90.6
+      '@effect/platform': ^0.90.10
       '@effect/platform-node': ^0.96.1
+      '@libsql/client': ^0.15.10
       astro: ^5.12.9
-      effect: ^3.17.13
+      drizzle-orm: ^0.42.0
+      effect: ^3.17.14
+    peerDependenciesMeta:
+      '@astrojs/db':
+        optional: true
+      '@libsql/client':
+        optional: true
+      drizzle-orm:
+        optional: true
 
-  '@withstudiocms/internal_helpers@0.1.0-beta.1':
-    resolution: {integrity: sha512-ufDRiy5rh8RJKXhbSo5zRANC5B/88o8+zOjt5EDmlJsrNT1zeVal3qgQbz6oIb8oEWXX8I11cferllRmR5ldPw==}
+  '@withstudiocms/internal_helpers@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/internal_helpers@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/internal_helpers@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9}
+    version: 0.1.0-beta.2
     peerDependencies:
       astro: ^5.12.9
 
@@ -2611,8 +2643,8 @@ packages:
     resolution: {integrity: sha512-cgwlv/1iFQiFnU96XXgROh8xTeetsnJiDsTc7TYCLFd9+/WNkIqPTxiM/8pSd8VIrhXGTf1Ny1q1hquVqDJB5w==}
     engines: {node: '>= 4'}
 
-  dompurify@3.2.6:
-    resolution: {integrity: sha512-/2GogDQlohXPZe6D6NOgQvXLPSYBqIWMnZ8zzOhn09REE4eyAzb+Hed3jhoM9OkuaJ8P6ZGTTVWQKAi8ieIzfQ==}
+  dompurify@3.2.7:
+    resolution: {integrity: sha512-WhL/YuveyGXJaerVlMYGWhvQswa7myDG17P7Vu65EWC05o8vfeNbvNf4d/BOvH99+ZW+LlQsc1GDKMa1vNK6dw==}
 
   domutils@3.2.2:
     resolution: {integrity: sha512-6kZKyUajlDuqlHKVX1w7gyslj9MPIXzIFiz/rGu35uC1wMi+kMhQwGhl4lt9unC9Vb9INnY9Z3/ZA3+FhASLaw==}
@@ -3116,8 +3148,8 @@ packages:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
     deprecated: Glob versions prior to v9 are no longer supported
 
-  grapesjs@0.22.12:
-    resolution: {integrity: sha512-1zhUKoKZCDyN0j/Z19/lJ25UBR4GUHtyeRMHgewskRiQSdb/du+9L/R/q/sijmp1cKPxQZihzvwoc69Ya/pXIQ==}
+  grapesjs@0.22.13:
+    resolution: {integrity: sha512-GsLqv9ckVF7cWgp6aqlmxmLUJSsGvni4FHsKm9nxa6rv3acUeTkdR93GbbYaTejn5nFFCn9mBwzGGmGh9X+xHA==}
 
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
@@ -4439,16 +4471,17 @@ packages:
   strnum@2.1.1:
     resolution: {integrity: sha512-7ZvoFTiCnGxBtDqJ//Cu6fWtZtc7Y3x+QOirG15wztbdngGSkht27o2pyGWrVy0b4WAy3jbKmnoK6g5VlVNUUw==}
 
-  studiocms@0.1.0-beta.26:
-    resolution: {integrity: sha512-Ve2uQ0K5uI8pjq6CB3Xzgo+0qntLSHNUBlOuqNyp2D5RBJuVq3e1WFJopyvX0i31cQSR/wTEf1olB1o9+gXjiQ==}
+  studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4:
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms@77afcf4}
+    version: 0.1.0-beta.27
     hasBin: true
     peerDependencies:
-      '@astrojs/db': ^0.17.1
+      '@astrojs/db': '>=0.17.2'
       '@libsql/client': ^0.15.10
-      '@studiocms/web-vitals': ^4.4.1
+      '@studiocms/web-vitals': ^4.5.3
       astro: ^5.12.9
       drizzle-orm: ^0.42.0
-      effect: ^3.17.13
+      effect: ^3.17.14
       vite: ^6.3.4
     peerDependenciesMeta:
       '@studiocms/web-vitals':
@@ -4524,8 +4557,8 @@ packages:
   trough@2.2.0:
     resolution: {integrity: sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw==}
 
-  ts-morph@26.0.0:
-    resolution: {integrity: sha512-ztMO++owQnz8c/gIENcM9XfCEzgoGphTv+nKpYNM1bgsdOVC/jRZuEBf6N+mLLDNg68Kl+GgUZfOySaRiG1/Ug==}
+  ts-morph@27.0.0:
+    resolution: {integrity: sha512-xcqelpTR5PCuZMs54qp9DE3t7tPgA2v/P1/qdW4ke5b3Y5liTGTYj6a/twT35EQW/H5okRqp1UOqwNlgg0K0eQ==}
 
   ts-pattern@5.8.0:
     resolution: {integrity: sha512-kIjN2qmWiHnhgr5DAkAafF9fwb0T5OhMVSWrm8XEdTFnX6+wfXwYOFjeF86UZ54vduqiR7BfqScFmXSzSaH8oA==}
@@ -5329,7 +5362,7 @@ snapshots:
 
   '@astrojs/compiler@2.13.0': {}
 
-  '@astrojs/db@0.17.2':
+  '@astrojs/db@0.18.0':
     dependencies:
       '@libsql/client': 0.15.15
       deep-diff: 1.0.2
@@ -5732,6 +5765,17 @@ snapshots:
 
   '@clack/core@0.4.1':
     dependencies:
+      picocolors: 1.1.1
+      sisteransi: 1.0.5
+
+  '@clack/core@0.5.0':
+    dependencies:
+      picocolors: 1.1.1
+      sisteransi: 1.0.5
+
+  '@clack/prompts@0.11.0':
+    dependencies:
+      '@clack/core': 0.5.0
       picocolors: 1.1.1
       sisteransi: 1.0.5
 
@@ -6708,28 +6752,28 @@ snapshots:
 
   '@standard-schema/spec@1.0.0': {}
 
-  '@studiocms/blog@0.1.0-beta.26(@studiocms/md@0.1.0-beta.26(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)))(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
+  '@studiocms/blog@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@77afcf4(@studiocms/md@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@77afcf4(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)))(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
     dependencies:
       '@astrojs/rss': 4.0.12
-      '@studiocms/md': 0.1.0-beta.26(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
+      '@studiocms/md': https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@77afcf4(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
       astro: 5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       effect: 3.17.13
-      studiocms: 0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d)
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea)
       vite: 6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)
 
-  '@studiocms/cloudinary-image-service@0.1.0-beta.26(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
+  '@studiocms/cloudinary-image-service@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@77afcf4(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
     dependencies:
       '@cloudinary/url-gen': 1.22.0
       astro: 5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       effect: 3.17.13
-      studiocms: 0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d)
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea)
       vite: 6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)
 
-  '@studiocms/devapps@0.1.0-beta.26(@astrojs/db@0.17.2)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
+  '@studiocms/devapps@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@77afcf4(@astrojs/db@0.18.0)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
     dependencies:
-      '@astrojs/db': 0.17.2
+      '@astrojs/db': 0.18.0
       astro: 5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       cheerio: 1.1.2
@@ -6738,29 +6782,29 @@ snapshots:
       turndown: 7.2.1
       vite: 6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)
     optionalDependencies:
-      studiocms: 0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d)
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea)
 
-  '@studiocms/html@0.1.0-beta.26(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
+  '@studiocms/html@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/html@77afcf4(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
     dependencies:
       astro: 5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       codemirror: 5.65.19
       effect: 3.17.13
       katex: 0.16.22
-      studiocms: 0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d)
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea)
       suneditor: 2.47.8
       vite: 6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)
 
-  '@studiocms/markdoc@0.1.0-beta.26(@astrojs/react@4.3.1(@types/node@24.4.0)(@types/react-dom@19.1.9(@types/react@19.1.13))(@types/react@19.1.13)(jiti@2.5.1)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(yaml@2.8.1))(@studiocms/md@0.1.0-beta.26(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)))(@types/react@19.1.13)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
+  '@studiocms/markdoc@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@77afcf4(@astrojs/react@4.3.1(@types/node@24.4.0)(@types/react-dom@19.1.9(@types/react@19.1.13))(@types/react@19.1.13)(jiti@2.5.1)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(yaml@2.8.1))(@studiocms/md@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@77afcf4(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)))(@types/react@19.1.13)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
     dependencies:
       '@markdoc/markdoc': 0.5.4(@types/react@19.1.13)(react@19.1.1)
-      '@studiocms/md': 0.1.0-beta.26(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
+      '@studiocms/md': https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@77afcf4(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
       astro: 5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       effect: 3.17.13
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
-      studiocms: 0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d)
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea)
       vite: 6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)
     optionalDependencies:
       '@astrojs/react': 4.3.1(@types/node@24.4.0)(@types/react-dom@19.1.9(@types/react@19.1.13))(@types/react@19.1.13)(jiti@2.5.1)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(yaml@2.8.1)
@@ -6799,22 +6843,22 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@studiocms/md@0.1.0-beta.26(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
+  '@studiocms/md@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@77afcf4(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.6
       '@studiocms/markdown-remark-processor': 1.2.0
       astro: 5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       effect: 3.17.13
-      studiocms: 0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d)
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea)
       vite: 6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)
     transitivePeerDependencies:
       - supports-color
 
-  '@studiocms/mdx@0.1.0-beta.26(@studiocms/md@0.1.0-beta.26(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)))(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
+  '@studiocms/mdx@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@77afcf4(@studiocms/md@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@77afcf4(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)))(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
     dependencies:
       '@mdx-js/mdx': 3.1.1
-      '@studiocms/md': 0.1.0-beta.26(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
+      '@studiocms/md': https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@77afcf4(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
       astro: 5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       effect: 3.17.13
@@ -6822,20 +6866,11 @@ snapshots:
       react-dom: 19.1.1(react@19.1.1)
       rehype-highlight: 7.0.2
       remark-gfm: 4.0.1
-      studiocms: 0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d)
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea)
       unified: 11.0.5
       vite: 6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)
     transitivePeerDependencies:
       - supports-color
-
-  '@studiocms/ui@0.4.17(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
-    dependencies:
-      '@iconify-json/heroicons': 1.2.2
-      '@iconify/types': 2.0.0
-      astro: 5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
-      astro-transition-event-polyfill: 1.1.0(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
-      pathe: 1.1.2
-      vite: 6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)
 
   '@studiocms/ui@1.0.0-beta.1(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
     dependencies:
@@ -6846,20 +6881,20 @@ snapshots:
       pathe: 1.1.2
       vite: 6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)
 
-  '@studiocms/web-vitals@4.5.2(@astrojs/db@0.17.2)':
+  '@studiocms/web-vitals@4.5.3(@astrojs/db@0.18.0)':
     dependencies:
-      '@astrojs/db': 0.17.2
+      '@astrojs/db': 0.18.0
       web-vitals: 5.1.0
 
-  '@studiocms/wysiwyg@0.1.0-beta.26(@studiocms/ui@0.4.17(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)))(@withstudiocms/component-registry@0.1.0-beta.2(785e43e743d912fb3e3e94e27fb67f79))(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
+  '@studiocms/wysiwyg@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/wysiwyg@77afcf4(@studiocms/ui@1.0.0-beta.1(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)))(@withstudiocms/component-registry@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@77afcf4(3a24852dc736d04a26fdfdef9fea8c59))(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))':
     dependencies:
-      '@studiocms/ui': 0.4.17(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
-      '@withstudiocms/component-registry': 0.1.0-beta.2(785e43e743d912fb3e3e94e27fb67f79)
+      '@studiocms/ui': 1.0.0-beta.1(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
+      '@withstudiocms/component-registry': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@77afcf4(3a24852dc736d04a26fdfdef9fea8c59)
       astro: 5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       deepmerge-ts: 7.1.5
-      grapesjs: 0.22.12
-      studiocms: 0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d)
+      grapesjs: 0.22.13
+      studiocms: https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea)
       tui-image-editor: 3.15.3
       vite: 6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)
     transitivePeerDependencies:
@@ -6872,11 +6907,11 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@ts-morph/common@0.27.0':
+  '@ts-morph/common@0.28.0':
     dependencies:
-      fast-glob: 3.3.3
       minimatch: 10.0.3
       path-browserify: 1.0.1
+      tinyglobby: 0.2.15
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
@@ -7077,17 +7112,20 @@ snapshots:
 
   '@vscode/l10n@0.0.18': {}
 
-  '@withstudiocms/auth-kit@0.1.0-beta.1(785e43e743d912fb3e3e94e27fb67f79)':
+  '@withstudiocms/auth-kit@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/auth-kit@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9(3a24852dc736d04a26fdfdef9fea8c59)':
     dependencies:
       '@oslojs/binary': 1.0.0
       '@oslojs/crypto': 1.0.1
       '@oslojs/encoding': 1.1.0
-      '@withstudiocms/effect': 0.1.0-beta.2(785e43e743d912fb3e3e94e27fb67f79)
+      '@withstudiocms/effect': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/effect@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9(3a24852dc736d04a26fdfdef9fea8c59)
       astro: 5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
     transitivePeerDependencies:
+      - '@astrojs/db'
       - '@effect/cli'
       - '@effect/platform'
       - '@effect/platform-node'
+      - '@libsql/client'
+      - drizzle-orm
       - effect
 
   '@withstudiocms/cli-kit@0.1.0':
@@ -7108,28 +7146,48 @@ snapshots:
       tinyexec: 1.0.1
       wrap-ansi: 9.0.2
 
-  '@withstudiocms/component-registry@0.1.0-beta.2(785e43e743d912fb3e3e94e27fb67f79)':
+  '@withstudiocms/component-registry@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@77afcf4(3a24852dc736d04a26fdfdef9fea8c59)':
     dependencies:
-      '@withstudiocms/effect': 0.1.0-beta.2(785e43e743d912fb3e3e94e27fb67f79)
+      '@withstudiocms/effect': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/effect@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9(3a24852dc736d04a26fdfdef9fea8c59)
       astro: 5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
-      ts-morph: 26.0.0
+      ts-morph: 27.0.0
       ultrahtml: 1.6.0
     transitivePeerDependencies:
+      - '@astrojs/db'
       - '@effect/cli'
       - '@effect/platform'
       - '@effect/platform-node'
+      - '@libsql/client'
+      - drizzle-orm
       - effect
 
-  '@withstudiocms/config-utils@0.1.0-beta.3(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))':
+  '@withstudiocms/component-registry@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9(3a24852dc736d04a26fdfdef9fea8c59)':
+    dependencies:
+      '@withstudiocms/effect': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/effect@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9(3a24852dc736d04a26fdfdef9fea8c59)
+      astro: 5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
+      astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
+      ts-morph: 27.0.0
+      ultrahtml: 1.6.0
+    transitivePeerDependencies:
+      - '@astrojs/db'
+      - '@effect/cli'
+      - '@effect/platform'
+      - '@effect/platform-node'
+      - '@libsql/client'
+      - drizzle-orm
+      - effect
+
+  '@withstudiocms/config-utils@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/config-utils@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))':
     dependencies:
       astro: 5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       deepmerge-ts: 7.1.5
       esbuild: 0.25.9
 
-  '@withstudiocms/effect@0.1.0-beta.2(785e43e743d912fb3e3e94e27fb67f79)':
+  '@withstudiocms/effect@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/effect@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9(3a24852dc736d04a26fdfdef9fea8c59)':
     dependencies:
+      '@clack/prompts': 0.11.0
       '@effect/cli': 0.69.2(@effect/platform@0.90.9(effect@3.17.13))(@effect/printer-ansi@0.45.0(@effect/typeclass@0.36.0(effect@3.17.13))(effect@3.17.13))(@effect/printer@0.45.0(@effect/typeclass@0.36.0(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)
       '@effect/platform': 0.90.9(effect@3.17.13)
       '@effect/platform-node': 0.96.1(@effect/cluster@0.48.6(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/workflow@0.9.5(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)
@@ -7139,8 +7197,12 @@ snapshots:
       micromatch: 4.0.8
       nodemailer: 7.0.6
       socks: 2.8.7
+    optionalDependencies:
+      '@astrojs/db': 0.18.0
+      '@libsql/client': 0.15.15
+      drizzle-orm: 0.42.0(@libsql/client@0.15.15)
 
-  '@withstudiocms/internal_helpers@0.1.0-beta.1(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))':
+  '@withstudiocms/internal_helpers@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/internal_helpers@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))':
     dependencies:
       astro: 5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
@@ -7788,7 +7850,7 @@ snapshots:
     dependencies:
       domelementtype: 2.3.0
 
-  dompurify@3.2.6:
+  dompurify@3.2.7:
     optionalDependencies:
       '@types/trusted-types': 2.0.7
 
@@ -8221,7 +8283,7 @@ snapshots:
       path-is-absolute: 1.0.1
     optional: true
 
-  grapesjs@0.22.12:
+  grapesjs@0.22.13:
     dependencies:
       '@types/backbone': 1.4.15
       backbone: 1.4.1
@@ -10233,11 +10295,9 @@ snapshots:
 
   strnum@2.1.1: {}
 
-  studiocms@0.1.0-beta.26(aa579c0dc59527963d730a15b9d1c58d):
+  studiocms@https://pkg.pr.new/withstudiocms/studiocms@77afcf4(035f28623331fb0900980e893c1f23ea):
     dependencies:
-      '@astrojs/db': 0.17.2
-      '@clack/core': 0.4.1
-      '@clack/prompts': 0.9.1
+      '@astrojs/db': 0.18.0
       '@iconify-json/flat-color-icons': 1.2.3
       '@iconify-json/simple-icons': 1.2.52
       '@inox-tools/runtime-logger': 0.7.0(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
@@ -10245,19 +10305,19 @@ snapshots:
       '@nanostores/i18n': 1.2.2(nanostores@1.0.1)
       '@nanostores/persistent': 1.1.0(nanostores@1.0.1)
       '@studiocms/ui': 1.0.0-beta.1(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1))
-      '@withstudiocms/auth-kit': 0.1.0-beta.1(785e43e743d912fb3e3e94e27fb67f79)
+      '@withstudiocms/auth-kit': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/auth-kit@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9(3a24852dc736d04a26fdfdef9fea8c59)
       '@withstudiocms/cli-kit': 0.1.0
-      '@withstudiocms/component-registry': 0.1.0-beta.2(785e43e743d912fb3e3e94e27fb67f79)
-      '@withstudiocms/config-utils': 0.1.0-beta.3(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
-      '@withstudiocms/effect': 0.1.0-beta.2(785e43e743d912fb3e3e94e27fb67f79)
-      '@withstudiocms/internal_helpers': 0.1.0-beta.1(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
+      '@withstudiocms/component-registry': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9(3a24852dc736d04a26fdfdef9fea8c59)
+      '@withstudiocms/config-utils': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/config-utils@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
+      '@withstudiocms/effect': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/effect@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9(3a24852dc736d04a26fdfdef9fea8c59)
+      '@withstudiocms/internal_helpers': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/internal_helpers@77afcf4b94bc151d6ee1dfbc9fb456fb0e179cf9(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       astro: 5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@24.4.0)(jiti@2.5.1)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       boxen: 8.0.1
       chalk: 5.6.2
       diff: 8.0.2
       diff2html: 3.4.52
-      dompurify: 3.2.6
+      dompurify: 3.2.7
       dotenv: 17.2.2
       drizzle-orm: 0.42.0(@libsql/client@0.15.15)
       effect: 3.17.13
@@ -10276,7 +10336,7 @@ snapshots:
       ultrahtml: 1.6.0
       vite: 6.3.6(@types/node@24.4.0)(jiti@2.5.1)(yaml@2.8.1)
     optionalDependencies:
-      '@studiocms/web-vitals': 4.5.2(@astrojs/db@0.17.2)
+      '@studiocms/web-vitals': 4.5.3(@astrojs/db@0.18.0)
     transitivePeerDependencies:
       - '@effect/cli'
       - '@effect/platform'
@@ -10355,9 +10415,9 @@ snapshots:
 
   trough@2.2.0: {}
 
-  ts-morph@26.0.0:
+  ts-morph@27.0.0:
     dependencies:
-      '@ts-morph/common': 0.27.0
+      '@ts-morph/common': 0.28.0
       code-block-writer: 13.0.3
 
   ts-pattern@5.8.0: {}
