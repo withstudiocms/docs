@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "packageManager": "pnpm@10.17.0",
   "engines": {
-    "node": "20.14.0"
+    "node": "22.19.0"
   },
   "scripts": {
     "dev": "pnpm gen-changelogs && astro dev",
