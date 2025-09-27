@@ -20,7 +20,10 @@ const config: KnipConfig = {
 		'effect',
 		'@withstudiocms/component-registry',
 		'@docsearch/js',
-		'studiocms:ui'
+		'studiocms:ui',
+		'studiocms',
+		'@studiocms/web-vitals',
+		'@astrojs/db'
 	],
 	entry: [
 		'src/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}',
