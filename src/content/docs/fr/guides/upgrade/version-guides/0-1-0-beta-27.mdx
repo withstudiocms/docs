@@ -1,0 +1,30 @@
+---
+i18nReady: true
+title: "Mise à niveau : 0.1.0-beta.27"
+description: Mettre à niveau StudioCMS vers la version Beta.27
+sidebar:
+  label: 0.1.0-beta.27
+  badge:
+    text: NOUVEAU
+    variant: success
+  order: 999988
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Nouvelles fonctionnalités
+
+- Refaçonne la CLI afin d’utiliser le nouveau module Clack pour Effect à partir de `@withstudiocms/effect`
+- Migre la CLI vers le nouveau paquet `@withstudiocms/auth-kit`
+- Configuration des tests initiaux pour StudioCMS.
+
+## Corrections de bugs
+
+- Active le bouton « Brouillon » sur la page d’édition pour toutes les pages (y compris la page d’index) afin que le champ brouillon soit soumis avec le formulaire. Auparavant, le contrôle désactivé omettait ce champ de la charge utile, empêchant ainsi toute modification du statut de brouillon.
+- Vérifie que le slug n’est pas une chaîne de caractères vide ou un slug non valide.
+- Renomme le fichier interne pour éviter toute confusion avec les tests pendant le développement.
+- Corrige un paramètre dans la commande d’ajout de la CLI.
