@@ -52,7 +52,7 @@ This will generate a new PKCS#8 key-pair that will be used for the `sqld` server
 
 Navigate to your studiocms project directory and run the following command:
 
-<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt "../keys/libsql.pem" -e 31556926' />
+<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt -e 31556926 "../keys/libsql.pem"' />
 
 The output is the JWT auth token encrypted with your private key in both standard format as well as base64URLEncoded, which will be used for libSQL authentication. Keep in mind that the token will be valid for 1 year!
 

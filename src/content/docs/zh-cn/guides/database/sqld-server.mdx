@@ -51,7 +51,7 @@ openssl pkey -in ./libsql.pem -pubout -out ./libsql.pub
 
 进入 StudioCMS 项目目录并执行：
 
-<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt "../keys/libsql.pem" -e 31556926' />
+<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt -e 31556926 "../keys/libsql.pem"' />
 
 输出包含标准格式和 Base64URL 编码的 JWT 认证令牌，用于 libSQL 身份验证。该令牌有效期为 1 年！
 

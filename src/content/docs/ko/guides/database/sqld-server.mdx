@@ -52,7 +52,7 @@ openssl pkey -in ./libsql.pem -pubout -out ./libsql.pub
 
 StudioCMS 프로젝트 디렉터리로 이동하여 다음 명령을 실행합니다.
 
-<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt "../keys/libsql.pem" -c "iss=admin" -e 31556926' />
+<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt -e 31556926 "../keys/libsql.pem" ' />
 
 출력된 내용은 개인 키로 암호화된 JWT 인증 토큰이며, 이는 libSQL 인증에 사용됩니다. 이 토큰은 1년 동안 유효하다는 점을 유념하세요!
 

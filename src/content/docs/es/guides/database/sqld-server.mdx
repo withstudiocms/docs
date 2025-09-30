@@ -54,7 +54,7 @@ Esto generará un nuevo par de claves PKCS#8 que se utilizarán para el servidor
 
 Navega a tu directorio del proyecto studiocms y ejecuta el siguiente comando:
 
-<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt "../keys/libsql.pem" -c "iss=admin" -e 31556926' />
+<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt -e 31556926 "../keys/libsql.pem"' />
 
 El resultado es el token de autenticación JWT cifrado con tu clave privada, que se utilizará para la autenticación de libSQL. Ten en cuenta que el token será válido durante 1 año.
 
