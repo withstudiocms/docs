@@ -22,10 +22,10 @@ import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/compon
 
 <FileTree>
 
-- docker-compose.yml
-- data/
-- keys/
-- my-studiocms-project/
+  - docker-compose.yml
+  - data/
+  - keys/
+  - my-studiocms-project/
   - astro.config.mjs
   - studiocms.config.mjs
   - package.json
@@ -52,7 +52,7 @@ openssl pkey -in ./libsql.pem -pubout -out ./libsql.pub
 
 StudioCMS 프로젝트 디렉터리로 이동하여 다음 명령을 실행합니다.
 
-<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt -e 31556926 "../keys/libsql.pem" ' />
+<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt "../keys/libsql.pem" -c "iss=admin" -e 31556926' />
 
 출력된 내용은 개인 키로 암호화된 JWT 인증 토큰이며, 이는 libSQL 인증에 사용됩니다. 이 토큰은 1년 동안 유효하다는 점을 유념하세요!
 
@@ -72,76 +72,76 @@ StudioCMS 프로젝트 디렉터리 외부에 libSQL 인스턴스를 위한 새�
 
 <Tabs>
 
-<TabItem label="공개 키 파일">
+  <TabItem label="공개 키 파일">
 
-```yml
-services:
-  libsql:
+    ```yml
+    services:
+    libsql:
     image: ghcr.io/tursodatabase/libsql-server:latest
     platform: linux/amd64
     ports:
-      - "8080:8080"
-      - "5001:5001"
+    - "8080:8080"
+    - "5001:5001"
     environment:
-      - SQLD_NODE=primary
-      - SQLD_AUTH_JWT_KEY_FILE=/home/.ssh/libsql.pub
+    - SQLD_NODE=primary
+    - SQLD_AUTH_JWT_KEY_FILE=/home/.ssh/libsql.pub
     volumes:
-      - ./data/libsql:/var/lib/sqld
-      - ./keys/libsql.pub:/home/.ssh/libsql.pub
-```
+    - ./data/libsql:/var/lib/sqld
+    - ./keys/libsql.pub:/home/.ssh/libsql.pub
+    ```
 
-</TabItem>
+  </TabItem>
 
-<TabItem label="JWT 토큰">
+  <TabItem label="JWT 토큰">
 
-```yml
-services:
-  libsql:
+    ```yml
+    services:
+    libsql:
     image: ghcr.io/tursodatabase/libsql-server:latest
     platform: linux/amd64
     ports:
-      - "8080:8080"
-      - "5001:5001"
+    - "8080:8080"
+    - "5001:5001"
     environment:
-      - SQLD_NODE=primary
-      - SQLD_AUTH_JWT_KEY=paste your JWT token here
+    - SQLD_NODE=primary
+    - SQLD_AUTH_JWT_KEY=paste your JWT token here
     volumes:
-      - ./data/libsql:/var/lib/sqld
-```
+    - ./data/libsql:/var/lib/sqld
+    ```
 
-</TabItem>
+  </TabItem>
 
 </Tabs>
 
 <Aside type="note" title="Coolify에 배포하시나요?">
-Coolify 사용자: `:8080` 포트 접미사 없이 도메인을 통해 libSQL을 직접 노출하는 Coolify 호환 Docker Compose 구성이 필요하다면 우리가 제공하는 [GitHub Gist](https://gist.github.com/Adammatthiesen/bfe7c78b2e73996fb3ef1b36ed606a57)를 사용하세요.
+  Coolify 사용자: `:8080` 포트 접미사 없이 도메인을 통해 libSQL을 직접 노출하는 Coolify 호환 Docker Compose 구성이 필요하다면 우리가 제공하는 [GitHub Gist](https://gist.github.com/Adammatthiesen/bfe7c78b2e73996fb3ef1b36ed606a57)를 사용하세요.
 </Aside>
 
 ## 전체 설정 시작하기
 
 <Steps>
-   
-1. Docker 컨테이너를 시작합니다.
 
-   기본 디렉터리 (또는 해당 라우트로 이동한 경우에는 서버)에서 다음 명령을 실행하여 libSQL 서버 컨테이너를 시작합니다.
+  1. Docker 컨테이너를 시작합니다.
 
-   ```sh
-   docker compose up -d
-   ```
+  기본 디렉터리 (또는 해당 라우트로 이동한 경우에는 서버)에서 다음 명령을 실행하여 libSQL 서버 컨테이너를 시작합니다.
 
-2. StudioCMS 데이터베이스 스키마를 동기화합니다.
+  ```sh
+  docker compose up -d
+  ```
 
-   StudioCMS 프로젝트 디렉터리로 이동하여 다음 명령을 실행합니다.
+  2. StudioCMS 데이터베이스 스키마를 동기화합니다.
 
-   <PackageManagers type="exec" args="astro db push --remote" />
+  StudioCMS 프로젝트 디렉터리로 이동하여 다음 명령을 실행합니다.
 
-3. 새로운 데이터베이스의 초기 설정을 진행합니다.
+  <PackageManagers type="exec" args="astro db push --remote" />
 
-   - [시작하기][getting-started]를 확인하세요.
-   
-   :::note   
-   StudioCMS 프로젝트를 처음 설정하는 것이 아니라면 `studiocms.config.mjs` 파일에서 `dbStartPage` 옵션을 활성화해야 할 수 있습니다.
-   :::
+  3. 새로운 데이터베이스의 초기 설정을 진행합니다.
+
+  - [시작하기][getting-started]를 확인하세요.
+
+  :::note
+  StudioCMS 프로젝트를 처음 설정하는 것이 아니라면 `studiocms.config.mjs` 파일에서 `dbStartPage` 옵션을 활성화해야 할 수 있습니다.
+  :::
 
 </Steps>
 

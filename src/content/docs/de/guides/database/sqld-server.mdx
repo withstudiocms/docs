@@ -22,10 +22,10 @@ Die endgültige Dateistruktur wird etwa so aussehen, wenn du lokal testest:
 
 <FileTree>
 
-- docker-compose.yml
-- data/
-- keys/
-- mein-studiocms-project/
+  - docker-compose.yml
+  - data/
+  - keys/
+  - mein-studiocms-project/
   - astro.config.mjs
   - studiocms.config.mjs
   - package.json
@@ -35,13 +35,13 @@ Die endgültige Dateistruktur wird etwa so aussehen, wenn du lokal testest:
 
 ## Private und öffentliche Schlüssel generieren
 
-Führe im Verzeichnis `keys` den folgenden Befehl aus, um ein neues PKCS#8-kodiertes Ed25519-Schlüsselpaar zu erstellen: 
+Führe im Verzeichnis `keys` den folgenden Befehl aus, um ein neues PKCS#8-kodiertes Ed25519-Schlüsselpaar zu erstellen:
 
 ```bash  
 openssl genpkey -algorithm Ed25519 -out ./libsql.pem  
 ```  
-  
-Dann extrahiere den öffentlichen Schlüssel mit: 
+
+Dann extrahiere den öffentlichen Schlüssel mit:
 
 ```bash
 openssl pkey -in ./libsql.pem -pubout -out ./libsql.pub
@@ -53,7 +53,7 @@ Dadurch wird ein neues PKCS#8-Schlüsselpaar erzeugt, das für den `sqld`-Server
 
 Navigiere zu deinem studiocms-Projektverzeichnis und führe den folgenden Befehl aus:
 
-<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt -e 31556926 "../keys/libsql.pem"' />
+<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt "../keys/libsql.pem" -c "iss=admin" -e 31556926' />
 
 Die Ausgabe ist das mit deinem privaten Schlüssel verschlüsselte JWT-Auth-Token, das für die libSQL-Authentifizierung verwendet wird. Beachte, dass das Token 1 Jahr lang gültig ist!
 
@@ -73,76 +73,76 @@ Erstelle eine neue Datei `docker-compose.yml` außerhalb des StudioCMS-Projektve
 
 <Tabs>
 
-<TabItem label="Datei mit öffentlichem Schlüssel">
+  <TabItem label="Datei mit öffentlichem Schlüssel">
 
-```yml
-services:
-  libsql:
+    ```yml
+    services:
+    libsql:
     image: ghcr.io/tursodatabase/libsql-server:latest
     platform: linux/amd64
     ports:
-      - "8080:8080"
-      - "5001:5001"
+    - "8080:8080"
+    - "5001:5001"
     environment:
-      - SQLD_NODE=primary
-      - SQLD_AUTH_JWT_KEY_FILE=/home/.ssh/libsql.pub
+    - SQLD_NODE=primary
+    - SQLD_AUTH_JWT_KEY_FILE=/home/.ssh/libsql.pub
     volumes:
-      - ./data/libsql:/var/lib/sqld
-      - ./keys/libsql.pub:/home/.ssh/libsql.pub
-```
+    - ./data/libsql:/var/lib/sqld
+    - ./keys/libsql.pub:/home/.ssh/libsql.pub
+    ```
 
-</TabItem>
+  </TabItem>
 
-<TabItem label="JWT-Token">
+  <TabItem label="JWT-Token">
 
-```yml
-services:
-  libsql:
+    ```yml
+    services:
+    libsql:
     image: ghcr.io/tursodatabase/libsql-server:latest
     platform: linux/amd64
     ports:
-      - "8080:8080"
-      - "5001:5001"
+    - "8080:8080"
+    - "5001:5001"
     environment:
-      - SQLD_NODE=primary
-      - SQLD_AUTH_JWT_KEY=füge dein JWT-Token hier ein
+    - SQLD_NODE=primary
+    - SQLD_AUTH_JWT_KEY=füge dein JWT-Token hier ein
     volumes:
-      - ./data/libsql:/var/lib/sqld
-```
+    - ./data/libsql:/var/lib/sqld
+    ```
 
-</TabItem>
+  </TabItem>
 
 </Tabs>
 
 <Aside type="note" title="Bereitstellen auf Coolify?">
-[Coolify](https://coolify.io) Benutzer: Verwende unser [GitHub Gist](https://gist.github.com/Adammatthiesen/bfe7c78b2e73996fb3ef1b36ed606a57) für eine Coolify-kompatible Docker Compose-Konfiguration, die libSQL direkt über deine Domain ohne das Port-Suffix `:8080` zugänglich macht.
+  [Coolify](https://coolify.io) Benutzer: Verwende unser [GitHub Gist](https://gist.github.com/Adammatthiesen/bfe7c78b2e73996fb3ef1b36ed606a57) für eine Coolify-kompatible Docker Compose-Konfiguration, die libSQL direkt über deine Domain ohne das Port-Suffix `:8080` zugänglich macht.
 </Aside>
 
 ## Alles in Gang setzen
 
 <Steps>
 
-1. Starte den Docker Container
+  1. Starte den Docker Container
 
-   Führen Sie im Basisverzeichnis (oder auf dem Server, wenn Sie diesen Weg gewählt haben) den folgenden Befehl aus, um den libSQL Server Container zu starten:
+  Führen Sie im Basisverzeichnis (oder auf dem Server, wenn Sie diesen Weg gewählt haben) den folgenden Befehl aus, um den libSQL Server Container zu starten:
 
-   ```sh
-   docker compose up -d
-   ```
+  ```sh
+  docker compose up -d
+  ```
 
-2. Synchronisiere dein StudioCMS-Datenbankschema:
+  2. Synchronisiere dein StudioCMS-Datenbankschema:
 
-   Wechsle in dein StudioCMS-Projektverzeichnis und führe den folgenden Befehl aus:
+  Wechsle in dein StudioCMS-Projektverzeichnis und führe den folgenden Befehl aus:
 
-   <PackageManagers type="exec" args="astro db push --remote" />
+  <PackageManagers type="exec" args="astro db push --remote" />
 
-3. Folge der Ersteinrichtung für deine neue Datenbank.
+  3. Folge der Ersteinrichtung für deine neue Datenbank.
 
-   - Siehe [Erste Schritte][getting-started]
-   
-   :::note
-   Wenn dies nicht das erste Mal ist, dass du ein StudioCMS-Projekt einrichtest, musst du eventuell die Option `dbStartPage` in deiner `studiocms.config.mjs` aktivieren
-   :::
+  - Siehe [Erste Schritte][getting-started]
+
+  :::note
+  Wenn dies nicht das erste Mal ist, dass du ein StudioCMS-Projekt einrichtest, musst du eventuell die Option `dbStartPage` in deiner `studiocms.config.mjs` aktivieren
+  :::
 
 </Steps>
 

@@ -22,10 +22,10 @@ import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/compon
 
 <FileTree>
 
-- docker-compose.yml
-- data/
-- keys/
-- my-studiocms-project/
+  - docker-compose.yml
+  - data/
+  - keys/
+  - my-studiocms-project/
   - astro.config.mjs
   - studiocms.config.mjs
   - package.json
@@ -35,12 +35,12 @@ import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/compon
 
 ## 生成公私钥对
 
-在 `keys` 目录中执行以下命令创建 PKCS#8 编码的 Ed25519 密钥对：  
+在 `keys` 目录中执行以下命令创建 PKCS#8 编码的 Ed25519 密钥对：
 ```bash  
 openssl genpkey -algorithm Ed25519 -out ./libsql.pem  
 ```  
 
-提取公钥：  
+提取公钥：
 ```bash
 openssl pkey -in ./libsql.pem -pubout -out ./libsql.pub
 ```
@@ -51,7 +51,7 @@ openssl pkey -in ./libsql.pem -pubout -out ./libsql.pub
 
 进入 StudioCMS 项目目录并执行：
 
-<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt -e 31556926 "../keys/libsql.pem"' />
+<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt "../keys/libsql.pem" -e 31556926' />
 
 输出包含标准格式和 Base64URL 编码的 JWT 认证令牌，用于 libSQL 身份验证。该令牌有效期为 1 年！
 
@@ -68,72 +68,72 @@ ASTRO_DB_APP_TOKEN= # 粘贴您的标准 JWT 认证令牌
 
 <Tabs>
 
-<TabItem label="公钥文件方式">
+  <TabItem label="公钥文件方式">
 
-```yml
-services:
-  libsql:
+    ```yml
+    services:
+    libsql:
     image: ghcr.io/tursodatabase/libsql-server:latest
     platform: linux/amd64
     ports:
-      - "8080:8080" # HTTP API 端口
-      - "5001:5001" # gRPC 端口
+    - "8080:8080" # HTTP API 端口
+    - "5001:5001" # gRPC 端口
     environment:
-      - SQLD_NODE=primary # 主节点模式
-      - SQLD_AUTH_JWT_KEY_FILE=/home/.ssh/libsql.pub # 公钥路径
+    - SQLD_NODE=primary # 主节点模式
+    - SQLD_AUTH_JWT_KEY_FILE=/home/.ssh/libsql.pub # 公钥路径
     volumes:
-      - ./data/libsql:/var/lib/sqld # 数据持久化
-      - ./keys/libsql.pub:/home/.ssh/libsql.pub # 挂载公钥
-```
+    - ./data/libsql:/var/lib/sqld # 数据持久化
+    - ./keys/libsql.pub:/home/.ssh/libsql.pub # 挂载公钥
+    ```
 
-</TabItem>
+  </TabItem>
 
-<TabItem label="JWT 令牌方式">
+  <TabItem label="JWT 令牌方式">
 
-```yml
-services:
-  libsql:
+    ```yml
+    services:
+    libsql:
     image: ghcr.io/tursodatabase/libsql-server:latest
     platform: linux/amd64
     ports:
-      - "8080:8080"
-      - "5001:5001"
+    - "8080:8080"
+    - "5001:5001"
     environment:
-      - SQLD_NODE=primary
-      - SQLD_AUTH_JWT_KEY=粘贴您的Base64URL编码JWT令牌
+    - SQLD_NODE=primary
+    - SQLD_AUTH_JWT_KEY=粘贴您的Base64URL编码JWT令牌
     volumes:
-      - ./data/libsql:/var/lib/sqld # 数据持久化
-```
+    - ./data/libsql:/var/lib/sqld # 数据持久化
+    ```
 
-</TabItem>
+  </TabItem>
 
 </Tabs>
 
 <Aside type="note" title="部署到 Coolify？">
-[Coolify](https://coolify.io) 用户：使用我们的 [GitHub Gist](https://gist.github.com/Adammatthiesen/bfe7c78b2e73996fb3ef1b36ed606a57) 获取兼容 Coolify 的 Docker Compose 配置，可直接通过域名访问 libSQL 而无需 `:8080` 端口后缀。
+  [Coolify](https://coolify.io) 用户：使用我们的 [GitHub Gist](https://gist.github.com/Adammatthiesen/bfe7c78b2e73996fb3ef1b36ed606a57) 获取兼容 Coolify 的 Docker Compose 配置，可直接通过域名访问 libSQL 而无需 `:8080` 端口后缀。
 </Aside>
 
 ## 启动服务
 
 <Steps>
 
-1. 启动 Docker 容器：
-   在基础目录（或服务器目录）执行：
-   ```sh
-   docker compose up -d
-   ```
+  1. 启动 Docker 容器：
+  在基础目录（或服务器目录）执行：
+  ```sh
+  docker compose up -d
+  ```
 
-2. 同步数据库架构：
-   进入 StudioCMS 项目目录执行：
-   <PackageManagers type="exec" args="astro db push --remote" />
+  2. 同步数据库架构：
+  进入 StudioCMS 项目目录执行：
+  <PackageManagers type="exec" args="astro db push --remote" />
 
-3. 完成首次设置：
-   遵循新数据库的首次设置流程：
-   - 参考[入门指南][getting-started]
-   
-   :::note 注意
-   若非首次设置 StudioCMS 项目，需在 `studiocms.config.mjs` 中启用 `dbStartPage` 选项
-   :::
+  3. 完成首次设置：
+  遵循新数据库的首次设置流程：
+  - 参考[入门指南][getting-started]
+
+  :::note 注意
+  若非首次设置 StudioCMS 项目，需在 `studiocms.config.mjs` 中启用 `dbStartPage` 选项
+  :::
 
 </Steps>
 
