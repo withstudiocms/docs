@@ -22,17 +22,18 @@
     "gen-changelogs": "tsm --require=./scripts/filter-warnings.cjs ./scripts/generate-release-notes.ts"
   },
   "dependencies": {
-    "@studiocms/blog": "0.1.0-beta.27",
-    "@studiocms/cloudinary-image-service": "0.1.0-beta.27",
-    "@studiocms/devapps": "0.1.0-beta.27",
-    "@studiocms/html": "0.1.0-beta.27",
-    "@studiocms/markdoc": "0.1.0-beta.27",
-    "@studiocms/md": "0.1.0-beta.27",
-    "@studiocms/mdx": "0.1.0-beta.27",
-    "@studiocms/wysiwyg": "0.1.0-beta.27",
-    "studiocms": "0.1.0-beta.27",
+    "@studiocms/blog": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/blog@af43330",
+    "@studiocms/cloudinary-image-service": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/cloudinary-image-service@af43330",
+    "@studiocms/devapps": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/devapps@af43330",
+    "@studiocms/html": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/html@af43330",
+    "@studiocms/markdoc": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/markdoc@af43330",
+    "@studiocms/md": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@af43330",
+    "@studiocms/mdx": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@af43330",
+    "@studiocms/wysiwyg": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/wysiwyg@af43330",
+    "studiocms": "https://pkg.pr.new/withstudiocms/studiocms@af43330",
+    "@withstudiocms/component-registry": "https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@af43330",
 
-    "@studiocms/ui": "1.0.0-beta.1",
+    "@studiocms/ui": "1.0.0-beta.3",
     "@studiocms/web-vitals": "^4.5.3",
 
     "@11ty/eleventy-fetch": "^5.0.2",

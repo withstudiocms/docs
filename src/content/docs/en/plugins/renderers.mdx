@@ -1,0 +1,87 @@
+---
+i18nReady: true
+title: Renderer Plugins
+description: Learn about StudioCMS renderer plugins and how to create them.
+sidebar:
+  order: 3
+  badge:
+    text: NEW
+    variant: success
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+
+# Introduction
+
+StudioCMS renderer plugins provide a way to extend and customize the rendering process of your StudioCMS application. They allow you to modify how content is rendered on the frontend by adding custom components, wrappers, or other modifications to the rendering pipeline.
+
+## Creating a Renderer Plugin
+
+### The main plugin file
+
+To get started with creating a renderer plugin, you need to define a StudioCMS plugin that registers your custom page type and its associated renderer component. Below is an example of how to create a simple renderer plugin that adds a custom page type with a renderer and an editor component.
+
+```ts twoslash title="my-plugin.ts"
+import { definePlugin } from 'studiocms/plugins';
+import { createResolver } from 'astro-integration-kit';
+import { AstroIntegration } from 'astro';
+
+const { resolve } = createResolver(import.meta.url);
+
+// Define the StudioCMS Plugin
+export const myPlugin = () => definePlugin({
+    identifier: 'my-plugin',
+    name: 'My Plugin',
+    studiocmsMinimumVersion: '0.1.0-beta.28',
+    hooks: {
+      'studiocms:config:setup': ({ setRendering }) => {
+        setRendering({
+          pageTypes: [
+            {
+              identifier: 'my-custom-page-type',
+              label: 'My Custom Page Type',
+              rendererComponent: resolve('./components/render.js'),
+              pageContentComponent: resolve('./components/Editor.astro')
+            }
+          ]
+        })
+      }
+    }
+});
+```
+
+### The renderer component
+
+For the renderer component, you need to create a JavaScript or TypeScript file (if you have a build step) that exports an object conforming to the `PluginRenderer` type. This object should include the rendering logic for your custom page type.
+
+```ts twoslash title="components/render.js"
+import type { PluginRenderer } from 'studiocms/types';
+
+const render = {
+  name: 'my-custom-renderer',
+  renderer: async (content: string) => {
+    // Custom rendering logic goes here
+    return content;
+  },
+  sanitizeOpts: {},
+} satisfies PluginRenderer;
+
+export default render;
+```
+
+### The Editor component
+
+For the editor component, you need to create an Astro component that provides a user interface for editing the content of your custom page type. This component will receive the current content as a prop and should emit updates to the content as the user makes changes. The `<textarea>` below is used in the final page edit form, allowing users to edit the content directly. So any changes made in any custom editor component should update the value of this `<textarea>` to ensure the content is saved correctly.
+
+```astro title="components/Editor.astro"
+---
+import type { PluginPageTypeEditorProps } from 'studiocms/types';
+
+interface Props extends PluginPageTypeEditorProps {}
+
+const { content } = Astro.props;
+---
+<div class="editor-container">
+    <textarea id="page-content" name="page-content">{content}</textarea>
+</div>
+```

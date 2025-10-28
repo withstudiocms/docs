@@ -12,7 +12,7 @@ export default defineEcConfig({
 		ecTwoSlash({
 			twoslashOptions: {
 				handbookOptions: {
-					errors: [2353, 2339, 2307, 2379, 2305],
+					errors: [2353, 2339, 2307, 2379, 2305, 2345],
 				},
 				compilerOptions: {
 					moduleResolution: ts.ModuleResolutionKind.Bundler,
