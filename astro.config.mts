@@ -4,15 +4,15 @@ import { defineConfig } from 'astro/config';
 import starlightImageZoom from 'starlight-image-zoom';
 import starlightLinksValidator from 'starlight-links-validator';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
-import getCoolifyURL from './hostUtils.ts';
 import rehypePlugins from './src/plugins/rehypePluginKit.ts';
-import { typeDocPlugins } from './typedoc.config.ts';
 import { getTranslations } from './src/starlight-sidebar/translate.ts';
 import { devServerFileWatcher } from './src/integrations/dev-file-watcher.ts';
 import { remarkFallbackLang } from './src/plugins/remark-fallback-pages.ts';
 
 // Define the Site URL
-const site = getCoolifyURL(true) || 'https://docs.studiocms.dev/';
+const site = process.env.DOKPLOY_DEPLOY_URL
+	? `https://${process.env.DOKPLOY_DEPLOY_URL}`
+	: 'https://docs.studiocms.dev/';
 
 const linkValidator = process.env.CHECK_LINKS
 	? [
@@ -149,7 +149,6 @@ export default defineConfig({
 				},
 			],
 			plugins: [
-				...typeDocPlugins,
 				...linkValidator,
 				starlightImageZoom(),
 				starlightSidebarTopics([
@@ -256,81 +255,6 @@ export default defineConfig({
 								label: getTranslations('config-reference').en,
 								translations: getTranslations('config-reference'),
 								autogenerate: { directory: 'config-reference' },
-							},
-							{
-								label: getTranslations('typedoc').en,
-								translations: getTranslations('typedoc'),
-								badge: {
-									text: getTranslations('auto-gen'),
-									variant: 'tip',
-								},
-								items: [
-									{
-										label: 'studiocms',
-										autogenerate: { directory: 'typedoc/studiocms' },
-										collapsed: true,
-									},
-									{
-										label: '@studiocms/blog',
-										autogenerate: { directory: 'typedoc/studiocms-blog' },
-										collapsed: true,
-									},
-									{
-										label: '@studiocms/cloudinary-image-service',
-										autogenerate: { directory: 'typedoc/studiocms-cloudinary-image-service' },
-										collapsed: true,
-									},
-									{
-										label: '@studiocms/devapps',
-										autogenerate: { directory: 'typedoc/studiocms-devapps' },
-										collapsed: true,
-									},
-									{
-										label: '@studiocms/markdoc',
-										autogenerate: { directory: 'typedoc/studiocms-markdoc' },
-										collapsed: true,
-									},
-									{
-										label: '@studiocms/md',
-										autogenerate: { directory: 'typedoc/studiocms-md' },
-										collapsed: true,
-									},
-									{
-										label: '@studiocms/html',
-										autogenerate: { directory: 'typedoc/studiocms-html' },
-										collapsed: true,
-									},
-									{
-										label: '@studiocms/mdx',
-										autogenerate: { directory: 'typedoc/studiocms-mdx' },
-										collapsed: true,
-									},
-									{
-										label: '@studiocms/auth0',
-										autogenerate: { directory: 'typedoc/studiocms-auth0' },
-										collapsed: true,
-									},
-									{
-										label: '@studiocms/discord',
-										autogenerate: { directory: 'typedoc/studiocms-discord' },
-										collapsed: true,
-									},
-									{
-										label: '@studiocms/github',
-										autogenerate: { directory: 'typedoc/studiocms-github' },
-										collapsed: true,
-									},
-									{
-										label: '@studiocms/google',
-										autogenerate: { directory: 'typedoc/studiocms-google' },
-										collapsed: true,
-									},
-									{
-										label: '@withstudiocms/config-utils',
-										autogenerate: { directory: 'typedoc/withstudiocms-config-utils' },
-										collapsed: true,
-									}
-								],
 							},
 						],
 					},
