@@ -14,8 +14,6 @@ const config: KnipConfig = {
 		'@astrojs/react',
 		'sharp',
 		'@biomejs/biome',
-		'typedoc-plugin-frontmatter',
-		'typedoc-plugin-zod',
 		'ultrahtml',
 		'effect',
 		'@withstudiocms/component-registry',
@@ -23,7 +21,7 @@ const config: KnipConfig = {
 		'studiocms:ui',
 		'studiocms',
 		'@studiocms/web-vitals',
-		'@astrojs/db'
+		'@astrojs/db',
 	],
 	entry: [
 		'src/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}',

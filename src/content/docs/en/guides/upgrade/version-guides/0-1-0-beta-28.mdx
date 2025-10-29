@@ -1,0 +1,45 @@
+---
+i18nReady: true
+title: "Upgrade: 0.1.0-beta.28"
+description: Upgrade StudioCMS to Beta.28
+sidebar:
+  label: 0.1.0-beta.28
+  badge:
+    text: NEW
+    variant: success
+  order: 999987
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Breaking Changes
+- Deprecates and hides the "Hide Index Page" setting from dashboard. Users who previously relied on this setting should migrate to another method.
+- Implements new rendering system, allowing plugins to augment the rendering pipeline with prefix, suffix, or simple component augmentation. This is a breaking change for plugin authors who have implemented custom renderers.
+  <ReadMore>See the [Plugin Renderer Documentation][plugin-renderer-docs] for more details on how to migrate existing renderers to the new system.</ReadMore>
+- Deprecates the legacy StudioCMSSiteConfig, StudioCMSMailerConfig, and StudioCMSNotificationSettings tables to be fully removed in a future release.
+  - Users will need to run `astro db push --remote` to ensure their DB schemas are up-to-date.
+
+## New Features
+- Introduces a new email template editor and preview feature in the StudioCMS dashboard, allowing users to customize email templates directly from the UI.
+- Enables Multi-language support for StudioCMS dashboard.
+- Implements a better API route type PluginAPIRoute from the `studiocms/plugins` export for plugin `onCreate`, `onEdit`, and `onDelete` API handlers.
+- Reorganizes create and edit content pages, as well as SMTP config page.
+
+## Bug fixes & Improvements
+- Updates to `@studiocms/ui@1.0.0-beta.3` and cleanup now unneeded styles.
+- Replaces custom CSS search icon with Input component icon prop and removes unused CSS.
+- Fixes the form validation parsing of boolean select fields values by transforming the string values to boolean for content management pages.
+- Updates feedback button to point to GitHub (temporary measure until astro-feedback integration).
+- Fixes zod error parsing for first-time setup api route responses.
+- Updates quick user tools, Logout page, and buttons to utilize POST requests.
+- Optimizes middleware cache for improved performance.
+- Refactors internal file structure of Astro frontend pages and api endpoints to simplify long-term maintenance.
+- Improve page creation and edit data processing for better consistency and reliability.
+- Move avatar loading to client-side to eliminate render blocking.
+
+{/* Links */}
+[plugin-renderer-docs]: /en/plugins/renderers/
