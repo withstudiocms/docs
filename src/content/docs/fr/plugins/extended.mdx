@@ -4,6 +4,9 @@ title: Rendre les modules d’extension utiles
 description: Découvrez les modules d’extension de StudioCMS et leur fonctionnement.
 sidebar:
    order: 2
+   badge: 
+    text: Mis à jour
+    variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro'
@@ -89,6 +92,21 @@ export function studioCMSPageInjector(options: Options) {
       },
       'studiocms:config:setup': ({ setDashboard, setFrontend, setRendering }) => {
         setDashboard({
+          translations: {
+            en: {
+              example: {
+                title: 'Example',
+                'other-text': 'Some other text',
+              }
+            },
+            fr: {
+              example: {
+                title: 'Exemple',
+                'other-text': 'Un autre texte',
+              }
+            }
+          },
+
           // Définir les éléments de la grille pour le tableau de bord
           // Voici les éléments qui seront affichés dans le tableau de bord de StudioCMS
           // Vous pouvez définir autant d’éléments que vous le souhaitez
