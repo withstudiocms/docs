@@ -1,0 +1,87 @@
+---
+i18nReady: true
+title: Modules d’extension de moteur de rendu
+description: Découvrez les modules d’extension de moteur de rendu pour StudioCMS et apprenez à en créer.
+sidebar:
+  order: 3
+  badge:
+    text: NOUVEAU
+    variant: success
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+
+# Présentation
+
+Les modules d’extension de moteur de rendu de StudioCMS offrent un moyen d’étendre et de personnaliser le processus de rendu de votre application StudioCMS. Ils vous permettent de modifier la façon dont le contenu est rendu côté client en ajoutant des composants personnalisés, des enveloppes ou d’autres modifications au pipeline de rendu.
+
+## Création d’un module d’extension de moteur de rendu
+
+### Le fichier principal du module d’extension
+
+Pour créer un module d’extension de moteur de rendu, vous devez définir un module d’extension pour StudioCMS qui enregistre votre type de page personnalisé et le composant associé à son moteur de rendu. Vous trouverez ci-dessous un exemple de création d’un module d’extension de moteur de rendu simple qui ajoute un type de page personnalisé avec un moteur de rendu et un composant d’édition.
+
+```ts twoslash title="mon-module-extension.ts"
+import { definePlugin } from 'studiocms/plugins';
+import { createResolver } from 'astro-integration-kit';
+import { AstroIntegration } from 'astro';
+
+const { resolve } = createResolver(import.meta.url);
+
+// Définit le module d’extension pour StudioCMS
+export const myPlugin = () => definePlugin({
+    identifier: 'mon-module-extension',
+    name: 'Mon module d’extension',
+    studiocmsMinimumVersion: '0.1.0-beta.28',
+    hooks: {
+      'studiocms:config:setup': ({ setRendering }) => {
+        setRendering({
+          pageTypes: [
+            {
+              identifier: 'mon-type-page-personnalise',
+              label: 'Mon type de page personnalisé',
+              rendererComponent: resolve('./components/render.js'),
+              pageContentComponent: resolve('./components/Editor.astro')
+            }
+          ]
+        })
+      }
+    }
+});
+```
+
+### Le composant de moteur de rendu
+
+Pour le composant de moteur de rendu, vous devez créer un fichier JavaScript ou TypeScript (si vous avez une étape de compilation) qui exporte un objet conforme au type `PluginRenderer`. Cet objet doit inclure la logique de rendu de votre type de page personnalisé.
+
+```ts twoslash title="components/render.js"
+import type { PluginRenderer } from 'studiocms/types';
+
+const render = {
+  name: 'mon-moteur-rendu-personnalise',
+  renderer: async (content: string) => {
+    // La logique de rendu personnalisée se trouve ici
+    return content;
+  },
+  sanitizeOpts: {},
+} satisfies PluginRenderer;
+
+export default render;
+```
+
+### Le composant d’édition
+
+Pour le composant d’édition, vous devez créer un composant Astro qui fournit une interface utilisateur pour modifier le contenu de votre type de page personnalisé. Ce composant recevra le contenu actuel en tant que propriété et devra émettre des mises à jour du contenu au fur et à mesure que l’utilisateur effectue des modifications. La zone de texte `<textarea>` ci-dessous est utilisée dans le formulaire d’édition de la page finale, permettant aux utilisateurs de modifier directement le contenu. Par conséquent, toute modification effectuée dans un composant d’édition personnalisé doit mettre à jour la valeur de ce champ `<textarea>` afin de garantir que le contenu soit correctement enregistré.
+
+```astro title="components/Editor.astro"
+---
+import type { PluginPageTypeEditorProps } from 'studiocms/types';
+
+interface Props extends PluginPageTypeEditorProps {}
+
+const { content } = Astro.props;
+---
+<div class="editor-container">
+    <textarea id="page-content" name="page-content">{content}</textarea>
+</div>
+```
