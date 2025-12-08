@@ -4,6 +4,9 @@ title: Features
 description: Reference page for StudioCMSOptions features
 sidebar:
   order: 3
+  badge:
+    text: Updated
+    variant: success
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 5
@@ -210,6 +213,47 @@ export default defineStudioCMSConfig({
   features: {
     dashboardConfig: {
       versionCheck: true,
+    }
+  }
+})
+```
+
+### `security`
+
+`security` Allows customization of the Security Configuration
+
+#### Usage
+
+```ts twoslash {4} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    dashboardConfig: {
+      security: {}
+    }
+  }
+})
+```
+
+#### `hideGeneratorTags`
+
+`hideGeneratorTags` Allows enabling or disabling of the Generator Meta Tags in the Dashboard HTML
+
+- **Type:** `boolean`
+- **Default:** `false`
+
+##### Usage
+
+```ts twoslash {5} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    dashboardConfig: {
+      security: {
+        hideGeneratorTags: false
+      }
     }
   }
 })
