@@ -29,7 +29,8 @@ const packages = (await getCollection('package-catalog'))
 		docsLink: data.docsLink.startsWith('/')
 			? `/${Astro.currentLocale}${data.docsLink}`.toString()
 			: data.docsLink,
-	}));
+	}))
+	.filter(({ hidden }) => !hidden);
 ---
 
 <div>

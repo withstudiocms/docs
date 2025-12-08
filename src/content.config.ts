@@ -17,6 +17,7 @@ const packageCatalogSchema = z.object({
 	experimental: z.boolean().optional().default(false),
 	publiclyUsable: z.boolean().optional().default(false),
 	released: z.boolean().optional().default(true),
+	hidden: z.boolean().optional().default(false),
 });
 
 const baseSchema = topicSchema.extend({
