@@ -17,6 +17,7 @@ const config: KnipConfig = {
 		'ultrahtml',
 		'effect',
 		'@withstudiocms/component-registry',
+		'@withstudiocms/kysely',
 		'@docsearch/js',
 		'studiocms:ui',
 		'studiocms',
