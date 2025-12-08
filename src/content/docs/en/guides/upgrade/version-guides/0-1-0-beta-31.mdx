@@ -11,11 +11,10 @@ sidebar:
 ---
 
 import ReadMore from '~/components/ReadMore.astro'
-import QuickUpdate from '~/components/QuickUpdate.astro'
 import { PackageManagers } from 'starlight-package-managers'
 import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/components';
 
-<QuickUpdate />
+StudioCMS `0.1.0-beta.31` introduces significant changes, including a new Kysely based database layer, a revamped plugin system, and various new features and improvements. This guide will help you upgrade your existing StudioCMS project to the latest version.
 
 ## Breaking changes
 - Refactored Plugin System. Please see the [Plugin docs](/en/plugins/) for more details.
@@ -25,7 +24,7 @@ import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/compon
 ## New Features
 - Implemented new [`studiocms migrate`](/en/how-it-works/cli/#migrate) command to handle database migrations.
 - Allow disabling Generator meta tags via [`features.dashboard.security.hideGeneratorTags`](/en/config-reference/features/#hidegeneratortags) config option.
-- StudioCMS now supports different database dialects via Kysely.
+- StudioCMS now supports different database dialects via [Kysely](https://kysely.dev/).
 - Introduced new middleware to display system errors on pages with errors instead of crashing the entire site.
 - New plugin features:
   - Dynamic components and scripts injection to the dashboard via new plugin hooks.
@@ -40,8 +39,7 @@ import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/compon
 
 ## Migration Steps
 
-To upgrade your StudioCMS project to version 0.1.0-beta.31, please follow these steps:
-
+To upgrade your StudioCMS project to version `0.1.0-beta.31`, please follow these steps:
 
 <Steps>
 
@@ -118,7 +116,7 @@ To upgrade your StudioCMS project to version 0.1.0-beta.31, please follow these 
 
 9. Once the migration is complete, **start your StudioCMS project** as usual:
 
-   <PackageManagers type="exec" args="astro dev" />
+   <PackageManagers type="run" args="dev" />
 
    Your project should now be running with the updated database schema and configuration.
 </Steps>
