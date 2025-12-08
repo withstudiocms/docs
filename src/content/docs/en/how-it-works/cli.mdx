@@ -3,7 +3,10 @@ i18nReady: true
 title: "The CLI"
 description: "Learn about the StudioCMS CLIs and how to use them."
 sidebar:
-   order: 2
+  order: 2
+  badge:
+    text: Updated
+    variant: success
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4
@@ -33,12 +36,13 @@ Options:
   -V, --version  Output the current version of the CLI Toolkit.
   -h, --help     display help for command
 
-Commands:
-  add            Add StudioCMS plugin(s) to your project
-  crypto         Crypto Utilities for Security
-  get-turso      Install the Turso CLI
-  init           Initialize the StudioCMS project after new installation.
-  users          Utilities for Tweaking Users in StudioCMS
+COMMANDS
+  - add               Add StudioCMS plugin(s) to your project
+  - crypto            Crypto Utilities for StudioCMS Security
+  - get-turso         Install the Turso CLI
+  - init              Initialize the StudioCMS project after new installation.
+  - users             Utilities for Tweaking Users in StudioCMS
+  - migrate           Manage database migrations for StudioCMS.
 ```
 
 ### Example Usage
@@ -145,12 +149,10 @@ The init command provides an interactive setup experience that helps you:
 1. Set up your environment file (.env) with options to:
    - Use an example `.env` template
    - Use the interactive `.env` builder which can:
-     - Set up a new Turso database (if not on Windows)
+     - Set up a database connection (libSQL, MySQL, PostgreSQL)
      - Configure OAuth providers (GitHub, Discord, Google, Auth0)
      - Set encryption keys and other required variables
    - Skip environment file creation
-
-2. The command includes automatic Turso CLI installation and authentication if needed when setting up a database.
 
 <ReadMore>For a full list of environment variables, see the [Environment Variables documentation][environment-variables].</ReadMore>
 
@@ -163,6 +165,21 @@ Utilities for Tweaking Users in StudioCMS
 
 Options:
   -h, --help  display help for command
+```
+
+#### `migrate`
+
+```log
+usage: studiocms migrate [options]
+
+Manage database migrations for StudioCMS.
+
+Options:
+  -h, --help      display help for command
+  --debug         Enable debug mode
+  -r, --rollback  Rollback the last migration
+  -l, --latest    Migrate to the latest version
+  --status        Show the current migration status
 ```
 
 ## `create-studiocms`

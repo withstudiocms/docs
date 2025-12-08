@@ -9,6 +9,7 @@
     "genpkey",
     "Iconify",
     "inox",
+    "Kysely",
     "libsql",
     "lunariajs",
     "markdoc",

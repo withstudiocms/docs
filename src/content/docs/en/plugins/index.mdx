@@ -3,9 +3,13 @@ i18nReady: true
 title: The Basics
 description: Learn about the StudioCMS plugins and how they work.
 sidebar:
-   order: 1
+  order: 1
+  badge:
+    text: Updated
+    variant: success
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import ReadMore from '~/components/ReadMore.astro'
 
 # Introduction
@@ -16,7 +20,7 @@ StudioCMS plugins are a powerful tool that allows you to extend the functionalit
 
 StudioCMS plugins are similar to Astro Integrations, but they have extra information attached to the function object. This information is used by StudioCMS to determine how the plugin should be loaded and used. StudioCMS plugins are used to extend the functionality of StudioCMS by adding new features or modifying existing ones.
 
-### The StudioCMS Plugin Type
+### The StudioCMS Plugin Type <Badge variant="caution" text="Revised beta.31" />
 
 ```ts
 interface StudioCMSPlugin {
@@ -28,58 +32,30 @@ interface StudioCMSPlugin {
       logger: AstroIntegrationLogger;
       addIntegrations: (args_0: AstroIntegration | AstroIntegration[]) => void;
     }) => void | Promise<void>;
-    'studiocms:config:setup': (params: {
+    'studiocms:auth': (params: {
       logger: AstroIntegrationLogger;
-      setSitemap: (params: {
-        triggerSitemap?: boolean | undefined;
-        sitemaps?: {
-          pluginName: string;
-          sitemapXMLEndpointPath: string | URL;
-        }[] | undefined;
-      }) => void;
-      setDashboard: (params: {
-        dashboardGridItems?: GridItemInput[] | undefined;
-        dashboardPages?: {
-          user?: (...)[] | undefined;
-          admin?: (...)[] | undefined;
-        } | undefined;
-        settingsPage?: {
-          fields: (...)[];
-          endpoint: string;
-        } | undefined;
-      }) => void;
-      setFrontend: (params: {
-        frontendNavigationLinks?: {
-          label: string;
-          href: string;
-        }[] | undefined;
-      }) => void;
-      setRendering: (params: {
-        pageTypes?: {
-          label: string;
-          identifier: string;
-          description?: string | undefined;
-          fields?: (...)[] | undefined;
-          pageContentComponent?: string | undefined;
-          rendererComponent?: string | undefined;
-          apiEndpoint?: string | undefined;
-        }[] | undefined;
-      }) => void;
-      setImageService: (params: {
-        imageService?: {
-          identifier: string;
-          servicePath: string | URL;
-        } | undefined;
-      }) => void;
-      setAuthService: (params: {
-        oAuthProvider?: {
-          name: string;
-          formattedName: string;
-          svg: string;
-          endpointPath: string;
-          requiredEnvVariables?: string[] | undefined;
-        } | undefined;
-      }) => void;
+      setAuthService: (args_0: { ...; }) => void;
+    }) => void | Promise<void>;
+    'studiocms:dashboard': (params: {
+      logger: AstroIntegrationLogger;
+      setDashboard: (args_0: { ...; }) => void;
+      augmentDashboard: (args_0: { ...; }) => void;
+    }) => void | Promise<void>;
+    'studiocms:frontend': (params: {
+      logger: AstroIntegrationLogger;
+      setFrontend: (args_0: { ...; }) => void;
+    }) => void | Promise<void>;
+    'studiocms:rendering': (params: {
+      logger: AstroIntegrationLogger;
+      setRendering: (args_0: { ...; }) => void;
+    }) => void | Promise<void>;
+    'studiocms:image-service': (params: {
+      logger: AstroIntegrationLogger;
+      setImageService: (args_0: { ...; }) => void;
+    }) => void | Promise<void>;
+    'studiocms:sitemap': (params: {
+      logger: AstroIntegrationLogger;
+      setSitemap: (args_0: { ...; }) => void;
     }) => void | Promise<void>;
   }
 }
@@ -118,16 +94,16 @@ const myIntegration = (options: Options): AstroIntegration => ({
 export const myPlugin = (options: Options) => definePlugin({
     identifier: 'my-plugin',
     name: 'My Plugin',
-    studiocmsMinimumVersion: '0.1.0-beta.18',
+    studiocmsMinimumVersion: '0.1.0-beta.31',
     hooks: {
-      'studiocms:astro:config': ({ addIntegrations }) => {
+      'studiocms:astro-config': ({ addIntegrations }) => {
         addIntegrations(myIntegration(options)) // Optional, but recommended
       }
     }
 });
 ```
 
-In this example, we define a StudioCMS plugin called `My Plugin` that requires StudioCMS version `0.1.0-beta.18` or higher. The plugin also provides an Astro Integration that logs a message to the console when the `astro:config:setup` hook is called.
+In this example, we define a StudioCMS plugin called `My Plugin` that requires StudioCMS version `0.1.0-beta.31` or higher. The plugin also provides an Astro Integration that logs a message to the console when the `astro:config:setup` hook is called.
 
 <ReadMore>For more information on building plugins checkout the [Making Plugins Useful][extended-plugins] Guide</ReadMore>
 

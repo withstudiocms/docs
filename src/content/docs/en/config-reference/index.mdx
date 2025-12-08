@@ -19,6 +19,7 @@ import { defineStudioCMSConfig } from 'studiocms/config';
 // Default Values shown
 export default defineStudioCMSConfig({
   dbStartPage: true,
+  db: {},
   verbose: false,
   logLevel: 'Info',
   plugins: [],
@@ -42,6 +43,25 @@ import { defineStudioCMSConfig } from 'studiocms/config';
 // ---cut---
 export default defineStudioCMSConfig({
   dbStartPage: true, // DEFAULT - This injects a start page to setup your DB data.
+})
+```
+
+## `db`
+
+`db` is an object that is used to configure the database dialect.
+
+- **Type:** `DBConfigSchema`
+- **Default:** `{}`
+
+### Usage
+
+```ts twoslash {2-4} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  db: {
+    dialect: 'libsql', // 'libsql' | 'postgresql' | 'mysql'
+  },
 })
 ```
 

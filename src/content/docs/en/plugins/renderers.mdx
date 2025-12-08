@@ -5,7 +5,7 @@ description: Learn about StudioCMS renderer plugins and how to create them.
 sidebar:
   order: 3
   badge:
-    text: NEW
+    text: Updated
     variant: success
 ---
 
@@ -32,9 +32,9 @@ const { resolve } = createResolver(import.meta.url);
 export const myPlugin = () => definePlugin({
     identifier: 'my-plugin',
     name: 'My Plugin',
-    studiocmsMinimumVersion: '0.1.0-beta.28',
+    studiocmsMinimumVersion: '0.1.0-beta.31',
     hooks: {
-      'studiocms:config:setup': ({ setRendering }) => {
+      'studiocms:rendering': ({ setRendering }) => {
         setRendering({
           pageTypes: [
             {
