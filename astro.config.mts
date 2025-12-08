@@ -70,11 +70,11 @@ export default defineConfig({
 		ui(),
 		starlight({
 			title: 'StudioCMS',
-			description: 'A dedicated CMS for Astro DB. Built from the ground up by the Astro community.',
+			description: 'A dedicated CMS for Astro. Built from the ground up by the Astro community.',
 			favicon: '/logo-light.svg',
 			lastUpdated: true,
 			credits: true,
-			tagline: 'A dedicated CMS for Astro DB. Built from the ground up by the Astro community.',
+			tagline: 'A dedicated CMS for Astro. Built from the ground up by the Astro community.',
 			disable404Route: true,
 			pagefind: false,
 			components: {
@@ -111,14 +111,18 @@ export default defineConfig({
 				baseUrl: 'https://github.com/withstudiocms/docs/tree/main',
 			},
 			head: [
-				{
-					tag: 'script',
-					attrs: {
-						src: 'https://analytics.studiocms.dev/script.js',
-						'data-website-id': 'e924da68-f547-4dd2-bd2f-bcdd78cbcdab',
-						defer: true,
-					},
-				},
+				...(process.env.NODE_ENV === 'production'
+					? [
+							{
+								tag: 'script' as const,
+								attrs: {
+									src: 'https://analytics.studiocms.cloud/script.js',
+									'data-website-id': '2670ef85-9da5-4bc1-bac8-143b6c554c2c',
+									defer: true,
+								},
+							},
+						]
+					: []),
 				{
 					tag: 'meta',
 					attrs: {
