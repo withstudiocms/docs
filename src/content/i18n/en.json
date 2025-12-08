@@ -5,6 +5,7 @@
   "sponsors.sponsoredby": "Sponsored by",
   "package-catalog.readmore.start": "For more information checkout the",
   "package-catalog.readmore.end": "documentation page",
+  "package-catalog.no-packages": "No packages available at the moment.",
   "integration-labels.changelog": "Changelog",
   "contributors.core-packages": "StudioCMS Core Packages",
   "contributors.ui-library": "StudioCMS UI Library",
