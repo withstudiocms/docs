@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["nodejs_24", "pnpm", "openssl", "nginx"]
+nixPkgs = ["nodejs_22", "pnpm", "openssl", "nginx"]
 
 [phases.install]
 cmds = ["pnpm i --frozen-lockfile"]
@@ -12,5 +12,4 @@ cmds = [
 ]
 
 [start]
-# Command to start Nginx in the foreground
 cmd = "nginx -c /etc/nginx/nginx.conf -g 'daemon off;'"
