@@ -116,14 +116,23 @@ export async function getAllContributors(repo: string) {
  * console.log(contributors);
  * ```
  */
-export async function getContributorsByPath(paths: string[], repo: string) {
+export async function getContributorsByPath(
+	paths: string[],
+	repo: string,
+	ignoredPaths: string[] = []
+) {
 	const contributors: Contributor[] = [];
 
 	for (const path of paths) {
 		const endpoint = `repos/${repo}/commits?path=${path}`;
 		const commits: Commit[] = await recursiveFetch(endpoint);
 
-		for (const { author } of commits) {
+		// Filter out commits from ignored paths
+		const filteredCommits = commits.filter(
+			(commit) => !ignoredPaths.some((ignoredPath) => commit.commit.message.includes(ignoredPath))
+		);
+
+		for (const { author } of filteredCommits) {
 			if (!author) continue;
 			const contributor = contributors.find((contributor) => contributor.id === author.id);
 
@@ -196,9 +205,9 @@ export async function getContributorBreakdown(Astro: AstroGlobal): Promise<Break
 	for (const { name, list } of config) {
 		const contributors: Contributor[] = [];
 
-		for (const { repo, type, paths } of list) {
+		for (const { repo, type, paths, ignoredPaths } of list) {
 			if (type === 'byPath' && paths) {
-				const data = await getContributorsByPath(paths, repo);
+				const data = await getContributorsByPath(paths, repo, ignoredPaths);
 				checkIfContributorExists(contributors, data);
 			} else {
 				const data = await getAllContributors(repo);
