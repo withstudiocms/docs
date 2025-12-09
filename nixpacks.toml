@@ -1,8 +1,8 @@
 [phases.setup]
-nixPkgs = ["proto", "openssl", "nginx"]
+nixPkgs = ["proto", "pnpm", "openssl", "nginx"]
 
 [phases.install]
-cmds = ["proto use", "pnpm i --frozen-lockfile"]
+cmds = ["proto activate", "proto use", "pnpm i --frozen-lockfile"]
 
 [phases.build]
 cmds = [
