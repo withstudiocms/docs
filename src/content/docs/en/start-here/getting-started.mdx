@@ -2,6 +2,9 @@
 i18nReady: true
 title: Getting Started
 description: Get started building with StudioCMS.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 sidebar:
   order: 1
   badge:
@@ -152,7 +155,7 @@ CMS_PG_PORT=<your-database-port>
 
 <TabItem label="Astro Method" icon='astro'>
 
-    {/* <Steps> Note: For some reason this breaks placement of EC-Twoslash popups... must investigate */}
+    <Steps>
 
     1. Creating a new Astro project
 
@@ -178,7 +181,7 @@ CMS_PG_PORT=<your-database-port>
 
     3. After installing the package, make sure that your `astro.config.mjs` file is correctly importing and calling the integration:
 
-       ```ts twoslash title="astro.config.mjs" {2-3,8,10}
+       ```ts title="astro.config.mjs" {2-3,8,10}
        import { defineConfig } from 'astro/config';
        import node from '@astrojs/node';
        import studioCMS from 'studiocms';
@@ -193,13 +196,13 @@ CMS_PG_PORT=<your-database-port>
        });
        ```
 
-    {/* </Steps> */}
+    </Steps>
 
 </TabItem>
 
 <TabItem label="Manual Method" icon='seti:powershell'>
 
-    {/* <Steps> */}
+    <Steps>
 
     1. Creating a new Astro project
 
@@ -225,7 +228,7 @@ CMS_PG_PORT=<your-database-port>
 
     3. Update your `astro.config.mjs` file:
 
-       ```ts twoslash title="astro.config.mjs" {2-3,8,10}
+       ```ts title="astro.config.mjs" {2-3,8,10}
        import { defineConfig } from 'astro/config';
        import node from '@astrojs/node'; 
        import studioCMS from 'studiocms';
@@ -239,7 +242,8 @@ CMS_PG_PORT=<your-database-port>
            ],
        });
        ```
-    {/* </Steps> */}
+
+    </Steps>
 
 </TabItem>
 
@@ -265,7 +269,21 @@ export default defineStudioCMSConfig({
 })
 ```
 
-## Configure StudioCMS rendering <Badge text='Added in beta.22' variant='success' />
+You will also need to install the necessary database client packages for your chosen database dialect:
+
+<Tabs syncKey='db-setup-method'>     
+  <TabItem label="libSQL (default)" icon="database">
+    <PackageManagers type='add' pkg="@libsql/client @libsql/kysely-libsql" />
+  </TabItem>
+  <TabItem label="MySQL" icon="database">
+    <PackageManagers type='add' pkg="mysql2" />
+  </TabItem>
+  <TabItem label="PostgreSQL" icon="database">
+    <PackageManagers type='add' pkg="pg" />
+  </TabItem>
+</Tabs>
+
+### Configure StudioCMS rendering <Badge text='Added in beta.22' variant='success' />
 
 StudioCMS requires at least one of the following rendering plugins to be installed and configured within your StudioCMS project:
 
@@ -293,7 +311,7 @@ export default defineStudioCMSConfig({
 
 <ReadMore>For more information about the available rendering plugins see, [Package Catalog][package-catalog]</ReadMore>
 
-## Configure authentication
+### Configure authentication
 
 StudioCMS Auth requires at least the [Encryption Key][encryption-key] to be set in your `.env` file.
 
@@ -316,7 +334,7 @@ And set the output as the value for `CMS_ENCRYPTION_KEY`.
 For more information about all the available authentication environment variables see, [Environment variables][environment-variables] page.
 </ReadMore>
 
-### Optional: Configure oAuth authentication <Badge text='Revised beta.23' variant='caution' />
+#### Optional: Configure oAuth authentication <Badge text='Revised beta.23' variant='caution' />
 
 StudioCMS supports various oAuth authentication providers, utilizing our plugin system to enable the providers you want to use. To get started, you will need to find a plugin for the provider you want to use, or create your own plugin.
 
@@ -324,7 +342,7 @@ StudioCMS supports various oAuth authentication providers, utilizing our plugin 
 
 For setting up oAuth providers, they require a callback URL. The callback URL is the path where the provider will redirect the user after authentication. 
 
-#### Setting up the callback URL
+##### Setting up the callback URL
 
 The callback URL should be set to one of the following paths based on your environment:
 
@@ -333,7 +351,7 @@ The callback URL should be set to one of the following paths based on your envir
 | Production    | `https://your-domain.tld/studiocms_api/auth/<provider>/callback` |
 | Testing & Dev | `http://localhost:4321/studiocms_api/auth/<provider>/callback` |
 
-#### Example callback URL paths
+##### Example callback URL paths
 
 The following paths are examples of the callback URL for each provider:
 
@@ -344,11 +362,11 @@ The following paths are examples of the callback URL for each provider:
 | Google   | `/studiocms_api/auth/google/callback` |
 | Auth0    | `/studiocms_api/auth/auth0/callback` |
 
-## Configure your `package.json` scripts
+### Configure your `package.json` scripts
 
 Setup your `package.json` scripts to include the following StudioCMS commands for easier use:
 
-```json title="package.json"
+```json title="package.json" {7-8}
 {
     "name": "my-studiocms-project",
     "scripts": {
@@ -392,7 +410,7 @@ StudioCMS is a headless Astro CMS, which means you have to provide your own fron
 
 #### Setup a blog
 
-If you are looking to setup a blog, you can use the `@studiocms/blog` plugin to get started.
+For example if you want to build a blog using StudioCMS, you can use the [`@studiocms/blog`](/en/package-catalog/studiocms-plugins/studiocms-blog/) plugin to get started quickly without having to build everything from scratch. This plugin provides a simple blog frontend that removes the need to have any source files for your frontend pages.
 
 To install and setup the blog plugin, run the following command in your terminal:
 
