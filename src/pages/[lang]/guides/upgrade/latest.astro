@@ -1,4 +1,5 @@
 ---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { Translations } from '../../../../starlight-sidebar/availTranslations';
 import semver from 'semver';
 
@@ -98,5 +99,6 @@ for (let i = 0; i < semverVersions.length; i++) {
 // Use original format from the versions array
 const latestOriginal = versions[latestIndex];
 ---
-
-<meta http-equiv="refresh" content={`0;url=/${lang}/guides/upgrade/version-guides/${latestOriginal}/`} />
+<StarlightPage frontmatter={{ title: 'Latest upgrade guide', template: 'splash' }}>
+    <meta http-equiv="refresh" content={`0;url=/${lang}/guides/upgrade/version-guides/${latestOriginal}/`} />
+</StarlightPage>

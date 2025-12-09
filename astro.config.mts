@@ -54,7 +54,7 @@ export default defineConfig({
 		rehypePlugins,
 		remarkPlugins: [remarkFallbackLang()],
 	},
-	trailingSlash: 'always',
+	trailingSlash: 'ignore',
 	integrations: [
 		devServerFileWatcher([
 			'./hostUtils.ts',

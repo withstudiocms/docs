@@ -1,4 +1,5 @@
 ---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 /*
 NOTE: The following code used to be included in a script tag on the page.
 However, our english translations are now far more developed than any other language.
@@ -7,5 +8,6 @@ to different language automatic redirects once they hit a certain quality thresh
 Until then, we'll just only redirect to english for now, with the meta tag below
 */
 ---
-
-<meta http-equiv="refresh" content="0;url=/en/" />
+<StarlightPage frontmatter={{ title: 'Getting Started', template: 'splash' }}>
+    <meta http-equiv="refresh" content="0;url=/en/" />
+</StarlightPage>

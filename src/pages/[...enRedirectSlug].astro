@@ -1,5 +1,6 @@
 ---
 // Redirect from base to /en/ pages
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { englishPages } from '~/content';
 import { stripLangFromSlug } from '~/util/path-utils';
 
@@ -10,11 +11,15 @@ export async function getStaticPaths() {
 				enRedirectSlug: stripLangFromSlug(page.id),
 			},
 			props: {
+				title: page.data.title,
 				englishSlug: page.id,
 			},
 		};
 	});
 }
----
 
-<meta http-equiv="refresh" content={`0;url=/${Astro.props.englishSlug}/`} />
+const { title, englishSlug } = Astro.props;
+---
+<StarlightPage frontmatter={{ title, template: 'splash' }}>
+    <meta http-equiv="refresh" content={`0;url=/${englishSlug}/`} />
+</StarlightPage>
