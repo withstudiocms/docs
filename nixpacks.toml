@@ -1,0 +1,19 @@
+[phases.setup]
+nixPkgs = ["nodejs_22", "pnpm-9_x", "openssl"]
+
+[phases.install]
+cmds = [
+    "npm install -g corepack@0.24.1 && corepack enable"
+    "pnpm i --frozen-lockfile"
+]
+
+[phases.build]
+cmds = [
+    "mkdir -p /etc/nginx/conf.d",
+    "cp ./nginx.conf /etc/nginx/nginx.conf",
+    "pnpm run build"
+]
+
+[start]
+# Command to start Nginx in the foreground
+cmd = "nginx -g 'daemon off;'"
