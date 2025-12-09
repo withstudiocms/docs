@@ -1,17 +1,14 @@
 [phases.setup]
-nixPkgs = ["nodejs_22", "pnpm-9_x", "openssl"]
+nixPkgs = ["proto", "openssl"]
 
 [phases.install]
-cmds = [
-    "npm install -g corepack@0.24.1 && corepack enable",
-    "pnpm i --frozen-lockfile"
-]
+cmds = ["proto use", "pnpm i --frozen-lockfile"]
 
 [phases.build]
 cmds = [
     "mkdir -p /etc/nginx/conf.d",
     "cp ./nginx.conf /etc/nginx/nginx.conf",
-    "pnpm run build"
+    "pnpm run build",
 ]
 
 [start]
