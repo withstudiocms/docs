@@ -30,6 +30,13 @@ StudioCMS `0.1.0-beta.31` introduces significant changes, including a new Kysely
 - New plugin features:
   - Dynamic components and scripts injection to the dashboard via new plugin hooks.
   - New db helpers for easier database access within plugins.
+- Introduced new Dashboard page for managing the System management.
+  - Includes a System info (debug) panel
+  - Provides quick access to your database tables while in production.
+- Added the new developer toolbar app built-in to StudioCMS for viewing and managing your database while in development mode.
+- Integrated optional web-vitals/analytics tracking into the dashboard for better performance insights.
+  - This can be enabled via the [`features.webVitals`](/en/config-reference/features/#webvitals) config option.
+  - For those who previously used the `@studiocms/web-vitals` or `@astrojs/web-vitals` integrations, this is now built-in and can be configured via the StudioCMS config.
 
 ## Bug Fixes & Improvements
 - Updated ghost user image url.
@@ -37,6 +44,7 @@ StudioCMS `0.1.0-beta.31` introduces significant changes, including a new Kysely
 - Refactored and simplified dashboard layout components.
 - Improved StudioCMS config types and JSDoc comments.
 - Refactored CLI commands to use new database layer.
+- Introduced new debug utilities for easier access to helpful debug information. (to be expanded to the CLI and Astro dev toolbar in the future)
 
 ## Migration Steps
 
@@ -51,6 +59,16 @@ To upgrade your StudioCMS project to version `0.1.0-beta.31`, please follow thes
 
 3. **Review your `studiocms.config.mjs` file** to ensure all configuration options are correctly set according to the new schema. Refer to the [Config Reference](/en/start-here/configuration/) for details.
 
+   - **Previously used `@studiocms/web-vitals` or `@astrojs/web-vitals` integrations?** Remove them from your project dependencies and configure the built-in web vitals tracking via the `features.webVitals` option in your `studiocms.config.mjs` file:
+
+      ```ts {3} title="studiocms.config.mjs"
+      export default defineStudioCMSConfig({
+        features: {
+          webVitals: true,
+        },
+      });
+      ```
+
 4. **Setup a new database connection for the new Kysely based database layer.** Update your `.env` file with the necessary database connection details. Keep your previous database intact for migration.
 
    <ReadMore>Refer to the [Database Setup Guide](/en/start-here/getting-started/#prepare-your-database) for more information on configuring your database.</ReadMore>
@@ -58,9 +76,7 @@ To upgrade your StudioCMS project to version `0.1.0-beta.31`, please follow thes
 
 5. **Configure your database dialect in `studiocms.config.mjs` under the `db` option. For example, to use libSQL:**
 
-   ```ts twoslash {3} title="studiocms.config.mjs"
-   import { defineStudioCMSConfig } from 'studiocms/config';
-   // ---cut---
+   ```ts {3} title="studiocms.config.mjs"
    export default defineStudioCMSConfig({
      db: {
        dialect: 'libsql', // or 'postgresql', 'mysql'
