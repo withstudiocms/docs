@@ -32,11 +32,9 @@ To start using StudioCMS, you'll need:
 ## Prepare your database
 
 
-<Tabs syncKey='db-setup-method'>
+<Tabs syncKey='db-setup-method-guide'>
 
-<TabItem label="libSQL">
-
-### Getting started with Turso
+<TabItem label="Turso (libSQL)">
 
 <Aside type='tip' title='StudioCMS Coupon'>
  Use the code `STUDIOCMS10` to get 10% off for 12 months of Turso.
@@ -69,11 +67,11 @@ To start using StudioCMS, you'll need:
 
 </Steps>
 
-You are now ready to move on to setting up your StudioCMS project!
+</TabItem>
 
-### Using another provider or self-hosted libSQL
+<TabItem label="libSQL">
 
-libSQL supports both HTTP and WebSockets as the transport protocol for a remote server. It also supports using a local file or an in-memory DB. 
+Make sure you have a libSQL database setup and running. You can use a local installation, a [Docker container][self-hosted-libsql], or a managed database service such as [Turso][turso-sponsor-link].
 
 ```bash title=".env"
 CMS_LIBSQL_URL=libsql://your-database.turso.io
@@ -86,7 +84,7 @@ CMS_LIBSQL_AUTH_TOKEN=<your-auth-token> (optional)
 
 <TabItem label="MySQL">
 
-### Setting up MySQL
+Make sure you have a MySQL database setup and running. You can use a local installation, a Docker container, or a managed database service.
 
 ```bash title=".env"
 CMS_MYSQL_DATABASE=<your-database-name>
@@ -102,7 +100,7 @@ CMS_MYSQL_PORT=<your-database-port>
 
 <TabItem label="PostgreSQL">
 
-### Setting up PostgreSQL
+Make sure you have a PostgreSQL database setup and running. You can use a local installation, a Docker container, or a managed database service.
 
 ```bash title=".env"
 CMS_PG_DATABASE=<your-database-name>
@@ -118,11 +116,15 @@ CMS_PG_PORT=<your-database-port>
 
 </Tabs>
 
+You are now ready to move on to creating your StudioCMS project!
+
 ## Creating a StudioCMS project
 
 <Tabs syncKey='install-method'>
 
 <TabItem label="StudioCMS CLI" icon="rocket">
+
+    <Steps>
 
     1. Creating a StudioCMS Project using the create command
 
@@ -136,7 +138,7 @@ CMS_PG_PORT=<your-database-port>
 
     2. After running the CLI, make sure that your `astro.config.mjs` fle is correctly configured:
 
-       ```ts twoslash title="astro.config.mjs" {2-3,8,10}
+       ```ts title="astro.config.mjs" {2-3,8,10}
        import { defineConfig } from 'astro/config';
        import node from '@astrojs/node';
        import studioCMS from 'studiocms';
@@ -150,6 +152,8 @@ CMS_PG_PORT=<your-database-port>
            ],
        });
        ```
+
+    </Steps>
 
 </TabItem>
 
@@ -268,6 +272,8 @@ export default defineStudioCMSConfig({
   },
 })
 ```
+
+#### Ensure database client packages are installed
 
 You will also need to install the necessary database client packages for your chosen database dialect:
 
@@ -460,3 +466,4 @@ Learn more about the StudioCMS Config options using the [StudioCMS Reference][co
 [config-reference]: /en/config-reference/
 [encryption-key]: /en/start-here/environment-variables/#encryption-key-for-studiocms
 [self-hosted-libsql]: /en/guides/database/sqld-server/
+[turso-sponsor-link]: https://tur.so/studiocms
