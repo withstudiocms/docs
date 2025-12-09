@@ -19,9 +19,8 @@ const linkValidator = process.env.CHECK_LINKS
 			starlightLinksValidator({
 				errorOnFallbackPages: false,
 				errorOnInconsistentLocale: true,
-				// Exclude TypeDoc paths as they contain auto-generated content with many internal links
 				// Exclude the dynamically generated latest guide redirect page
-				exclude: ['/*/typedoc/**/*', '/*/guides/upgrade/latest/'],
+				exclude: ['/*/guides/upgrade/latest/'],
 			}),
 		]
 	: [];
@@ -54,7 +53,6 @@ export default defineConfig({
 		rehypePlugins,
 		remarkPlugins: [remarkFallbackLang()],
 	},
-	trailingSlash: 'ignore',
 	integrations: [
 		devServerFileWatcher([
 			'./hostUtils.ts',
@@ -70,11 +68,13 @@ export default defineConfig({
 		ui(),
 		starlight({
 			title: 'StudioCMS',
-			description: 'A dedicated CMS for Astro. Built from the ground up by the Astro community.',
+			description:
+				'Dedicated SSR Astro native Headless CMS, build from the ground up for the Astro community and by Astro community members.',
 			favicon: '/logo-light.svg',
 			lastUpdated: true,
 			credits: true,
-			tagline: 'A dedicated CMS for Astro. Built from the ground up by the Astro community.',
+			tagline:
+				'Dedicated SSR Astro native Headless CMS, build from the ground up for the Astro community and by Astro community members.',
 			disable404Route: true,
 			pagefind: false,
 			components: {
@@ -83,6 +83,7 @@ export default defineConfig({
 				Sidebar: './src/starlightOverrides/Sidebar.astro',
 				Head: './src/starlightOverrides/Head.astro',
 				Search: './src/starlightOverrides/Search.astro',
+				PageSidebar: './src/starlightOverrides/PageSidebar.astro',
 			},
 			logo: {
 				dark: './assets/logo-light.svg',
@@ -100,6 +101,11 @@ export default defineConfig({
 					label: 'Open Collective',
 					icon: 'openCollective',
 					href: 'https://opencollective.com/StudioCMS',
+				},
+				{
+					label: 'Thanks.dev',
+					icon: 'seti:json',
+					href: 'https://thanks.dev/u/gh/withstudiocms',
 				},
 			],
 			customCss: [
