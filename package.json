@@ -8,7 +8,6 @@
   },
   "scripts": {
     "dev": "pnpm gen-changelogs && astro dev",
-    "start": "astro dev",
     "check": "astro check",
     "build": "pnpm gen-changelogs && astro build",
     "preview": "astro preview",
