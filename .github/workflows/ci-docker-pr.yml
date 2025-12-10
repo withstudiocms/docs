@@ -60,12 +60,17 @@ jobs:
           echo "Pushed: ghcr.io/${{ github.repository_owner }}/studiocms-docs:pr-${{ github.event.pull_request.number }}"
 
       # This is here as a test and would be moved to the main branch workflow later
-      - name: Request image deployment
-        uses: distributhor/workflow-webhook@v3
-        with:
-          webhook_url: ${{ secrets.DOKPLOY_WEBHOOK_URL }}
-          data: |
-            {
-              "image": "ghcr.io/${{ github.repository_owner }}/studiocms-docs:pr-${{ github.event.pull_request.number }}",
-              "tag": "pr-${{ github.event.pull_request.number }}"
-            }
+      - name: Send compose update
+        run: |
+          response=$(curl -X 'POST' "${{ secrets.DOKPLOY_API_URL }}/compose.update" -H 'accept: application/json' -H 'Content-Type: application/json' -H "x-api-key: ${{ secrets.DOKPLOY_API_KEY }}" -d '{
+            "composeId": "${{ secrets.DOKPLOY_COMPOSE_ID }}",
+            "composeFile": "services:\n  docs:\n    image: ghcr.io/withstudiocms/studiocms-docs:${{ github.sha }}\n    restart: always"
+          }' | jq -r '.message')
+          echo "output_data=$response" >> $GITHUB_OUTPUT
+
+      - name: Trigger compose deploy
+        run: |
+          response=$(curl -X 'POST' "${{ secrets.DOKPLOY_API_URL }}/compose.deploy" -H 'accept: application/json' -H 'Content-Type: application/json' -H "x-api-key: ${{ secrets.DOKPLOY_API_KEY }}" -d '{
+            "composeId": "${{ secrets.DOKPLOY_COMPOSE_ID }}"
+          }' | jq -r '.message')
+          echo "output_data=$response" >> $GITHUB_OUTPUT
