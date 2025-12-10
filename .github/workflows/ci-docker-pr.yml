@@ -59,6 +59,7 @@ jobs:
           echo "Pushed: ghcr.io/${{ github.repository_owner }}/studiocms-docs:${{ github.sha }}"
           echo "Pushed: ghcr.io/${{ github.repository_owner }}/studiocms-docs:pr-${{ github.event.pull_request.number }}"
 
+      # This is here as a test and would be moved to the main branch workflow later
       - name: Request image deployment
         uses: distributhor/workflow-webhook@v3
         with:
