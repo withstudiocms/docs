@@ -20,8 +20,21 @@ export type SemverCategory = (typeof semverCategories)[number];
 async function fetchChangelog(url: string): Promise<string> {
 	try {
 		console.log('Getting Changelog from GitHub API');
+
+		const token = process.env.PUBLIC_GITHUB_TOKEN;
+
 		// Using GitHub's raw content URL format to get the plain text content
-		const response = await fetch(url);
+		const response = await fetch(url, {
+			method: 'GET',
+			headers: token
+				? {
+						Authorization: `Basic ${Buffer.from(token, 'binary').toString('base64')}`,
+						'User-Agent': 'studiocms-docs-cli/1.0',
+					}
+				: {
+						'User-Agent': 'studiocms-docs-cli/1.0',
+					},
+		});
 
 		if (!response.ok) {
 			throw new Error(`Failed to fetch changelog: ${response.status} ${response.statusText}`);
