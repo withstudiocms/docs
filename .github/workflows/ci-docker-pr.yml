@@ -64,3 +64,8 @@ jobs:
         uses: distributhor/workflow-webhook@v3
         with:
           webhook_url: ${{ secrets.DOKPLOY_WEBHOOK_URL }}
+          data: |
+            {
+              "image": "ghcr.io/${{ github.repository_owner }}/studiocms-docs:pr-${{ github.event.pull_request.number }}",
+              "tag": "pr-${{ github.event.pull_request.number }}"
+            }
