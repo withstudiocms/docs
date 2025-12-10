@@ -58,3 +58,8 @@ jobs:
         run: |
           echo "Pushed: ghcr.io/${{ github.repository_owner }}/studiocms-docs:${{ github.sha }}"
           echo "Pushed: ghcr.io/${{ github.repository_owner }}/studiocms-docs:pr-${{ github.event.pull_request.number }}"
+
+      - name: Request image deployment
+        uses: distributhor/workflow-webhook@v3
+        with:
+          webhook_url: ${{ secrets.DOKPLOY_WEBHOOK_URL }}
