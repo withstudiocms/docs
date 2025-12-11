@@ -178,6 +178,8 @@ export default defineConfig({
 								translations: getTranslations('how-it-works'),
 								autogenerate: { directory: 'how-it-works' },
 							},
+							// TODO - Add Core Features section and 
+							// document all built-in features and how they work
 							{
 								label: getTranslations('utils').en,
 								translations: getTranslations('utils'),
