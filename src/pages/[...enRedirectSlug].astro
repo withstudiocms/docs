@@ -12,14 +12,15 @@ export async function getStaticPaths() {
 			},
 			props: {
 				title: page.data.title,
+				description: page.data.description,
 				englishSlug: page.id,
 			},
 		};
 	});
 }
 
-const { title, englishSlug } = Astro.props;
+const { title, description, englishSlug } = Astro.props;
 ---
-<StarlightPage frontmatter={{ title, template: 'splash' }}>
+<StarlightPage frontmatter={{ title, description, template: 'splash' }}>
     <meta http-equiv="refresh" content={`0;url=/${englishSlug}/`} />
 </StarlightPage>
