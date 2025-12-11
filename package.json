@@ -32,6 +32,7 @@
     "studiocms": "https://pkg.pr.new/withstudiocms/studiocms@2d987d7",
     "@withstudiocms/component-registry": "https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@2d987d7",
     "@withstudiocms/kysely": "https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/kysely@2d987d7",
+    "@withstudiocms/template-lang": "https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/template-lang@2d987d7",
 
     "@studiocms/ui": "1.0.0-beta.4",
     "@studiocms/web-vitals": "^4.5.3",

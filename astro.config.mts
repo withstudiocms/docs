@@ -16,13 +16,13 @@ const site = process.env.DOKPLOY_DEPLOY_URL
 
 const linkValidator = process.env.CHECK_LINKS
 	? [
-			starlightLinksValidator({
-				errorOnFallbackPages: false,
-				errorOnInconsistentLocale: true,
-				// Exclude the dynamically generated latest guide redirect page
-				exclude: ['/*/guides/upgrade/latest/'],
-			}),
-		]
+		starlightLinksValidator({
+			errorOnFallbackPages: false,
+			errorOnInconsistentLocale: true,
+			// Exclude the dynamically generated latest guide redirect page
+			exclude: ['/*/guides/upgrade/latest/'],
+		}),
+	]
 	: [];
 
 export const locales = {
@@ -119,15 +119,15 @@ export default defineConfig({
 			head: [
 				...(process.env.NODE_ENV === 'production'
 					? [
-							{
-								tag: 'script' as const,
-								attrs: {
-									src: 'https://analytics.studiocms.cloud/script.js',
-									'data-website-id': '2670ef85-9da5-4bc1-bac8-143b6c554c2c',
-									defer: true,
-								},
+						{
+							tag: 'script' as const,
+							attrs: {
+								src: 'https://analytics.studiocms.cloud/script.js',
+								'data-website-id': '2670ef85-9da5-4bc1-bac8-143b6c554c2c',
+								defer: true,
 							},
-						]
+						},
+					]
 					: []),
 				{
 					tag: 'meta',
@@ -224,6 +224,11 @@ export default defineConfig({
 										autogenerate: { directory: 'guides/upgrade/version-guides' },
 									},
 								],
+							},
+							{
+								label: getTranslations('custom-frontend').en,
+								translations: getTranslations('custom-frontend'),
+								autogenerate: { directory: 'guides/custom-frontend' },
 							},
 							{
 								label: getTranslations('database').en,
