@@ -2,6 +2,9 @@
 i18nReady: true
 title: Environment Variables
 description: A brief overview of the environment variables used in StudioCMS.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 sidebar:
   order: 2
   badge:
@@ -70,3 +73,16 @@ You can generate a secure encryption key using the following command:
 openssl rand --base64 16
 ``` 
 </Aside>
+
+## Optional Environment Variables
+
+### Effect Log Level
+
+`STUDIOCMS_LOGLEVEL` - Set the log level for all Effect based operations in StudioCMS.
+
+- Available log levels: `All` | `Fatal` | `Error` | `Warning` | `Info` | `Debug` | `Trace` | `None`
+- Default: `Info`
+
+```bash title=".env"
+STUDIOCMS_LOGLEVEL="Info"
+```
