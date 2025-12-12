@@ -181,14 +181,14 @@ export default defineConfig({
 							// TODO - Add Core Features section and 
 							// document all built-in features and how they work
 							{
-								label: getTranslations('utils').en,
-								translations: getTranslations('utils'),
-								autogenerate: { directory: 'utils' },
-							},
-							{
 								label: getTranslations('plugins').en,
 								translations: getTranslations('plugins'),
 								autogenerate: { directory: 'plugins' },
+							},
+							{
+								label: getTranslations('utils').en,
+								translations: getTranslations('utils'),
+								autogenerate: { directory: 'utils' },
 							},
 						],
 					},
