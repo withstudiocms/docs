@@ -325,7 +325,7 @@ export default defineStudioCMSConfig({
 
 ### Configure authentication
 
-StudioCMS Auth requires at least the [Encryption Key][encryption-key] to be set in your `.env` file.
+StudioCMS's built-in authentication requires at least the [Encryption Key][encryption-key] to be set in your `.env` file.
 
 The following environment variables are required for StudioCMS authentication:
 
@@ -369,10 +369,10 @@ The following paths are examples of the callback URL for each provider:
 
 | Provider | Callback PATH |
 |----------|---------------|
-| GitHub   | `/studiocms_api/auth/github/callback` |
-| Discord  | `/studiocms_api/auth/discord/callback` |
-| Google   | `/studiocms_api/auth/google/callback` |
-| Auth0    | `/studiocms_api/auth/auth0/callback` |
+| [GitHub](/en/package-catalog/studiocms-plugins/studiocms-github/)   | `/studiocms_api/auth/github/callback` |
+| [Discord](/en/package-catalog/studiocms-plugins/studiocms-discord/) | `/studiocms_api/auth/discord/callback` |
+| [Google](/en/package-catalog/studiocms-plugins/studiocms-google/)   | `/studiocms_api/auth/google/callback` |
+| [Auth0](/en/package-catalog/studiocms-plugins/studiocms-auth0/)     | `/studiocms_api/auth/auth0/callback` |
 
 ### Configure your `package.json` scripts
 
