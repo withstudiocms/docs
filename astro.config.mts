@@ -167,7 +167,7 @@ export default defineConfig({
 						{
 							label: 'Getting Started',
 							description: 'Essential resources to help you get up and running with StudioCMS quickly and effectively.',
-							paths: ['start-here/**']
+							paths: ['en/start-here/**']
 						}
 					]
 				}),
