@@ -8,6 +8,7 @@ import rehypePlugins from './src/plugins/rehypePluginKit.ts';
 import { getTranslations } from './src/starlight-sidebar/translate.ts';
 import { devServerFileWatcher } from './src/integrations/dev-file-watcher.ts';
 import { remarkFallbackLang } from './src/plugins/remark-fallback-pages.ts';
+import starlightLlmsTxt from 'starlight-llms-txt';
 
 // Define the Site URL
 const site = process.env.DOKPLOY_DEPLOY_URL
@@ -160,6 +161,7 @@ export default defineConfig({
 			],
 			plugins: [
 				...linkValidator,
+				starlightLlmsTxt(),
 				starlightImageZoom(),
 				starlightSidebarTopics([
 					{

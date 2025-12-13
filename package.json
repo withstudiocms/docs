@@ -81,7 +81,8 @@
     "typescript": "^5.8.3",
     "ultrahtml": "^1.5.3",
     "unified": "^11.0.5",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5.0.0",
+    "starlight-llms-txt": "^0.6.0"
   },
   "__pnpmOverridesNote": "This is a version fix to lock all installations of vite to the same version, as it is a peer dependency of many of the packages we use.",
   "pnpm": {

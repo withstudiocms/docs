@@ -12,6 +12,7 @@
     "inox",
     "Kysely",
     "libsql",
+    "Llms",
     "lunariajs",
     "markdoc",
     "mergebot",
