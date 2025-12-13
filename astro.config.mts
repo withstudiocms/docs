@@ -161,7 +161,16 @@ export default defineConfig({
 			],
 			plugins: [
 				...linkValidator,
-				starlightLlmsTxt(),
+				starlightLlmsTxt({
+					description: 'StudioCMS is a Server-Side Rendered (SSR) Headless CMS built specifically for Astro. It is designed to seamlessly integrate with Astro projects, providing a robust and efficient content management solution that leverages Astro\'s strengths in performance and developer experience.',
+					customSets: [
+						{
+							label: 'Getting Started',
+							description: 'Essential resources to help you get up and running with StudioCMS quickly and effectively.',
+							paths: ['start-here/**']
+						}
+					]
+				}),
 				starlightImageZoom(),
 				starlightSidebarTopics([
 					{
