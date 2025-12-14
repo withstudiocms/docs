@@ -53,7 +53,7 @@ async function recursiveFetch(endpoint: string, page?: number): Promise<any[]> {
 			{
 				method: 'GET',
 				headers: {
-					Authorization: token && `Basic ${Buffer.from(token, 'binary').toString('base64')}`,
+					Authorization: token && `Bearer ${token}`,
 					'User-Agent': 'studiocms-docs/1.0',
 				},
 			},

@@ -28,12 +28,12 @@ async function fetchChangelog(url: string): Promise<string> {
 			method: 'GET',
 			headers: token
 				? {
-						Authorization: `Basic ${Buffer.from(token, 'binary').toString('base64')}`,
-						'User-Agent': 'studiocms-docs-cli/1.0',
-					}
+					Authorization: `Bearer ${token}`,
+					'User-Agent': 'studiocms-docs-cli/1.0',
+				}
 				: {
-						'User-Agent': 'studiocms-docs-cli/1.0',
-					},
+					'User-Agent': 'studiocms-docs-cli/1.0',
+				},
 		});
 
 		if (!response.ok) {

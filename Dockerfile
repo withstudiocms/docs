@@ -1,5 +1,6 @@
 FROM node:lts AS build
-RUN --mount=type=secret,id=public_github_token,env=PUBLIC_GITHUB_TOKEN
+RUN --mount=type=secret,id=public_github_token export PUBLIC_GITHUB_TOKEN=$(cat /run/secrets/public_github_token) && echo "Secret loaded"
+
 WORKDIR /app
 COPY . .
 
