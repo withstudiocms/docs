@@ -1,7 +1,6 @@
 import type { AstroGlobal } from 'astro';
 import { cachedFetch } from '../util-server.ts';
 import { StudioCMSServiceAccounts, contributorConfig } from './contributors.config.ts';
-import type { Commit as CommitComparison } from './CommitCompare.ts';
 
 export interface Contributor {
 	login: string;
