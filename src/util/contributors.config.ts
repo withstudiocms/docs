@@ -4,6 +4,7 @@ type RepoListItem = {
 	repo: string;
 	type: 'all' | 'byPath';
 	paths?: string[];
+	// TODO: implement ignored paths
 	ignoredPaths?: string[];
 };
 

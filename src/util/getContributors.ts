@@ -1,6 +1,7 @@
 import type { AstroGlobal } from 'astro';
 import { cachedFetch } from '../util-server.ts';
 import { StudioCMSServiceAccounts, contributorConfig } from './contributors.config.ts';
+import type { Commit as CommitComparison } from './CommitCompare.ts';
 
 export interface Contributor {
 	login: string;
@@ -14,6 +15,7 @@ interface Commit {
 		login: string;
 		id: number;
 	};
+	sha: string;
 	commit: {
 		message: string;
 	};
@@ -82,6 +84,38 @@ async function recursiveFetch(endpoint: string, page?: number): Promise<any[]> {
 	}
 }
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+async function singleFetch(endpoint: string): Promise<any> {
+	try {
+		const token = import.meta.env.PUBLIC_GITHUB_TOKEN;
+
+		const res = await cachedFetch(
+			`https://api.github.com/${endpoint}`,
+			{
+				method: 'GET',
+				headers: {
+					Authorization: token && `Bearer ${token}`,
+					'User-Agent': 'studiocms-docs/1.0',
+				},
+			},
+			{ duration: '15m' }
+		);
+
+		const data = await res.json();
+
+		if (!res.ok) {
+			throw new Error(
+				`Request to fetch endpoint failed. Reason: ${res.statusText}
+		 Message: ${data?.message}`
+			);
+		}
+		return data;
+	} catch (e) {
+		printError(e as Error);
+		return null;
+	}
+}
+
 function filterOutBots(c: Contributor[]): Contributor[] {
 	return c.filter((contributor) => !contributor.login.includes('[bot]'));
 }
@@ -118,21 +152,17 @@ export async function getAllContributors(repo: string) {
  */
 export async function getContributorsByPath(
 	paths: string[],
-	repo: string,
-	ignoredPaths: string[] = []
+	repo: string
 ) {
 	const contributors: Contributor[] = [];
+
+	console.log(`Getting contributors for repo: ${repo}, paths: ${paths.join(', ')}`);
 
 	for (const path of paths) {
 		const endpoint = `repos/${repo}/commits?path=${path}`;
 		const commits: Commit[] = await recursiveFetch(endpoint);
 
-		// Filter out commits from ignored paths
-		const filteredCommits = commits.filter(
-			(commit) => !ignoredPaths.some((ignoredPath) => commit.commit.message.includes(ignoredPath))
-		);
-
-		for (const { author } of filteredCommits) {
+		for (const { author } of commits) {
 			if (!author) continue;
 			const contributor = contributors.find((contributor) => contributor.id === author.id);
 
@@ -205,9 +235,9 @@ export async function getContributorBreakdown(Astro: AstroGlobal): Promise<Break
 	for (const { name, list } of config) {
 		const contributors: Contributor[] = [];
 
-		for (const { repo, type, paths, ignoredPaths } of list) {
+		for (const { repo, type, paths } of list) {
 			if (type === 'byPath' && paths) {
-				const data = await getContributorsByPath(paths, repo, ignoredPaths);
+				const data = await getContributorsByPath(paths, repo);
 				checkIfContributorExists(contributors, data);
 			} else {
 				const data = await getAllContributors(repo);
