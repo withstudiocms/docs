@@ -1,0 +1,9 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@withstudiocms/template-lang",
+  "description": "A simple TypeScript ESM template language for rendering dynamic content in StudioCMS.",
+  "docsLink": "/en/utils/template-lang/",
+  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/@withstudiocms/template-lang/",
+  "catalog": "internal",
+  "isPlugin": false
+}

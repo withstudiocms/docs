@@ -21,6 +21,7 @@ const docSearchStrings =
 			}
 
 			// Wrap everything else inside `modal`
+			// biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
 			let pointer = (dict.modal ??= {});
 			for (let i = 0; i < segments.length; i++) {
 				const segment = segments[i];

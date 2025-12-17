@@ -5,7 +5,7 @@ description: Learn about StudioCMS renderer plugins and how to create them.
 sidebar:
   order: 3
   badge:
-    text: NEW
+    text: Updated
     variant: success
 ---
 
@@ -32,9 +32,9 @@ const { resolve } = createResolver(import.meta.url);
 export const myPlugin = () => definePlugin({
     identifier: 'my-plugin',
     name: 'My Plugin',
-    studiocmsMinimumVersion: '0.1.0-beta.28',
+    studiocmsMinimumVersion: '0.1.0-beta.31',
     hooks: {
-      'studiocms:config:setup': ({ setRendering }) => {
+      'studiocms:rendering': ({ setRendering }) => {
         setRendering({
           pageTypes: [
             {
@@ -85,3 +85,9 @@ const { content } = Astro.props;
     <textarea id="page-content" name="page-content">{content}</textarea>
 </div>
 ```
+
+## Further Reading
+
+<ReadMore>
+If you want to build a custom frontend for your StudioCMS project, you can use the [StudioCMS Renderer component and SDK](/en/guides/custom-frontend/rendering/) to render the content from StudioCMS using your custom renderer plugins.
+</ReadMore>

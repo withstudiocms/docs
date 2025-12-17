@@ -7,5 +7,6 @@
   "catalog": "community",
   "isPlugin": true,
   "released": true,
-  "publiclyUsable": false
+  "publiclyUsable": false,
+  "hidden": true
 }

@@ -8,6 +8,7 @@ import rehypePlugins from './src/plugins/rehypePluginKit.ts';
 import { getTranslations } from './src/starlight-sidebar/translate.ts';
 import { devServerFileWatcher } from './src/integrations/dev-file-watcher.ts';
 import { remarkFallbackLang } from './src/plugins/remark-fallback-pages.ts';
+import starlightLlmsTxt from 'starlight-llms-txt';
 
 // Define the Site URL
 const site = process.env.DOKPLOY_DEPLOY_URL
@@ -16,14 +17,13 @@ const site = process.env.DOKPLOY_DEPLOY_URL
 
 const linkValidator = process.env.CHECK_LINKS
 	? [
-			starlightLinksValidator({
-				errorOnFallbackPages: false,
-				errorOnInconsistentLocale: true,
-				// Exclude TypeDoc paths as they contain auto-generated content with many internal links
-				// Exclude the dynamically generated latest guide redirect page
-				exclude: ['/*/typedoc/**/*', '/*/guides/upgrade/latest/'],
-			}),
-		]
+		starlightLinksValidator({
+			errorOnFallbackPages: false,
+			errorOnInconsistentLocale: true,
+			// Exclude the dynamically generated latest guide redirect page
+			exclude: ['/*/guides/upgrade/latest/'],
+		}),
+	]
 	: [];
 
 export const locales = {
@@ -54,7 +54,6 @@ export default defineConfig({
 		rehypePlugins,
 		remarkPlugins: [remarkFallbackLang()],
 	},
-	trailingSlash: 'always',
 	integrations: [
 		devServerFileWatcher([
 			'./hostUtils.ts',
@@ -70,11 +69,13 @@ export default defineConfig({
 		ui(),
 		starlight({
 			title: 'StudioCMS',
-			description: 'A dedicated CMS for Astro DB. Built from the ground up by the Astro community.',
+			description:
+				'Dedicated SSR Astro native Headless CMS, build from the ground up for the Astro community and by Astro community members.',
 			favicon: '/logo-light.svg',
 			lastUpdated: true,
 			credits: true,
-			tagline: 'A dedicated CMS for Astro DB. Built from the ground up by the Astro community.',
+			tagline:
+				'Dedicated SSR Astro native Headless CMS, build from the ground up for the Astro community and by Astro community members.',
 			disable404Route: true,
 			pagefind: false,
 			components: {
@@ -83,6 +84,7 @@ export default defineConfig({
 				Sidebar: './src/starlightOverrides/Sidebar.astro',
 				Head: './src/starlightOverrides/Head.astro',
 				Search: './src/starlightOverrides/Search.astro',
+				PageSidebar: './src/starlightOverrides/PageSidebar.astro',
 			},
 			logo: {
 				dark: './assets/logo-light.svg',
@@ -101,6 +103,11 @@ export default defineConfig({
 					icon: 'openCollective',
 					href: 'https://opencollective.com/StudioCMS',
 				},
+				{
+					label: 'Thanks.dev',
+					icon: 'seti:json',
+					href: 'https://thanks.dev/u/gh/withstudiocms',
+				},
 			],
 			customCss: [
 				'@studiocms/ui/css/global.css',
@@ -111,14 +118,18 @@ export default defineConfig({
 				baseUrl: 'https://github.com/withstudiocms/docs/tree/main',
 			},
 			head: [
-				{
-					tag: 'script',
-					attrs: {
-						src: 'https://analytics.studiocms.dev/script.js',
-						'data-website-id': 'e924da68-f547-4dd2-bd2f-bcdd78cbcdab',
-						defer: true,
-					},
-				},
+				...(process.env.NODE_ENV === 'production'
+					? [
+						{
+							tag: 'script' as const,
+							attrs: {
+								src: 'https://analytics.studiocms.cloud/script.js',
+								'data-website-id': '2670ef85-9da5-4bc1-bac8-143b6c554c2c',
+								defer: true,
+							},
+						},
+					]
+					: []),
 				{
 					tag: 'meta',
 					attrs: {
@@ -150,6 +161,16 @@ export default defineConfig({
 			],
 			plugins: [
 				...linkValidator,
+				starlightLlmsTxt({
+					description: 'StudioCMS is a Server-Side Rendered (SSR) Headless CMS built specifically for Astro. It is designed to seamlessly integrate with Astro projects, providing a robust and efficient content management solution that leverages Astro\'s strengths in performance and developer experience.',
+					customSets: [
+						{
+							label: 'Getting Started',
+							description: 'Essential resources to help you get up and running with StudioCMS quickly and effectively.',
+							paths: ['en/start-here/**']
+						}
+					]
+				}),
 				starlightImageZoom(),
 				starlightSidebarTopics([
 					{
@@ -168,15 +189,17 @@ export default defineConfig({
 								translations: getTranslations('how-it-works'),
 								autogenerate: { directory: 'how-it-works' },
 							},
-							{
-								label: getTranslations('utils').en,
-								translations: getTranslations('utils'),
-								autogenerate: { directory: 'utils' },
-							},
+							// TODO - Add Core Features section and 
+							// document all built-in features and how they work
 							{
 								label: getTranslations('plugins').en,
 								translations: getTranslations('plugins'),
 								autogenerate: { directory: 'plugins' },
+							},
+							{
+								label: getTranslations('utils').en,
+								translations: getTranslations('utils'),
+								autogenerate: { directory: 'utils' },
 							},
 						],
 					},
@@ -214,6 +237,11 @@ export default defineConfig({
 										autogenerate: { directory: 'guides/upgrade/version-guides' },
 									},
 								],
+							},
+							{
+								label: getTranslations('custom-frontend').en,
+								translations: getTranslations('custom-frontend'),
+								autogenerate: { directory: 'guides/custom-frontend' },
 							},
 							{
 								label: getTranslations('database').en,

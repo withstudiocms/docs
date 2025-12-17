@@ -1,0 +1,119 @@
+---
+import { LinkButton } from '@astrojs/starlight/components';
+
+const hostingerUrl =
+	'https://www.hostinger.com/cart?product=vps%3Avps_kvm_2&period=12&referral_type=cart_link&REFERRALCODE=FSMAMATTH73C&referral_id=019b013c-6b5c-7321-842a-aa21eef07473';
+
+const headingId = `studiocms-hostinger-ad-${Math.random().toString(36).substring(2, 9)}`;
+---
+<div class="container" lang="en" dir="ltr" data-algolia-exclude>
+	<aside aria-labelledby={headingId}>
+		<svg width="48" height="48" viewBox="0 0 755 792" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="295" width="460" height="466" rx="32" fill="currentColor"/>
+            <path d="M272 434V166H180C162.327 166 148 180.327 148 198V597C148 614.673 162.327 629 180 629H577.5C595.173 629 609.5 614.673 609.5 597V490H328C297.072 490 272 464.928 272 434Z" fill="currentColor"/>
+            <path d="M124 597V329H32C14.3269 329 0 343.327 0 361V760C0 777.673 14.3269 792 32 792H429.5C447.173 792 461.5 777.673 461.5 760V653H180C149.072 653 124 627.928 124 597Z" fill="currentColor"/>
+        </svg>
+		<h3 id={headingId}>Power your <strong>StudioCMS</strong> site with Hostinger</h3>
+		<p class="sl-flex">
+			<span class="sl-flex" style="gap: 0.25rem; align-items: center;">
+				<span>High-performance VPS</span>
+			</span>
+			<span>•</span>
+			<span>Perfect for CMS hosting</span>
+		</p>
+		<LinkButton href={hostingerUrl} class="cta">
+			<span>Get started with <strong>Hostinger VPS</strong></span>
+		</LinkButton>
+	</aside>
+</div>
+<style>
+	.container {
+		container-type: inline-size;
+		max-width: 45rem;
+		margin-inline: auto;
+	}
+	aside {
+		margin-top: 2rem;
+		border: 1px solid var(--sl-color-accent);
+		border-radius: 0.5rem;
+		padding: 1rem;
+		background-color: var(--sl-color-gray-6);
+		box-shadow: var(--sl-shadow-md);
+		/* Internal layout */
+		display: grid;
+		grid-template-columns: 4rem 1fr;
+		grid-template-rows: auto auto auto;
+		grid-template-areas:
+			'image title'
+			'tagline tagline'
+			'cta cta';
+		gap: 0.75rem 0.5rem;
+		align-items: center;
+        justify-items: center;
+	}
+	img {
+		grid-area: image;
+		width: 48px;
+		height: 48px;
+		margin: -0.25rem;
+	}
+	h3 {
+		grid-area: title;
+		font-weight: 400 !important;
+		line-height: var(--sl-line-height-headings);
+		text-wrap: balance;
+	}
+	p {
+		grid-area: tagline;
+		flex-wrap: wrap;
+		font-size: var(--sl-text-2xs);
+		column-gap: 0.25rem;
+		justify-content: center;
+		align-items: center;
+		line-height: var(--sl-line-height-headings);
+	}
+	.cta {
+		grid-area: cta;
+		text-align: center;
+		text-wrap: balance;
+		justify-content: center;
+		font-size: var(--sl-text-sm) !important;
+		font-weight: 500;
+		padding-block: 0.6875rem !important;
+		transition: opacity 200ms ease-out;
+	}
+	.cta:hover {
+		opacity: 0.8;
+	}
+	.cta strong {
+		text-transform: uppercase;
+	}
+	/* When there's room, tuck the tagline in under the title to the right of the image. */
+	@container (width > 24rem) {
+		aside {
+			row-gap: 0.25rem;
+			grid-template-areas:
+				'image title'
+				'image tagline'
+				'cta cta';
+		}
+		.cta {
+			margin-top: 0.5rem;
+		}
+		p {
+			justify-content: start;
+		}
+	}
+	/* When there's even more room, move the CTA button to the right instead of below. */
+	@container (width > 40rem) {
+		aside {
+			grid-template-columns: 4rem auto auto;
+			grid-template-areas:
+				'image title cta'
+				'image tagline cta';
+		}
+		.cta {
+			margin-top: 0;
+		}
+	}
+</style>

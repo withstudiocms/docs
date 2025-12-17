@@ -29,13 +29,14 @@ const packages = (await getCollection('package-catalog'))
 		docsLink: data.docsLink.startsWith('/')
 			? `/${Astro.currentLocale}${data.docsLink}`.toString()
 			: data.docsLink,
-	}));
+	}))
+	.filter(({ hidden }) => !hidden);
 ---
 
 <div>
 
     { 
-        packages.map(({ 
+        packages.length > 0 ? packages.map(({ 
             name: title, 
             githubURL, 
             released, 
@@ -54,7 +55,9 @@ const packages = (await getCollection('package-catalog'))
 
                 <>{ index < packages.length - 1 && <hr /> }</>
             </Card>
-        )) 
+        )) : (
+            <p>{Astro.locals.t('package-catalog.no-packages')}</p>
+        )
     }
 
 </div>

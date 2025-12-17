@@ -8,7 +8,6 @@
   },
   "scripts": {
     "dev": "pnpm gen-changelogs && astro dev",
-    "start": "astro dev",
     "check": "astro check",
     "build": "pnpm gen-changelogs && astro build",
     "preview": "astro preview",
@@ -22,16 +21,18 @@
     "gen-changelogs": "tsm --require=./scripts/filter-warnings.cjs ./scripts/generate-release-notes.ts"
   },
   "dependencies": {
-    "@studiocms/blog": "0.1.0-beta.30",
-    "@studiocms/cloudinary-image-service": "0.1.0-beta.30",
-    "@studiocms/devapps": "0.1.0-beta.30",
-    "@studiocms/html": "0.1.0-beta.30",
-    "@studiocms/markdoc": "0.1.0-beta.30",
-    "@studiocms/md": "0.1.0-beta.30",
-    "@studiocms/mdx": "0.1.0-beta.30",
-    "@studiocms/wysiwyg": "0.1.0-beta.30",
-    "studiocms": "0.1.0-beta.30",
-    "@withstudiocms/component-registry": "0.1.0-beta.6",
+    "@studiocms/blog": "0.1.0-beta.31",
+    "@studiocms/cloudinary-image-service": "0.1.0-beta.31",
+    "@studiocms/devapps": "0.1.0-beta.31",
+    "@studiocms/html": "0.1.0-beta.31",
+    "@studiocms/markdoc": "0.1.0-beta.31",
+    "@studiocms/md": "0.1.0-beta.31",
+    "@studiocms/mdx": "0.1.0-beta.31",
+    "@studiocms/wysiwyg": "0.1.0-beta.31",
+    "studiocms": "0.1.0-beta.31",
+    "@withstudiocms/component-registry": "0.1.0-beta.7",
+    "@withstudiocms/kysely": "0.1.0-beta.1",
+    "@withstudiocms/template-lang": "0.1.0-beta.1",
 
     "@studiocms/ui": "1.0.0-beta.4",
     "@studiocms/web-vitals": "^4.5.3",
@@ -80,7 +81,8 @@
     "typescript": "^5.8.3",
     "ultrahtml": "^1.5.3",
     "unified": "^11.0.5",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5.0.0",
+    "starlight-llms-txt": "^0.6.0"
   },
   "__pnpmOverridesNote": "This is a version fix to lock all installations of vite to the same version, as it is a peer dependency of many of the packages we use.",
   "pnpm": {

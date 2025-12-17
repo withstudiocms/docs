@@ -1,19 +1,18 @@
 ---
 i18nReady: true
 title: "Rendering Content"
-description: "Options for rendering Content"
-sidebar:
-   order: 1
+description: "Options for rendering Content on a Custom Frontend"
 ---
 
 import { Aside } from '@astrojs/starlight/components'
+import ReadMore from '~/components/ReadMore.astro'
 
 The StudioCMS rendering system is dynamic based on the current pageType.
 
 Example Catch-all route where the current page is grabbed from the SDK and the page data is passed to the renderer, in this case we are using the default `studiocms/markdown` pageType configured in the page settings, and wrapping that in a Layout like we do with the `@studiocms/blog` plugin. a pageBuilder plugin for example, may come without a standard layout, but instead intend on you designing the whole thing within the builder like you would on other CMS systems.
 
 <Aside>
-Please note that using our rendering system requires you to have a studiocms plugin that provides a renderer, such as `@studiocms/md`, `@studiocms/html` or a custom plugin that provides a renderer for your content type. The renderer will handle the rendering of the content based on the pageType defined in your StudioCMS configuration.
+Please note that using our rendering system requires you to have a studiocms plugin that provides a renderer, such as `@studiocms/md`, `@studiocms/html` or a [custom plugin that provides a renderer](/en/plugins/renderers/) for your content type. The renderer will handle the rendering of the content based on the pageType defined in your StudioCMS configuration.
 </Aside>
 
 ```astro title="src/pages/[...slug].astro"
@@ -43,3 +42,9 @@ const { title, description, heroImage } = page;
 	</main>
 </Layout>
 ```
+
+## Further Reading
+
+<ReadMore>
+Want to build a custom renderer plugin for StudioCMS? Check out our guide on [Creating Custom Renderer Plugins](/en/plugins/renderers/) to learn how to extend StudioCMS with your own rendering logic.
+</ReadMore>

@@ -85,12 +85,12 @@ export function studioCMSPageInjector(options: Options) {
   return definePlugin({
     identifier: 'my-plugin',
     name: 'My Plugin',
-    studiocmsMinimumVersion: '0.1.0-beta.18',
+    studiocmsMinimumVersion: '0.1.0-beta.31',
     hooks: {
-      'studiocms:astro:config': ({ addIntegrations }) => {
+      'studiocms:astro-config': ({ addIntegrations }) => {
         addIntegrations(myIntegration(options));  // Optional, but recommended
       },
-      'studiocms:config:setup': ({ setDashboard, setFrontend, setRendering }) => {
+      'studiocms:dashboard': ({ setDashboard }) => {
         setDashboard({
           translations: {
             en: {
@@ -129,20 +129,23 @@ export function studioCMSPageInjector(options: Options) {
             }
           ],
         });
+      },
 
+      'studiocms:frontend': ({ setFrontend }) => {
         setFrontend({
-          // Define the frontend navigation links for the plugin (optional)
+          // Define the frontend navigation links for the plugin
           // This is useful if you are using the built in StudioCMS navigation helpers in your layout,
           // such as when using the `@studiocms/blog` Plugin.
-          frontendNavigationLinks: [{ label: 'Title here', href: options?.route || 'my-plugin' }],
+          frontendNavigationLinks: [{ label: 'My Plugin', href: options?.route || 'my-plugin' }],
         });
-
+      },
+      'studiocms:rendering': ({ setRendering }) => {
         setRendering({
           // When creating pageTypes, you can also define a `pageContentComponent` if your plugin requires a custom content editor.
           // pageTypes: [{ identifier: 'my-plugin', label: 'Blog Post (My Plugin)', pageContentComponent: resolve('./components/MyContentEditor.astro') }],
           // In this example we are okay using the default content editor (markdown).
           pageTypes: [{ identifier: 'my-plugin', label: 'Blog Post (My Plugin)' }],
-        })
+        });
       }
     }
   });

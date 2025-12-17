@@ -4,6 +4,8 @@ type RepoListItem = {
 	repo: string;
 	type: 'all' | 'byPath';
 	paths?: string[];
+	// TODO: implement ignored paths
+	ignoredPaths?: string[];
 };
 
 type ContributorConfig = {
@@ -63,9 +65,9 @@ export const contributorConfig = (Astro: AstroGlobal): ContributorConfig[] => [
 				type: 'byPath',
 				paths: [
 					// OLD Paths
-					'packages/studiocms_devapps/', 
+					'packages/studiocms_devapps/',
 					// NEW Paths
-					'packages/@studiocms/devapps/'
+					'packages/@studiocms/devapps/',
 				],
 			},
 		],
@@ -83,13 +85,9 @@ export const contributorConfig = (Astro: AstroGlobal): ContributorConfig[] => [
 					'packages/studiocms_mdx/',
 					'packages/studiocms_markdoc/',
 					// NEW Paths
-					'packages/@studiocms/blog/',
-					'packages/@studiocms/mdx/',
-					'packages/@studiocms/markdoc/',
-					'packages/@studiocms/md/',
-					'packages/@studiocms/html/',
-					'packages/@studiocms/cloudinary-image-service/'
+					'packages/@studiocms/',
 				],
+				ignoredPaths: ['packages/@studiocms/devapps/'],
 			},
 		],
 	},
@@ -127,6 +125,16 @@ export const contributorConfig = (Astro: AstroGlobal): ContributorConfig[] => [
 			{
 				repo: 'withstudiocms/apollo',
 				type: 'all',
+			},
+		],
+	},
+	{
+		name: Astro.locals.t('contributors.internal-packages'),
+		list: [
+			{
+				repo: 'withstudiocms/studiocms',
+				type: 'byPath',
+				paths: ['packages/@withstudiocms/'],
 			},
 		],
 	},

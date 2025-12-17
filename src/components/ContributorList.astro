@@ -12,7 +12,7 @@ const breakdown = await getContributorBreakdown(Astro);
 			breakdown.map(({ name, contributors }) => {
 				if (contributors.length === 0) return null;
 				return (
-					<div>
+					<div class="flex-item">
 						<h5>{name}</h5>
 						<FacePile contributors={contributors} />
 					</div>
@@ -24,22 +24,6 @@ const breakdown = await getContributorBreakdown(Astro);
 </div>
 
 <style>
-	.split-flex {
-		display: grid;
-		flex-direction: row;
-		align-items: center;
-		gap: 2rem;
-		width: 100%;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 1.5rem;
-	}
-
-	.not-content h5 {
-		font-size: large;
-		width: 100%;
-	}
-
 	.not-content {
 		width: 100%;
 		margin-left: auto;
@@ -47,10 +31,23 @@ const breakdown = await getContributorBreakdown(Astro);
 		padding: 0.5rem;
 	}
 
-
-	@media (min-width: 50rem) {
-		.split-flex {
-			grid-template-columns: 1fr 1fr;
-		}
+	.split-flex {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		justify-content: center;
 	}
+
+	.flex-item {
+		flex: 1 1 15rem;
+		min-width: 15rem;
+		max-width: 25rem;
+	}
+
+	h5 {
+		margin-bottom: 0.5rem;
+		font-size: large;
+	}
+
+
 </style>

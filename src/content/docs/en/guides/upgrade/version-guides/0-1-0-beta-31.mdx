@@ -1,0 +1,165 @@
+---
+i18nReady: true
+title: "Upgrade: 0.1.0-beta.31"
+description: Upgrade StudioCMS to Beta.31
+topic: guides
+sidebar:
+  label: 0.1.0-beta.31
+  badge:
+    text: NEW
+    variant: success
+  order: 999984
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import { PackageManagers } from 'starlight-package-managers'
+import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/components';
+
+StudioCMS `0.1.0-beta.31` introduces significant changes, including a new Kysely based database layer, a revamped plugin system, and various new features and improvements. This guide will help you upgrade your existing StudioCMS project to the latest version.
+
+## Breaking changes
+- Refactored Plugin System. Please see the [Plugin docs](/en/plugins/) for more details.
+- Implemented new Kysely based database layer.
+- Removed support for config options directly passed to the StudioCMS astro integration, now all config options must be defined in `studiocms.config.mjs` file. Please see the [Config Reference](/en/start-here/configuration/) for more details.
+
+## New Features
+- Implemented new [`studiocms migrate`](/en/how-it-works/cli/#migrate) command to handle database migrations.
+- Allow disabling Generator meta tags via [`features.dashboard.security.hideGeneratorTags`](/en/config-reference/features/#hidegeneratortags) config option.
+- StudioCMS now supports different database dialects via [Kysely](https://kysely.dev/).
+- Introduced new middleware to display system errors on pages with errors instead of crashing the entire site.
+- New plugin features:
+  - Dynamic components and scripts injection to the dashboard via new plugin hooks.
+  - New db helpers for easier database access within plugins.
+- Introduced new Dashboard page for managing the System management.
+  - Includes a System info (debug) panel
+  - Provides quick access to your database tables while in production.
+- Added the new developer toolbar app built-in to StudioCMS for viewing and managing your database while in development mode.
+- Integrated optional web-vitals/analytics tracking into the dashboard for better performance insights.
+  - This can be enabled via the [`features.webVitals`](/en/config-reference/features/#webvitals) config option.
+  - For those who previously used the `@studiocms/web-vitals` or `@astrojs/web-vitals` integrations, this is now built-in and can be configured via the StudioCMS config.
+- Added new CLI command [`studiocms debug`](/en/how-it-works/cli/#debug) to quickly access helpful debug information about your StudioCMS project.
+
+## Bug Fixes & Improvements
+- Updated ghost user image url.
+- Refactored page data `urlRoute` generation to resolve correctly.
+- Refactored and simplified dashboard layout components.
+- Improved StudioCMS config types and JSDoc comments.
+- Refactored CLI commands to use new database layer.
+- Introduced new debug utilities for easier access to helpful debug information.
+
+## Migration Steps
+
+To upgrade your StudioCMS project to version `0.1.0-beta.31`, please follow these steps:
+
+<Steps>
+
+1. **Update your StudioCMS dependencies** to the latest version:
+   <PackageManagers pkg="@studiocms/upgrade" type='dlx' />
+
+2. **If you have custom plugins**, ensure they are updated to be compatible with the new plugin system. Refer to the [Plugin docs](/en/plugins/) for guidance.
+
+3. **Review your `studiocms.config.mjs` file** to ensure all configuration options are correctly set according to the new schema. Refer to the [Config Reference](/en/start-here/configuration/) for details.
+
+   - **Previously used `@studiocms/web-vitals` or `@astrojs/web-vitals` integrations?** Remove them from your project dependencies and configure the built-in web vitals tracking via the `features.webVitals` option in your `studiocms.config.mjs` file:
+
+      ```ts {3} title="studiocms.config.mjs"
+      export default defineStudioCMSConfig({
+        features: {
+          webVitals: true,
+        },
+      });
+      ```
+
+4. **Setup a new database connection for the new Kysely based database layer.** Update your `.env` file with the necessary database connection details. Keep your previous database intact for migration.
+
+   <ReadMore>Refer to the [Database Setup Guide](/en/start-here/getting-started/#prepare-your-database) for more information on configuring your database.</ReadMore>
+   <ReadMore>Refer to the [Environment Variables Docs](/en/start-here/environment-variables/) for more information on configuring your environment variables.</ReadMore>
+
+5. **Configure your database dialect in `studiocms.config.mjs` under the `db` option. For example, to use libSQL:**
+
+   ```ts {3} title="studiocms.config.mjs"
+   export default defineStudioCMSConfig({
+     db: {
+       dialect: 'libsql', // or 'postgresql', 'mysql'
+     },
+   });
+   ```
+
+   <Aside type="note" title="Database Dialects">
+    StudioCMS now supports multiple database dialects via Kysely. Ensure you select the correct dialect for your database. By default if no dialect is specified it will use `libsql`.
+   </Aside>
+
+6. **Install the necessary database client packages** for your chosen database dialect:
+
+   <Tabs syncKey='db-setup-method'>
+       
+   <TabItem label="libSQL (default)" icon="database">
+     <PackageManagers type='add' pkg="@libsql/client @libsql/kysely-libsql" />
+   </TabItem>
+
+   <TabItem label="MySQL" icon="database">
+     <PackageManagers type='add' pkg="mysql2" />
+   </TabItem>
+
+   <TabItem label="PostgreSQL" icon="database">
+     <PackageManagers type='add' pkg="pg" />
+   </TabItem>
+
+   </Tabs>
+
+7. **Download the migration tool into the root of your StudioCMS project:**
+   
+   <PackageManagers pkg="@studiocms/migrator" type='add' />
+
+   This tool will read your `studiocms.config.mjs` file to be able to connect to the correct database dialect.
+
+8. **Running Schema Migrations:**
+
+   Since the database layer has changed, you will need to run migrations to update your database schema to be compatible with the new version. There is two ways to do this:
+
+   <Tabs>
+   <TabItem label="Using the StudioCMS CLI">
+
+   Built into the StudioCMS CLI is a new `migrate` command that will run the necessary migrations for you. To use it, run the following command in your project directory:
+
+   <PackageManagers type="exec" args="studiocms migrate" />
+
+   You will be prompted to select an option to, migrate your database schema to the latest version, rollback to a previous version, or view the current migration status. Select "Migrate to Latest" to update your database schema.
+
+   <Aside type="note" title="Migration Status and Options">
+    You can always check the status of your migrations by running `studiocms migrate --status` to see which migrations have been applied and which are pending.
+
+    You can also use `--latest` or `-l` flag to automatically migrate to the latest version without prompts. or use `--rollback` or `-r` to rollback to a single version.
+   </Aside>
+
+   </TabItem>
+   <TabItem label="Using the Migration Tool">
+
+    Alternatively, you can use the migration tool you installed in previous step. To do this, continue to the next step, and use the Web UI to run the migrations.
+
+   </TabItem>
+   </Tabs>
+
+9. **Run the Migration Tool Web UI:**
+
+   Start the migration tool by running the following command in your project directory:
+
+   <PackageManagers type="exec" args="studiocms-migrator" />
+
+   This will start a local web server. Open your browser and navigate to `http://localhost:4321` to access the migration tool interface.
+
+   This interface will give you options to migrate your database schema, as well as migrating your data from your old database to the new one.
+
+1. Once the migration is complete, **start your StudioCMS project** as usual:
+
+   <PackageManagers type="run" args="dev" />
+
+   Your project should now be running with the updated database schema and configuration.
+</Steps>
+
+## Final Notes
+
+- Ensure you have backups of your database before performing migrations.
+- Test your application thoroughly after the migration to catch any issues early.
+- Refer to the [StudioCMS documentation](/en/start-here/getting-started/) for more information on new features and changes.
+- If you encounter any issues during the migration process, please reach out on our [Discord community](https://chat.studiocms.dev), or open an issue on our [GitHub repository](https://github.com/withstudiocms/studiocms/issues).

@@ -14,6 +14,7 @@ interface Commit {
 		login: string;
 		id: number;
 	};
+	sha: string;
 	commit: {
 		message: string;
 	};
@@ -53,7 +54,7 @@ async function recursiveFetch(endpoint: string, page?: number): Promise<any[]> {
 			{
 				method: 'GET',
 				headers: {
-					Authorization: token && `Basic ${Buffer.from(token, 'binary').toString('base64')}`,
+					Authorization: token && `Bearer ${token}`,
 					'User-Agent': 'studiocms-docs/1.0',
 				},
 			},
@@ -79,6 +80,38 @@ async function recursiveFetch(endpoint: string, page?: number): Promise<any[]> {
 	} catch (e) {
 		printError(e as Error);
 		return [];
+	}
+}
+
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+async function singleFetch(endpoint: string): Promise<any> {
+	try {
+		const token = import.meta.env.PUBLIC_GITHUB_TOKEN;
+
+		const res = await cachedFetch(
+			`https://api.github.com/${endpoint}`,
+			{
+				method: 'GET',
+				headers: {
+					Authorization: token && `Bearer ${token}`,
+					'User-Agent': 'studiocms-docs/1.0',
+				},
+			},
+			{ duration: '15m' }
+		);
+
+		const data = await res.json();
+
+		if (!res.ok) {
+			throw new Error(
+				`Request to fetch endpoint failed. Reason: ${res.statusText}
+		 Message: ${data?.message}`
+			);
+		}
+		return data;
+	} catch (e) {
+		printError(e as Error);
+		return null;
 	}
 }
 
@@ -116,8 +149,13 @@ export async function getAllContributors(repo: string) {
  * console.log(contributors);
  * ```
  */
-export async function getContributorsByPath(paths: string[], repo: string) {
+export async function getContributorsByPath(
+	paths: string[],
+	repo: string
+) {
 	const contributors: Contributor[] = [];
+
+	console.log(`Getting contributors for repo: ${repo}, paths: ${paths.join(', ')}`);
 
 	for (const path of paths) {
 		const endpoint = `repos/${repo}/commits?path=${path}`;

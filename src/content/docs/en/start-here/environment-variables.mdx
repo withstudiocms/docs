@@ -2,8 +2,14 @@
 i18nReady: true
 title: Environment Variables
 description: A brief overview of the environment variables used in StudioCMS.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 sidebar:
-   order: 2
+  order: 2
+  badge:
+    text: Updated
+    variant: success
 ---
 
 import { Aside } from '@astrojs/starlight/components';
@@ -19,19 +25,41 @@ For future reference on how to work with environment variables within Astro you 
 
 In order to use StudioCMS, there are a few required environment variables that you must set up in your `.env` file.
 
-### Database URL and Token for `@astrojs/db`
+### Database connection
 
-- `ASTRO_DB_REMOTE_URL` - The connection URL to your libSQL server
-- `ASTRO_DB_APP_TOKEN` - The app token for your libSQL server
+Depending on the database you are using with StudioCMS, you will need to set up the appropriate environment variables for your database connection.
+
+#### `libSQL`
 
 ```bash title=".env"
-ASTRO_DB_REMOTE_URL=libsql://your.server.io
-ASTRO_DB_APP_TOKEN=eyJh...RUCg
+CMS_LIBSQL_URL=libsql://your-database.turso.io
+# CMS_LIBSQL_URL=file:./path/to/your/database.db
+CMS_LIBSQL_AUTH_TOKEN=<your-auth-token> (optional)
+CMS_LIBSQL_SYNC_INTERVAL= (optional)
+CMS_LIBSQL_SYNC_URL= (optional)
 ```
 
-<ReadMore>For more information about `@astrojs/db` see, the [Astro docs for Astro DB](https://docs.astro.build/en/guides/astro-db/)</ReadMore>
+#### `MySQL`
 
-### Encryption Key for `@studiocms/auth`
+```bash title=".env"
+CMS_MYSQL_DATABASE=<your-database-name>
+CMS_MYSQL_USER=<your-database-user>
+CMS_MYSQL_PASSWORD=<your-database-password>
+CMS_MYSQL_HOST=<your-database-host>
+CMS_MYSQL_PORT=<your-database-port>
+```
+
+#### `PostgreSQL`
+
+```bash title=".env"
+CMS_PG_DATABASE=<your-database-name>
+CMS_PG_USER=<your-database-user>
+CMS_PG_PASSWORD=<your-database-password>
+CMS_PG_HOST=<your-database-host>
+CMS_PG_PORT=<your-database-port>
+```
+
+### Encryption Key for `studiocms`
 
 `CMS_ENCRYPTION_KEY` - A secure encryption key for encrypting sensitive data
 
@@ -45,3 +73,18 @@ You can generate a secure encryption key using the following command:
 openssl rand --base64 16
 ``` 
 </Aside>
+
+## Optional Environment Variables
+
+These environment variables are optional but can be configured to customize the behavior of StudioCMS.
+
+### Effect Log Level
+
+`STUDIOCMS_LOGLEVEL` - Set the log level for all Effect based operations in StudioCMS.
+
+- Available log levels: `All` | `Fatal` | `Error` | `Warning` | `Info` | `Debug` | `Trace` | `None`
+- Default: `Info`
+
+```bash title=".env"
+STUDIOCMS_LOGLEVEL="Info"
+```

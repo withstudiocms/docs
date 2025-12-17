@@ -3,45 +3,16 @@ i18nReady: true
 title: "StudioCMS Config"
 description: "Options for how to define the StudioCMS Config"
 sidebar:
-   order: 3
+  order: 3
+  badge:
+    text: Updated
+    variant: success
 ---
 
 import { FileTree, Aside } from '@astrojs/starlight/components';
 import ReadMore from '~/components/ReadMore.astro';
 
-# Available Options
-
-There are two ways to configure the StudioCMS integration. Below are examples of how to configure based on if you choose to use the `astro.config.mjs` or the dedicated `studiocms.config.mjs` file.
-
-<ReadMore>
-This page shows you how and where to define the StudioCMS configuration. For more information on the StudioCMS configuration options, see the [reference page][reference-page].
-</ReadMore>
-
-## Using the `astro.config.mjs` file
-
-```ts twoslash title="astro.config.mjs"
-import db from '@astrojs/db';
-import node from '@astrojs/node';
-import studioCMS from 'studiocms';
-import { defineConfig } from 'astro/config';
-
-export default defineConfig({
-    site: 'https://demo.studiocms.dev/',
-    output: 'server',
-    adapter: node({ mode: "standalone" }),
-    integrations: [
-        db(),
-        studioCMS({
-            dbStartPage: false,
-            // other configuration options
-        }),
-    ],
-});
-```
-
-## Using the StudioCMS Config file (recommended)
-
-This file will be automatically picked up and will overwrite any options passed in your `astro.config.*`, if you choose to use this option. Please ensure to move all StudioCMS configuration options into this file instead like below:
+The StudioCMS config file is used to configure various aspects of StudioCMS in your Astro project. It allows you to define settings such as database configuration, plugins, component registry, localization, and feature flags.
 
 <Aside>
 The `studiocms.config.*` file, just like the Astro config file, supports the following extensions: `.cjs`, `.js`, `.mjs`, `.cts`, `.ts`, `.mts`. The following example will show `.mjs` file extension being used.
@@ -56,7 +27,6 @@ The `studiocms.config.*` file, just like the Astro config file, supports the fol
 - **studiocms.config.mjs**
 - package.json
 - src
-  - env.d.ts
   - ...
 
 </FileTree>
@@ -64,7 +34,6 @@ The `studiocms.config.*` file, just like the Astro config file, supports the fol
 ### Example configuration files
 
 ```ts twoslash title="astro.config.mjs"
-import db from '@astrojs/db';
 import node from '@astrojs/node';
 import studioCMS from 'studiocms';
 import { defineConfig } from 'astro/config';
@@ -73,7 +42,7 @@ export default defineConfig({
     site: 'https://demo.studiocms.dev/',
     output: 'server',
     adapter: node({ mode: "standalone" }),
-    integrations: [ db(), studioCMS() ],
+    integrations: [ studioCMS() ],
 });
 ```
 
@@ -85,6 +54,12 @@ export default defineStudioCMSConfig({
     // other configuration options
 })
 ```
+
+### Further Reading
+
+<ReadMore>
+For more information on the StudioCMS configuration options, see the [reference page][reference-page].
+</ReadMore>
 
 {/* Links */}
 [reference-page]: /en/config-reference/
