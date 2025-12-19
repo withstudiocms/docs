@@ -3,13 +3,17 @@ i18nReady: true
 title: "La CLI"
 description: "Découvrez les CLI de StudioCMS et comment les utiliser."
 sidebar:
-   order: 2
+  order: 2
+  badge:
+    text: Mis à jour
+    variant: success
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4
 ---
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import { PackageManagers } from 'starlight-package-managers'
 import ReadMore from '~/components/ReadMore.astro';
 
 Les interfaces en ligne de commandes (CLI) de StudioCMS sont des utilitaires qui vous permettent de créer rapidement de nouveaux projets StudioCMS et qui exposent des utilitaires utiles pour StudioCMS.
@@ -18,7 +22,8 @@ Il existe plusieurs CLI différentes qui font partie de l’écosystème StudioC
 
 - **[`studiocms`](#studiocms)** : La CLI de l’utilitaire StudioCMS.
 - **[`create-studiocms`](#create-studiocms)** : La CLI d’échafaudage du projet StudioCMS.
-- **[`@studiocms/upgrade`](#studiocms-upgrade)**: Mettre à niveau les projets StudioCMS et leurs modules d’extension.
+- **[`@studiocms/migrator`](#studiocmsmigrator)**: Migrez votre projet StudioCMS depuis une ancienne version vers la dernière version.
+- **[`@studiocms/upgrade`](#studiocmsupgrade)**: Mettre à niveau les projets StudioCMS et leurs modules d’extension.
 
 Voici une présentation de la CLI de StudioCMS et de ses composants.
 
@@ -33,35 +38,20 @@ Options :
   -V, --version  Afficher la version actuelle de la boîte à outils CLI.
   -h, --help     afficher l’aide pour la commande
 
-Commandes :
-  add            Ajoutez un ou plusieurs modules d’extension StudioCMS à votre projet
-  crypto         Utilitaires de chiffrement pour la sécurité
-  get-turso      Installer la CLI de Turso
-  init           Initialiser le projet StudioCMS après une nouvelle installation.
-  users          Utilitaires pour peaufiner les utilisateurs dans StudioCMS
+COMMANDES
+  - add               Ajoutez un ou plusieurs modules d’extension StudioCMS à votre projet
+  - crypto            Utilitaires de chiffrement pour la sécurité de StudioCMS
+  - get-turso         Installer la CLI de Turso
+  - init              Initialiser le projet StudioCMS après une nouvelle installation.
+  - users             Utilitaires pour peaufiner les utilisateurs dans StudioCMS
+  - migrate           Gérer les migrations de bases de données pour StudioCMS.
 ```
 
 ### Exemple d’utilisation
 
 Depuis la racine de votre projet StudioCMS
 
-<Tabs syncKey='pkgs'>
-  <TabItem label="npm" icon="seti:npm">
-  ```sh
-  npm run studiocms [command]
-  ```
-  </TabItem>
-  <TabItem label="pnpm" icon="pnpm">
-  ```sh
-  pnpm studiocms [command]
-  ```
-  </TabItem>
-  <TabItem label="yarn" icon="seti:yarn">
-  ```sh
-  yarn studiocms [command]
-  ```
-  </TabItem>
-</Tabs>
+<PackageManagers type="exec" pkg="studiocms" args={'[command]'} />
 
 ### Présentation des commandes
 
@@ -108,6 +98,18 @@ Options :
   -h, --help                   afficher l’aide pour la commande
 ```
 
+#### `debug`
+
+```log
+Utilisation : studiocms debug [options]
+
+Affiche les informations de débogage concernant votre installation de StudioCMS.
+
+Options :
+  -h, --help  afficher l'aide pour la commande
+  --debug     Activer le mode débogage
+```
+
 #### `get-turso`
 
 Télécharge et installe la dernière version de Turso à l’aide du script de
@@ -145,12 +147,10 @@ La commande init fournit une expérience de configuration interactive qui vous a
 1. Configurez votre fichier d’environnement (.env) avec des options pour :
    - Utiliser un exemple de modèle `.env`
    - Utiliser le générateur interactif `.env` qui peut :
-     - Configurer une nouvelle base de données Turso (si ce n’est pas sous Windows)
+     - Configurer une connexion à une base de données (libSQL, MySQL, PostgreSQL)
      - Configurer les fournisseurs OAuth (GitHub, Discord, Google, Auth0)
      - Définir les clés de chiffrement et autres variables requises
    - Ignorer la création du fichier d’environnement
-
-2. La commande inclut l’installation automatique de Turso CLI et l’authentification si nécessaire lors de la configuration d’une base de données.
 
 <ReadMore>Pour une liste complète des variables d’environnement, consultez la [documentation des variables d’environnement][environment-variables].</ReadMore>
 
@@ -163,6 +163,21 @@ Utilitaires pour peaufiner les utilisateurs dans StudioCMS
 
 Options :
   -h, --help  afficher l’aide pour la commande
+```
+
+#### `migrate`
+
+```log
+Utilisation : studiocms migrate [options]
+
+Gérer les migrations de bases de données pour StudioCMS.
+
+Options :
+  -h, --help      afficher l'aide pour la commande
+  --debug         Activer le mode débogage
+  -r, --rollback  Restaurer l'état avant la dernière migration
+  -l, --latest    Migrer vers la dernière version
+  --status        Afficher l'état actuel de la migration
 ```
 
 ## `create-studiocms`
@@ -188,43 +203,11 @@ Commandes :
 
 ### Exemple d’utilisation
 
-<Tabs syncKey='pkgs'>
-  <TabItem label="npm" icon="seti:npm">
-  ```sh
-  npm create studiocms@latest
-  ```
-  </TabItem>
-  <TabItem label="pnpm" icon="pnpm">
-  ```sh
-  pnpm create studiocms
-  ```
-  </TabItem>
-  <TabItem label="yarn" icon="seti:yarn">
-  ```sh
-  yarn create studiocms
-  ```
-  </TabItem>
-</Tabs>
+<PackageManagers type='create' pkg='studiocms@latest' />
 
 `create-studiocms` s’exécute automatiquement en mode _interactif_, mais vous pouvez également spécifier le nom et le modèle de votre projet avec des arguments de ligne de commandes.
 
-<Tabs syncKey='pkgs'>
-  <TabItem label="npm" icon="seti:npm">
-  ```sh
-  npm create studiocms@latest -- --template studiocms/basics --project-name my-studiocms-project
-  ```
-  </TabItem>
-  <TabItem label="pnpm" icon="pnpm">
-  ```sh
-  pnpm create studiocms --template studiocms/basics --project-name my-studiocms-project
-  ```
-  </TabItem>
-  <TabItem label="yarn" icon="seti:yarn">
-  ```sh
-  yarn create studiocms --template studiocms/basics --project-name my-studiocms-project
-  ```
-  </TabItem>
-</Tabs>
+<PackageManagers type='create' pkg='studiocms@latest' args='--template studiocms/basics --project-name my-studiocms-project' />
 
 [Découvrez la liste complète][templates] de modèles, disponibles sur GitHub.
 
@@ -243,7 +226,7 @@ Cette commande ouvrira une invite CLI interactive pour vous guider tout au long
 du processus de création d’un nouveau projet StudioCMS (ou d’un paquet de
 l’écosystème StudioCMS) à l’aide de l’un des modèles disponibles.
 
-Options:
+Options :
   -t, --template <template>          Le modèle à utiliser.
   -r, --template-ref <template-ref>  La référence du modèle à utiliser.
   -p, --project-name <project-name>  Le nom du projet.
@@ -276,7 +259,40 @@ Options :
   -h, --help  afficher l’aide pour la commande
 ```
 
-## `@studiocms-upgrade`
+## `@studiocms/migrator`
+
+Un outil en ligne de commande pour migrer votre projet StudioCMS depuis d'anciennes versions vers la dernière version.
+
+### Exemple d'utilisation
+
+#### Exécution depuis npm
+
+<PackageManagers type="dlx" pkg="@studiocms/migrator" />
+
+#### Installation locale
+
+<Steps>
+1. Installez l'outil de migration à la racine de votre projet StudioCMS :
+   <PackageManagers pkg="@studiocms/migrator" type='add' />
+
+2. Une fois installé, ajoutez le script suivant à votre fichier `package.json` :
+
+   ```json title="package.json" ins={3}
+   {
+     "scripts": {
+       "migrate-studiocms": "studiocms-migrator"
+     }
+   }
+   ```
+
+3. Démarrez l'outil de migration en exécutant la commande suivante dans le répertoire de votre projet :
+
+   <PackageManagers type="run" pkg="studiocms-migrator" />
+
+   Cela lancera un serveur web local. Ouvrez votre navigateur et rendez-vous à l'adresse `http://localhost:4321` pour accéder à l'interface de l'outil de migration.
+</Steps>
+
+## `@studiocms/upgrade`
 
 Un outil de ligne de commande pour mettre à niveau votre installation StudioCMS et vos dépendances.
 
@@ -284,23 +300,7 @@ Vous pouvez exécuter cette commande dans votre terminal pour mettre à niveau v
 
 ### Exemple d'utilisation
 
-<Tabs syncKey='pkgs'>
-  <TabItem label="npm" icon="seti:npm">
-  ```sh
-  npx @studiocms/upgrade
-  ```
-  </TabItem>
-  <TabItem label="pnpm" icon="pnpm">
-  ```sh
-  pnpm dlx @studiocms/upgrade
-  ```
-  </TabItem>
-  <TabItem label="yarn" icon="seti:yarn">
-  ```sh
-  yarn dlx @studiocms/upgrade
-  ```
-  </TabItem>
-</Tabs>
+<PackageManagers type="exec" pkg="@studiocms/upgrade" />
 
 ### Options
 
@@ -308,23 +308,7 @@ Vous pouvez exécuter cette commande dans votre terminal pour mettre à niveau v
 
 Il est possible de passer une étiquette (`tag`) spécifique pour résoudre les paquets. Si elle n'est pas incluse, `@studiocms/upgrade` recherche l'étiquette la plus récente.
 
-<Tabs syncKey='pkgs'>
-  <TabItem label="npm" icon="seti:npm">
-  ```sh
-  npx @studiocms/upgrade beta
-  ```
-  </TabItem>
-  <TabItem label="pnpm" icon="pnpm">
-  ```sh
-  pnpm dlx @studiocms/upgrade beta
-  ```
-  </TabItem>
-  <TabItem label="yarn" icon="seti:yarn">
-  ```sh
-  yarn dlx @studiocms/upgrade beta
-  ```
-  </TabItem>
-</Tabs>
+<PackageManagers type="exec" pkg="@studiocms/upgrade" args="beta" />
 
 [turso-docs]: https://docs.turso.tech/cli/installation
 [templates]: https://github.com/withstudiocms/templates
