@@ -4,6 +4,9 @@ title: Options de StudioCMS
 description: Page de référence pour les options de StudioCMS
 sidebar:
   order: 1
+  badge:
+    text: Mis à jour
+    variant: success
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 5
@@ -19,6 +22,7 @@ import { defineStudioCMSConfig } from 'studiocms/config';
 // Valeurs par défaut affichées
 export default defineStudioCMSConfig({
   dbStartPage: true,
+  db: {},
   verbose: false,
   logLevel: 'Info',
   plugins: [],
@@ -42,6 +46,25 @@ import { defineStudioCMSConfig } from 'studiocms/config';
 // ---cut---
 export default defineStudioCMSConfig({
   dbStartPage: true, // PAR DÉFAUT - Cela injecte une page de démarrage pour configurer vos données de base de données.
+})
+```
+
+## `db`
+
+`db` est un objet utilisé pour configurer le dialecte de la base de données.
+
+- **Type :** `DBConfigSchema`
+- **Par défaut :** `{}`
+
+### Utilisation
+
+```ts twoslash {2-4} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  db: {
+    dialect: 'libsql', // 'libsql' | 'postgresql' | 'mysql'
+  },
 })
 ```
 
