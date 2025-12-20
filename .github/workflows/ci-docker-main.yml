@@ -63,19 +63,11 @@ jobs:
           echo "Pushed: ghcr.io/${{ github.repository_owner }}/studiocms-docs:${{ github.sha }}"
           echo "Pushed: ghcr.io/${{ github.repository_owner }}/studiocms-docs:${{ github.ref_name }}"
 
-      - name: Send compose update
-        run: |
-          response=$(curl -X 'POST' "${{ secrets.DOKPLOY_API_URL }}/compose.update" -H 'accept: application/json' -H 'Content-Type: application/json' -H "x-api-key: ${{ secrets.DOKPLOY_API_KEY }}" -d '{
-            "composeId": "${{ secrets.DOKPLOY_COMPOSE_ID }}",
-            "composeFile": "services:\n  docs:\n    image: ghcr.io/withstudiocms/studiocms-docs:${{ github.sha }}\n    restart: always"
-          }' | jq -r '.message')
-          echo "output_data=$response" >> $GITHUB_OUTPUT
-
-      - name: Trigger compose deploy
-        run: |
-          response=$(curl -X 'POST' "${{ secrets.DOKPLOY_API_URL }}/compose.deploy" -H 'accept: application/json' -H 'Content-Type: application/json' -H "x-api-key: ${{ secrets.DOKPLOY_API_KEY }}" -d '{
-            "composeId": "${{ secrets.DOKPLOY_COMPOSE_ID }}",
-            "title": "Deploy from CI",
-            "description": "Deploying the latest changes from the CI pipeline. sha: ${{ github.sha }}"
-          }' | jq -r '.message')
-          echo "output_data=$response" >> $GITHUB_OUTPUT
+      - name: Deploy to Dokploy Compose
+        uses: withstudiocms/automations/.github/actions/deploy-dokploy-compose@b488fa91598547478e170a4742916293a91a4410 # main
+        id: deploy-dokploy
+        with:
+          api_url: ${{ secrets.DOKPLOY_API_URL }}
+          api_key: ${{ secrets.DOKPLOY_API_KEY }}
+          compose_id: ${{ secrets.DOKPLOY_COMPOSE_ID }}
+          image: ghcr.io/${{ github.repository_owner }}/studiocms-docs:${{ github.sha }}
