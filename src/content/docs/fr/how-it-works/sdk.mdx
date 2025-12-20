@@ -3,12 +3,15 @@ i18nReady: true
 title: "Le SDK"
 description: "Découvrez le SDK de StudioCMS et comment l’utiliser."
 sidebar:
-   order: 3
+  order: 3
+  badge:
+    text: Mis à jour
+    variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro';
 
-Le SDK de StudioCMS est un outil puissant qui vous permet d’interagir avec StudioCMS par programmation. Il fournit un ensemble de fonctions et d’utilitaires pour gérer et diffuser votre contenu via Astro DB. Il constitue également la base du tableau de bord StudioCMS et est basé sur [Effect](https://effect.website).
+Le SDK de StudioCMS est un outil puissant qui vous permet d’interagir avec StudioCMS par programmation. Il fournit un ensemble de fonctions et d’utilitaires pour gérer et diffuser votre contenu via notre propre client de base de données interne [Kysely](https://kysely.dev/). Il constitue également la base du tableau de bord StudioCMS et est basé sur [Effect](https://effect.website).
 
 ## Utilisation de base
 
@@ -47,17 +50,28 @@ Voici une liste des principaux utilitaires fournis par le SDK de StudioCMS pour 
 import { SDKCoreJs } from 'studiocms:sdk';
 
 const {
-   db,
    dbService,
-   CLEAR,
-   DELETE,
-   INIT,
+   cache,
    AUTH,
-   REST_API,
+   CLEAR,
+   CONFIG,
+   DELETE,
+   diffTracking,
    GET,
-   POST,
-   UPDATE,
-   PLUGINS,
+   INIT,
    MIDDLEWARES,
+   notificationSettings,
+   PLUGINS,
+   POST,
+   resetTokenBucket,
+   REST_API,
+   UPDATE,
+   UTIL,
 } = SDKCoreJs;
 ```
+
+## Lectures complémentaires
+
+<ReadMore>
+Le SDK de StudioCMS est alimenté par le [paquet `@withstudiocms/sdk`](/fr/utils/kysely-and-sdk/#le-paquet-sdk), qui fournit des fonctionnalités et des utilitaires supplémentaires pour travailler avec StudioCMS. Pour plus d'informations, consultez la [documentation de Kysely et du SDK](/fr/utils/kysely-and-sdk/).
+</ReadMore>
