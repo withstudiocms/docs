@@ -4,6 +4,9 @@ title: Fonctionnalités
 description: Page de référence pour les fonctionnalités de StudioCMS
 sidebar:
   order: 3
+  badge:
+    text: Mis à jour
+    variant: success
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 5
@@ -215,6 +218,47 @@ export default defineStudioCMSConfig({
 })
 ```
 
+### `security`
+
+`security` Permet la personnalisation de la configuration de sécurité
+
+#### Utilisation
+
+```ts twoslash {4} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    dashboardConfig: {
+      security: {}
+    }
+  }
+})
+```
+
+#### `hideGeneratorTags`
+
+`hideGeneratorTags` Permet d'activer ou de désactiver les balises méta `generator` dans le code HTML du tableau de bord.
+
+- **Type :** `boolean`
+- **Par défaut :** `false`
+
+##### Utilisation
+
+```ts twoslash {5} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    dashboardConfig: {
+      security: {
+        hideGeneratorTags: false
+      }
+    }
+  }
+})
+```
+
 ## `authConfig`
 
 `authConfig` permet la personnalisation de la configuration d'authentification
@@ -330,7 +374,26 @@ import { defineStudioCMSConfig } from 'studiocms/config';
 // ---cut---
 export default defineStudioCMSConfig({
   features: {
-    preferredImageService: undefined
+    preferredImageService: 'cloudinary-js'
+  }
+})
+```
+
+## `webVitals`
+
+`webVitals` Permet d'activer ou de désactiver le suivi des indicateurs de performance web
+
+- **Type :** `boolean`
+- **Par défaut :** `false`
+
+### Usage
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    webVitals: true
   }
 })
 ```

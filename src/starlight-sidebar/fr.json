@@ -17,5 +17,6 @@
   "database": "Guides des bases de données",
   "upgrade": "Mise à niveau",
   "version": "Guides des versions",
-  "latest": "Guide de la dernière mise à jour"
+  "latest": "Guide de la dernière mise à jour",
+  "custom-frontend": "Frontends personnalisés"
 }
