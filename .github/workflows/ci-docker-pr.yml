@@ -16,7 +16,7 @@ concurrency:
 jobs:
   build-and-push:
     # Workflow only runs for the main StudioCMS organization
-    if: github.repository_owner == 'withstudiocms'
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
