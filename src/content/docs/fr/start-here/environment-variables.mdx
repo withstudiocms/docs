@@ -2,8 +2,14 @@
 i18nReady: true
 title: Variables d'environnement
 description: Un bref aperçu des variables d’environnement utilisées dans StudioCMS.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 sidebar:
-   order: 2
+  order: 2
+  badge:
+    text: Mis à jour
+    variant: success
 ---
 
 import { Aside } from '@astrojs/starlight/components';
@@ -19,19 +25,41 @@ Pour référence future sur la façon de travailler avec les variables d’envir
 
 Afin d’utiliser StudioCMS, il existe quelques variables d’environnement requises que vous devez configurer dans votre fichier `.env`.
 
-### URL de la base de données et jeton pour `@astrojs/db`
+### Connexion à la base de données
 
-- `ASTRO_DB_REMOTE_URL` - L’URL de connexion à votre serveur libSQL
-- `ASTRO_DB_APP_TOKEN` - Le jeton d’application pour votre serveur libSQL
+Selon la base de données que vous utilisez avec StudioCMS, vous devrez configurer les variables d'environnement appropriées pour la connexion à votre base de données.
+
+#### `libSQL`
 
 ```bash title=".env"
-ASTRO_DB_REMOTE_URL=libsql://votre.serveur.io
-ASTRO_DB_APP_TOKEN=eyJh...RUCg
+CMS_LIBSQL_URL=libsql://votre-base-de-donnees.turso.io
+# CMS_LIBSQL_URL=file:./chemin/vers/votre/base-de-donnees.db
+CMS_LIBSQL_AUTH_TOKEN=<votre-jeton-authentification> (facultatif)
+CMS_LIBSQL_SYNC_INTERVAL= (facultatif)
+CMS_LIBSQL_SYNC_URL= (facultatif)
 ```
 
-<ReadMore>Pour plus d’informations sur `@astrojs/db`, consultez la [documentation d’Astro pour Astro DB](https://docs.astro.build/fr/guides/astro-db/)</ReadMore>
+#### `MySQL`
 
-### Clé de chiffrement pour `@studiocms/auth`
+```bash title=".env"
+CMS_MYSQL_DATABASE=<nom-de-votre-base-de-donnees>
+CMS_MYSQL_USER=<utilisateur-de-votre-base-de-donnees>
+CMS_MYSQL_PASSWORD=<mot-de-passe-de-votre-base-de-donnees>
+CMS_MYSQL_HOST=<hebergeur-de-votre-base-de-donnees>
+CMS_MYSQL_PORT=<port-de-votre-base-de-donnees>
+```
+
+#### `PostgreSQL`
+
+```bash title=".env"
+CMS_PG_DATABASE=<nom-de-votre-base-de-donnees>
+CMS_PG_USER=<utilisateur-de-votre-base-de-donnees>
+CMS_PG_PASSWORD=<mot-de-passe-de-votre-base-de-donnees>
+CMS_PG_HOST=<hebergeur-de-votre-base-de-donnees>
+CMS_PG_PORT=<port-de-votre-base-de-donnees>
+```
+
+### Clé de chiffrement pour `studiocms`
 
 `CMS_ENCRYPTION_KEY` - Une clé de chiffrement sécurisée pour chiffrer les données sensibles
 
@@ -45,3 +73,18 @@ Vous pouvez générer une clé de chiffrement sécurisée à l’aide de la comm
 openssl rand --base64 16
 ``` 
 </Aside>
+
+## Variables d'environnement facultatives
+
+Ces variables d'environnement sont facultatives, mais peuvent être configurées pour personnaliser le comportement de StudioCMS.
+
+### Niveau de journalisation d'Effect
+
+`STUDIOCMS_LOGLEVEL` - Définit le niveau de journalisation pour toutes les opérations basées sur Effect dans StudioCMS.
+
+- Niveaux de journalisation disponibles : `All` | `Fatal` | `Error` | `Warning` | `Info` | `Debug` | `Trace` | `None`
+- Par défaut : `Info`
+
+```bash title=".env"
+STUDIOCMS_LOGLEVEL="Info"
+```
