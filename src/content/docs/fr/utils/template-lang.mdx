@@ -1,0 +1,187 @@
+---
+i18nReady: true
+title: "Langage de modèles"
+description: "Découvrez le langage de modèles personnalisés de StudioCMS"
+type: integration
+catalogEntry: withstudiocms-template-lang
+sidebar:
+  badge:
+    text: NOUVEAU
+    variant: success
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
+---
+
+import { Aside } from '@astrojs/starlight/components'
+import { PackageManagers } from 'starlight-package-managers'
+
+StudioCMS intègre son propre langage de modèles personnalisé dont la syntaxe est similaire à celle de langages de modèles populaires comme [Handlebars](https://handlebarsjs.com/) ou [Liquid](https://shopify.github.io/liquid/). Ce langage de modèles vous permet de créer des modèles dynamiques et réutilisables dans différentes parties du tableau de bord de StudioCMS, comme dans le système de modèles d'e-mails ou dans des modules d'extension personnalisés que vous pourriez développer.
+
+`@withstudiocms/template-lang` est un langage de modèles ESM simple reposant sur TypeScript et sous licence MIT. Celui-ci est dédié aux e-mails au format HTML et est similaire à Handlebars mais axé sur la simplicité et l'intégration des données de base de données.
+
+## Caractéristiques
+
+- Syntaxe simple pour l'interpolation de variables à l'aide de `{{variable}}`
+- Prise en charge des propriétés imbriquées avec la notation pointée (`{{user.name}}`)
+- TypeScript avec prise en charge complète d'ESM
+- Mode strict pour la gestion des erreurs
+- Conçu spécifiquement pour les modèles d'e-mails et les données de base de données
+- Aucune dépendance
+
+## Cas d'utilisation
+
+Idéal pour :
+
+- les modèles d'e-mails au format HTML,
+- la génération de contenu dynamique à partir de données de base de données,
+- des besoins de modèles simples sans logique complexe,
+- les projets TypeScript axés sur ESM.
+
+## Installation
+
+Pour ceux qui souhaitent utiliser le langage de modèles StudioCMS dans leurs projets, vous pouvez l'installer à l'aide de votre gestionnaire de paquets préféré :
+
+<PackageManagers type="add" pkg="@withstudiocms/template-lang" />
+
+## Syntaxe du modèle
+
+À l'instar d'autres langages de modèles, le langage de modèles de StudioCMS utilise des doubles accolades `{{ }}` pour désigner les variables qui doivent être remplacées par des données réelles lors du rendu du modèle.
+
+Contrairement à d'autres langages de modèles, celui de StudioCMS privilégie la simplicité et ne comporte ni logique complexe ni structures de contrôle. Il est principalement conçu pour l'interpolation simple de variables.
+
+### Interpolation de variables
+
+```handlebars
+<h1>Bonjour {{utilisateur.Prenom}} {{utilisateur.Nom}} !</h1>
+<p>Le total de votre commande n°{{commande.id}} est de {{commande.total}}€</p>
+```
+
+### Propriétés imbriquées
+
+```handlebars
+<p>Livraison à : {{utilisateur.adresse.rue}}, {{utilisateur.adresse.ville}}</p>
+```
+
+## Exemples d'utilisation
+
+### Utilisation de base
+
+```ts twoslash title="basic-usage.ts"
+import TemplateEngine from "@withstudiocms/template-lang";
+const engine = new TemplateEngine();
+
+const template = "Bonjour {{name}} ! Bienvenue chez {{company.name}}.";
+const data = {
+  name: "John Doe",
+  company: {
+    name: "Acme Corp",
+  },
+};
+
+const result = engine.render(template, data);
+console.log(result); // "Bonjour John Doe ! Bienvenue chez Acme Corp."
+```
+
+### Modèle d'e-mail
+
+```ts twoslash title="email-template.ts"
+import TemplateEngine from "@withstudiocms/template-lang";
+const engine = new TemplateEngine();
+
+const emailTemplate = `
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{subject}}</title>
+</head>
+<body>
+    <h1>Bonjour {{user.name}} !</h1>
+    <p>Votre commande n°{{order.id}} a été confirmée.</p>
+    <p>Total : {{order.total}}</p>
+</body>
+</html>
+`;
+
+const data = {
+  subject: "Confirmation de commande",
+  user: { name: "John Doe" },
+  order: { id: "12345", total: "99.99" },
+};
+
+const html = engine.render(emailTemplate, data);
+```
+
+### Mode strict
+
+```ts twoslash title="strict-mode.ts"
+import TemplateEngine from "@withstudiocms/template-lang";
+
+const strictEngine = new TemplateEngine({ strict: true });
+
+// Une erreur sera générée si 'missingVar' est absent des données.
+try {
+  const result = strictEngine.render("Bonjour {{missingVar}} !", {});
+} catch (error) {
+  console.log("Variable introuvable :", (error as Error).message);
+}
+```
+
+### Valeurs par défaut
+
+```ts twoslash title="default-values.ts"
+import TemplateEngine from "@withstudiocms/template-lang";
+
+const engine = new TemplateEngine({ defaultValue: "[NON DÉFINI]" });
+const result = engine.render("Bonjour {{name}} !", {});
+// Résultat : "Bonjour [NON DÉFINI] !"
+```
+
+### Compilation de modèles
+
+```ts twoslash title="template-compilation.ts"
+import TemplateEngine from "@withstudiocms/template-lang";
+const engine = new TemplateEngine();
+
+// Compiler une fois, utiliser plusieurs fois
+const compiled = engine.compile("Bonjour {{name}} !");
+
+const result1 = compiled({ name: "Alice" });
+const result2 = compiled({ name: "Bob" });
+```
+
+## Référence de l'API
+
+### TemplateEngine
+
+#### Constructeur
+
+```typescript
+new TemplateEngine(options?: TemplateOptions)
+```
+
+#### Méthodes
+
+**`render(template: string, data: TemplateData): string`**
+Génère un modèle à partir des données fournies.
+
+**`compile(template: string): (data: TemplateData) => string`**
+Compile un modèle en une fonction réutilisable.
+
+**`hasVariables(template: string): boolean`**
+Vérifie si un modèle contient des variables.
+
+**`getVariables(template: string): string[]`**
+Renvoie un tableau de tous les noms de variables présents dans le modèle.
+
+**`setOptions(options: Partial<TemplateOptions>): void`**
+Met à jour les options du moteur.
+
+### Options
+
+```ts
+interface TemplateOptions {
+  strict?: boolean; // Générer une erreur en cas de variables manquantes (par défaut : false)
+  defaultValue?: string; // Valeur par défaut pour les variables manquantes (par défaut : '')
+}
+```
