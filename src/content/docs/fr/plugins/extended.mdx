@@ -85,12 +85,12 @@ export function studioCMSPageInjector(options: Options) {
   return definePlugin({
     identifier: 'mon-module-extension',
     name: "Mon module d'extension",
-    studiocmsMinimumVersion: '0.1.0-beta.18',
+    studiocmsMinimumVersion: '0.1.0-beta.31',
     hooks: {
-      'studiocms:astro:config': ({ addIntegrations }) => {
+      'studiocms:astro-config': ({ addIntegrations }) => {
         addIntegrations(monIntegration(options));  // Facultatif, mais recommandé
       },
-      'studiocms:config:setup': ({ setDashboard, setFrontend, setRendering }) => {
+      'studiocms:dashboard': ({ setDashboard }) => {
         setDashboard({
           translations: {
             en: {
@@ -129,20 +129,23 @@ export function studioCMSPageInjector(options: Options) {
             }
           ],
         });
+      },
 
+      'studiocms:frontend': ({ setFrontend }) => {
         setFrontend({
-          // Définir les liens de navigation frontend pour le module d’extension (facultatif)
+          // Définir les liens de navigation frontend pour le module d’extension
           // Ceci est utile si vous utilisez les assistants de navigation intégrés de StudioCMS dans votre mise en page,
           // comme lors de l’utilisation du module d’extension `@studiocms/blog`.
-          frontendNavigationLinks: [{ label: 'Le titre ici', href: options?.route || 'mon-module-extension' }],
+          frontendNavigationLinks: [{ label: "Mon module d'extension", href: options?.route || 'mon-module-extension' }],
         });
-
+      },
+      'studiocms:rendering': ({ setRendering }) => {
         setRendering({
           // Lors de la création de pagesTypes, vous pouvez également définir un `pageContentComponent` si votre module d’extension nécessite un éditeur de contenu personnalisé.
           // pageTypes: [{ identifier: 'mon-module-extension', label: "Article de blog (Mon module d’extension)", pageContentComponent: resolve('./components/MyContentEditor.astro') }],
           // Dans cet exemple, nous pouvons utiliser l’éditeur de contenu par défaut (Markdown).
           pageTypes: [{ identifier: 'mon-module-extension', label: "Article de blog (Mon module d'extension)" }],
-        })
+        });
       }
     }
   });
