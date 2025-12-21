@@ -3,9 +3,13 @@ i18nReady: true
 title: Les fondamentaux
 description: Découvrez les modules d’extension de StudioCMS et leur fonctionnement.
 sidebar:
-   order: 1
+  order: 1
+  badge:
+    text: Mis à jour
+    variant: success
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import ReadMore from '~/components/ReadMore.astro'
 
 # Présentation
@@ -16,7 +20,7 @@ Les modules d’extension de StudioCMS sont un outil puissant qui vous permet d�
 
 Les modules d’extension de StudioCMS sont similaires aux intégrations Astro, mais ils intègrent des informations supplémentaires à l’objet fonction. Ces informations sont utilisées par StudioCMS pour déterminer comment le module d’extension doit être chargé et utilisé. Les modules d’extension de StudioCMS permettent d’étendre les fonctionnalités de StudioCMS en ajoutant de nouvelles fonctionnalités ou en modifiant celles existantes.
 
-### Le type des modules d’extension de StudioCMS
+### Le type des modules d’extension de StudioCMS <Badge variant="caution" text="Révisé dans la beta.31" />
 
 ```ts
 interface StudioCMSPlugin {
@@ -28,58 +32,30 @@ interface StudioCMSPlugin {
       logger: AstroIntegrationLogger;
       addIntegrations: (args_0: AstroIntegration | AstroIntegration[]) => void;
     }) => void | Promise<void>;
-    'studiocms:config:setup': (params: {
+    'studiocms:auth': (params: {
       logger: AstroIntegrationLogger;
-      setSitemap: (params: {
-        triggerSitemap?: boolean | undefined;
-        sitemaps?: {
-          pluginName: string;
-          sitemapXMLEndpointPath: string | URL;
-        }[] | undefined;
-      }) => void;
-      setDashboard: (params: {
-        dashboardGridItems?: GridItemInput[] | undefined;
-        dashboardPages?: {
-          user?: (...)[] | undefined;
-          admin?: (...)[] | undefined;
-        } | undefined;
-        settingsPage?: {
-          fields: (...)[];
-          endpoint: string;
-        } | undefined;
-      }) => void;
-      setFrontend: (params: {
-        frontendNavigationLinks?: {
-          label: string;
-          href: string;
-        }[] | undefined;
-      }) => void;
-      setRendering: (params: {
-        pageTypes?: {
-          label: string;
-          identifier: string;
-          description?: string | undefined;
-          fields?: (...)[] | undefined;
-          pageContentComponent?: string | undefined;
-          rendererComponent?: string | undefined;
-          apiEndpoint?: string | undefined;
-        }[] | undefined;
-      }) => void;
-      setImageService: (params: {
-        imageService?: {
-          identifier: string;
-          servicePath: string | URL;
-        } | undefined;
-      }) => void;
-      setAuthService: (params: {
-        oAuthProvider?: {
-          name: string;
-          formattedName: string;
-          svg: string;
-          endpointPath: string;
-          requiredEnvVariables?: string[] | undefined;
-        } | undefined;
-      }) => void;
+      setAuthService: (args_0: { ...; }) => void;
+    }) => void | Promise<void>;
+    'studiocms:dashboard': (params: {
+      logger: AstroIntegrationLogger;
+      setDashboard: (args_0: { ...; }) => void;
+      augmentDashboard: (args_0: { ...; }) => void;
+    }) => void | Promise<void>;
+    'studiocms:frontend': (params: {
+      logger: AstroIntegrationLogger;
+      setFrontend: (args_0: { ...; }) => void;
+    }) => void | Promise<void>;
+    'studiocms:rendering': (params: {
+      logger: AstroIntegrationLogger;
+      setRendering: (args_0: { ...; }) => void;
+    }) => void | Promise<void>;
+    'studiocms:image-service': (params: {
+      logger: AstroIntegrationLogger;
+      setImageService: (args_0: { ...; }) => void;
+    }) => void | Promise<void>;
+    'studiocms:sitemap': (params: {
+      logger: AstroIntegrationLogger;
+      setSitemap: (args_0: { ...; }) => void;
     }) => void | Promise<void>;
   }
 }
@@ -118,16 +94,16 @@ const monIntegration = (options: Options): AstroIntegration => ({
 export const monModuleExtension = (options: Options) => definePlugin({
     identifier: 'mon-module-extension',
     name: "Mon module d’extension",
-    studiocmsMinimumVersion: '0.1.0-beta.18',
+    studiocmsMinimumVersion: '0.1.0-beta.31',
     hooks: {
-      'studiocms:astro:config': ({ addIntegrations }) => {
+      'studiocms:astro-config': ({ addIntegrations }) => {
         addIntegrations(monIntegration(options)) // Facultatif, mais recommandé
       }
     }
 });
 ```
 
-Dans cet exemple, nous définissons un module d’extension pour StudioCMS appelé `Mon module d’extension` qui nécessite la version `0.1.0-beta.18` ou supérieure de StudioCMS. Le module d’extension fournit également une intégration Astro qui enregistre un message dans la console lorsque le crochet `astro:config:setup` est appelé.
+Dans cet exemple, nous définissons un module d’extension pour StudioCMS appelé `Mon module d’extension` qui nécessite la version `0.1.0-beta.31` ou supérieure de StudioCMS. Le module d’extension fournit également une intégration Astro qui enregistre un message dans la console lorsque le crochet `astro:config:setup` est appelé.
 
 <ReadMore>Pour plus d’informations sur la création de modules d’extension, consultez le guide [Rendre les modules d’extension utiles][extended-plugins]</ReadMore>
 
