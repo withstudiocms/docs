@@ -2,8 +2,14 @@
 i18nReady: true
 title: Mise en route
 description: Soyez prêt à construire avec StudioCMS.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 sidebar:
-   order: 1
+  order: 1
+  badge:
+    text: Mis à jour
+    variant: success
 ---
 
 import { PackageManagers } from 'starlight-package-managers'
@@ -14,71 +20,117 @@ import { sponsors, SponsorLink } from '~/share-link'
 
 <LinkCard title="Mise à niveau de StudioCMS vers la dernière version" href="/fr/guides/upgrade/latest/" description="Vous souhaitez mettre à niveau vers la version la plus récente ? Regardez ici !" />
 
+<Aside type="caution" title="Attention">
+Ce guide a été récemment mis à jour suite aux modifications importantes apportées à StudioCMS `0.1.0-beta.31`. Si vous avez déjà consulté ce guide, veuillez examiner attentivement les modifications afin de vous assurer de disposer des instructions d'installation les plus récentes.
+
+Ou si vous effectuez une mise à niveau depuis une version précédente de StudioCMS, veuillez consulter le guide [Mise à niveau de StudioCMS vers la dernière version](/fr/guides/upgrade/latest/) pour plus d'informations.
+</Aside>
+
 ## C’est parti
 
 Pour commencer à utiliser StudioCMS, vous aurez besoin de :
 
 - Une version de [Node.js prise en charge par Astro](https://docs.astro.build/fr/install-and-setup/#prérequis) (Bun et Deno ne sont pas pris en charge)
 - Un projet Astro
-- Un fournisseur libSQL ou un [serveur libSQL auto-hébergé][self-hosted-libsql]
+- Une connexion à une base de données (libSQL, MySQL ou PostgreSQL)
 - L’intégration StudioCMS
 
 ## Préparer votre base de données
 
-StudioCMS utilise `@astrojs/db` pour se connecter à votre base de données libSQL. Vous pouvez utiliser n’importe quel fournisseur libSQL ou [serveur libSQL auto-hébergé][self-hosted-libsql].
 
-Si vous utilisez la CLI de StudioCMS, vous pouvez ignorer cette étape et utiliser l’interface en ligne de commande pour créer une nouvelle base de données si la CLI de Turso est installée.
+<Tabs syncKey='db-setup-method-guide'>
 
-<ReadMore>Pour plus d’informations sur les variables d’environnement requises, consultez [URL de la base de données et jeton pour `@astrojs/db`][db-url-token]</ReadMore>
-
-### Premiers pas avec Turso
+<TabItem label="Turso (libSQL)">
 
 <Aside type='tip' title='Coupon StudioCMS'>
  Utilisez le code `STUDIOCMS10` pour obtenir 10 % de réduction pendant 12 mois sur Turso.
 </Aside>
 
 <Steps>
-1. Installez la <SponsorLink href={sponsors.turso.docs.installCLILink} text='CLI de Turso '/>
-2. <SponsorLink href={sponsors.turso.docs.loginsignupLink} text='Connectez-vous ou inscrivez-vous'/> à Turso.
-3. Créez une nouvelle base de données.
+1. Installez la <SponsorLink href={sponsors.turso.docs.installCLILink} text='CLI de Turso'/>
+2. <SponsorLink href={sponsors.turso.docs.loginsignupLink} text="Se connecter ou s'inscrire"/> à Turso.
+3. Créer une nouvelle base de données.
    <TursoCLI tursoCli='db' type='create' arg='studiocms' />
-4. Récupérez et définissez `ASTRO_DB_REMOTE_URL`
+4. Obtenez et définissez `CMS_LIBSQL_URL`
 
-   4a. Exécutez la commande `show` pour afficher les informations de la base de données nouvellement créée :
+   4a. Exécutez la commande `show` pour afficher les informations relatives à la base de données nouvellement créée :
       <TursoCLI tursoCli='db' type='show' arg='studiocms' />
 
-   4b. Copiez la valeur de l’URL et utilisez-la comme valeur pour `ASTRO_DB_REMOTE_URL`.
+   4b. Copiez la valeur de l'URL et définissez-la comme valeur pour `CMS_LIBSQL_URL`.
       ```bash title=".env"
-      ASTRO_DB_REMOTE_URL=libsql://studiocms-votrenom.turso.io
+      CMS_LIBSQL_URL=libsql://studiocms-votrenom.turso.io
       ```
 
-5. Récupérez et définissez `ASTRO_DB_APP_TOKEN`
+5. Obtenez et définissez `CMS_LIBSQL_AUTH_TOKEN`
 
-   5a. Créez un nouveau jeton pour authentifier les requêtes vers la base de données :
+   5a. Créez un nouveau jeton pour authentifier les requêtes auprès de la base de données :
       <TursoCLI tursoCli='db' type='tokens.create' arg='studiocms' />
 
-   5b. Copiez la sortie de la commande et utilisez-la comme valeur pour `ASTRO_DB_APP_TOKEN`.
+   5b. Copiez le résultat de la commande et définissez-le comme valeur pour `CMS_LIBSQL_AUTH_TOKEN`.
       ```bash title=".env"
-      ASTRO_DB_APP_TOKEN=eyJhbGciOiJF...3ahJpTkKDw
+      CMS_LIBSQL_AUTH_TOKEN=eyJhbGciOiJF...3ahJpTkKDw
       ```
 
 </Steps>
 
-Vous êtes maintenant prêt à passer à la configuration de votre projet StudioCMS !
+</TabItem>
 
-### Utilisation d’un autre fournisseur ou de libSQL auto-hébergé
+<TabItem label="libSQL">
 
-LibSQL prend en charge HTTP et WebSockets comme protocoles de transport pour un serveur distant. Il prend également en charge l’utilisation d’un fichier local ou d’une base de données en mémoire.
+Assurez-vous d'avoir une base de données libSQL configurée et opérationnelle. Vous pouvez utiliser une installation locale, un [conteneur Docker][libsql auto-hébergé] ou un service de base de données géré tel que [Turso][turso-sponsor-link].
 
-<ReadMore>Pour plus d’informations sur les variables d’environnement requises, consultez [URL de la base de données et jeton pour `@astrojs/db`][db-url-token]</ReadMore>
+```bash title=".env"
+CMS_LIBSQL_URL=libsql://votre-base-de-donnees.turso.io
+CMS_LIBSQL_AUTH_TOKEN=<votre-jeton-authentification> (facultatif)
+```
 
-<ReadMore>Pour plus d’informations sur toutes les options potentielles de libSQL (y compris les fichiers locaux), consultez [Astro Docs : Options de configuration d’URL distantes](https://docs.astro.build/fr/guides/astro-db/#options-de-configuration-durl-distantes)</ReadMore>
+<ReadMore>Pour plus d'informations sur les variables d'environnement requises, consultez [Variables d'environnement requises pour `libSQL`](/fr/start-here/environment-variables/#libsql)</ReadMore>
+
+</TabItem>
+
+<TabItem label="MySQL">
+
+Assurez-vous d'avoir une base de données MySQL configurée et opérationnelle. Vous pouvez utiliser une installation locale, un conteneur Docker ou un service de base de données géré.
+
+```bash title=".env"
+CMS_MYSQL_DATABASE=<nom-de-votre-base-de-donnees>
+CMS_MYSQL_USER=<utilisateur-de-votre-base-de-donnees>
+CMS_MYSQL_PASSWORD=<mot-de-passe-de-votre-base-de-donnees>
+CMS_MYSQL_HOST=<hebergeur-de-votre-base-de-donnees>
+CMS_MYSQL_PORT=<port-de-votre-base-de-donnees>
+```
+
+<ReadMore>Pour plus d'informations sur les variables d'environnement requises, consultez [Variables d'environnement requises pour `MySQL`](/fr/start-here/environment-variables/#mysql)</ReadMore>
+
+</TabItem>
+
+<TabItem label="PostgreSQL">
+
+Assurez-vous d'avoir une base de données PostgreSQL configurée et opérationnelle. Vous pouvez utiliser une installation locale, un conteneur Docker ou un service de base de données géré.
+
+```bash title=".env"
+CMS_PG_DATABASE=<nom-de-votre-base-de-donnees>
+CMS_PG_USER=<utilisateur-de-votre-base-de-donnees>
+CMS_PG_PASSWORD=<mot-de-passe-de-votre-base-de-donnees>
+CMS_PG_HOST=<hebergeur-de-votre-base-de-donnees>
+CMS_PG_PORT=<port-de-votre-base-de-donnees>
+```
+
+<ReadMore>Pour plus d'informations sur les variables d'environnement requises, consultez [Variables d'environnement requises pour `PostgreSQL`](/fr/start-here/environment-variables/#postgresql)</ReadMore>
+
+</TabItem>
+
+</Tabs>
+
+Vous êtes maintenant prêt à passer à la création de votre projet StudioCMS !
 
 ## Création d’un projet StudioCMS
 
 <Tabs syncKey='install-method'>
 
 <TabItem label="CLI de StudioCMS" icon="rocket">
+
+    <Steps>
 
     1. Création d’un projet StudioCMS à l’aide de la commande `create`
 
@@ -92,9 +144,8 @@ LibSQL prend en charge HTTP et WebSockets comme protocoles de transport pour un 
 
     2. Après avoir exécuté la CLI, assurez-vous que votre fichier `astro.config.mjs` est correctement configuré :
 
-       ```ts twoslash title="astro.config.mjs" {2-4,11-12}
+       ```ts title="astro.config.mjs" {2-3,8,10}
        import { defineConfig } from 'astro/config';
-       import db from '@astrojs/db';
        import node from '@astrojs/node';
        import studioCMS from 'studiocms';
 
@@ -103,17 +154,18 @@ LibSQL prend en charge HTTP et WebSockets comme protocoles de transport pour un 
            output: 'server',
            adapter: node({ mode: "standalone" }),
            integrations: [
-               db(),
                studioCMS(),
            ],
        });
        ```
+
+    </Steps>
 
 </TabItem>
 
 <TabItem label="Méthode Astro" icon='astro'>
 
-    {/* <Steps> Note: For some reason this breaks placement of EC-Twoslash popups... must investigate */}
+    <Steps>
 
     1. Création d’un nouveau projet Astro
 
@@ -135,13 +187,12 @@ LibSQL prend en charge HTTP et WebSockets comme protocoles de transport pour un 
 
     2. Pour ajouter l’intégration StudioCMS à votre projet, vous devrez installer le paquet StudioCMS et ses dépendances :
 
-       <PackageManagers type="exec" pkg="astro" args="add db node studiocms" />
+       <PackageManagers type="exec" pkg="astro" args="add node studiocms" />
 
     3. Après avoir installé le paquet, assurez-vous que votre fichier `astro.config.mjs` importe et appelle correctement l’intégration :
 
-       ```ts twoslash title="astro.config.mjs" {2-4,11-12}
+       ```ts title="astro.config.mjs" {2-3,8,10}
        import { defineConfig } from 'astro/config';
-       import db from '@astrojs/db';
        import node from '@astrojs/node';
        import studioCMS from 'studiocms';
 
@@ -150,19 +201,18 @@ LibSQL prend en charge HTTP et WebSockets comme protocoles de transport pour un 
            output: 'server',
            adapter: node({ mode: "standalone" }),
            integrations: [
-               db(),
                studioCMS(),
            ],
        });
        ```
 
-    {/* </Steps> */}
+    </Steps>
 
 </TabItem>
 
 <TabItem label="Méthode manuelle" icon='seti:powershell'>
 
-    {/* <Steps> */}
+    <Steps>
 
     1. Création d’un nouveau projet Astro
 
@@ -184,13 +234,12 @@ LibSQL prend en charge HTTP et WebSockets comme protocoles de transport pour un 
 
     2. Pour ajouter l’intégration StudioCMS à votre projet, vous devrez installer le paquet StudioCMS et ses dépendances :
 
-       <PackageManagers pkg="@astrojs/db @astrojs/node studiocms" />
+       <PackageManagers pkg="@astrojs/node studiocms" />
 
     3. Mettez à jour votre fichier `astro.config.mjs` :
 
-       ```ts twoslash title="astro.config.mjs" {2-4,11-12}
+       ```ts title="astro.config.mjs" {2-3,8,10}
        import { defineConfig } from 'astro/config';
-       import db from '@astrojs/db'; 
        import node from '@astrojs/node'; 
        import studioCMS from 'studiocms';
 
@@ -199,12 +248,12 @@ LibSQL prend en charge HTTP et WebSockets comme protocoles de transport pour un 
            output: 'server', 
            adapter: node({ mode: "standalone" }), 
            integrations: [
-               db(), 
                studioCMS(),
            ],
        });
        ```
-    {/* </Steps> */}
+
+    </Steps>
 
 </TabItem>
 
@@ -216,17 +265,48 @@ Veuillez noter que l’option `site` dans le fichier `astro.config.mjs` est requ
 StudioCMS nécessite un [adaptateur Astro](https://docs.astro.build/fr/guides/on-demand-rendering/#adaptateurs-de-serveur) pour fonctionner correctement. Assurez-vous de définir un adaptateur prenant en charge les routes SSR dans votre fichier `astro.config.mjs`.
 </Aside>
 
+### Configurer le dialecte de la base de données de StudioCMS <Badge text='Ajouté dans la version beta.31' variant='success' />
+
+Si vous utilisez une base de données autre que `libSQL`, vous devrez configurer l'option `db` dans votre fichier `studiocms.config.mjs` pour spécifier le bon dialecte.
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  db: {
+    dialect: 'postgres', // 'libsql' | 'postgres' | 'mysql'
+  },
+})
+```
+
+#### S'assurer que les paquets clients de base de données sont installés
+
+Vous devrez également installer les paquets clients de base de données nécessaires pour le dialecte de base de données que vous avez choisi :
+
+<Tabs syncKey='db-setup-method'>     
+  <TabItem label="libSQL (par défaut)" icon="database">
+    <PackageManagers type='add' pkg="@libsql/client @libsql/kysely-libsql" />
+  </TabItem>
+  <TabItem label="MySQL" icon="database">
+    <PackageManagers type='add' pkg="mysql2" />
+  </TabItem>
+  <TabItem label="PostgreSQL" icon="database">
+    <PackageManagers type='add' pkg="pg" />
+  </TabItem>
+</Tabs>
+
 ## Configurer le rendu de StudioCMS <Badge text='Ajouté dans la beta.22' variant='success' />
 
 StudioCMS nécessite qu’au moins l’un des modules d’extension de rendu suivants soit installé et configuré dans votre projet StudioCMS :
 
-- `@studiocms/html` - pour le rendu HTML
-- `@studiocms/md` - pour le rendu Markdown
-- `@studiocms/mdx` - pour le rendu MDX
-- `@studiocms/markdoc` - pour le rendu MarkDoc
+- [`@studiocms/html`](/fr/package-catalog/studiocms-plugins/studiocms-html/) - pour le rendu HTML
+- [`@studiocms/md`](/fr/package-catalog/studiocms-plugins/studiocms-md/) - pour le rendu Markdown
+- [`@studiocms/mdx`](/fr/package-catalog/studiocms-plugins/studiocms-mdx/) - pour le rendu MDX
+- [`@studiocms/markdoc`](/fr/package-catalog/studiocms-plugins/studiocms-markdoc/) - pour le rendu MarkDoc
+- [`@studiocms/wysiwyg`](/fr/package-catalog/studiocms-plugins/studiocms-wysiwyg/) - pour le rendu WYSIWYG
 - Ou tout autre module d’extension communautaire prenant en charge le rendu de contenu dans StudioCMS.
 
-N’importe lequel de ces modules d’extension peut être utilisé pour afficher du contenu dans StudioCMS. Vous pouvez utiliser un ou plusieurs de ces modules d’extension dans votre projet, selon vos besoins. Ils peuvent être installés et configurés via le fichier de configuration de StudioCMS ou celui d’Astro.
+N’importe lequel de ces modules d’extension peut être utilisé pour afficher du contenu dans StudioCMS. Vous pouvez utiliser un ou plusieurs de ces modules d’extension dans votre projet, selon vos besoins. Ils peuvent être installés et configurés à l'aide du fichier de configuration de StudioCMS.
 
 ```ts twoslash title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
@@ -243,9 +323,9 @@ export default defineStudioCMSConfig({
 
 <ReadMore>Pour plus d’informations sur les modules d’extension de rendu disponibles, consultez le [catalogue des paquets][package-catalog]</ReadMore>
 
-## Configurer l’authentification
+### Configurer l’authentification
 
-StudioCMS Auth nécessite au moins que la [clé de chiffrement][encryption-key] soit définie dans votre fichier `.env`.
+L'authentification intégrée de StudioCMS nécessite au moins que la [clé de chiffrement][encryption-key] soit définie dans votre fichier `.env`.
 
 Les variables d’environnement suivantes sont requises pour l’authentification StudioCMS :
 
@@ -266,7 +346,7 @@ Et utiliser la sortie comme valeur pour `CMS_ENCRYPTION_KEY`.
 Pour plus d’informations sur toutes les variables d’environnement d’authentification disponibles, consultez la page [Variables d’environnement][environment-variables].
 </ReadMore>
 
-### Facultatif : configurer l’authentification oAuth <Badge text='Révisé dans la bêta.23' variant='caution' />
+#### Facultatif : configurer l’authentification oAuth <Badge text='Révisé dans la bêta.23' variant='caution' />
 
 StudioCMS prend en charge divers fournisseurs d’authentification oAuth, en utilisant notre système de modules d’extension pour activer les fournisseurs que vous souhaitez utiliser. Pour commencer, vous devrez trouver un module d’extension pour le fournisseur que vous souhaitez utiliser ou créer votre propre module d’extension.
 
@@ -274,7 +354,7 @@ StudioCMS prend en charge divers fournisseurs d’authentification oAuth, en uti
 
 Pour configurer les fournisseurs oAuth, une URL de rappel est nécessaire. Cette URL correspond au chemin vers lequel le fournisseur redirigera l’utilisateur après l’authentification.
 
-#### Configuration de l’URL de rappel
+##### Configuration de l’URL de rappel
 
 L’URL de rappel doit être définie sur l’un des chemins suivants en fonction de votre environnement :
 
@@ -283,28 +363,30 @@ L’URL de rappel doit être définie sur l’un des chemins suivants en fonctio
 | Production    | `https://votre-domaine.tld/studiocms_api/auth/<provider>/callback` |
 | Tests & Dev   | `http://localhost:4321/studiocms_api/auth/<provider>/callback` |
 
-#### Exemples de chemins d’URL de rappel
+##### Exemples de chemins d’URL de rappel
 
 Les chemins suivants sont des exemples d’URL de rappel pour chaque fournisseur :
 
 | Fournisseur | Chemin de rappel |
 |-------------|------------------|
-| GitHub      | `/studiocms_api/auth/github/callback` |
-| Discord     | `/studiocms_api/auth/discord/callback` |
-| Google      | `/studiocms_api/auth/google/callback` |
-| Auth0       | `/studiocms_api/auth/auth0/callback` |
+| [GitHub](/fr/package-catalog/studiocms-plugins/studiocms-github/)   | `/studiocms_api/auth/github/callback` |
+| [Discord](/fr/package-catalog/studiocms-plugins/studiocms-discord/) | `/studiocms_api/auth/discord/callback` |
+| [Google](/fr/package-catalog/studiocms-plugins/studiocms-google/)   | `/studiocms_api/auth/google/callback` |
+| [Auth0](/fr/package-catalog/studiocms-plugins/studiocms-auth0/)     | `/studiocms_api/auth/auth0/callback` |
 
-## Configurer les scripts de votre `package.json`
+### Configurer les scripts de votre `package.json`
 
-Configurez les scripts de votre `package.json` pour inclure l’option `--remote` pour la construction et éventuellement pour le développement. (Vous pouvez également exécuter la commande dev comme indiqué dans la section [« Exécution de votre projet StudioCMS »](#exécution-de-votre-projet-studiocms))
+Configurez les scripts de votre fichier `package.json` pour inclure les commandes StudioCMS suivantes afin de faciliter leur utilisation :
 
-```json /--remote/ title="package.json"
+```json title="package.json" {7-8}
 {
     "name": "mon-projet-studiocms",
     "scripts": {
-        "dev": "astro dev --remote",
-        "build": "astro check & astro build --remote",
-        "astro": "astro"
+        "dev": "astro dev",
+        "build": "astro check & astro build",
+        "astro": "astro",
+        "migrate": "studiocms migrate",
+        "studiocms": "studiocms",
     }
 }
 ```
@@ -317,12 +399,8 @@ Grâce à la puissance d’Astro, exécuter StudioCMS est aussi simple que d’e
 
 Pour démarrer votre projet Astro, exécutez les commandes suivantes dans votre terminal :
 
-    <PackageManagers type="run" args="astro db push --remote" />
-    <PackageManagers type="run" args="dev --remote" />
-
-<Aside type="note">
-L’option `--remote` peut être supprimée si vous avez défini les scripts dans votre fichier `package.json` en incluant l’option. Ceci est expliqué dans la section [« Configurer vos scripts `package.json` »](#configurer-les-scripts-de-votre-packagejson).
-</Aside>
+    <PackageManagers type="run" args="studiocms migrate --latest" />
+    <PackageManagers type="run" args="dev" />
 
 Après avoir exécuté les commandes, un message devrait s’afficher indiquant que votre projet s’exécute sur `localhost:4321`. Lors de la première configuration de StudioCMS, vous serez invité à terminer la configuration à l’adresse `http://localhost:4321/start`.
 
@@ -330,19 +408,21 @@ Après avoir exécuté les commandes, un message devrait s’afficher indiquant 
 
 Pour démarrer votre projet Astro, exécutez la commande suivante dans votre terminal :
 
-    <PackageManagers type="run" args="dev --remote" />
+    <PackageManagers type="run" args="dev" />
 
 Après avoir exécuté la commande, vous devriez voir un message indiquant que votre projet s’exécute sur `localhost:4321`. Ouvrez votre navigateur et accédez à `http://localhost:4321` pour voir votre projet Astro en action.
+
+Vous pouvez accéder par défaut au tableau de bord de StudioCMS à l'adresse `http://localhost:4321/dashboard` pour gérer votre contenu et vos paramètres.
 
 **Félicitations !** 🥳 Vous avez maintenant installé StudioCMS dans votre projet Astro.
 
 ### Ajouter un frontend à votre projet StudioCMS
 
-StudioCMS est un CMS Astro sans-tête (ou « headless »), ce qui signifie que vous devez fournir votre propre frontend pour afficher le contenu. Si vous recherchez un frontend prêt à l’emploi, vous pouvez consulter nos modules d’extension dans le [Catalogue de paquets][package-catalog].
+StudioCMS est un CMS headless pour Astro, ce qui signifie que vous devez fournir votre propre frontend pour afficher le contenu. Si vous recherchez un frontend prêt à l’emploi, vous pouvez consulter nos modules d’extension dans le [Catalogue de paquets][package-catalog].
 
 #### Créer un blog
 
-Si vous souhaitez créer un blog, vous pouvez utiliser le module d’extension `@studiocms/blog` pour commencer.
+Par exemple, si vous souhaitez créer un blog à l'aide de StudioCMS, vous pouvez utiliser le module d'extension [`@studiocms/blog`](/fr/package-catalog/studiocms-plugins/studiocms-blog/) pour démarrer rapidement sans avoir à tout créer à partir de zéro. Ce module d'extension fournit une interface de blog simple qui élimine le besoin d'avoir des fichiers sources pour vos pages frontend.
 
 Pour installer et configurer le module d’extension de blog, exécutez la commande suivante dans votre terminal :
 
@@ -362,6 +442,18 @@ export default defineStudioCMSConfig({
 });
 ```
 
+#### Création d'une interface frontend personnalisée
+
+Si vous souhaitez créer un frontend personnalisé pour votre projet StudioCMS, vous pouvez utiliser le [SDK de StudioCMS](/fr/how-it-works/sdk/) ou [l'API Rest de StudioCMS](/fr/how-it-works/restapi/) pour récupérer et un [module d'extension de rendu pour StudioCMS](/fr/plugins/renderers/) afin d'afficher le contenu de StudioCMS sur vos pages personnalisées.
+
+<ReadMore>
+Si vous souhaitez créer un frontend personnalisé pour votre projet StudioCMS, vous pouvez utiliser le [composant Renderer et le SDK de StudioCMS](/fr/guides/custom-frontend/rendering/) pour afficher le contenu de StudioCMS sur vos pages personnalisées.
+</ReadMore>
+
+<ReadMore>
+Consultez les [guides des frontend personnalisés](/fr/guides/#guides-des-frontends-personnalisés) pour plus de guides et de tutoriels sur la création d'un frontend personnalisé avec StudioCMS.
+</ReadMore>
+
 ### Créer et déployer votre projet StudioCMS
 
 Après avoir effectué les [premières étapes de configuration](#première-configuration-ou-lors-des-mises-à-jour-si-le-schéma-des-tables-est-mis-à-jour), vous devriez créer et déployer votre projet StudioCMS sur votre serveur.
@@ -370,7 +462,7 @@ Par défaut, le tableau de bord de StudioCMS est disponible à l’adresse `http
 
 Ce tableau de bord sera à votre disposition pour gérer votre contenu et vos paramètres en mode développement et en mode production.
 
-Il est recommandé d’utiliser StudioCMS uniquement en mode production, car le tableau de bord est destiné à être utilisé par le projet construit. (Vous pourriez rencontrer des problèmes/erreurs en mode développement, comme une erreur de dépendances provenant de Vite.)
+Il est recommandé d’utiliser StudioCMS uniquement en mode production, car le tableau de bord est destiné à être utilisé par le projet compilé. (Vous pourriez rencontrer des problèmes/erreurs en mode développement, comme une erreur de dépendances provenant de Vite.)
 
 ## Prochaines étapes
 
@@ -390,7 +482,6 @@ Apprenez-en plus sur les options de configuration de StudioCMS à l’aide des p
 [package-catalog]: /fr/package-catalog/
 [environment-variables]: /fr/start-here/environment-variables/
 [config-reference]: /fr/config-reference/
-[db-url-token]: /fr/start-here/environment-variables/#url-de-la-base-de-données-et-jeton-pour-astrojsdb
-[encryption-key]: /fr/start-here/environment-variables/#clé-de-chiffrement-pour-studiocmsauth
-[auth-config-ref]: /fr/config-reference/features/#authconfig
+[encryption-key]: /fr/start-here/environment-variables/#clé-de-chiffrement-pour-studiocms
 [self-hosted-libsql]: /fr/guides/database/sqld-server/
+[turso-sponsor-link]: https://tur.so/studiocms
