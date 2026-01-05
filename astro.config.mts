@@ -169,6 +169,9 @@ export default defineConfig({
 							description: 'Essential resources to help you get up and running with StudioCMS quickly and effectively.',
 							paths: ['en/start-here/**']
 						}
+					],
+					exclude: [
+						'**/guides/contributing/**',
 					]
 				}),
 				starlightImageZoom(),
