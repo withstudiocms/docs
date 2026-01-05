@@ -172,7 +172,8 @@ export default defineConfig({
 					],
 					exclude: [
 						'**/guides/contributing/**',
-					]
+					],
+					rawContent: true,
 				}),
 				starlightImageZoom(),
 				starlightSidebarTopics([
