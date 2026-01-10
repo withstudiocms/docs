@@ -75,14 +75,14 @@ importers:
         specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/s3-storage@9f45a21
         version: '@studiocms/s3-storage@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/s3-storage@9f45a21(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.14)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@9f45a21(8ed8ce9f8a8227c0c743f0f77e40a609))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))'
       '@studiocms/ui':
-        specifier: 1.0.0-beta.4
-        version: 1.0.0-beta.4(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
+        specifier: 1.0.0
+        version: 1.0.0(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
       '@studiocms/web-vitals':
         specifier: ^4.5.3
         version: 4.5.3(@astrojs/db@0.18.0(kysely@0.28.9)(mysql2@3.15.3)(pg@8.16.3))
       '@studiocms/wysiwyg':
         specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/wysiwyg@9f45a21
-        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/wysiwyg@9f45a21(@studiocms/ui@1.0.0-beta.4(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)))(@withstudiocms/component-registry@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@9f45a21(c4a97722045c625718e5b56c61d9382d))(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@9f45a21(8ed8ce9f8a8227c0c743f0f77e40a609))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/wysiwyg@9f45a21(@studiocms/ui@1.0.0(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)))(@withstudiocms/component-registry@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@9f45a21(c4a97722045c625718e5b56c61d9382d))(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@9f45a21(8ed8ce9f8a8227c0c743f0f77e40a609))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
       '@types/hast':
         specifier: ^3.0.4
         version: 3.0.4
@@ -2285,12 +2285,6 @@ packages:
 
   '@studiocms/ui@1.0.0':
     resolution: {integrity: sha512-8/47zOP2i4gHukoeZKRvj5ogjF7A6pyPp3Q9uVzaNWnjp8/u8ob4GsFmuG7cBgogelWHUXJgm8ypBJPFw519Sw==}
-    peerDependencies:
-      astro: ^4.5 || ^5.0.0-beta.0
-      vite: ^6.3.4
-
-  '@studiocms/ui@1.0.0-beta.4':
-    resolution: {integrity: sha512-dgn01uL7QEqtQulTP5bTwb2FKyxPdOJ14cNW8v6IFR74oh6tIiEF5P7wIBPOTZXa+zDH7QJWsDzKL/H2UkF7uA==}
     peerDependencies:
       astro: ^4.5 || ^5.0.0-beta.0
       vite: ^6.3.4
@@ -8323,23 +8317,14 @@ snapshots:
       astro-transition-event-polyfill: 1.1.0(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))
       vite: 6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)
 
-  '@studiocms/ui@1.0.0-beta.4(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))':
-    dependencies:
-      '@iconify-json/heroicons': 1.2.3
-      '@iconify/types': 2.0.0
-      astro: 5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1)
-      astro-integration-kit: 0.19.1(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))
-      astro-transition-event-polyfill: 1.1.0(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))
-      vite: 6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)
-
   '@studiocms/web-vitals@4.5.3(@astrojs/db@0.18.0(kysely@0.28.9)(mysql2@3.15.3)(pg@8.16.3))':
     dependencies:
       '@astrojs/db': 0.18.0(kysely@0.28.9)(mysql2@3.15.3)(pg@8.16.3)
       web-vitals: 5.1.0
 
-  '@studiocms/wysiwyg@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/wysiwyg@9f45a21(@studiocms/ui@1.0.0-beta.4(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)))(@withstudiocms/component-registry@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@9f45a21(c4a97722045c625718e5b56c61d9382d))(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@9f45a21(8ed8ce9f8a8227c0c743f0f77e40a609))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))':
+  '@studiocms/wysiwyg@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/wysiwyg@9f45a21(@studiocms/ui@1.0.0(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)))(@withstudiocms/component-registry@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@9f45a21(c4a97722045c625718e5b56c61d9382d))(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(studiocms@https://pkg.pr.new/withstudiocms/studiocms@9f45a21(8ed8ce9f8a8227c0c743f0f77e40a609))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))':
     dependencies:
-      '@studiocms/ui': 1.0.0-beta.4(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
+      '@studiocms/ui': 1.0.0(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
       '@withstudiocms/component-registry': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@9f45a21(c4a97722045c625718e5b56c61d9382d)
       astro: 5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1)
       astro-integration-kit: 0.19.1(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))
