@@ -5,6 +5,6 @@
   "docsLink": "/package-catalog/storage-managers/s3-storage/",
   "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/@studiocms/s3/",
   "catalog": "storage-managers",
-  "isPlugin": false,
+  "isPlugin": true,
   "released": false
 }
