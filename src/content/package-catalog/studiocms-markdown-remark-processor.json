@@ -1,0 +1,9 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@studiocms/markdown-remark-processor",
+  "description": "StudioCMS Markdown Remark plugin, Provides Markdown Remark Support for StudioCMS.",
+  "docsLink": "/package-catalog/markdown-plugins/markdown-remark/#markdown-remark-processor/",
+  "githubURL": "https://github.com/withstudiocms/markdown-remark/tree/main/packages/markdown-remark-processor/",
+  "catalog": "internal",
+  "isPlugin": false
+}

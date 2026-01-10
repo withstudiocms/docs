@@ -68,6 +68,24 @@ export default defineStudioCMSConfig({
 })
 ```
 
+## `storageManager`
+
+`storageManager` is used to configure the storage manager plugin for StudioCMS.
+
+- **Type:** `StudioCMSStorageManager`
+- **Default:** `undefined`
+
+### Usage
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+import s3Storage from '@studiocms/storage-s3';
+export default defineStudioCMSConfig({
+  storageManager: s3Storage(),
+})
+```
+
 ## `verbose`
 
 `verbose` is a boolean that is used to enable or disable verbose logging.
@@ -136,7 +154,7 @@ import { defineStudioCMSConfig } from 'studiocms/config';
 // ---cut---
 export default defineStudioCMSConfig({
   componentRegistry: {
-    'my-component': 'src/components/MyComponent.astro',
+    'my-component': './src/components/MyComponent.astro',
   },
 })
 ```

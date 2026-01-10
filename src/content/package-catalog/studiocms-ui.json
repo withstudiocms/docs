@@ -1,0 +1,9 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@studiocms/ui",
+  "description": "A comprehensive UI component library for building user interfaces with StudioCMS.",
+  "docsLink": "https://ui.studiocms.dev",
+  "githubURL": "https://github.com/withstudiocms/ui/tree/main/packages/studiocms_ui/",
+  "catalog": "internal",
+  "isPlugin": false
+}

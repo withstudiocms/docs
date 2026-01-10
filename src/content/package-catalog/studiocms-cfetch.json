@@ -1,0 +1,9 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@studiocms/cfetch",
+  "description": "Astro integration that allows you to have a cached fetch function in your Astro SSR project.",
+  "docsLink": "/ecosystem/packages/cfetch/",
+  "githubURL": "https://github.com/withstudiocms/cfetch/tree/main/packages/cfetch/",
+  "catalog": "internal",
+  "isPlugin": false
+}

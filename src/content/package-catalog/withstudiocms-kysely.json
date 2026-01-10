@@ -1,0 +1,9 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@withstudiocms/kysely",
+  "description": "A TypeScript SQL query builder integrated with StudioCMS for type-safe database interactions.",
+  "docsLink": "/en/ecosystem/packages/kysely/",
+  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/@withstudiocms/kysely/",
+  "catalog": "internal",
+  "isPlugin": false
+}

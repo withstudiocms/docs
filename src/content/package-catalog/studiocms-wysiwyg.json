@@ -6,5 +6,5 @@
   "githubURL": "https://github.com/withstudiocms/experiments/tree/main/packages/studiocms_wysiwyg/",
   "catalog": "studiocms",
   "isPlugin": true,
-  "experimental": true
+  "experimental": false
 }

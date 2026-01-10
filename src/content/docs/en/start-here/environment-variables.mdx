@@ -35,8 +35,13 @@ Depending on the database you are using with StudioCMS, you will need to set up 
 CMS_LIBSQL_URL=libsql://your-database.turso.io
 # CMS_LIBSQL_URL=file:./path/to/your/database.db
 CMS_LIBSQL_AUTH_TOKEN=<your-auth-token> (optional)
-CMS_LIBSQL_SYNC_INTERVAL= (optional)
-CMS_LIBSQL_SYNC_URL= (optional)
+# CMS_LIBSQL_ENCRYPTION_KEY=<string> (optional)
+# CMS_LIBSQL_SYNC_INTERVAL=<number> (optional)
+# CMS_LIBSQL_SYNC_URL=<string> (optional)
+# CMS_LIBSQL_READ_YOUR_WRITES=true/false (optional)
+# CMS_LIBSQL_OFFLINE_MODE=true/false (optional)
+# CMS_LIBSQL_TLS=true/false (optional) (helps to set false when working with local sqld instances)
+# CMS_LIBSQL_CONCURRENCY=<number> (optional)
 ```
 
 #### `MySQL`
@@ -47,6 +52,7 @@ CMS_MYSQL_USER=<your-database-user>
 CMS_MYSQL_PASSWORD=<your-database-password>
 CMS_MYSQL_HOST=<your-database-host>
 CMS_MYSQL_PORT=<your-database-port>
+# CMS_MYSQL_CONNECTION_LIMIT=<number> (optional)
 ```
 
 #### `PostgreSQL`
@@ -57,6 +63,7 @@ CMS_PG_USER=<your-database-user>
 CMS_PG_PASSWORD=<your-database-password>
 CMS_PG_HOST=<your-database-host>
 CMS_PG_PORT=<your-database-port>
+# CMS_PG_CONNECTION_LIMIT=<number> (optional)
 ```
 
 ### Encryption Key for `studiocms`
