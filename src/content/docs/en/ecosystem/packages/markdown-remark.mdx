@@ -1,0 +1,216 @@
+---
+i18nReady: true
+title: "Markdown Remark"
+type: integration
+catalogEntry: studiocms-markdown-remark
+description: "Learn about the @studiocms/markdown-remark package"
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
+---
+
+import { Aside } from '@astrojs/starlight/components'
+import { PackageManagers } from 'starlight-package-managers'
+import Integration from '~/components/Integration.astro'
+import ReadMore from '~/components/ReadMore.astro'
+
+## The Integration
+
+`@studiocms/markdown-remark` is a powerful Markdown parser and transformer built on top of [remark](https://github.com/remarkjs/remark). It provides seamless integration with [Astro](https://astro.build/), allowing you to easily parse and transform Markdown content within your Astro projects.
+
+This project is heavily based on and compatible with Astro's built-in `@astrojs/markdown-remark` package, extending its capabilities to better suit the needs of StudioCMS users.
+
+### Features
+
+- **Markdown Parsing**: Parse Markdown content into an abstract syntax tree (AST) using remark.
+- **Astro Integration**: Easily integrate with Astro to transform Markdown content into HTML.
+- **Custom Plugins**: Extend the functionality with custom remark plugins.
+- **Configurable**: Highly configurable to suit your specific needs.
+
+### Installation
+
+To install `@studiocms/markdown-remark`, use your preferred package manager:
+
+<PackageManagers pkg="astro" type='run' args='add @studiocms/markdown-remark' />
+
+Or install it **manually**:
+
+<PackageManagers type="add" pkg="@studiocms/markdown-remark" />
+
+### Usage
+
+#### As an Astro Integration
+
+With the Astro integration enabled, you can either pass in custom components into your astro config, or manually for the specific render your trying to do shown in the following methods.
+
+##### Setup the integration
+
+**`astro.config.mjs`**
+
+```ts
+import markdownRemark from '@studiocms/markdown-remark';
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+    markdown: { 
+        /* 
+        * Your Customizations here based on: 
+        * https://docs.astro.build/en/reference/configuration-reference/#markdown-options 
+        */ 
+    },
+    integrations: [markdownRemark({
+        // Used for injecting CSS for Headings and Callouts
+        injectCSS: true,
+        // User defined components that will be used when processing markdown
+        components: {
+            // Example of a custom defined component
+            custom: "./src/components/Custom.astro",
+        },
+        // Custom Markdown config
+        markdown: {
+            // Configure the available callout themes
+            callouts: {
+                theme: 'obsidian' // Can also be 'github' or 'vitepress'
+            },
+            autoLinkHeadings: true,
+            sanitize: {} // see https://github.com/natemoo-re/ultrahtml?tab=readme-ov-file#sanitization for full options
+        }
+    })],
+});
+```
+
+##### Use the integration
+
+**`src/pages/index.astro`**
+
+```astro
+---
+import { Markdown } from 'studiocms:markdown-remark';
+import Custom from '../components/Custom.astro';
+---
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Example</title>
+    </head>
+    <body>
+        <Markdown content={`# Hello World! <custom></custom>`} components={{ custom: Custom }} />
+    </body>
+</html>
+```
+
+OR
+
+```astro
+---
+import { render } from 'studiocms:markdown-remark';
+import Custom from '../components/Custom.astro';
+
+// @ts-ignore
+const { html } = await render('# Hello World! <custom></custom>', {}, { $$result, {custom: Custom} })
+---
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Example</title>
+    </head>
+    <body>
+        {html}
+    </body>
+</html>
+```
+
+#### Using the Markdown component directly without the integration
+
+**`src/pages/index.astro`**
+
+```astro
+---
+import { Markdown } from '@studiocms/markdown-remark/components';
+import H1 from '../components/H1.astro';
+---
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Example</title>
+    </head>
+    <body>
+        <Markdown content={`# Hello world!`} components={{ h1: H1 }} />
+    </body>
+</html>
+```
+
+## The Processor
+
+<Integration title="@studiocms/markdown-remark-processor" githubURL='https://github.com/withstudiocms/markdown-remark/tree/main/packages/markdown-remark-processor/' />
+
+`@studiocms/markdown-remark-processor` is a powerful Markdown parser and transformer built on top of [remark](https://github.com/remarkjs/remark). It provides seamless integration with [Astro](https://astro.build/), allowing you to easily parse and transform Markdown content within your Astro projects.
+
+This project is heavily based on and compatible with Astro's built-in `@astrojs/markdown-remark`
+
+### Features
+
+- **Markdown Parsing**: Parse Markdown content into an abstract syntax tree (AST) using remark.
+- **Custom Plugins**: Extend the functionality with custom remark plugins.
+- **Configurable**: Highly configurable to suit your specific needs.
+
+### Installation
+
+To install `@studiocms/markdown-remark-processor`, use your preferred package manager:
+
+<PackageManagers type="add" pkg="@studiocms/markdown-remark-processor" />
+
+### Usage
+
+First setup your render function
+
+**`src/utils/render.ts`**
+
+```ts
+import { type MarkdownProcessorRenderOptions, createMarkdownProcessor } from '@studiocms/markdown-remark-processor';
+
+const processor = await createMarkdownProcessor({
+	/* 
+    * Your Options here 
+    * same as https://docs.astro.build/en/reference/configuration-reference/#markdown-options
+    */
+});
+
+export async function render(
+	content: string,
+	options?: MarkdownProcessorRenderOptions
+) {
+	const result = await processor.render(content, options);
+
+	return {
+		html: result.astroHTML,
+		meta: result.metadata,
+	};
+}
+```
+
+Then use it!
+
+**`/src/pages/index.astro`**
+```astro
+---
+import { render } from '../utils/render';
+
+const content = `# Hello world!`
+
+const { html } = await render(content)
+---
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Example</title>
+    </head>
+    <body>
+        {html}
+    </body>
+</html>
+```
