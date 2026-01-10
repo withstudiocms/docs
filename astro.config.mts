@@ -319,7 +319,9 @@ export default defineConfig({
 							},
 						],
 					},
-				]),
+				], {
+					exclude: ['**/utils/**'],
+				}),
 			],
 		}),
 	],
