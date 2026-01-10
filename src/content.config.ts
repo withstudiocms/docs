@@ -10,7 +10,7 @@ const packageCatalogSchema = z.object({
 	docsLink: z.string(),
 	githubURL: z.string(),
 	catalog: z
-		.union([z.literal('studiocms'), z.literal('community'), z.literal('internal')])
+		.union([z.literal('studiocms'), z.literal('community'), z.literal('internal'), z.literal('storage-managers')])
 		.optional()
 		.default('studiocms'),
 	isPlugin: z.boolean().optional().default(false),

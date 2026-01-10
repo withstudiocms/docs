@@ -271,6 +271,11 @@ export default defineConfig({
 								link: '/package-catalog',
 							},
 							{
+								label: getTranslations('storage-managers').en,
+								translations: getTranslations('storage-managers'),
+								autogenerate: { directory: 'package-catalog/storage-managers' },
+							},
+							{
 								label: getTranslations('studiocms-plugins').en,
 								translations: getTranslations('studiocms-plugins'),
 								autogenerate: { directory: 'package-catalog/studiocms-plugins' },

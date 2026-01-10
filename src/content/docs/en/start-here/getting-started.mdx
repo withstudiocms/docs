@@ -380,6 +380,9 @@ StudioCMS supports using different Storage API Managers to handle file and image
 
 To configure a different Storage API Manager, you will need to install the appropriate plugin and configure it in your `studiocms.config.mjs` file.
 
+<ReadMore>For more information about the Storage API see, [Storage API Docs](/en/storage-api/)</ReadMore>
+<ReadMore>For available storage manager plugins, see the [Package catalog](/en/package-catalog#storage-managers).</ReadMore>
+
 #### Example: Configure S3 Storage Manager
 
 <Steps>
@@ -401,6 +404,10 @@ To configure a different Storage API Manager, you will need to install the appro
 
 3. Set the required environment variables for the S3 Storage Manager in your `.env` file:
 
+   <Aside type="tip" title="Supported S3 Providers">
+   StudioCMS's S3 Storage Manager is built using the `@aws-sdk/client-s3` package, which supports any S3-compatible storage provider, including AWS S3, DigitalOcean Spaces, MinIO, and others.
+   </Aside>
+
    ```sh title=".env"
    CMS_S3_PROVIDER=ExampleS3Provider
    CMS_S3_ACCESS_KEY_ID=<your-access-key-id>
@@ -412,15 +419,7 @@ To configure a different Storage API Manager, you will need to install the appro
    # CMS_S3_PUBLIC_ENDPOINT= # Optional: Custom public endpoint for accessing files
    ```
 
-   <Aside type="tip" title="Supported S3 Providers">
-   StudioCMS's S3 Storage Manager is built using the `@aws-sdk/client-s3` package, which supports any S3-compatible storage provider, including AWS S3, DigitalOcean Spaces, MinIO, and others.
-   </Aside>
-
 </Steps>
-{/*
-// TODO: Add links to Storage API Manager plugins when available
-*/}
-<ReadMore>For more information about the Storage API see, [Storage API Docs](/en/storage-api/)</ReadMore>
 
 ### Configure your `package.json` scripts
 
