@@ -1,0 +1,96 @@
+---
+i18nReady: true
+title: Overview
+description: Learn about the Storage API in StudioCMS
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
+sidebar:
+  order: 1
+  badge:
+    text: NEW
+    variant: success
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+The Storage API in StudioCMS provides a unified way to manage and interact with various storage backends. It abstracts the complexities of different storage systems, allowing developers to work with a consistent interface regardless of the underlying technology.
+
+## How it Works
+
+The Storage API is designed to be flexible and extensible. It supports multiple storage backends, including local file systems, cloud storage services, and databases. Developers can choose the storage backend that best fits their needs and easily switch between them without changing their application code.
+
+## Manager plugins
+
+The Storage API uses manager plugins to handle different storage backends. Each manager plugin implements a specific storage system and provides methods for common operations such as reading, writing, and deleting files.
+
+An example of a manager built-in to StudioCMS is the `no-op` manager, which performs no operations and tells StudioCMS not to enable any of its storage features.
+
+### Example of the No-op Manager
+
+```ts twoslash title="NoOpStorageService.ts"
+import type {
+	AuthorizationType,
+	ContextDriverDefinition,
+	StorageAPIEndpointFn,
+	StorageApiBuilderDefinition,
+	UrlMappingServiceDefinition,
+} from 'studiocms/storage-manager/definitions';
+
+/**
+ * A No-Op Storage Service that implements the StorageApiBuilderDefinition interface.
+ *
+ * This service provides placeholder implementations for storage API endpoints,
+ * returning a 501 Not Implemented response for both POST and PUT requests.
+ *
+ * @typeParam C - The context type.
+ * @typeParam R - The response type.
+ */
+export default class NoOpStorageService<C, R> implements 
+  StorageApiBuilderDefinition<C, R> {
+    driver: ContextDriverDefinition<C, R>;
+    urlMappingService: UrlMappingServiceDefinition;
+
+    constructor(
+      driver: ContextDriverDefinition<C, R>,
+      urlMappingService: UrlMappingServiceDefinition
+    ) {
+      this.driver = driver;
+      this.urlMappingService = urlMappingService;
+    }
+
+    #sharedResponse() {
+      return { data: { error: 'noStorageConfigured' }, status: 501 };
+    }
+
+    getPOST(_?: AuthorizationType): StorageAPIEndpointFn<C, R> {
+      return this.driver.handleEndpoint(async () => this.#sharedResponse());
+    }
+
+    getPUT(_?: AuthorizationType): StorageAPIEndpointFn<C, R> {
+      return this.driver.handleEndpoint(async () => this.#sharedResponse());
+    }
+}
+```
+
+### Configuring a Manager
+
+To configure a storage manager in StudioCMS, you need to specify the desired manager plugin in your StudioCMS configuration file. To do so you must install the manager plugin package and then add it to the `storageManager` property in your `studiocms.config.*` file.
+
+```ts twoslash title="studiocms.config.mjs" {5}
+import { defineStudioCMSConfig } from "studiocms/config";
+import s3Storage from '@studiocms/storage-s3';
+
+export default defineStudioCMSConfig({
+    storageManager: s3Storage(),
+    // other configuration options
+})
+```
+
+<ReadMore>
+{/*
+// TODO: Update link when package catalog is available
+*/}
+For more information on available storage manager plugins, see the [Package catalog](#).
+</ReadMore>

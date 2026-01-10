@@ -1,0 +1,43 @@
+---
+i18nReady: true
+title: "Upgrade: 0.1.0-beta.32"
+description: Upgrade StudioCMS to Beta.32
+topic: guides
+sidebar:
+  label: 0.1.0-beta.32
+  badge:
+    text: NEW
+    variant: success
+  order: 999983
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import { PackageManagers } from 'starlight-package-managers'
+import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/components';
+
+## Breaking changes
+- Replaced `@libsql/kysely-libsql` with `kysely-turso` for Turso database client.  
+  - If you were using `@libsql/kysely-libsql` directly in your project, please update your imports to use `kysely-turso` instead.  
+  - Update any code that interacts with the database to ensure compatibility with the new client.
+- Removes deprecated hideDefaultIndex site config variable from SDK and updates all instances of usage in StudioCMS.
+  - Note for anyone previously relying on this feature, it has now been completely removed. Users will need to adjust any code relying on this functionality.
+- Migrates table imports to new `@withstudiocms/sdk/tables` export, and update other relevant imports
+- Update imports for Migrator to `@withstudiocms/sdk/migrator`
+
+## New Features
+- Added new Storage API for StudioCMS files and Assets.  
+  - This new API provides a standardized way to manage files and assets within StudioCMS, allowing for better integration with various storage backends.  
+  - Check out the [Storage API Documentation](/en/storage-api/) for more details on how to use the new Storage API in your projects.
+- Implements new FolderTree rendering system and updated content management inner sidebar
+- Implements taxonomy management in the StudioCMS dashboard
+  - Adds Taxonomy support for REST API and SDK
+  - Adds Taxonomy management UI in the StudioCMS Dashboard
+- Implements new component registry UI for content editing and System management pages.
+- Fixes issue with debug info having Unavailable outputs during PROD
+
+## Bug Fixes & Improvements
+- Reworks table types to better align with actual table schemas and improve type safety across the SDK.
+- Improves error handling and logging for database operations to aid in debugging and maintenance.
+- Fixes various CSS issues across all dashboard and auth pages.
+- Ensures DB Studio custom element is defined if devtoolbar is not present
+- Reworks CLI to fix async/sync code handling for `studiocms users` command

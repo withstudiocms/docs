@@ -201,6 +201,11 @@ export default defineConfig({
 								autogenerate: { directory: 'plugins' },
 							},
 							{
+								label: getTranslations('storage-api').en,
+								translations: getTranslations('storage-api'),
+								autogenerate: { directory: 'storage-api' },
+							},
+							{
 								label: getTranslations('utils').en,
 								translations: getTranslations('utils'),
 								autogenerate: { directory: 'utils' },

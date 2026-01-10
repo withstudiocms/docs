@@ -4,7 +4,7 @@ title: "Kysely and StudioCMS SDK"
 description: "Learn about Kysely and its integration with StudioCMS SDK"
 sidebar:
   badge:
-    text: NEW
+    text: Updated
     variant: success
 tableOfContents:
   minHeadingLevel: 2
@@ -55,7 +55,8 @@ A type-safe database client and migration system for StudioCMS, built on top of 
 #### Basic client setup
 
 ```ts twoslash title="client-setup.ts"
-import { getDBClientLive, type StudioCMSDatabaseSchema } from '@withstudiocms/kysely';
+import { getDBClientLive } from '@withstudiocms/kysely';
+import type { StudioCMSDatabaseSchema } from '@withstudiocms/sdk/tables';
 import { libsqlDriver } from '@withstudiocms/kysely/drivers/libsql';
 import { ConfigProvider, Effect } from 'studiocms/effect';
 
@@ -77,7 +78,8 @@ export const getDbClient = Effect.gen(function* () {
 #### Get users example
 
 ```ts twoslash title="get-users.ts"
-import { getDBClientLive, type StudioCMSDatabaseSchema } from '@withstudiocms/kysely';
+import { getDBClientLive } from '@withstudiocms/kysely';
+import type { StudioCMSDatabaseSchema } from '@withstudiocms/sdk/tables';
 import { libsqlDriver } from '@withstudiocms/kysely/drivers/libsql';
 import { ConfigProvider, Effect } from 'studiocms/effect';
 
@@ -96,7 +98,7 @@ export const getDbClient = Effect.gen(function* () {
 });
 // ---cut---
 import { Schema } from 'studiocms/effect';
-import { StudioCMSUsersTable } from '@withstudiocms/kysely';
+import { StudioCMSUsersTable } from '@withstudiocms/sdk/tables';
 
 export const getUsers = Effect.gen(function* () {
     const { withDecoder } = yield* getDbClient;
@@ -131,7 +133,8 @@ export const getUsers = Effect.gen(function* () {
 #### Insert new user example (`withEncoder`)
 
 ```ts twoslash title="insert-user.ts"
-import { getDBClientLive, type StudioCMSDatabaseSchema } from '@withstudiocms/kysely';
+import { getDBClientLive } from '@withstudiocms/kysely';
+import type { StudioCMSDatabaseSchema } from '@withstudiocms/sdk/tables';
 import { libsqlDriver } from '@withstudiocms/kysely/drivers/libsql';
 import { ConfigProvider, Effect } from 'studiocms/effect';
 
@@ -150,7 +153,7 @@ export const getDbClient = Effect.gen(function* () {
 });
 // ---cut---
 import { Schema } from 'studiocms/effect';
-import { StudioCMSUsersTable } from '@withstudiocms/kysely';
+import { StudioCMSUsersTable } from '@withstudiocms/sdk/tables';
 
 export const insertUser = Effect.gen(function* () {
     const { withEncoder } = yield* getDbClient;
@@ -172,6 +175,7 @@ export const insertUser = Effect.gen(function* () {
 		url: null,
 		id: crypto.randomUUID(),
 		updatedAt: new Date().toISOString(),
+		createdAt: new Date().toISOString(),
 	});
 	console.log('Inserted new user:', newUser); // withEncoder returns a 'InsertResult'
 	/*
@@ -184,7 +188,8 @@ export const insertUser = Effect.gen(function* () {
 #### Insert new user example (`withCodec`)
 
 ```ts twoslash title="insert-user.ts"
-import { getDBClientLive, type StudioCMSDatabaseSchema } from '@withstudiocms/kysely';
+import { getDBClientLive } from '@withstudiocms/kysely';
+import type { StudioCMSDatabaseSchema } from '@withstudiocms/sdk/tables';
 import { libsqlDriver } from '@withstudiocms/kysely/drivers/libsql';
 import { ConfigProvider, Effect } from 'studiocms/effect';
 
@@ -203,7 +208,7 @@ export const getDbClient = Effect.gen(function* () {
 });
 // ---cut---
 import { Schema } from 'studiocms/effect';
-import { StudioCMSUsersTable } from '@withstudiocms/kysely';
+import { StudioCMSUsersTable } from '@withstudiocms/sdk/tables';
 
 export const insertUser = Effect.gen(function* () {
     const { withCodec } = yield* getDbClient;
@@ -232,6 +237,7 @@ export const insertUser = Effect.gen(function* () {
 		url: null,
 		id: crypto.randomUUID(),
 		updatedAt: new Date().toISOString(),
+		createdAt: new Date().toISOString(),
 	});
 	console.log('Inserted user with codec:', insertedUser); // withCodec returns decoded results
 	/*
@@ -256,7 +262,8 @@ export const insertUser = Effect.gen(function* () {
 #### Get user by ID example
 
 ```ts twoslash title="get-user.ts"
-import { getDBClientLive, type StudioCMSDatabaseSchema } from '@withstudiocms/kysely';
+import { getDBClientLive } from '@withstudiocms/kysely';
+import type { StudioCMSDatabaseSchema } from '@withstudiocms/sdk/tables';
 import { libsqlDriver } from '@withstudiocms/kysely/drivers/libsql';
 import { ConfigProvider, Effect } from 'studiocms/effect';
 
@@ -275,7 +282,7 @@ export const getDbClient = Effect.gen(function* () {
 });
 // ---cut---
 import { Schema } from 'studiocms/effect';
-import { StudioCMSUsersTable } from '@withstudiocms/kysely';
+import { StudioCMSUsersTable } from '@withstudiocms/sdk/tables';
 
 export const insertUser = Effect.gen(function* () {
     const { withCodec } = yield* getDbClient;

@@ -18,5 +18,6 @@
   "upgrade": "Upgrade",
   "version": "Version Guides",
   "latest": "Latest Upgrade Guide",
-  "custom-frontend": "Custom Frontends"
+  "custom-frontend": "Custom Frontends",
+  "storage-api": "Storage API"
 }
