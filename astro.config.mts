@@ -162,166 +162,169 @@ export default defineConfig({
 			plugins: [
 				...linkValidator,
 				starlightLlmsTxt({
-					description: 'StudioCMS is a Server-Side Rendered (SSR) Headless CMS built specifically for Astro. It is designed to seamlessly integrate with Astro projects, providing a robust and efficient content management solution that leverages Astro\'s strengths in performance and developer experience.',
+					description:
+						"StudioCMS is a Server-Side Rendered (SSR) Headless CMS built specifically for Astro. It is designed to seamlessly integrate with Astro projects, providing a robust and efficient content management solution that leverages Astro's strengths in performance and developer experience.",
 					customSets: [
 						{
 							label: 'Getting Started',
-							description: 'Essential resources to help you get up and running with StudioCMS quickly and effectively.',
-							paths: ['en/start-here/**']
-						}
+							description:
+								'Essential resources to help you get up and running with StudioCMS quickly and effectively.',
+							paths: ['en/start-here/**'],
+						},
 					],
-					exclude: [
-						'**/guides/contributing/**',
-					],
+					exclude: ['**/guides/contributing/**'],
 					rawContent: true,
 				}),
 				starlightImageZoom(),
-				starlightSidebarTopics([
-					{
-						label: getTranslations('topic-learn'),
-						link: '/start-here/getting-started/',
-						icon: 'open-book',
-						id: 'learn',
-						items: [
-							{
-								label: getTranslations('start-here').en,
-								translations: getTranslations('start-here'),
-								autogenerate: { directory: 'start-here' },
-							},
-							{
-								label: getTranslations('how-it-works').en,
-								translations: getTranslations('how-it-works'),
-								autogenerate: { directory: 'how-it-works' },
-							},
-							{
-								label: getTranslations('features').en,
-								translations: getTranslations('features'),
-								items: [
-									{
-										label: getTranslations('plugins').en,
-										translations: getTranslations('plugins'),
-										collapsed: true,
-										autogenerate: { directory: 'plugins' },
-									},
-									{
-										label: getTranslations('storage-api').en,
-										translations: getTranslations('storage-api'),
-										collapsed: true,
-										autogenerate: { directory: 'storage-api' },
-										badge: {
-											text: 'New',
-											variant: 'success',
+				starlightSidebarTopics(
+					[
+						{
+							label: getTranslations('topic-learn'),
+							link: '/start-here/getting-started/',
+							icon: 'open-book',
+							id: 'learn',
+							items: [
+								{
+									label: getTranslations('start-here').en,
+									translations: getTranslations('start-here'),
+									autogenerate: { directory: 'start-here' },
+								},
+								{
+									label: getTranslations('how-it-works').en,
+									translations: getTranslations('how-it-works'),
+									autogenerate: { directory: 'how-it-works' },
+								},
+								{
+									label: getTranslations('features').en,
+									translations: getTranslations('features'),
+									items: [
+										{
+											label: getTranslations('plugins').en,
+											translations: getTranslations('plugins'),
+											collapsed: true,
+											autogenerate: { directory: 'plugins' },
 										},
-									},
-									// TODO - Document more StudioCMS features here
-								]
-							},
-						],
-					},
-					{
-						label: getTranslations('topic-guides'),
-						link: '/guides/',
-						icon: 'rocket',
-						id: 'guides',
-						items: [
-							{
-								label: getTranslations('contributing').en,
-								translations: getTranslations('contributing'),
-								autogenerate: { directory: 'guides/contributing' },
-							},
-							{
-								label: getTranslations('upgrade').en,
-								translations: getTranslations('upgrade'),
-								items: [
-									{
-										slug: 'guides/upgrade/release-notes',
-									},
-									{
-										label: getTranslations('latest').en,
-										translations: getTranslations('latest'),
-										link: 'guides/upgrade/latest',
-										badge: {
-											text: 'Link',
-											variant: 'note',
+										{
+											label: getTranslations('storage-api').en,
+											translations: getTranslations('storage-api'),
+											collapsed: true,
+											autogenerate: { directory: 'storage-api' },
+											badge: {
+												text: 'New',
+												variant: 'success',
+											},
 										},
-									},
-									{
-										label: getTranslations('version').en,
-										translations: getTranslations('version'),
-										collapsed: true,
-										autogenerate: { directory: 'guides/upgrade/version-guides' },
-									},
-								],
-							},
-							{
-								label: getTranslations('custom-frontend').en,
-								translations: getTranslations('custom-frontend'),
-								autogenerate: { directory: 'guides/custom-frontend' },
-							},
-							{
-								label: getTranslations('database').en,
-								translations: getTranslations('database'),
-								autogenerate: { directory: 'guides/database' },
-							},
-						],
-					},
+										// TODO - Document more StudioCMS features here
+									],
+								},
+							],
+						},
+						{
+							label: getTranslations('topic-guides'),
+							link: '/guides/',
+							icon: 'rocket',
+							id: 'guides',
+							items: [
+								{
+									label: getTranslations('contributing').en,
+									translations: getTranslations('contributing'),
+									autogenerate: { directory: 'guides/contributing' },
+								},
+								{
+									label: getTranslations('upgrade').en,
+									translations: getTranslations('upgrade'),
+									items: [
+										{
+											slug: 'guides/upgrade/release-notes',
+										},
+										{
+											label: getTranslations('latest').en,
+											translations: getTranslations('latest'),
+											link: 'guides/upgrade/latest',
+											badge: {
+												text: 'Link',
+												variant: 'note',
+											},
+										},
+										{
+											label: getTranslations('version').en,
+											translations: getTranslations('version'),
+											collapsed: true,
+											autogenerate: { directory: 'guides/upgrade/version-guides' },
+										},
+									],
+								},
+								{
+									label: getTranslations('custom-frontend').en,
+									translations: getTranslations('custom-frontend'),
+									autogenerate: { directory: 'guides/custom-frontend' },
+								},
+								{
+									label: getTranslations('database').en,
+									translations: getTranslations('database'),
+									autogenerate: { directory: 'guides/database' },
+								},
+							],
+						},
+						{
+							label: getTranslations('topic-ecosystem'),
+							link: '/ecosystem/',
+							icon: 'puzzle',
+							id: 'ecosystem',
+							items: [
+								{
+									label: getTranslations('ecosystem-packages').en,
+									translations: getTranslations('ecosystem-packages'),
+									autogenerate: { directory: 'ecosystem/packages' },
+								},
+							],
+						},
+						{
+							label: getTranslations('topic-package-catalog'),
+							link: '/package-catalog/',
+							icon: 'download',
+							id: 'package-catalog',
+							items: [
+								{
+									label: getTranslations('catalog').en,
+									translations: getTranslations('catalog'),
+									link: '/package-catalog',
+								},
+								{
+									label: getTranslations('storage-managers').en,
+									translations: getTranslations('storage-managers'),
+									autogenerate: { directory: 'package-catalog/storage-managers' },
+								},
+								{
+									label: getTranslations('studiocms-plugins').en,
+									translations: getTranslations('studiocms-plugins'),
+									autogenerate: { directory: 'package-catalog/studiocms-plugins' },
+								},
+								{
+									label: getTranslations('community-plugins').en,
+									translations: getTranslations('community-plugins'),
+									autogenerate: { directory: 'package-catalog/community-plugins' },
+								},
+							],
+						},
+						{
+							label: getTranslations('topic-references'),
+							link: '/config-reference/',
+							icon: 'information',
+							id: 'references',
+							items: [
+								{
+									label: getTranslations('config-reference').en,
+									translations: getTranslations('config-reference'),
+									autogenerate: { directory: 'config-reference' },
+								},
+							],
+						},
+					],
 					{
-						label: getTranslations('topic-ecosystem'),
-						link: '/ecosystem/',
-						icon: 'puzzle',
-						id: 'ecosystem',
-						items: [
-							{
-								label: getTranslations('ecosystem-packages').en,
-								translations: getTranslations('ecosystem-packages'),
-								autogenerate: { directory: 'ecosystem/packages' },
-							}
-						]
-					},
-					{
-						label: getTranslations('topic-package-catalog'),
-						link: '/package-catalog/',
-						icon: 'download',
-						id: 'package-catalog',
-						items: [
-							{
-								label: getTranslations('catalog').en,
-								translations: getTranslations('catalog'),
-								link: '/package-catalog',
-							},
-							{
-								label: getTranslations('storage-managers').en,
-								translations: getTranslations('storage-managers'),
-								autogenerate: { directory: 'package-catalog/storage-managers' },
-							},
-							{
-								label: getTranslations('studiocms-plugins').en,
-								translations: getTranslations('studiocms-plugins'),
-								autogenerate: { directory: 'package-catalog/studiocms-plugins' },
-							},
-							{
-								label: getTranslations('community-plugins').en,
-								translations: getTranslations('community-plugins'),
-								autogenerate: { directory: 'package-catalog/community-plugins' },
-							},
-						],
-					},
-					{
-						label: getTranslations('topic-references'),
-						link: '/config-reference/',
-						icon: 'information',
-						id: 'references',
-						items: [
-							{
-								label: getTranslations('config-reference').en,
-								translations: getTranslations('config-reference'),
-								autogenerate: { directory: 'config-reference' },
-							},
-						],
-					},
-				], {
-					exclude: ['**/utils/**'],
-				}),
+						exclude: ['**/utils/**'],
+					}
+				),
 			],
 		}),
 	],
