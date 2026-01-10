@@ -1,0 +1,62 @@
+---
+i18nReady: true
+title: "StudioCMS SDK"
+type: integration
+catalogEntry: withstudiocms-sdk
+description: "Learn about the StudioCMS SDK"
+sidebar:
+  badge:
+    text: Updated
+    variant: success
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
+---
+
+import { Aside } from '@astrojs/starlight/components'
+import { PackageManagers } from 'starlight-package-managers'
+import Integration from '~/components/Integration.astro'
+import ReadMore from '~/components/ReadMore.astro'
+
+The following package is built-in to StudioCMS and provides the core database functionality used by StudioCMS. It is intended to be used internally by StudioCMS, but users can also use it directly in their projects for more advanced use cases.
+
+<Aside type="caution" title="Warning">
+  This package is primarily intended for internal use by StudioCMS. While you can use it directly in your projects, be aware that it may change without notice as StudioCMS evolves.
+</Aside>
+
+<ReadMore>
+  Want to learn more about how to use the SDK with StudioCMS? Check out [The SDK](/en/how-it-works/sdk/) documentation to learn how to use it in your StudioCMS project!
+</ReadMore>
+
+## The SDK package
+
+<Integration title="@withstudiocms/sdk" githubURL="https://github.com/withstudiocms/studiocms/tree/main/packages/@withstudiocms/sdk/" released={true} />
+
+A comprehensive Software Development Kit for StudioCMS, providing a unified API for interacting with the CMS core functionality. Built with TypeScript and Effect-ts for type-safety and functional programming patterns, with Kysely DB ([`@withstudiocms/kysely`](#the-kysely-client-package)) for dynamic database storage.
+
+### Features
+
+- **Authentication Module** - User authentication and session management
+- **Configuration Management** - Type-safe configuration handling with validation
+- **Database Operations** - CRUD operations with Effect-ts error handling
+- **Plugin System** - Utilities for plugin development and integration
+- **Caching Layer** - Built-in caching with query memoization and invalidation
+- **Middleware Utilities** - Request handling and middleware composition
+- **Diff Tracking** - Track changes and modifications
+- **REST API Helpers** - Utilities for building REST endpoints
+- **Notification Settings** - User notification preference management
+- **Token Bucket** - Rate limiting and token management
+
+### Further Reading
+
+<ReadMore>
+For a code example of how to use the StudioCMS SDK manually in your project, check how it's implemented in [StudioCMS on GitHub](https://github.com/withstudiocms/studiocms/blob/main/packages/studiocms/src/virtuals/sdk/index.ts)
+</ReadMore>
+
+<ReadMore>
+Interested in the live SDK already available in StudioCMS? Check out [The SDK](/en/how-it-works/sdk/) documentation to learn how to use it in your StudioCMS project!
+</ReadMore>
+
+<ReadMore>
+  Learn more about the Kysely Database Client in the [Kysely Documentation](/en/ecosystem/packages/kysely/).
+</ReadMore>

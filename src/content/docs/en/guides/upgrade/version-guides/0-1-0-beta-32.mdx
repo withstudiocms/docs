@@ -15,14 +15,24 @@ import ReadMore from '~/components/ReadMore.astro'
 import { PackageManagers } from 'starlight-package-managers'
 import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/components';
 
+StudioCMS `0.1.0-beta.32` introduces several breaking changes, new features, and bug fixes. This guide will help you navigate the upgrade process smoothly.
+
 ## Breaking changes
-- Replaced `@libsql/kysely-libsql` with `kysely-turso` for Turso database client.  
-  - If you were using `@libsql/kysely-libsql` directly in your project, please update your imports to use `kysely-turso` instead.  
-  - Update any code that interacts with the database to ensure compatibility with the new client.
+- Replaced `@libsql/kysely-libsql` with `kysely-turso` for Turso database client. If you were using `@libsql/kysely-libsql` in your project, please update your dependencies to use `kysely-turso` instead.
+  - **Steps to migrate:**
+  <Steps>
+  1. Remove `@libsql/kysely-libsql` from your `package.json` dependencies.
+
+     <PackageManagers type="remove" pkg="@libsql/kysely-libsql" />
+
+  2. Install `kysely-turso` by running:
+
+     <PackageManagers type="add" pkg="kysely-turso" />
+  </Steps>
 - Removes deprecated hideDefaultIndex site config variable from SDK and updates all instances of usage in StudioCMS.
   - Note for anyone previously relying on this feature, it has now been completely removed. Users will need to adjust any code relying on this functionality.
-- Migrates table imports to new `@withstudiocms/sdk/tables` export, and update other relevant imports
-- Update imports for Migrator to `@withstudiocms/sdk/migrator`
+- Migrates table imports to new `@withstudiocms/sdk/tables` export, and updated relevant imports.
+- Migrates migration system to StudioCMS SDK and updated imports for Migrator to `@withstudiocms/sdk/migrator`.
 
 ## New Features
 - Added new Storage API for StudioCMS files and Assets.  
@@ -39,5 +49,11 @@ import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/compon
 - Reworks table types to better align with actual table schemas and improve type safety across the SDK.
 - Improves error handling and logging for database operations to aid in debugging and maintenance.
 - Fixes various CSS issues across all dashboard and auth pages.
-- Ensures DB Studio custom element is defined if devtoolbar is not present
+- Ensures DB Studio custom element is defined if dev-toolbar is not present
 - Reworks CLI to fix async/sync code handling for `studiocms users` command
+
+**Further Reading**
+
+<ReadMore>
+  For a full list of changes in this release, please refer to the [Changelog](/en/guides/upgrade/release-notes/#010-beta32).
+</ReadMore>

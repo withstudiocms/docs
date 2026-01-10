@@ -193,22 +193,28 @@ export default defineConfig({
 								translations: getTranslations('how-it-works'),
 								autogenerate: { directory: 'how-it-works' },
 							},
-							// TODO - Add Core Features section and 
-							// document all built-in features and how they work
 							{
-								label: getTranslations('plugins').en,
-								translations: getTranslations('plugins'),
-								autogenerate: { directory: 'plugins' },
-							},
-							{
-								label: getTranslations('storage-api').en,
-								translations: getTranslations('storage-api'),
-								autogenerate: { directory: 'storage-api' },
-							},
-							{
-								label: getTranslations('utils').en,
-								translations: getTranslations('utils'),
-								autogenerate: { directory: 'utils' },
+								label: getTranslations('features').en,
+								translations: getTranslations('features'),
+								items: [
+									{
+										label: getTranslations('plugins').en,
+										translations: getTranslations('plugins'),
+										collapsed: true,
+										autogenerate: { directory: 'plugins' },
+									},
+									{
+										label: getTranslations('storage-api').en,
+										translations: getTranslations('storage-api'),
+										collapsed: true,
+										autogenerate: { directory: 'storage-api' },
+										badge: {
+											text: 'New',
+											variant: 'success',
+										},
+									},
+									// TODO - Document more StudioCMS features here
+								]
 							},
 						],
 					},
@@ -258,6 +264,19 @@ export default defineConfig({
 								autogenerate: { directory: 'guides/database' },
 							},
 						],
+					},
+					{
+						label: getTranslations('topic-ecosystem'),
+						link: '/ecosystem/',
+						icon: 'puzzle',
+						id: 'ecosystem',
+						items: [
+							{
+								label: getTranslations('ecosystem-packages').en,
+								translations: getTranslations('ecosystem-packages'),
+								autogenerate: { directory: 'ecosystem/packages' },
+							}
+						]
 					},
 					{
 						label: getTranslations('topic-package-catalog'),
