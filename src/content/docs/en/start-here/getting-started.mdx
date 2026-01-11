@@ -387,15 +387,15 @@ To configure a different Storage API Manager, you will need to install the appro
 
 <Steps>
 
-1. Install the `@studiocms/storage-s3` plugin:
+1. Install the `@studiocms/s3-storage` plugin:
 
-   <PackageManagers type='add' pkg='@studiocms/storage-s3' />
+   <PackageManagers type='add' pkg='@studiocms/s3-storage' />
 
 2. Update your `studiocms.config.mjs` file to use the S3 Storage Manager:
 
    ```ts title="studiocms.config.mjs" ins={2, 5}
    import { defineStudioCMSConfig } from 'studiocms/config';
-   import s3Storage from '@studiocms/storage-s3';
+   import s3Storage from '@studiocms/s3-storage';
 
    export default defineStudioCMSConfig({
       storageManager: s3Storage(),
