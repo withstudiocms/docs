@@ -15,7 +15,6 @@ const packageCatalogSchema = z.object({
 		.default('studiocms'),
 	isPlugin: z.boolean().optional().default(false),
 	experimental: z.boolean().optional().default(false),
-	publiclyUsable: z.boolean().optional().default(false),
 	released: z.boolean().optional().default(true),
 	hidden: z.boolean().optional().default(false),
 });
@@ -31,6 +30,11 @@ const integrationSchema = baseSchema.extend({
 	replaceTitle: z.boolean().optional().default(true),
 });
 
+const botSchema = baseSchema.extend({
+	type: z.literal('github'),
+	githubURL: z.string(),
+});
+
 const redirectSchema = baseSchema.extend({
 	type: z.literal('redirect'),
 	redirect: z.string(),
@@ -43,6 +47,7 @@ const i18nCustomSchema = z.object({
 	'sponsors.sponsoredby': z.string().optional(),
 	'package-catalog.readmore.start': z.string().optional(),
 	'package-catalog.readmore.end': z.string().optional(),
+	'package-catalog.no-packages': z.string().optional(),
 	'quick-update': z.string().optional(),
 	'integration-labels.changelog': z.string().optional(),
 	'contributors.core-packages': z.string().optional(),
@@ -116,7 +121,7 @@ const i18nCustomSchema = z.object({
 	'docsearch.noResultsScreen.reportMissingResultsLinkText': z.string(),
 });
 
-export const docsCollectionSchema = z.union([baseSchema, integrationSchema, redirectSchema]);
+export const docsCollectionSchema = z.union([baseSchema, integrationSchema, redirectSchema, botSchema]);
 
 export type DocsEntryData = z.infer<typeof docsCollectionSchema>;
 

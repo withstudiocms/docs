@@ -273,10 +273,20 @@ export default defineConfig({
 							id: 'ecosystem',
 							items: [
 								{
+									label: getTranslations('ecosystem-overview').en,
+									translations: getTranslations('ecosystem-overview'),
+									link: '/ecosystem',
+								},
+								{
 									label: getTranslations('ecosystem-packages').en,
 									translations: getTranslations('ecosystem-packages'),
 									autogenerate: { directory: 'ecosystem/packages' },
 								},
+								{
+									label: getTranslations('ecosystem-bots').en,
+									translations: getTranslations('ecosystem-bots'),
+									autogenerate: { directory: 'ecosystem/bots' },
+								}
 							],
 						},
 						{

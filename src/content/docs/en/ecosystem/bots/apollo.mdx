@@ -1,0 +1,68 @@
+---
+i18nReady: true
+title: Apollo Discord Bot
+type: github
+githubURL: "https://github.com/withstudiocms/bots/tree/main/packages/apollo"
+description: "Apollo is a fully-configurable Discord Bot that helps with managing Discord Servers for OSS projects."
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 5
+---
+
+Apollo is a fully-configurable Discord Bot that helps with managing Discord Servers for OSS projects. It is designed to help with common tasks such as managing support requests, sending PTAL announcements, and more.
+
+## Tech Stack
+- Discord.js
+- Drizzle ORM
+- libSQL
+- GitHub API
+
+## Commands
+
+### `ptal`
+
+- **Minimum Permission**: Moderate Members
+
+Creates a PTAL announcement in the current channel and pings the notifications role (if configured).
+
+### `settings`
+
+- **Minimum Permission**: Administrator
+
+Command which carries the sub-commands for configuring the bot.
+
+#### `set-forum`
+
+- **Minimum Permission**: Administrator
+
+Allows you to configure the Forum to be used for support requests.
+
+#### `set-ptal-role`
+
+- **Minimum Permission**: Administrator
+
+Sets the role that gets pinged when a new PTAL announcement is sent.
+
+#### `set-join-role`
+
+- **Minimum Permission**: Administrator
+
+Sets the role that a user receives when they join the server.
+
+#### `print`
+
+- **Minimum Permission**: Administrator
+
+Prints an overview of all settings.
+
+### `solved`
+
+- **Minimum Permission**: Moderate Members
+
+Sends an embed with buttons so the OP of a support request can close it.
+
+### `support`
+
+- **Minimum Permission**: Moderate Members
+
+Creates a new post in the support forum based on the message you supply.

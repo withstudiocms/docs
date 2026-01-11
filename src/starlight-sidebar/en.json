@@ -22,7 +22,8 @@
   "custom-frontend": "Custom Frontends",
   "storage-api": "Storage API",
   "storage-managers": "Storage Managers",
-  "ecosystem-overview": "Ecosystem Overview",
+  "ecosystem-overview": "Overview",
   "ecosystem-packages": "Ecosystem Packages",
+  "ecosystem-bots": "Ecosystem Bots",
   "features": "Features"
 }

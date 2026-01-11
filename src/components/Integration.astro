@@ -7,18 +7,10 @@ interface Props {
 	githubURL: string;
 	released?: boolean;
 	isPlugin?: boolean;
-	publiclyUsable?: boolean;
 	experimental?: boolean;
 }
 
-const {
-	title,
-	githubURL,
-	released = true,
-	isPlugin = false,
-	publiclyUsable = false,
-	experimental = false,
-} = Astro.props;
+const { title, githubURL, released = true, isPlugin = false, experimental = false } = Astro.props;
 
 function parsePackageName(packageName: string): {
 	scoped: boolean;
@@ -44,8 +36,7 @@ function parsePackageName(packageName: string): {
 const { scoped, scope, name } = parsePackageName(title);
 
 const generateBadgeMeta = (
-	isPlugin: boolean,
-	publiclyUsable: boolean
+	isPlugin: boolean
 ): {
 	text: string;
 	variant: 'tip' | 'success' | 'note' | 'danger' | 'caution' | 'default' | undefined;
@@ -62,16 +53,10 @@ const generateBadgeMeta = (
 			variant: 'tip',
 		};
 	}
-	if (publiclyUsable) {
-		return {
-			text: 'Publicly Usable',
-			variant: 'caution',
-		};
-	}
 	return null;
 };
 
-const badgeMeta = generateBadgeMeta(isPlugin, publiclyUsable);
+const badgeMeta = generateBadgeMeta(isPlugin);
 
 const showBadge = badgeMeta !== null;
 ---

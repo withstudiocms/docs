@@ -74,6 +74,15 @@ const { scoped, scope, name } = parsePackageName(entryData.name);
 				</a>
 			</div>
 		</div>
+	) : data.type === 'github' ? (
+		<div class="wrapper">
+			<h1 id="_top">{data.title}</h1>
+		</div>
+		<div class="integration-metadata">
+			<a href={data.githubURL}>
+				<Icon size="1rem" name="github" /> GitHub
+			</a>
+		</div>
 	) : (data.template === 'splash' && data.title === "404") 
 		? <slot/> 
 		: (
