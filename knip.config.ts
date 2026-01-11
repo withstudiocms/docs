@@ -10,7 +10,7 @@ const config: KnipConfig = {
 		'@studiocms/markdoc',
 		'@studiocms/wysiwyg',
 		'@studiocms/cloudinary-image-service',
-		'@studiocms/storage-s3',
+		'@studiocms/s3-storage',
 		"@withstudiocms/template-lang",
 		"@withstudiocms/sdk",
 		'@astrojs/node',
