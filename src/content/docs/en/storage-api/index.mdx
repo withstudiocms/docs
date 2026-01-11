@@ -80,7 +80,7 @@ To configure a storage manager in StudioCMS, you need to specify the desired man
 
 ```ts twoslash title="studiocms.config.mjs" {5}
 import { defineStudioCMSConfig } from "studiocms/config";
-import s3Storage from '@studiocms/storage-s3';
+import s3Storage from '@studiocms/s3-storage';
 
 export default defineStudioCMSConfig({
     storageManager: s3Storage(),

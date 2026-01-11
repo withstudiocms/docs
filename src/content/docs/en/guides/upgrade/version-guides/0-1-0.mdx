@@ -1,10 +1,10 @@
 ---
 i18nReady: true
-title: "Upgrade: 0.1.0-beta.32"
-description: Upgrade StudioCMS to Beta.32
+title: "Upgrade: v0.1.0"
+description: Upgrade StudioCMS to v0.1.0
 topic: guides
 sidebar:
-  label: 0.1.0-beta.32
+  label: v0.1.0
   badge:
     text: NEW
     variant: success
@@ -15,7 +15,7 @@ import ReadMore from '~/components/ReadMore.astro'
 import { PackageManagers } from 'starlight-package-managers'
 import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/components';
 
-StudioCMS `0.1.0-beta.32` introduces several breaking changes, new features, and bug fixes. This guide will help you navigate the upgrade process smoothly.
+StudioCMS `0.1.0` introduces several breaking changes, new features, and bug fixes. This guide will help you navigate the upgrade process smoothly.
 
 ## Breaking changes
 - Replaced `@libsql/kysely-libsql` with `kysely-turso` for Turso database client. If you were using `@libsql/kysely-libsql` in your project, please update your dependencies to use `kysely-turso` instead.
@@ -51,6 +51,7 @@ StudioCMS `0.1.0-beta.32` introduces several breaking changes, new features, and
 - Fixes various CSS issues across all dashboard and auth pages.
 - Ensures DB Studio custom element is defined if dev-toolbar is not present
 - Reworks CLI to fix async/sync code handling for `studiocms users` command
+- Replaced all instances of `.returning()`/`returningAll()` with transactions to properly support SQL dialects that do not support returning such as MySQL
 
 **Further Reading**
 

@@ -29,7 +29,7 @@
     "@studiocms/md": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@9f45a21",
     "@studiocms/mdx": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@9f45a21",
     "@studiocms/wysiwyg": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/wysiwyg@9f45a21",
-    "@studiocms/storage-s3": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/s3-storage@9f45a21",
+    "@studiocms/s3-storage": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/s3-storage@9f45a21",
     "studiocms": "https://pkg.pr.new/withstudiocms/studiocms@9f45a21",
     "@withstudiocms/component-registry": "https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@9f45a21",
     "@withstudiocms/kysely": "https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/kysely@9f45a21",

@@ -80,7 +80,7 @@ export default defineStudioCMSConfig({
 ```ts twoslash {3} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
 // ---cut---
-import s3Storage from '@studiocms/storage-s3';
+import s3Storage from '@studiocms/s3-storage';
 export default defineStudioCMSConfig({
   storageManager: s3Storage(),
 })

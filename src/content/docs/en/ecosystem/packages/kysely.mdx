@@ -103,23 +103,9 @@ export const getUsers = Effect.gen(function* () {
 	});
 
 	const users = yield* getUsers();
+//        ^?
+
 	console.log('Users:', users);
-	/*
-	    type of 'users' is:
-		const users: readonly {
-			readonly url: string | null | undefined;
-			readonly id: string;
-			readonly name: string;
-			readonly email: string | null | undefined;
-			readonly avatar: string | null | undefined;
-			readonly username: string;
-			readonly password: string | null | undefined;
-			readonly updatedAt: Date;
-			readonly createdAt: Date;
-			readonly emailVerified: boolean;
-			readonly notifications: string | null | undefined;
-		}[]
-	*/
 });
 ```
 
@@ -157,7 +143,7 @@ export const insertUser = Effect.gen(function* () {
 			db((client) => client.insertInto('StudioCMSUsersTable').values(newUser).executeTakeFirst()),
 	});
 
-	const newUser = yield* insertUser({
+	const data = {
 		username: 'new_user',
 		email: 'new_user@example.com',
 		password: null,
@@ -169,12 +155,11 @@ export const insertUser = Effect.gen(function* () {
 		id: crypto.randomUUID(),
 		updatedAt: new Date().toISOString(),
 		createdAt: new Date().toISOString(),
-	});
-	console.log('Inserted new user:', newUser); // withEncoder returns a 'InsertResult'
-	/*
-		type of 'newUser' is:
-		const newUser: InsertResult
-	*/
+	};
+
+	const newUser = yield* insertUser(data);
+//        ^?
+	console.log('Inserted new user:', newUser);
 });
 ```
 
@@ -219,7 +204,7 @@ export const insertUser = Effect.gen(function* () {
 			),
 	});
 
-	const insertedUser = yield* insertNewUser({
+	const data = {
 		username: 'codec_user',
 		email: 'codec_user@example.com',
 		password: null,
@@ -231,24 +216,11 @@ export const insertUser = Effect.gen(function* () {
 		id: crypto.randomUUID(),
 		updatedAt: new Date().toISOString(),
 		createdAt: new Date().toISOString(),
-	});
-	console.log('Inserted user with codec:', insertedUser); // withCodec returns decoded results
-	/*
-	    type of 'insertedUser' is:
-		const user: {
-			readonly url: string | null | undefined;
-			readonly id: string;
-			readonly name: string;
-			readonly email: string | null | undefined;
-			readonly avatar: string | null | undefined;
-			readonly username: string;
-			readonly password: string | null | undefined;
-			readonly updatedAt: Date;
-			readonly createdAt: Date;
-			readonly emailVerified: boolean;
-			readonly notifications: string | null | undefined;
-		}
-	*/
+	};
+
+	const insertedUser = yield* insertNewUser(data);
+//        ^?
+	console.log('Inserted user with codec:', insertedUser);
 });
 ```
 
@@ -290,23 +262,8 @@ export const insertUser = Effect.gen(function* () {
 	});
 
 	const user = yield* getUserById('some-user-id');
+//        ^?
 	console.log('User by ID:', user);
-	/*
-	    type of 'user' is:
-		const user: {
-			readonly url: string | null | undefined;
-			readonly id: string;
-			readonly name: string;
-			readonly email: string | null | undefined;
-			readonly avatar: string | null | undefined;
-			readonly username: string;
-			readonly password: string | null | undefined;
-			readonly updatedAt: Date;
-			readonly createdAt: Date;
-			readonly emailVerified: boolean;
-			readonly notifications: string | null | undefined;
-		} | undefined
-	*/
 });
 ```
 

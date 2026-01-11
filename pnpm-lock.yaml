@@ -71,9 +71,9 @@ importers:
       '@studiocms/mdx':
         specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@9f45a21
         version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/mdx@9f45a21(@studiocms/md@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@9f45a21(@astrojs/markdown-remark@6.3.7)(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.14)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@9f45a21(8ed8ce9f8a8227c0c743f0f77e40a609))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)))(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.14)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@9f45a21(8ed8ce9f8a8227c0c743f0f77e40a609))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
-      '@studiocms/storage-s3':
+      '@studiocms/s3-storage':
         specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/s3-storage@9f45a21
-        version: '@studiocms/s3-storage@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/s3-storage@9f45a21(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.14)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@9f45a21(8ed8ce9f8a8227c0c743f0f77e40a609))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))'
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/s3-storage@9f45a21(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.14)(studiocms@https://pkg.pr.new/withstudiocms/studiocms@9f45a21(8ed8ce9f8a8227c0c743f0f77e40a609))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
       '@studiocms/ui':
         specifier: 1.0.0
         version: 1.0.0(astro@5.13.11(@types/node@24.5.2)(jiti@2.6.0)(rollup@4.52.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
