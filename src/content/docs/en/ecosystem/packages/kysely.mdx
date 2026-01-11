@@ -99,7 +99,11 @@ export const getUsers = Effect.gen(function* () {
 	const getUsers = withDecoder({
 		decoder: Schema.Array(StudioCMSUsersTable.Select),
 		callbackFn: (db) =>
-			db((client) => client.selectFrom('StudioCMSUsersTable').selectAll().execute()),
+			db((client) => 
+				client.selectFrom('StudioCMSUsersTable')
+				.selectAll()
+				.execute()
+			),
 	});
 
 	const users = yield* getUsers();
@@ -140,7 +144,11 @@ export const insertUser = Effect.gen(function* () {
 	const insertUser = withEncoder({
 		encoder: StudioCMSUsersTable.Insert,
 		callbackFn: (db, newUser) =>
-			db((client) => client.insertInto('StudioCMSUsersTable').values(newUser).executeTakeFirst()),
+			db((client) => 
+				client.insertInto('StudioCMSUsersTable')
+				.values(newUser)
+				.executeTakeFirst()
+			),
 	});
 
 	const data = {
@@ -257,7 +265,10 @@ export const insertUser = Effect.gen(function* () {
 		decoder: Schema.UndefinedOr(StudioCMSUsersTable.Select),
 		callbackFn: (db, id) =>
 			db((client) =>
-				client.selectFrom('StudioCMSUsersTable').selectAll().where('id', '=', id).executeTakeFirst()
+				client.selectFrom('StudioCMSUsersTable')
+				.selectAll()
+				.where('id', '=', id)
+				.executeTakeFirst()
 			),
 	});
 

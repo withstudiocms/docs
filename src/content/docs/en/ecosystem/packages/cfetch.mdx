@@ -116,7 +116,12 @@ const effect = cFetchEffect<{ foo: string; bar: number; }>(
   'https://api.example.com/data',
   (res) => res.json(),
   { method: "GET" },
-  { ttl?: Duration.hours(1), tags?: ['example'], key?: "api-data-fetch", verbose?: false }
+  { 
+    ttl?: Duration.hours(1), 
+    tags?: ['example'], 
+    key?: "api-data-fetch", 
+    verbose?: false 
+  }
 );
 /*
 Return type:
