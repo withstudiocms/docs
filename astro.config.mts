@@ -124,7 +124,7 @@ export default defineConfig({
 							tag: 'script' as const,
 							attrs: {
 								src: 'https://analytics.studiocms.cloud/script.js',
-								'data-website-id': '2670ef85-9da5-4bc1-bac8-143b6c554c2c',
+								'data-website-id': 'df41245d-b3bc-47b5-b45a-c8819e542183',
 								defer: true,
 							},
 						},
