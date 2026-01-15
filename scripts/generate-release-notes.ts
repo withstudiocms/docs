@@ -9,7 +9,7 @@ const preBranch: string =
 	'https://raw.githubusercontent.com/withstudiocms/studiocms/changeset-release/main/packages/studiocms/CHANGELOG.md';
 
 // Allow Switching into a pre-release mode for development of pre-release docs
-const pre = true;
+const pre = false;
 
 const changelogUrl = pre ? preBranch : mainBranch;
 
