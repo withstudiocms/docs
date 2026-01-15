@@ -2,6 +2,7 @@
   "topic-learn": "Learn",
   "topic-package-catalog": "Package Catalog",
   "topic-references": "References",
+  "topic-ecosystem": "Ecosystem",
   "start-here": "Start Here",
   "contributing": "Contributing Guides",
   "how-it-works": "Understanding StudioCMS",
@@ -18,5 +19,11 @@
   "upgrade": "Upgrade",
   "version": "Version Guides",
   "latest": "Latest Upgrade Guide",
-  "custom-frontend": "Custom Frontends"
+  "custom-frontend": "Custom Frontends",
+  "storage-api": "Storage API",
+  "storage-managers": "Storage Managers",
+  "ecosystem-overview": "Overview",
+  "ecosystem-packages": "Ecosystem Packages",
+  "ecosystem-bots": "Ecosystem Bots",
+  "features": "Features"
 }

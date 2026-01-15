@@ -49,6 +49,19 @@ async function fetchChangelog(url: string): Promise<string> {
 	}
 }
 
+function replaceLegacyChangelogUrl(url: string): string {
+	const markdownLinkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+
+	return url.replace(markdownLinkRegex, (match, text, link) => {
+		// If link is a relative link to a CHANGELOG.<placeholder>.md file, replace it with the full URL
+		if (link.startsWith('./CHANGELOG.') && link.endsWith('.md')) {
+			const newLink = `https://github.com/withstudiocms/studiocms/blob/main/packages/studiocms/${link.replace('./', '')}`;
+			return `[${text}](${newLink})`;
+		}
+		return match;
+	});
+}
+
 export async function loadChangelog(url: string): Promise<Changelog> {
 	let markdown = await fetchChangelog(url);
 
@@ -57,6 +70,9 @@ export async function loadChangelog(url: string): Promise<Changelog> {
 		/(Thank[^.!]*? )@([a-z0-9-]+)(?=[\s,.!])/gi,
 		'$1[@$2](https://github.com/$2)'
 	);
+
+	// Replace legacy changelog links
+	markdown = replaceLegacyChangelogUrl(markdown);
 
 	const ast = fromMarkdown(markdown);
 

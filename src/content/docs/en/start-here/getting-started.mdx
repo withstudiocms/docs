@@ -21,7 +21,7 @@ import { sponsors, SponsorLink } from '~/share-link'
 <LinkCard title="Upgrading StudioCMS to Latest" href="/en/guides/upgrade/latest/" description="Looking to Upgrade to the latest version? Look here!" />
 
 <Aside type="caution" title="Attention">
-This guide was recently revised for major changes in StudioCMS `0.1.0-beta.31`. If you've previously read this guide, please the review the changes carefully to ensure you are up to date with the latest setup instructions.
+This guide was recently revised for changes in StudioCMS `v0.1.0`. If you've previously read this guide, please the review the changes carefully to ensure you are up to date with the latest setup instructions.
 
 Or if you are upgrading from a previous version of StudioCMS, please see the [Upgrading StudioCMS to Latest](/en/guides/upgrade/latest/) guide for more information.
 </Aside>
@@ -285,7 +285,7 @@ You will also need to install the necessary database client packages for your ch
 
 <Tabs syncKey='db-setup-method'>     
   <TabItem label="libSQL (default)" icon="database">
-    <PackageManagers type='add' pkg="@libsql/client @libsql/kysely-libsql" />
+    <PackageManagers type='add' pkg="@libsql/client kysely-turso" />
   </TabItem>
   <TabItem label="MySQL" icon="database">
     <PackageManagers type='add' pkg="mysql2" />
@@ -373,6 +373,55 @@ The following paths are examples of the callback URL for each provider:
 | [Discord](/en/package-catalog/studiocms-plugins/studiocms-discord/) | `/studiocms_api/auth/discord/callback` |
 | [Google](/en/package-catalog/studiocms-plugins/studiocms-google/)   | `/studiocms_api/auth/google/callback` |
 | [Auth0](/en/package-catalog/studiocms-plugins/studiocms-auth0/)     | `/studiocms_api/auth/auth0/callback` |
+
+### Configure Storage API Manager (optional) <Badge text='Added in v0.1.0' variant='success' />
+
+StudioCMS supports using different Storage API Managers to handle file and image storage. By default, StudioCMS uses a built-in no-op storage manager that does not store any files or images.
+
+To configure a different Storage API Manager, you will need to install the appropriate plugin and configure it in your `studiocms.config.mjs` file.
+
+<ReadMore>For more information about the Storage API see, [Storage API Docs](/en/storage-api/)</ReadMore>
+<ReadMore>For available storage manager plugins, see the [Package catalog](/en/package-catalog#storage-managers).</ReadMore>
+
+#### Example: Configure S3 Storage Manager
+
+<Steps>
+
+1. Install the `@studiocms/s3-storage` plugin:
+
+   <PackageManagers type='add' pkg='@studiocms/s3-storage' />
+
+2. Update your `studiocms.config.mjs` file to use the S3 Storage Manager:
+
+   ```ts title="studiocms.config.mjs" ins={2, 5}
+   import { defineStudioCMSConfig } from 'studiocms/config';
+   import s3Storage from '@studiocms/s3-storage';
+
+   export default defineStudioCMSConfig({
+      storageManager: s3Storage(),
+   });
+   ```
+
+3. Set the required environment variables for the S3 Storage Manager in your `.env` file:
+
+   <Aside type="tip" title="Supported S3 Providers">
+   StudioCMS's S3 Storage Manager is built using the `@aws-sdk/client-s3` package, which supports any S3-compatible storage provider, including AWS S3, DigitalOcean Spaces, MinIO, and others.
+   </Aside>
+
+   ```sh title=".env"
+   CMS_S3_PROVIDER=ExampleS3Provider
+   CMS_S3_ACCESS_KEY_ID=<your-access-key-id>
+   CMS_S3_SECRET_ACCESS_KEY=<your-secret-access-key>
+   CMS_S3_BUCKET_NAME=<your-bucket-name>
+   # CMS_S3_ENDPOINT= # Optional: Specify a custom endpoint if required by your provider
+   # CMS_S3_REGION= # Optional: Specify the region if required by your provider
+   # CMS_S3_FORCE_PATH_STYLE= # Optional: Use path-style URLs for S3 objects
+   # CMS_S3_PUBLIC_ENDPOINT= # Optional: Custom public endpoint for accessing files
+   ```
+
+   <ReadMore>For more information about the Environment variables with the S3 Storage Manager see, [S3 Storage: Environment Variables](/en/package-catalog/storage-managers/s3-storage/#environment-variable-examples)</ReadMore>
+
+</Steps>
 
 ### Configure your `package.json` scripts
 

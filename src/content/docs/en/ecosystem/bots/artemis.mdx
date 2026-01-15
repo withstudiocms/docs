@@ -1,0 +1,205 @@
+---
+i18nReady: true
+title: Artemis Discord Bot
+type: github
+githubURL: "https://github.com/withstudiocms/bots/tree/main/packages/artemis"
+description: "Artemis Bot for StudioCMS"
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 6
+---
+
+Artemis is a powerful Effect based discord bot that is designed to interact with your Discord community and your Github Organization. Built for StudioCMS, open sourced for anyone to tweak to their hearts content.
+
+See this bot in action on the [StudioCMS Discord Server](https://chat.studiocms.dev).
+
+## Tech Stack
+- Effect-TS
+- Effect dfx
+- Drizzle ORM
+- libSQL
+- GroqAI API
+- GitHub API
+- Algolia
+
+## Features
+
+- Auto-threader bot
+- BlueSky discord repeater
+- Contribute Embed
+- Crowdin PTAL from repo dispatch
+- Docs Search with Algolia
+- Custom Event bus (primarily for HTTP -> discord communication)
+- GitHub issue from message app interaction
+- GitHub issue from thread command
+- No-Embed bot (stop people's messages from having embeds)
+- PTAL Service
+- Stars Graph
+- HTTP webserver for assets and webhook handling
+- `@` ping replies with AI interactions
+
+## Services
+
+### Auto-Threader
+
+Automatically create threads from every message in a channel
+
+To enable auto-threading in a channel, an administrator must add `[threads]` to the channel topic.
+
+### No-Embed
+
+Prevents embeds from appearing in messages in a channel.
+
+To enable no-embed in a channel, an administrator must add `[noembed]` to the channel topic.
+
+### Crowdin PTAL
+
+Automatically dispatch PTAL notifications when a Crowdin pull request is created.
+
+To enable Crowdin PTAL dispatch in a channel, an administrator must set up a repository dispatch event in their GitHub repository with the action type `crowdin.create` and the appropriate payload. Also requires the PTAL service to be configured in the server.
+
+## Commands
+
+### `bluesky`
+
+- **Minimum Permission**: Administrator
+
+Manage BlueSky account tracking and settings for this server.
+
+#### `list`
+
+- **Minimum Permission**: Administrator
+
+Lists all BlueSky accounts currently being tracked in this server.
+
+#### `subscribe <account> <top_level> <replies> <reposts>`
+
+- **Minimum Permission**: Administrator
+
+Subscribes the current channel to updates from the specified BlueSky account. The parameters `top_level`, `replies`, and `reposts` are booleans indicating whether to track those types of posts.
+
+#### `unsubscribe <account>`
+
+- **Minimum Permission**: Administrator
+
+Unsubscribes the current channel from updates from the specified BlueSky account.
+
+#### `settings`
+
+- **Minimum Permission**: Administrator
+
+View or modify BlueSky tracking settings for this server.
+
+##### `post_channel <channel>`
+
+- **Minimum Permission**: Administrator
+
+Sets the channel where BlueSky updates will be posted.
+
+##### `ping_role [role] [enable]`
+
+- **Minimum Permission**: Administrator
+
+Sets the role to ping for BlueSky updates and whether to enable or disable the ping.
+
+##### `view`
+
+- **Minimum Permission**: Administrator
+
+Views the current BlueSky tracking settings for this server.
+
+### `contribute`
+
+- **Minimum Permission**: N/A
+
+Creates a contributing guide embed for the current channel.
+
+### `crowdin-setup`
+
+- **Minimum Permission**: Administrator
+
+Set up a Crowdin embed in the current channel for a specified repository.
+
+#### `set <owner> <repo>`
+
+- **Minimum Permission**: Administrator
+
+Set up a new Crowdin embed listener in the current channel for the specified GitHub repository.
+
+#### `remove <owner> <repo>`
+
+- **Minimum Permission**: Administrator
+
+Remove the Crowdin embed from the current channel for the specified GitHub repository.
+
+#### `list`
+
+- **Minimum Permission**: Administrator
+
+List all Crowdin embeds in the current channel.
+
+### `docs <query> [hidden=false] [language=en]`
+
+- **Minimum Permission**: N/A
+
+Search the docs for a specific query using the Algolia Docsearch API.
+
+### `issue-from-thread <repository> <type> [title]`
+
+- **Minimum Permission**: N/A
+
+Create a GitHub issue from the current thread in the specified repository. The `type` parameter indicates the type of issue, and an optional `title` can be provided.
+
+### `issue-settings`
+
+- **Minimum Permission**: Administrator
+
+Manage issue command settings for this server.
+
+#### `add-repo <repository> <owner> <label>`
+
+- **Minimum Permission**: Administrator
+
+Add a repository to the issue command allow list.
+
+#### `remove-repo <repository-label>`
+
+- **Minimum Permission**: Administrator
+
+Removes a repository from the issue command allow list.
+
+#### `list-repos`
+
+- **Minimum Permission**: Administrator
+
+List all repositories in the issue command allow list.
+
+### `ptal <github-url> <description>`
+
+- **Minimum Permission**: N/A
+
+Sends a PTAL (Please Take A Look) notification for a pull request with the provided GitHub URL and description.
+
+### `ptal-settings`
+
+- **Minimum Permission**: Administrator
+
+Configure the PTAL service for this server.
+
+#### `set-ping-role <role>`
+
+- **Minimum Permission**: Administrator
+
+Set the role to ping for PTAL notifications.
+
+#### `view-settings`
+
+- **Minimum Permission**: Administrator
+
+View the current PTAL settings for this server.
+
+### `stars-graph <repository> [public=false]`
+
+- **Minimum Permission**: N/A
+
+Generate a star history graph for a GitHub repository. The repository should be in the format `owner/repo` (e.g., `facebook/react`). The optional `public` parameter indicates whether the generated graph should be publicly accessible.

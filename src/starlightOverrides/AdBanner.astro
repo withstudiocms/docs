@@ -1,6 +1,4 @@
 ---
-import { LinkButton } from '@astrojs/starlight/components';
-
 const hostingerUrl =
 	'https://www.hostinger.com/cart?product=vps%3Avps_kvm_2&period=12&referral_type=cart_link&REFERRALCODE=STUDIOCMS&referral_id=019b8cb3-2aeb-7238-beed-5344a0189b55';
 
@@ -8,11 +6,13 @@ const headingId = `studiocms-hostinger-ad-${Math.random().toString(36).substring
 ---
 <div class="container" lang="en" dir="ltr" data-algolia-exclude>
 	<aside aria-labelledby={headingId}>
-		<svg width="48" height="48" viewBox="0 0 755 792" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="295" width="460" height="466" rx="32" fill="currentColor"/>
-            <path d="M272 434V166H180C162.327 166 148 180.327 148 198V597C148 614.673 162.327 629 180 629H577.5C595.173 629 609.5 614.673 609.5 597V490H328C297.072 490 272 464.928 272 434Z" fill="currentColor"/>
-            <path d="M124 597V329H32C14.3269 329 0 343.327 0 361V760C0 777.673 14.3269 792 32 792H429.5C447.173 792 461.5 777.673 461.5 760V653H180C149.072 653 124 627.928 124 597Z" fill="currentColor"/>
-        </svg>
+		<svg width="48" height="48" viewBox="0 0 241 280" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			<g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+				<g id="Hostinger_Logo" fill="#673DE6" fill-rule="nonzero">
+					<path d="M0.0023646896,131.09619 L0.0023646896,0.00469424535 L66.4666954,35.2842952 L66.4666954,94.3472904 L154.452066,94.3895386 L221.994695,131.09619 L0.0023646896,131.09619 Z M172.444989,83.5387903 L172.444989,0 L240.701754,34.401777 L240.701754,123.010352 L172.444989,83.5387903 Z M172.444989,243.765119 L172.444989,185.211451 L83.7809526,185.150425 C83.8637166,185.540048 15.1174606,147.856993 15.1174606,147.856993 L240.701754,148.910851 L240.701754,280 L172.444989,243.765119 Z M0,243.765119 L0.0023646896,158.099837 L66.4666954,196.637244 L66.4666954,278.164551 L0,243.765119 Z" id="Fill-15"></path>
+				</g>
+			</g>
+		</svg>
 		<h3 id={headingId}>Power your <strong>StudioCMS</strong> site with Hostinger</h3>
 		<p class="sl-flex">
 			<span class="sl-flex" style="gap: 0.25rem; align-items: center;">
@@ -21,20 +21,21 @@ const headingId = `studiocms-hostinger-ad-${Math.random().toString(36).substring
 			<span>•</span>
 			<span>Perfect for CMS hosting</span>
 		</p>
-		<LinkButton href={hostingerUrl} class="cta">
+		<a class="cta sl-link-button not-content" href={hostingerUrl}>
 			<span>Get started with <strong>Hostinger VPS</strong></span>
-		</LinkButton>
+		</a>
 	</aside>
 </div>
 <style>
 	.container {
+		--hostinger-brand-color: #673de6;
 		container-type: inline-size;
 		max-width: 45rem;
 		margin-inline: auto;
 	}
 	aside {
 		margin-top: 2rem;
-		border: 1px solid var(--sl-color-accent);
+		border: 1px solid var(--hostinger-brand-color);
 		border-radius: 0.5rem;
 		padding: 1rem;
 		background-color: var(--sl-color-gray-6);
@@ -79,11 +80,22 @@ const headingId = `studiocms-hostinger-ad-${Math.random().toString(36).substring
 		justify-content: center;
 		font-size: var(--sl-text-sm) !important;
 		font-weight: 500;
+		padding: 0.4375rem 1.125rem;
 		padding-block: 0.6875rem !important;
 		transition: opacity 200ms ease-out;
+		border: 1px solid transparent;
+		border-radius: 999rem;
+		display: inline-flex;
+		gap: 0.5em;
+		line-height: 1.1875;
+		outline-offset: 0.25rem;
+		text-decoration: none;
+		border-color: var(--hostinger-brand-color) !important;
 	}
 	.cta:hover {
 		opacity: 0.8;
+		background: color-mix(in srgb, var(--hostinger-brand-color) 90%, white 10%) !important;
+		color: var(--sl-color-black) !important;
 	}
 	.cta strong {
 		text-transform: uppercase;
@@ -115,5 +127,19 @@ const headingId = `studiocms-hostinger-ad-${Math.random().toString(36).substring
 		.cta {
 			margin-top: 0;
 		}
+	}
+
+	@media (min-width: 50rem) {
+		.sl-link-button {
+			font-size: var(--sl-text-base);
+			padding: 0.9375rem 1.25rem;
+		}
+	}
+
+	:global(.sl-markdown-content) .sl-link-button {
+		margin-inline-end: 1rem;
+	}
+	:global(.sl-markdown-content) .sl-link-button:not(:where(p *)) {
+		margin-block: 1rem;
 	}
 </style>

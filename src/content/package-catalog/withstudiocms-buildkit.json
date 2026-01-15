@@ -1,0 +1,9 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@withstudiocms/buildkit",
+  "description": "This is an esbuild based CLI kit for building Astro Integrations.",
+  "docsLink": "/en/ecosystem/packages/buildkit/",
+  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/@withstudiocms/buildkit/",
+  "catalog": "internal",
+  "isPlugin": false
+}

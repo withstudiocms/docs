@@ -1,0 +1,55 @@
+---
+i18nReady: true
+title: JavaScript Helpers
+description: Learn about the JavaScript helpers available in the StudioCMS Storage API.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
+sidebar:
+  order: 2
+  badge:
+    text: NEW
+    variant: success
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+The StudioCMS Storage API provides several JavaScript helpers to facilitate interaction with storage backends. These helpers simplify tasks such as resolving storage identifiers and keys, as well as providing type definitions for better type safety and code completion.
+
+## JavaScript helpers
+
+```ts twoslash title="storage-api-example.ts"
+import {
+    resolveStorageIdentifier,
+    resolveStorageKey,
+} from 'studiocms/storage-api';
+
+const storageIdentifier = await resolveStorageIdentifier('storage-file://my-file.txt', {
+    baseUrl: 'https://example.com/', // Use the value of `site` from "astro:config/server"
+});
+
+const storageKey = await resolveStorageKey('my-file.txt', {
+    baseUrl: 'https://example.com/', // Use the value of `site` from "astro:config/server"
+});
+```
+
+## JavaScript Types
+
+```ts twoslash title="storage-api-types.ts"
+import type {
+    ContextJsonBody,
+    AuthorizationType,
+    ParsedContext,
+    UrlMetadata,
+    UrlMapping,
+    ContextHandler,
+    ContextHandlerFn,
+    ContextDriverDefinition,
+    StorageAPIEndpointFn,
+    StorageApiBuilderDefinition,
+    UrlMappingDatabaseDefinition,
+    UrlMappingServiceDefinition,
+    APICoreDefinition
+} from 'studiocms/storage-api';
+```

@@ -1,0 +1,9 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@studiocms/s3-storage",
+  "description": "StudioCMS S3 Storage Manager plugin, Provides AWS S3 Storage Support for StudioCMS.",
+  "docsLink": "/package-catalog/storage-managers/s3-storage/",
+  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/@studiocms/s3/",
+  "catalog": "storage-managers",
+  "isPlugin": true
+}
