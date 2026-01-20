@@ -68,6 +68,24 @@ export default defineStudioCMSConfig({
 })
 ```
 
+## `storageManager`
+
+`storageManager` est utilisé pour configurer le module d'extension de gestion de stockage pour StudioCMS.
+
+- **Type :** `StudioCMSStorageManager`
+- **Par défaut :** `undefined`
+
+### Utilisation
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+import s3Storage from '@studiocms/s3-storage';
+export default defineStudioCMSConfig({
+  storageManager: s3Storage(),
+})
+```
+
 ## `verbose`
 
 `verbose` est un booléen utilisé pour activer ou désactiver la journalisation détaillée.
@@ -136,7 +154,7 @@ import { defineStudioCMSConfig } from 'studiocms/config';
 // ---cut---
 export default defineStudioCMSConfig({
   componentRegistry: {
-    'my-component': 'src/components/MyComponent.astro',
+    'my-component': './src/components/MyComponent.astro',
   },
 })
 ```

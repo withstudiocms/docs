@@ -4,9 +4,6 @@ title: Les fondamentaux
 description: Découvrez les modules d’extension de StudioCMS et leur fonctionnement.
 sidebar:
   order: 1
-  badge:
-    text: Mis à jour
-    variant: success
 ---
 
 import { Badge } from '@astrojs/starlight/components';
@@ -94,7 +91,7 @@ const monIntegration = (options: Options): AstroIntegration => ({
 export const monModuleExtension = (options: Options) => definePlugin({
     identifier: 'mon-module-extension',
     name: "Mon module d’extension",
-    studiocmsMinimumVersion: '0.1.0-beta.31',
+    studiocmsMinimumVersion: '0.1.0',
     hooks: {
       'studiocms:astro-config': ({ addIntegrations }) => {
         addIntegrations(monIntegration(options)) // Facultatif, mais recommandé
@@ -103,7 +100,7 @@ export const monModuleExtension = (options: Options) => definePlugin({
 });
 ```
 
-Dans cet exemple, nous définissons un module d’extension pour StudioCMS appelé `Mon module d’extension` qui nécessite la version `0.1.0-beta.31` ou supérieure de StudioCMS. Le module d’extension fournit également une intégration Astro qui enregistre un message dans la console lorsque le crochet `astro:config:setup` est appelé.
+Dans cet exemple, nous définissons un module d’extension pour StudioCMS appelé `Mon module d’extension` qui nécessite la version `v0.1.0` ou supérieure de StudioCMS. Le module d’extension fournit également une intégration Astro qui enregistre un message dans la console lorsque le crochet `astro:config:setup` est appelé.
 
 <ReadMore>Pour plus d’informations sur la création de modules d’extension, consultez le guide [Rendre les modules d’extension utiles][extended-plugins]</ReadMore>
 
