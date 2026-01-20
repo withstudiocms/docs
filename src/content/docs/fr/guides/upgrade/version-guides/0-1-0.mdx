@@ -1,0 +1,60 @@
+---
+i18nReady: true
+title: "Mise à niveau : v0.1.0"
+description: Mettre à niveau StudioCMS vers la v0.1.0
+topic: guides
+sidebar:
+  label: v0.1.0
+  badge:
+    text: NOUVEAU
+    variant: success
+  order: 999983
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import { PackageManagers } from 'starlight-package-managers'
+import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/components';
+
+StudioCMS `0.1.0` introduit plusieurs changements avec rupture de compatibilité, de nouvelles fonctionnalités et des corrections de bugs. Ce guide vous aidera à effectuer la mise à niveau en toute simplicité.
+
+## Modifications avec rupture de compatibilité
+- Remplacement de `@libsql/kysely-libsql` par `kysely-turso` pour le client de base de données Turso. Si vous utilisiez `@libsql/kysely-libsql` dans votre projet, veuillez mettre à jour vos dépendances pour utiliser `kysely-turso` à la place.
+  - **Étapes de la migration :**
+  <Steps>
+  1. Supprimez `@libsql/kysely-libsql` de vos dépendances dans `package.json`.
+
+     <PackageManagers type="remove" pkg="@libsql/kysely-libsql" />
+
+  2. Installez `kysely-turso` en exécutant :
+
+     <PackageManagers type="add" pkg="kysely-turso" />
+  </Steps>
+- Suppression de la variable de configuration de site dépréciée `hideDefaultIndex` du SDK et met à jour toutes les occurrences de son utilisation dans StudioCMS.
+  - À noter pour ceux qui utilisaient cette fonctionnalité : elle a été entièrement supprimée désormais. Les utilisateurs devront adapter tout code reposant sur cette fonctionnalité.
+- Migration des importations de tables vers la nouvelle exportation `@withstudiocms/sdk/tables` et mise à jour des importations concernées.
+- Migration du système de migration vers le SDK StudioCMS et mise à jour des importations pour Migrator vers `@withstudiocms/sdk/migrator`.
+
+## Nouvelles fonctionnalités
+- Ajout d’une nouvelle API de stockage pour les fichiers et les ressources de StudioCMS.  
+  - Cette nouvelle API offre une méthode standardisée pour gérer les fichiers et les ressources au sein de StudioCMS, permettant une meilleure intégration avec différents systèmes de stockage.  
+  - Consultez la [Documentation de l’API de stockage](/fr/storage-api/) pour plus de détails sur la façon d’utiliser la nouvelle API de stockage dans vos projets.
+- Implémente un nouveau système de rendu pour `FolderTree` et une barre latérale interne de gestion de contenu mise à jour
+- Implémente la gestion de la taxonomie dans le tableau de bord StudioCMS
+  - Ajoute la prise en charge de la taxonomie pour l’API REST et le SDK
+  - Ajoute une interface utilisateur de gestion de la taxonomie dans le tableau de bord de StudioCMS
+- Implémente une nouvelle interface utilisateur pour le registre des composants dans les pages d’édition de contenu et de gestion du système.
+- Résout un problème d’affichage des informations de débogage avec des sorties indisponibles en production.
+
+## Corrections de bugs et améliorations
+- Remanie les types de tables pour mieux les aligner sur les schémas de tables réels et améliorer la sûreté du typage dans l’ensemble du SDK.
+- Améliore la gestion des erreurs et la journalisation des opérations de base de données afin de faciliter le débogage et la maintenance.
+- Corrige divers problèmes CSS sur toutes les pages du tableau de bord et d’authentification.
+- Garantit que l’élément personnalisé DB Studio est défini si la barre d’outils de développement est absente.
+- Retravaille la CLI pour corriger la gestion du code asynchrone/synchrone pour la commande `studiocms users`
+- Remplacement de toutes les occurrences de `.returning()`/`returningAll()` par des transactions afin de prendre en charge correctement les dialectes SQL qui ne gèrent pas les renvois, tels que MySQL.
+
+**Lectures complémentaires**
+
+<ReadMore>
+  Pour une liste complète des modifications apportées à cette version, veuillez vous référer au [journal des modifications](/fr/guides/upgrade/release-notes/#010-beta32).
+</ReadMore>
