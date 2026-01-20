@@ -35,8 +35,13 @@ Selon la base de données que vous utilisez avec StudioCMS, vous devrez configur
 CMS_LIBSQL_URL=libsql://votre-base-de-donnees.turso.io
 # CMS_LIBSQL_URL=file:./chemin/vers/votre/base-de-donnees.db
 CMS_LIBSQL_AUTH_TOKEN=<votre-jeton-authentification> (facultatif)
-CMS_LIBSQL_SYNC_INTERVAL= (facultatif)
-CMS_LIBSQL_SYNC_URL= (facultatif)
+# CMS_LIBSQL_ENCRYPTION_KEY=<string> (facultatif)
+# CMS_LIBSQL_SYNC_INTERVAL= (facultatif)
+# CMS_LIBSQL_SYNC_URL= (facultatif)
+# CMS_LIBSQL_READ_YOUR_WRITES=true/false (facultatif)
+# CMS_LIBSQL_OFFLINE_MODE=true/false (facultatif)
+# CMS_LIBSQL_TLS=true/false (facultatif) (aide à définir cette valeur sur « false » lors de l'utilisation d'instances sqld locales.)
+# CMS_LIBSQL_CONCURRENCY=<number> (facultatif)
 ```
 
 #### `MySQL`
@@ -47,6 +52,7 @@ CMS_MYSQL_USER=<utilisateur-de-votre-base-de-donnees>
 CMS_MYSQL_PASSWORD=<mot-de-passe-de-votre-base-de-donnees>
 CMS_MYSQL_HOST=<hebergeur-de-votre-base-de-donnees>
 CMS_MYSQL_PORT=<port-de-votre-base-de-donnees>
+# CMS_MYSQL_CONNECTION_LIMIT=<number> (facultatif)
 ```
 
 #### `PostgreSQL`
@@ -57,6 +63,7 @@ CMS_PG_USER=<utilisateur-de-votre-base-de-donnees>
 CMS_PG_PASSWORD=<mot-de-passe-de-votre-base-de-donnees>
 CMS_PG_HOST=<hebergeur-de-votre-base-de-donnees>
 CMS_PG_PORT=<port-de-votre-base-de-donnees>
+# CMS_PG_CONNECTION_LIMIT=<number> (facultatif)
 ```
 
 ### Clé de chiffrement pour `studiocms`
