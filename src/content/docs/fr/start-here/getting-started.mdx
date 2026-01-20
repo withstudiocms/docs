@@ -21,7 +21,7 @@ import { sponsors, SponsorLink } from '~/share-link'
 <LinkCard title="Mise à niveau de StudioCMS vers la dernière version" href="/fr/guides/upgrade/latest/" description="Vous souhaitez mettre à niveau vers la version la plus récente ? Regardez ici !" />
 
 <Aside type="caution" title="Attention">
-Ce guide a été récemment mis à jour suite aux modifications importantes apportées à StudioCMS `0.1.0-beta.31`. Si vous avez déjà consulté ce guide, veuillez examiner attentivement les modifications afin de vous assurer de disposer des instructions d'installation les plus récentes.
+Ce guide a été récemment mis à jour suite aux modifications apportées à StudioCMS `v0.1.0`. Si vous avez déjà consulté ce guide, veuillez examiner attentivement les modifications afin de vous assurer de disposer des instructions d'installation les plus récentes.
 
 Ou si vous effectuez une mise à niveau depuis une version précédente de StudioCMS, veuillez consulter le guide [Mise à niveau de StudioCMS vers la dernière version](/fr/guides/upgrade/latest/) pour plus d'informations.
 </Aside>
@@ -285,7 +285,7 @@ Vous devrez également installer les paquets clients de base de données nécess
 
 <Tabs syncKey='db-setup-method'>     
   <TabItem label="libSQL (par défaut)" icon="database">
-    <PackageManagers type='add' pkg="@libsql/client @libsql/kysely-libsql" />
+    <PackageManagers type='add' pkg="@libsql/client kysely-turso" />
   </TabItem>
   <TabItem label="MySQL" icon="database">
     <PackageManagers type='add' pkg="mysql2" />
@@ -373,6 +373,55 @@ Les chemins suivants sont des exemples d’URL de rappel pour chaque fournisseur
 | [Discord](/fr/package-catalog/studiocms-plugins/studiocms-discord/) | `/studiocms_api/auth/discord/callback` |
 | [Google](/fr/package-catalog/studiocms-plugins/studiocms-google/)   | `/studiocms_api/auth/google/callback` |
 | [Auth0](/fr/package-catalog/studiocms-plugins/studiocms-auth0/)     | `/studiocms_api/auth/auth0/callback` |
+
+### Configurer le gestionnaire d'API de stockage (facultatif) <Badge text='Ajouté dans la v0.1.0' variant='success' />
+
+StudioCMS prend en charge l'utilisation de différents gestionnaires d'API de stockage pour gérer le stockage des fichiers et des images. Par défaut, StudioCMS utilise un gestionnaire de stockage intégré qui ne stocke aucun fichier ni image.
+
+Pour configurer un autre gestionnaire d'API de stockage, vous devrez installer le module d'extension approprié et le configurer dans votre fichier `studiocms.config.mjs`.
+
+<ReadMore>Pour plus d'informations sur l'API de stockage, consultez la documentation de l'API de stockage ([Documentation de l'API de stockage](/fr/storage-api/)).</ReadMore>
+<ReadMore>Pour connaître les modules d'extension de gestion du stockage disponibles, consultez le [catalogue des paquets](/fr/package-catalog#storage-managers).</ReadMore>
+
+#### Exemple : Configurer le gestionnaire de stockage S3
+
+<Steps>
+
+1. Installez le module d'extension `@studiocms/s3-storage` :
+
+   <PackageManagers type='add' pkg='@studiocms/s3-storage' />
+
+2. Mettez à jour votre fichier `studiocms.config.mjs` pour utiliser le gestionnaire de stockage S3 :
+
+   ```ts title="studiocms.config.mjs" ins={2, 5}
+   import { defineStudioCMSConfig } from 'studiocms/config';
+   import s3Storage from '@studiocms/s3-storage';
+
+   export default defineStudioCMSConfig({
+      storageManager: s3Storage(),
+   });
+   ```
+
+3. Définissez les variables d'environnement requises pour le gestionnaire de stockage S3 dans votre fichier `.env` :
+
+   <Aside type="tip" title="Fournisseurs S3 pris en charge">
+   Le gestionnaire de stockage S3 de StudioCMS est construit à l'aide du paquet `@aws-sdk/client-s3`, qui prend en charge tout fournisseur de stockage compatible S3, y compris AWS S3, DigitalOcean Spaces, MinIO et autres.
+   </Aside>
+
+   ```sh title=".env"
+   CMS_S3_PROVIDER=ExempleDeFournisseurS3
+   CMS_S3_ACCESS_KEY_ID=<id-de-votre-clé-d-accès>
+   CMS_S3_SECRET_ACCESS_KEY=<votre-clé-d-accès-secrète>
+   CMS_S3_BUCKET_NAME=<nom-de-votre-seau>
+   # CMS_S3_ENDPOINT= # Facultatif : Spécifiez un point de terminaison personnalisé si votre fournisseur l’exige.
+   # CMS_S3_REGION= # Facultatif : Indiquez la région si votre fournisseur l’exige.
+   # CMS_S3_FORCE_PATH_STYLE= # Facultatif : utiliser des URL de type chemin pour les objets S3
+   # CMS_S3_PUBLIC_ENDPOINT= # Facultatif : point de terminaison public personnalisé pour accéder aux fichiers
+   ```
+
+   <ReadMore>Pour plus d'informations sur les variables d'environnement avec le gestionnaire de stockage S3, consultez [Stockage S3 : Variables d'environnement](/fr/package-catalog/storage-managers/s3-storage/#environment-variable-examples)</ReadMore>
+
+</Steps>
 
 ### Configurer les scripts de votre `package.json`
 
