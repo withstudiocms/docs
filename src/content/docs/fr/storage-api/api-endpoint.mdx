@@ -1,0 +1,140 @@
+---
+i18nReady: true
+title: Point de terminaison de l'API
+description: Découvrez les points de terminaison de l'API disponibles dans l'API de stockage de StudioCMS.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
+sidebar:
+  order: 3
+  badge:
+    text: NOUVEAU
+    variant: success
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+L'API de stockage expose des points de terminaison accessibles via des requêtes HTTP. Les sections suivantes décrivent les points de terminaison disponibles et leur utilisation.
+
+<Aside type="note" title="Utilise locals pour l'autorisation">
+Les points de terminaison de l'API de stockage utilisent la fonctionnalité `locals` d'Astro, propagée par le middleware, pour gérer l'autorisation. Assurez-vous que le navigateur ou le client effectuant les requêtes provient d'un utilisateur StudioCMS connecté et disposant des autorisations nécessaires pour effectuer des opérations de stockage.
+</Aside>
+
+### Méthode : PUT
+
+Pour télécharger ou mettre à jour un fichier dans le système de stockage, vous pouvez utiliser la méthode `PUT` dans le point de terminaison `/studiocms_api/storage/manager`.
+
+```http title="API de stockage - PUT /studiocms_api/storage/manager"
+PUT /studiocms_api/storage/manager HTTP/1.1
+Host: example.com
+Content-Type: application/octet-stream
+Accept: application/json
+Headers:
+  x-storage-key: my-file.txt
+
+<file-content>
+```
+
+#### Réponse de succès
+
+```http title="API de stockage - PUT Réponse de succès"
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "message": "string", 
+  "key": "string"
+}
+```
+
+#### Réponse d'erreur
+
+```http title="API de stockage - PUT Réponse d'erreur"
+HTTP/1.1 4XX/5XX Error
+Content-Type: application/json
+
+{
+  "error": "string"
+}
+```
+
+### Méthode : POST
+
+```http title="API de stockage - POST /studiocms_api/storage/manager"
+POST /studiocms_api/storage/manager HTTP/1.1
+Host: example.com
+Content-Type: application/json
+Accept: application/json
+
+{
+  "action": "resolveUrl | publicUrl | upload | list | delete | rename | download | cleanup | mappings | test",
+  ...paramètres supplémentaires reposant sur l'action...
+}
+```
+
+#### Actions
+
+- `resolveUrl`
+  - **Paramètres :** `{ identifier: string }`
+  - **Réponse :** [`UrlMetadata`](#urlmetadata)
+- `publicUrl`
+  - **Paramètres :** `{ key: string }`
+  - **Réponse :** [`UrlMetadata`](#urlmetadata) `& { identifier: string }`
+- `upload`
+  - **Paramètres :** `{ key: string, contentType: string }`
+  - **Réponse :** `{ url: string, key: string }`
+- `list`
+  - **Paramètres :** `{ prefix?: string, key?: string }`
+  - **Réponse :** `{ files:` [`File[]`](#file) `}`
+- `delete`
+  - **Paramètres :** `{ key: string }`
+  - **Réponse :** `{ success: boolean }`
+- `rename`
+  - **Paramètres :** `{ key: string, newKey: string }`
+  - **Réponse :** `{ success: boolean, newKey: string }`
+- `download`
+  - **Paramètres :** `{ key: string }`
+  - **Réponse :** `{ url: string }`
+- `cleanup`
+  - **Paramètres :** `N/A`
+  - **Réponse :** `{ deletedCount: number }`
+- `mappings`
+  - **Paramètres :** `N/A`
+  - **Réponse :** `{ mappings:` [`UrlMetadata[]`](#urlmetadata) `}`
+- `test`
+  - **Paramètres :** `N/A`
+  - **Réponse :** `{ success: boolean, message: string, provider: string }`
+
+#### Réponse d'erreur
+
+```http title="Storage API - POST Réponse d'erreur"
+HTTP/1.1 4XX/5XX Error
+Content-Type: application/json
+
+{
+  "error": "string"
+}
+```
+
+## Types
+
+### UrlMetadata
+
+```ts
+export interface UrlMetadata {
+    url: string;
+    isPermanent: boolean;
+    expiresAt?: number; // Horodatage Unix en ms
+}
+```
+
+### File
+
+```ts
+export interface File {
+    key: string | undefined;
+    size: number | undefined;
+    lastModified: Date | undefined;
+}
+```
