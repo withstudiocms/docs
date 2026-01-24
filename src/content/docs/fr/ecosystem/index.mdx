@@ -1,0 +1,42 @@
+---
+title: Vue d'ensemble de l'écosystème
+topic: ecosystem
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+
+L'écosystème StudioCMS est une collection dynamique et en constante expansion d'outils, de modules d'extension et d'intégrations qui enrichissent les fonctionnalités de base de StudioCMS ou étendent le framework Astro. Ces modules écosystémiques sont développés à la fois par l'équipe StudioCMS et par la communauté au sens large, offrant aux utilisateurs un large éventail d'options pour personnaliser et optimiser leur expérience avec StudioCMS.
+
+## Paquets mis en avant
+
+### Bibliothèque d'interface utilisateur de StudioCMS
+
+`@withstudiocms/ui` est une bibliothèque complète de composants d'interface utilisateur conçue spécifiquement pour la création d'interfaces utilisateur au sein des projets StudioCMS. Elle propose un large éventail de composants prédéfinis et personnalisables, conformes aux principes de conception de StudioCMS, facilitant ainsi la création d'interfaces cohérentes et esthétiques.
+
+<ReadMore>
+  Apprenez-en davantage sur la bibliothèque d'interface utilisateur de StudioCMS dans la [documentation de la bibliothèque d'interface utilisateur](/fr/ecosystem/packages/studiocms-ui/).
+</ReadMore>
+
+### Langage de modèles
+
+`@withstudiocms/template-lang` est un moteur de modèles léger et flexible conçu pour le rendu de contenu dynamique dans les projets StudioCMS. Il prend en charge l'interpolation de variables, ce qui facilite la création de modèles dynamiques pour les e-mails, les documents et les pages web.
+
+<ReadMore>
+  Apprenez-en davantage sur le langage de modèles dans la [documentation des langages de modèles](/fr/ecosystem/packages/template-lang/).
+</ReadMore>
+
+### Client de base de données Kysely
+
+`@withstudiocms/kysely` est un générateur de requêtes SQL à typage statique pour TypeScript, construit à l'aide de la bibliothèque Kysely. Il offre une méthode puissante et flexible pour interagir avec les bases de données tout en garantissant la sûreté du typage et en réduisant les erreurs d'exécution. Ce paquet est utilisé en interne par StudioCMS pour les opérations de base de données, mais peut également être utilisé directement dans vos projets.
+
+<ReadMore>
+  Pour en savoir plus sur le client de base de données Kysely, consultez la [documentation de Kysely](/fr/ecosystem/packages/kysely/).
+</ReadMore>
+
+### CFetch
+
+`@studiocms/cfetch` est une intégration Astro qui fournit une fonction de récupération avec mise en cache pour les projets Astro SSR. Elle améliore l'API de récupération standard en ajoutant des fonctionnalités de mise en cache, vous permettant de mettre en cache les réponses et d'améliorer les performances des applications rendues côté serveur.
+
+<ReadMore>
+  Apprenez-en davantage sur CFetch dans la [documentation de CFetch](/fr/ecosystem/packages/cfetch/).
+</ReadMore>
