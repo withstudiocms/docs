@@ -1,0 +1,93 @@
+---
+i18nReady: true
+title: Vue d'ensemble
+description: Découvrez l'API de stockage de StudioCMS
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
+sidebar:
+  order: 1
+  badge:
+    text: NOUVEAU
+    variant: success
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+L'API de stockage de StudioCMS offre une méthode unifiée pour gérer et interagir avec différents systèmes de stockage. Elle simplifie la complexité de ces systèmes, permettant ainsi aux développeurs de travailler avec une interface cohérente quelle que soit la technologie sous-jacente.
+
+## Son fonctionnement
+
+L'API de stockage est conçue pour être flexible et extensible. Elle prend en charge plusieurs systèmes de stockage, notamment les systèmes de fichiers locaux, les services de stockage cloud et les bases de données. Les développeurs peuvent choisir le système de stockage le mieux adapté à leurs besoins et passer facilement de l'un à l'autre sans modifier le code de leur application.
+
+## Modules d'extension de gestionnaire
+
+L'API de stockage utilise des modules d'extension de gestionnaire pour gérer différents systèmes de stockage. Chaque module d'extension de gestionnaire implémente un système de stockage spécifique et fournit des méthodes pour les opérations courantes telles que la lecture, l'écriture et la suppression de fichiers.
+
+Un exemple de gestionnaire intégré à StudioCMS est le gestionnaire `no-op`, qui n'effectue aucune opération et indique à StudioCMS de ne pas activer ses fonctionnalités de stockage.
+
+### Exemple de gestionnaire sans opération
+
+```ts twoslash title="NoOpStorageService.ts"
+import type {
+	AuthorizationType,
+	ContextDriverDefinition,
+	StorageAPIEndpointFn,
+	StorageApiBuilderDefinition,
+	UrlMappingServiceDefinition,
+} from 'studiocms/storage-manager/definitions';
+
+/**
+ * A No-Op Storage Service that implements the StorageApiBuilderDefinition interface.
+ *
+ * This service provides placeholder implementations for storage API endpoints,
+ * returning a 501 Not Implemented response for both POST and PUT requests.
+ *
+ * @typeParam C - The context type.
+ * @typeParam R - The response type.
+ */
+export default class NoOpStorageService<C, R> implements 
+  StorageApiBuilderDefinition<C, R> {
+    driver: ContextDriverDefinition<C, R>;
+    urlMappingService: UrlMappingServiceDefinition;
+
+    constructor(
+      driver: ContextDriverDefinition<C, R>,
+      urlMappingService: UrlMappingServiceDefinition
+    ) {
+      this.driver = driver;
+      this.urlMappingService = urlMappingService;
+    }
+
+    #sharedResponse() {
+      return { data: { error: 'noStorageConfigured' }, status: 501 };
+    }
+
+    getPOST(_?: AuthorizationType): StorageAPIEndpointFn<C, R> {
+      return this.driver.handleEndpoint(async () => this.#sharedResponse());
+    }
+
+    getPUT(_?: AuthorizationType): StorageAPIEndpointFn<C, R> {
+      return this.driver.handleEndpoint(async () => this.#sharedResponse());
+    }
+}
+```
+
+### Configuration d'un gestionnaire
+
+Pour configurer un gestionnaire de stockage dans StudioCMS, vous devez spécifier le module d'extension de gestionnaire souhaité dans votre fichier de configuration StudioCMS. Pour ce faire, vous devez installer le paquet du module d'extension de gestionnaire, puis l'ajouter à la propriété `storageManager` dans votre fichier `studiocms.config.*`.
+
+```ts twoslash title="studiocms.config.mjs" {5}
+import { defineStudioCMSConfig } from "studiocms/config";
+import s3Storage from '@studiocms/s3-storage';
+
+export default defineStudioCMSConfig({
+    storageManager: s3Storage(),
+    // autres options de configuration
+})
+```
+
+<ReadMore>
+Pour connaître les modules d'extension de gestionnaire de stockage disponibles, consultez le [catalogue des paquets](/fr/package-catalog#gestionnaires-de-stockage).
+</ReadMore>

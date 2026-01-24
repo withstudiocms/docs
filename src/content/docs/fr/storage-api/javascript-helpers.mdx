@@ -1,0 +1,55 @@
+---
+i18nReady: true
+title: Fonctions d'assistance JavaScript
+description: Découvrez les fonctions d'assistance JavaScript disponibles dans l'API de stockage de StudioCMS.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
+sidebar:
+  order: 2
+  badge:
+    text: NOUVEAU
+    variant: success
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+L'API de stockage de StudioCMS fournit plusieurs fonctions d'assistance JavaScript pour faciliter l'interaction avec les systèmes de stockage. Ces fonctions d'assistance simplifient des tâches telles que la résolution des identifiants et des clés de stockage, ainsi que la fourniture de définitions de type pour une sûreté du typage et une complétion de code améliorées.
+
+## Fonctions d'assistance JavaScript
+
+```ts twoslash title="exemple-api-stockage.ts"
+import {
+    resolveStorageIdentifier,
+    resolveStorageKey,
+} from 'studiocms/storage-api';
+
+const storageIdentifier = await resolveStorageIdentifier('storage-file://my-file.txt', {
+    baseUrl: 'https://example.com/', // Utilisez la valeur de `site` depuis "astro:config/server"
+});
+
+const storageKey = await resolveStorageKey('my-file.txt', {
+    baseUrl: 'https://example.com/', // Utilisez la valeur de `site` depuis "astro:config/server"
+});
+```
+
+## Types JavaScript
+
+```ts twoslash title="types-api-stockage.ts"
+import type {
+    ContextJsonBody,
+    AuthorizationType,
+    ParsedContext,
+    UrlMetadata,
+    UrlMapping,
+    ContextHandler,
+    ContextHandlerFn,
+    ContextDriverDefinition,
+    StorageAPIEndpointFn,
+    StorageApiBuilderDefinition,
+    UrlMappingDatabaseDefinition,
+    UrlMappingServiceDefinition,
+    APICoreDefinition
+} from 'studiocms/storage-api';
+```
