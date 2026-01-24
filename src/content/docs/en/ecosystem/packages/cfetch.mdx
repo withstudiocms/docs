@@ -117,10 +117,10 @@ const effect = cFetchEffect<{ foo: string; bar: number; }>(
   (res) => res.json(),
   { method: "GET" },
   { 
-    ttl?: Duration.hours(1), 
-    tags?: ['example'], 
-    key?: "api-data-fetch", 
-    verbose?: false 
+    ttl: Duration.hours(1), 
+    tags: ['example'], 
+    key: "api-data-fetch", 
+    verbose: false 
   }
 );
 /*
