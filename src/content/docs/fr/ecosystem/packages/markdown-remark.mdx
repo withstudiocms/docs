@@ -1,0 +1,216 @@
+---
+i18nReady: true
+title: "Markdown Remark"
+type: integration
+catalogEntry: studiocms-markdown-remark
+description: "Découvrez le paquet @studiocms/markdown-remark"
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
+---
+
+import { Aside } from '@astrojs/starlight/components'
+import { PackageManagers } from 'starlight-package-managers'
+import Integration from '~/components/Integration.astro'
+import ReadMore from '~/components/ReadMore.astro'
+
+## L'intégration
+
+`@studiocms/markdown-remark` est un puissant analyseur et transformateur Markdown construit à l'aide de [remark](https://github.com/remarkjs/remark). Il s'intègre parfaitement à [Astro](https://astro.build/), vous permettant ainsi d'analyser et de transformer facilement le contenu Markdown au sein de vos projets Astro.
+
+Ce projet repose fortement sur le paquet intégré `@astrojs/markdown-remark` d'Astro et est compatible avec celui-ci, étendant ses capacités pour mieux répondre aux besoins des utilisateurs de StudioCMS.
+
+### Fonctionnalités
+
+- **Analyse Markdown** : Analyser le contenu Markdown en un arbre de syntaxe abstraite (AST) à l’aide de remark.
+- **Intégration Astro** : Facilement intégrer avec Astro pour transformer le contenu Markdown en HTML.
+- **Modules d'extension personnalisés** : Étendez les fonctionnalités grâce à des modules d'extension remark personnalisés.
+- **Configurable** : Hautement configurable pour répondre à vos besoins spécifiques.
+
+### Installation
+
+Pour installer `@studiocms/markdown-remark`, utilisez votre gestionnaire de paquets préféré :
+
+<PackageManagers pkg="astro" type='run' args='add @studiocms/markdown-remark' />
+
+Ou installez-le **manuellement** :
+
+<PackageManagers type="add" pkg="@studiocms/markdown-remark" />
+
+### Utilisation
+
+#### En tant qu'intégration Astro
+
+Avec l'intégration Astro activée, vous pouvez soit transmettre des composants personnalisés à votre configuration Astro, soit les définir manuellement pour le rendu spécifique que vous souhaitez effectuer, comme indiqué dans les méthodes suivantes.
+
+##### Configurer l'intégration
+
+**`astro.config.mjs`**
+
+```ts
+import markdownRemark from '@studiocms/markdown-remark';
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+    markdown: { 
+        /* 
+        * Vos personnalisations ici basées sur :
+        * https://docs.astro.build/fr/reference/configuration-reference/#options-de-markdown 
+        */ 
+    },
+    integrations: [markdownRemark({
+        // Utilisé pour injecter du CSS dans les titres et les encarts.
+        injectCSS: true,
+        // Composants définis par l'utilisateur qui seront utilisés lors du traitement de Markdown
+        components: {
+            // Exemple de composant personnalisé
+            custom: "./src/components/Custom.astro",
+        },
+        // Configuration Markdown personnalisée
+        markdown: {
+            // Configurer les thèmes d'encarts disponibles
+            callouts: {
+                theme: 'obsidian' // Peut également être `github` ou `vitepress`.
+            },
+            autoLinkHeadings: true,
+            sanitize: {} // consultez https://github.com/natemoo-re/ultrahtml?tab=readme-ov-file#sanitization pour connaître toutes les options
+        }
+    })],
+});
+```
+
+##### Utiliser l'intégration
+
+**`src/pages/index.astro`**
+
+```astro
+---
+import { Markdown } from 'studiocms:markdown-remark';
+import Custom from '../components/Custom.astro';
+---
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Exemple</title>
+    </head>
+    <body>
+        <Markdown content={`# Hello World! <custom></custom>`} components={{ custom: Custom }} />
+    </body>
+</html>
+```
+
+OU
+
+```astro
+---
+import { render } from 'studiocms:markdown-remark';
+import Custom from '../components/Custom.astro';
+
+// @ts-ignore
+const { html } = await render('# Hello World! <custom></custom>', {}, { $$result, components: {custom: Custom} })
+---
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Exemple</title>
+    </head>
+    <body>
+        {html}
+    </body>
+</html>
+```
+
+#### Utilisation directe du composant Markdown sans l'intégration
+
+**`src/pages/index.astro`**
+
+```astro
+---
+import { Markdown } from '@studiocms/markdown-remark/components';
+import H1 from '../components/H1.astro';
+---
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Exemple</title>
+    </head>
+    <body>
+        <Markdown content={`# Hello world!`} components={{ h1: H1 }} />
+    </body>
+</html>
+```
+
+## Le processeur
+
+<Integration title="@studiocms/markdown-remark-processor" githubURL='https://github.com/withstudiocms/markdown-remark/tree/main/packages/markdown-remark-processor/' />
+
+`@studiocms/markdown-remark-processor` est un puissant analyseur et transformateur Markdown reposant sur [remark](https://github.com/remarkjs/remark). Il offre une intégration transparente avec [Astro](https://astro.build/), vous permettant d'analyser et de transformer facilement le contenu Markdown dans vos projets Astro.
+
+Ce projet est fortement basé sur et compatible avec le module intégré `@astrojs/markdown-remark` d'Astro.
+
+### Fonctionnalités
+
+- **Analyse Markdown** : Analyser le contenu Markdown en un arbre de syntaxe abstraite (AST) à l’aide de remark.
+- **Modules d'extension personnalisés** : Étendez les fonctionnalités grâce à des modules d'extension remark personnalisés.
+- **Configurable** : Hautement configurable pour répondre à vos besoins spécifiques.
+
+### Installation
+
+Pour installer `@studiocms/markdown-remark-processor`, utilisez votre gestionnaire de paquets préféré :
+
+<PackageManagers type="add" pkg="@studiocms/markdown-remark-processor" />
+
+### Utilisation
+
+Commencez par configurer votre fonction de rendu.
+
+**`src/utils/render.ts`**
+
+```ts
+import { type MarkdownProcessorRenderOptions, createMarkdownProcessor } from '@studiocms/markdown-remark-processor';
+
+const processor = await createMarkdownProcessor({
+	/* 
+    * Vos options ici
+    * identique à https://docs.astro.build/fr/reference/configuration-reference/#options-de-markdown
+    */
+});
+
+export async function render(
+	content: string,
+	options?: MarkdownProcessorRenderOptions
+) {
+	const result = await processor.render(content, options);
+
+	return {
+		html: result.astroHTML,
+		meta: result.metadata,
+	};
+}
+```
+
+Puis utilisez-le !
+
+**`/src/pages/index.astro`**
+```astro
+---
+import { render } from '../utils/render';
+
+const content = `# Hello world!`
+
+const { html } = await render(content)
+---
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Exemple</title>
+    </head>
+    <body>
+        {html}
+    </body>
+</html>
+```
