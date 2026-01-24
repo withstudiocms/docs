@@ -1,10 +1,12 @@
 ---
 i18nReady: true
-title: "Kysely et le SDK de StudioCMS"
-description: "Découvrez Kysely et son intégration avec le SDK de StudioCMS"
+title: "Client de base de données Kysely"
+type: integration
+catalogEntry: withstudiocms-kysely
+description: "Découvrez le paquet @withstudiocms/kysely"
 sidebar:
   badge:
-    text: NOUVEAU
+    text: Mis à jour
     variant: success
 tableOfContents:
   minHeadingLevel: 2
@@ -13,16 +15,7 @@ tableOfContents:
 
 import { Aside } from '@astrojs/starlight/components'
 import { PackageManagers } from 'starlight-package-managers'
-import Integration from '~/components/Integration.astro'
 import ReadMore from '~/components/ReadMore.astro'
-
-Les paquets suivants sont intégrés à StudioCMS et fournissent les fonctionnalités de base de données utilisées par StudioCMS. Ils sont destinés à un usage interne à StudioCMS, mais les utilisateurs peuvent également les utiliser directement dans leurs projets pour des cas d'utilisation plus avancés.
-
-<Aside type="caution" title="Avertissement">
-  Ces paquets sont principalement destinés à un usage interne à StudioCMS. Bien que vous puissiez les utiliser directement dans vos projets, sachez qu'ils peuvent être modifiés sans préavis au fur et à mesure de l'évolution de StudioCMS.
-</Aside>
-
-## Introduction à Kysely
 
 Kysely (https://kysely.dev/) est un générateur de requêtes SQL avec sûreté du typage pour TypeScript. Il offre une méthode puissante et flexible pour interagir avec les bases de données, tout en garantissant la sûreté du typage et en réduisant les erreurs d'exécution. Kysely prend en charge diverses bases de données SQL, notamment PostgreSQL, MySQL, SQLite et bien d'autres. Il permet aux développeurs de construire des requêtes SQL à l'aide d'une API fluide, simplifiant ainsi la lecture et la maintenance des interactions avec la base de données dans les applications TypeScript.
 
@@ -32,15 +25,15 @@ Actuellement, StudioCMS prend uniquement en charge les bases de données libSQL 
 Vous souhaitez qu'un autre dialecte de base de données soit pris en charge ? Consultez la [documentation de Kysely sur les dialectes](https://kysely.dev/docs/dialects/) et ouvrez un ticket sur le [dépôt GitHub de StudioCMS](https://github.com/withstudiocms/studiocms/issues).
 </ReadMore>
 
----
+<Aside type="caution" title="Avertissement">
+  Ce package est actuellement destiné principalement à un usage interne par StudioCMS. Bien que vous puissiez l'utiliser directement dans vos projets, sachez qu'il est susceptible d'évoluer sans préavis au gré des évolutions de StudioCMS.
+</Aside>
 
 ## Le paquet client de Kysely
 
-<Integration title="@withstudiocms/kysely" githubURL="https://github.com/withstudiocms/studiocms/tree/main/packages/@withstudiocms/kysely/" released={true} />
-
 Un client de base de données offrant la sûreté du typage et un système de migration pour StudioCMS, basé sur [Kysely](https://kysely.dev/). Il fournit une interface unifiée pour travailler avec les bases de données libSQL, MySQL et PostgreSQL avec gestion des schémas de l'environnement d'exécution et des migrations.
 
-### Caractéristiques
+### Fonctionnalités
 
 - **Opérations de base de données avec sûreté du typage** - Prise en charge complète de TypeScript grâce au générateur de requêtes avec sûreté du typage de Kysely
 - **Compatible avec plusieurs bases de données** - Fonctionne avec libSQL (SQLite), MySQL et PostgreSQL
@@ -55,7 +48,8 @@ Un client de base de données offrant la sûreté du typage et un système de mi
 #### Configuration de base du client
 
 ```ts twoslash title="client-setup.ts"
-import { getDBClientLive, type StudioCMSDatabaseSchema } from '@withstudiocms/kysely';
+import { getDBClientLive } from '@withstudiocms/kysely';
+import type { StudioCMSDatabaseSchema } from '@withstudiocms/sdk/tables';
 import { libsqlDriver } from '@withstudiocms/kysely/drivers/libsql';
 import { ConfigProvider, Effect } from 'studiocms/effect';
 
@@ -77,7 +71,8 @@ export const getDbClient = Effect.gen(function* () {
 #### Exemple pour obtenir les utilisateurs
 
 ```ts twoslash title="get-users.ts"
-import { getDBClientLive, type StudioCMSDatabaseSchema } from '@withstudiocms/kysely';
+import { getDBClientLive } from '@withstudiocms/kysely';
+import type { StudioCMSDatabaseSchema } from '@withstudiocms/sdk/tables';
 import { libsqlDriver } from '@withstudiocms/kysely/drivers/libsql';
 import { ConfigProvider, Effect } from 'studiocms/effect';
 
@@ -96,7 +91,7 @@ export const getDbClient = Effect.gen(function* () {
 });
 // ---cut---
 import { Schema } from 'studiocms/effect';
-import { StudioCMSUsersTable } from '@withstudiocms/kysely';
+import { StudioCMSUsersTable } from '@withstudiocms/sdk/tables';
 
 export const getUsers = Effect.gen(function* () {
     const { withDecoder } = yield* getDbClient;
@@ -104,34 +99,25 @@ export const getUsers = Effect.gen(function* () {
 	const getUsers = withDecoder({
 		decoder: Schema.Array(StudioCMSUsersTable.Select),
 		callbackFn: (db) =>
-			db((client) => client.selectFrom('StudioCMSUsersTable').selectAll().execute()),
+			db((client) => 
+				client.selectFrom('StudioCMSUsersTable')
+				.selectAll()
+				.execute()
+			),
 	});
 
 	const users = yield* getUsers();
+//        ^?
+
 	console.log('Users:', users);
-	/*
-	    type of 'users' is:
-		const users: readonly {
-			readonly url: string | null | undefined;
-			readonly id: string;
-			readonly name: string;
-			readonly email: string | null | undefined;
-			readonly avatar: string | null | undefined;
-			readonly username: string;
-			readonly password: string | null | undefined;
-			readonly updatedAt: Date;
-			readonly createdAt: Date;
-			readonly emailVerified: boolean;
-			readonly notifications: string | null | undefined;
-		}[]
-	*/
 });
 ```
 
 #### Exemple pour insérer un nouvel utilisateur (`withEncoder`)
 
 ```ts twoslash title="insert-user.ts"
-import { getDBClientLive, type StudioCMSDatabaseSchema } from '@withstudiocms/kysely';
+import { getDBClientLive } from '@withstudiocms/kysely';
+import type { StudioCMSDatabaseSchema } from '@withstudiocms/sdk/tables';
 import { libsqlDriver } from '@withstudiocms/kysely/drivers/libsql';
 import { ConfigProvider, Effect } from 'studiocms/effect';
 
@@ -150,7 +136,7 @@ export const getDbClient = Effect.gen(function* () {
 });
 // ---cut---
 import { Schema } from 'studiocms/effect';
-import { StudioCMSUsersTable } from '@withstudiocms/kysely';
+import { StudioCMSUsersTable } from '@withstudiocms/sdk/tables';
 
 export const insertUser = Effect.gen(function* () {
     const { withEncoder } = yield* getDbClient;
@@ -158,10 +144,14 @@ export const insertUser = Effect.gen(function* () {
 	const insertUser = withEncoder({
 		encoder: StudioCMSUsersTable.Insert,
 		callbackFn: (db, newUser) =>
-			db((client) => client.insertInto('StudioCMSUsersTable').values(newUser).executeTakeFirst()),
+			db((client) => 
+				client.insertInto('StudioCMSUsersTable')
+				.values(newUser)
+				.executeTakeFirst()
+			),
 	});
 
-	const newUser = yield* insertUser({
+	const data = {
 		username: 'nouvel_utilisateur',
 		email: 'nouvel_utilisateur@example.com',
 		password: null,
@@ -172,19 +162,20 @@ export const insertUser = Effect.gen(function* () {
 		url: null,
 		id: crypto.randomUUID(),
 		updatedAt: new Date().toISOString(),
-	});
-	console.log('Nouvel utilisateur ajouté :', newUser); // withEncoder renvoie 'InsertResult'
-	/*
-		le type de 'newUser' est :
-		const newUser: InsertResult
-	*/
+		createdAt: new Date().toISOString(),
+	};
+
+	const newUser = yield* insertUser(data);
+//        ^?
+	console.log('Nouvel utilisateur ajouté :', newUser);
 });
 ```
 
 #### Exemple pour insérer un nouvel d'utilisateur (`withCodec`)
 
 ```ts twoslash title="insert-user.ts"
-import { getDBClientLive, type StudioCMSDatabaseSchema } from '@withstudiocms/kysely';
+import { getDBClientLive } from '@withstudiocms/kysely';
+import type { StudioCMSDatabaseSchema } from '@withstudiocms/sdk/tables';
 import { libsqlDriver } from '@withstudiocms/kysely/drivers/libsql';
 import { ConfigProvider, Effect } from 'studiocms/effect';
 
@@ -203,7 +194,7 @@ export const getDbClient = Effect.gen(function* () {
 });
 // ---cut---
 import { Schema } from 'studiocms/effect';
-import { StudioCMSUsersTable } from '@withstudiocms/kysely';
+import { StudioCMSUsersTable } from '@withstudiocms/sdk/tables';
 
 export const insertUser = Effect.gen(function* () {
     const { withCodec } = yield* getDbClient;
@@ -221,42 +212,31 @@ export const insertUser = Effect.gen(function* () {
 			),
 	});
 
-	const insertedUser = yield* insertNewUser({
+	const data = {
 		username: 'utilisateur_codec',
 		email: 'utilisateur_codec@example.com',
 		password: null,
 		avatar: null,
 		emailVerified: false,
-		name: 'user',
+		name: 'utilisateur',
 		notifications: '',
 		url: null,
 		id: crypto.randomUUID(),
 		updatedAt: new Date().toISOString(),
-	});
-	console.log('Utilisateur ajouté avec codec :', insertedUser); // withCodec renvoie des résultats décodés
-	/*
-	    le type de 'insertedUser' est :
-		const user: {
-			readonly url: string | null | undefined;
-			readonly id: string;
-			readonly name: string;
-			readonly email: string | null | undefined;
-			readonly avatar: string | null | undefined;
-			readonly username: string;
-			readonly password: string | null | undefined;
-			readonly updatedAt: Date;
-			readonly createdAt: Date;
-			readonly emailVerified: boolean;
-			readonly notifications: string | null | undefined;
-		}
-	*/
+		createdAt: new Date().toISOString(),
+	};
+
+	const insertedUser = yield* insertNewUser(data);
+//        ^?
+	console.log('Utilisateur ajouté avec codec :', insertedUser);
 });
 ```
 
 #### Exemple de récupération d'un utilisateur par son ID
 
 ```ts twoslash title="get-user.ts"
-import { getDBClientLive, type StudioCMSDatabaseSchema } from '@withstudiocms/kysely';
+import { getDBClientLive } from '@withstudiocms/kysely';
+import type { StudioCMSDatabaseSchema } from '@withstudiocms/sdk/tables';
 import { libsqlDriver } from '@withstudiocms/kysely/drivers/libsql';
 import { ConfigProvider, Effect } from 'studiocms/effect';
 
@@ -275,7 +255,7 @@ export const getDbClient = Effect.gen(function* () {
 });
 // ---cut---
 import { Schema } from 'studiocms/effect';
-import { StudioCMSUsersTable } from '@withstudiocms/kysely';
+import { StudioCMSUsersTable } from '@withstudiocms/sdk/tables';
 
 export const insertUser = Effect.gen(function* () {
     const { withCodec } = yield* getDbClient;
@@ -285,56 +265,21 @@ export const insertUser = Effect.gen(function* () {
 		decoder: Schema.UndefinedOr(StudioCMSUsersTable.Select),
 		callbackFn: (db, id) =>
 			db((client) =>
-				client.selectFrom('StudioCMSUsersTable').selectAll().where('id', '=', id).executeTakeFirst()
+				client.selectFrom('StudioCMSUsersTable')
+				.selectAll()
+				.where('id', '=', id)
+				.executeTakeFirst()
 			),
 	});
 
 	const user = yield* getUserById('un-identifiant-utilisateur');
+//        ^?
 	console.log('Utilisateur par identifiant :', user);
-	/*
-	    le type de 'user' est :
-		const user: {
-			readonly url: string | null | undefined;
-			readonly id: string;
-			readonly name: string;
-			readonly email: string | null | undefined;
-			readonly avatar: string | null | undefined;
-			readonly username: string;
-			readonly password: string | null | undefined;
-			readonly updatedAt: Date;
-			readonly createdAt: Date;
-			readonly emailVerified: boolean;
-			readonly notifications: string | null | undefined;
-		} | undefined
-	*/
 });
 ```
-
-## Le paquet SDK
-
-<Integration title="@withstudiocms/sdk" githubURL="https://github.com/withstudiocms/studiocms/tree/main/packages/@withstudiocms/sdk/" released={true} />
-
-Un kit de développement logiciel complet pour StudioCMS, offrant une API unifiée pour interagir avec les fonctionnalités principales du CMS. Conçu avec TypeScript et Effect-ts pour garantir la sûreté du typage et les principes de la programmation fonctionnelle, ainsi qu'avec Kysely DB ([`@withstudiocms/kysely`](#le-paquet-client-de-kysely)) pour le stockage dynamique de bases de données.
-
-### Caractéristiques
-
-- **Module d'authentification** - Authentification des utilisateurs et gestion des sessions
-- **Gestion de la configuration** - Gestion de la configuration garantissant la sûreté du typage avec validation
-- **Opérations de base de données** - Opérations CRUD avec gestion des erreurs Effect-ts
-- **Système de modules d'extension** - Outils pour le développement et l'intégration de modules d'extension
-- **Couche de mise en cache** - Mise en cache intégrée avec mémorisation et invalidation des requêtes
-- **Utilitaires de middleware** - Gestion des requêtes et composition du middleware
-- **Suivi des différences** - Suivi des modifications
-- **Assistants d'API REST** - Utilitaires pour la création de points de terminaison REST
-- **Paramètres de notification** - Gestion des préférences de notification des utilisateurs
-- **Seau à jetons** - Limitation du débit et gestion des jetons
 
 ### Lectures complémentaires
 
 <ReadMore>
-Pour un exemple de code montrant comment utiliser manuellement le SDK StudioCMS dans votre projet, consultez son implémentation dans [StudioCMS sur GitHub](https://github.com/withstudiocms/studiocms/blob/main/packages/studiocms/src/virtuals/sdk/index.ts)
-</ReadMore>
-
-<ReadMore>
-Intéressé par le SDK déjà disponible dans StudioCMS ? Consultez la documentation du [SDK](/fr/how-it-works/sdk/) pour apprendre à l'utiliser dans votre projet StudioCMS !
+Pour plus d'informations sur la façon dont StudioCMS utilise Kysely en interne, consultez la documentation [du SDK](/fr/ecosystem/packages/sdk/) pour apprendre comment l'utiliser dans votre projet StudioCMS !
 </ReadMore>
