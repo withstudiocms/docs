@@ -1,0 +1,70 @@
+---
+i18nReady: true
+title: Bot Discord Apollo
+type: github
+githubURL: "https://github.com/withstudiocms/bots/tree/main/packages/apollo"
+description: "Apollo est un bot Discord entièrement configurable qui facilite la gestion des serveurs Discord pour les projets open source."
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 5
+---
+
+Apollo est un bot Discord entièrement configurable qui facilite la gestion des serveurs Discord pour les projets open source. Il est conçu pour faciliter les tâches courantes telles que la gestion des demandes d'assistance, l'envoi d'annonces PTAL, et bien plus encore.
+
+Découvrez ce bot en action sur le [serveur Discord de StudioCMS](https://chat.studiocms.dev).
+
+## Pile technologique
+- Discord.js
+- Drizzle ORM
+- libSQL
+- GitHub API
+
+## Commandes
+
+### `ptal`
+
+- **Autorisation minimale** : Modérateurs
+
+Crée une annonce PTAL dans la chaîne actuelle et envoie une notification au rôle de notification (si configuré).
+
+### `settings`
+
+- **Autorisation minimale** : Administrateur
+
+Commande contenant les sous-commandes permettant de configurer le bot.
+
+#### `set-forum`
+
+- **Autorisation minimale** : Administrateur
+
+Permet de configurer le forum pour qu'il soit utilisé pour les demandes d'assistance.
+
+#### `set-ptal-role`
+
+- **Autorisation minimale** : Administrateur
+
+Définit le rôle qui est notifié lorsqu'une nouvelle annonce PTAL est envoyée.
+
+#### `set-join-role`
+
+- **Autorisation minimale** : Administrateur
+
+Définit le rôle attribué à un utilisateur lorsqu'il rejoint le serveur.
+
+#### `print`
+
+- **Autorisation minimale** : Administrateur
+
+Affiche un aperçu de tous les paramètres.
+
+### `solved`
+
+- **Autorisation minimale** : Modérateurs
+
+Envoie un élément intégré contenant des boutons permettant à l'auteur d'une demande d'assistance de la clôturer.
+
+### `support`
+
+- **Autorisation minimale** : Modérateurs
+
+Crée un nouveau sujet dans le forum d'assistance en fonction du message que vous fournissez.

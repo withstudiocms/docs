@@ -1,0 +1,205 @@
+---
+i18nReady: true
+title: Bot Discord Artemis
+type: github
+githubURL: "https://github.com/withstudiocms/bots/tree/main/packages/artemis"
+description: "Bot Artemis pour StudioCMS"
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 6
+---
+
+Artemis est un bot Discord puissant reposant sur Effect et conçu pour interagir avec votre communauté Discord et votre organisation GitHub. Conçu pour StudioCMS, il est open source pour que chacun puisse le modifier à sa guise.
+
+Découvrez ce bot en action sur le [serveur Discord de StudioCMS](https://chat.studiocms.dev).
+
+## Pile technologique
+- Effect-TS
+- Effect dfx
+- Drizzle ORM
+- libSQL
+- GroqAI API
+- GitHub API
+- Algolia
+
+## Fonctionnalités
+
+- Bot de création automatique de fils de discussion
+- Répéteur BlueSky pour Discord
+- Élément intégré de contribution
+- PTAL Crowdin envoyée depuis le dépôt
+- Recherche dans la documentation avec Algolia
+- Bus d'événements personnalisés (principalement pour la communication HTTP -> Discord)
+- Ticket GitHub à partir d'une interaction avec un message dans l'application
+- Ticket GitHub à partir d'une commande de fil
+- Bot anti-intégration (empêche les messages des utilisateurs de contenir des éléments intégrés)
+- Service PTAL
+- Graphique de popularité reposant sur le nombre d'étoiles (stars)
+- Serveur web HTTP pour la gestion des ressources et des webhooks
+- Réponses par ping (`@`) avec des interactions IA
+
+## Services
+
+### Création de fils de discussion automatique
+
+Créer automatiquement des fils de discussion à partir de chaque message dans une chaîne
+
+Pour activer la création automatique de fils de discussion dans une chaîne, un administrateur doit ajouter `[threads]` au sujet de la chaîne.
+
+### Aucun contenu intégré
+
+Empêche l'affichage des contenus intégrés dans les messages d'une chaîne.
+
+Pour activer l'option de désactivation des contenus intégrés dans une chaîne, un administrateur doit ajouter `[noembed]` au sujet de la chaîne.
+
+### PTAL Crowdin
+
+Envoi automatique de notifications PTAL lors de la création d'une demande de fusion par Crowdin.
+
+Pour activer l'envoi de PTAL Crowdin dans une chaîne, un administrateur doit configurer un événement de distribution dans son dépôt GitHub avec le type d'action `crowdin.create` et la charge utile appropriée. Nécessite également la configuration du service PTAL sur le serveur.
+
+## Commandes
+
+### `bluesky`
+
+- **Autorisation minimale** : Administrateur
+
+Gérer le suivi et les paramètres du compte BlueSky pour ce serveur.
+
+#### `list`
+
+- **Autorisation minimale** : Administrateur
+
+Liste tous les comptes BlueSky actuellement suivis dans ce serveur.
+
+#### `subscribe <account> <top_level> <replies> <reposts>`
+
+- **Autorisation minimale** : Administrateur
+
+Abonne la chaîne actuelle aux mises à jour du compte BlueSky spécifié. Les paramètres `top_level`, `replies` et `reposts` sont des booléens indiquant s'il faut suivre ces types de publications.
+
+#### `unsubscribe <account>`
+
+- **Autorisation minimale** : Administrateur
+
+Désabonne la chaîne actuelle des mises à jour provenant du compte BlueSky spécifié.
+
+#### `settings`
+
+- **Autorisation minimale** : Administrateur
+
+Consultez ou modifiez les paramètres de suivi BlueSky pour ce serveur.
+
+##### `post_channel <channel>`
+
+- **Autorisation minimale** : Administrateur
+
+Définit la chaîne dans laquelle les mises à jour de BlueSky seront publiées.
+
+##### `ping_role [role] [enable]`
+
+- **Autorisation minimale** : Administrateur
+
+Définit le rôle à notifier pour les mises à jour BlueSky et indique si la notification doit être activée ou désactivée.
+
+##### `view`
+
+- **Autorisation minimale** : Administrateur
+
+Affiche les paramètres de suivi BlueSky actuels pour ce serveur.
+
+### `contribute`
+
+- **Autorisation minimale** : S. O.
+
+Crée un guide de contribution intégré pour la chaîne actuelle.
+
+### `crowdin-setup`
+
+- **Autorisation minimale** : Administrateur
+
+Configure un contenu Crowdin intégré dans la chaîne actuelle pour un dépôt spécifié.
+
+#### `set <owner> <repo>`
+
+- **Autorisation minimale** : Administrateur
+
+Configure un nouvel écouteur de contenu Crowdin intégré dans la chaîne actuelle pour le dépôt GitHub spécifié.
+
+#### `remove <owner> <repo>`
+
+- **Autorisation minimale** : Administrateur
+
+Supprime un contenu Crowdin intégré de la chaîne actuelle pour le dépôt GitHub spécifié.
+
+#### `list`
+
+- **Autorisation minimale** : Administrateur
+
+Liste tous les contenus Crowdin intégrés dans la chaîne actuelle.
+
+### `docs <query> [hidden=false] [language=en]`
+
+- **Autorisation minimale** : S. O.
+
+Recherche une requête spécifique dans la documentation à l'aide de l'API Docsearch d'Algolia.
+
+### `issue-from-thread <repository> <type> [title]`
+
+- **Autorisation minimale** : S. O.
+
+Créer un ticket GitHub à partir de la discussion actuelle dans le dépôt spécifié. Le paramètre `type` indique le type de problème, et un paramètre `title` facultatif peut être fourni.
+
+### `issue-settings`
+
+- **Autorisation minimale** : Administrateur
+
+Gérer les paramètres de commande de création de ticket pour ce serveur.
+
+#### `add-repo <repository> <owner> <label>`
+
+- **Autorisation minimale** : Administrateur
+
+Ajouter un dépôt à la liste d'autorisation des commandes de création de ticket.
+
+#### `remove-repo <repository-label>`
+
+- **Autorisation minimale** : Administrateur
+
+Supprime un dépôt de la liste d'autorisation de la commande de création de ticket.
+
+#### `list-repos`
+
+- **Autorisation minimale** : Administrateur
+
+Lister tous les dépôts autorisés pour la commande de création de ticket.
+
+### `ptal <github-url> <description>`
+
+- **Autorisation minimale** : S. O.
+
+Envoie une notification PTAL (« Please Take A Look » en anglais, traduisible par « Veuillez jeter un coup d'œil ») pour une demande de fusion avec l'URL GitHub et la description fournies.
+
+### `ptal-settings`
+
+- **Autorisation minimale** : Administrateur
+
+Configure le service PTAL pour ce serveur.
+
+#### `set-ping-role <role>`
+
+- **Autorisation minimale** : Administrateur
+
+Configure le rôle à notifier pour les PTAL.
+
+#### `view-settings`
+
+- **Autorisation minimale** : Administrateur
+
+Consulter les paramètres PTAL actuels de ce serveur.
+
+### `stars-graph <repository> [public=false]`
+
+- **Autorisation minimale** : S. O.
+
+Générer un graphique affichant l'historique des étoiles pour un dépôt GitHub. Le dépôt doit être au format `propriétaire/dépôt` (par exemple, `facebook/react`). Le paramètre optionnel `public` indique si le graphique généré doit être accessible publiquement.
