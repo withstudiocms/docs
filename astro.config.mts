@@ -209,10 +209,6 @@ export default defineConfig({
 											translations: getTranslations('storage-api'),
 											collapsed: true,
 											autogenerate: { directory: 'storage-api' },
-											badge: {
-												text: 'New',
-												variant: 'success',
-											},
 										},
 										// TODO - Document more StudioCMS features here
 									],
