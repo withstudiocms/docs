@@ -17,11 +17,11 @@ import QuickUpdate from '~/components/QuickUpdate.astro'
 
 ## Breaking changes
 
-None, This is a non-breaking release.
+None. This is a non-breaking release.
 
 ## Bug Fixes & Improvements
 - Moved to updated and migrated cli-kit package
 - Added regex and proper error handling to prevent illegal characters (non-url-safe) from being used for S3 objects.
 - Fixed an issue where saving a page that does not have `draft` set to `true`, would previously update the `publishedAt` date value.
-- Reworks permission checks for dashboard routes to be at the middleware level to prevent unauthorized access
-- Updates various dependencies to their latest versions to ensure security and stability.
+- Reworked permission checks for dashboard routes to be at the middleware level to prevent unauthorized access.
+- Updated various dependencies to their latest versions to ensure security and stability.
