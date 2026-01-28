@@ -1,0 +1,27 @@
+---
+i18nReady: true
+title: "Mise à niveau : v0.2.0"
+description: Mettre à niveau StudioCMS vers la v0.2.0
+topic: guides
+sidebar:
+  label: v0.2.0
+  badge:
+    text: NOUVEAU
+    variant: success
+  order: 999982
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro'
+
+<QuickUpdate />
+
+## Modifications avec rupture de compatibilité
+
+Aucune. Il s'agit d'une nouvelle version sans risque de rupture de compatibilité.
+
+## Corrections de bugs et améliorations
+- Migration vers le package cli-kit mis à jour pour une fonctionnalité CLI améliorée.
+- Ajout d'expressions régulières et d'une gestion appropriée des erreurs pour empêcher l'utilisation de caractères illégaux (non compatibles avec les URL) avec les objets S3.
+- Correction d'un problème où l'enregistrement d'une page dont l'attribut `draft` n'est pas défini sur `true` mettait à jour la valeur de date de `publishedAt`.
+- Les contrôles d'autorisation pour les routes du tableau de bord ont été retravaillés et placés au niveau du middleware afin d'empêcher tout accès non autorisé.
+- Diverses dépendances ont été mises à jour vers leurs dernières versions afin de garantir la sécurité et la stabilité.
