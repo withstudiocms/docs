@@ -1,0 +1,32 @@
+---
+i18nReady: true
+title: "Upgrade: v0.3.0"
+description: Upgrade StudioCMS to v0.3.0
+topic: guides
+sidebar:
+  label: v0.3.0
+  badge:
+    text: NEW
+    variant: success
+  order: 999981
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro'
+
+<QuickUpdate />
+
+## Breaking changes
+
+- Removes the following deprecated and unused virtual modules.
+  - `studiocms:astro-config/adapter`
+  - `studiocms:auth/utils/getLabelForPermissionLevel`
+  - `virtual:studiocms/sdk/env`
+
+## Bug Fixes & Improvements
+
+- Replaces `chalk` with `node:util`'s `styleText` for StudioCMS CLI.
+- updates StudioCMS dependencies
+- Fixes issue with `pg` and `mysql2` being required to be installed when they should be optional
+- Fix client regex in frontend to allow for slashes within a slug, but not on the outside. This unblocks creating pages under sub-paths just using the slug (e.g., `docs/getting-started`) and only affects client-side validation.
+- Removes legacy email domain verification code
+- Fixes default 404 route rendering
