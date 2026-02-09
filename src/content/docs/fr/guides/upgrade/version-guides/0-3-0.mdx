@@ -1,0 +1,32 @@
+---
+i18nReady: true
+title: "Mise à niveau : v0.3.0"
+description: Mettre à niveau StudioCMS vers la v0.3.0
+topic: guides
+sidebar:
+  label: v0.3.0
+  badge:
+    text: NOUVEAU
+    variant: success
+  order: 999981
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro'
+
+<QuickUpdate />
+
+## Modifications avec rupture de compatibilité
+
+- Supprime les modules virtuels dépréciés et inutilisés suivants.
+  - `studiocms:astro-config/adapter`
+  - `studiocms:auth/utils/getLabelForPermissionLevel`
+  - `virtual:studiocms/sdk/env`
+
+## Corrections de bugs et améliorations
+
+- Remplace `chalk` par `styleText` de `node:util` pour la CLI de StudioCMS.
+- Met à jour les dépendances de StudioCMS.
+- Corrige un problème qui imposait l'installation de `pg` et `mysql2` alors qu'ils devraient être optionnels.
+- Corrige l'expression régulière côté client pour autoriser les barres obliques à l'intérieur d'un slug, mais pas à l'extérieur. Cela permet de créer des pages dans des sous-chemins en utilisant simplement le slug (par exemple, `docs/getting-started`) et n'affecte que la validation côté client.
+- Supprime l'ancien code de vérification de domaine de messagerie
+- Corrige la génération par défaut de la route 404
