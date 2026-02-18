@@ -1,0 +1,86 @@
+---
+i18nReady: true
+title: Configuración Regional (Locale)
+description: Página de referencia para las opciones de StudioCMSOptions locale
+sidebar:
+  order: 2
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+La opción `locale` permite configurar ajustes específicos de la localización.
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  locale: {
+    dateLocale: 'es-ES', // Ejemplo de localización en español
+    dateTimeFormat: {},
+    i18n: {}
+  },
+});
+```
+
+## `dateLocale`
+
+`dateLocale` es un identificador de configuración regional BCP 47 que se utiliza para el formato de fechas.
+
+- **Tipo:** `string`
+- **Valor por defecto:** `'en-US'`
+
+### Uso
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  locale: {
+    dateLocale: 'es-ES', // Esto establece la configuración regional para el formato de fecha.
+  }
+})
+```
+
+## `dateTimeFormat`
+
+`dateTimeFormat` es un objeto que se utiliza para configurar el formato de fecha y hora.
+
+- **Tipo:** `Intl.DateTimeFormatOptions`
+- **Valor por defecto:** `{}`
+
+### Uso
+
+```ts twoslash {3-7} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  locale: {
+    dateTimeFormat: {
+      year: "numeric",
+      month: "long", // Ejemplo: cambiado a "long" para español (ej. "enero")
+      day: "numeric"
+    },
+  }
+})
+```
+
+## `i18n`
+
+`i18n` es un objeto que se utiliza para configurar las opciones de internacionalización.
+
+- **Tipo:** `object`
+- **Valor por defecto:** `{}`
+
+### Uso
+
+```ts twoslash {3-5} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  locale: {
+    i18n: {
+      defaultLocale: 'es', // Ejemplo: estableciendo el locale por defecto a español
+    },
+  }
+})
+```
