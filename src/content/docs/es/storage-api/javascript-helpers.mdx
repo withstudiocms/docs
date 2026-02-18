@@ -26,11 +26,11 @@ import {
 } from 'studiocms/storage-api';
 
 const identificadorAlmacenamiento = await resolveStorageIdentifier('storage-file://my-file.txt', {
-    baseUrl: 'https://ejemplo.com/', // Usa el valor de `site` de "astro:config/server"
+    baseUrl: 'https://example.com/', // Usa el valor de `site` de "astro:config/server"
 });
 
-const claveAlmacenamiento = await resolveStorageKey('mi-archivo.txt', {
-    baseUrl: 'https://ejemplo.com/', // Usa el valor de `site` de "astro:config/server"
+const claveAlmacenamiento = await resolveStorageKey('my-file.txt', {
+    baseUrl: 'https://example.com/', // Usa el valor de `site` de "astro:config/server"
 });
 ```
 
