@@ -1,42 +1,42 @@
 ---
 i18nReady: true
-title: JavaScript Helpers
-description: Learn about the JavaScript helpers available in the StudioCMS Storage API.
+title: Asistentes de JavaScript
+description: Aprende sobre los asistentes de JavaScript disponibles en la API de almacenamiento de StudioCMS.
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4
 sidebar:
   order: 2
   badge:
-    text: NEW
+    text: NUEVO
     variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro';
 import { Aside } from '@astrojs/starlight/components';
 
-The StudioCMS Storage API provides several JavaScript helpers to facilitate interaction with storage backends. These helpers simplify tasks such as resolving storage identifiers and keys, as well as providing type definitions for better type safety and code completion.
+La API de almacenamiento de StudioCMS proporciona varios asistentes de JavaScript para facilitar la interacción con los backends de almacenamiento. Estos asistentes simplifican tareas como resolver identificadores y claves de almacenamiento, además de proporcionar definiciones de tipos para una mejor seguridad de tipos y autocompletado de código.
 
-## JavaScript helpers
+## Asistentes de JavaScript
 
-```ts twoslash title="storage-api-example.ts"
+```ts twoslash title="ejemplo-api-almacenamiento.ts"
 import {
     resolveStorageIdentifier,
     resolveStorageKey,
 } from 'studiocms/storage-api';
 
-const storageIdentifier = await resolveStorageIdentifier('storage-file://my-file.txt', {
-    baseUrl: 'https://example.com/', // Use the value of `site` from "astro:config/server"
+const identificadorAlmacenamiento = await resolveStorageIdentifier('storage-file://my-file.txt', {
+    baseUrl: 'https://ejemplo.com/', // Usa el valor de `site` de "astro:config/server"
 });
 
-const storageKey = await resolveStorageKey('my-file.txt', {
-    baseUrl: 'https://example.com/', // Use the value of `site` from "astro:config/server"
+const claveAlmacenamiento = await resolveStorageKey('mi-archivo.txt', {
+    baseUrl: 'https://ejemplo.com/', // Usa el valor de `site` de "astro:config/server"
 });
 ```
 
-## JavaScript Types
+## Tipos de JavaScript
 
-```ts twoslash title="storage-api-types.ts"
+```ts twoslash title="tipos-api-almacenamiento.ts"
 import type {
     ContextJsonBody,
     AuthorizationType,

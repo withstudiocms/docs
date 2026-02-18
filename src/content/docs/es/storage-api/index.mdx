@@ -1,33 +1,33 @@
 ---
 i18nReady: true
-title: Overview
-description: Learn about the Storage API in StudioCMS
+title: Descripción General
+description: Aprende sobre la API de almacenamiento en StudioCMS
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4
 sidebar:
   order: 1
   badge:
-    text: NEW
+    text: NUEVO
     variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro';
 import { Aside } from '@astrojs/starlight/components';
 
-The Storage API in StudioCMS provides a unified way to manage and interact with various storage backends. It abstracts the complexities of different storage systems, allowing developers to work with a consistent interface regardless of the underlying technology.
+La API de almacenamiento en StudioCMS proporciona una forma unificada de gestionar e interactuar con varios backends de almacenamiento. Abstrae las complejidades de los diferentes sistemas de almacenamiento, permitiendo a los desarrolladores trabajar con una interfaz consistente independientemente de la tecnología subyacente.
 
-## How it Works
+## Cómo funciona
 
-The Storage API is designed to be flexible and extensible. It supports multiple storage backends, including local file systems, cloud storage services, and databases. Developers can choose the storage backend that best fits their needs and easily switch between them without changing their application code.
+La API de almacenamiento está diseñada para ser flexible y extensible. Soporta múltiples backends de almacenamiento, incluyendo sistemas de archivos locales, servicios de almacenamiento en la nube y bases de datos. Los desarrolladores pueden elegir el backend de almacenamiento que mejor se adapte a sus necesidades y cambiar fácilmente entre ellos sin modificar el código de su aplicación.
 
-## Manager plugins
+## Plugins de gestión
 
-The Storage API uses manager plugins to handle different storage backends. Each manager plugin implements a specific storage system and provides methods for common operations such as reading, writing, and deleting files.
+La API de almacenamiento utiliza plugins de gestión para manejar diferentes backends de almacenamiento. Cada plugin de gestión implementa un sistema de almacenamiento específico y proporciona métodos para operaciones comunes como leer, escribir y eliminar archivos.
 
-An example of a manager built-in to StudioCMS is the `no-op` manager, which performs no operations and tells StudioCMS not to enable any of its storage features.
+Un ejemplo de un gestor integrado en StudioCMS es el gestor `no-op`, que no realiza ninguna operación e indica a StudioCMS que no active ninguna de sus funciones de almacenamiento.
 
-### Example of the No-op Manager
+### Ejemplo del gestor No-op
 
 ```ts twoslash title="NoOpStorageService.ts"
 import type {
@@ -39,13 +39,13 @@ import type {
 } from 'studiocms/storage-manager/definitions';
 
 /**
- * A No-Op Storage Service that implements the StorageApiBuilderDefinition interface.
+ * Un servicio de almacenamiento No-Op que implementa la interfaz StorageApiBuilderDefinition.
  *
- * This service provides placeholder implementations for storage API endpoints,
- * returning a 501 Not Implemented response for both POST and PUT requests.
+ * Este servicio proporciona implementaciones placeholder para los endpoints de la API de almacenamiento,
+ * devolviendo una respuesta 501 No Implementado tanto para solicitudes POST como PUT.
  *
- * @typeParam C - The context type.
- * @typeParam R - The response type.
+ * @typeParam C - El tipo de contexto.
+ * @typeParam R - El tipo de respuesta.
  */
 export default class NoOpStorageService<C, R> implements 
   StorageApiBuilderDefinition<C, R> {
@@ -60,34 +60,34 @@ export default class NoOpStorageService<C, R> implements
       this.urlMappingService = urlMappingService;
     }
 
-    #sharedResponse() {
+    #respuestaCompartida() {
       return { data: { error: 'noStorageConfigured' }, status: 501 };
     }
 
     getPOST(_?: AuthorizationType): StorageAPIEndpointFn<C, R> {
-      return this.driver.handleEndpoint(async () => this.#sharedResponse());
+      return this.driver.handleEndpoint(async () => this.#respuestaCompartida());
     }
 
     getPUT(_?: AuthorizationType): StorageAPIEndpointFn<C, R> {
-      return this.driver.handleEndpoint(async () => this.#sharedResponse());
+      return this.driver.handleEndpoint(async () => this.#respuestaCompartida());
     }
 }
 ```
 
-### Configuring a Manager
+### Configurando un gestor
 
-To configure a storage manager in StudioCMS, you need to specify the desired manager plugin in your StudioCMS configuration file. To do so you must install the manager plugin package and then add it to the `storageManager` property in your `studiocms.config.*` file.
+Para configurar un gestor de almacenamiento en StudioCMS, debes especificar el plugin de gestión deseado en tu archivo de configuración de StudioCMS. Para hacerlo, debes instalar el paquete del plugin de gestión y luego añadirlo a la propiedad `storageManager` en tu archivo `studiocms.config.*`.
 
 ```ts twoslash title="studiocms.config.mjs" {5}
 import { defineStudioCMSConfig } from "studiocms/config";
-import s3Storage from '@studiocms/s3-storage';
+import almacenamientoS3 from '@studiocms/s3-storage';
 
 export default defineStudioCMSConfig({
-    storageManager: s3Storage(),
-    // other configuration options
+    storageManager: almacenamientoS3(),
+    // otras opciones de configuración
 })
 ```
 
 <ReadMore>
-For available storage manager plugins, see the [Package catalog](/en/package-catalog#storage-managers).
+Para conocer los plugins de gestión de almacenamiento disponibles, consulta el [Catálogo de paquetes](/es/package-catalog#storage-managers).
 </ReadMore>

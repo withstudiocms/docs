@@ -1,44 +1,44 @@
 ---
 i18nReady: true
-title: API Endpoint
-description: Learn about the API endpoints available in the StudioCMS Storage API.
+title: Endpoint de API
+description: Aprende sobre los endpoints de API disponibles en la API de almacenamiento de StudioCMS.
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4
 sidebar:
   order: 3
   badge:
-    text: NEW
+    text: NUEVO
     variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro';
 import { Aside } from '@astrojs/starlight/components';
 
-The Storage API exposes endpoints that can be accessed via HTTP requests. The following sections describe the available endpoints and their usage.
+La API de almacenamiento expone endpoints a los que se puede acceder mediante solicitudes HTTP. Las siguientes secciones describen los endpoints disponibles y su uso.
 
-<Aside type="note" title="Uses locals for Authorization">
-The Storage API endpoints make use of the Astro `locals` feature propagated by Middleware to handle authorization. Ensure that the browser or client making the requests is coming from a logged-in StudioCMS user with the appropriate permissions to perform storage operations.
+<Aside type="note" title="Utiliza 'locals' para la autorización">
+Los endpoints de la API de almacenamiento hacen uso de la funcionalidad `locals` de Astro propagada por Middleware para manejar la autorización. Asegúrate de que el navegador o cliente que realiza las solicitudes provenga de un usuario de StudioCMS con sesión iniciada y los permisos adecuados para realizar operaciones de almacenamiento.
 </Aside>
 
-### Method: PUT
+### Método: PUT
 
-To upload or update a file in the storage system, you can use the `PUT` method on the `/studiocms_api/storage/manager` endpoint.
+Para subir o actualizar un archivo en el sistema de almacenamiento, puedes usar el método `PUT` en el endpoint `/studiocms_api/storage/manager`.
 
-```http title="Storage API - PUT /studiocms_api/storage/manager"
+```http title="API de almacenamiento - PUT /studiocms_api/storage/manager"
 PUT /studiocms_api/storage/manager HTTP/1.1
-Host: example.com
+Host: ejemplo.com
 Content-Type: application/octet-stream
 Accept: application/json
 Headers:
   x-storage-key: my-file.txt
 
-<file-content>
+<contenido-del-archivo>
 ```
 
-#### Successful Response
+#### Respuesta Exitosa
 
-```http title="Storage API - PUT Success Response"
+```http title="API de almacenamiento - Respuesta Exitosa PUT"
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -48,9 +48,9 @@ Content-Type: application/json
 }
 ```
 
-#### Error Response
+#### Respuesta de Error
 
-```http title="Storage API - PUT Error Response"
+```http title="API de almacenamiento - Respuesta de Error PUT"
 HTTP/1.1 4XX/5XX Error
 Content-Type: application/json
 
@@ -59,56 +59,56 @@ Content-Type: application/json
 }
 ```
 
-### Method: POST
+### Método: POST
 
-```http title="Storage API - POST /studiocms_api/storage/manager"
+```http title="API de almacenamiento - POST /studiocms_api/storage/manager"
 POST /studiocms_api/storage/manager HTTP/1.1
-Host: example.com
+Host: ejemplo.com
 Content-Type: application/json
 Accept: application/json
 
 {
   "action": "resolveUrl | publicUrl | upload | list | delete | rename | download | cleanup | mappings | test",
-  ...additional parameters based on action...
+  ...parámetros adicionales según la acción...
 }
 ```
 
-#### Actions
+#### Acciones
 
 - `resolveUrl`
-  - **Params:** `{ identifier: string }`
-  - **Response:** [`UrlMetadata`](#urlmetadata)
+  - **Parámetros:** `{ identifier: string }`
+  - **Respuesta:** [`UrlMetadata`](#urlmetadata)
 - `publicUrl`
-  - **Params:** `{ key: string }`
-  - **Response:** [`UrlMetadata`](#urlmetadata) `& { identifier: string }`
+  - **Parámetros:** `{ key: string }`
+  - **Respuesta:** [`UrlMetadata`](#urlmetadata) `& { identifier: string }`
 - `upload`
-  - **Params:** `{ key: string, contentType: string }`
-  - **Response:** `{ url: string, key: string }`
+  - **Parámetros:** `{ key: string, contentType: string }`
+  - **Respuesta:** `{ url: string, key: string }`
 - `list`
-  - **Params:** `{ prefix?: string, key?: string }`
-  - **Response:** `{ files:` [`File[]`](#file) `}`
+  - **Parámetros:** `{ prefix?: string, key?: string }`
+  - **Respuesta:** `{ files:` [`File[]`](#archivo) `}`
 - `delete`
-  - **Params:** `{ key: string }`
-  - **Response:** `{ success: boolean }`
+  - **Parámetros:** `{ key: string }`
+  - **Respuesta:** `{ success: boolean }`
 - `rename`
-  - **Params:** `{ key: string, newKey: string }`
-  - **Response:** `{ success: boolean, newKey: string }`
+  - **Parámetros:** `{ key: string, newKey: string }`
+  - **Respuesta:** `{ success: boolean, newKey: string }`
 - `download`
-  - **Params:** `{ key: string }`
-  - **Response:** `{ url: string }`
+  - **Parámetros:** `{ key: string }`
+  - **Respuesta:** `{ url: string }`
 - `cleanup`
-  - **Params:** `N/A`
-  - **Response:** `{ deletedCount: number }`
+  - **Parámetros:** `N/A`
+  - **Respuesta:** `{ deletedCount: number }`
 - `mappings`
-  - **Params:** `N/A`
-  - **Response:** `{ mappings:` [`UrlMetadata[]`](#urlmetadata) `}`
+  - **Parámetros:** `N/A`
+  - **Respuesta:** `{ mappings:` [`UrlMetadata[]`](#urlmetadata) `}`
 - `test`
-  - **Params:** `N/A`
-  - **Response:** `{ success: boolean, message: string, provider: string }`
+  - **Parámetros:** `N/A`
+  - **Respuesta:** `{ success: boolean, message: string, provider: string }`
 
-#### Error Response
+#### Respuesta de Error
 
-```http title="Storage API - POST Error Response"
+```http title="API de almacenamiento - Respuesta de Error POST"
 HTTP/1.1 4XX/5XX Error
 Content-Type: application/json
 
@@ -117,7 +117,7 @@ Content-Type: application/json
 }
 ```
 
-## Types
+## Tipos
 
 ### UrlMetadata
 
@@ -125,11 +125,11 @@ Content-Type: application/json
 export interface UrlMetadata {
     url: string;
     isPermanent: boolean;
-    expiresAt?: number; // Unix timestamp in ms
+    expiresAt?: number; // Marca de tiempo Unix en ms
 }
 ```
 
-### File
+### Archivo
 
 ```ts
 export interface File {
