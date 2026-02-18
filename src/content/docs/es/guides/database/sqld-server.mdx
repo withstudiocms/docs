@@ -35,12 +35,12 @@ La estructura final de archivos se verá algo así si se prueba localmente:
 
 ## Generar claves privadas y públicas
 
-Desde dentro del directorio `keys`, ejecuta el siguiente comando para crear un nuevo par de claves Ed25519 codificadas en PKCS#8: 
-```bash  
-openssl genpkey -algorithm Ed25519 -out ./libsql.pem  
-```  
-  
-Luego, extrae la clave pública con:  
+Desde dentro del directorio `keys`, ejecuta el siguiente comando para crear un nuevo par de claves Ed25519 codificadas en PKCS#8:
+```bash
+openssl genpkey -algorithm Ed25519 -out ./libsql.pem
+```
+
+Luego, extrae la clave pública con:
 
 ```bash
 openssl pkey -in ./libsql.pem -pubout -out ./libsql.pub
@@ -104,7 +104,7 @@ services:
       - "5001:5001"
     environment:
       - SQLD_NODE=primary
-      - SQLD_AUTH_JWT_KEY=pega tu token JWT Base64URL codificado aquí
+      - SQLD_AUTH_JWT_KEY=pega tu token JWT aquí
     volumes:
       - ./data/libsql:/var/lib/sqld
 ```
@@ -138,7 +138,7 @@ Usuarios de [Coolify](https://coolify.io): Usa nuestro [Gist de GitHub](https://
 3. Sigue la configuración inicial para tu nueva base de datos.
 
    - Ve a [Comienza aquí][getting-started]
-   
+
    :::note
    Si no es la primera vez que configuras un proyecto StudioCMS, es posible que debas habilitar la opción `dbStartPage` en tu `studiocms.config.mjs`
    :::
