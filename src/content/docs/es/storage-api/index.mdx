@@ -39,14 +39,15 @@ import type {
 } from 'studiocms/storage-manager/definitions';
 
 /**
- * A No-Op Storage Service that implements the StorageApiBuilderDefinition interface.
+ * Un servicio No-Op (sin operación) que implementa la interfaz StorageApiBuilderDefinition.
  *
- * This service provides placeholder implementations for storage API endpoints,
- * returning a 501 Not Implemented response for both POST and PUT requests.
+ * Este servicio proporciona implementaciones placeholder para los endpoints de la API de almacenamiento,
+ * devolviendo una respuesta 501 No Implementado tanto para solicitudes POST como PUT.
  *
- * @typeParam C - The context type.
- * @typeParam R - The response type.
+ * @typeParam C - El tipo de contexto.
+ * @typeParam R - El tipo de respuesta.
  */
+
 export default class NoOpStorageService<C, R> implements 
   StorageApiBuilderDefinition<C, R> {
     driver: ContextDriverDefinition<C, R>;
