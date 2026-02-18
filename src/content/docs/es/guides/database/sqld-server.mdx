@@ -18,8 +18,6 @@ El proyecto `sqld` ("SQL daemon") es un modo de servidor para libSQL creado por 
 - [OpenSSL][openssl-docs] instalado
 - CLI de StudioCMS (disponible desde la raíz de tu proyecto StudioCMS)
 
-## Estructura final de archivos
-
 La estructura final de archivos se verá algo así si se prueba localmente:
 
 <FileTree>
@@ -37,12 +35,12 @@ La estructura final de archivos se verá algo así si se prueba localmente:
 
 ## Generar claves privadas y públicas
 
-Desde dentro del directorio `keys`, ejecuta el siguiente comando para crear un nuevo par de claves Ed25519 codificadas en PKCS#8: 
-```bash  
-openssl genpkey -algorithm Ed25519 -out ./libsql.pem  
-```  
-  
-Luego, extrae la clave pública con:  
+Desde dentro del directorio `keys`, ejecuta el siguiente comando para crear un nuevo par de claves Ed25519 codificadas en PKCS#8:
+```bash
+openssl genpkey -algorithm Ed25519 -out ./libsql.pem
+```
+
+Luego, extrae la clave pública con:
 
 ```bash
 openssl pkey -in ./libsql.pem -pubout -out ./libsql.pub
@@ -54,9 +52,9 @@ Esto generará un nuevo par de claves PKCS#8 que se utilizarán para el servidor
 
 Navega a tu directorio del proyecto studiocms y ejecuta el siguiente comando:
 
-<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt "../keys/libsql.pem" -c "iss=admin" -e 31556926' />
+<PackageManagers pkg='studiocms' type='run' args='crypto gen-jwt -e 31556926 "../keys/libsql.pem"' />
 
-El resultado es el token de autenticación JWT cifrado con tu clave privada, que se utilizará para la autenticación de libSQL. Ten en cuenta que el token será válido durante 1 año.
+El resultado es el token de autenticación JWT encriptado con tu llave privada en formato estándar y base64URLEncoded, el cual será utilizado para la autenticación en libSQL. ¡Toma en cuenta que el token será válido durante un año!
 
 ### Actualiza tu `.env` de StudioCMS con lo siguiente:
 
@@ -106,7 +104,7 @@ services:
       - "5001:5001"
     environment:
       - SQLD_NODE=primary
-      - SQLD_AUTH_JWT_KEY=paste your JWT token here
+      - SQLD_AUTH_JWT_KEY=pega tu token JWT aquí
     volumes:
       - ./data/libsql:/var/lib/sqld
 ```
@@ -140,7 +138,7 @@ Usuarios de [Coolify](https://coolify.io): Usa nuestro [Gist de GitHub](https://
 3. Sigue la configuración inicial para tu nueva base de datos.
 
    - Ve a [Comienza aquí][getting-started]
-   
+
    :::note
    Si no es la primera vez que configuras un proyecto StudioCMS, es posible que debas habilitar la opción `dbStartPage` en tu `studiocms.config.mjs`
    :::
