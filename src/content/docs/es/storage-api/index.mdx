@@ -39,13 +39,13 @@ import type {
 } from 'studiocms/storage-manager/definitions';
 
 /**
- * Un servicio de almacenamiento No-Op que implementa la interfaz StorageApiBuilderDefinition.
+ * A No-Op Storage Service that implements the StorageApiBuilderDefinition interface.
  *
- * Este servicio proporciona implementaciones placeholder para los endpoints de la API de almacenamiento,
- * devolviendo una respuesta 501 No Implementado tanto para solicitudes POST como PUT.
+ * This service provides placeholder implementations for storage API endpoints,
+ * returning a 501 Not Implemented response for both POST and PUT requests.
  *
- * @typeParam C - El tipo de contexto.
- * @typeParam R - El tipo de respuesta.
+ * @typeParam C - The context type.
+ * @typeParam R - The response type.
  */
 export default class NoOpStorageService<C, R> implements 
   StorageApiBuilderDefinition<C, R> {
@@ -60,16 +60,16 @@ export default class NoOpStorageService<C, R> implements
       this.urlMappingService = urlMappingService;
     }
 
-    #respuestaCompartida() {
+    #sharedResponse() {
       return { data: { error: 'noStorageConfigured' }, status: 501 };
     }
 
     getPOST(_?: AuthorizationType): StorageAPIEndpointFn<C, R> {
-      return this.driver.handleEndpoint(async () => this.#respuestaCompartida());
+      return this.driver.handleEndpoint(async () => this.#sharedResponse());
     }
 
     getPUT(_?: AuthorizationType): StorageAPIEndpointFn<C, R> {
-      return this.driver.handleEndpoint(async () => this.#respuestaCompartida());
+      return this.driver.handleEndpoint(async () => this.#sharedResponse());
     }
 }
 ```
