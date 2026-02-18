@@ -18,17 +18,12 @@ La integración de StudioCMS es la base de todo el ecosistema StudioCMS. Proporc
 
 La integración StudioCMS proporciona varios [módulos virtuales](https://es.vite.dev/guide/api-plugin#convencion-de-modulos-virtuales) que te dan control total sobre tu contenido dinámico. Estos módulos son utilizados principalmente de forma interna por StudioCMS, pero pueden ser accedidos por desarrolladores para acceder a los datos de StudioCMS. Los siguientes son los módulos virtuales proporcionados por la integración StudioCMS:
 
-
 ### Módulos virtuales de autenticación
 
-- **`studiocms:auth/lib/encryption`**: Utilidades de encriptación para StudioCMS.
-- **`studiocms:auth/lib/password`**: Utilidades de gestión de contraseñas para StudioCMS.
-- **`studiocms:auth/lib/rate-limit`**: Utilidades de limitación de tasa para StudioCMS.
-- **`studiocms:auth/lib/session`**: Utilidades de gestión de sesiones para StudioCMS.
-- **`studiocms:auth/lib/types`**: Tipos para la biblioteca de autenticación de StudioCMS.
-- **`studiocms:auth/lib/user`**: Utilidades de gestión de usuarios para StudioCMS.
-- **`studiocms:auth/utils/authEnvCheck`**: Utilidades para comprobar el entorno de autenticación para StudioCMS.
-- **`studiocms:auth/utils/getLabelForPermissionLevel`**: Utilidades para obtener la etiqueta para un nivel de permiso para StudioCMS.
+- **`studiocms:auth/lib`**: Utilidades de autenticación para StudioCMS.
+- **`studiocms:auth/utils/authEnvCheck`**: Utilidades para verificar el entorno de autenticación para StudioCMS.
+- **`studiocms:auth/utils/validImages`**: Imágenes válidas utilizadas en la página de inicio de sesión de StudioCMS.
+- **`studiocms:auth/scripts/three`**: Scripts de Three.js para la página de inicio de sesión de StudioCMS.
 
 ### Módulos virtuales principales
 
@@ -40,13 +35,13 @@ La integración StudioCMS proporciona varios [módulos virtuales](https://es.vit
 - **`studiocms:components/Editors`**: Proporciona los componentes del Editor para la Edición de Páginas.
 - **`studiocms:components/dashboard-grid-components`**: Componentes internos utilizados por el Panel de Control de StudioCMS.
 - **`studiocms:components/dashboard-grid-items`**: Componentes internos utilizados por el Panel de Control de StudioCMS.
-- **`studiocms:component-proxy`**: Proporciona el proxy de componentes para componentes definidos por el usuario en StudioCMS.
+- **`studiocms:component-registry`**: Proporciona el registro de componentes para componentes definidos por el usuario en StudioCMS.
+- **`studiocms:component-registry/runtime`**: Proporciona las utilidades de tiempo de ejecución para el registro de componentes para componentes definidos por el usuario en StudioCMS.
 - **`studiocms:lib`**: Proporciona los ayudantes de la biblioteca de StudioCMS para StudioCMS.
 
 ### Módulos virtuales del SDK
 
 - **`studiocms:sdk`**: Proporciona el SDK de StudioCMS para StudioCMS.
-- **`studiocms:sdk/cache`**: Proporciona la caché del SDK de StudioCMS para StudioCMS.
 - **`studiocms:sdk/types`**: Proporciona los tipos del SDK de StudioCMS para StudioCMS.
 
 ### Módulos virtuales de i18n
@@ -56,9 +51,6 @@ La integración StudioCMS proporciona varios [módulos virtuales](https://es.vit
 ### Módulos virtuales del renderizador
 
 - **`studiocms:renderer`**: Proporciona el renderizador de StudioCMS para StudioCMS.
-- **`studiocms:renderer/config`**: Proporciona la configuración del renderizador de StudioCMS para StudioCMS.
-- **`studiocms:renderer/current`**: Proporciona el renderizador actual de StudioCMS para StudioCMS.
-- **`studiocms:renderer/markdown-remark/css`**: Proporciona el CSS del renderizador markdown-remark de StudioCMS para StudioCMS.
 
 ### Módulos virtuales del gestor de imágenes
 
@@ -111,17 +103,11 @@ Las rutas que el Panel de Control de StudioCMS utiliza para interactuar con la i
 
 #### Rutas de autenticación
 
-- **`/studiocms_api/auth/login`**: El endpoint de inicio de sesión de StudioCMS.
-- **`/studiocms_api/auth/logout`**: El endpoint de cierre de sesión de StudioCMS.
-- **`/studiocms_api/auth/register`**: El endpoint de registro de StudioCMS.
-- **`/studiocms_api/auth/github`**: El endpoint de GitHub de StudioCMS.
-- **`/studiocms_api/auth/github/callback`**: El endpoint de callback de GitHub de StudioCMS.
-- **`/studiocms_api/auth/discord`**: El endpoint de Discord de StudioCMS.
-- **`/studiocms_api/auth/discord/callback`**: El endpoint de callback de Discord de StudioCMS.
-- **`/studiocms_api/auth/google`**: El endpoint de Google de StudioCMS.
-- **`/studiocms_api/auth/google/callback`**: El endpoint de callback de Google de StudioCMS.
-- **`/studiocms_api/auth/auth0`**: El endpoint de Auth0 de StudioCMS.
-- **`/studiocms_api/auth/auth0/callback`**: El endpoint de callback de Auth0 de StudioCMS.
+- **`/studiocms_api/auth/login`**: El endpoint de inicio de sesión de la API de StudioCMS.
+- **`/studiocms_api/auth/logout`**: El endpoint de cierre de sesión de la API de StudioCMS.
+- **`/studiocms_api/auth/register`**: El endpoint de registro de la API de StudioCMS.
+- **`/studiocms_api/auth/[provider]`**: El endpoint de proveedor de autenticación de la API de StudioCMS, donde `[provider]` es el nombre del proveedor (ej. `github`, `discord`, `google`, `auth0`).
+- **`/studiocms_api/auth/[provider]/callback`**: El endpoint de callback de proveedor de autenticación de la API de StudioCMS, donde `[provider]` es el nombre del proveedor (ej. `github`, `discord`, `google`, `auth0`).
 
 #### Rutas del SDK
 
