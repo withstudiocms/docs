@@ -10,12 +10,20 @@ sidebar:
     variant: 'tip'
 ---
 
-import { PackageManagers } from 'starlight-package-managers'
-import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+Este complemento habilita las características del Blog de StudioCMS así como un frontend en tu proyecto Astro. Te permitirá crear, editar y eliminar publicaciones de blog desde el panel de control de StudioCMS.
 
-# Introducción
+<Aside>
+Este complemento requiere el complemento `@studiocms/md`.
+</Aside>
 
-Este plugin habilita las características del Blog de StudioCMS así como un frontend en tu proyecto Astro. Te permitirá crear, editar y eliminar entradas de blog desde el panel de control de StudioCMS.
+### ¿Qué hace este complemento?
+
+Esta integración agregará las siguientes nuevas rutas a tu frontend controlado por StudioCMS:
+
+- `/[...slug]` - Ruta de catch-all que renderiza páginas genéricas de StudioCMS.
+- `/blog` - Índice del blog que lista todas las publicaciones.
+- `/blog/[slug]` - La página de la publicación individual del blog.
+- `/rss.xml` - El feed RSS para tus publicaciones de blog.
 
 ## Instalación
 
@@ -23,7 +31,7 @@ Este plugin habilita las características del Blog de StudioCMS así como un fro
 
    <PackageManagers pkg="studiocms" type='run' args='add @studiocms/blog' />
 
-2. Añade `@studiocms/blog` a tu archivo de configuración de Astro:
+2. Tu configuración de StudioCMS ahora debe incluir `@studiocms/blog`:
 
    ```ts twoslash title="studiocms.config.mjs" {2, 6}
    import { defineStudioCMSConfig } from 'studiocms/config';
@@ -31,18 +39,72 @@ Este plugin habilita las características del Blog de StudioCMS así como un fro
 
     export default defineStudioCMSConfig({
       plugins: [
-        blog(),
+        blog(/* Opciones */),
       ],
     });
    ```
 
-## Uso
+## Opciones
 
-### ¿Qué hace este plugin?
+```ts
 
-Esta integración añadirá las siguientes nuevas rutas a tu frontend controlado por StudioCMS:
+type StudioCMSBlogOptions = {
+	/**
+	 * Lenguaje HTML por defecto - El lenguaje por defecto para la etiqueta HTML
+	 * @default 'en'
+	 */
+  htmlDefaultLanguage: string | undefined;
+	/**
+	 * Encabezado HTML por defecto - La configuración de encabezado por defecto para el frontend
+	 */
+  htmlDefaultHead: {
+    /** 
+     * Nombre de la etiqueta HTML para agregar a `<head>`, ej. `'meta'`, `'link'`, o `'script'`. 
+     */
+    tag: "link" | "title" | "base" | "style" | "meta" | "script" | "noscript" | "template";
+    /** 
+     * Atributos para establecer en la etiqueta, ej. `{ rel: 'stylesheet', href: '/custom.css' }`. 
+     */
+    attrs?: Record<string, string | boolean | undefined> | undefined;
+    /** 
+     * Contenido para colocar dentro de la etiqueta (opcional). 
+     */
+    content?: string | undefined;
+  }[] | undefined;
+	/**
+	 * Configuración del Favicon - La configuración del favicon por defecto para el frontend
+	 */
+  favicon: string | undefined;
+	/**
+	 * Habilitar la generación de sitemap
+	 * @default true
+	 */
+  sitemap: boolean | undefined;
+	/**
+	 * Inyectar rutas
+	 * @default true
+	 */
+  injectRoutes: boolean | undefined;
+	/**
+	 * La configuración para el blog
+	 */
+  blog: {
+		/**
+		 * El título del blog
+		 */
+    title: string | undefined;
+		/**
+		 * Habilitar el feed RSS
+		 */
+    enableRSS: boolean | undefined;
+		/**
+		 * La ruta para el blog
+		 * @default '/blog'
+		 * @ejemplo '/noticias'
+		 */
+    route: string | undefined;
+  } | undefined;
+}
 
-- `/[...slug]` - La página principal del blog que lista todas las Páginas de StudioCMS.
-- `/blog` - La página principal del blog que lista todas las entradas del blog.
-- `/blog/[slug]` - La página individual de entrada del blog.
-- `/rss.xml` - El feed RSS para tus entradas de blog.
+```
+
