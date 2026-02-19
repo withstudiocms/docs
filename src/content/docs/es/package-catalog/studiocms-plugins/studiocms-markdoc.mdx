@@ -4,18 +4,18 @@ title: "@studiocms/markdoc"
 type: integration
 catalogEntry: studiocms-markdoc
 description: "Integración de MarkDoc para StudioCMS"
-sidebar:
-  badge: 
-    text: 'Plugin'
-    variant: 'tip'
 ---
 
 import { PackageManagers } from 'starlight-package-managers'
-import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import { Steps, Tabs, TabItem, Aside } from '@astrojs/starlight/components';
 
 # Introducción
 
-Este plugin habilita el soporte de MarkDoc dentro de StudioCMS.
+Este complemento habilita el soporte de MarkDoc dentro de StudioCMS.
+
+<Aside>
+Este complemento requiere el complemento `@studiocms/md`.
+</Aside>
 
 ## Instalación
 
@@ -23,7 +23,7 @@ Este plugin habilita el soporte de MarkDoc dentro de StudioCMS.
 
    <PackageManagers pkg="studiocms" type='run' args='add @studiocms/markdoc' />
 
-2. Añade `@studiocms/markdoc` a tu archivo de configuración de Astro:
+2. La configuración debería incluir `@studiocms/markdoc`:
 
    ```ts twoslash title="studiocms.config.mjs" {2, 6}
    import { defineStudioCMSConfig } from 'studiocms/config';
@@ -35,3 +35,4 @@ Este plugin habilita el soporte de MarkDoc dentro de StudioCMS.
       ],
     });
    ```
+   
