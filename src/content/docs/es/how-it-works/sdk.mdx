@@ -8,286 +8,67 @@ sidebar:
 
 import ReadMore from '~/components/ReadMore.astro';
 
-El SDK de StudioCMS es una herramienta poderosa que te permite interactuar con StudioCMS de forma programática. Proporciona un conjunto de funciones y utilidades que te permiten gestionar y servir tu contenido usando Astro DB. También proporciona la base para el Panel de Control de StudioCMS.
+El SDK de StudioCMS es una herramienta potente que te permite interactuar con StudioCMS programáticamente. Proporciona un conjunto de funciones y utilidades que te permiten gestionar y servir tu contenido utilizando nuestro propio cliente de base de datos interno [Kysely](https://kysely.dev/). También proporciona la base para el Panel de Control de StudioCMS, y está construido con [Effect](https://effect.website).
 
-## Uso
+## Uso básico
 
-El SDK de StudioCMS está disponible como un módulo virtual en tu proyecto Astro. Puedes importarlo usando la siguiente sintaxis:
+El SDK de StudioCMS está disponible como un módulo virtual en tu proyecto de Astro. Puedes importarlo y utilizarlo utilizando la siguiente sintaxis:
 
-```ts twoslash
+```ts twoslash title="example.ts" {"Trabajando con StudioCMS SDK y Effect":4} {"Trabajando con StudioCMS SDK sin Effect":16}
 /// <reference types="studiocms/v/types" />
 // ---cut---
-import SDK from 'studiocms:sdk';
-// O
-import SDKCached from 'studiocms:sdk/cache';
+import { SDKCore, SDKCoreJs, runSDK } from 'studiocms:sdk';
+import { Effect } from 'studiocms/effect';
+
+
+// Crear el Effect utilizable
+const pagesEffect = Effect.gen(function* () {
+  const sdk = yield* SDKCore;
+
+ // luego haz algo con el SDK
+ return yield* sdk.GET.pages()
+});
+
+// Convertir el Effect en un "programa" JS/TS
+const pagesResult1 = await runSDK(pagesEffect);
+
+
+// ¡Ejecuta el SDKCoreJS con el wrapper runSDK!
+const pagesResult2 = await runSDK(SDKCoreJs.GET.pages());
 ```
 
-El objeto `studioCMSSDK` proporciona un conjunto de funciones y utilidades que te permiten interactuar con StudioCMS. Puedes usar estas funciones para crear, leer, actualizar y eliminar contenido en tu proyecto Astro.
+## Utilidades disponibles
 
-El objeto `studioCMSSDKCached` proporciona un conjunto de funciones y utilidades que te permiten interactuar con el SDK de StudioCMS con una capa de caché encima. Puedes usar estas funciones para almacenar en caché contenido en tu proyecto Astro.
+A continuación se muestra una lista de las utilidades principales proporcionadas por el SDK de StudioCMS para interactuar con la base de datos.
 
-## SDK de StudioCMS (estándar)
-
-### `SDK.AUTH`
-
-El objeto `SDK.AUTH` proporciona un conjunto de funciones y utilidades que te permiten gestionar la autenticación en tu proyecto Astro. Puedes usar estas funciones para autenticar usuarios, gestionar sesiones y más.
-
-```ts twoslash
+```ts twoslash title="utils.ts" 
 /// <reference types="studiocms/v/types" />
 // ---cut---
-import SDK from 'studiocms:sdk';
-
-const { 
-   oAuth,
-   permission,
-   session,
-   user,
-} = SDK.AUTH;
-```
-
-### `SDK.INIT`
-
-El objeto `SDK.INIT` proporciona un conjunto de funciones y utilidades que te permiten inicializar el SDK de StudioCMS en tu proyecto Astro. Puedes usar estas funciones para configurar el SDK, configurarlo y más.
-
-```ts twoslash
-/// <reference types="studiocms/v/types" />
-// ---cut---
-import SDK from 'studiocms:sdk';
-
-const { 
-   siteConfig,
-   ghostUser,
-} = SDK.INIT;
-```
-
-### `SDK.GET`
-
-El objeto `SDK.GET` proporciona un conjunto de funciones y utilidades que te permiten recuperar contenido de Astro DB. Puedes usar estas funciones para obtener contenido por ID, obtener contenido por tipo y más.
-
-```ts twoslash
-/// <reference types="studiocms/v/types" />
-// ---cut---
-import SDK from 'studiocms:sdk';
-
-const { 
-   database,
-   databaseEntry,
-   databaseTable,
-   permissionsLists,
-   packagePages,
-} = SDK.GET;
-```
-
-### `SDK.POST`
-
-El objeto `SDK.POST` proporciona un conjunto de funciones y utilidades que te permiten crear contenido en Astro DB. Puedes usar estas funciones para crear contenido por tipo, crear contenido por ID y más.
-
-```ts twoslash
-/// <reference types="studiocms/v/types" />
-// ---cut---
-import SDK from 'studiocms:sdk';
-
-const { 
-   databaseEntry,
-   databaseEntries,
-} = SDK.POST;
-```
-
-### `SDK.UPDATE`
-
-El objeto `SDK.UPDATE` proporciona un conjunto de funciones y utilidades que te permiten actualizar contenido en Astro DB. Puedes usar estas funciones para actualizar contenido por ID, actualizar contenido por tipo y más.
-
-```ts twoslash
-/// <reference types="studiocms/v/types" />
-// ---cut---
-import SDK from 'studiocms:sdk';
-
-const { 
-   page,
-   pageContent,
-   tags,
-   categories,
-   permissions,
-   siteConfig,
-   folder,
-} = SDK.UPDATE;
-```
-
-### `SDK.DELETE`
-
-El objeto `SDK.DELETE` proporciona un conjunto de funciones y utilidades que te permiten eliminar contenido de Astro DB. Puedes usar estas funciones para eliminar contenido por ID, eliminar contenido por tipo y más.
-
-```ts twoslash
-/// <reference types="studiocms/v/types" />
-// ---cut---
-import SDK from 'studiocms:sdk';
-
-const { 
-   page,
-   pageContent,
-   pageContentLang,
-   tags,
-   categories,
-   permissions,
-   diffTracking,
-   folder,
-   user,
-} = SDK.DELETE;
-```
-
-### `SDK.db`
-
-El objeto `SDK.db` proporciona un conjunto de funciones y utilidades que te permiten interactuar con Astro DB directamente. Puedes usar estas funciones para consultar la base de datos, ejecutar consultas personalizadas y más.
-
-```ts twoslash
-/// <reference types="studiocms/v/types" />
-// ---cut---
-import SDK from 'studiocms:sdk';
-
-const { db } = SDK;
-```
-
-<ReadMore>Para más información sobre cómo usar `db` consulta la [Guía de Astro DB](https://docs.astro.build/es/guides/astro-db/)</ReadMore>
-
-### `SDK.REST_API`
-
-El objeto `SDK.REST_API` proporciona un conjunto de funciones y utilidades que la API REST utiliza para interactuar con StudioCMS y Astro DB.
-
-```ts twoslash
-/// <reference types="studiocms/v/types" />
-// ---cut---
-import SDK from 'studiocms:sdk';
-
-const { 
-   tokens: {
-      get: getToken,
-      new: newToken,
-      delete: deleteToken,
-      verify: verifyToken,
-   },
-} = SDK.REST_API;
-```
-
-### `SDK.diffTracking`
-
-El objeto `SDK.diffTracking` proporciona un conjunto de funciones y utilidades que te permiten rastrear cambios en Astro DB. Puedes usar estas funciones para rastrear cambios en contenido, rastrear cambios en usuarios y más.
-
-```ts twoslash
-/// <reference types="studiocms/v/types" />
-// ---cut---
-import SDK from 'studiocms:sdk';
-
-const { 
-   insert,
-   clear,
-   get,
-   revertToDiff
-} = SDK.diffTracking;
-```
-
-### Funciones Utilitarias
-
-El SDK de StudioCMS también proporciona un conjunto de funciones utilitarias que puedes usar para interactuar con el SDK. Estas funciones incluyen:
-
-```ts twoslash
-/// <reference types="studiocms/v/types" />
-// ---cut---
-import SDK from 'studiocms:sdk';
+import { SDKCoreJs } from 'studiocms:sdk';
 
 const {
-	addPageToFolderTree,
-	findNodeById,
-	findNodeByPath,
-	findNodesAlongPath,
-	getFullPath,
-	parseIdNumberArray,
-	parseIdStringArray,
-	generateRandomIDNumber,
-	generateToken,
-	testToken,
-	combineRanks,
-	verifyRank,
-	buildFolderTree,
-	getAvailableFolders,
-	clearUserReferences,
-	collectCategories,
-	collectTags,
-	collectPageData,
-	collectUserData,
-	generateRandomPassword,
-} = SDK;
+   dbService,
+   cache,
+   AUTH,
+   CLEAR,
+   CONFIG,
+   DELETE,
+   diffTracking,
+   GET,
+   INIT,
+   MIDDLEWARES,
+   notificationSettings,
+   PLUGINS,
+   POST,
+   resetTokenBucket,
+   REST_API,
+   UPDATE,
+   UTIL,
+} = SDKCoreJs;
 ```
 
-## SDK de StudioCMS (Caché)
+## Lectura adicional
 
-El SDK de StudioCMS también proporciona una versión en caché del SDK con un subconjunto limitado de las características del SDK que incluye una capa de caché sobre el SDK estándar. Puedes importar el SDK en caché usando la siguiente sintaxis:
-
-```ts twoslash
-/// <reference types="studiocms/v/types" />
-// ---cut---
-import SDKCached from 'studiocms:sdk/cache';
-```
-
-### `SDKCached.GET`
-
-El objeto `SDKCached.GET` proporciona un conjunto de funciones y utilidades que te permiten recuperar contenido de Astro DB con una capa de caché encima. Puedes usar estas funciones para obtener contenido por ID, obtener contenido por tipo y más.
-
-```ts twoslash
-/// <reference types="studiocms/v/types" />
-// ---cut---
-import SDKCached from 'studiocms:sdk/cache';
-
-const { 
-   page,
-   pages,
-   siteConfig,
-   latestVersion,
-   folderTree,
-   pageFolderTree,
-   folderList,
-   folder,
-} = SDKCached.GET;
-```
-
-### `SDKCached.CLEAR`
-
-El objeto `SDKCached.CLEAR` proporciona un conjunto de funciones y utilidades que te permiten limpiar la caché en el SDK en caché. Puedes usar estas funciones para limpiar la caché de un tipo de contenido específico, limpiar la caché de un ID de contenido específico y más.
-
-```ts twoslash
-/// <reference types="studiocms/v/types" />
-// ---cut---
-import SDKCached from 'studiocms:sdk/cache';
-
-const { 
-   page,
-   pages,
-   latestVersion,
-   folderTree,
-   folderList,
-} = SDKCached.CLEAR;
-```
-
-### `SDKCached.UPDATE`
-
-El objeto `SDKCached.UPDATE` proporciona un conjunto de funciones y utilidades que te permiten actualizar contenido en Astro DB con una capa de caché encima. Puedes usar estas funciones para actualizar contenido por ID, actualizar contenido por tipo y más.
-
-```ts twoslash
-/// <reference types="studiocms/v/types" />
-// ---cut---
-import SDKCached from 'studiocms:sdk/cache';
-
-const { 
-   page,
-   siteConfig,
-   latestVersion,
-   folderTree,
-   folderList,
-   folder,
-} = SDKCached.UPDATE;
-```
-
-### `SDKCached.db`
-
-Este es un paso directo al objeto `db` del SDK estándar.
-
-<ReadMore>Ver [`SDK.db`](#sdkdb) para más información</ReadMore>
+<ReadMore>
+El SDK de StudioCMS está impulsado por el paquete [`@withstudiocms/sdk`](/es/ecosystem/packages/sdk), que proporciona funcionalidad y utilidades adicionales para trabajar con StudioCMS. Para más información, consulta la documentación de los paquetes [Kysely](/es/ecosystem/packages/kysely) y [SDK](/es/ecosystem/packages/sdk).
+</ReadMore>
