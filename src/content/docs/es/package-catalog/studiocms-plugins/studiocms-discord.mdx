@@ -1,0 +1,34 @@
+---
+i18nReady: true
+title: "@studiocms/discord"
+type: integration
+catalogEntry: studiocms-discord
+description: "Integración de Discord en StudioCMS"
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import { Steps, Tabs, TabItem, Aside } from '@astrojs/starlight/components';
+
+Este plugin integra Discord como un proveedor de autenticación OAuth para StudioCMS. Configura la configuración necesaria, incluyendo las variables de entorno requeridas y los endpoints OAuth.
+
+## Uso
+
+Agrega este plugin en tu configuración de StudioCMS. (`studiocms.config.mjs`)
+
+```ts title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+import discord from '@studiocms/discord';
+
+export default defineStudioCMSConfig({
+    // other options here
+    plugins: [discord()]
+});
+```
+
+## Variables de entorno requeridas
+
+```sh title=".env"
+CMS_DISCORD_CLIENT_ID=<your-client-id>
+CMS_DISCORD_CLIENT_SECRET=<your-client-secret>
+CMS_DISCORD_REDIRECT_URI=<your-redirect-uri>
+```

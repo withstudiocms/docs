@@ -1,0 +1,57 @@
+---
+i18nReady: true
+title: "@studiocms/cloudinary-image-service"
+type: integration
+catalogEntry: studiocms-cloudinary-image-service
+description: "Servicio de imagenes Cloudinary para StudioCMS"
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# Introducción
+
+Este plugin habilita el servicio de imágenes Cloudinary para StudioCMS
+
+## Instalación
+
+1. Instala el paquete usando el siguiente comando:
+
+   <PackageManagers pkg="studiocms" type='run' args='add @studiocms/cloudinary-image-service' />
+
+2. Tu configuración de StudioCMS ahora debería incluir `@studiocms/cloudinary-image-service`:
+
+   ```ts twoslash title="studiocms.config.mjs" {2, 6}
+   import { defineStudioCMSConfig } from 'studiocms/config';
+   import cloudinaryJS from '@studiocms/cloudinary-image-service';
+
+    export default defineStudioCMSConfig({
+      plugins: [
+        cloudinaryJS(),
+      ],
+    });
+   ```
+
+3. Define las variables de entorno requeridas
+
+   ```dotenv title=".env"
+   CMS_CLOUDINARY_CLOUDNAME="demo"
+   ```
+
+## Uso
+
+Para habilitar el servicio de imágenes, debes establecer la configuración `preferredImageService` en `cloudinary-js`.
+
+```ts twoslash title="studiocms.config.mjs" {2, 6}
+import { defineStudioCMSConfig } from 'studiocms/config';
+import cloudinaryJS from '@studiocms/cloudinary-image-service';
+
+export default defineStudioCMSConfig({
+  features: {
+    preferredImageService: 'cloudinary-js'
+  },
+  plugins: [
+    cloudinaryJS(),
+  ],
+});
+```
