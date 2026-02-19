@@ -4,14 +4,10 @@ title: "@studiocms/wysiwyg"
 type: integration
 catalogEntry: studiocms-wysiwyg
 description: "¡Agrega un editor WYSIWYG a tu proyecto StudioCMS con facilidad.!"
-sidebar:
-  badge: 
-    text: 'Experimental'
-    variant: 'danger'
 ---
 
 import { PackageManagers } from 'starlight-package-managers'
-import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import { Steps, Tabs, TabItem, Aside } from '@astrojs/starlight/components';
 
 # Introducción
 
@@ -23,7 +19,7 @@ import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 
    <PackageManagers pkg="studiocms" type='run' args='add @studiocms/wysiwyg' />
 
-2. Tu configuración de StudioCMS ahora debe incluir `@studiocms/wysiwyg`:
+2. La configuración de StudioCMS debería incluir `@studiocms/wysiwyg`:
 
    ```ts twoslash title="studiocms.config.mjs" {2, 6}
    import { defineStudioCMSConfig } from 'studiocms/config';
