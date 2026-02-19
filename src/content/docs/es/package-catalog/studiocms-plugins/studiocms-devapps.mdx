@@ -4,10 +4,6 @@ title: "@studiocms/devapps"
 type: integration
 catalogEntry: studiocms-devapps
 description: "Una colección de herramientas útiles disponibles durante el modo de desarrollo en Astro"
-sidebar:
-  badge: 
-    text: 'Uso Público'
-    variant: 'caution'
 ---
 
 import { PackageManagers } from 'starlight-package-managers'
@@ -21,62 +17,62 @@ Una colección de herramientas útiles disponibles durante el modo de desarrollo
 
 <Tabs syncKey='install-method'>
   <TabItem label="Método Astro" icon='astro'>
-{/* <Steps> */}
-1. Instala el paquete y añádelo a tu configuración de astro usando el siguiente comando:
+<Steps>
+1. Instala el paquete y añádelo a tu configuración de Astro usando el siguiente comando:
 
    <PackageManagers type="exec" pkg="astro" args="add @studiocms/devapps" />
 
-2. Actualiza tu archivo de configuración como se muestra en [Configuración de Ejemplo](#configuración-de-ejemplo) a continuación.
-{/* </Steps> */}
+2. Actualiza tu archivo de configuración como se muestra en [Ejemplo de Configuración](#ejemplo-de-configuración) a continuación.
+</Steps>
   </TabItem>
   <TabItem label="Método Manual" icon='seti:powershell'>
-{/* <Steps> */}
+<Steps>
 1. Instala el paquete usando el siguiente comando:
 
    <PackageManagers pkg="@studiocms/devapps" />
 
-2. Añade `@studiocms/devapps` a tu archivo de configuración de astro:
+2. Añade `@studiocms/devapps` a tu archivo de configuración de Astro:
 
-   ```ts twoslash title="astro.config.mjs" ins={3, 9}
+   ```ts title="astro.config.mjs" ins={3, 9}
    import { defineConfig } from 'astro/config';
-   import db from '@astrojs/db';
+   import studiocms from 'studiocms';
    import devApps from '@studiocms/devapps'; 
 
    export default defineConfig({
       site: "https://example.com",
       integrations: [
-          db(),
+          studiocms(), // REQUERIDO
           devApps(), 
       ],
    });
    ```
-{/* </Steps> */}
+</Steps>
   </TabItem>
 </Tabs>
 
 ## Uso
 
-¡Todas las herramientas solo estarán disponibles durante `astro dev` y no estarán disponibles durante los despliegues de producción!
+Todas las herramientas solo estarán disponibles durante `astro dev` y no estarán disponibles durante las implementaciones de producción!
 
-### Configuración de ejemplo
+### Ejemplo de configuración
 
 ```ts twoslash title="astro.config.mjs" {2, 8} ins={3, 9}
 import { defineConfig } from 'astro/config';
-import db from '@astrojs/db';
+import studiocms from 'studiocms';
 import devApps from '@studiocms/devapps';
 
 export default defineConfig({
   site: "https://example.com",
   integrations: [
-    db(), // REQUERIDO
-    devApps(/* Ver Opciones de Configuración Abajo */),
+    studiocms(), // REQUERIDO
+    devApps(/* Ver Opciones de Configuración a continuación */),
   ],
 });
 ```
 
 ### Opciones de Configuración
 
-Lista completa de opciones disponibles para la integración `devApps`, con valores predeterminados mostrados. **Todas las opciones son opcionales**.
+Lista completa de opciones disponibles para la integración `devApps`, con valores por defecto mostrados. **Todas las opciones son opcionales**.
 
 ```ts twoslash 
 import devApps from '@studiocms/devapps';
@@ -85,7 +81,6 @@ devApps({
 endpoint: '_studiocms-devapps',
 verbose: false,
 appsConfig: {
-  libSQLViewer: true,
   wpImporter: true,
 },
 // ---cut-after---
@@ -94,39 +89,19 @@ appsConfig: {
 
 ## Herramientas
 
-### Visor de libSQL
-
-Herramienta de desarrollo para ver las tablas SQL en la base de datos libSQL en el navegador. La herramienta depende de las credenciales de conexión de la base de datos remota libSQL de `@astrojs/db`.
-
-#### Requisitos
-
-Las siguientes variables de entorno configuradas (También usadas para `@astrojs/db`):
-- **`ASTRO_DB_REMOTE_URL`**
-- **`ASTRO_DB_APP_TOKEN`**
-
-#### Vista previa de uso
-
-- Aplicación de barra de herramientas (Cerrada)
-
-![Aplicación de barra de herramientas de Astro](~/assets/devapps/devapps-1-toolbar-app-closed.png)
-
-- Aplicación de barra de herramientas (Expandida)
-
-![Aplicación de barra de herramientas de Astro (Expandida)](~/assets/devapps/devapps-1-toolbar-app-expanded.png)
-
 ### Importador de WordPress
 
-Herramienta de desarrollo para importar publicaciones y páginas de WordPress a la base de datos de StudioCMS.
+Herramienta de desarrollo para importar publicaciones y páginas de WordPress en la base de datos de StudioCMS.
 
 #### Requisitos
 
-- Integración StudioCMS
-- Instalación de WordPress
-- `@studiocms/blog` (Opcional: para importar Publicaciones bajo un blog)
+- Integración de StudioCMS
+- WordPress instalado
+- `@studiocms/blog` (Opcional: para importar publicaciones bajo un blog)
 
-#### Vista previa de uso
+#### Uso de vista previa
 
-- Aplicación de barra de herramientas
+- Aplicación de la barra de herramientas
 
-![Aplicación de barra de herramientas de Astro](~/assets/devapps/devapps-2-importer.png)
+![Astro DevToolbarApp](~/assets/devapps/devapps-2-importer.png)
 
