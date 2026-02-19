@@ -1,0 +1,90 @@
+---
+i18nReady: true
+title: Plugins de Renderizado
+description: Aprende sobre los plugins de renderizado de StudioCMS y cómo crearlos.
+sidebar:
+  order: 3
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+
+# Introducción
+
+Los plugins de renderizado de StudioCMS proporcionan una forma de extender y personalizar el proceso de renderizado de tu aplicación StudioCMS. Te permiten modificar cómo se renderiza el contenido en el frontend añadiendo componentes personalizados, envoltorios u otras modificaciones al pipeline de renderizado.
+
+## Creando un plugin de renderizado
+
+### El archivo principal del plugin
+
+Para comenzar a crear un plugin de renderizado, necesitas definir un plugin de StudioCMS que registre tu tipo de página personalizada y su componente de renderizado asociado. A continuación, se muestra un ejemplo de cómo crear un plugin de renderizado simple que añade un tipo de página personalizada con un renderizador y un componente de editor.
+
+```ts twoslash title="mi-plugin.ts"
+import { definePlugin } from 'studiocms/plugins';
+import { createResolver } from 'astro-integration-kit';
+import { AstroIntegration } from 'astro';
+
+const { resolve } = createResolver(import.meta.url);
+
+// Define el Plugin de StudioCMS
+export const miPlugin = () => definePlugin({
+    identifier: 'mi-plugin',
+    name: 'Mi Plugin',
+    studiocmsMinimumVersion: '0.1.0',
+    hooks: {
+      'studiocms:rendering': ({ setRendering }) => {
+        setRendering({
+          pageTypes: [
+            {
+              identifier: 'mi-tipo-de-pagina-personalizado',
+              label: 'Mi Tipo de Página Personalizado',
+              rendererComponent: resolve('./components/render.js'),
+              pageContentComponent: resolve('./components/Editor.astro')
+            }
+          ]
+        })
+      }
+    }
+});
+```
+
+### El componente renderizador
+
+Para el componente renderizador, debes crear un archivo JavaScript o TypeScript (si cuentas con una etapa de compilación) que exporte un objeto acorde al tipo PluginRenderer. Este objeto debe incluir la lógica de renderizado para tu tipo de página personalizado.
+
+```ts twoslash title="components/render.js"
+import type { PluginRenderer } from 'studiocms/types';
+
+const render = {
+  name: 'mi-renderizador-personalizado',
+  renderer: async (content: string) => {
+    // La lógica de renderizado personalizada va aquí
+    return content;
+  },
+  sanitizeOpts: {},
+} satisfies PluginRenderer;
+
+export default render;
+```
+
+### El componente editor
+
+Para el componente editor, necesitas crear un componente Astro que proporcione una interfaz de usuario para editar el contenido de tu tipo de página personalizada. Este componente recibirá el contenido actual como una propiedad y debería emitir actualizaciones al contenido a medida que el usuario realiza cambios. El `<textarea>` a continuación se utiliza en el formulario final de edición de página, permitiendo a los usuarios editar el contenido directamente. Por lo tanto, cualquier cambio realizado en cualquier componente editor personalizado debe actualizar el valor de este `<textarea>` para asegurar que el contenido se guarde correctamente.
+
+```astro title="components/Editor.astro"
+---
+import type { PluginPageTypeEditorProps } from 'studiocms/types';
+
+interface Props extends PluginPageTypeEditorProps {}
+
+const { content } = Astro.props;
+---
+<div class="editor-container">
+    <textarea id="page-content" name="page-content">{content}</textarea>
+</div>
+```
+
+## Lecturas adicionales
+
+<ReadMore>
+Si quieres construir un frontend personalizado para tu proyecto StudioCMS, puedes usar el [componente Renderizador de StudioCMS y el SDK](/es/guides/custom-frontend/rendering/) para renderizar el contenido de StudioCMS usando tus plugins de renderizado personalizados.
+</ReadMore>

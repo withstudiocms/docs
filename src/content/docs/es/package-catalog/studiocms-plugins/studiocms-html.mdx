@@ -1,0 +1,50 @@
+---
+i18nReady: true
+title: "@studiocms/html"
+type: integration
+catalogEntry: studiocms-html
+description: "Integración HTML de StudioCMS"
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# Introducción
+
+Este plugin habilita el soporte de HTML dentro de StudioCMS.
+
+## Instalación
+
+1. Instalar el paquete usando el siguiente comando:
+
+   <PackageManagers pkg="studiocms" type='run' args='add @studiocms/html' />
+
+2. Tu configuración de StudioCMS ahora debería incluir `@studiocms/html`:
+
+   ```ts twoslash title="studiocms.config.mjs" {2, 6}
+   import { defineStudioCMSConfig } from 'studiocms/config';
+   import html from '@studiocms/html';
+
+    export default defineStudioCMSConfig({
+      plugins: [
+        html(),
+      ],
+    });
+   ```
+
+## Opciones
+
+```ts twoslash
+type htmlOptions = {
+  sanitize: {
+    allowAttributes: Record<string, string[]>;
+    allowComments: boolean;
+    allowComponents: boolean;
+    allowCustomElements: boolean;
+    allowElements: string[];
+    blockElements: string[];
+    dropAttributes: Record<string, string[]>;
+    dropElements: string[];
+  };
+};
+```

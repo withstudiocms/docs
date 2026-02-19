@@ -1,0 +1,34 @@
+---
+i18nReady: true
+title: "@studiocms/github"
+type: integration
+catalogEntry: studiocms-github
+description: "Integración de GitHub en StudioCMS"
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import { Steps, Tabs, TabItem, Aside } from '@astrojs/starlight/components';
+
+Este plugin integra GitHub como un proveedor de autenticación OAuth para StudioCMS. Configura el servicio de autenticación necesario, incluyendo el nombre del proveedor, las rutas de los endpoints y las variables de entorno requeridas.
+
+## Uso
+
+Agrega este plugin en tu configuración de StudioCMS. (`studiocms.config.mjs`)
+
+```ts title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+import github from '@studiocms/github';
+
+export default defineStudioCMSConfig({
+    // otras opciones aquí
+    plugins: [github()]
+});
+```
+
+## Variables de entorno requeridas
+
+```sh title=".env"
+CMS_GITHUB_CLIENT_ID=<your-client-id>
+CMS_GITHUB_CLIENT_SECRET=<your-client-secret>
+CMS_GITHUB_REDIRECT_URI=<your-redirect-uri>
+```
