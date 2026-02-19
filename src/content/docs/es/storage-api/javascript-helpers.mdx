@@ -1,0 +1,55 @@
+---
+i18nReady: true
+title: Asistentes de JavaScript
+description: Aprende sobre los asistentes de JavaScript disponibles en la API de almacenamiento de StudioCMS.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
+sidebar:
+  order: 2
+  badge:
+    text: NUEVO
+    variant: success
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+La API de almacenamiento de StudioCMS proporciona varios asistentes de JavaScript para facilitar la interacción con los backends de almacenamiento. Estos asistentes simplifican tareas como resolver identificadores y claves de almacenamiento, además de proporcionar definiciones de tipos para una mejor seguridad de tipos y autocompletado de código.
+
+## Asistentes de JavaScript
+
+```ts twoslash title="ejemplo-api-almacenamiento.ts"
+import {
+    resolveStorageIdentifier,
+    resolveStorageKey,
+} from 'studiocms/storage-api';
+
+const identificadorAlmacenamiento = await resolveStorageIdentifier('storage-file://my-file.txt', {
+    baseUrl: 'https://example.com/', // Usa el valor de `site` de "astro:config/server"
+});
+
+const claveAlmacenamiento = await resolveStorageKey('my-file.txt', {
+    baseUrl: 'https://example.com/', // Usa el valor de `site` de "astro:config/server"
+});
+```
+
+## Tipos de JavaScript
+
+```ts twoslash title="tipos-api-almacenamiento.ts"
+import type {
+    ContextJsonBody,
+    AuthorizationType,
+    ParsedContext,
+    UrlMetadata,
+    UrlMapping,
+    ContextHandler,
+    ContextHandlerFn,
+    ContextDriverDefinition,
+    StorageAPIEndpointFn,
+    StorageApiBuilderDefinition,
+    UrlMappingDatabaseDefinition,
+    UrlMappingServiceDefinition,
+    APICoreDefinition
+} from 'studiocms/storage-api';
+```

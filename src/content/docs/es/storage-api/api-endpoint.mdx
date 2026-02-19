@@ -1,0 +1,140 @@
+---
+i18nReady: true
+title: Endpoint de API
+description: Aprende sobre los endpoints de API disponibles en la API de almacenamiento de StudioCMS.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
+sidebar:
+  order: 3
+  badge:
+    text: NUEVO
+    variant: success
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+La API de almacenamiento expone endpoints a los que se puede acceder mediante solicitudes HTTP. Las siguientes secciones describen los endpoints disponibles y su uso.
+
+<Aside type="note" title="Utiliza 'locals' para la autorización">
+Los endpoints de la API de almacenamiento hacen uso de la funcionalidad `locals` de Astro propagada por un middleware para manejar la autorización. Asegúrate de que el navegador o cliente que realiza las solicitudes provenga de un usuario de StudioCMS con sesión iniciada y los permisos adecuados para realizar operaciones de almacenamiento.
+</Aside>
+
+### Método: PUT
+
+Para subir o actualizar un archivo en el sistema de almacenamiento, puedes usar el método `PUT` en el endpoint `/studiocms_api/storage/manager`.
+
+```http title="API de almacenamiento - PUT /studiocms_api/storage/manager"
+PUT /studiocms_api/storage/manager HTTP/1.1
+Host: example.com
+Content-Type: application/octet-stream
+Accept: application/json
+Headers:
+  x-storage-key: my-file.txt
+
+<contenido-del-archivo>
+```
+
+#### Respuesta exitosa
+
+```http title="API de almacenamiento - Respuesta Exitosa PUT"
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "message": "string", 
+  "key": "string"
+}
+```
+
+#### Respuesta de error
+
+```http title="API de almacenamiento - Respuesta de Error PUT"
+HTTP/1.1 4XX/5XX Error
+Content-Type: application/json
+
+{
+  "error": "string"
+}
+```
+
+### Método: POST
+
+```http title="API de almacenamiento - POST /studiocms_api/storage/manager"
+POST /studiocms_api/storage/manager HTTP/1.1
+Host: example.com
+Content-Type: application/json
+Accept: application/json
+
+{
+  "action": "resolveUrl | publicUrl | upload | list | delete | rename | download | cleanup | mappings | test",
+  ...parámetros adicionales según la acción...
+}
+```
+
+#### Acciones
+
+- `resolveUrl`
+  - **Parámetros:** `{ identifier: string }`
+  - **Respuesta:** [`UrlMetadata`](#urlmetadata)
+- `publicUrl`
+  - **Parámetros:** `{ key: string }`
+  - **Respuesta:** [`UrlMetadata`](#urlmetadata) `& { identifier: string }`
+- `upload`
+  - **Parámetros:** `{ key: string, contentType: string }`
+  - **Respuesta:** `{ url: string, key: string }`
+- `list`
+  - **Parámetros:** `{ prefix?: string, key?: string }`
+  - **Respuesta:** `{ files:` [`File[]`](#archivo) `}`
+- `delete`
+  - **Parámetros:** `{ key: string }`
+  - **Respuesta:** `{ success: boolean }`
+- `rename`
+  - **Parámetros:** `{ key: string, newKey: string }`
+  - **Respuesta:** `{ success: boolean, newKey: string }`
+- `download`
+  - **Parámetros:** `{ key: string }`
+  - **Respuesta:** `{ url: string }`
+- `cleanup`
+  - **Parámetros:** `N/A`
+  - **Respuesta:** `{ deletedCount: number }`
+- `mappings`
+  - **Parámetros:** `N/A`
+  - **Respuesta:** `{ mappings:` [`UrlMetadata[]`](#urlmetadata) `}`
+- `test`
+  - **Parámetros:** `N/A`
+  - **Respuesta:** `{ success: boolean, message: string, provider: string }`
+
+#### Respuesta de error
+
+```http title="API de almacenamiento - Respuesta de Error POST"
+HTTP/1.1 4XX/5XX Error
+Content-Type: application/json
+
+{
+  "error": "string"
+}
+```
+
+## Tipos
+
+### UrlMetadata
+
+```ts
+export interface UrlMetadata {
+    url: string;
+    isPermanent: boolean;
+    expiresAt?: number; // Marca de tiempo Unix en ms
+}
+```
+
+### Archivo
+
+```ts
+export interface File {
+    key: string | undefined;
+    size: number | undefined;
+    lastModified: Date | undefined;
+}
+```
