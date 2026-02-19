@@ -116,7 +116,7 @@ CMS_PG_PORT=<puerto-de-tu-base-de-datos>
 
 </Tabs>
 
-Estás ahora listo para pasar a crear tu proyecto StudioCMS!
+¡Estás ahora listo para pasar a crear tu proyecto StudioCMS!
 
 ## Crear un proyecto StudioCMS
 
@@ -352,7 +352,7 @@ Para configurar proveedores oAuth, necesitan una URL de devolución de llamada. 
 
 La URL de devolución de llamada debe ser establecida en uno de los siguientes paths basado en tu entorno:
 
-| Environment   | Callback URL |
+| Entorno   | URL de devolución de llamada |
 |---------------|--------------|
 | Production    | `https://your-domain.tld/studiocms_api/auth/<provider>/callback` |
 | Testing & Dev | `http://localhost:4321/studiocms_api/auth/<provider>/callback` |
@@ -361,12 +361,12 @@ La URL de devolución de llamada debe ser establecida en uno de los siguientes p
 
 Los siguientes paths son ejemplos de la URL de devolución de llamada para cada proveedor:
 
-| Provider | Callback PATH |
+| Proveedor | PATH de devolución de llamada |
 |----------|---------------|
-| [GitHub](/en/package-catalog/studiocms-plugins/studiocms-github/)   | `/studiocms_api/auth/github/callback` |
-| [Discord](/en/package-catalog/studiocms-plugins/studiocms-discord/) | `/studiocms_api/auth/discord/callback` |
-| [Google](/en/package-catalog/studiocms-plugins/studiocms-google/)   | `/studiocms_api/auth/google/callback` |
-| [Auth0](/en/package-catalog/studiocms-plugins/studiocms-auth0/)     | `/studiocms_api/auth/auth0/callback` |
+| [GitHub](/es/package-catalog/studiocms-plugins/studiocms-github/)   | `/studiocms_api/auth/github/callback` |
+| [Discord](/es/package-catalog/studiocms-plugins/studiocms-discord/) | `/studiocms_api/auth/discord/callback` |
+| [Google](/es/package-catalog/studiocms-plugins/studiocms-google/)   | `/studiocms_api/auth/google/callback` |
+| [Auth0](/es/package-catalog/studiocms-plugins/studiocms-auth0/)     | `/studiocms_api/auth/auth0/callback` |
 
 ### Configurar el Gestor de API de Almacenamiento (opcional) <Badge text='Añadido en v0.1.0' variant='success' />
 
@@ -375,7 +375,7 @@ StudioCMS soporta el uso de diferentes Gestionadores de API de Almacenamiento pa
 Para configurar un diferente Gestor de API de Almacenamiento, necesitarás instalar el plugin adecuado y configurarlo en tu archivo `studiocms.config.mjs`.
 
 <ReadMore>Para más información sobre la API de Almacenamiento, consulta la [Documentación de la API de Almacenamiento](/es/storage-api/)</ReadMore>
-<ReadMore>Para más información sobre los plugins de gestión de almacenamiento disponibles, consulta el [Catálogo de Paquetes](/es/package-catalog#storage-managers).</ReadMore>
+<ReadMore>Para más información sobre los plugins de gestión de almacenamiento disponibles, consulta el [Catálogo de Paquetes](/es/package-catalog#manejadores-de-almacenamiento).</ReadMore>
 
 #### Ejemplo: Configurar el Gestor de Almacenamiento S3
 
@@ -403,17 +403,17 @@ Para configurar un diferente Gestor de API de Almacenamiento, necesitarás insta
    </Aside>
 
    ```sh title=".env"
-   CMS_S3_PROVIDER=ExampleS3Provider
-   CMS_S3_ACCESS_KEY_ID=<your-access-key-id>
-   CMS_S3_SECRET_ACCESS_KEY=<your-secret-access-key>
-   CMS_S3_BUCKET_NAME=<your-bucket-name>
+   CMS_S3_PROVIDER=ProveedorS3Ejemplo
+   CMS_S3_ACCESS_KEY_ID=<id-de-acceso-de-tu-clave>
+   CMS_S3_SECRET_ACCESS_KEY=<contraseña-de-acceso-secreta>
+   CMS_S3_BUCKET_NAME=<nombre-del-bucket>
    # CMS_S3_ENDPOINT= # Opcional: Especifica un endpoint personalizado si es requerido por tu proveedor
    # CMS_S3_REGION= # Opcional: Especifica la región si es requerido por tu proveedor
    # CMS_S3_FORCE_PATH_STYLE= # Opcional: Usar URLs de estilo de ruta para objetos S3
    # CMS_S3_PUBLIC_ENDPOINT= # Opcional: Endpoint público personalizado para acceder a los archivos
    ```
 
-   <ReadMore>Para más información sobre las variables de entorno con el Gestor de Almacenamiento S3, consulta [Almacenamiento S3: Variables de entorno](/es/package-catalog/storage-managers/s3-storage/#variables-de-entorno-ejemplos)</ReadMore>
+   <ReadMore>Para más información sobre las variables de entorno con el Gestor de Almacenamiento S3, consulta [Almacenamiento S3: Variables de entorno](/es/package-catalog/storage-managers/s3-storage/#environment-variable-examples)</ReadMore>
 
 </Steps>
 
@@ -525,6 +525,6 @@ Aprende más sobre las opciones de configuración de StudioCMS usando las págin
 [package-catalog]: /es/package-catalog/
 [environment-variables]: /es/start-here/environment-variables/
 [config-reference]: /es/config-reference/
-[encryption-key]: /es/start-here/environment-variables/#encryption-key-for-studiocms
+[encryption-key]: /es/start-here/environment-variables/#clave-de-encriptación-para-studiocms
 [self-hosted-libsql]: /es/guides/database/sqld-server/
 [turso-sponsor-link]: https://tur.so/studiocms
