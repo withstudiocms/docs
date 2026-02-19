@@ -2,111 +2,93 @@
 i18nReady: true
 title: Variables de Entorno
 description: Una breve descripción de las variables de entorno utilizadas en StudioCMS.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 sidebar:
-   order: 2
+  order: 2
 ---
 
 import { Aside } from '@astrojs/starlight/components';
 import ReadMore from '~/components/ReadMore.astro';
 
-Para que StudioCMS funcione correctamente, debes configurar las variables de entorno adecuadas. Estas variables son esenciales para establecer una conexión segura con Astro DB y autenticarse con la API de StudioCMS. Sin la configuración correcta de estas variables de entorno, la aplicación no funcionará como se espera.
+Para que StudioCMS funcione correctamente, debes configurar las variables de entorno correctas. Estas variables son esenciales para establecer una conexión segura a Astro DB y autenticarte con la API de StudioCMS. Sin configurar correctamente estas variables de entorno, la aplicación no funcionará como se espera.
 
-Puedes crear un archivo `.env` en el directorio raíz de tu proyecto y agregar las variables de entorno requeridas. El archivo `.env` es un archivo de texto que contiene pares clave-valor de variables de entorno. Las variables de entorno son leídas por la aplicación durante la ejecución.
+Puedes crear un archivo `.env` en el directorio raíz de tu proyecto y agregar las variables de entorno requeridas. El archivo `.env` es un archivo de texto que contiene pares clave-valor de variables de entorno. Las variables de entorno son leídas por la aplicación en tiempo de ejecución.
 
-Para futuras referencias sobre cómo trabajar con variables de entorno en Astro, puedes consultar la guía de [Variables de Entorno](https://docs.astro.build/es/guides/environment-variables) en la documentación de Astro.
+Para futuras referencias sobre cómo trabajar con variables de entorno dentro de Astro, puedes consultar [Variables de Entorno](https://docs.astro.build/guides/environment-variables) en la documentación de Astro.
 
-## Variables de entorno requeridas
+## Variables de Entorno Requeridas
 
-Para usar StudioCMS, hay algunas variables de entorno necesarias que debes configurar en tu archivo `.env`.
+Para usar StudioCMS, hay algunas variables de entorno requeridas que debes configurar en tu archivo `.env`.
 
-### URL de la base de datos y token para `@astrojs/db`
+### Conexión a la base de datos
 
-- `ASTRO_DB_REMOTE_URL` - La URL de conexión a tu servidor libSQL
-- `ASTRO_DB_APP_TOKEN` - El token de aplicación para tu servidor libSQL
+Dependiendo de la base de datos que estés usando con StudioCMS, necesitarás configurar las variables de entorno adecuadas para tu conexión a la base de datos.
+
+#### `libSQL`
 
 ```bash title=".env"
-ASTRO_DB_REMOTE_URL=libsql://tu.servidor.io
-ASTRO_DB_APP_TOKEN=eyJh...RUCg
+CMS_LIBSQL_URL=libsql://tu-base-de-datos.turso.io
+# CMS_LIBSQL_URL=file:./ruta/a/tu/base-de-datos.db
+CMS_LIBSQL_AUTH_TOKEN=<token-de-autenticación> (opcional)
+# CMS_LIBSQL_ENCRYPTION_KEY=<string> (opcional)
+# CMS_LIBSQL_SYNC_INTERVAL=<number> (opcional)
+# CMS_LIBSQL_SYNC_URL=<string> (opcional)
+# CMS_LIBSQL_READ_YOUR_WRITES=true/false (opcional)
+# CMS_LIBSQL_OFFLINE_MODE=true/false (opcional)
+# CMS_LIBSQL_TLS=true/false (opcional) (ayuda a establecer false cuando se trabaja con instancias sqld locales)
+# CMS_LIBSQL_CONCURRENCY=<number> (opcional)
 ```
 
-<ReadMore>Para más información sobre `@astrojs/db`, consulta la [documentación de Astro DB](https://docs.astro.build/en/guides/astro-db/)</ReadMore>
+#### `MySQL`
 
-### Clave de encriptación para `@studiocms/auth`
+```bash title=".env"
+CMS_MYSQL_DATABASE=<nombre-de-tu-base-de-datos>
+CMS_MYSQL_USER=<usuario-de-tu-base-de-datos>
+CMS_MYSQL_PASSWORD=<contraseña-de-tu-base-de-datos>
+CMS_MYSQL_HOST=<host-de-tu-base-de-datos>
+CMS_MYSQL_PORT=<port-de-tu-base-de-datos>
+# CMS_MYSQL_CONNECTION_LIMIT=<number> (opcional)
+```
 
-`CMS_ENCRYPTION_KEY` - Una clave de encriptación segura para cifrar datos sensibles
+#### `PostgreSQL`
+
+```bash title=".env"
+CMS_PG_DATABASE=<nombre-de-tu-base-de-datos>
+CMS_PG_USER=<usuario-de-tu-base-de-datos>
+CMS_PG_PASSWORD=<contraseña-de-tu-base-de-datos>
+CMS_PG_HOST=<host-de-tu-base-de-datos>
+CMS_PG_PORT=<port-de-tu-base-de-datos>
+# CMS_PG_CONNECTION_LIMIT=<number> (opcional)
+```
+
+### Clave de Encriptación para `studiocms`
+
+`CMS_ENCRYPTION_KEY` - Una clave de encriptación segura para encriptar datos sensibles
 
 ```bash title=".env"
 CMS_ENCRYPTION_KEY="wqR+w...sRcg=="
 ```
 
-<Aside type="note" title="Usa OpenSSL">
-Puedes generar una clave de encriptación segura usando el siguiente comando:
+<Aside type="note" title="Use OpenSSL">
+Puedes generar una clave de encriptación segura usando el siguiente comando: 
 ```bash
 openssl rand --base64 16
-```
+``` 
 </Aside>
 
-## Variables de entorno opcionales
+## Variables de Entorno Opcionales
 
-### Variables de entorno para autenticación oAuth
+Estas variables de entorno son opcionales pero pueden configurarse para personalizar el comportamiento de StudioCMS.
 
-<ReadMore>
-Para más información sobre la configuración de autenticación oAuth, consulta la documentación de [Configurar Autenticación oAuth][config-oauth].
-</ReadMore>
+### Nivel de Registro de Effect
 
-#### GitHub (opcional)
+`STUDIOCMS_LOGLEVEL` - Establece el nivel de registro para todas las operaciones basadas en Effect en StudioCMS.
 
-Para autenticarte con GitHub, necesitas agregar las siguientes variables de entorno a tu archivo `.env`:
-
-```bash title=".env"
-# credenciales para OAuth de GitHub
-CMS_GITHUB_CLIENT_ID=
-CMS_GITHUB_CLIENT_SECRET=
-CMS_GITHUB_REDIRECT_URI=
-```
-
-<Aside type="note" title="Nota">
-`CMS_GITHUB_REDIRECT_URI` es opcional si estás usando múltiples URIs de redirección con OAuth de GitHub.
-</Aside>
-
-#### Discord (Opcional)
+- Niveles de registro disponibles: `All` | `Fatal` | `Error` | `Warning` | `Info` | `Debug` | `Trace` | `None`
+- Por defecto: `Info`
 
 ```bash title=".env"
-# credenciales para OAuth de Discord
-CMS_DISCORD_CLIENT_ID=
-CMS_DISCORD_CLIENT_SECRET=
-CMS_DISCORD_REDIRECT_URI=
+STUDIOCMS_LOGLEVEL="Info"
 ```
-
-#### Google (Opcional)
-
-```bash title=".env"
-# credenciales para OAuth de Google
-CMS_GOOGLE_CLIENT_ID=
-CMS_GOOGLE_CLIENT_SECRET=
-CMS_GOOGLE_REDIRECT_URI=
-```
-
-#### Auth0 (Opcional)
-
-```bash title=".env"
-# credenciales para OAuth de Auth0
-CMS_AUTH0_CLIENT_ID=
-CMS_AUTH0_CLIENT_SECRET=
-CMS_AUTH0_DOMAIN=
-CMS_AUTH0_REDIRECT_URI=
-```
-
-### Variables de entorno para el gestor de imágenes
-
-#### Cloudinary (opcional)
-
-Si eliges usar el plugin integrado de Cloudinary, necesitarás definir lo siguiente:
-
-```bash title=".env"
-## SDK de JavaScript de Cloudinary
-CMS_CLOUDINARY_CLOUDNAME="demo"
-```
-
-{/* Enlaces */}
-[config-oauth]: /es/start-here/getting-started/#opcional-configurar-autenticación-oauth

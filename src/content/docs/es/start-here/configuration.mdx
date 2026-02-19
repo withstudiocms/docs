@@ -6,62 +6,31 @@ sidebar:
    order: 3
 ---
 
-import { FileTree } from '@astrojs/starlight/components';
+import { FileTree, Aside } from '@astrojs/starlight/components';
 import ReadMore from '~/components/ReadMore.astro';
 
-# Opciones Disponibles
+El archivo de configuración de StudioCMS se utiliza para configurar varios aspectos de StudioCMS en tu proyecto Astro. Permite definir configuraciones como la configuración de la base de datos, plugins, registro de componentes, localización y banderas de funcionalidad.
 
-Hay dos formas de configurar la integración de StudioCMS. A continuación se muestran ejemplos de cómo configurar según si eliges usar el archivo `astro.config.mjs` o el archivo dedicado `studiocms.config.mjs`.
+<Aside>
+El archivo `studiocms.config.*`, al igual que el archivo de configuración de Astro, soporta las siguientes extensiones: `.cjs`, `.js`, `.mjs`, `.cts`, `.ts`, `.mts`. El siguiente ejemplo mostrará el uso de la extensión de archivo `.mjs`.
+</Aside>
 
-<ReadMore>
-Esta página te muestra cómo y dónde definir la configuración de StudioCMS. Para más información sobre las opciones de configuración de StudioCMS, consulta las [páginas de referencia][reference-page].
-</ReadMore>
-
-## Usando el archivo `astro.config.mjs`: (opción recomendada)
-
-```ts twoslash title="astro.config.mjs"
-import db from '@astrojs/db';
-import node from '@astrojs/node';
-import studioCMS from 'studiocms';
-import { defineConfig } from 'astro/config';
-
-export default defineConfig({
-    site: 'https://demo.studiocms.dev/',
-    output: 'server',
-    adapter: node({ mode: "standalone" }),
-    integrations: [
-        db(),
-        studioCMS({
-            dbStartPage: false,
-            // otras opciones de configuración
-        }),
-    ],
-});
-```
-
-## Usando el archivo `studiocms.config.mjs`:
-
-Este archivo será detectado automáticamente y sobrescribirá cualquier opción pasada en tu astro.config. Si eliges usar esta opción, asegúrate de mover todas las opciones de configuración de StudioCMS a este archivo como se muestra a continuación:
-
-### Estructura Ejemplo de Archivos
+### Estructura de archivos de ejemplo
 
 <FileTree>
 
 - .env
 - astro.config.mjs
 - **studiocms.config.mjs**
-- studiocms-auth.config.json Auto Generado
 - package.json
 - src
-  - env.d.ts
   - ...
 
 </FileTree>
 
-### Ejemplo de Configuración
+### Ejemplos de archivos de configuración
 
 ```ts twoslash title="astro.config.mjs"
-import db from '@astrojs/db';
 import node from '@astrojs/node';
 import studioCMS from 'studiocms';
 import { defineConfig } from 'astro/config';
@@ -70,7 +39,7 @@ export default defineConfig({
     site: 'https://demo.studiocms.dev/',
     output: 'server',
     adapter: node({ mode: "standalone" }),
-    integrations: [ db(), studioCMS() ],
+    integrations: [ studioCMS() ],
 });
 ```
 
@@ -83,5 +52,11 @@ export default defineStudioCMSConfig({
 })
 ```
 
-{/* Enlaces */}
+### Lecturas complementarias
+
+<ReadMore>
+Para más información sobre la configuración de StudioCMS, consulte la [página de referencia][reference-page].
+</ReadMore>
+
+{/* Links */}
 [reference-page]: /es/config-reference/
