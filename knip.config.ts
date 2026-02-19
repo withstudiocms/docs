@@ -24,7 +24,6 @@ const config: KnipConfig = {
 		"@withstudiocms/effect",
 		'@docsearch/js',
 		'studiocms:ui',
-		'studiocms',
 		'@studiocms/web-vitals',
 		'@astrojs/db',
 	],
