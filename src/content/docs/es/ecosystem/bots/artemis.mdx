@@ -1,0 +1,205 @@
+---
+i18nReady: true
+title: Artemis Bot de Discord
+type: github
+githubURL: "https://github.com/withstudiocms/bots/tree/main/packages/artemis"
+description: "Artemis Bot for StudioCMS"
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 6
+---
+
+Artemis es un bot de Discord potente basado en Effect que está diseñado para interactuar con tu comunidad Discord y tu organización GitHub. Construido para StudioCMS, open source para que cualquiera pueda ajustarlo a su gusto.
+
+Ve este bot en acción en el [Servidor Discord de StudioCMS](https://chat.studiocms.dev).
+
+## Tech Stack
+- Effect-TS
+- Effect dfx
+- Drizzle ORM
+- libSQL
+- GroqAI API
+- GitHub API
+- Algolia
+
+## Características
+
+- Bot de auto-hilo
+- Replicador de BlueSky para Discord
+- Embed de contribución
+- PTAL Crowdin desde el despacho de repositorio
+- Búsqueda de documentación con Algolia
+- Bus de eventos personalizado (principalmente para comunicación HTTP -> Discord)
+- Ticket GitHub desde la interacción con la aplicación de mensaje
+- Ticket GitHub desde el comando de hilo
+- Bot anti-embed (evita que los mensajes de los usuarios tengan embeds)
+- Servicio PTAL
+- Gráfico de estrellas
+- Servidor web HTTP para gestión de recursos y webhooks
+- Respuestas por ping (`@`) con interacciones IA
+
+## Servicios
+
+### Auto-Threader
+
+Crea automáticamente hilos desde cada mensaje en un canal.
+
+Para habilitar la creación automática de hilos en un canal, un administrador debe agregar `[threads]` al tema del canal.
+
+### No-Embed
+
+Evita que los embeds aparezcan en los mensajes en un canal.
+
+Para habilitar no-embed en un canal, un administrador debe agregar `[noembed]` al tema del canal.
+
+### Crowdin PTAL
+
+Envía automáticamente notificaciones PTAL cuando se crea una solicitud de extracción de Crowdin.
+
+Para habilitar el envío de PTAL Crowdin en un canal, un administrador debe configurar un evento de despacho de repositorio en su repositorio GitHub con el tipo de acción `crowdin.create` y la carga útil adecuada. También requiere que el servicio PTAL esté configurado en el servidor.
+
+## Comandos
+
+### `bluesky`
+
+- **Permiso mínimo**: Administrador
+
+Gestiona el seguimiento y las configuraciones de la cuenta BlueSky para este servidor.
+
+#### `list`
+
+- **Permiso mínimo**: Administrador
+
+Lista todas las cuentas BlueSky actualmente siendo rastreadas en este servidor.
+
+#### `subscribe <account> <top_level> <replies> <reposts>`
+
+- **Permiso mínimo**: Administrador
+
+Se suscribe el canal actual a actualizaciones desde la cuenta BlueSky especificada. Los parámetros `top_level`, `replies`, y `reposts` son booleanos que indican si se deben rastrear esos tipos de publicaciones.
+
+#### `unsubscribe <account>`
+
+- **Permiso mínimo**: Administrador
+
+Se desuscribe el canal actual de actualizaciones desde la cuenta BlueSky especificada.
+
+#### `settings`
+
+- **Permiso mínimo**: Administrador
+
+Ve o modifica las configuraciones de seguimiento de BlueSky para este servidor.
+
+##### `post_channel <channel>`
+
+- **Permiso mínimo**: Administrador
+
+Establece el canal donde se publicarán las actualizaciones de BlueSky.
+
+##### `ping_role [role] [enable]`
+
+- **Permiso mínimo**: Administrador
+
+Establece el rol para ping de actualizaciones de BlueSky y si se debe habilitar o deshabilitar el ping.
+
+##### `view`
+
+- **Permiso mínimo**: Administrador
+
+Ve las configuraciones de seguimiento de BlueSky actuales para este servidor.
+
+### `contribute`
+
+- **Permiso mínimo**: N/A
+
+Crea un embed de guía de contribución para el canal actual.
+
+### `crowdin-setup`
+
+- **Permiso mínimo**: Administrador
+
+Configura un embed de Crowdin en el canal actual para un repositorio especificado.
+
+#### `set <owner> <repo>`
+
+- **Permiso mínimo**: Administrador
+
+Configura un nuevo oyente de embed de Crowdin en el canal actual para el repositorio GitHub especificado.
+
+#### `remove <owner> <repo>`
+
+- **Permiso mínimo**: Administrador
+
+Elimina el embed de Crowdin del canal actual para el repositorio GitHub especificado.
+
+#### `list`
+
+- **Permiso mínimo**: Administrador
+
+Lista todos los embeds de Crowdin en el canal actual.
+
+### `docs <query> [hidden=false] [language=en]`
+
+- **Permiso mínimo**: N/A
+
+Busca la documentación para una consulta específica usando la API Docsearch de Algolia.
+
+### `issue-from-thread <repository> <type> [title]`
+
+- **Permiso mínimo**: N/A
+
+Crea un ticket GitHub desde el hilo actual en el repositorio especificado. El parámetro `type` indica el tipo de problema, y un título opcional puede ser proporcionado.
+
+### `issue-settings`
+
+- **Permiso mínimo**: Administrador
+
+Gestiona las configuraciones de comando de ticket para este servidor.
+
+#### `add-repo <repository> <owner> <label>`
+
+- **Permiso mínimo**: Administrador
+
+Añade un repositorio a la lista de permitidos del comando de ticket.
+
+#### `remove-repo <repository-label>`
+
+- **Permiso mínimo**: Administrador
+
+Elimina un repositorio de la lista de permitidos del comando de ticket.
+
+#### `list-repos`
+
+- **Permiso mínimo**: Administrador
+
+Lista todos los repositorios en la lista de permitidos del comando de ticket.
+
+### `ptal <github-url> <description>`
+
+- **Permiso mínimo**: N/A
+
+Envía una notificación PTAL (Please Take A Look) para una solicitud de extracción con la URL GitHub y la descripción proporcionadas.
+
+### `ptal-settings`
+
+- **Permiso mínimo**: Administrador
+
+Configura el servicio PTAL para este servidor.
+
+#### `set-ping-role <role>`
+
+- **Permiso mínimo**: Administrador
+
+Establece el rol para ping de notificaciones PTAL.
+
+#### `view-settings`
+
+- **Permiso mínimo**: Administrador
+
+Ve las configuraciones PTAL actuales para este servidor.
+
+### `stars-graph <repository> [public=false]`
+
+- **Permiso mínimo**: N/A
+
+Genera un gráfico de historial de estrellas para un repositorio GitHub. El repositorio debe estar en el formato `owner/repo` (por ejemplo, `facebook/react`). El parámetro opcional `public` indica si el gráfico generado debe ser accesible públicamente.

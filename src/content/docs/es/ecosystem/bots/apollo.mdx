@@ -1,0 +1,70 @@
+---
+i18nReady: true
+title: Apollo Bot de Discord
+type: github
+githubURL: "https://github.com/withstudiocms/bots/tree/main/packages/apollo"
+description: "Apollo es un bot de Discord completamente configurable que ayuda a gestionar servidores Discord para proyectos OSS."
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 5
+---
+
+Apollo es un bot de Discord completamente configurable que ayuda a gestionar servidores Discord para proyectos OSS. Está diseñado para ayudar con tareas comunes como gestionar solicitudes de soporte, enviar anuncios PTAL y más.
+
+Ve este bot en acción en el [Servidor Discord de StudioCMS](https://chat.studiocms.dev).
+
+## Tech Stack
+- Discord.js
+- Drizzle ORM
+- libSQL
+- GitHub API
+
+## Comandos
+
+### `ptal`
+
+- **Permiso mínimo**: Moderar miembros
+
+Crea un anuncio PTAL en el canal actual y pings el rol de notificaciones (si está configurado).
+
+### `settings`
+
+- **Permiso mínimo**: Administrador
+
+Comando que lleva los sub-comandos para configurar el bot.
+
+#### `set-forum`
+
+- **Permiso mínimo**: Administrador
+
+Permite configurar el Foro para ser usado para solicitudes de soporte.
+
+#### `set-ptal-role`
+
+- **Permiso mínimo**: Administrador
+
+Establece el rol que se pings cuando se envía un nuevo anuncio PTAL.
+
+#### `set-join-role`
+
+- **Permiso mínimo**: Administrador
+
+Establece el rol que un usuario recibe cuando se une al servidor.
+
+#### `print`
+
+- **Permiso mínimo**: Administrador
+
+Imprime un resumen de todas las configuraciones.
+
+### `solved`
+
+- **Permiso mínimo**: Moderar miembros
+
+Envía un embed con botones para que el OP de una solicitud de soporte pueda cerrarla.
+
+### `support`
+
+- **Permiso mínimo**: Moderar miembros
+
+Crea un nuevo post en el foro de soporte basado en el mensaje que proporcionas.
