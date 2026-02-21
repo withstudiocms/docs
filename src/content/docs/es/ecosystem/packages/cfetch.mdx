@@ -1,0 +1,325 @@
+---
+i18nReady: true
+title: CFetch
+type: integration
+catalogEntry: studiocms-cfetch
+description: "Aprende sobre el paquete @studiocms/cfetch"
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 5
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components'
+import { PackageManagers } from 'starlight-package-managers'
+import ReadMore from '~/components/ReadMore.astro'
+
+
+Esta es una [integración de Astro](https://docs.astro.build/es/guides/integrations-guide/) que proporciona una función fetch con caché para proyectos Astro SSR
+
+## Uso
+
+### Requisitos previos
+
+- Usando con un proyecto Astro SSR, aunque podrías importar y usar esto en un proyecto Astro SSG (estático), no tendría ningún beneficio ya que las páginas estáticas de Astro se pre-renderizan.
+
+### Instalación
+
+<Steps>
+
+1. Instala la integración **automáticamente** usando la CLI de Astro:
+
+   <PackageManagers pkg="studiocms" type='run' args='add @studiocms/cfetch' />
+
+   O instálala **manualmente**:
+
+   <PackageManagers type="add" pkg="@studiocms/cfetch" />
+
+2. Instala las dependencias homólogas
+
+   Si tu gestor de paquetes no instala automáticamente las dependencias homólogas, necesitarás asegurarte de que `Effect` está instalado.
+
+   <PackageManagers type="add" pkg="effect" />
+
+3. Añade la integración a tu configuración de Astro
+
+   ```ts title="astro.config.mts" ins={2, 6}
+   import { defineConfig } from 'astro/config';
+   import cFetch from "@studiocms/cfetch";
+
+   export default defineConfig({
+     integrations: [
+       cFetch(),
+     ],
+   });
+   ```
+
+</Steps>
+
+### Uso
+
+Esta integración incluye varias versiones de funciones fetch con caché y [Effects](https://effect.website) para permitir un control completo de cómo trabajas con tus datos.
+
+#### Efectos
+
+Todos los efectos tienen el siguiente patrón de retorno o derivados de él.
+
+```ts
+Effect.Effect<CachedResponse<T>, FetchError, never>;
+```
+
+##### Tipo `CachedResponse<T>`
+
+```ts
+interface CachedResponse<T> {
+  data: T;
+  ok: boolean;
+  status: number;
+  statusText: string;
+  headers: Record<string, string>;
+}
+```
+
+##### Tipo `CFetchConfig`
+
+```ts
+interface CFetchConfig {
+    ttl?: Duration.DurationInput;
+    tags?: string[];
+    key?: string;
+    verbose?: boolean;
+}
+```
+
+##### `cFetchEffect`
+
+###### Interfaz
+
+```ts
+const cFetchEffect: <T>(
+  url: string | URL, 
+  parser: (response: Response) => Promise<T>, 
+  options?: RequestInit | undefined, 
+  cacheConfig?: CFetchConfig | undefined
+) => Effect.Effect<CachedResponse<T>, FetchError, never>
+```
+
+###### Ejemplo de uso
+
+```ts
+import { cFetchEffect, Duration } from "c:fetch"
+
+const effect = cFetchEffect<{ foo: string; bar: number; }>(
+  'https://api.example.com/data',
+  (res) => res.json(),
+  { method: "GET" },
+  { 
+    ttl: Duration.hours(1), 
+    tags: ['example'], 
+    key: "api-data-fetch", 
+    verbose: false 
+  }
+);
+/*
+Tipo de retorno:
+  Effect.Effect<CachedResponse<{ foo: string; bar: number; }>, FetchError, never>
+*/
+```
+
+##### `cFetchEffectJson`
+
+###### Interfaz
+
+```ts
+const cFetchEffectJson: <T>(
+  url: string | URL, 
+  options?: RequestInit | undefined, 
+  cacheConfig?: CFetchConfig | undefined
+) => Effect.Effect<CachedResponse<T>, FetchError, never>
+```
+
+###### Ejemplo de uso
+
+```ts
+import { cFetchEffectJson } from "c:fetch"
+
+const effect = cFetchEffectJson<{ foo: string; bar: number; }>(
+  'https://api.example.com/data',
+  { method: "GET" }
+);
+/*
+Tipo de retorno:
+  Effect.Effect<CachedResponse<{ foo: string; bar: number; }>, FetchError, never>
+*/
+```
+
+##### `cFetchEffectText`
+
+###### Interfaz
+
+```ts
+const cFetchEffectText: (
+  url: string | URL, 
+  options?: RequestInit | undefined, 
+  cacheConfig?: CFetchConfig | undefined
+) => Effect.Effect<CachedResponse<string>, FetchError, never>
+```
+
+###### Ejemplo de uso
+
+```ts
+import { cFetchEffectText } from "c:fetch"
+
+const effect = cFetchEffectText(
+  'https://example.com',
+  { method: "GET" }
+);
+/*
+Tipo de retorno:
+  Effect.Effect<CachedResponse<string>, FetchError, never>
+*/
+```
+
+##### `cFetchEffectBlob`
+
+###### Interfaz
+
+```ts
+const cFetchEffectBlob: (
+  url: string | URL, 
+  options?: RequestInit | undefined, 
+  cacheConfig?: CFetchConfig | undefined
+) => Effect.Effect<CachedResponse<Blob>, FetchError, never>
+```
+
+###### Ejemplo de uso
+
+```ts
+import { cFetchEffectBlob } from "c:fetch"
+
+const effect = cFetchEffectBlob(
+  'https://example.com/image.png',
+  { method: "GET" }
+);
+/*
+Tipo de retorno:
+  Effect.Effect<CachedResponse<Blob>, FetchError, never>
+*/
+```
+
+#### Funciones
+
+Todas las funciones tienen el siguiente patrón de retorno o derivados de él.
+
+```ts
+CachedResponse<T>;
+```
+
+##### `cFetch`
+
+###### Interfaz
+
+```ts
+const cFetch: <T>(
+  url: string | URL, 
+  parser: (response: Response) => Promise<T>, 
+  options?: RequestInit | undefined, 
+  cacheConfig?: CFetchConfig | undefined
+) => Promise<CachedResponse<T>>
+```
+
+###### Ejemplo de uso
+
+```ts
+import { cFetch } from "c:fetch"
+
+const effect = await cFetch<{ foo: string; bar: number; }>(
+  'https://api.example.com/data',
+  (res) => res.json(),
+  { method: "GET" }
+);
+/*
+Tipo de retorno:
+  CachedResponse<{ foo: string; bar: number; }>
+*/
+```
+
+##### `cFetchJson`
+
+###### Interfaz
+
+```ts
+const cFetchJson: <T>(
+  url: string | URL, 
+  options?: RequestInit | undefined, 
+  cacheConfig?: CFetchConfig | undefined
+) => Promise<CachedResponse<T>>
+```
+
+###### Ejemplo de uso
+
+```ts
+import { cFetchJson } from "c:fetch"
+
+const effect = await cFetchJson<{ foo: string; bar: number; }>(
+  'https://api.example.com/data',
+  { method: "GET" }
+);
+/*
+Tipo de retorno:
+  CachedResponse<{ foo: string; bar: number; }>
+*/
+```
+
+##### `cFetchText`
+
+###### Interfaz
+
+```ts
+const cFetchText: (
+  url: string | URL, 
+  options?: RequestInit | undefined, 
+  cacheConfig?: CFetchConfig | undefined
+) => Promise<CachedResponse<string>>
+```
+
+###### Ejemplo de uso
+
+```ts
+import { cFetchText } from "c:fetch"
+
+const effect = await cFetchText(
+  'https://example.com',
+  { method: "GET" }
+);
+/*
+Tipo de retorno:
+  CachedResponse<string>
+*/
+```
+
+##### `cFetchBlob`
+
+###### Interfaz
+
+```ts
+const cFetchBlob: (
+  url: string | URL, 
+  options?: RequestInit | undefined, 
+  cacheConfig?: CFetchConfig | undefined
+) => Promise<CachedResponse<Blob>>
+```
+
+###### Ejemplo de uso
+
+```ts
+import { cFetchBlob } from "c:fetch"
+
+const effect = await cFetchBlob(
+  'https://example.com/image.png',
+  { method: "GET" }
+);
+/*
+Tipo de retorno:
+  CachedResponse<Blob>
+*/
+```

@@ -1,0 +1,179 @@
+---
+i18nReady: true
+title: "Lenguaje de plantillas"
+description: "Aprende sobre el lenguaje de plantillas personalizado de StudioCMS"
+type: integration
+catalogEntry: withstudiocms-template-lang
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
+---
+
+import { Aside } from '@astrojs/starlight/components'
+import { PackageManagers } from 'starlight-package-managers'
+
+StudioCMS viene con su propio lenguaje de plantillas personalizado que es similar en sintaxis a lenguajes de plantillas populares como [Handlebars](https://handlebarsjs.com/) o [Liquid](https://shopify.github.io/liquid/). Este lenguaje de plantillas te permite crear plantillas dinámicas y reutilizables en diferentes partes del panel de control de StudioCMS, como en el sistema de plantillas de correo electrónico, o en plugins personalizados que puedas desarrollar.
+
+`@withstudiocms/template-lang` is a simple MIT Licensed TypeScript ESM template language for HTML emails, similar to Handlebars but focused on simplicity and database data integration.
+
+## Características
+
+- Sintaxis simple `{{variable}}` para interpolación de variables
+- Soporte para propiedades anidadas con notación de punto (`{{user.name}}`)
+- TypeScript con soporte completo de ESM
+- Modo estricto para manejo de errores
+- Diseñado específicamente para plantillas de correo electrónico y datos de base de datos
+- Cero dependencias
+
+## Casos de uso
+
+Perfecto para:
+- Plantillas de correo electrónico HTML
+- Generación de contenido dinámico desde datos de base de datos
+- Necesidades de plantillas simples sin lógica compleja
+- Proyectos TypeScript enfocados en ESM
+
+## Instalación
+
+Para aquellos interesados en usar el lenguaje de plantillas de StudioCMS en sus proyectos, puedes instalarlo usando tu gestor de paquetes preferido:
+
+<PackageManagers type="add" pkg="@withstudiocms/template-lang" />
+
+## Sintaxis de plantillas
+
+Similar a otros lenguajes de plantillas, el lenguaje de plantillas de StudioCMS usa dobles llaves `{{ }}` para denotar variables que deberían ser reemplazadas con datos reales cuando la plantilla es renderizada.
+
+A diferencia de otros lenguajes de plantillas, el lenguaje de plantillas de StudioCMS se enfoca en la simplicidad y no incluye lógica compleja o estructuras de control. Está principalmente diseñado para interpolación de variables simple.
+
+### Interpolación de variables
+```handlebars
+<h1>Hello {{user.firstName}} {{user.lastName}}!</h1>
+<p>Your order #{{order.id}} total is ${{order.total}}</p>
+```
+
+### Propiedades anidadas
+```handlebars
+<p>Shipping to: {{user.address.street}}, {{user.address.city}}</p>
+```
+
+## Ejemplos de uso
+
+### Uso básico
+
+```ts twoslash title="basic-usage.ts"
+import TemplateEngine from '@withstudiocms/template-lang';
+const engine = new TemplateEngine();
+
+const template = "Hello {{name}}! Welcome to {{company.name}}.";
+const data = {
+    name: "John Doe",
+    company: {
+        name: "Acme Corp"
+    }
+};
+
+const result = engine.render(template, data);
+console.log(result); // "Hello John Doe! Welcome to Acme Corp."
+```
+
+### Plantilla de correo electrónico
+
+```ts twoslash title="email-template.ts"
+import TemplateEngine from '@withstudiocms/template-lang';
+const engine = new TemplateEngine();
+
+const emailTemplate = `
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{subject}}</title>
+</head>
+<body>
+    <h1>Hello {{user.name}}!</h1>
+    <p>Your order #{{order.id}} has been confirmed.</p>
+    <p>Total: {{order.total}}</p>
+</body>
+</html>
+`;
+
+const data = {
+    subject: "Order Confirmation",
+    user: { name: "John Doe" },
+    order: { id: "12345", total: "99.99" }
+};
+
+const html = engine.render(emailTemplate, data);
+```
+
+### Modo estricto
+
+```ts twoslash title="strict-mode.ts"
+import TemplateEngine from '@withstudiocms/template-lang';
+
+const strictEngine = new TemplateEngine({ strict: true });
+
+// Esto lanzará un error si 'missingVar' no está en los datos
+try {
+    const result = strictEngine.render("Hello {{missingVar}}!", {});
+} catch (error) {
+    console.log("Variable not found:", (error as Error).message);
+}
+```
+
+### Default Values
+
+```ts twoslash title="default-values.ts"
+import TemplateEngine from '@withstudiocms/template-lang';
+
+const engine = new TemplateEngine({ defaultValue: "[NOT SET]" });
+const result = engine.render("Hello {{name}}!", {});
+// Resultado: "Hello [NOT SET]!"
+```
+
+### Compilación de plantillas
+
+```ts twoslash title="template-compilation.ts"
+import TemplateEngine from '@withstudiocms/template-lang';
+const engine = new TemplateEngine();
+
+// Compila una vez, usa múltiples veces
+const compiled = engine.compile("Hello {{name}}!");
+
+const result1 = compiled({ name: "Alice" });
+const result2 = compiled({ name: "Bob" });
+```
+
+## Referencia de API
+
+### TemplateEngine
+
+#### Constructor
+```typescript
+new TemplateEngine(options?: TemplateOptions)
+```
+
+#### Métodos
+
+**`render(template: string, data: TemplateData): string`**
+Renderiza una plantilla con los datos proporcionados.
+
+**`compile(template: string): (data: TemplateData) => string`**
+Compila una plantilla en una función reutilizable.
+
+**`hasVariables(template: string): boolean`**
+Verifica si una plantilla contiene alguna variable.
+
+**`getVariables(template: string): string[]`**
+Retorna un array de todos los nombres de variables en la plantilla.
+
+**`setOptions(options: Partial<TemplateOptions>): void`**
+Actualiza las opciones del motor.
+
+### Opciones
+
+```ts
+interface TemplateOptions {
+    strict?: boolean;      // Lanza un error si una variable está faltante (default: false)
+    defaultValue?: string; // Valor por defecto para variables faltantes (default: '')
+}
+```
