@@ -1,0 +1,52 @@
+---
+i18nReady: true
+title: "SDK de StudioCMS"
+type: integration
+catalogEntry: withstudiocms-sdk
+description: "Aprende sobre el SDK de StudioCMS"
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
+---
+
+import { Aside } from '@astrojs/starlight/components'
+import { PackageManagers } from 'starlight-package-managers'
+import Integration from '~/components/Integration.astro'
+import ReadMore from '~/components/ReadMore.astro'
+
+Un kit de desarrollo completo para StudioCMS, proporcionando una API unificada para interactuar con la funcionalidad principal del CMS. Construido con TypeScript y Effect-ts para garantizar la seguridad del tipo y los patrones de programación funcional, con Kysely DB ([`@withstudiocms/kysely`](/es/ecosystem/packages/kysely/)) para el almacenamiento dinámico de bases de datos.
+
+<Aside type="caution" title="Advertencia">
+  Este paquete está principalmente destinado para uso interno por StudioCMS. Mientras puedes usarlo directamente en tus proyectos, ten en cuenta que puede cambiar sin previo aviso a medida que StudioCMS evoluciona.
+</Aside>
+
+<ReadMore>
+  ¿Quieres aprender más sobre cómo usar el SDK con StudioCMS? Consulta la [documentación del SDK](/es/how-it-works/sdk/) para aprender cómo usarlo en tu proyecto StudioCMS!
+</ReadMore>
+
+### Características
+
+- **Módulo de autenticación** - Autenticación de usuarios y gestión de sesiones
+- **Gestión de configuración** - Gestión de configuración con validación de seguridad de tipos
+- **Operaciones de base de datos** - CRUD con gestión de errores Effect-ts
+- **Sistema de plugins** - Utilidades para el desarrollo y integración de plugins
+- **Capa de caché** - Caché incorporada con memoización de consultas y invalidación
+- **Utilidades de middleware** - Gestión de solicitudes y composición de middleware
+- **Seguimiento de cambios** - Rastrear cambios y modificaciones
+- **Ayudantes de API REST** - Utilidades para construir puntos finales REST
+- **Configuración de notificaciones** - Gestión de preferencias de notificación de usuarios
+- **Cajón de tokens** - Limitación de tasas y gestión de tokens
+
+### Lecturas adicionales
+
+<ReadMore>
+Para un ejemplo de código de cómo usar el SDK de StudioCMS manualmente en tu proyecto, consulta cómo se implementa en [StudioCMS en GitHub](https://github.com/withstudiocms/studiocms/blob/main/packages/studiocms/src/virtuals/sdk/index.ts)
+</ReadMore>
+
+<ReadMore>
+¿Estás interesado en el SDK ya disponible en StudioCMS? Consulta la [documentación del SDK](/es/how-it-works/sdk/) para aprender cómo usarlo en tu proyecto StudioCMS!
+</ReadMore>
+
+<ReadMore>
+  Aprende más sobre el cliente de base de datos Kysely en la [documentación de Kysely](/es/ecosystem/packages/kysely/).
+</ReadMore>
