@@ -1,0 +1,86 @@
+---
+i18nReady: true
+title: Idioma
+description: Página de referencia para las opciones de idioma de StudioCMSOptions
+sidebar:
+  order: 2
+---
+
+import ReadMore from '~/components/ReadMore.astro';
+
+`locale` permite establecer configuraciones específicas del idioma.
+
+```ts twoslash title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  locale: {
+    dateLocale: 'en-US',
+    dateTimeFormat: {},
+    i18n: {}
+  },
+});
+```
+
+## `dateLocale`
+
+`dateLocale` es un identificador de idioma BCP 47 utilizado para el formato de fecha.
+
+- **Tipo:** `string`
+- **Valor predeterminado:** `'en-US'`
+
+### Uso
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  locale: {
+    dateLocale: 'en-US', // POR DEFECTO - Esto establece el idioma de la fecha para el formato de fecha.
+  }
+})
+```
+
+## `dateTimeFormat`
+
+`dateTimeFormat` es un objeto que se utiliza para configurar el formato de fecha y hora.
+
+- **Tipo:** `Intl.DateTimeFormatOptions`
+- **Valor predeterminado:** `{}`
+
+### Uso
+
+```ts twoslash {3-7} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  locale: {
+    dateTimeFormat: {
+      year: "numeric",
+      month: "short",
+      day: "numeric"
+    },
+  }
+})
+```
+
+## `i18n`
+
+`i18n` es un objeto que se utiliza para configurar las opciones de internacionalización.
+
+- **Tipo:** `object`
+- **Valor predeterminado:** `{}`
+
+### Uso
+
+```ts twoslash {3-5} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  locale: {
+    i18n: {
+      defaultLocale: 'en',
+    },
+  }
+})
+```
