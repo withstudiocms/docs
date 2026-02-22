@@ -1,0 +1,25 @@
+---
+i18nReady: true
+title: "Actualización: v0.2.0"
+description: Actualización StudioCMS a v0.2.0
+topic: guides
+sidebar:
+  label: v0.2.0
+  order: 999982
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro'
+
+<QuickUpdate />
+
+## Cambios importantes
+
+Ninguno. Esta es una versión sin cambios importantes.
+
+## Reparación de errores y mejoras
+
+- Migración al paquete cli-kit actualizado para mejorar la funcionalidad de la CLI.
+- Agregada expresión regular y manejo de errores adecuado para evitar que se usen caracteres ilegales (no seguros para URL) para objetos S3.
+- Se corrigió un problema donde guardar una página que no tiene `draft` establecido en `true`, anteriormente actualizaba el valor de la fecha `publishedAt`.
+- Se reestructuraron las verificaciones de permisos para las rutas del panel de control a nivel de middleware para evitar el acceso no autorizado.
+- Se actualizaron varias dependencias a sus últimas versiones para garantizar la seguridad y estabilidad.
