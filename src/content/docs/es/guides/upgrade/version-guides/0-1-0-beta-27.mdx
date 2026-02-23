@@ -1,0 +1,28 @@
+---
+i18nReady: true
+title: "Actualización: 0.1.0-beta.27"
+description: Actualización de StudioCMS a Beta.27
+topic: guides
+sidebar:
+  label: 0.1.0-beta.27
+  order: 999988
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Nuevas características
+
+- Restructuración completa de la CLI para utilizar el nuevo módulo clack basado en Effect desde `@withstudiocms/effect`.
+- Migración de la CLI al nuevo paquete `@withstudiocms/auth-kit`.
+- Configuración inicial de pruebas para StudioCMS.
+
+## Corrección de errores
+
+- Habilitar la opción "Borrador" en la página de edición para todas las páginas (incluida la página de índice) para que el campo de borrador se envíe con el formulario. Anteriormente, el control deshabilitado omitía este campo del payload, impidiendo cambios en el estado de borrador.
+- Asegurar que el slug no sea una cadena vacía o un slug no válido.
+- Renombrar archivo interno para evitar confusiones con las pruebas durante el desarrollo.
+- Corregir parámetro en el comando add de la CLI.

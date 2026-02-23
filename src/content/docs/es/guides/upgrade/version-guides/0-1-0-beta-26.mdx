@@ -1,0 +1,57 @@
+---
+i18nReady: true
+title: "Actualización: 0.1.0-beta.26"
+description: Actualización de StudioCMS a Beta.26
+topic: guides
+sidebar:
+  label: 0.1.0-beta.26
+  order: 999989
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Cambios importantes
+
+- **Actualización del esquema de tablas de Astro DB** (Los usuarios deberán ejecutar `astro db push --remote` para actualizar el esquema de sus tablas):
+   - Implementa una nueva tabla de base de datos para almacenamiento de configuración dinámica en una tabla unificada.
+   - Configuración actualizada de tablas de AstroDB para utilizar enums para los permisos.
+- **Eliminación de locales obsoletos** del middleware en favor de un objeto unificado StudioCMS locals.
+   - Claves eliminadas de Astro.Locals de nivel superior:
+     - `SCMSGenerator`, `SCMSUiGenerator`, `latestVersion`, `siteConfig`, `defaultLang`, `routeMap`
+     - `userSessionData`, `emailVerificationEnabled`, `userPermissionLevel`
+     - `wysiwygCsrfToken` (renombrado)
+   - Nueva ubicación:
+     - Accede a estos bajo `Astro.locals.StudioCMS`.
+   - Renombres:
+     - `wysiwygCsrfToken` → `editorCSRFToken` (dentro de StudioCMS)
+   - Ejemplos de migración:
+     - Antes:
+       ```ts
+       const { siteConfig, defaultLang } = Astro.locals;
+       ```
+     - Después:
+       ```ts
+       const { siteConfig, defaultLang } = Astro.locals.StudioCMS;
+       ```
+
+     - Antes:
+       ```ts
+       const token = Astro.locals.wysiwygCsrfToken;
+       ```
+     - Después:
+       ```ts
+       const token = Astro.locals.StudioCMS.editorCSRFToken;
+       ```
+
+## Nuevas características
+
+- **Actualización a `@studiocms/ui` 1.0 beta.**
+
+## Corrección de errores
+
+- **Ajuste en la búsqueda de páginas del SDK** para que devuelva undefined cuando no se encuentra una página, eliminando errores molestos de Astro en desarrollo.
+- **Corrección en la conversión de datos de formulario** en la configuración inicial.

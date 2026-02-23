@@ -1,0 +1,30 @@
+---
+i18nReady: true
+title: "Actualización: 0.1.0-beta.25"
+description: Actualización de StudioCMS a Beta.25
+topic: guides
+sidebar:
+  label: 0.1.0-beta.25
+  order: 999990
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Nuevas características
+
+- **Reestructuración de los componentes de gestión de contenido del panel** para eliminar scripts en línea y mejorar la reusabilidad del código.
+- **Refactorización del uso de effect** para utilizar las nuevas utilidades mejoradas del paquete `@withstudiocms/effect`.
+- **Actualizaciones para utilizar el nuevo paquete** `@withstudiocms/component-registry`.
+- **Migración de rutas API** a la nueva utilidad createEffectAPIRoutes de `@withstudiocms/effect`.
+- **Optimización de la vista previa de la página de inicio de sesión** en la página de Configuración y en la configuración inicial.
+- **Optimización de la página de inicio de sesión con `threejs`**, asegurando una carga rápida de la página.
+
+## Corrección de errores
+
+- **Unificación de la configuración de fecha y hora** en la última verificación de actualización para el modal de verificación de versión.
+- **Limpieza de código**, corrección de la configuración inicial de oauth y eliminación de utilidades antiguas.
+- **Consolidación de definiciones de tablas** en la configuración y eliminación del archivo de tablas heredadas.

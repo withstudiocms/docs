@@ -1,0 +1,50 @@
+---
+i18nReady: true
+title: "Actualización: 0.1.0-beta.28"
+description: Actualización de StudioCMS a Beta.28
+topic: guides
+sidebar:
+  label: 0.1.0-beta.28
+  order: 999987
+---
+
+import ReadMore from "~/components/ReadMore.astro";
+import QuickUpdate from "~/components/QuickUpdate.astro";
+import { Aside } from "@astrojs/starlight/components";
+
+<QuickUpdate />
+
+## Cambios importantes
+
+- Se marca como obsoleto y se oculta la configuración "Ocultar página de índice" del panel de control. Los usuarios que anteriormente dependían de esta configuración deben migrar a otro método.
+- Implementa un nuevo sistema de renderizado, que permite a los complementos aumentar el proceso de renderizado con prefijos, sufijos o aumento de componentes simples. Este es un cambio radical para los autores de complementos que han implementado renderizadores personalizados.
+  <ReadMore>
+    Consulta la [Documentación del Renderizador de
+    Complementos][plugin-renderer-docs] para obtener más detalles sobre cómo
+    migrar los renderizadores existentes al nuevo sistema.
+  </ReadMore>
+- Marca como obsoletas las tablas heredadas StudioCMSSiteConfig, StudioCMSMailerConfig y StudioCMSNotificationSettings para ser eliminadas por completo en una versión futura.
+  - Los usuarios deberán ejecutar `astro db push --remote` para asegurar que sus esquemas de base de datos estén actualizados.
+
+## Nuevas funcionalidades
+
+- Introduce un nuevo editor de plantillas de correo electrónico y una función de vista previa en el panel de control de StudioCMS, lo que permite a los usuarios personalizar las plantillas de correo electrónico directamente desde la interfaz de usuario.
+- Habilita el soporte multilingüe para el panel de control de StudioCMS.
+- Implementa un tipo de ruta API mejorado, PluginAPIRoute, desde la exportación `studiocms/plugins` para los manejadores de API `onCreate`, `onEdit` y `onDelete` de los complementos.
+- Reorganiza las páginas de creación y edición de contenido, así como la página de configuración SMTP.
+
+## Corrección de errores y mejoras
+
+- Actualizaciones a `@studiocms/ui@1.0.0-beta.3` y limpieza de estilos que ya no son necesarios.
+- Reemplaza el icono de búsqueda CSS personalizado con la propiedad de icono del componente Input y elimina el CSS no utilizado.
+- Corrige el análisis de validación de formularios de los valores de los campos de selección booleanos transformando los valores de cadena a booleanos para las páginas de gestión de contenido.
+- Actualiza el botón de comentarios para que apunte a GitHub (medida temporal hasta la integración de astro-feedback).
+- Corrige el error de análisis de zod para las respuestas de las rutas API de configuración inicial.
+- Actualiza las herramientas rápidas de usuario, la página de cierre de sesión y los botones para utilizar solicitudes POST.
+- Optimiza la caché de middleware para mejorar el rendimiento.
+- Refactoriza la estructura interna de archivos de las páginas frontend de Astro y los endpoints de API para simplificar el mantenimiento a largo plazo.
+- Mejora el procesamiento de datos en la creación y edición de páginas para una mayor consistencia y fiabilidad.
+- Traslada la carga de avatares al lado del cliente para eliminar el bloqueo de renderizado.
+
+{/* Links */}
+[plugin-renderer-docs]: /es/plugins/renderers/

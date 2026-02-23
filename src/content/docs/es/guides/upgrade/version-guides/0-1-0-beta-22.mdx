@@ -1,0 +1,46 @@
+---
+i18nReady: true
+title: "Actualización: 0.1.0-beta.22"
+description: Actualización de StudioCMS a Beta.22
+topic: guides
+sidebar:
+  label: 0.1.0-beta.22
+  hidden: true
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Cambios importantes
+
+- Se eliminó el soporte obsoleto de `@astrojs/web-vitals` en favor del nuevo paquete `@studiocms/web-vitals`. Consulta la [Guía de Web Vitals][web-vitals-guide] para más información.
+- `studiocms:component-proxy` ha sido reemplazado por `studiocms:component-registry`.
+- Se agregó el módulo virtual `studiocms:component-registry/runtime` que exporta tipos y los siguientes ayudantes: `getRegistryComponents` y `getRendererComponents`, utilizados para obtener componentes con propiedades y los componentes del renderizador respectivamente.
+- `importComponentKeys` se ha mantenido pero está obsoleto en favor de la nueva función `getRendererComponents`.
+- Se eliminaron todos los pageTypes internos base incluidos, permitiendo aún más flexibilidad en cómo funciona StudioCMS para el usuario. Este cambio también implica que será necesario instalar al menos un plugin de renderizado para StudioCMS.
+- Se introdujeron los plugins `@studiocms/html` y `@studiocms/md` para manejar soporte HTML y MD respectivamente. Consulta la documentación del [Plugin HTML][studiocms-html] y del [Plugin MD][studiocms-md] para más detalles.
+  - Si estabas usando los pageTypes `studiocms/markdown` o `studiocms/html`, deberás instalar el plugin correspondiente y actualizar tu configuración.
+- Se eliminaron funciones obsoletas del SDK y se reestructuró el SDK para facilitar su modificación y lectura.
+- Se eliminaron funciones previamente obsoletas y el antiguo sistema de hash de contraseñas.
+
+## Nuevas características
+
+- Los pageTypes de Markdown y HTML se han modularizado en plugins separados.
+- Se agregó un nuevo paquete de utilidades de configuración para una mejor gestión de la configuración.
+- Se reestructuraron el registro de componentes y el SDK para mejorar el mantenimiento y facilitar modificaciones.
+- Los endpoints de OAuth se optimizaron para un mejor manejo de la autenticación.
+- Nuevo sistema `componentRegistry` para manejar componentes definidos por el usuario, permitiendo mayor flexibilidad en cómo se registran y utilizan los componentes dentro de StudioCMS.
+
+## Corrección de errores
+
+- Se agregó soporte en el getter de carpetas del SDK para obtener por nombre o ID en lugar de solo por ID, y se añadieron comentarios jsdoc a las funciones faltantes del SDK.
+- Corrección: Se corrigieron las exportaciones de componentes y layouts, y se agregó exportación para estilos.
+
+{/* Links */}
+[config-doc]: /es/config-reference/
+[web-vitals-guide]: /es/package-catalog/
+[studiocms-html]: /es/package-catalog/studiocms-plugins/studiocms-html/
+[studiocms-md]: /es/package-catalog/studiocms-plugins/studiocms-md/
