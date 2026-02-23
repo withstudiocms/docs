@@ -1,0 +1,50 @@
+---
+i18nReady: true
+title: "Renderizado de contenido"
+description: "Opciones para renderizar contenido en un frontend personalizado"
+---
+
+import { Aside } from '@astrojs/starlight/components'
+import ReadMore from '~/components/ReadMore.astro'
+
+El sistema de renderizado de StudioCMS es dinámico según el tipo de página actual (pageType).
+
+Ejemplo de ruta comodín (catch-all) donde la página actual se obtiene del SDK y los datos de la página se pasan al renderizador. En este caso, estamos usando el tipo de página predeterminado `studiocms/markdown` configurado en la configuración de la página, y envolviéndolo en un Layout como lo hacemos con el plugin `@studiocms/blog`. Por ejemplo, un plugin de constructor de páginas (pageBuilder) puede venir sin un diseño estándar, pero en su lugar pretende que diseñes toda la página dentro del constructor, como lo harías en otros sistemas CMS.
+
+<Aside>
+Por favor, note que usar nuestro sistema de renderizado requiere que tengas un plugin de StudioCMS que proporcione un renderizador, como `@studiocms/md`, `@studiocms/html` o un [plugin personalizado que proporciona un renderizador](/es/plugins/renderers/) para tu tipo de contenido. El renderizador manejará el renderizado del contenido según el tipo de página definido en tu configuración de StudioCMS.
+</Aside>
+
+```astro title="src/pages/[...slug].astro"
+---
+import { StudioCMSRenderer } from 'studiocms:renderer';
+import { SDKCoreJs, runSDK } from 'studiocms:sdk';
+import Layout from '../layouts/Layout.astro';
+
+let { slug } = Astro.params;
+
+if (!slug) {
+	slug = 'index';
+}
+
+const { data: page } = await runSDK(SDKCoreJs.GET.page.bySlug(slug))
+
+if (!page) {
+	return new Response(null, { status: 404 });
+}
+
+const { title, description, heroImage } = page;
+---
+
+<Layout title={title} description={description} heroImage={heroImage}>
+	<main>
+		<StudioCMSRenderer data={page} />
+	</main>
+</Layout>
+```
+
+## Lecturas adicionales
+
+<ReadMore>
+¿Quieres construir un plugin de renderizador personalizado para StudioCMS? Echa un vistazo a nuestra guía sobre [Creando Plugins de Renderizador Personalizado](/es/plugins/renderers/) para aprender cómo extender StudioCMS con tu propia lógica de renderizado.
+</ReadMore>

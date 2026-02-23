@@ -1,0 +1,31 @@
+---
+i18nReady: true
+title: "Actualización: 0.1.0-beta.24"
+description: Actualización de StudioCMS a Beta.24
+topic: guides
+sidebar:
+  label: 0.1.0-beta.24
+  hidden: true
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Cambios importantes
+
+- Se agregó una nueva tabla `StudioCMSPluginData` a AstroDB para uso de los complementos de StudioCMS, así como nuevas utilidades SDK para complementos con tipado dinámico de tablas.
+
+<Aside>
+Al actualizar, asegúrate de ejecutar `astro db push --remote` con tu gestor de paquetes para actualizar el esquema de tu base de datos ¡antes de ejecutar la nueva versión!
+</Aside>
+
+## Corrección de errores
+
+- Se agregó exportación para `component-registry/types`.
+- Se optimizó el widget `user-quick-tools`.
+- Se introdujo un nuevo módulo SDK de middleware para garantizar que los objetos de caché estén inicializados y no vacíos.
+- Se convirtió el `robotstxt` interno a un esquema Zod adecuado y se limpió el código relacionado.
+- Se actualizó la página del editor para también inyectar una variable de ID para la página actual.

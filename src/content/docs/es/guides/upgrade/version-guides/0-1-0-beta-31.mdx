@@ -1,0 +1,161 @@
+---
+i18nReady: true
+title: "Actualización: 0.1.0-beta.31"
+description: Actualización de StudioCMS a Beta.31
+topic: guides
+sidebar:
+  label: 0.1.0-beta.31
+  order: 999984
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import { PackageManagers } from 'starlight-package-managers'
+import { FileTree, TabItem, Tabs, Steps, Aside } from '@astrojs/starlight/components';
+
+StudioCMS `0.1.0-beta.31` introduce cambios significativos, incluyendo una nueva capa de base de datos basada en Kysely, un sistema de plugins renovado y varias nuevas características y mejoras. Esta guía te ayudará a actualizar tu proyecto existente de StudioCMS a la última versión.
+
+## Cambios importantes
+- Sistema de plugins refactorizado. Consulta la [documentación de plugins](/es/plugins/) para más detalles.
+- Implementada nueva capa de base de datos basada en Kysely.
+- Eliminado el soporte para opciones de configuración pasadas directamente a la integración de Astro de StudioCMS, ahora todas las opciones de configuración deben definirse en el archivo `studiocms.config.mjs`. Consulta la [Referencia de Configuración](/es/start-here/configuration/) para más detalles.
+
+## Nuevas funcionalidades
+- Implementado nuevo comando [`studiocms migrate`](/es/how-it-works/cli/#migrate) para manejar las migraciones de base de datos.
+- Permitir deshabilitar las etiquetas meta del generador mediante la opción de configuración [`features.dashboard.security.hideGeneratorTags`](/es/config-reference/features/#hidegeneratortags).
+- StudioCMS ahora soporta diferentes dialectos de base de datos mediante [Kysely](https://kysely.dev/).
+- Introducida nueva middleware para mostrar errores del sistema en páginas con errores en lugar de hacer que todo el sitio se bloquee.
+- Nuevas características de plugins:
+  - Inyección dinámica de componentes y scripts en el panel de control a través de nuevos hooks de plugins.
+  - Nuevos ayudantes de base de datos para facilitar el acceso a la base de datos dentro de los plugins.
+- Introducida nueva página del panel de control para gestionar el sistema.
+  - Incluye un panel de información del sistema (debug).
+  - Proporciona acceso rápido a tus tablas de base de datos mientras estás en producción.
+- Agregada la nueva aplicación de barra de herramientas de desarrollador integrada en StudioCMS para ver y gestionar tu base de datos mientras estás en modo de desarrollo.
+- Integrada rastreo web-vitals/analytics opcional al panel de control para obtener mejores insights de rendimiento.
+  - Esto puede activarse mediante la opción de configuración [`features.webVitals`](/es/config-reference/features/#webvitals).
+  - Para quienes anteriormente usaban las integraciones `@studiocms/web-vitals` o `@astrojs/web-vitals`, esto ahora está integrado y puede configurarse mediante la configuración de StudioCMS.
+- Agregado nuevo comando CLI [`studiocms debug`](/es/how-it-works/cli/#debug) para acceder rápidamente a información útil de depuración sobre tu proyecto StudioCMS.
+
+## Correcciones de errores y mejoras
+- Actualizada la URL de la imagen del usuario fantasma.
+- Refactorizada la generación de `urlRoute` de los datos de la página para resolver correctamente.
+- Refactorizados y simplificados los componentes de diseño del panel de control.
+- Mejorados los tipos de configuración de StudioCMS y los comentarios de JSDoc.
+- Refactorizados los comandos CLI para usar la nueva capa de base de datos.
+- Introducidas nuevas utilidades de depuración para facilitar el acceso a información útil de depuración.
+
+## Instrucciones para la migración
+
+Para actualizar tu proyecto StudioCMS a la versión `0.1.0-beta.31`, sigue estos pasos:
+
+<Steps>
+
+1. **Actualiza tus dependencias de StudioCMS** a la última versión:
+   <PackageManagers pkg="@studiocms/upgrade" type='dlx' />
+
+2. **Si tienes plugins personalizados**, asegúrate de que estén actualizados para ser compatibles con el nuevo sistema de plugins. Consulta la [documentación de plugins](/es/plugins/) para obtener orientación.
+
+3. **Revisa tu archivo `studiocms.config.mjs`** para asegurarte de que todas las opciones de configuración estén correctamente establecidas según el nuevo esquema. Consulta la [Referencia de Configuración](/es/start-here/configuration/) para obtener detalles.
+
+   - **¿Anteriormente usaste las integraciones `@studiocms/web-vitals` o `@astrojs/web-vitals`?** Elimínalas de las dependencias de tu proyecto y configura el rastreo web vitals integrado a través de la opción `features.webVitals` en tu archivo `studiocms.config.mjs`:
+      ```ts {3} title="studiocms.config.mjs"
+      export default defineStudioCMSConfig({
+        features: {
+          webVitals: true,
+        },
+      });
+      ```
+
+4. **Configura una nueva conexión de base de datos para la nueva capa de base de datos basada en Kysely.** Actualiza tu archivo `.env` con los detalles de conexión de base de datos necesarios. Mantén tu base de datos anterior intacta para la migración.
+
+   <ReadMore>Ir a [Prepara tu base de datos](/es/start-here/getting-started/#prepara-tu-base-de-datos) para más información sobre configurar tu base de datos.</ReadMore>
+   <ReadMore>Ir a [Variables de entorno](/es/start-here/environment-variables/) para más información sobre configurar tus variables de entorno.</ReadMore>
+
+5. **Configura tu dialecto de base de datos en `studiocms.config.mjs` bajo la opción `db`. Por ejemplo, para usar libSQL:**
+
+   ```ts {3} title="studiocms.config.mjs"
+   export default defineStudioCMSConfig({
+     db: {
+       dialect: 'libsql', // o 'postgresql', 'mysql'
+     },
+   });
+   ```
+
+   <Aside type="note" title="Lenguajes de bases de datos">
+    StudioCMS ahora soporta múltiples lenguajes de base de datos a través de Kysely. Asegúrate de configurar el lenguaje correcto para tu base de datos. Por defecto se usará `libsql` si no se especifica ningún lenguaje.
+   </Aside>
+
+6. **Instala los paquetes de clientes de base de datos necesarios** para tu lenguaje de base de datos elegido:
+
+   <Tabs syncKey='db-setup-method'>
+       
+   <TabItem label="libSQL (default)" icon="database">
+     <PackageManagers type='add' pkg="@libsql/client @libsql/kysely-libsql" />
+   </TabItem>
+
+   <TabItem label="MySQL" icon="database">
+     <PackageManagers type='add' pkg="mysql2" />
+   </TabItem>
+
+   <TabItem label="PostgreSQL" icon="database">
+     <PackageManagers type='add' pkg="pg" />
+   </TabItem>
+
+   </Tabs>
+
+7. **Descarga la herramienta de migración en la raíz de tu proyecto StudioCMS:**
+   
+   <PackageManagers pkg="@studiocms/migrator" type='add' />
+
+   Esta herramienta leerá tu `studiocms.config.mjs` para hacer posible la conexión con el correspondiente lenguaje de tu base de datos.
+
+8. **Ejecución de esquema de migración:**
+
+   Dado que la capa de base de datos ha cambiado, deberás ejecutar migraciones para actualizar el esquema de tu base de datos y que sea compatible con la nueva versión. Hay dos formas de hacerlo:
+
+   <Tabs>
+   <TabItem label="Usando la CLI de StudioCMS">
+
+   Integrado en la CLI de StudioCMS hay un nuevo comando `migrate` que ejecutará las migraciones necesarias por ti. Para usarlo, ejecuta el siguiente comando en el directorio de tu proyecto:
+
+   <PackageManagers type="exec" args="studiocms migrate" />
+
+   Se te pedirá que selecciones una opción para migrar el esquema de tu base de datos a la última versión, retroceder a una versión anterior o ver el estado actual de la migración. Selecciona « Migrate to Latest » (Migrar a la última versión) para actualizar el esquema de tu base de datos.
+
+   <Aside type="note" title="Estado de migración y opciones">
+    Siempre puedes verificar el estado de tus migraciones ejecutando `studiocms migrate --status` para ver qué migraciones se han aplicado y cuáles están pendientes.
+    
+    También puedes usar la opción `--latest` o `-l` para migrar automáticamente a la última versión sin indicaciones, o usar `--rollback` o `-r` para retroceder a una versión anterior.
+   </Aside>
+
+   </TabItem>
+   <TabItem label="Usando la herramienta de migración">
+
+    Alternativamente, puedes usar la herramienta de migración que instalaste en el paso anterior. Para hacer esto, continúa con el siguiente paso y utiliza la interfaz web para ejecutar las migraciones.
+
+   </TabItem>
+   </Tabs>
+
+9. **Ejecutar la interfaz web de la herramienta de migración:**
+
+   Inicia la herramienta de migración ejecutando el siguiente comando en el directorio de tu proyecto:
+
+   <PackageManagers type="exec" args="studiocms-migrator" />
+
+   Esto iniciará un servidor web local. Abre tu navegador y navega a `http://localhost:4321` para acceder a la interfaz de la herramienta de migración.
+
+   Esta interfaz te dará opciones para migrar el esquema de tu base de datos, así como para migrar tus datos desde tu base de datos anterior a la nueva.
+
+10. Una vez que la migración esté completa, **inicia tu proyecto de StudioCMS** como de costumbre:
+
+    <PackageManagers type="run" args="dev" />
+
+    Tu proyecto debería estar funcionando ahora con el esquema de base de datos y configuración actualizados.
+</Steps>
+
+## Notas finales
+
+- Asegúrate de tener copias de seguridad de tu base de datos antes de realizar migraciones.
+- Prueba tu aplicación a fondo después de la migración para detectar cualquier problema temprano.
+- Consulta la [documentación de StudioCMS](/es/start-here/getting-started/) para obtener más información sobre nuevas funciones y cambios.
+- Si encuentras algún problema durante el proceso de migración, comunícate con nuestra [comunidad de Discord](https://chat.studiocms.dev) o abre un issue en nuestro [repositorio de GitHub](https://github.com/withstudiocms/studiocms/issues).

@@ -1,0 +1,32 @@
+---
+i18nReady: true
+title: "Actualización: v0.3.0"
+description: Actualización StudioCMS a v0.3.0
+topic: guides
+sidebar:
+  label: v0.3.0
+  badge:
+    text: NEW
+    variant: success
+  order: 999981
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro'
+
+<QuickUpdate />
+
+## Cambios importantes
+
+- Elimina los siguientes módulos virtuales obsoletos y no utilizados.
+  - `studiocms:astro-config/adapter`
+  - `studiocms:auth/utils/getLabelForPermissionLevel`
+  - `virtual:studiocms/sdk/env`
+
+## Reparación de errores y mejoras
+
+- Reemplaza `chalk` con `styleText` de `node:util` para StudioCMS CLI.
+- Actualiza las dependencias de StudioCMS.
+- Corrige el problema con `pg` y `mysql2` que requerían ser instalados cuando deberían ser opcionales.
+- Corrige la expresión regular del cliente en el frontend para permitir barras dentro de un slug, pero no fuera de este. Esto desbloquea la creación de páginas bajo sub-rutas usando solo el slug (por ejemplo, `docs/getting-started`) y solo afecta la validación del lado del cliente.
+- Elimina el código de verificación de dominio de correo electrónico heredado.
+- Corrige la renderización de la ruta 404 predeterminada.
