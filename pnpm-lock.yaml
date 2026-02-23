@@ -45,8 +45,8 @@ importers:
         specifier: 5.1.1
         version: 5.1.1
       '@lunariajs/core':
-        specifier: https://pkg.pr.new/lunariajs/lunaria/@lunariajs/core@4c8b9b0
-        version: https://pkg.pr.new/lunariajs/lunaria/@lunariajs/core@4c8b9b0
+        specifier: https://pkg.pr.new/lunariajs/lunaria/@lunariajs/core@722c34c
+        version: https://pkg.pr.new/lunariajs/lunaria/@lunariajs/core@722c34c
       '@shikijs/colorized-brackets':
         specifier: ^3.2.1
         version: 3.13.0
@@ -1489,8 +1489,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@lunariajs/core@https://pkg.pr.new/lunariajs/lunaria/@lunariajs/core@4c8b9b0':
-    resolution: {tarball: https://pkg.pr.new/lunariajs/lunaria/@lunariajs/core@4c8b9b0}
+  '@lunariajs/core@https://pkg.pr.new/lunariajs/lunaria/@lunariajs/core@722c34c':
+    resolution: {tarball: https://pkg.pr.new/lunariajs/lunaria/@lunariajs/core@722c34c}
     version: 0.1.1
     engines: {node: '>=18.17.0'}
 
@@ -4381,6 +4381,10 @@ packages:
   oxc-resolver@11.8.3:
     resolution: {integrity: sha512-wPY3eiw24QOiNqArh5FWRrKYr1Yuxya8bE8CV7yBfz7jodCrg0HqBu6cvHHSicxFug7D4TN6ox1hysA9arHTqw==}
 
+  p-all@5.0.1:
+    resolution: {integrity: sha512-LMT7WX9ZSaq3J1zjloApkIVmtz0ZdMFSIqbuiEa3txGYPLjUPOvgOPOx3nFjo+f37ZYL+1aY666I2SG7GVwLOA==}
+    engines: {node: '>=16'}
+
   p-finally@1.0.0:
     resolution: {integrity: sha512-LICb2p9CB7FS+0eR1oqWnHhp0FljGLZCWBE9aix0Uye9W8LTQPwMTYVGWQWIw9RdQiDg4+epXQODwIYJtSJaow==}
     engines: {node: '>=4'}
@@ -4388,6 +4392,10 @@ packages:
   p-limit@6.2.0:
     resolution: {integrity: sha512-kuUqqHNUqoIWp/c467RI4X6mmyuojY5jGutNU0wVTmEOOfcuwLqyMVoAi9MKi2Ak+5i9+nhmrK4ufZE8069kHA==}
     engines: {node: '>=18'}
+
+  p-map@6.0.0:
+    resolution: {integrity: sha512-T8BatKGY+k5rU+Q/GTYgrEf2r4xRMevAN5mtXc2aPc4rS1j3s+vWTaO2Wag94neXuCAUAs8cxBL9EeB5EA6diw==}
+    engines: {node: '>=16'}
 
   p-queue@6.6.2:
     resolution: {integrity: sha512-RwFpb72c/BhQLEXIZ5K2e+AhgNVmIejGlTgiB9MzZ0e93GRvqZ7uSi0dvRF7/XIXDeNkra2fNHBxTyPDGySpjQ==}
@@ -7375,12 +7383,13 @@ snapshots:
   '@libsql/win32-x64-msvc@0.5.22':
     optional: true
 
-  '@lunariajs/core@https://pkg.pr.new/lunariajs/lunaria/@lunariajs/core@4c8b9b0':
+  '@lunariajs/core@https://pkg.pr.new/lunariajs/lunaria/@lunariajs/core@722c34c':
     dependencies:
       consola: 3.4.2
       jiti: 2.3.3
       js-yaml: 4.1.0
       neotraverse: 0.6.18
+      p-all: 5.0.1
       path-to-regexp: 6.3.0
       picomatch: 4.0.3
       simple-git: 3.28.0
@@ -10946,11 +10955,17 @@ snapshots:
       '@oxc-resolver/binding-win32-ia32-msvc': 11.8.3
       '@oxc-resolver/binding-win32-x64-msvc': 11.8.3
 
+  p-all@5.0.1:
+    dependencies:
+      p-map: 6.0.0
+
   p-finally@1.0.0: {}
 
   p-limit@6.2.0:
     dependencies:
       yocto-queue: 1.2.1
+
+  p-map@6.0.0: {}
 
   p-queue@6.6.2:
     dependencies:
