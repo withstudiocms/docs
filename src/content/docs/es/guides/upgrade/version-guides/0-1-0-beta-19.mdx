@@ -17,7 +17,7 @@ import { Aside } from '@astrojs/starlight/components'
 ## Cambios importantes
 
 - StudioCMS ahora **solo soporta NodeJS 20 y superior**
-- Nueva estructura de configuración, por favor verifica tu archivo `studiocms.config.*` cuando actualices. Los archivos de configuración también pueden terminar en `.js`, `.mjs`, `.ts`, `.mts` ahora! Permitiendo flexibilidad y seguridad de tipo completa.
+- Nueva estructura de configuración, por favor verifica tu archivo `studiocms.config.*` cuando actualices. ¡Los archivos de configuración también pueden terminar en `.js`, `.mjs`, `.ts`, `.mts` ahora! Permitiendo flexibilidad y seguridad de tipos completa.
    <ReadMore>Para más información relacionada con estos cambios, consulta la nueva [Referencia de Configuración][config-doc]</ReadMore>
 - El servicio de imágenes ha sido migrado al sistema de plugins. Si anteriormente utilizabas el servicio de imágenes `cloudinary-js`, necesitarás migrar a utilizar el nuevo plugin [`@studiocms/cloudinary-image-service`][cloudinary-plugin], y configurar tu [preferredImageService][image-service]
 - Integrado [Effect][effect-website], y migrado la mayor parte de la base de código a una estructura basada en Effect. (Las funciones antiguas han sido desaprobadas para permitir la migración a nuevos Effects)
