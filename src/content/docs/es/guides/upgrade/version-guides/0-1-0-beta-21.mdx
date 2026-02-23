@@ -1,0 +1,31 @@
+---
+i18nReady: true
+title: "Upgrade: 0.1.0-beta.21"
+description: Upgrade StudioCMS to Beta.21
+topic: guides
+sidebar:
+  label: 0.1.0-beta.21
+  hidden: true
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Correcciones de errores
+
+- Implementadas correcciones para la configuración inicial, las rutas de API de autenticación, el CSS para la fuente y la configuración de la página de tipo Markdown.
+
+<Aside title="Nota">
+Por favor, ten en cuenta que en `beta.16` introdujimos un cambio importante con el algoritmo de hash de contraseñas. Si bien las contraseñas pueden seguir funcionando, te recomendamos que los usuarios actualicen sus contraseñas después de actualizar a `beta.21`. El soporte para el hash de contraseñas heredadas se eliminará en una versión futura.
+</Aside>
+
+{/* Links */}
+[config-doc]: /es/config-reference/
+[image-service]: /es/config-reference/features/#preferredimageservice
+[cloudinary-plugin]: /es/package-catalog/studiocms-plugins/studiocms-cloudinary-js/
+
+{/* Links externos */}
+[effect-website]: https://effect.website
