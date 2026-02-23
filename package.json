@@ -36,7 +36,7 @@
     "@withstudiocms/sdk": "^0.1.0",
     "@withstudiocms/template-lang": "^0.1.0",
     "@withstudiocms/effect": "^0.1.0",
-    
+
     "@studiocms/ui": "^1.0.0",
     "@studiocms/web-vitals": "^4.5.3",
 
@@ -51,7 +51,7 @@
     "@docsearch/css": "^3.6.0",
     "@docsearch/js": "^3.6.0",
     "@fontsource-variable/onest": "5.1.1",
-    "@lunariajs/core": "https://pkg.pr.new/lunariajs/lunaria/@lunariajs/core@4c8b9b0",
+    "@lunariajs/core": "https://pkg.pr.new/lunariajs/lunaria/@lunariajs/core@722c34c",
     "@shikijs/colorized-brackets": "^3.2.1",
     "@types/hast": "^3.0.4",
     "@types/html-escaper": "^3.0.4",
