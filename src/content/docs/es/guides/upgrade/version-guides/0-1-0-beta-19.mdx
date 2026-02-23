@@ -1,0 +1,42 @@
+---
+i18nReady: true
+title: "Actualización: 0.1.0-beta.19"
+description: Actualiza StudioCMS a Beta.19
+topic: guides
+sidebar:
+  label: 0.1.0-beta.19
+  hidden: true
+---
+
+import ReadMore from '~/components/ReadMore.astro'
+import QuickUpdate from '~/components/QuickUpdate.astro'
+import { Aside } from '@astrojs/starlight/components'
+
+<QuickUpdate />
+
+## Cambios importantes
+
+- StudioCMS ahora **solo soporta NodeJS 20 y superior**
+- New Config structure, please verify your `studiocms.config.*` file when updating. Config files can also end in `.js`, `.mjs`, `.ts`, `.mts` now! Allowing flexibility, and full type-safety.
+   <ReadMore>Para más información relacionada con estos cambios, consulta la nueva [Referencia de Configuración][config-doc]</ReadMore>
+- El servicio de imágenes ha sido migrado al sistema de plugins. Si anteriormente utilizabas el servicio de imágenes `cloudinary-js`, necesitarás migrar a utilizar el nuevo plugin [`@studiocms/cloudinary-image-service`][cloudinary-plugin], y configurar tu [preferredImageService][image-service]
+- Integrado [Effect][effect-website], y migrado la mayor parte de la base de código a una estructura basada en Effect. (las funciones antiguas han sido desaprobadas para permitir la migración a nuevos Effects)
+- Añadido soporte para `@studiocms/web-vitals` para reemplazar `@astrojs/web-vitals` en el futuro. Nota, Astro ha desaprobado `@astrojs/web-vitals` y nos ha pedido que mantengamos el paquete, por favor actualiza al nuevo paquete para prevenir futuros problemas ya que planeamos eliminar el soporte para el paquete antiguo en una actualización futura.
+   <ReadMore>Para más información sobre Web-Vitals, consulta nuestra guía de plugin [Web-Vitals][web-vitals-guide]</ReadMore>
+
+## Correcciones de errores
+
+- Eliminado el uso de fuentes de Google remotas para el panel de control, resolviendo posibles problemas de bloqueo de red.
+
+<Aside title="Nota">
+Por favor, ten en cuenta que en `beta.16` introdujimos un cambio importante con el algoritmo de hash de contraseñas. Si bien las contraseñas pueden seguir funcionando, te recomendamos que los usuarios actualicen sus contraseñas después de actualizar a `beta.19`. El soporte para el hash de contraseñas heredadas se eliminará en una versión futura.
+</Aside>
+
+{/* Links */}
+[config-doc]: /es/config-reference/
+[image-service]: /es/config-reference/features/#preferredimageservice
+[cloudinary-plugin]: /es/package-catalog/studiocms-plugins/studiocms-cloudinary-js/
+[web-vitals-guide]: /es/package-catalog/
+
+{/* Links externos */}
+[effect-website]: https://effect.website
