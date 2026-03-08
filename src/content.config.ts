@@ -54,13 +54,6 @@ const i18nCustomSchema = z.object({
 	'package-catalog.no-packages': z.string().optional(),
 	'quick-update': z.string().optional(),
 	'integration-labels.changelog': z.string().optional(),
-	'contributors.core-packages': z.string().optional(),
-	'contributors.ui-library': z.string().optional(),
-	'contributors.devapps': z.string().optional(),
-	'contributors.plugins': z.string().optional(),
-	'contributors.documentation': z.string().optional(),
-	'contributors.website': z.string().optional(),
-	'contributors.bots': z.string().optional(),
 	// SEARCH BOX
 	'docsearch.button': z.string().optional(),
 	'docsearch.shortcutLabel': z.string().optional(),
