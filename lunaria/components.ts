@@ -63,6 +63,7 @@ export const Meta = html`
 	<meta property="og:title" content="StudioCMS Docs Translation Status" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://i18n.docs.studiocms.dev/" />
+	<meta property="og:image" content="https://i18n.docs.studiocms.dev/summary.png" />
 	<meta
 		property="og:description"
 		content="Translation progress tracker for the StudioCMS Docs site. See how much has been translated in your language and get involved!"
