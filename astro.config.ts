@@ -50,6 +50,13 @@ export default defineConfig({
 	image: {
 		remotePatterns: [{ protocol: 'https' }],
 	},
+	security: {
+		allowedDomains: [
+			{
+				hostname: '*.studiocms.dev',
+			}
+		]
+	},
 	markdown: {
 		rehypePlugins,
 		remarkPlugins: [remarkFallbackLang()],
