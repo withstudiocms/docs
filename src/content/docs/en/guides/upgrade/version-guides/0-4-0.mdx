@@ -1,0 +1,42 @@
+---
+i18nReady: true
+title: "Upgrade: v0.4.0"
+description: Upgrade StudioCMS to v0.4.0
+topic: guides
+sidebar:
+  label: v0.4.0
+  badge:
+    text: NEW
+    variant: success
+  order: 999980
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<QuickUpdate />
+
+<Aside variant="note" title='Note About Astro v6'>
+While Astro v6 was recently released, StudioCMS will not be compatible with Astro v6 until a future release. We recommend holding off on upgrading to Astro v6 until StudioCMS announces compatibility, which we expect to be within a few weeks of the Astro v6 release.
+</Aside>
+
+## Breaking changes
+- Migrates all API routes to use the new `@withstudiocms/api-spec` package, which includes a new type-safe way to define API routes and their parameters, request body, and response shape built using Effect's HttpApi implementation. This is a breaking change for any custom API routes defined in plugins or the project itself, and requires updating to the new API route definition format.
+  - `/studiocms_api/sdk/listpages` has been removed.
+  - `/studiocms_api/sdk/full-changelog.json` has been renamed to `/studiocms_api/sdk/full-changelog`.
+  - Replaces page partial routes with new sdk routes for markdown rendering, and user-list HTML generation.
+    - `/studiocms_api/sdk/render` has been added for rendering basic markdown content to HTML.
+    - `/studiocms_api/sdk/user-list-items` has been added for generating HTML for lists of users, such as those used in the dashboard user list.
+- Deprecates the `studiocmsMinimumVersion` property on plugins, which was previously used to specify the minimum version of StudioCMS required for a plugin to work. This is no longer necessary with the new API route definition format, and has been removed to simplify plugin definitions.
+
+## Bug Fixes & Improvements
+- Migrates all frontend and dashboard API calls to use the new `@withstudiocms/api-spec` package, which includes improved error handling and type safety for API calls. This migration also includes updates to the SDK to support the new API route definition format.
+- Migrates internal Zod based Schemas to use Effect Schemas for improved validation, error handling, and integration within our ecosystem. This migration includes updates to all internal schemas used for validating API route parameters, request bodies, and other data structures, and may require updates to any custom schemas defined in plugins or the project itself.
+- Extends Plugin rendering API to support site-wide post-processors, or single page post-processor augments. This allows plugins to modify the rendered output of any page, either by applying a post-processing function to all pages or by targeting specific pages for modification. This is a new feature that may require updates to any custom rendering logic defined in plugins or the project itself to take advantage of the new post-processing capabilities. (e.g., adding support for TailwindCSS is now possible.)
+- Moves internal dashboard authentication checks into a per-page custom data-middleware system, allowing for more flexible and customizable authentication logic for dashboard pages. This migration includes updates to the dashboard routing system to support the new middleware system, and may require updates to any custom dashboard routes defined in plugins or the project itself to take advantage of the new authentication middleware capabilities.
+- Fixes folder deletion schema calls that caused server errors when attempting to delete folders.
+- Updates first time setup step 3 instructions. Previously they showed outdated instructions related to `@astrojs/db`, which has since been removed. The new instructions provide updated guidance on setting up the database connection for StudioCMS.
+- Fixes `studiocms init` optional option parsing.
+- Adds new config option for built-in API spec docs route, served at `/studiocms_api/docs` by default. This route provides interactive API documentation for all built-in and custom API routes defined in the project, and can be customized or disabled as needed.
+  - To disable the built-in API docs route, set `features.api.apiDocs` to `false` in the StudioCMS config.
+- Updated various dependencies to their latest versions to ensure security and stability.
