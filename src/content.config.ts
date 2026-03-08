@@ -40,6 +40,10 @@ const redirectSchema = baseSchema.extend({
 	redirect: z.string(),
 });
 
+const apiDocSchema = baseSchema.extend({
+	type: z.literal('api-doc'),
+});
+
 const i18nCustomSchema = z.object({
 	'site-title.labels.docs': z.string().optional(),
 	'site-title.labels.main-site': z.string().optional(),
@@ -121,7 +125,7 @@ const i18nCustomSchema = z.object({
 	'docsearch.noResultsScreen.reportMissingResultsLinkText': z.string(),
 });
 
-export const docsCollectionSchema = z.union([baseSchema, integrationSchema, redirectSchema, botSchema]);
+export const docsCollectionSchema = z.union([baseSchema, integrationSchema, redirectSchema, botSchema, apiDocSchema]);
 
 export type DocsEntryData = z.infer<typeof docsCollectionSchema>;
 

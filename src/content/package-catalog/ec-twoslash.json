@@ -1,0 +1,9 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "expressive-code-twoslash",
+  "description": "A Expressive Code plugin that adds Twoslash support to your Expressive Code TypeScript code blocks.",
+  "docsLink": "https://twoslash.studiocms.dev",
+  "githubURL": "https://github.com/withstudiocms/expressive-code-twoslash",
+  "catalog": "internal",
+  "isPlugin": false
+}

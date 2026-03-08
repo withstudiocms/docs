@@ -1,0 +1,24 @@
+---
+import { makeHtmlComponent } from 'effectify/scalar';
+
+type Source = Parameters<typeof makeHtmlComponent>[0]['sources'][number];
+
+interface Props {
+	source: Source;
+}
+
+const { source } = Astro.props;
+
+const html = makeHtmlComponent({
+	starlight: true,
+	scalar: {
+		baseServerURL: 'http://localhost:4321',
+		hideTestRequestButton: true,
+		hideSearch: true,
+		layout: 'classic',
+		hideDarkModeToggle: true,
+	},
+	sources: [source],
+});
+---
+<Fragment set:html={html} />

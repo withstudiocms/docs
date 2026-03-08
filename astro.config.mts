@@ -85,6 +85,7 @@ export default defineConfig({
 				Head: './src/starlightOverrides/Head.astro',
 				Search: './src/starlightOverrides/Search.astro',
 				PageSidebar: './src/starlightOverrides/PageSidebar.astro',
+				ContentPanel: './src/starlightOverrides/ContentPanel.astro',
 			},
 			logo: {
 				dark: './assets/logo-light.svg',
@@ -323,6 +324,11 @@ export default defineConfig({
 									label: getTranslations('config-reference').en,
 									translations: getTranslations('config-reference'),
 									autogenerate: { directory: 'config-reference' },
+								},
+								{
+									label: getTranslations('api-docs').en,
+									translations: getTranslations('api-docs'),
+									autogenerate: { directory: 'api-docs' },
 								},
 							],
 						},

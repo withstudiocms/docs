@@ -85,6 +85,10 @@ const { scoped, scope, name } = parsePackageName(entryData.name);
 		</div>
 	) : (data.template === 'splash' && data.title === "404") 
 		? <slot/> 
+		: data.type === 'api-doc' ? 
+			<Default>
+				<slot />
+			</Default>
 		: (
 			<Default>
 				<slot />
