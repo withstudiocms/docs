@@ -6,6 +6,7 @@ import type {
 	createLunaria,
 } from '@lunariajs/core';
 import { BaseStyles, CustomStyles } from './styles';
+import { Resvg } from '@resvg/resvg-js';
 
 export function html(
 	strings: TemplateStringsArray,
@@ -140,31 +141,30 @@ export const LocaleDetails = (
 				${ProgressBar(status.length, outdatedFiles.length, missingFiles.length)}
 			</summary>
 			${outdatedFiles.length > 0 ? OutdatedFiles(outdatedFiles, lang, lunaria) : ''}
-			${
-				missingFiles.length > 0
-					? html`<h3 class="capitalize">Missing</h3>
+			${missingFiles.length > 0
+			? html`<h3 class="capitalize">Missing</h3>
 						<ul>
 							${missingFiles.map((file) => {
-								// biome-ignore lint/style/noNonNullAssertion: <explanation>
-								const localization = file.localizations.find(
-									(localization) => localization.lang === lang
-								)!;
-								return html`
+				// biome-ignore lint/style/noNonNullAssertion: <explanation>
+				const localization = file.localizations.find(
+					(localization) => localization.lang === lang
+				)!;
+				return html`
 									<li>
 										${Link(links.source(file.source.path), collapsePath(file.source.path))}
 										${CreateFileLink(links.create(localization.path), 'Create file')}
 									</li>
 								`;
-							})}
+			})}
 						</ul>`
-					: ''
-			}
+			: ''
+		}
 			${
-				// biome-ignore lint/suspicious/noDoubleEquals: <explanation>
-				missingFiles.length == 0 && outdatedFiles.length == 0
-					? html`<p>This translation is complete, amazing job! 🎉</p>`
-					: ''
-			}
+		// biome-ignore lint/suspicious/noDoubleEquals: <explanation>
+		missingFiles.length == 0 && outdatedFiles.length == 0
+			? html`<p>This translation is complete, amazing job! 🎉</p>`
+			: ''
+		}
 		</details>
 	`;
 };
@@ -178,19 +178,18 @@ export const OutdatedFiles = (
 		<h3 class="capitalize">Outdated</h3>
 		<ul>
 			${outdatedFiles.map((file) => {
-				// biome-ignore lint/style/noNonNullAssertion: <explanation>
-				const localization = file.localizations.find((localization) => localization.lang === lang)!;
+		// biome-ignore lint/style/noNonNullAssertion: <explanation>
+		const localization = file.localizations.find((localization) => localization.lang === lang)!;
 
-				const isMissingKeys =
-					localization.status !== 'missing' &&
-					'missingKeys' in localization &&
-					localization.missingKeys.length > 0;
+		const isMissingKeys =
+			localization.status !== 'missing' &&
+			'missingKeys' in localization &&
+			localization.missingKeys.length > 0;
 
-				return html`
+		return html`
 					<li>
-						${
-							isMissingKeys
-								? html`
+						${isMissingKeys
+				? html`
 									<details>
 										<summary>${ContentDetailsLinks(file, lang, lunaria)}</summary>
 										<h4>Missing keys</h4>
@@ -199,11 +198,11 @@ export const OutdatedFiles = (
 										</ul>
 									</details>
 								`
-								: html` ${ContentDetailsLinks(file, lang, lunaria)} `
-						}
+				: html` ${ContentDetailsLinks(file, lang, lunaria)} `
+			}
 					</li>
 				`;
-			})}
+	})}
 		</ul>
 	`;
 };
@@ -240,16 +239,16 @@ export const TableBody = (
 	return html`
 		<tbody>
 			${status.map(
-				(file) =>
-					html`
+		(file) =>
+			html`
 				<tr>
 					<td>${Link(links.source(file.source.path), collapsePath(file.source.path))}</td>
 						${locales.map(({ lang }) => {
-							return TableContentStatus(file.localizations, lang, lunaria);
-						})}
+				return TableContentStatus(file.localizations, lang, lunaria);
+			})}
 					</td>
 				</tr>`
-			)}
+	)}
 		</tbody>
 	`;
 };
@@ -286,18 +285,18 @@ export const ContentDetailsLinks = (
 	return html`
 		${Link(links.source(fileStatus.source.path), collapsePath(fileStatus.source.path))}
 		(${Link(
-			links.source(localization.path),
-			isMissingKeys ? 'incomplete translation' : 'outdated translation'
-		)},
+		links.source(localization.path),
+		isMissingKeys ? 'incomplete translation' : 'outdated translation'
+	)},
 		${Link(
-			links.history(
-				fileStatus.source.path,
-				'git' in localization
-					? new Date(localization.git.latestTrackedCommit.date).toISOString()
-					: undefined
-			),
-			'source change history'
-		)})
+		links.history(
+			fileStatus.source.path,
+			'git' in localization
+				? new Date(localization.git.latestTrackedCommit.date).toISOString()
+				: undefined
+		),
+		'source change history'
+	)})
 	`;
 };
 
@@ -427,15 +426,35 @@ function SvgLocaleSummary(
 				>${label} (${lang})</text
 			>
 			<text x="0" y="26" font-size="9" fill="#999">
-				${
-					missingFiles.length === 0 && outdatedFiles.length === 0
-						? '100% complete, amazing job! 🎉'
-						: html`${doneLength} done, ${outdatedFiles.length} outdated, ${missingFiles.length}
+				${missingFiles.length === 0 && outdatedFiles.length === 0
+				? '100% complete, amazing job! 🎉'
+				: html`${doneLength} done, ${outdatedFiles.length} outdated, ${missingFiles.length}
 						missing`
-				}
+			}
 			</text>
 			<rect x="0" y="34" width="${barWidth}" height="8" fill="#999" opacity="0.25"></rect>
 			<rect x="0" y="34" width="${outdatedWidth}" height="8" fill="#fb923c"></rect>
 			<rect x="0" y="34" width="${doneWidth}" height="8" fill="#c084fc"></rect>`,
 	};
+}
+
+
+/**
+ * Converts an SVG string to PNG buffer using resvg
+ */
+export function svgToPng(svgString: string): Buffer {
+	const resvg = new Resvg(svgString, {
+		fitTo: {
+			mode: 'width',
+			value: 1200, // High-resolution width for crisp rendering
+		},
+		background: '#030712', // Dark background for better contrast
+		font: {
+			loadSystemFonts: true, // Load system fonts for text rendering
+			defaultFontFamily: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
+		},
+	});
+
+	const pngData = resvg.render();
+	return pngData.asPng();
 }
