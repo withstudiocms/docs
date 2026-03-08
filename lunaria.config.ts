@@ -133,7 +133,7 @@ export default defineConfig({
 		},
 		{
 			include: ['src/content/docs/**/*.(md|mdx)'],
-			exclude: ['src/content/docs/en/typedoc/**/*.(md|mdx)'],
+			exclude: ['src/content/docs/en/api-doc/**/*.(md|mdx)'],
 			pattern: 'src/content/docs/@lang/@path',
 			type: 'universal',
 		},
