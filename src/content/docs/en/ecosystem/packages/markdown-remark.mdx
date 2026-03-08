@@ -156,7 +156,8 @@ First setup your render function
 **`src/utils/render.ts`**
 
 ```ts
-import { type MarkdownProcessorRenderOptions, createMarkdownProcessor } from '@studiocms/markdown-remark/core';
+import { createMarkdownProcessor } from '@studiocms/markdown-remark/core';
+import type { MarkdownProcessorRenderOptions } from '@studiocms/markdown-remark/types';
 
 const processor = await createMarkdownProcessor({
 	/* 
