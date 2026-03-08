@@ -13,6 +13,7 @@ sidebar:
 
 import QuickUpdate from '~/components/QuickUpdate.astro';
 import { Aside } from '@astrojs/starlight/components';
+import ReadMore from '~/components/ReadMore.astro';
 
 <QuickUpdate />
 
@@ -28,6 +29,10 @@ While Astro v6 was recently released, StudioCMS will not be compatible with Astr
     - `/studiocms_api/sdk/render` has been added for rendering basic markdown content to HTML.
     - `/studiocms_api/sdk/user-list-items` has been added for generating HTML for lists of users, such as those used in the dashboard user list.
 - Deprecates the `studiocmsMinimumVersion` property on plugins, which was previously used to specify the minimum version of StudioCMS required for a plugin to work. This is no longer necessary with the new API route definition format, and has been removed to simplify plugin definitions.
+
+<ReadMore>
+Interested in learning more about the new API spec? Check out the new Scalar generated [API Spec Documentation](/en/api-docs/auth/) for details on how you can interact with the new API definitions. This is also included by default within all StudioCMS installations at the `/studiocms_api/docs` route, and can be disabled as needed.
+</ReadMore>
 
 ## Bug Fixes & Improvements
 - Migrates all frontend and dashboard API calls to use the new `@withstudiocms/api-spec` package, which includes improved error handling and type safety for API calls. This migration also includes updates to the SDK to support the new API route definition format.
