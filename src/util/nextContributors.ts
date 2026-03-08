@@ -1,5 +1,18 @@
 import { cachedFetch } from '../util-server.ts';
 
+/// CONFIG
+
+const orgName = 'withstudiocms';
+
+const KnownServiceBotAccounts: string[] = ['studiocms-no-reply', 'astrobot-houston'];
+
+const repositoryBlacklist = [
+    'withstudiocms/allure-branch-reporter-action',
+    'withstudiocms/outerbase-studio',
+];
+
+/// END OF CONFIG
+
 export interface Contributor {
     login: string;
     id: number;
@@ -63,8 +76,6 @@ async function recursiveFetch(endpoint: string, page?: number): Promise<any[]> {
     }
 }
 
-export const KnownServiceBotAccounts: string[] = ['studiocms-no-reply', 'astrobot-houston'];
-
 /**
  * Filters out bot accounts and StudioCMS service accounts from contributors.
  */
@@ -111,11 +122,6 @@ async function getRepoContributors(repo: string): Promise<Contributor[]> {
     return await recursiveFetch(endpoint);
 }
 
-const repositoryBlacklist = [
-    'withstudiocms/allure-branch-reporter-action',
-    'withstudiocms/outerbase-studio',
-];
-
 let cachedContributors: Contributor[] | null = null;
 let lastFetchTime: number | null = null;
 const cacheDuration = 300000; // 5 minutes
@@ -139,7 +145,7 @@ const cacheDuration = 300000; // 5 minutes
  * console.log(`Total contributors: ${contributors.length}`);
  * ```
  */
-export async function getOrgWideContributors(org: string): Promise<Contributor[]> {
+export async function getOrgWideContributors(): Promise<Contributor[]> {
     const now = Date.now();
     // Check cache first
     if (cachedContributors && lastFetchTime && now - lastFetchTime < cacheDuration) {
@@ -148,14 +154,14 @@ export async function getOrgWideContributors(org: string): Promise<Contributor[]
     }
     try {
         // Step 1: Get all repositories in the organization
-        const repositories = await getOrgRepositories(org);
+        const repositories = await getOrgRepositories(orgName);
 
         if (repositories.length === 0) {
-            console.warn(`No repositories found for org: ${org}`);
+            console.warn(`No repositories found for org: ${orgName}`);
             return [];
         }
 
-        console.log(`Found ${repositories.length} repositories in ${org}`);
+        console.log(`Found ${repositories.length} repositories in ${orgName}`);
 
         // Step 2: Aggregate contributors from all repos
         const allContributors: Contributor[] = [];
@@ -181,7 +187,7 @@ export async function getOrgWideContributors(org: string): Promise<Contributor[]
             (a, b) => b.contributions - a.contributions
         );
 
-        console.log(`Total unique contributors in ${org}: ${sortedContributors.length}`);
+        console.log(`Total unique contributors in ${orgName}: ${sortedContributors.length}`);
 
         // Cache results        
         cachedContributors = sortedContributors;
