@@ -22,3 +22,18 @@ const html = makeHtmlComponent({
 });
 ---
 <Fragment set:html={html} />
+
+<style is:global>
+	.not-content {
+		margin-top: 0;
+	}
+	.references-classic-header-container {
+		display: none;
+	}
+	.references-classic {
+		.section.introduction-section {
+			margin-top: 0;
+			padding-top: 0 !important;
+		} 
+	}
+</style>
