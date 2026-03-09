@@ -277,48 +277,59 @@ export default defineConfig({
 							id: 'ecosystem',
 							items: [
 								{
-									label: getTranslations('ecosystem-overview').en,
-									translations: getTranslations('ecosystem-overview'),
-									link: '/ecosystem',
+									label: getTranslations('ecosystem-group').en,
+									translations: getTranslations('ecosystem-group'),
+									items: [
+										{
+											label: getTranslations('ecosystem-overview').en,
+											translations: getTranslations('ecosystem-overview'),
+											link: '/ecosystem',
+										},
+										{
+											label: getTranslations('ecosystem-packages').en,
+											translations: getTranslations('ecosystem-packages'),
+											autogenerate: { directory: 'ecosystem/packages' },
+											collapsed: true,
+										},
+										{
+											label: getTranslations('ecosystem-bots').en,
+											translations: getTranslations('ecosystem-bots'),
+											autogenerate: { directory: 'ecosystem/bots' },
+											collapsed: true,
+										},
+									],
 								},
+
+
 								{
-									label: getTranslations('ecosystem-packages').en,
-									translations: getTranslations('ecosystem-packages'),
-									autogenerate: { directory: 'ecosystem/packages' },
-								},
-								{
-									label: getTranslations('ecosystem-bots').en,
-									translations: getTranslations('ecosystem-bots'),
-									autogenerate: { directory: 'ecosystem/bots' },
+									label: getTranslations('topic-package-catalog').en,
+									translations: getTranslations('topic-package-catalog'),
+									items: [
+										{
+											label: getTranslations('catalog').en,
+											translations: getTranslations('catalog'),
+											link: '/package-catalog',
+										},
+										{
+											label: getTranslations('storage-managers').en,
+											translations: getTranslations('storage-managers'),
+											autogenerate: { directory: 'package-catalog/storage-managers' },
+											collapsed: true,
+										},
+										{
+											label: getTranslations('studiocms-plugins').en,
+											translations: getTranslations('studiocms-plugins'),
+											autogenerate: { directory: 'package-catalog/studiocms-plugins' },
+											collapsed: true,
+										},
+										{
+											label: getTranslations('community-plugins').en,
+											translations: getTranslations('community-plugins'),
+											autogenerate: { directory: 'package-catalog/community-plugins' },
+											collapsed: true,
+										},
+									],
 								}
-							],
-						},
-						{
-							label: getTranslations('topic-package-catalog'),
-							link: '/package-catalog/',
-							icon: 'download',
-							id: 'package-catalog',
-							items: [
-								{
-									label: getTranslations('catalog').en,
-									translations: getTranslations('catalog'),
-									link: '/package-catalog',
-								},
-								{
-									label: getTranslations('storage-managers').en,
-									translations: getTranslations('storage-managers'),
-									autogenerate: { directory: 'package-catalog/storage-managers' },
-								},
-								{
-									label: getTranslations('studiocms-plugins').en,
-									translations: getTranslations('studiocms-plugins'),
-									autogenerate: { directory: 'package-catalog/studiocms-plugins' },
-								},
-								{
-									label: getTranslations('community-plugins').en,
-									translations: getTranslations('community-plugins'),
-									autogenerate: { directory: 'package-catalog/community-plugins' },
-								},
 							],
 						},
 						{
