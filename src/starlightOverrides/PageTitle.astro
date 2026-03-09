@@ -85,7 +85,14 @@ const { scoped, scope, name } = parsePackageName(entryData.name);
 		</div>
 	) : (data.template === 'splash' && data.title === "404") 
 		? <slot/> 
-		: (
+		: data.type === 'api-doc' ? (
+			<div class="wrapper">
+				<Default>
+					<slot />
+				</Default>
+				<blockquote class="caption">This document is automatically generated from the API source code and not interactive. <br />For an interactive version, use the API Docs included with your StudioCMS install.</blockquote>
+			</div>
+		) : (
 			<Default>
 				<slot />
 			</Default>
@@ -137,5 +144,13 @@ const { scoped, scope, name } = parsePackageName(entryData.name);
 	}
 	.integration-metadata svg {
 		width: 1.5rem;
+	}
+
+	.caption {
+		margin-top: 0.5rem;
+		font-size: var(--sl-text-xs);
+		color: var(--sl-color-text);
+		border-left: 2px solid var(--sl-color-text);
+		padding-left: 0.5rem;
 	}
 </style>
