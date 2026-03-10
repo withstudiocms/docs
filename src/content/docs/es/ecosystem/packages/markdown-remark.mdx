@@ -7,6 +7,10 @@ description: "Aprende sobre el paquete @studiocms/markdown-remark"
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4
+sidebar:
+  badge:
+    text: "Actualizado"
+    variant: "success"
 ---
 
 import { Aside } from '@astrojs/starlight/components'
@@ -145,24 +149,6 @@ import H1 from '../components/H1.astro';
 
 ## El procesador
 
-<Integration title="@studiocms/markdown-remark-processor" githubURL='https://github.com/withstudiocms/markdown-remark/tree/main/packages/markdown-remark-processor/' />
-
-`@studiocms/markdown-remark-processor` es un potente analizador y transformador de Markdown construido sobre [remark](https://github.com/remarkjs/remark). Proporciona una integración perfecta con [Astro](https://astro.build/), permitiéndote analizar y transformar fácilmente el contenido Markdown dentro de tus proyectos Astro.
-
-Este proyecto está fuertemente basado en y compatible con el paquete integrado de Astro `@astrojs/markdown-remark`
-
-### Características
-
-- **Análisis de Markdown**: Analizar el contenido Markdown en un árbol de sintaxis abstracta (AST) usando remark.
-- **Plugins personalizados**: Extender la funcionalidad con plugins remark personalizados.
-- **Configurable**: Altamente configurable para satisfacer tus necesidades específicas.
-
-### Instalación
-
-Para instalar `@studiocms/markdown-remark-processor`, usa tu gestor de paquetes preferido:
-
-<PackageManagers type="add" pkg="@studiocms/markdown-remark-processor" />
-
 ### Uso
 
 Primero configura tu función de renderizado.
@@ -170,12 +156,13 @@ Primero configura tu función de renderizado.
 **`src/utils/render.ts`**
 
 ```ts
-import { type MarkdownProcessorRenderOptions, createMarkdownProcessor } from '@studiocms/markdown-remark-processor';
+import { createMarkdownProcessor } from '@studiocms/markdown-remark/core';
+import type { MarkdownProcessorRenderOptions } from '@studiocms/markdown-remark/types';
 
 const processor = await createMarkdownProcessor({
 	/* 
     * Tus opciones aquí 
-    * igual que https://docs.astro.build/es/reference/configuration-reference/#markdown-options
+    * igual a https://docs.astro.build/es/reference/configuration-reference/#markdown-options
     */
 });
 
