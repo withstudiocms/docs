@@ -73,12 +73,17 @@ export default defineStudioCMSConfig({
 
 ### Uso
 
-```ts twoslash {3} title="studiocms.config.mjs"
+```ts twoslash {3-7} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
+import { Duration } from 'effect';
 // ---cut---
 export default defineStudioCMSConfig({
   features: {
-    sdk: {}
+    sdk: {
+      cacheConfig: {
+          lifetime: Duration.minutes(5),
+      },
+    }
   }
 })
 ```
@@ -87,20 +92,21 @@ export default defineStudioCMSConfig({
 
 `cacheConfig` es un objeto que se utiliza para configurar la caché para el SDK.
 
-- **Tipo:** `boolean` | `{ lifetime?: string | undefined; }` | `undefined`
-- **Valor predeterminado:** `{ lifetime: '5m' }`
+- **Tipo:** `boolean` | `{ lifetime?: Duration | undefined; }` | `undefined`
+- **Valor predeterminado:** `{ lifetime: Duration.minutes(5) }`
 
 #### Uso
 
-```ts twoslash {5-7} title="studiocms.config.mjs"
+```ts twoslash {5-8} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
 // ---cut---
+import { Duration } from 'effect';
 export default defineStudioCMSConfig({
   features: {
     sdk: {
       // POR DEFECTO - Esto utiliza la configuración de caché por defecto.
       cacheConfig: {
-          lifetime: '5m',
+          lifetime: Duration.minutes(5),
       }, 
     }
   }
@@ -391,6 +397,48 @@ import { defineStudioCMSConfig } from 'studiocms/config';
 export default defineStudioCMSConfig({
   features: {
     webVitals: true
+  }
+})
+```
+
+## `api`
+
+`api` permite configurar características específicas de la API
+
+- **Tipo:** `ApiConfig` | `undefined`
+- **Valor predeterminado:** `undefined`
+
+### Uso
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    api: {
+      // características específicas de la API aquí
+    }
+  }
+})
+```
+
+### `api.apiDocs`
+
+`apiDocs` permite habilitar o deshabilitar la ruta de la documentación de la API que proporciona una especificación OpenAPI para la API de StudioCMS
+
+- **Tipo:** `boolean`
+- **Valor predeterminado:** `true`
+
+#### Uso
+
+```ts twoslash {4} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    api: {
+      apiDocs: true
+    }
   }
 })
 ```
