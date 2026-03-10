@@ -1,0 +1,44 @@
+---
+i18nReady: true
+title: "Actualización: v0.4.0"
+description: Actualización StudioCMS a v0.4.0
+topic: guides
+sidebar:
+  label: v0.4.0
+  order: 999980
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro';
+import { Aside } from '@astrojs/starlight/components';
+import ReadMore from '~/components/ReadMore.astro';
+
+<QuickUpdate />
+
+<Aside variant="note" title='Nota sobre Astro v6'>
+Mientras que Astro v6 fue recientemente lanzado, StudioCMS no será compatible con Astro v6 hasta una futura versión. Recomendamos posponer la actualización a Astro v6 hasta que StudioCMS anuncie compatibilidad, lo que esperamos que sea dentro de unas semanas de la publicación de Astro v6.
+</Aside>
+
+## Cambios importantes
+- Migra todas las rutas de API para usar el nuevo paquete `@withstudiocms/api-spec`, que incluye una nueva forma segura de definir rutas de API y sus parámetros, cuerpo de la solicitud y forma de respuesta construida usando la implementación HttpApi de Effect. Este es un cambio importante para cualquier ruta de API personalizada definida en plugins o el proyecto mismo, y requiere actualizar al nuevo formato de definición de ruta de API.
+  - `/studiocms_api/sdk/listpages` ha sido eliminada.
+  - `/studiocms_api/sdk/full-changelog.json` ha sido renombrado a `/studiocms_api/sdk/full-changelog`.
+  - Reemplaza las rutas parciales de página con nuevas rutas sdk para renderizado de markdown, y generación de HTML para listas de usuarios.
+    - `/studiocms_api/sdk/render` ha sido agregado para renderizar contenido básico de markdown a HTML.
+    - `/studiocms_api/sdk/user-list-items` ha sido agregado para generar HTML para listas de usuarios, como las utilizadas en la lista de usuarios del panel de control.
+- Depreca la propiedad `studiocmsMinimumVersion` en plugins, que se utilizaba previamente para especificar la versión mínima de StudioCMS requerida para que un plugin funcione. Esta ya no es necesaria con el nuevo formato de definición de ruta de API, y ha sido eliminada para simplificar las definiciones de plugins.
+
+<ReadMore>
+¿Estás interesado en aprender más sobre la nueva especificación de API? Consulta la nueva documentación de [especificación de API](/es/api-docs/auth/) generada por Scalar para más detalles sobre cómo puedes interactuar con las nuevas definiciones de API. Esto también está incluido por defecto dentro de todas las instalaciones de StudioCMS en la ruta `/studiocms_api/docs`, y puede ser deshabilitado según sea necesario.
+</ReadMore>
+
+## Correcciones de errores y mejoras
+- Migra todas las llamadas de API del frontend y del panel de control para usar el nuevo paquete `@withstudiocms/api-spec`, que incluye un manejo de errores mejorado y seguridad de tipos para llamadas de API. Esta migración también incluye actualizaciones al SDK para soportar el nuevo formato de definición de ruta de API.
+- Migra los esquemas internos Zod para usar esquemas Effect para una validación mejorada, manejo de errores, y integración dentro de nuestro ecosistema. Esta migración incluye actualizaciones a todos los esquemas internos utilizados para validar parámetros de ruta de API, cuerpos de solicitud, y otras estructuras de datos, y puede requerir actualizaciones a cualquier esquema personalizado definido en plugins o el proyecto mismo.
+- Extiende la API de renderizado de plugins para soportar procesadores de post-procesamiento a nivel de sitio, o aumentos de procesador de post-procesamiento por página. Esto permite a los plugins modificar el output renderizado de cualquier página, ya sea aplicando una función de post-procesamiento a todas las páginas o targeteando páginas específicas para modificación. Esta es una nueva característica que puede requerir actualizaciones a cualquier lógica de renderizado personalizada definida en plugins o el proyecto mismo para aprovechar las nuevas capacidades de post-procesamiento. (por ejemplo, agregar soporte para TailwindCSS es ahora posible.)
+- Mueve las verificaciones de autenticación interna del panel de control a un sistema de middleware de datos personalizado por página, permitiendo una lógica de autenticación más flexible y personalizable para las páginas del panel de control. Esta migración incluye actualizaciones al sistema de enrutamiento del panel de control para soportar el nuevo sistema de middleware, y puede requerir actualizaciones a cualquier ruta de panel de control personalizada definida en plugins o el proyecto mismo para aprovechar las nuevas capacidades de middleware de autenticación.
+- Corrige las llamadas de esquema de eliminación de carpetas que causaban errores del servidor cuando se intentaba eliminar carpetas.
+- Actualiza las instrucciones del primer paso de configuración paso 3. Anteriormente mostraban instrucciones obsoletas relacionadas con `@astrojs/db`, que ha sido eliminada. Las nuevas instrucciones proporcionan guía actualizada sobre cómo configurar la conexión de base de datos para StudioCMS.
+- Corrige el análisis de opciones opcionales de `studiocms init`.
+- Agrega una nueva opción de configuración para la ruta de documentación de especificación de API incorporada, servida en `/studiocms_api/docs` por defecto. Esta ruta proporciona documentación de API interactiva para todas las rutas de API incorporadas y personalizadas definidas en el proyecto, y puede ser personalizada o deshabilitada según sea necesario.
+  - Para deshabilitar la ruta de documentación de especificación de API incorporada, establece `features.api.apiDocs` en `false` en la configuración de StudioCMS.
+- Actualiza varias dependencias a sus últimas versiones para garantizar seguridad y estabilidad.

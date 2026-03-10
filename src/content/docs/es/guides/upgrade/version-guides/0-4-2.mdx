@@ -1,0 +1,24 @@
+---
+i18nReady: true
+title: "Actualización: v0.4.2"
+description: Actualización StudioCMS a v0.4.2
+topic: guides
+sidebar:
+  label: v0.4.2
+  badge:
+    text: NEW
+    variant: success
+  order: 999978
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<QuickUpdate />
+
+<Aside variant="note" title='Nota sobre Astro v6'>
+Mientras que Astro v6 fue recientemente lanzado, StudioCMS no será compatible con Astro v6 hasta una futura versión. Recomendamos posponer la actualización a Astro v6 hasta que StudioCMS anuncie compatibilidad, lo que esperamos que sea dentro de unas semanas de la publicación de Astro v6.
+</Aside>
+
+## Correcciones de errores y mejoras
+- Corrige un error donde `effect` y sus dependencias no se estaban empaquetando correctamente, causando problemas de compatibilidad CJS/ESM. Esto agrega Effect a la configuración de Vite optimizeDeps para asegurar que su versión ESM se empaquete correctamente para StudioCMS.
