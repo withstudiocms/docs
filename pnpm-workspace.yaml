@@ -1,5 +1,5 @@
 packages:
-  - '.'
+  - "."
 
 onlyBuiltDependencies:
   - "@biomejs/biome"
@@ -12,5 +12,6 @@ onlyBuiltDependencies:
 minimumReleaseAge: 4320
 minimumReleaseAgeExclude:
   - studiocms
-  - '@studiocms/*'
-  - '@withstudiocms/*'
+  - effectify
+  - "@studiocms/*"
+  - "@withstudiocms/*"
