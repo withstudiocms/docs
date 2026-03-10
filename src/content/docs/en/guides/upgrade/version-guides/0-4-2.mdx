@@ -1,0 +1,24 @@
+---
+i18nReady: true
+title: "Upgrade: v0.4.2"
+description: Upgrade StudioCMS to v0.4.2
+topic: guides
+sidebar:
+  label: v0.4.2
+  badge:
+    text: NEW
+    variant: success
+  order: 999978
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<QuickUpdate />
+
+<Aside variant="note" title='Note About Astro v6'>
+While Astro v6 was recently released, StudioCMS will not be compatible with Astro v6 until a future release. We recommend holding off on upgrading to Astro v6 until StudioCMS announces compatibility, which we expect to be within a few weeks of the Astro v6 release.
+</Aside>
+
+## Bug Fixes & Improvements
+- Fixes a bug where `effect` and it's dependencies were not being properly bundled, causing CJS/ESM compatibility issues. This adds Effect to the Vite optimizeDeps configuration to ensure it is ESM version is properly bundled for StudioCMS.
