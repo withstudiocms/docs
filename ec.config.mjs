@@ -18,7 +18,6 @@ export default defineEcConfig({
 					moduleResolution: ts.ModuleResolutionKind.Bundler,
 					target: ts.ScriptTarget.ESNext,
 					module: ts.ModuleKind.ESNext,
-					lib: ['esnext', 'dom'],
 				},
 			},
 		}),

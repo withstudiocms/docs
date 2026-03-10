@@ -73,12 +73,17 @@ export default defineStudioCMSConfig({
 
 ### Usage
 
-```ts twoslash {3} title="studiocms.config.mjs"
+```ts twoslash {3-7} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
+import { Duration } from 'effect';
 // ---cut---
 export default defineStudioCMSConfig({
   features: {
-    sdk: {}
+    sdk: {
+      cacheConfig: {
+          lifetime: Duration.minutes(5),
+      },
+    }
   }
 })
 ```
@@ -87,20 +92,21 @@ export default defineStudioCMSConfig({
 
 `cacheConfig` is an object that is used to configure the cache for the SDK.
 
-- **Type:** `boolean` | `{ lifetime?: string | undefined; }` | `undefined`
-- **Default:** `{ lifetime: '5m' }`
+- **Type:** `boolean` | `{ lifetime?: Duration | undefined; }` | `undefined`
+- **Default:** `{ lifetime: Duration.minutes(5) }`
 
 #### Usage
 
-```ts twoslash {5-7} title="studiocms.config.mjs"
+```ts twoslash {5-8} title="studiocms.config.mjs"
 import { defineStudioCMSConfig } from 'studiocms/config';
 // ---cut---
+import { Duration } from 'effect';
 export default defineStudioCMSConfig({
   features: {
     sdk: {
       // DEFAULT - This uses the default cache configuration.
       cacheConfig: {
-          lifetime: '5m',
+          lifetime: Duration.minutes(5),
       }, 
     }
   }
@@ -391,6 +397,48 @@ import { defineStudioCMSConfig } from 'studiocms/config';
 export default defineStudioCMSConfig({
   features: {
     webVitals: true
+  }
+})
+```
+
+## `api`
+
+`api` allows configuring API specific features
+
+- **Type:** `ApiConfig` | `undefined`
+- **Default:** `undefined`
+
+### Usage
+
+```ts twoslash {3} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    api: {
+      // api specific features here
+    }
+  }
+})
+```
+
+### `api.apiDocs`
+
+`apiDocs` allows enabling or disabling of the API Docs route which provides an OpenAPI Spec for the StudioCMS API
+
+- **Type:** `boolean`
+- **Default:** `true`
+
+#### Usage
+
+```ts twoslash {4} title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+// ---cut---
+export default defineStudioCMSConfig({
+  features: {
+    api: {
+      apiDocs: true
+    }
   }
 })
 ```

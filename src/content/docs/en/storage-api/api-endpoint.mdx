@@ -7,9 +7,6 @@ tableOfContents:
   maxHeadingLevel: 4
 sidebar:
   order: 3
-  badge:
-    text: NEW
-    variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro';
@@ -20,6 +17,10 @@ The Storage API exposes endpoints that can be accessed via HTTP requests. The fo
 <Aside type="note" title="Uses locals for Authorization">
 The Storage API endpoints make use of the Astro `locals` feature propagated by Middleware to handle authorization. Ensure that the browser or client making the requests is coming from a logged-in StudioCMS user with the appropriate permissions to perform storage operations.
 </Aside>
+
+<ReadMore>
+For more information about the Storage API within StudioCMS, see the [Integrations API spec documentation](/en/api-docs/integration)
+</ReadMore>
 
 ### Method: PUT
 

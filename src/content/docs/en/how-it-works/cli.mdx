@@ -19,7 +19,6 @@ There are multiple different CLIs that are part of the StudioCMS ecosystem:
 
 - **[`studiocms`](#studiocms)**: The StudioCMS utility CLI.
 - **[`create-studiocms`](#create-studiocms)**: The StudioCMS project scaffolding CLI.
-- **[`@studiocms/migrator`](#studiocmsmigrator)**: Migrate your StudioCMS project from older versions to the latest version.
 - **[`@studiocms/upgrade`](#studiocmsupgrade)**: Upgrade StudioCMS Projects and their Plugins.
 
 The following is a breakdown of the StudioCMS CLI and its components.
@@ -255,39 +254,6 @@ Turso CLI Installer
 Options:
   -h, --help  display help for command
 ```
-
-## `@studiocms/migrator`
-
-A command-line tool for migrating your StudioCMS project from older versions to the latest version.
-
-### Example Usage
-
-#### Running from npm
-
-<PackageManagers type="dlx" pkg="@studiocms/migrator" />
-
-#### Installing locally
-
-<Steps>
-1. Install the migration tool into the root of your StudioCMS project:
-   <PackageManagers pkg="@studiocms/migrator" type='add' />
-
-2. Once installed, add the following script to your `package.json` file:
-
-   ```json title="package.json" ins={3}
-   {
-     "scripts": {
-       "migrate-studiocms": "studiocms-migrator"
-     }
-   }
-   ```
-
-3. Start the migration tool by running the following command in your project directory:
-
-   <PackageManagers type="run" pkg="studiocms-migrator" />
-
-   This will start a local web server. Open your browser and navigate to `http://localhost:4321` to access the migration tool interface.
-</Steps>
 
 ## `@studiocms/upgrade`
 

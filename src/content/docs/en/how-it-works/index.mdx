@@ -6,6 +6,8 @@ sidebar:
   order: 1
 ---
 
+import ReadMore from '~/components/ReadMore.astro'
+
 # Introduction
 
 StudioCMS is a powerful CMS built for Astro that allows you to manage and serve your content. It's designed to be easy-to-use and flexible enough to handle any type of content.
@@ -75,46 +77,14 @@ The routes that users can access to manage their StudioCMS project.
 
 #### Auth Routes
 
-- **`/dashboard/login/`**: The StudioCMS Dashboard login page.
-- **`/dashboard/signup/`**: The StudioCMS Dashboard signup page.
-- **`/dashboard/logout/`**: The StudioCMS Dashboard logout page.
+<ReadMore>
+For a detailed list of available API routes and their usage, please refer to the [StudioCMS Authentication API documentation](/en/api-docs/auth/).
+</ReadMore>
 
 ### API Routes
 
 The Routes that the StudioCMS Dashboard uses to interact with the StudioCMS integration.
 
-#### Main Routes
-
-- **`/studiocms_api/dashboard/api-tokens`**: The StudioCMS API API tokens endpoint.
-- **`/studiocms_api/dashboard/search-list`**: The StudioCMS API search list endpoint.
-- **`/studiocms_api/dashboard/live-render`**: The StudioCMS API live render Partial endpoint.
-- **`/studiocms_api/dashboard/user-list-items`**: The StudioCMS API user list items endpoint.
-- **`/studiocms_api/dashboard/editor`**: The StudioCMS API editor endpoint.
-- **`/studiocms_api/dashboard/config`**: The StudioCMS API config endpoint.
-- **`/studiocms_api/dashboard/users`**: The StudioCMS API users endpoint.
-- **`/studiocms_api/dashboard/profile`**: The StudioCMS API profile endpoint.
-- **`/studiocms_api/dashboard/create-reset-link`**: The StudioCMS API create reset link endpoint.
-- **`/studiocms_api/dashboard/reset-password`**: The StudioCMS API reset password endpoint.
-- **`/studiocms_api/dashboard/content/page`**: The StudioCMS API content page endpoint.
-- **`/studiocms_api/dashboard/content/folder`**: The StudioCMS API content folder endpoint.
-- **`/studiocms_api/dashboard/plugins`**: The StudioCMS API plugins endpoint.
-- **`/studiocms_api/dashboard/create-user`**: The StudioCMS API create user endpoint.
-- **`/studiocms_api/dashboard/update-user-invite`**: The StudioCMS API update user invite endpoint.
-
-#### Auth Routes
-
-- **`/studiocms_api/auth/login`**: The StudioCMS API login endpoint.
-- **`/studiocms_api/auth/logout`**: The StudioCMS API logout endpoint.
-- **`/studiocms_api/auth/register`**: The StudioCMS API register endpoint.
-- **`/studiocms_api/auth/[provider]`**: The StudioCMS API auth provider endpoint, where `[provider]` is the name of the provider (e.g. `github`, `discord`, `google`, `auth0`).
-- **`/studiocms_api/auth/[provider]/callback`**: The StudioCMS API auth provider callback endpoint, where `[provider]` is the name of the provider (e.g. `github`, `discord`, `google`, `auth0`).
-
-#### SDK Routes
-
-- **`/studiocms_api/sdk/list-pages`**: The StudioCMS API SDK pages endpoint.
-- **`/studiocms_api/sdk/fallback-list-pages.json`**: The StudioCMS API SDK fallback list pages endpoint.
-- **`/studiocms_api/sdk/update-latest-version-cache`**: The StudioCMS API SDK update latest version cache endpoint.
-
-#### Renderer Routes
-
-- **`/studiocms_api/renderer/render`**: The StudioCMS API render endpoint.
+<ReadMore>
+For a detailed list of available API routes and their usage, please refer to the [StudioCMS Dashboard API documentation](/en/api-docs/dashboard/).
+</ReadMore>

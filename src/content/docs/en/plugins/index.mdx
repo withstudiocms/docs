@@ -17,13 +17,12 @@ StudioCMS plugins are a powerful tool that allows you to extend the functionalit
 
 StudioCMS plugins are similar to Astro Integrations, but they have extra information attached to the function object. This information is used by StudioCMS to determine how the plugin should be loaded and used. StudioCMS plugins are used to extend the functionality of StudioCMS by adding new features or modifying existing ones.
 
-### The StudioCMS Plugin Type <Badge variant="caution" text="Revised beta.31" />
+### The StudioCMS Plugin Type <Badge variant="caution" text="Revised 0.4.0" />
 
 ```ts
 interface StudioCMSPlugin {
   identifier: string;
   name: string;
-  studiocmsMinimumVersion: string;
   hooks: {
     'studiocms:astro:config': (params: {
       logger: AstroIntegrationLogger;
@@ -91,7 +90,6 @@ const myIntegration = (options: Options): AstroIntegration => ({
 export const myPlugin = (options: Options) => definePlugin({
     identifier: 'my-plugin',
     name: 'My Plugin',
-    studiocmsMinimumVersion: '0.1.0',
     hooks: {
       'studiocms:astro-config': ({ addIntegrations }) => {
         addIntegrations(myIntegration(options)) // Optional, but recommended
