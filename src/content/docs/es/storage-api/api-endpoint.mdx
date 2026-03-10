@@ -7,9 +7,6 @@ tableOfContents:
   maxHeadingLevel: 4
 sidebar:
   order: 3
-  badge:
-    text: NUEVO
-    variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro';
@@ -20,6 +17,10 @@ La API de almacenamiento expone endpoints a los que se puede acceder mediante so
 <Aside type="note" title="Utiliza 'locals' para la autorización">
 Los endpoints de la API de almacenamiento hacen uso de la funcionalidad `locals` de Astro propagada por un middleware para manejar la autorización. Asegúrate de que el navegador o cliente que realiza las solicitudes provenga de un usuario de StudioCMS con sesión iniciada y los permisos adecuados para realizar operaciones de almacenamiento.
 </Aside>
+
+<ReadMore>
+Para más información sobre la API de almacenamiento en StudioCMS, consulta la [documentación de la API de integración](/es/api-docs/integration).
+</ReadMore>
 
 ### Método: PUT
 
