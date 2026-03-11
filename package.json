@@ -11,7 +11,7 @@
     "check": "astro check",
 
     "prebuild": "pnpm gen-changelogs",
-    "build": "astro build",
+    "build": "NODE_OPTIONS='--max-old-space-size=6144' astro build",
 
     "preview": "astro preview",
     "astro": "astro",
