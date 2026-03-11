@@ -22,14 +22,13 @@ hero:
 ---
 
 import { CardGrid, LinkButton } from '@astrojs/starlight/components';
-import Youtube from '~/components/Youtube.astro';
 import Card from '~/components/landing/Card.astro';
 import ListCard from '~/components/landing/ListCard.astro';
 import SplitCard from '~/components/landing/SplitCard.astro';
 import { Center } from 'studiocms:ui/components';
 
 <Card title="Bienvenido a StudioCMS" icon='seti:video'>
-  <Youtube id="Ukh3Zb9VjIM"/>
+  <video autoplay loop muted playsinline preload="auto" src="https://cdn.studiocms.dev/studiocms-trailer.mp4" />
 </Card>
 
 <CardGrid>

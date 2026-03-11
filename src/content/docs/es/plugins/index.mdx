@@ -17,13 +17,12 @@ Los complementos de StudioCMS son una herramienta poderosa que te permite extend
 
 Los complementos de StudioCMS son similares a las integraciones de Astro, pero tienen información extra adjunta al objeto de la función. Esta información se usa por StudioCMS para determinar cómo se debe cargar y usar el complemento. Los complementos de StudioCMS se usan para extender la funcionalidad de StudioCMS agregando nuevas características o modificando las existentes.
 
-### El tipo de complemento de StudioCMS <Badge variant="caution" text="Revisado beta.31" />
+### El tipo de complemento de StudioCMS <Badge variant="caution" text="Revisado 0.4.0" />
 
 ```ts
 interface StudioCMSPlugin {
   identifier: string;
   name: string;
-  studiocmsMinimumVersion: string;
   hooks: {
     'studiocms:astro:config': (params: {
       logger: AstroIntegrationLogger;
@@ -91,7 +90,6 @@ const myIntegration = (options: Options): AstroIntegration => ({
 export const myPlugin = (options: Options) => definePlugin({
     identifier: 'my-plugin',
     name: 'My Plugin',
-    studiocmsMinimumVersion: '0.1.0',
     hooks: {
       'studiocms:astro-config': ({ addIntegrations }) => {
         addIntegrations(myIntegration(options)) // Opcional, pero recomendado
