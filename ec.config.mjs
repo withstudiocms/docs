@@ -2,9 +2,9 @@ import { defineEcConfig } from '@astrojs/starlight/expressive-code';
 import ecTwoSlash from 'expressive-code-twoslash';
 import ts from 'typescript';
 
-export default defineEcConfig({
-	themes: ['dark-plus', 'light-plus'],
-	plugins: [
+const linkValidatorEnabled = process.env.CHECK_LINKS
+	? []
+	: [
 		ecTwoSlash({
 			twoslashOptions: {
 				handbookOptions: {
@@ -17,7 +17,13 @@ export default defineEcConfig({
 					lib: [], // Don't include any libs, that way we can build within memory limit errors
 				},
 			},
-		}),
+		})
+	];
+
+export default defineEcConfig({
+	themes: ['dark-plus', 'light-plus'],
+	plugins: [
+		...linkValidatorEnabled,
 	],
 	styleOverrides: {
 		frames: {
