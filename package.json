@@ -9,7 +9,10 @@
   "scripts": {
     "dev": "pnpm gen-changelogs && astro dev",
     "check": "astro check",
-    "build": "NODE_OPTIONS='--max-old-space-size=8192' pnpm gen-changelogs && astro build",
+
+    "prebuild": "pnpm gen-changelogs",
+    "build": "NODE_OPTIONS='--max-old-space-size=8096' astro build",
+
     "preview": "astro preview",
     "astro": "astro",
     "lunaria:build": "tsm --require=./scripts/filter-warnings.cjs ./scripts/lunaria.mts",
@@ -61,7 +64,7 @@
     "astro-embed": "^0.12.0",
     "astro-integration-kit": "^0.19.1",
     "effect": "^3.19.19",
-    "expressive-code-twoslash": "^0.5.3",
+    "expressive-code-twoslash": "https://pkg.pr.new/expressive-code-twoslash@9368115",
     "fast-glob": "^3.3.3",
     "hast-util-to-string": "^3.0.1",
     "hastscript": "^9.0.1",
