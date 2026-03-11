@@ -1,0 +1,21 @@
+---
+i18nReady: true
+title: "Actualización: v0.4.1"
+description: Actualización StudioCMS a v0.4.1
+topic: guides
+sidebar:
+  label: v0.4.1
+  order: 999979
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<QuickUpdate />
+
+<Aside variant="note" title='Nota sobre Astro v6'>
+Mientras que Astro v6 fue recientemente lanzado, StudioCMS no será compatible con Astro v6 hasta una futura versión. Recomendamos posponer la actualización a Astro v6 hasta que StudioCMS anuncie compatibilidad, lo que esperamos que sea dentro de unas semanas de la publicación de Astro v6.
+</Aside>
+
+## Correcciones de errores y mejoras
+- Corrige un pequeño error donde el plugin de Analytics incorporado opcional tenía importaciones que no se resolvieron correctamente, causando errores cuando StudioCMS se ejecutaba con o sin el plugin de Analytics habilitado. Esta corrección asegura que el plugin de Analytics no cause errores independientemente de si está habilitado o no, y mejora la estabilidad general de StudioCMS cuando se utiliza el plugin de Analytics.
