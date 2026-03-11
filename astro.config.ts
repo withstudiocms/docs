@@ -8,6 +8,7 @@ import rehypePlugins from './src/plugins/rehypePluginKit.ts';
 import { getTranslations } from './src/starlight-sidebar/translate.ts';
 import { devServerFileWatcher } from './src/integrations/dev-file-watcher.ts';
 import { remarkFallbackLang } from './src/plugins/remark-fallback-pages.ts';
+import starlightLlmsTxt from 'starlight-llms-txt';
 
 // Define the Site URL
 const site = process.env.DOKPLOY_DEPLOY_URL
@@ -168,6 +169,20 @@ export default defineConfig({
 			],
 			plugins: [
 				...linkValidator,
+				starlightLlmsTxt({
+					description:
+						"StudioCMS is a Server-Side Rendered (SSR) Headless CMS built specifically for Astro. It is designed to seamlessly integrate with Astro projects, providing a robust and efficient content management solution that leverages Astro's strengths in performance and developer experience.",
+					customSets: [
+						{
+							label: 'Getting Started',
+							description:
+								'Essential resources to help you get up and running with StudioCMS quickly and effectively.',
+							paths: ['en/start-here/**'],
+						},
+					],
+					exclude: ['**/guides/contributing/**'],
+					rawContent: true,
+				}),
 				starlightImageZoom(),
 				starlightSidebarTopics(
 					[

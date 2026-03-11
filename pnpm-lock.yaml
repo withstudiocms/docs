@@ -77,9 +77,6 @@ importers:
       '@types/hast':
         specifier: ^3.0.4
         version: 3.0.4
-      '@types/html-escaper':
-        specifier: ^3.0.4
-        version: 3.0.4
       '@types/mdast':
         specifier: ^4.0.4
         version: 4.0.4
@@ -128,15 +125,6 @@ importers:
       fast-glob:
         specifier: ^3.3.3
         version: 3.3.3
-      hast-util-to-string:
-        specifier: ^3.0.1
-        version: 3.0.1
-      hastscript:
-        specifier: ^9.0.1
-        version: 9.0.1
-      html-escaper:
-        specifier: ^3.0.3
-        version: 3.0.3
       knip:
         specifier: ^5.46.0
         version: 5.85.0(@types/node@24.11.0)(typescript@5.9.3)
@@ -2498,9 +2486,6 @@ packages:
 
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
-
-  '@types/html-escaper@3.0.4':
-    resolution: {integrity: sha512-UKSaMPMXXKnq1jDj74seVikfdq5pWvoXcIgOUbwYzHuAEGiv8/juom1i/MsWBF8boFSI0uHQCSZauzr5OYnnJA==}
 
   '@types/jquery@4.0.0':
     resolution: {integrity: sha512-Z+to+A2VkaHq1DfI2oSwsoCdhCHMpTSgjWzNcbNlRGYzksDBpPUgEcAL+RQjOBJRaLoEAOHXxqDGBVP+BblBwg==}
@@ -8483,8 +8468,6 @@ snapshots:
   '@types/hast@3.0.4':
     dependencies:
       '@types/unist': 3.0.3
-
-  '@types/html-escaper@3.0.4': {}
 
   '@types/jquery@4.0.0': {}
 
