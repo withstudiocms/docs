@@ -29,7 +29,6 @@ const { resolve } = createResolver(import.meta.url);
 export const myPlugin = () => definePlugin({
     identifier: 'mon-module-extension',
     name: 'Mon module d’extension',
-    studiocmsMinimumVersion: '0.1.0',
     hooks: {
       'studiocms:rendering': ({ setRendering }) => {
         setRendering({
