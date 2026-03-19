@@ -7,9 +7,6 @@ tableOfContents:
   maxHeadingLevel: 4
 sidebar:
   order: 3
-  badge:
-    text: NOUVEAU
-    variant: success
 ---
 
 import ReadMore from '~/components/ReadMore.astro';
@@ -20,6 +17,10 @@ L'API de stockage expose des points de terminaison accessibles via des requêtes
 <Aside type="note" title="Utilise locals pour l'autorisation">
 Les points de terminaison de l'API de stockage utilisent la fonctionnalité `locals` d'Astro, propagée par le middleware, pour gérer l'autorisation. Assurez-vous que le navigateur ou le client effectuant les requêtes provient d'un utilisateur StudioCMS connecté et disposant des autorisations nécessaires pour effectuer des opérations de stockage.
 </Aside>
+
+<ReadMore>
+Pour plus d'informations sur l'API de stockage dans StudioCMS, consultez la [documentation de spécification de l'API des intégrations](/fr/api-docs/integration).
+</ReadMore>
 
 ### Méthode : PUT
 

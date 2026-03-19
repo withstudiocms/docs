@@ -59,8 +59,8 @@ Le résultat est le jeton d'authentification JWT chiffré avec votre clé privé
 ### Mettez à jour votre fichier `.env` de StudioCMS avec les éléments suivants :
 
 ```sh
-ASTRO_DB_REMOTE_URL=http://localhost:8080 # Cela devrait pointer vers votre serveur Docker/système local
-ASTRO_DB_APP_TOKEN= # collez ici votre jeton d’authentification JWT standard
+CMS_LIBSQL_URL=http://localhost:8080 # Cela devrait pointer vers votre serveur Docker/système local
+CMS_LIBSQL_AUTH_TOKEN= # collez ici votre jeton d’authentification JWT standard
 ```
 
 ## Mise en place du conteneur Docker
@@ -68,7 +68,7 @@ ASTRO_DB_APP_TOKEN= # collez ici votre jeton d’authentification JWT standard
 Créez un nouveau fichier `docker-compose.yml` en dehors du répertoire du projet StudioCMS, pour l’instance libSQL. Vous disposez alors de deux options pour configurer l’authentification libSQL :
 
 - En utilisant le fichier de clé publique lui-même
-- En utilisant le jeton JWT comme variable d’environnement (la même valeur `ASTRO_DB_APP_TOKEN` que celle que vous avez utilisée dans votre fichier `.env`)
+- En utilisant le jeton JWT comme variable d’environnement (la même valeur `CMS_LIBSQL_AUTH_TOKEN` que celle que vous avez utilisée dans votre fichier `.env`)
 
 <Tabs>
 
@@ -133,7 +133,7 @@ Utilisateurs [Coolify](https://coolify.io) : Utilisez notre [Gist GitHub](https
 
    Allez dans le répertoire de votre projet StudioCMS et exécutez la commande suivante :
 
-   <PackageManagers type="exec" args="astro db push --remote" />
+   <PackageManagers type="exec" args="studiocms migrate --latest" />
 
 3. Suivez la configuration initiale de votre nouvelle base de données.
 

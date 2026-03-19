@@ -7,6 +7,10 @@ description: "Découvrez le paquet @studiocms/markdown-remark"
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4
+sidebar:
+  badge:
+    text: "Mis à jour"
+    variant: "success"
 ---
 
 import { Aside } from '@astrojs/starlight/components'
@@ -145,24 +149,6 @@ import H1 from '../components/H1.astro';
 
 ## Le processeur
 
-<Integration title="@studiocms/markdown-remark-processor" githubURL='https://github.com/withstudiocms/markdown-remark/tree/main/packages/markdown-remark-processor/' />
-
-`@studiocms/markdown-remark-processor` est un puissant analyseur et transformateur Markdown reposant sur [remark](https://github.com/remarkjs/remark). Il offre une intégration transparente avec [Astro](https://astro.build/), vous permettant d'analyser et de transformer facilement le contenu Markdown dans vos projets Astro.
-
-Ce projet est fortement basé sur et compatible avec le module intégré `@astrojs/markdown-remark` d'Astro.
-
-### Fonctionnalités
-
-- **Analyse Markdown** : Analyser le contenu Markdown en un arbre de syntaxe abstraite (AST) à l’aide de remark.
-- **Modules d'extension personnalisés** : Étendez les fonctionnalités grâce à des modules d'extension remark personnalisés.
-- **Configurable** : Hautement configurable pour répondre à vos besoins spécifiques.
-
-### Installation
-
-Pour installer `@studiocms/markdown-remark-processor`, utilisez votre gestionnaire de paquets préféré :
-
-<PackageManagers type="add" pkg="@studiocms/markdown-remark-processor" />
-
 ### Utilisation
 
 Commencez par configurer votre fonction de rendu.
@@ -170,7 +156,8 @@ Commencez par configurer votre fonction de rendu.
 **`src/utils/render.ts`**
 
 ```ts
-import { type MarkdownProcessorRenderOptions, createMarkdownProcessor } from '@studiocms/markdown-remark-processor';
+import { createMarkdownProcessor } from '@studiocms/markdown-remark/core';
+import type { MarkdownProcessorRenderOptions } from '@studiocms/markdown-remark/types';
 
 const processor = await createMarkdownProcessor({
 	/* 

@@ -6,6 +6,8 @@ sidebar:
    order: 4
 ---
 
+import ReadMore from '~/components/ReadMore.astro'
+
 # Présentation
 
 L’API REST de StudioCMS est un outil puissant qui vous permet d’interagir avec votre contenu StudioCMS par programmation. Elle offre un moyen simple et flexible de gérer et de diffuser votre contenu.
@@ -20,23 +22,6 @@ Pour accéder aux points de terminaison protégés de l’API REST de StudioCMS,
 
 L’API REST de StudioCMS fournit plusieurs points de terminaison permettant d’interagir avec votre contenu StudioCMS. Ces points de terminaison sont principalement utilisés en interne par StudioCMS, mais les développeurs peuvent également y accéder pour interagir avec les données de StudioCMS. Voici les points de terminaison fournis par l’API REST de StudioCMS :
 
-### Points de terminaison publics
-
-Ces points de terminaison sont accessibles au public et ne nécessitent aucune authentification. Ils offrent un accès en lecture seule à l’arborescence de contenu de StudioCMS. Par conséquent, ils ne prennent en charge que les requêtes `GET`.
-
-- **`/studiocms_api/rest/v1/public/folders/`** : Fournit une liste de tous les dossiers publics dans l’arborescence de contenu de StudioCMS.
-- **`/studiocms_api/rest/v1/public/folders/[id]`** : Fournit des détails sur un dossier public spécifique dans l’arborescence de contenu de StudioCMS.
-- **`/studiocms_api/rest/v1/public/pages/`** : Fournit une liste de toutes les pages publiques dans l’arborescence de contenu de StudioCMS.
-- **`/studiocms_api/rest/v1/public/pages/[id]`** : Fournit des détails sur une page publique spécifique dans l’arborescence de contenu de StudioCMS.
-
-### Points de terminaison protégés
-
-- **`/studiocms_api/rest/v1/folders/`** : Fournit une liste de tous les dossiers dans l’arborescence de contenu de StudioCMS.
-- **`/studiocms_api/rest/v1/folders/[id]`** : Fournit des détails sur un dossier spécifique dans l’arborescence de contenu de StudioCMS.
-- **`/studiocms_api/rest/v1/pages/`** : Fournit une liste de toutes les pages de l’arborescence de contenu de StudioCMS.
-- **`/studiocms_api/rest/v1/pages/[id]`** : Fournit des détails sur une page spécifique dans l’arborescence de contenu de StudioCMS.
-- **`/studiocms_api/rest/v1/pages/[id]/history/`** : Fournit une liste de toutes les entrées de l’historique des pages dans l’arborescence de contenu de StudioCMS.
-- **`/studiocms_api/rest/v1/pages/[id]/history/[id]`** : Fournit des détails sur une entrée spécifique de l’historique des pages dans l’arborescence de contenu de StudioCMS.
-- **`/studiocms_api/rest/v1/settings/`** : Fournit les paramètres de StudioCMS pour le projet en cours.
-- **`/studiocms_api/rest/v1/users/`** : Fournit une liste de tous les utilisateurs du projet StudioCMS.
-- **`/studiocms_api/rest/v1/users/[id]`** : Fournit des détails sur un utilisateur spécifique dans le projet StudioCMS.
+<ReadMore>
+Pour une liste détaillée des points de terminaison disponibles et de leur utilisation, veuillez vous référer à la [documentation de l'API REST de StudioCMS](/fr/api-docs/rest-api/).
+</ReadMore>

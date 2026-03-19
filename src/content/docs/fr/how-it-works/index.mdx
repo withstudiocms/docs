@@ -6,6 +6,8 @@ sidebar:
   order: 1
 ---
 
+import ReadMore from '~/components/ReadMore.astro'
+
 # Présentation
 
 StudioCMS est un CMS puissant conçu pour Astro qui vous permet de gérer et de diffuser votre contenu. Il est conçu pour être facile à utiliser et suffisamment flexible pour gérer tout type de contenu.
@@ -75,46 +77,14 @@ Les routes auxquelles les utilisateurs peuvent accéder pour gérer leur projet 
 
 #### Routes d’authentification
 
-- **`/dashboard/login/`** : La page de connexion au tableau de bord de StudioCMS.
-- **`/dashboard/signup/`** : La page d’inscription au tableau de bord de StudioCMS.
-- **`/dashboard/logout/`** : La page de déconnexion du tableau de bord de StudioCMS.
+<ReadMore>
+Pour une liste détaillée des routes d'API disponibles et de leur utilisation, veuillez vous référer à la [documentation de l'API d'authentification de StudioCMS](/fr/api-docs/auth/).
+</ReadMore>
 
 ### Routes d’API
 
 Les routes utilisées par le tableau de bord de StudioCMS pour interagir avec l’intégration StudioCMS.
 
-#### Routes principales
-
-- **`/studiocms_api/dashboard/api-tokens`** : Le point de terminaison de l’API de StudioCMS pour accéder aux jetons d’API.
-- **`/studiocms_api/dashboard/search-list`** : Le point de terminaison de l’API de StudioCMS pour accéder à la liste de recherche.
-- **`/studiocms_api/dashboard/live-render`** : Le point de terminaison de l’API de StudioCMS pour accéder au rendu en direct partiel.
-- **`/studiocms_api/dashboard/user-list-items`** : Le point de terminaison de l’API de StudioCMS pour accéder aux éléments de la liste des utilisateurs.
-- **`/studiocms_api/dashboard/editor`** : Le point de terminaison de l’API de StudioCMS pour accéder à l’éditeur.
-- **`/studiocms_api/dashboard/config`** : Le point de terminaison de l’API de StudioCMS pour accéder à la configuration.
-- **`/studiocms_api/dashboard/users`** : Le point de terminaison de l’API de StudioCMS pour accéder aux utilisateurs.
-- **`/studiocms_api/dashboard/profile`** : Le point de terminaison de l’API de StudioCMS pour accéder au profil.
-- **`/studiocms_api/dashboard/create-reset-link`** : Le point de terminaison de l’API de StudioCMS pour créer un lien de réinitialisation.
-- **`/studiocms_api/dashboard/reset-password`** : Le point de terminaison de l’API de StudioCMS pour réinitialiser le mot de passe.
-- **`/studiocms_api/dashboard/content/page`** : Le point de terminaison de l’API de StudioCMS pour accéder à la page de contenu.
-- **`/studiocms_api/dashboard/content/folder`** : Le point de terminaison de l’API de StudioCMS pour accéder au dossier de contenu.
-- **`/studiocms_api/dashboard/plugins`** : Le point de terminaison de l’API de StudioCMS pour accéder aux modules d’extension.
-- **`/studiocms_api/dashboard/create-user`** : Le point de terminaison de l’API de StudioCMS pour créer un utilisateur.
-- **`/studiocms_api/dashboard/update-user-invite`** : Le point de terminaison de l’API de StudioCMS pour mettre à jour l’invitation de l’utilisateur.
-
-#### Routes d’authentification
-
-- **`/studiocms_api/auth/login`** : Le point de terminaison de l’API de StudioCMS pour la connexion.
-- **`/studiocms_api/auth/logout`** : Le point de terminaison de l’API de StudioCMS pour la déconnexion.
-- **`/studiocms_api/auth/register`** : Le point de terminaison de l’API de StudioCMS pour l’enregistrement.
-- **`/studiocms_api/auth/[provider]`** : Le point de terminaison du fournisseur d’authentification de l’API de StudioCMS, où `[provider]` est le nom du fournisseur (par exemple `github`, `discord`, `google`, `auth0`).
-- **`/studiocms_api/auth/[provider]/callback`** : Le point de terminaison de rappel du fournisseur d’authentification de l’API de StudioCMS, où `[provider]` est le nom du fournisseur (par exemple `github`, `discord`, `google`, `auth0`).
-
-#### Routes du SDK
-
-- **`/studiocms_api/sdk/list-pages`** : Le point de terminaison de l’API de StudioCMS pour accéder à la liste des pages du SDK.
-- **`/studiocms_api/sdk/fallback-list-pages.json`** : Le point de terminaison de l’API de StudioCMS pour accéder à la liste de secours des pages du SDK.
-- **`/studiocms_api/sdk/update-latest-version-cache`** : Le point de terminaison de l’API de StudioCMS pour accéder à la dernière version de la mise en cache du SDK.
-
-#### Routes du moteur de rendu
-
-- **`/studiocms_api/renderer/render`** : Le point de terminaison de l’API de StudioCMS pour le rendu.
+<ReadMore>
+Pour une liste détaillée des routes d'API disponibles et de leur utilisation, veuillez vous référer à la [documentation de l'API du tableau de bord de StudioCMS](/fr/api-docs/dashboard/).
+</ReadMore>
