@@ -1,0 +1,44 @@
+---
+i18nReady: true
+title: "Mise à niveau : v0.4.0"
+description: Mettre à niveau StudioCMS vers la v0.4.0
+topic: guides
+sidebar:
+  label: v0.4.0
+  order: 999980
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro';
+import { Aside } from '@astrojs/starlight/components';
+import ReadMore from '~/components/ReadMore.astro';
+
+<QuickUpdate />
+
+<Aside variant="note" title='Note concernant Astro v6'>
+Bien qu'Astro v6 soit sorti récemment, StudioCMS ne sera pas compatible avec Astro v6 avant une future version. Nous vous recommandons d'attendre que StudioCMS annonce la compatibilité avant de mettre à niveau vers Astro v6, ce qui devrait se produire quelques semaines après la sortie d'Astro v6.
+</Aside>
+
+## Modifications avec rupture de compatibilité
+- Migre toutes les routes API vers le nouveau package `@withstudiocms/api-spec`, qui inclut une nouvelle méthode sûre pour définir les routes API et leurs paramètres, le corps de la requête et la forme de la réponse construits à l'aide de l'implémentation HttpApi d'Effect. Il s'agit d'une modification non rétrocompatible pour toutes les routes d'API personnalisées définies dans les modules d'extension ou le projet lui-même, et nécessite une mise à jour vers le nouveau format de définition des routes d'API.
+  - `/studiocms_api/sdk/listpages` a été supprimée.
+  - `/studiocms_api/sdk/full-changelog.json` a été renommée en `/studiocms_api/sdk/full-changelog`.
+  - Remplace les routes de pages partielles par de nouvelles routes SDK pour le rendu Markdown et la génération HTML de la liste des utilisateurs.
+    - `/studiocms_api/sdk/render` a été ajoutée pour la conversion de contenu Markdown basique en HTML.
+    - `/studiocms_api/sdk/user-list-items` a été ajoutée pour générer du code HTML pour les listes d'utilisateurs, telles que celles utilisées dans la liste des utilisateurs du tableau de bord.
+- Déprécie la propriété `studiocmsMinimumVersion` des modules d'extension, qui était auparavant utilisée pour spécifier la version minimale de StudioCMS requise pour qu'un module d'extension fonctionne. Ceci n'est plus nécessaire avec le nouveau format de définition des routes d'API et a été supprimé afin de simplifier la définition des modules d'extension.
+
+<ReadMore>
+Vous souhaitez en savoir plus sur la nouvelle spécification des API ? Consultez la nouvelle [documentation de spécification des API](/fr/api-docs/auth/) générée par Scalar pour plus de détails sur la façon dont vous pouvez interagir avec les nouvelles définitions des API. Cette documentation est également incluse par défaut dans toutes les installations de StudioCMS à l'adresse `/studiocms_api/docs` et peut être désactivée si besoin.
+</ReadMore>
+
+## Corrections de bugs et améliorations
+- Migre tous les appels aux API du frontend et du tableau de bord vers le nouveau paquet `@withstudiocms/api-spec`, qui inclut une gestion des erreurs et une sûreté du typage améliorées pour les requêtes d'API. Cette migration inclut également des mises à jour du SDK afin de prendre en charge le nouveau format de définition des routes d'API.
+- Migre les schémas internes reposant sur Zod vers l'utilisation de schémas Effect pour une validation, une gestion des erreurs et une intégration améliorées au sein de notre écosystème. Cette migration inclut des mises à jour de tous les schémas internes utilisés pour valider les paramètres des routes d'API, les corps des requêtes et autres structures de données, et peut nécessiter des mises à jour des schémas personnalisés définis dans les modules d'extension ou dans le projet lui-même.
+- Étend l'API de rendu des modules d'extension pour prendre en charge le post-traitement à l'échelle du site ou les modifications de post-traitement spécifiques à une seule page. Cela permet aux modules d'extension de modifier l'affichage de n'importe quelle page, soit en appliquant une fonction de post-traitement à toutes les pages, soit en ciblant des pages spécifiques pour la modification. Il s'agit d'une nouvelle fonctionnalité qui peut nécessiter des mises à jour de toute logique de rendu personnalisée définie dans les modules d'extension ou dans le projet lui-même afin de tirer parti des nouvelles capacités de post-traitement. (Par exemple, la prise en charge de TailwindCSS est désormais possible.)
+- Déplace les contrôles d'authentification internes du tableau de bord vers un système de middleware de données personnalisé par page, permettant une logique d'authentification plus flexible et personnalisable pour les pages du tableau de bord. Cette migration inclut des mises à jour du système de routage du tableau de bord pour prendre en charge ce nouveau système de middleware, et peut nécessiter la mise à jour des routes personnalisées définies dans les modules d'extension ou dans le projet lui-même afin de tirer parti des nouvelles fonctionnalités du middleware d'authentification.
+- Corrige les appels au schéma de suppression de dossiers qui provoquaient des erreurs serveur lors de la tentative de suppression de dossiers.
+- Met à jour les instructions de l'étape 3 de la première configuration. Auparavant, elles affichaient des instructions obsolètes relatives à `@astrojs/db`, qui ont depuis été supprimées. Les nouvelles instructions fournissent des indications actualisées sur la configuration de la connexion à la base de données pour StudioCMS.
+- Corrige l'analyse des options facultatives de `studiocms init`.
+- Ajoute une nouvelle option de configuration pour la route de la documentation intégrée des spécifications des API, accessible par défaut à l'adresse `/studiocms_api/docs`. Cette route fournit une documentation des API interactive pour toutes les routes d'API intégrées et personnalisées définies dans le projet, et peut être personnalisée ou désactivée selon les besoins.
+  - Pour désactiver la route de la documentation des API intégrée, définissez `features.api.apiDocs` sur `false` dans la configuration de StudioCMS.
+- Mise à jour de diverses dépendances vers leurs dernières versions afin de garantir la sécurité et la stabilité.
