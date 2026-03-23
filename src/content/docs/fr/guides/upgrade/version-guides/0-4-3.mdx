@@ -1,0 +1,27 @@
+---
+i18nReady: true
+title: "Mise à niveau : v0.4.3"
+description: Mettre à niveau StudioCMS vers la v0.4.3
+topic: guides
+sidebar:
+  label: v0.4.3
+  badge:
+    text: NOUVEAU
+    variant: success
+  order: 999977
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<QuickUpdate />
+
+<Aside variant="note" title='Note concernant Astro v6'>
+Bien qu'Astro v6 soit sorti récemment, StudioCMS ne sera pas compatible avec Astro v6 avant une future version. Nous vous recommandons d'attendre que StudioCMS annonce la compatibilité avant de mettre à niveau vers Astro v6, ce qui devrait se produire quelques semaines après la sortie d'Astro v6.
+</Aside>
+
+## Corrections de bugs et améliorations
+- Corrige et ajuste les dépendances homologues (`peerDependencies`) pour StudioCMS afin de garantir que `effect`, `@effect/platform` et `@effect/platform-node` sont tous correctement inclus en tant que dépendances homologues requises pour StudioCMS.
+- Améliore la gestion de la vérification du rang pour le point de terminaison `createUser` de l'API REST
+- Corrige le point de terminaison `createResetLink` de l'API du tableau de bord pour valider correctement les classements.
+- Corrige le point de terminaison de notification des utilisateurs de l'API du tableau de bord afin d'empêcher les utilisateurs non autorisés de modifier les notifications d'autres utilisateurs.
