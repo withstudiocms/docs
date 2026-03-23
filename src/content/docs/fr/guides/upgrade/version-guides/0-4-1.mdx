@@ -1,0 +1,21 @@
+---
+i18nReady: true
+title: "Mise à niveau : v0.4.1"
+description: Mettre à niveau StudioCMS vers la v0.4.1
+topic: guides
+sidebar:
+  label: v0.4.1
+  order: 999979
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<QuickUpdate />
+
+<Aside variant="note" title='Note concernant Astro v6'>
+Bien qu'Astro v6 soit sorti récemment, StudioCMS ne sera pas compatible avec Astro v6 avant une future version. Nous vous recommandons d'attendre que StudioCMS annonce la compatibilité avant de mettre à niveau vers Astro v6, ce qui devrait se produire quelques semaines après la sortie d'Astro v6.
+</Aside>
+
+## Corrections de bugs et améliorations
+- Corrige un petit bug où le module d'extension Mesure d'audience intégré optionnel comportait des importations qui ne se résolvaient pas correctement, provoquant des erreurs lorsque StudioCMS était exécuté avec ou sans le module d'extension Mesure d'audience activé. Ce correctif garantit que le module d'extension Mesure d'audience ne provoque pas d'erreurs, qu'il soit activé ou non, et améliore la stabilité globale de StudioCMS lors de l'utilisation du module d'extension Mesure d'audience.
