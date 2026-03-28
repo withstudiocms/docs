@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import type { Contributor } from '~/util/nextContributors';
 
 export interface Props {
@@ -19,7 +18,7 @@ Thanks to @5t3ph for https://smolcss.dev/#smol-avatar-list!
 			contributors.map((item) => (
 				<li>
 					<a href={`https://github.com/${item.login}`}>
-						<Image
+						<img
 							alt={item.login}
 							title={item.login}
 							width={64}
