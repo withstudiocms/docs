@@ -9,6 +9,7 @@ import { getTranslations } from './src/starlight-sidebar/translate.ts';
 import { devServerFileWatcher } from './src/integrations/dev-file-watcher.ts';
 import { remarkFallbackLang } from './src/plugins/remark-fallback-pages.ts';
 import starlightLlmsTxt from 'starlight-llms-txt';
+import { unified } from "@astrojs/markdown-remark";
 
 // Define the Site URL
 const site = process.env.DOKPLOY_DEPLOY_URL
@@ -58,8 +59,10 @@ export default defineConfig({
 		]
 	},
 	markdown: {
-		rehypePlugins,
-		remarkPlugins: [remarkFallbackLang()],
+		processor: unified({
+			rehypePlugins,
+			remarkPlugins: [remarkFallbackLang()],
+		}),
 	},
 	integrations: [
 		devServerFileWatcher([
@@ -195,12 +198,12 @@ export default defineConfig({
 								{
 									label: getTranslations('start-here').en,
 									translations: getTranslations('start-here'),
-									autogenerate: { directory: 'start-here' },
+									items: [{ autogenerate: { directory: 'start-here' } }],
 								},
 								{
 									label: getTranslations('how-it-works').en,
 									translations: getTranslations('how-it-works'),
-									autogenerate: { directory: 'how-it-works' },
+									items: [{ autogenerate: { directory: 'how-it-works' } }],
 								},
 								{
 									label: getTranslations('features').en,
@@ -210,13 +213,13 @@ export default defineConfig({
 											label: getTranslations('plugins').en,
 											translations: getTranslations('plugins'),
 											collapsed: true,
-											autogenerate: { directory: 'plugins' },
+											items: [{ autogenerate: { directory: 'plugins' } }],
 										},
 										{
 											label: getTranslations('storage-api').en,
 											translations: getTranslations('storage-api'),
 											collapsed: true,
-											autogenerate: { directory: 'storage-api' },
+											items: [{ autogenerate: { directory: 'storage-api' } }],
 										},
 										// TODO - Document more StudioCMS features here
 									],
@@ -232,7 +235,7 @@ export default defineConfig({
 								{
 									label: getTranslations('contributing').en,
 									translations: getTranslations('contributing'),
-									autogenerate: { directory: 'guides/contributing' },
+									items: [{ autogenerate: { directory: 'guides/contributing' } }],
 								},
 								{
 									label: getTranslations('upgrade').en,
@@ -254,19 +257,19 @@ export default defineConfig({
 											label: getTranslations('version').en,
 											translations: getTranslations('version'),
 											collapsed: true,
-											autogenerate: { directory: 'guides/upgrade/version-guides' },
+											items: [{ autogenerate: { directory: 'guides/upgrade/version-guides' } }],
 										},
 									],
 								},
 								{
 									label: getTranslations('custom-frontend').en,
 									translations: getTranslations('custom-frontend'),
-									autogenerate: { directory: 'guides/custom-frontend' },
+									items: [{ autogenerate: { directory: 'guides/custom-frontend' } }],
 								},
 								{
 									label: getTranslations('database').en,
 									translations: getTranslations('database'),
-									autogenerate: { directory: 'guides/database' },
+									items: [{ autogenerate: { directory: 'guides/database' } }],
 								},
 							],
 						},
@@ -288,13 +291,13 @@ export default defineConfig({
 										{
 											label: getTranslations('ecosystem-packages').en,
 											translations: getTranslations('ecosystem-packages'),
-											autogenerate: { directory: 'ecosystem/packages' },
+											items: [{ autogenerate: { directory: 'ecosystem/packages' } }],
 											collapsed: true,
 										},
 										{
 											label: getTranslations('ecosystem-bots').en,
 											translations: getTranslations('ecosystem-bots'),
-											autogenerate: { directory: 'ecosystem/bots' },
+											items: [{ autogenerate: { directory: 'ecosystem/bots' } }],
 											collapsed: true,
 										},
 									],
@@ -313,19 +316,19 @@ export default defineConfig({
 										{
 											label: getTranslations('storage-managers').en,
 											translations: getTranslations('storage-managers'),
-											autogenerate: { directory: 'package-catalog/storage-managers' },
+											items: [{ autogenerate: { directory: 'package-catalog/storage-managers' } }],
 											collapsed: true,
 										},
 										{
 											label: getTranslations('studiocms-plugins').en,
 											translations: getTranslations('studiocms-plugins'),
-											autogenerate: { directory: 'package-catalog/studiocms-plugins' },
+											items: [{ autogenerate: { directory: 'package-catalog/studiocms-plugins' } }],
 											collapsed: true,
 										},
 										{
 											label: getTranslations('community-plugins').en,
 											translations: getTranslations('community-plugins'),
-											autogenerate: { directory: 'package-catalog/community-plugins' },
+											items: [{ autogenerate: { directory: 'package-catalog/community-plugins' } }],
 											collapsed: true,
 										},
 									],
@@ -341,12 +344,12 @@ export default defineConfig({
 								{
 									label: getTranslations('config-reference').en,
 									translations: getTranslations('config-reference'),
-									autogenerate: { directory: 'config-reference' },
+									items: [{ autogenerate: { directory: 'config-reference' } }],
 								},
 								{
 									label: getTranslations('api-docs').en,
 									translations: getTranslations('api-docs'),
-									autogenerate: { directory: 'api-docs' },
+									items: [{ autogenerate: { directory: 'api-docs' } }],
 								},
 							],
 						},

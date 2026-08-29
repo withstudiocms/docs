@@ -1,7 +1,7 @@
 import { defineEcConfig } from '@astrojs/starlight/expressive-code';
 import { transformerColorizedBrackets } from '@shikijs/colorized-brackets';
-import ecTwoSlash from 'expressive-code-twoslash';
-import ts from 'typescript';
+// import ecTwoSlash from 'expressive-code-twoslash';
+// import ts from 'typescript';
 
 export default defineEcConfig({
 	shiki: {
@@ -9,18 +9,19 @@ export default defineEcConfig({
 	},
 	themes: ['dark-plus', 'light-plus'],
 	plugins: [
-		ecTwoSlash({
-			twoslashOptions: {
-				handbookOptions: {
-					errors: [2353, 2339, 2307, 2379, 2305, 2345, 7031, 2554, 2375, 2322],
-				},
-				compilerOptions: {
-					moduleResolution: ts.ModuleResolutionKind.Bundler,
-					target: ts.ScriptTarget.ESNext,
-					module: ts.ModuleKind.ESNext,
-				},
-			},
-		}),
+		// Disabled for now till we have time to actually update the twoslash plugin for latest versions of Astro/Starlight/Expressive Code.
+		// ecTwoSlash({
+		// 	twoslashOptions: {
+		// 		handbookOptions: {
+		// 			errors: [2353, 2339, 2307, 2379, 2305, 2345, 7031, 2554, 2375, 2322],
+		// 		},
+		// 		compilerOptions: {
+		// 			moduleResolution: ts.ModuleResolutionKind.Bundler,
+		// 			target: ts.ScriptTarget.ESNext,
+		// 			module: ts.ModuleKind.ESNext,
+		// 		},
+		// 	},
+		// }),
 	],
 	styleOverrides: {
 		frames: {
