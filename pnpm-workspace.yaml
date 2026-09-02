@@ -13,5 +13,9 @@ minimumReleaseAge: 4320
 minimumReleaseAgeExclude:
   - studiocms
   - effectify
+  - astro-embed
+  - astro
+  - "@astro-community/*"
+  - "@astrojs/*"
   - "@studiocms/*"
   - "@withstudiocms/*"
