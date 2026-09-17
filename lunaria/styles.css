@@ -1,0 +1,5 @@
+/* Custom styles inlined into the Lunaria dashboard after its built-in styles. */
+.create-button {
+	background-color: hsl(213deg 89% 64% / 20%);
+	border-radius: 0.5em;
+}
