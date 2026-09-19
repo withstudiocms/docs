@@ -22,6 +22,6 @@ jobs:
         uses: withstudiocms/automations/.github/actions/install@main
 
       - name: Generate Lunaria Overview
-        uses: lunariajs/action@astro-docs
+        uses: lunariajs/action@e5ab09c3c8353fa80786d8c2149873ba3978a3a7 # v0.2.0
         with:
           token: ${{ secrets.STUDIOCMS_SERVICE_TOKEN }}
