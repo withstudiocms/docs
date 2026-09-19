@@ -1,3 +1,4 @@
+import { html } from '@lunariajs/core';
 import { defineConfig } from '@lunariajs/core/config';
 
 export default defineConfig({
@@ -148,5 +149,32 @@ export default defineConfig({
 			'i18nReady',
 			'i18nIgnore',
 		],
+	},
+	dashboard: {
+		title: 'StudioCMS Docs Translation Status',
+		description:
+			'Translation progress tracker for the StudioCMS Docs site. See how much has been translated in your language and get involved!',
+		site: 'https://i18n.docs.studiocms.dev/',
+		basesToHide: ['src/content/docs/', 'src/content/i18n/'],
+		customCss: ['./lunaria/styles.css'],
+		favicon: {
+			external: [{ link: 'https://studiocms.dev/favicon.svg', type: 'image/svg+xml' }],
+		},
+	},
+	renderer: {
+		slots: {
+			head: () => html`
+				<meta property="last-build" content="${new Date().toString()}" />
+				<meta property="og:image" content="https://i18n.docs.studiocms.dev/summary.png" />
+			`,
+			afterTitle: () => html`
+				<p>
+					If you're interested in helping us translate
+					<a href="https://docs.studiocms.dev/">docs.studiocms.dev</a> into one of the languages
+					listed below, you've come to the right place! This auto-updating page always lists all
+					the content that could use your help right now.
+				</p>
+			`,
+		},
 	},
 });

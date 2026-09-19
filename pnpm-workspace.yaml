@@ -19,3 +19,4 @@ minimumReleaseAgeExclude:
   - "@astrojs/*"
   - "@studiocms/*"
   - "@withstudiocms/*"
+  - "@lunariajs/core@0.2.0"
