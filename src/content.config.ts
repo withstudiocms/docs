@@ -1,8 +1,9 @@
-import { defineCollection, reference, z, type CollectionEntry } from 'astro:content';
+import { defineCollection, reference, type CollectionEntry } from 'astro:content';
 import { docsLoader, i18nLoader } from '@astrojs/starlight/loaders';
 import { docsSchema, i18nSchema } from '@astrojs/starlight/schema';
 import { glob } from 'astro/loaders';
 import { topicSchema } from 'starlight-sidebar-topics/schema';
+import { z } from 'astro/zod';
 
 const packageCatalogSchema = z.object({
 	name: z.string(),

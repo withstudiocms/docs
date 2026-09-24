@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../.astro/collections/package-catalog.schema.json",
+  "name": "@studiocms/oauth",
+  "description": "StudioCMS OAuth plugin, Provides OAuth Support for StudioCMS.",
+  "docsLink": "/package-catalog/studiocms-plugins/studiocms-oauth/",
+  "githubURL": "https://github.com/withstudiocms/studiocms/tree/main/packages/@studiocms/oauth/",
+  "catalog": "studiocms",
+  "isPlugin": true,
+  "released": false
+}

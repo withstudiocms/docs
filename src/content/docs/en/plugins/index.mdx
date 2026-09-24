@@ -63,7 +63,6 @@ To define a StudioCMS plugin, you need to create an object that conforms to the 
 
 - `identifier`: The identifier of the plugin from the package.json file.
 - `name`: The label of the plugin to be displayed in the StudioCMS Dashboard.
-- `studiocmsMinimumVersion`: The minimum version of StudioCMS required for the plugin to work.
 
 Here is an example of a StudioCMS plugin definition that includes all the required properties as well as provides an Astro Integration to do custom logic:
 
@@ -98,7 +97,7 @@ export const myPlugin = (options: Options) => definePlugin({
 });
 ```
 
-In this example, we define a StudioCMS plugin called `My Plugin` that requires StudioCMS version `v0.1.0` or higher. The plugin also provides an Astro Integration that logs a message to the console when the `astro:config:setup` hook is called.
+In this example, we define a StudioCMS plugin called `My Plugin`. The plugin also provides an Astro Integration that logs a message to the console when the `astro:config:setup` hook is called.
 
 <ReadMore>For more information on building plugins checkout the [Making Plugins Useful][extended-plugins] Guide</ReadMore>
 

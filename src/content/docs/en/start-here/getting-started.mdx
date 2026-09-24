@@ -33,13 +33,9 @@ To start using StudioCMS, you'll need:
 
 <TabItem label="Turso (libSQL)">
 
-<Aside type='tip' title='StudioCMS Coupon'>
- Use the code `STUDIOCMS10` to get 10% off for 12 months of Turso.
-</Aside>
-
 <Steps>
-1. Install the <SponsorLink href={sponsors.turso.docs.installCLILink} text='Turso CLI'/>
-2. <SponsorLink href={sponsors.turso.docs.loginsignupLink} text='Login or signup'/> to Turso.
+1. Install the [Turso CLI](https://docs.turso.tech/cli/installation)
+2. Login or signup to Turso.
 3. Create a new database.
    <TursoCLI tursoCli='db' type='create' arg='studiocms' />
 4. Get and Set `CMS_LIBSQL_URL`
@@ -276,7 +272,7 @@ You will also need to install the necessary database client packages for your ch
 
 <Tabs syncKey='db-setup-method'>     
   <TabItem label="libSQL (default)" icon="database">
-    <PackageManagers type='add' pkg="@libsql/client kysely-turso" />
+    <PackageManagers type='add' pkg="@libsql/client" />
   </TabItem>
   <TabItem label="MySQL" icon="database">
     <PackageManagers type='add' pkg="mysql2" />
@@ -337,7 +333,7 @@ And set the output as the value for `CMS_ENCRYPTION_KEY`.
 For more information about all the available authentication environment variables see, [Environment variables][environment-variables] page.
 </ReadMore>
 
-#### Optional: Configure oAuth authentication <Badge text='Revised beta.23' variant='caution' />
+#### Optional: Configure oAuth authentication <Badge text='Revised 0.5.0' variant='caution' />
 
 StudioCMS supports various oAuth authentication providers, utilizing our plugin system to enable the providers you want to use. To get started, you will need to find a plugin for the provider you want to use, or create your own plugin.
 
@@ -360,10 +356,10 @@ The following paths are examples of the callback URL for each provider:
 
 | Provider | Callback PATH |
 |----------|---------------|
-| [GitHub](/en/package-catalog/studiocms-plugins/studiocms-github/)   | `/studiocms_api/auth/github/callback` |
-| [Discord](/en/package-catalog/studiocms-plugins/studiocms-discord/) | `/studiocms_api/auth/discord/callback` |
-| [Google](/en/package-catalog/studiocms-plugins/studiocms-google/)   | `/studiocms_api/auth/google/callback` |
-| [Auth0](/en/package-catalog/studiocms-plugins/studiocms-auth0/)     | `/studiocms_api/auth/auth0/callback` |
+| [GitHub](/en/package-catalog/studiocms-plugins/studiocms-oauth/#github)   | `/studiocms_api/auth/github/callback` |
+| [Discord](/en/package-catalog/studiocms-plugins/studiocms-oauth/#discord) | `/studiocms_api/auth/discord/callback` |
+| [Google](/en/package-catalog/studiocms-plugins/studiocms-oauth/#google)   | `/studiocms_api/auth/google/callback` |
+| [Auth0](/en/package-catalog/studiocms-plugins/studiocms-oauth/#auth0)     | `/studiocms_api/auth/auth0/callback` |
 
 ### Configure Storage API Manager (optional) <Badge text='Added in v0.1.0' variant='success' />
 
@@ -524,4 +520,4 @@ Learn more about the StudioCMS Config options using the [StudioCMS Reference][co
 [config-reference]: /en/config-reference/
 [encryption-key]: /en/start-here/environment-variables/#encryption-key-for-studiocms
 [self-hosted-libsql]: /en/guides/database/sqld-server/
-[turso-sponsor-link]: https://tur.so/studiocms
+[turso-sponsor-link]: https://turso.tech/

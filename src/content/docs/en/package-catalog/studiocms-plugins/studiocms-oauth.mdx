@@ -1,0 +1,110 @@
+---
+i18nReady: true
+title: "@studiocms/oauth"
+type: integration
+catalogEntry: studiocms-oauth
+description: "StudioCMS OAuth Integration"
+---
+
+import { PackageManagers } from 'starlight-package-managers'
+import { Steps, Tabs, TabItem, Aside } from '@astrojs/starlight/components';
+
+This plugin integrates OAuth providers for StudioCMS, enabling authentication via various OAuth providers. It sets up the necessary configuration, including required environment variables and endpoint paths.
+
+## Usage
+
+The callback URL should be set to one of the following paths based on your environment:
+
+| Environment   | Callback URL |
+|---------------|--------------|
+| Production    | `https://your-domain.tld/studiocms_api/auth/<provider>/callback` |
+| Testing & Dev | `http://localhost:4321/studiocms_api/auth/<provider>/callback` |
+
+### Auth0
+
+Add this plugin in your StudioCMS config. (`studiocms.config.mjs`)
+
+```ts title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+import auth0 from '@studiocms/oauth/auth0';
+
+export default defineStudioCMSConfig({
+    // other options here
+    plugins: [auth0()]
+});
+```
+
+#### Required ENV Variables
+
+```sh title=".env"
+CMS_AUTH0_CLIENT_ID=<your-client-id>
+CMS_AUTH0_CLIENT_SECRET=<your-client-secret>
+CMS_AUTH0_DOMAIN=<your-domain>
+CMS_AUTH0_REDIRECT_URI=<your-redirect-uri>
+```
+
+### GitHub
+
+Add this plugin in your StudioCMS config. (`studiocms.config.mjs`)
+
+```ts title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+import github from '@studiocms/oauth/github';
+
+export default defineStudioCMSConfig({
+    // other options here
+    plugins: [github()]
+});
+```
+
+#### Required ENV Variables
+
+```sh title=".env"
+CMS_GITHUB_CLIENT_ID=<your-client-id>
+CMS_GITHUB_CLIENT_SECRET=<your-client-secret>
+CMS_GITHUB_REDIRECT_URI=<your-redirect-uri>
+```
+
+### Discord
+
+Add this plugin in your StudioCMS config. (`studiocms.config.mjs`)
+
+```ts title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+import discord from '@studiocms/oauth/discord';
+
+export default defineStudioCMSConfig({
+    // other options here
+    plugins: [discord()]
+});
+```
+
+#### Required ENV Variables
+
+```sh title=".env"
+CMS_DISCORD_CLIENT_ID=<your-client-id>
+CMS_DISCORD_CLIENT_SECRET=<your-client-secret>
+CMS_DISCORD_REDIRECT_URI=<your-redirect-uri>
+```
+
+### Google
+
+Add this plugin in your StudioCMS config. (`studiocms.config.mjs`)
+
+```ts title="studiocms.config.mjs"
+import { defineStudioCMSConfig } from 'studiocms/config';
+import google from '@studiocms/oauth/google';
+
+export default defineStudioCMSConfig({
+    // other options here
+    plugins: [google()]
+});
+```
+
+#### Required ENV Variables
+
+```sh title=".env"
+CMS_GOOGLE_CLIENT_ID=<your-client-id>
+CMS_GOOGLE_CLIENT_SECRET=<your-client-secret>
+CMS_GOOGLE_REDIRECT_URI=<your-redirect-uri>
+```

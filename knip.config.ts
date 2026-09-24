@@ -19,8 +19,7 @@ const config: KnipConfig = {
 		'@withstudiocms/component-registry',
 		'@withstudiocms/kysely',
 		"@withstudiocms/effect",
-		'@studiocms/web-vitals',
-		'astro-integration-kit'
+		"@effect/cli"
 	],
 	entry: [
 		'src/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}',

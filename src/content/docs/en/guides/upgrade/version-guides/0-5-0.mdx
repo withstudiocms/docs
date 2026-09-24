@@ -1,0 +1,33 @@
+---
+i18nReady: true
+title: "Upgrade: v0.5.0"
+description: Upgrade StudioCMS to v0.5.0
+topic: guides
+sidebar:
+  label: v0.5.0
+  badge:
+    text: NEW
+    variant: success
+  order: 999976
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<QuickUpdate />
+
+## Breaking changes
+
+- Updated StudioCMS to be compatible with Astro v7. This includes updates to the dashboard and other internal components to ensure compatibility with the latest version of Astro.
+  - Drops support for Astro v5-v6. If you are currently using Astro v5 or v6, please update to Astro v7 before upgrading to StudioCMS v0.5.0.
+- Removed `kysely-turso` package dependency. StudioCMS's DB layer now includes an in-house kysely adapter for Turso, which is now included as part of the `@withstudiocms/kysely` package.
+
+## Bug Fixes & Improvements
+
+- Code component script encapsulation
+- Various minor dependency updates and improvements
+- Fixed dashboard CSS to conform with Astro v7 changes and prevent CSS leaks and other issues.
+- Fixed windows unicode escape errors
+- Replaced previous config loader, with a Vite-based loader with native ESM support.
+- Removed `astro-integration-kit` package dependency.
+- Removed legacy and unused code.
