@@ -1,0 +1,26 @@
+---
+i18nReady: true
+title: "Upgrade: v0.6.0"
+description: Upgrade StudioCMS to v0.6.0
+topic: guides
+sidebar:
+  label: v0.6.0
+  badge:
+    text: NEW
+    variant: success
+  order: 999975
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<QuickUpdate />
+
+## Breaking changes
+
+- Removes the deprecated `studiocmsMinimumVersion` field from the Plugin API (`StudioCMSPluginBaseSchema`) and cleans up stale JSDoc that still referenced version checks. Plugins still passing the field will get a TypeScript excess-property error in `definePlugin()`; use `peerDependencies` to declare StudioCMS compatibility instead.
+
+## Bug Fixes & Improvements
+
+- Fixes circle-flags error by including proper overrides for now missing lang-\* flags
+- Update studiocms Dependencies
