@@ -1,0 +1,25 @@
+---
+i18nReady: true
+title: "Upgrade: v0.7.0"
+description: Upgrade StudioCMS to v0.7.0
+topic: guides
+sidebar:
+  label: v0.7.0
+  badge:
+    text: NEW
+    variant: success
+  order: 999974
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<QuickUpdate />
+
+## Bug Fixes & Improvements
+
+- Migrates from Micromark to [Satteri](https://satteri.bruits.org/) for dashboard internal rendering, and SDK parsing of markdown.
+  - Note: This does not alter the Markdown renderer associated with pages, as that is handled via StudioCMS's plugin system.
+- Fixes path resolvers for Windows based systems
+- Adds current user check to api search list
+- Updates dependencies
