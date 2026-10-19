@@ -1,0 +1,23 @@
+---
+i18nReady: true
+title: "Mise à niveau : v0.6.0"
+description: Mettre à niveau StudioCMS vers la v0.6.0
+topic: guides
+sidebar:
+  label: v0.6.0
+  order: 999975
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<QuickUpdate />
+
+## Modifications avec rupture de compatibilité
+
+- Supprime le champ déprécié `studiocmsMinimumVersion` de l’API des modules d’extension (`StudioCMSPluginBaseSchema`) et nettoie les commentaires JSDoc périmés qui faisaient encore référence à la vérification des versions. Les modules d’extension qui transmettent encore ce champ déclencheront une erreur TypeScript de propriété en trop dans `definePlugin()`. Déclarez plutôt la compatibilité avec StudioCMS dans les dépendances homologues (`peerDependencies`).
+
+## Corrections de bugs et améliorations
+
+- Corrige une erreur des icônes de drapeaux ronds (circle-flags) en ajoutant les surcharges nécessaires pour les icônes lang-\* désormais absentes
+- Met à jour les dépendances de StudioCMS
