@@ -6,30 +6,4 @@ catalogEntry: studiocms-auth0
 description: "Intégration Auth0 de StudioCMS"
 ---
 
-import { PackageManagers } from 'starlight-package-managers'
-import { Steps, Tabs, TabItem, Aside } from '@astrojs/starlight/components';
-
-Ce module d’extension intègre Auth0 en tant que fournisseur OAuth pour StudioCMS, permettant l’authentification via Auth0. Il définit la configuration nécessaire, y compris les variables d’environnement requises et les chemins d’accès aux points de terminaison.
-
-## Utilisation
-
-Ajoutez ce module d’extension dans votre configuration de StudioCMS. (`studiocms.config.mjs`)
-
-```ts title="studiocms.config.mjs"
-import { defineStudioCMSConfig } from 'studiocms/config';
-import auth0 from '@studiocms/auth0';
-
-export default defineStudioCMSConfig({
-    // autres options ici
-    plugins: [auth0()]
-});
-```
-
-## Variables d’environnement requises
-
-```sh title=".env"
-CMS_AUTH0_CLIENT_ID=<id-de-votre-client>
-CMS_AUTH0_CLIENT_SECRET=<secret-de-votre-client>
-CMS_AUTH0_DOMAIN=<votre-domaine>
-CMS_AUTH0_REDIRECT_URI=<votre-uri-de-redirection>
-```
+Ce paquet a été déprécié et n’est plus maintenu. Utilisez plutôt le paquet [`@studiocms/oauth`](/fr/package-catalog/studiocms-plugins/studiocms-oauth/), qui prend en charge Auth0 ainsi que d’autres fournisseurs OAuth.

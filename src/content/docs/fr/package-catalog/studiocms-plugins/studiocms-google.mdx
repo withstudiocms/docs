@@ -6,29 +6,4 @@ catalogEntry: studiocms-google
 description: "Intégration Google de StudioCMS"
 ---
 
-import { PackageManagers } from 'starlight-package-managers'
-import { Steps, Tabs, TabItem, Aside } from '@astrojs/starlight/components';
-
-Ce module d’extension intègre l’authentification OAuth de Google à StudioCMS. Il définit la configuration nécessaire, y compris les variables d’environnement requises, les détails du fournisseur OAuth et les chemins d’accès aux points de terminaison pour l’authentification.
-
-## Utilisation
-
-Ajoutez ce module d’extension dans votre configuration de StudioCMS. (`studiocms.config.mjs`)
-
-```ts title="studiocms.config.mjs"
-import { defineStudioCMSConfig } from 'studiocms/config';
-import google from '@studiocms/google';
-
-export default defineStudioCMSConfig({
-    // autres options ici
-    plugins: [google()]
-});
-```
-
-## Variables d’environnement requises
-
-```sh title=".env"
-CMS_GOOGLE_CLIENT_ID=<id-de-votre-client>
-CMS_GOOGLE_CLIENT_SECRET=<secret-de-votre-client>
-CMS_GOOGLE_REDIRECT_URI=<votre-uri-de-redirection>
-```
+Ce paquet a été déprécié et n’est plus maintenu. Utilisez plutôt le paquet [`@studiocms/oauth`](/fr/package-catalog/studiocms-plugins/studiocms-oauth/), qui prend en charge Google ainsi que d’autres fournisseurs OAuth.
