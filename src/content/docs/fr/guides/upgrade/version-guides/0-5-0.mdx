@@ -1,0 +1,30 @@
+---
+i18nReady: true
+title: "Mise à niveau : v0.5.0"
+description: Mettre à niveau StudioCMS vers la v0.5.0
+topic: guides
+sidebar:
+  label: v0.5.0
+  order: 999976
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<QuickUpdate />
+
+## Modifications avec rupture de compatibilité
+
+- Mise à jour de StudioCMS pour assurer la compatibilité avec Astro v7. Cela inclut des mises à jour du tableau de bord et d’autres composants internes afin de garantir la compatibilité avec la dernière version d’Astro.
+  - Abandon de la prise en charge d’Astro v5 et v6. Si vous utilisez actuellement Astro v5 ou v6, veuillez effectuer la mise à jour vers Astro v7 avant de mettre à niveau StudioCMS vers la v0.5.0.
+- Suppression de la dépendance au paquet `kysely-turso`. La couche de base de données de StudioCMS inclut désormais son propre adaptateur Kysely pour Turso, qui fait partie du paquet `@withstudiocms/kysely`.
+
+## Corrections de bugs et améliorations
+
+- Encapsulation des scripts du composant Code
+- Diverses améliorations et mises à jour mineures des dépendances
+- Correction du CSS du tableau de bord afin de suivre les changements d’Astro v7 et d’éviter les fuites de CSS, entre autres problèmes.
+- Correction des erreurs d’échappement Unicode sous Windows
+- Remplacement de l’ancien chargeur de configuration par un chargeur reposant sur Vite, qui prend en charge ESM nativement.
+- Suppression de la dépendance au paquet `astro-integration-kit`.
+- Suppression du code hérité et inutilisé.
