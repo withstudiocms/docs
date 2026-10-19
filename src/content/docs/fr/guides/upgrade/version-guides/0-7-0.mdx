@@ -1,0 +1,25 @@
+---
+i18nReady: true
+title: "Mise à niveau : v0.7.0"
+description: Mettre à niveau StudioCMS vers la v0.7.0
+topic: guides
+sidebar:
+  label: v0.7.0
+  badge:
+    text: NOUVEAU
+    variant: success
+  order: 999974
+---
+
+import QuickUpdate from '~/components/QuickUpdate.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<QuickUpdate />
+
+## Corrections de bugs et améliorations
+
+- Passe de Micromark à [Satteri](https://satteri.bruits.org/) pour le rendu interne du tableau de bord et l’analyse du Markdown dans le SDK.
+  - Remarque : cela ne modifie pas le moteur de rendu Markdown associé aux pages, qui est géré par le système de modules d’extension de StudioCMS.
+- Corrige la résolution des chemins sous Windows
+- Ajoute une vérification de l’utilisateur actuel au point de terminaison `searchList` de l’API du tableau de bord
+- Met à jour les dépendances
