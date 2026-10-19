@@ -63,7 +63,6 @@ Pour définir un module d’extension pour StudioCMS, vous devez créer un objet
 
 - `identifier` : L’identifiant du module d’extension à partir du fichier package.json.
 - `name` : Le libellé du module d’extension à afficher dans le tableau de bord de StudioCMS.
-- `studiocmsMinimumVersion` : La version minimale de StudioCMS requise pour que le module d’extension fonctionne.
 
 Voici un exemple de définition de module d’extension pour StudioCMS qui inclut toutes les propriétés requises et fournit une intégration Astro pour effectuer une logique personnalisée :
 
@@ -98,7 +97,7 @@ export const monModuleExtension = (options: Options) => definePlugin({
 });
 ```
 
-Dans cet exemple, nous définissons un module d’extension pour StudioCMS appelé `Mon module d’extension` qui nécessite la version `v0.1.0` ou supérieure de StudioCMS. Le module d’extension fournit également une intégration Astro qui enregistre un message dans la console lorsque le crochet `astro:config:setup` est appelé.
+Dans cet exemple, nous définissons un module d’extension pour StudioCMS appelé `Mon module d’extension`. Le module d’extension fournit également une intégration Astro qui enregistre un message dans la console lorsque le crochet `astro:config:setup` est appelé.
 
 <ReadMore>Pour plus d’informations sur la création de modules d’extension, consultez le guide [Rendre les modules d’extension utiles][extended-plugins]</ReadMore>
 
